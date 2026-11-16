@@ -1,0 +1,150 @@
+[
+  {
+    "id": "deb_q01",
+    "tipo": "directa",
+    "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
+    "respuesta_esperada": "Se utiliza el comando «dpkg -i nombre_paquete.deb» (o «dpkg --install») (Sección 5.4).",
+    "referencia": "Sección 5.4",
+    "chunks_esperados": [
+      "deb_0235"
+    ]
+  },
+  {
+    "id": "deb_q02",
+    "tipo": "directa",
+    "pregunta": "¿En qué archivo principal de configuración del sistema se definen las fuentes y repositorios de paquetes que consulta APT?",
+    "respuesta_esperada": "En el archivo «/etc/apt/sources.list» (Capítulo 6).",
+    "referencia": "Capítulo 6",
+    "chunks_esperados": [
+      "deb_0259"
+    ]
+  },
+  {
+    "id": "deb_q03",
+    "tipo": "directa",
+    "pregunta": "¿Qué comando de APT se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados?",
+    "respuesta_esperada": "Se ejecuta «apt update» o «apt-get update» (Sección 6.2).",
+    "referencia": "Sección 6.2",
+    "chunks_esperados": [
+      "deb_0285"
+    ]
+  },
+  {
+    "id": "deb_q04",
+    "tipo": "directa",
+    "pregunta": "¿Qué herramienta permite buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados?",
+    "respuesta_esperada": "La herramienta «apt-file» (Sección 6.4).",
+    "referencia": "Sección 6.4",
+    "chunks_esperados": [
+      "deb_0323"
+    ]
+  },
+  {
+    "id": "deb_q05",
+    "tipo": "directa",
+    "pregunta": "¿Dónde se localiza el fichero principal de configuración del demonio del servidor SSH (OpenSSH) en Debian?",
+    "respuesta_esperada": "En la ruta «/etc/ssh/sshd_config» (Sección 9.2).",
+    "referencia": "Sección 9.2",
+    "chunks_esperados": [
+      "deb_0559"
+    ]
+  },
+  {
+    "id": "deb_q06",
+    "tipo": "directa",
+    "pregunta": "¿Qué programa o servicio se utiliza en Debian para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente?",
+    "respuesta_esperada": "El servicio «anacron» (Sección 9.8).",
+    "referencia": "Sección 9.8",
+    "chunks_esperados": [
+      "deb_0607"
+    ]
+  },
+  {
+    "id": "deb_q07",
+    "tipo": "directa",
+    "pregunta": "¿Cuál es la herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables?",
+    "respuesta_esperada": "El cortafuegos «nftables» (subsistema de filtrado de paquetes del núcleo Linux) (Sección 14.2).",
+    "referencia": "Sección 14.2",
+    "chunks_esperados": [
+      "deb_1043"
+    ]
+  },
+  {
+    "id": "deb_q08",
+    "tipo": "directa",
+    "pregunta": "¿Qué comando se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root?",
+    "respuesta_esperada": "El comando «sudo» (Sección 9.3).",
+    "referencia": "Sección 9.3",
+    "chunks_esperados": [
+      "deb_0571"
+    ]
+  },
+  {
+    "id": "deb_q09",
+    "tipo": "combinada",
+    "pregunta": "¿Qué papel desempeña dpkg en comparación con las herramientas APT a la hora de gestionar paquetes e instalar dependencias en Debian?",
+    "respuesta_esperada": "«dpkg» es la herramienta de bajo nivel que manipula directamente los paquetes .deb en el sistema pero no resuelve ni descarga dependencias de repositorios automáticamente (Sección 5.4), mientras que «APT» (apt / apt-get) es la herramienta de alto nivel que gestiona repositorios remotos, calcula el árbol de dependencias e invoca internamente a dpkg para la instalación (Sección 6.2).",
+    "referencia": "Secciones 5.4 y 6.2",
+    "chunks_esperados": [
+      "deb_0235",
+      "deb_0285"
+    ]
+  },
+  {
+    "id": "deb_q10",
+    "tipo": "combinada",
+    "pregunta": "¿En qué se diferencian las acciones de desinstalar un paquete (remove) y purgarlo (purge) tanto en dpkg como en APT en relación con los ficheros de configuración?",
+    "respuesta_esperada": "La desinstalación ordinaria («remove») borra los ficheros ejecutables y datos del programa pero conserva los archivos de configuración en el sistema (Sección 5.4), mientras que la opción purgar («purge») elimina tanto el paquete como la totalidad de sus ficheros de configuración (Sección 6.2).",
+    "referencia": "Secciones 5.4 y 6.2",
+    "chunks_esperados": [
+      "deb_0240",
+      "deb_0288"
+    ]
+  },
+  {
+    "id": "deb_q11",
+    "tipo": "combinada",
+    "pregunta": "¿En qué archivo se definen los parámetros de una interfaz de red estática en Debian clásico y con qué órdenes se activa o desactiva dicha interfaz?",
+    "respuesta_esperada": "Se definen en el fichero «/etc/network/interfaces» mediante la estrofa «iface ... inet static» (Sección 8.2), y se activa o desactiva mediante los comandos «ifup <interfaz>» e «ifdown <interfaz>» (Sección 8.2).",
+    "referencia": "Sección 8.2",
+    "chunks_esperados": [
+      "deb_0414",
+      "deb_0415"
+    ]
+  },
+  {
+    "id": "deb_q12",
+    "tipo": "combinada",
+    "pregunta": "¿Cómo interactúan el diario binario de systemd-journald y el demonio rsyslog tradicional a la hora de gestionar y registrar eventos del sistema?",
+    "respuesta_esperada": "«systemd-journald» recoge de forma centralizada e indexada los eventos del sistema y del arranque en un diario binario (Sección 8.9), y reenvía dichos registros al demonio «rsyslog» (syslog tradicional) para que los filtre y escriba en archivos de texto plano según su prioridad y categoría (Sección 9.5).",
+    "referencia": "Secciones 8.9 y 9.5",
+    "chunks_esperados": [
+      "deb_0491",
+      "deb_0588"
+    ]
+  },
+  {
+    "id": "deb_q13",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Cuál es la sintaxis exacta del comando dnf para activar repositorios COPR en una instalación de Debian Bullseye?",
+    "respuesta_esperada": "No aparece en el documento. Las herramientas DNF y los repositorios COPR pertenecen a la distribución Fedora / Red Hat; Debian utiliza el gestor APT con repositorios definidos en sources.list y paquetes DEB.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "deb_q14",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué clave del registro de Windows bajo la ruta HKEY_LOCAL_MACHINE\\SYSTEM modifica el instalador de Debian para configurar el arranque dual?",
+    "respuesta_esperada": "No aparece en el documento. Debian es un sistema operativo GNU/Linux que utiliza el gestor de arranque GRUB y no modifica registros ni claves HKEY de Windows.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "deb_q15",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué parámetro del comando ipfw de FreeBSD se utiliza para compilar reglas de inspección con estado en Debian?",
+    "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  }
+]

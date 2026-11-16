@@ -1,0 +1,150 @@
+[
+  {
+    "id": "boe_q01",
+    "tipo": "directa",
+    "pregunta": "¿Cuántos días de vacaciones anuales retribuidas corresponden por ley como mínimo a un trabajador?",
+    "respuesta_esperada": "Como mínimo corresponden treinta días naturales al año (artículo 38.1).",
+    "referencia": "Artículo 38.1",
+    "chunks_esperados": [
+      "boe_0149"
+    ]
+  },
+  {
+    "id": "boe_q02",
+    "tipo": "directa",
+    "pregunta": "¿Cuál es el número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria?",
+    "respuesta_esperada": "El número máximo de horas extraordinarias es de ochenta al año (artículo 35.2).",
+    "referencia": "Artículo 35.2",
+    "chunks_esperados": [
+      "boe_0126"
+    ]
+  },
+  {
+    "id": "boe_q03",
+    "tipo": "directa",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador con motivo de contraer matrimonio?",
+    "respuesta_esperada": "Dispone de quince días naturales de permiso retribuido (artículo 37.3.a).",
+    "referencia": "Artículo 37.3.a",
+    "chunks_esperados": [
+      "boe_0135"
+    ]
+  },
+  {
+    "id": "boe_q04",
+    "tipo": "directa",
+    "pregunta": "¿A partir de qué edad mínima está permitida con carácter general la admisión al trabajo?",
+    "respuesta_esperada": "Está permitida a partir de los dieciséis años; se prohíbe la admisión al trabajo a menores de dieciséis años salvo en espectáculos públicos autorizados (artículo 6.1).",
+    "referencia": "Artículo 6.1",
+    "chunks_esperados": [
+      "boe_0018"
+    ]
+  },
+  {
+    "id": "boe_q05",
+    "tipo": "directa",
+    "pregunta": "¿Cuál es la duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores?",
+    "respuesta_esperada": "El descanso semanal mínimo ininterrumpido es de un día y medio, acumulable por períodos de hasta catorce días (artículo 37.1).",
+    "referencia": "Artículo 37.1",
+    "chunks_esperados": [
+      "boe_0134"
+    ]
+  },
+  {
+    "id": "boe_q06",
+    "tipo": "directa",
+    "pregunta": "¿Qué intervalo horario se considera legalmente como trabajo nocturno?",
+    "respuesta_esperada": "Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana (artículo 36.1).",
+    "referencia": "Artículo 36.1",
+    "chunks_esperados": [
+      "boe_0129"
+    ]
+  },
+  {
+    "id": "boe_q07",
+    "tipo": "directa",
+    "pregunta": "Si un despido es declarado improcedente y el empresario opta por la indemnización, ¿a cuántos días de salario por año de servicio asciende y cuál es el límite máximo?",
+    "respuesta_esperada": "Asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año, hasta un máximo de veinticuatro mensualidades (artículo 56.1).",
+    "referencia": "Artículo 56.1",
+    "chunks_esperados": [
+      "boe_0270"
+    ]
+  },
+  {
+    "id": "boe_q08",
+    "tipo": "directa",
+    "pregunta": "¿Qué duración máxima puede tener pactado el periodo de prueba para los técnicos titulados si el convenio colectivo no dispone otra cosa?",
+    "respuesta_esperada": "La duración máxima no podrá exceder de seis meses para los técnicos titulados (artículo 14.1).",
+    "referencia": "Artículo 14.1",
+    "chunks_esperados": [
+      "boe_0056"
+    ]
+  },
+  {
+    "id": "boe_q09",
+    "tipo": "combinada",
+    "pregunta": "¿Qué órgano de representación unitaria corresponde elegir a los trabajadores en centros de trabajo de menos de 50 empleados frente a los de 50 o más trabajadores?",
+    "respuesta_esperada": "En centros de trabajo de más de diez y menos de cincuenta trabajadores la representación corresponde a los delegados de personal (artículo 62), mientras que en centros con cincuenta o más trabajadores se constituye un comité de empresa (artículo 63).",
+    "referencia": "Artículos 62 y 63",
+    "chunks_esperados": [
+      "boe_0278",
+      "boe_0279"
+    ]
+  },
+  {
+    "id": "boe_q10",
+    "tipo": "combinada",
+    "pregunta": "¿Qué percepciones económicas integran el concepto legal de salario y cómo responde el Fondo de Garantía Salarial (FOGASA) en caso de insolvencia de la empresa para abonarlas?",
+    "respuesta_esperada": "El salario comprende la totalidad de las percepciones económicas, dinerarias o en especie, obtenidas por la prestación profesional de servicios laborales (artículo 26.1). Si la empresa se declara insolvente o en concurso, el FOGASA abona a los trabajadores los salarios pendientes reconocidos dentro de los límites y topes legalmente establecidos (artículo 33.1).",
+    "referencia": "Artículos 26.1 y 33.1",
+    "chunks_esperados": [
+      "boe_0094",
+      "boe_0106"
+    ]
+  },
+  {
+    "id": "boe_q11",
+    "tipo": "combinada",
+    "pregunta": "¿Qué limitaciones especiales tienen los trabajadores menores de dieciocho años en cuanto al trabajo nocturno y a la duración de su descanso semanal?",
+    "respuesta_esperada": "Queda terminantemente prohibido el trabajo nocturno a los menores de dieciocho años (artículo 6.2), y su descanso semanal ininterrumpido debe ser de al menos dos días (artículo 37.1).",
+    "referencia": "Artículos 6.2 y 37.1",
+    "chunks_esperados": [
+      "boe_0018",
+      "boe_0134"
+    ]
+  },
+  {
+    "id": "boe_q12",
+    "tipo": "combinada",
+    "pregunta": "Si una empresa traslada a un trabajador a un centro de trabajo que exige cambio de residencia, ¿qué compensación económica le corresponde si rechaza el traslado y rescinde su contrato laboral?",
+    "respuesta_esperada": "Si decide no aceptar el traslado y extinguir la relación contractual (artículo 49.1.h), el trabajador percibe una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año y con un máximo de doce mensualidades (artículo 40.1).",
+    "referencia": "Artículos 40.1 y 49.1.h",
+    "chunks_esperados": [
+      "boe_0156",
+      "boe_0232"
+    ]
+  },
+  {
+    "id": "boe_q13",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿A cuántos euros asciende exactamente el importe mensual del Salario Mínimo Interprofesional fijado para este año?",
+    "respuesta_esperada": "No aparece en el documento. El artículo 27 dice que el Gobierno fija anualmente el salario mínimo previa consulta sindical, pero no incluye cifras concretas en euros.",
+    "referencia": "No aparece (artículo 27 sin cifra)",
+    "chunks_esperados": []
+  },
+  {
+    "id": "boe_q14",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Cuántos años mínimos de cotización efectiva se exigen a un trabajador para acceder al 100% de la pensión contributiva de jubilación ordinaria?",
+    "respuesta_esperada": "No aparece en el documento. Los requisitos de cálculo, porcentajes y años cotizados para la pensión de jubilación se regulan en la Ley General de la Seguridad Social, no en el Estatuto de los Trabajadores.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "boe_q15",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Cuántos días remunerados de permiso corresponden por el fallecimiento de un tío o de un primo carnal del trabajador?",
+    "respuesta_esperada": "No aparece en el documento. El artículo 37.3 solo contempla permisos por fallecimiento para cónyuge, pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad (padres, hijos, abuelos, nietos, hermanos); tíos y primos no están contemplados.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  }
+]
