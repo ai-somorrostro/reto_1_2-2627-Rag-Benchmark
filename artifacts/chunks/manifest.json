@@ -1,0 +1,37 @@
+{
+  "config": "config/chunking.toml",
+  "config_sha256": "9f82a1b8df584fc3c8c34173e87b8bab589a2f546786df954b569189b68855ee",
+  "scenarios": {
+    "boe": {
+      "generated_at": "2026-11-17T10:51:04+00:00",
+      "output": "artifacts/chunks/boe.jsonl",
+      "parser_warnings": [],
+      "source": "data/Estatuto_Trabajadores_HTML.md",
+      "source_sha256": "691c92537f5255f4a0f70ee8f6692815cbec418fa53a514a142e64db93bcfe00",
+      "stats": {
+        "chars_total": 382786,
+        "chunks": 349,
+        "tokens_max": 419,
+        "tokens_median": 351,
+        "tokens_min": 34,
+        "tokens_p95": 413
+      }
+    },
+    "debian": {
+      "generated_at": "2026-11-17T10:51:04+00:00",
+      "output": "artifacts/chunks/debian.jsonl",
+      "parser_warnings": [],
+      "source": "data/Manual_Debian_Spanish.md",
+      "source_sha256": "0d3f7802566e4cbe6902bf3e1ca29626584def4a98f5cac7a4c0e4213b3b77f5",
+      "stats": {
+        "chars_total": 1315928,
+        "chunks": 1074,
+        "tokens_max": 520,
+        "tokens_median": 381,
+        "tokens_min": 20,
+        "tokens_p95": 512
+      }
+    }
+  },
+  "updated_at": "2026-11-17T10:51:04+00:00"
+}
