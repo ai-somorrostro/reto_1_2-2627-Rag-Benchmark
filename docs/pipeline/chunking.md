@@ -67,6 +67,8 @@ Salidas:
 
 `start_line` y `end_line` permiten abrir el markdown y revisar el fragmento
 exacto antes de asignarlo como oro en el golden set.
+El esquema y los conjuntos de preguntas están descritos en
+[`golden-set.md`](./golden-set.md).
 
 ## Validación
 
@@ -88,18 +90,22 @@ hayan colado en el cuerpo. Los avisos no bloquean; los errores sí.
 1. Los markdown tienen que estar cerrados. Cualquier cambio posterior cambia
    líneas y puede cambiar IDs.
 2. `uv run ragbench chunk build && uv run ragbench chunk validate`.
-3. Revisar a mano una muestra de chunks (los que se usarán en el golden set).
-4. Anotar en `CONFIG.md` la fecha, el hash de la config y el hash de cada
-   markdown que aparece en `manifest.json`.
-5. No volver a ejecutar `build` salvo que se acepte repetir todas las medidas.
+3. Revisar a mano una muestra de chunks y resolver o aceptar explícitamente
+   los avisos que queden.
+4. Crear y validar los golden sets según [`golden-set.md`](./golden-set.md).
+5. Anotar en `CONFIG.md` la fecha y los hashes de la configuración, los
+   markdown, los chunks y los golden sets.
+6. No volver a ejecutar `build` salvo que se acepte repetir todas las medidas.
 
-## Pendiente del conversor de documentos (no tocar aquí)
+## Revisión del formato de origen
 
-Detectado al leer los markdown actuales:
+El Markdown de Debian contiene niveles de título irregulares (hasta ocho
+almohadillas), que el parser admite. Los comandos y la configuración que son
+parte de una frase se mantienen como código en línea; los ejemplos autónomos
+deben usar bloques cercados para no confundirse con títulos ni mezclarse con
+prosa. Se corrigió el ejemplo de configuración de `coturn` y sus comandos en
+`data/Manual_Debian_Spanish.md`.
 
-- Los comandos y salidas de Debian están en líneas con backticks en vez de
-  bloques cercados; un chunk puede quedar con código y prosa mezclados.
-- Hay títulos con niveles irregulares (hasta 8 almohadillas) y algún título
-  dentro de lo que debería ser un bloque de código.
-- El troceador es tolerante con ambos casos, pero la calidad de las citas de
-  sección mejorará cuando el conversor los unifique.
+Antes de congelar, revisad los avisos del validador. Los chunks cortos pueden
+ser secciones legítimamente breves y no deben alargarse mezclándolos con otras
+secciones.

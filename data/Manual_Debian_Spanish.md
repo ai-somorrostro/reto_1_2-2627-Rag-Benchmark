@@ -6272,11 +6272,18 @@ Instale el paquete coturn y edite el archivo de configuración `/etc/turnserver.
 
 The server can be started running **turnserver** from the coturn package. We want the server to be an automatically started system service. This is the default behavior using *systemd*. Only when using the older SysVinit you have to edit the `/etc/default/coturn` file like this:
 
-# # Uncomment it if you want to have the turnserver running as # an automatic system service daemon # TURNSERVER\_ENABLED=1
+```ini
+# Uncomment it if you want to have the turnserver running as
+# an automatic system service daemon
+TURNSERVER_ENABLED=1
+```
 
 Por defecto, el servidor TURN usa un acceso anónimo. Tenemos que añadir los usuarios que queremos usar:
 
-`#` **`turnadmin -a -u roland -p`** ***`secret_password`*** **`-r falcot.com`**`#` **`turnadmin -A -u admin -p`** ***`secret_password`***
+```sh
+turnadmin -a -u roland -p secret_password -r falcot.com
+turnadmin -A -u admin -p secret_password
+```
 
 Usamos el argumento `-a` para añadir un usuario normal y `-A` para añadir un usuario administrador.
 
