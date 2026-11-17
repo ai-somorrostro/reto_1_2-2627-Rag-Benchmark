@@ -1,0 +1,7 @@
+torch
+sentence-transformers
+transformers
+pillow
+torchvision
+pandas
+tabulate

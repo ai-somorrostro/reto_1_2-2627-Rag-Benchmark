@@ -1,0 +1,84 @@
+{
+  "1. Normativa (BOE Estatuto de los Trabajadores)": [
+    {
+      "modelo": "EmbeddingGemma-2",
+      "nombre_hf": "google/embeddinggemma-2",
+      "parametros": "0.7B",
+      "dimension": 768,
+      "recall_1": 0.833,
+      "recall_3": 1.0,
+      "recall_5": 1.0,
+      "mrr": 0.917,
+      "tiempo_indexado_s": 2.14,
+      "tamano_mb": 1.23,
+      "vram_gb": 2.82
+    },
+    {
+      "modelo": "Spanish-BETO",
+      "nombre_hf": "hiiamsid/sentence_similarity_spanish_es",
+      "parametros": "0.11B",
+      "dimension": 768,
+      "recall_1": 0.583,
+      "recall_3": 0.833,
+      "recall_5": 0.833,
+      "mrr": 0.722,
+      "tiempo_indexado_s": 2.33,
+      "tamano_mb": 1.23,
+      "vram_gb": 2.13
+    },
+    {
+      "modelo": "Multilingual-E5-Small",
+      "nombre_hf": "intfloat/multilingual-e5-small",
+      "parametros": "0.12B",
+      "dimension": 384,
+      "recall_1": 0.75,
+      "recall_3": 0.833,
+      "recall_5": 0.917,
+      "mrr": 0.812,
+      "tiempo_indexado_s": 0.94,
+      "tamano_mb": 0.62,
+      "vram_gb": 1.81
+    }
+  ],
+  "2. Técnica (Debian Handbook)": [
+    {
+      "modelo": "EmbeddingGemma-2",
+      "nombre_hf": "google/embeddinggemma-2",
+      "parametros": "0.7B",
+      "dimension": 768,
+      "recall_1": 0.083,
+      "recall_3": 0.333,
+      "recall_5": 0.417,
+      "mrr": 0.253,
+      "tiempo_indexado_s": 9.79,
+      "tamano_mb": 3.54,
+      "vram_gb": 9.97
+    },
+    {
+      "modelo": "Spanish-BETO",
+      "nombre_hf": "hiiamsid/sentence_similarity_spanish_es",
+      "parametros": "0.11B",
+      "dimension": 768,
+      "recall_1": 0.0,
+      "recall_3": 0.0,
+      "recall_5": 0.167,
+      "mrr": 0.049,
+      "tiempo_indexado_s": 14.01,
+      "tamano_mb": 3.54,
+      "vram_gb": 2.37
+    },
+    {
+      "modelo": "Multilingual-E5-Small",
+      "nombre_hf": "intfloat/multilingual-e5-small",
+      "parametros": "0.12B",
+      "dimension": 384,
+      "recall_1": 0.167,
+      "recall_3": 0.333,
+      "recall_5": 0.5,
+      "mrr": 0.278,
+      "tiempo_indexado_s": 3.99,
+      "tamano_mb": 1.77,
+      "vram_gb": 1.8
+    }
+  ]
+}
