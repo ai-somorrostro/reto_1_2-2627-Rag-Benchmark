@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>11.5. Configuración de espacios compartidos Windows con Samba</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Postfix, Apache, NFS, Samba, Squid, OpenLDAP, SIP, SSL, OpenDKIM, SPF" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.windows-file-server-with-samba"></a>11.5. Configuración de espacios compartidos Windows con Samba</h1></div></div></div><a class="indexterm" id="idm18824"></a><a class="indexterm" id="idm18826"></a><a class="indexterm" id="idm18828"></a><a class="indexterm" id="idm18831"></a><a class="indexterm" id="idm18834"></a><a class="indexterm" id="idm18837"></a><a class="indexterm" id="idm18840"></a><p>
+			Samba es un conjunto de herramientas que administran el protocolo SMB (también conocido como «CIFS») en Linux. Windows utiliza este protocolo para espacios compartidos de red e impresoras compartidas.
+		</p><a class="indexterm" id="idm18844"></a><a class="indexterm" id="idm18846"></a><a class="indexterm" id="idm18849"></a><a class="indexterm" id="idm18851"></a><p>
+			Samba también puede actuar como un controlador de dominio Windows. Esta es una herramienta sobresaliente para asegurar una integración perfecta entre servidores Linux y las máquinas de escritorios en las oficinas que todavía utilizan Windows.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm18855"></a>11.5.1. Servidor Samba</h2></div></div></div><a class="indexterm" id="idm18857"></a><a class="indexterm" id="idm18860"></a><a class="indexterm" id="idm18863"></a><p>
+				El paquete <span class="pkg">samba</span> contiene los dos servidores principales de Samba 4: <span class="command"><strong>smbd</strong></span> y <span class="command"><strong>nmbd</strong></span>.
+			</p><a class="indexterm" id="idm18870"></a><a class="indexterm" id="idm18873"></a><a class="indexterm" id="idm18876"></a><a class="indexterm" id="idm18880"></a><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>DOCUMENTACIÓN</em></span> Yendo más allá</div></div></div></div><p>
+				The Samba server is extremely configurable and versatile, and can address a great many different use cases matching very different requirements and network architectures. This book only focuses on the use case where Samba is used as a standalone server, but it can also be an NT4 Domain Controller or a full Active Directory Domain Controller, or a simple member of an existing domain (which could be managed by a Windows server).
+			</p><a class="indexterm" id="idm18888"></a><a class="indexterm" id="idm18890"></a><a class="indexterm" id="idm18892"></a><p>
+				El paquete <span class="pkg">samba</span> contiene todas las páginas de manual necesarias y en <code class="filename">/usr/share/doc/samba/examples/</code> una gran cantidad de archivos de ejemplo comentados. Si estás buscando una documentación más completa, puede echar un ojo a la página web de <span class="emphasis"><em>Samba</em></span>. </p><div class="url">→ <a class="ulink" href="https://www.samba.org/samba/docs/">https://www.samba.org/samba/docs/</a></div><p>
+</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>HERRAMIENTA</em></span> Autenticación con un servidor Windows</div></div></div></div><p>
+				Winbind provee a los administradores de sistemas la opción de utilizar un servidor Windows como servidor de autenticación. Winbind también se integra limpiamente con PAM y NSS. Esto permite configurar máquinas Linux en las que todos los usuarios de un dominio Windows automáticamente tienen una cuenta.
+			</p><a class="indexterm" id="idm18904"></a><p>
+				Puede encontrar más información en el directorio <code class="filename">/usr/share/doc/libpam-winbind/examples/pam_winbind/</code> del paquete <span class="pkg">libpam-winbind</span>.
+			</p><a class="indexterm" id="idm18909"></a></div><hr class="delimit-sidebar"/><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm18912"></a>11.5.1.1. Configuración con <span class="command"><strong>debconf</strong></span></h3></div></div></div><a class="indexterm" id="idm18915"></a><a class="indexterm" id="idm18918"></a><a class="indexterm" id="idm18922"></a><p>
+					The package sets up a minimal configuration during the initial installation in <code class="filename">/etc/samba/smb.conf</code> by plainly copying <code class="filename">/usr/share/samba/smb.conf</code>. So you should really run <span class="command"><strong>dpkg-reconfigure samba-common</strong></span> to adapt it:
+				</p><p>
+					En la primera instalación lo único que tenemos que configurar es el nombre del grupo de trabajo al que pertenecerá el servidor Samba (en el caso de Falcot, la respuesta es <code class="literal">FALCOTNET</code>).
+				</p><p>
+					En caso de una actualización de paquetes (de la última versión estable de Debian) o si el servidor SMB ya se ha configurado para usar un servidor WINS (<code class="literal">wins server</code>), el paquete también propone identificar el servidor WINS de la información provista por el demonio DHCP. Los administradores de Falcot Corp rechazaron esta opción ya que pretenden utilizar el servidor Samba en sí como servidor WINS.
+				</p><a class="indexterm" id="idm18936"></a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm18938"></a>11.5.1.2. Configuración manual</h3></div></div></div><a class="indexterm" id="idm18940"></a><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm18943"></a>11.5.1.2.1. Cambios en <code class="filename">smb.conf</code></h4></div></div></div><p>
+						Los requisitos en Falcotr requieren modificar otras opciones en el archivo de configuración <code class="filename">/etc/samba/smb.conf</code>. Los siguientes extractos resumen los cambios realizados en la sección <code class="literal">[global]</code>.
+					</p><a class="indexterm" id="idm18949"></a><a class="indexterm" id="idm18953"></a><pre>
+[...]
+
+[global]
+
+## Browsing/Identification ###
+
+# Change this to the workgroup/NT-domain name your Samba server will part of
+   workgroup = FALCOTNET
+
+[...]
+
+# Windows Internet Name Serving Support Section:
+# WINS Support - Tells the NMBD component of Samba to enable its WINS Server
+   wins support = yes 
+
+[...]
+
+####### Authentication #######
+
+# Server role. Defines in which mode Samba will operate. Possible
+# values are "standalone server", "member server", "classic primary
+# domain controller", "classic backup domain controller", "active
+# directory domain controller".
+#
+# Most people will want "standalone server" or "member server".
+# Running as "active directory domain controller" will require first
+# running "samba-tool domain provision" to wipe databases and create a
+# new domain.
+   server role = standalone server
+
+   obey pam restrictions = yes
+
+[...]
+
+# "security = user" is always a good idea. This will require a Unix account
+# in this server for every user accessing the server.
+   security = user 
+
+[...]
+</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top"><p><a href="#smb.conf.wins"><span><img alt="1" src="images/callouts/1.png"/></span></a> </p></td><td align="left" valign="top"><p>
+								Indicates that Samba should act as a Netbios name server (WINS) for the local network. This option had been removed from the default configuration in <span class="distribution">Buster</span> and must be added manually if desired.
+							</p></td></tr><tr><td align="left" valign="top"><p><a href="#smb.conf.security"><span><img alt="2" src="images/callouts/2.png"/></span></a> </p></td><td align="left" valign="top"><p>
+								Este es el valor predeterminado para este parámetro; sin embargo, como es central a la configuración de Samba, se recomienda rellenarlo explícitamente. Cada usuario debe autenticarse antes de acceder a cualquier espacio compartido.
+							</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm18966"></a>11.5.1.2.2. Añadir usuarios</h4></div></div></div><a class="indexterm" id="idm18968"></a><a class="indexterm" id="idm18971"></a><a class="indexterm" id="idm18974"></a><p>
+						Cada usuario Samba necesita una cuenta en el servidor; primero debe crear las cuentas Unix, luego necesita registrar el usuario en la base de datos de Samba. El paso de Unix se realiza de la forma normal (por ejemplo, utilizando <span class="command"><strong>adduser</strong></span>).
+					</p><p>
+						Agregar un usuario existente a la base de datos de Samba sólo es cuestión de ejecutar <span class="command"><strong>smbpasswd -a <em class="replaceable"><code>usuario</code></em></strong></span>; esto pedirá la contraseña de forma interactiva.
+					</p><a class="indexterm" id="idm18982"></a><p>
+						Puede eliminar un usuario ejecutando <span class="command"><strong>smbpasswd -x <em class="replaceable"><code>usuario</code></em></strong></span>. También puede desactivar temporalmente una cuenta Samba (con <span class="command"><strong>smbpasswd -d <em class="replaceable"><code>usuario</code></em></strong></span>) y reactivarla después (con <span class="command"><strong>smbpasswd -e <em class="replaceable"><code>usuario</code></em></strong></span>).
+					</p></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm18993"></a>11.5.2. Cliente Samba</h2></div></div></div><a class="indexterm" id="idm18995"></a><p>
+				La funcionalidad de cliente en Samba le permite a una máquina Linux acceder a espacios e impresoras compartidas en Windows. Los programas necesarios se encuentran en los paquetes <span class="pkg">cifs-utils</span> y <span class="pkg">smbclient</span>.
+			</p><a class="indexterm" id="idm19001"></a><a class="indexterm" id="idm19004"></a><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm19007"></a>11.5.2.1. El programa <span class="command"><strong>smbclient</strong></span></h3></div></div></div><p>
+					El programa <span class="command"><strong>smbclient</strong></span> consulta servidores SMB. Puede utilizarse la opción <code class="literal">-U <em class="replaceable"><code>usuario</code></em></code>, para conectarse con el servidor bajo una identidad concreta. Con <span class="command"><strong>smbclient //<em class="replaceable"><code>servidor</code></em>/<em class="replaceable"><code>espaciocompartido</code></em></strong></span> se accede al espacio compartido de modo interactivo como si se tratara de un cliente FTP en una consola. <span class="command"><strong>smbclient -L <em class="replaceable"><code>servidor</code></em></strong></span> enumerará todos los espacios compartidos (y visibles) en un servidor.
+				</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm19019"></a>11.5.2.2. Montaje de espacios compartidos de Windows</h3></div></div></div><p>
+					El programa <span class="command"><strong>mount</strong></span> permite montar un espacio compartido de Windows en la jerarquía del sistema de archivos de Linux (con la ayuda de <span class="command"><strong>mount.cifs</strong></span> provisto por <span class="pkg">cifs-utils</span>).
+				</p><a class="indexterm" id="idm19025"></a><a class="indexterm" id="idm19028"></a><a class="indexterm" id="idm19031"></a><div class="example"><a id="idm19037"></a><div class="example-title">Ejemplo 11.21. Montaje de un espacio compartido de Windows</div><div class="example-contents"><a class="indexterm" id="idm19039"></a><pre>
+mount -t cifs //arrakis/shared /shared \
+      -o credentials=/etc/smb-credentials</pre></div></div><p>
+					El archivo <code class="filename">/etc/smb-credentials</code> (que no debe ser accesible por usuarios) tiene el siguiente formato:
+				</p><a class="indexterm" id="idm19045"></a><a class="indexterm" id="idm19048"></a><pre>
+username = usuario
+password = contraseña</pre><p>
+					Puede especificar otras opciones en la línea de órdenes; la lista completa se encuentra disponible en la página de manual <span class="citerefentry"><span class="refentrytitle">mount.cifs</span>(1)</span>. Dos opciones en particular pueden ser interesantes: <code class="literal">uid</code> y <code class="literal">gid</code> que permiten forzar el usuario y grupo dueños de los archivos disponibles en el punto de montaje para no restringir el acceso a root.
+				</p><p>
+					También puede configurar el montaje de un espacio compartido Windows en <code class="filename">/etc/fstab</code>:
+				</p><a class="indexterm" id="idm19063"></a><pre>
+//servidor/shared /shared cifs credentials=/etc/smb-credentials</pre><p>
+					Unmounting an SMB/CIFS share is done with the standard <span class="command"><strong>umount</strong></span> command.
+				</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm19072"></a>11.5.2.3. Impresión en una impresora compartida</h3></div></div></div><p>
+					CUPS es una solución elegante para imprimir desde una estación de trabajo Linux en una impresora compartida por una máquina Windows. Cuando instale <span class="pkg">smbclient</span>, CUPS le permitirá instalar impresoras compartidas Windows de forma automática.
+				</p><a class="indexterm" id="idm19076"></a><a class="indexterm" id="idm19079"></a><a class="indexterm" id="idm19082"></a><p>
+					Los pasos necesarios son los siguientes:
+				</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+							Introduzca la interfaz dec configuración CUPS: <code class="literal">http://localhost:631/admin</code>
+</li><li class="listitem">
+							Pulse en «Agregar impresora».
+						</li><li class="listitem">
+							Seleccione el dispositivo de impresión, elija «Impresora Windows via SAMBA».
+						</li><li class="listitem">
+							Introduzca la URI de conexión para la impresora de red. Debería ser similar a la siguiente:
+						<p>
+<code class="literal">smb://<em class="replaceable"><code>usuario</code></em>:<em class="replaceable"><code>contraseña</code></em>@<em class="replaceable"><code>servidor</code></em>/<em class="replaceable"><code>impresora</code></em></code>.
+						</p></li><li class="listitem">
+							Introduzca el nombre que identificará unívocamente a esta impresora. Luego introduzca la descripción y la ubicación de la impresora. Se mostrarán estas cadenas a los usarios para ayudarlos a identificar las impresoras.
+						</li><li class="listitem">
+							Indique el fabricante/modelo de la impresora o, directamente, provea un archivo de descripción de impresora (PDD: «Printer Description File») funcional.
+						</li></ul></div><p>
+					Voilà, ¡la impresora ya está lista!
+				</p></div></div></div></body></html>

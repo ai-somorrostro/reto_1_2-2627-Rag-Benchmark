@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>14.2. Firewall o el filtrado de paquetes</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Firewall, Netfilter, nftables, IDS/NIDS"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.firewall-packet-filtering"/>14.2. Firewall o el filtrado de paquetes</h1></div></div></div><a id="idm23325" class="indexterm"/><a id="idm23327" class="indexterm"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>VOLVER A LOS CIMIENTOS</em></span> Firewall</div></div></div></div><a id="idm23334" class="indexterm"/><p>
+			Un <span class="emphasis"><em>firewall</em></span> es una pieza de equipo de cómputo con hardware y/o software que ordena los paquetes entrantes o salientes de la red (que vienen hacia o desde una red local) y sólo permite el paso de aquellos que coinciden con ciertas condiciones predefinidas.
+		</p></div><hr class="delimit-sidebar"/><p>
+			Un firewall es una puerta de enlace de la red con filtro y sólo es eficaz en aquellos paquetes que deben pasar a través de ella. Por lo tanto, sólo puede ser eficaz cuando la única ruta para estos paquetes es a través del firewall.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CASO ESPECÍFICO</em></span> Firewall local</div></div></div></div><p>
+			A firewall can be restricted to one particular machine (as opposed to a complete network), in which case its role is to filter or limit access to some services. It is, however, always better to configure services to not listen on those network interfaces, where these services are not supposed to be offered, or to disable and remove services, which are not to be offered at all, than to use a packet filter to prevent any unwanted access to these services.
+		</p><p>
+			Its role can also be to filter or limit connections by rogue or poorly programmed software that a user could, willingly or not, have installed. The reliability of this, however, highly depends on the goal of these actions and the integrity of the system itself. This action is not a measurement to prevent potential threats to send data.
+		</p></div><hr class="delimit-sidebar"/><p>
+			El núcleo Linux incorpora el cortafuegos <span class="emphasis"><em>netfilter</em></span>, que se puede controlar desde el espacio de usuario con los programas <span class="command"><strong>iptables</strong></span>, <span class="command"><strong>ip6tables</strong></span>, <span class="command"><strong>arptables</strong></span> y <span class="command"><strong>ebtables</strong></span> commands.
+		</p><a id="idm23351" class="indexterm"/><p>
+			However, Netfilter iptables commands are being replaced by nftables, which avoids many of its problems. Its design involves less code duplication, and it can be managed with just the <span class="command"><strong>nft</strong></span> command. Since Debian <span class="distribution">Buster</span>, the nftables framework is used by default. The commands mentioned before are provided by versions, which use the nftables kernel API, by default. If one requires the “classic“ commands, the relevant binaries can be adjusted using <span class="command"><strong>update-alternatives</strong></span>.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>TOOLS</em></span> fwbuilder and ufw</div></div></div></div><a id="idm23361" class="indexterm"/><a id="idm23364" class="indexterm"/><p>
+			Although (destined to) being replaced by nftables, <span class="command"><strong>iptables</strong></span> is still widely used and suited for many use-cases. Creating a rule requires an invocation of <span class="command"><strong>iptables</strong></span>/<span class="command"><strong>ip6tables</strong></span>. Typing these commands manually can be tedious, so the calls are usually stored in a script, so that the same configuration is set up automatically every time the machine boots, or they can be made “persistent“ using <span class="pkg">iptables-persistent</span>.
+		</p><p>
+			A script usually needs to be written by hand. But there are, tools that make it simpler to configure the <span class="emphasis"><em>netfilter</em></span> firewall, with a graphical representation of the filtering rules. <span class="command"><strong>fwbuilder</strong></span> is undoubtedly among the best of them. The rules are created with simple drag-and-drop actions on objects (interfaces, networks, ports, servers, etc.). A few contextual menus can change the condition (negating it, for instance). Then the action needs to be chosen and configured.
+		</p><p>
+			An alternative to writing and saving/loading the required rules is to use <span class="command"><strong>ufw</strong></span> from the package with the same name. This tool is a frontend to <span class="command"><strong>iptables</strong></span> as well, but it provides a command line interface only. Simple commands can enable or disable (block) network traffic to and from ports and IP addresses. The configuration files in <code class="filename">/etc/ufw/</code> also allow for complex rule sets (e.g. hooking into the Docker chains), which are then saved and loaded automatically. This tool is often used for simple setups and to block incoming traffic on ports which cannot be assigned to a limited set of interfaces or closed appropriately.
+		</p><a id="idm23379" class="indexterm"/></div><hr class="delimit-sidebar"/><p>
+			Para activar un cortafuegos predeterminado en Debian ejecute:
+		</p><div class="screen"><code class="computeroutput"># </code><strong class="userinput"><code>apt install -y nftables
+</code></strong><code class="computeroutput">Leyendo lista de paquetes... Hecho
+...
+# </code><strong class="userinput"><code>systemctl enable nftables.service</code></strong><code class="computeroutput">
+Created symlink /etc/systemd/system/sysinit.target.wants/nftables.service → /lib/systemd/system/nftables.service.
+</code></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.netfilter"/>14.2.1. Comportamiento de nftables</h2></div></div></div><a id="idm23393" class="indexterm"/><p>
+				As the kernel is processing a network packet, it pauses and allows us to inspect the packet and decide what to do with that packet. For example, we might want to drop or discard certain incoming packets, modify other packets in various ways, block certain outgoing packets to control against malware or redirect some packets at the earliest possible stage to bridge network interfaces or to spread the load of incoming packets between systems.
+			</p><a id="idm23396" class="indexterm"/><a id="idm23398" class="indexterm"/><p>
+				Es esencial una buena comprensión de las capas 3, 4 y 5 del modelo OSI (Open Systems Interconnection) para sacarle el máximo partido a netfilter.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CULTURA</em></span> El modelo OSI</div></div></div></div><a id="idm23405" class="indexterm"/><p>
+				El modelo OSI es un modelo conceptual para implementar protocolos de red sin importar su estructura interna subyacente y su tecnología. Su objetivo es la interoperabilidad de sistemas de comunicación diversos con protocolos de comunicación estándares.
+			</p><p>
+				Este modelo fue definido en el estándar ISO/EIC 7498. Se describen las siguientes siete capas:
+			</p><div class="orderedlist"><ol class="orderedlist"><li class="listitem">
+						Física: transmisión y recepción de flujos de bits sin procesar a través un medio físico
+					</li><li class="listitem">
+						Enlace de datos: transmisión fiable de estructuras de datos entre dos nodos conectados por una capa física
+					</li><li class="listitem">
+						Red: estructuración y gestión de una red multinodo, incluyendo dirección, enrutamiento y control de tráfico
+					</li><li class="listitem">
+						Transporte: transmisión fiable de segmentos de datos entre puntos en una red, incluyendo segmentación, reconocimiento y multiplexión
+					</li><li class="listitem">
+						Sesión: gestiona sesiones de comunicación, es decir, el intercambio continuo de información en la forma de transmisiones de ida y vuelta entre dos nodos
+					</li><li class="listitem">
+						Presentación: traducción de datos entre un servicio de red y una aplicación; incluyendo codificación de caracteres, compresión y cifrado/descifrado
+					</li><li class="listitem">
+						Aplicación: APIs de alto nivel, incluyendo el intercambio de recursos, acceso a archivos remotos.
+					</li></ol></div><p>
+				More information can be found on Wikipedia: </p><div class="url">→ <a class="ulink" href="https://en.wikipedia.org/wiki/OSI_model">https://en.wikipedia.org/wiki/OSI_model</a></div><p>
+			</p></div><hr class="delimit-sidebar"/><a id="idm23427" class="indexterm"/><a id="idm23430" class="indexterm"/><a id="idm23433" class="indexterm"/><p>
+				Este cortafuegos está configurado con tablas (<span class="emphasis"><em>tables</em></span>), que contienen reglas (<span class="emphasis"><em>rules</em></span>) que forman parte de cadenas (<span class="emphasis"><em>chains</em></span>). A diferencia de iptables, <span class="emphasis"><em>nftables</em></span> no tiene ninguna tabla predeterminada. El usuario decide cuáles y cuántas tablas crear. Cada tabla debe tener solo una de las siguientes cinco familias asignadas: <code class="literal">ip</code>, <code class="literal">ip6</code>, <code class="literal">inet</code>, <code class="literal">arp</code> y <code class="literal">bridge</code>. Se usa <code class="literal">ip</code> si no se especifica la familia.
+			</p><p>
+				There are two types of chains: <span class="emphasis"><em>base chains</em></span> and <span class="emphasis"><em>regular chains</em></span>. A base chain is an entry point for packets from the networking stack. Base chains are registered into the Netfilter hooks, e.g. they see packets flowing through the TCP/IP stack. On the other hand, a regular chain is not attached to any hook so it does not see any traffic. But it may be used as a jump target for better organization of the rules.
+			</p><a id="idm23450" class="indexterm"/><p>
+				Las reglas están formadas por declaraciones («statements»), lo que incluye algunas expresiones que deben coincidir y luego una declaración de veredicto como <code class="literal">accept</code>, <code class="literal">drop</code>, <code class="literal">queue</code>, <code class="literal">continue</code>, <code class="literal">return</code>, <code class="literal">jump chain</code> y <code class="literal">goto chain</code>.
+			</p><a id="idm23460" class="indexterm"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>VOLVER A LOS CIMIENTOS</em></span> ICMP</div></div></div></div><a id="idm23465" class="indexterm"/><a id="idm23467" class="indexterm"/><a id="idm23470" class="indexterm"/><a id="idm23473" class="indexterm"/><p>
+				ICMP (<span class="emphasis"><em>Internet Control Message Protocol</em></span>) is the protocol used to transmit complementary information on communications. It allows testing network connectivity with the <span class="command"><strong>ping</strong></span> command (which sends an ICMP <span class="emphasis"><em>echo request</em></span> message, which the recipient is meant to answer with an ICMP <span class="emphasis"><em>echo reply</em></span> message). It signals a firewall rejecting a packet, indicates an overflow in a receive buffer, proposes a better route for the next packets in the connection, and so on. This protocol is defined by several RFC documents; the initial RFC 777 and RFC 792 were soon completed and extended. </p><div class="url">→ <a class="ulink" href="http://www.faqs.org/rfcs/rfc777.html">http://www.faqs.org/rfcs/rfc777.html</a></div><p> </p><div class="url">→ <a class="ulink" href="http://www.faqs.org/rfcs/rfc792.html">http://www.faqs.org/rfcs/rfc792.html</a></div><p>
+			</p><p>
+				A modo de referencia, un búfer de recepción es una pequeña zona de memoria que almacena datos entre el momento que llegan desde la red y el momento en que éstos son gestionados por el núcleo. Si esta zona está llena, no se pueden recibir nuevos datos e ICMP señalará el problema para que el emisor puede ralentizar su velocidad de transferencia (que idealmente debería alcanzar un equilibrio después de algún tiempo).
+			</p><a id="idm23484" class="indexterm"/><a id="idm23486" class="indexterm"/><p>
+				Note that although an IPv4 network can work without ICMP, ICMPv6 is strictly required for an IPv6 network, since it combines several functions that were, in the IPv4 world, spread across ICMPv4, IGMP (<span class="emphasis"><em>Internet Group Membership Protocol</em></span>) and ARP (<span class="emphasis"><em>Address Resolution Protocol</em></span>). ICMPv6 is defined in RFC 4443. </p><div class="url">→ <a class="ulink" href="http://www.faqs.org/rfcs/rfc4443.html">http://www.faqs.org/rfcs/rfc4443.html</a></div><p>
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm23493"/>14.2.2. Migrando de iptables a nftables</h2></div></div></div><p>
+				The <span class="command"><strong>iptables-translate</strong></span> and <span class="command"><strong>ip6tables-translate</strong></span> commands can be used to translate old iptables commands into the new nftables syntax. Whole rule sets can also be translated, in this case we migrate the rules configured in one computer which has Docker installed:
+			</p><div class="screen"><code class="computeroutput"># </code><strong class="userinput"><code>iptables-save &gt; iptables-ruleset.txt
+</code></strong><code class="computeroutput"># </code><strong class="userinput"><code>iptables-restore-translate -f iptables-ruleset.txt
+</code></strong><code class="computeroutput">
+# Translated by iptables-restore-translate v1.8.7 on Wed Mar 16 22:06:32 2022
+add table ip filter
+add chain ip filter INPUT { type filter hook input priority 0; policy accept; }
+add chain ip filter FORWARD { type filter hook forward priority 0; policy drop; }
+add chain ip filter OUTPUT { type filter hook output priority 0; policy accept; }
+add chain ip filter DOCKER
+add chain ip filter DOCKER-ISOLATION-STAGE-1
+add chain ip filter DOCKER-ISOLATION-STAGE-2
+add chain ip filter DOCKER-USER
+add rule ip filter FORWARD counter jump DOCKER-USER
+add rule ip filter FORWARD counter jump DOCKER-ISOLATION-STAGE-1
+add rule ip filter FORWARD oifname "docker0" ct state related,established counter accept
+add rule ip filter FORWARD oifname "docker0" counter jump DOCKER
+add rule ip filter FORWARD iifname "docker0" oifname != "docker0" counter accept
+add rule ip filter FORWARD iifname "docker0" oifname "docker0" counter accept
+add rule ip filter DOCKER-ISOLATION-STAGE-1 iifname "docker0" oifname != "docker0" counter jump DOCKER-ISOLATION-STAGE-2
+add rule ip filter DOCKER-ISOLATION-STAGE-1 counter return
+add rule ip filter DOCKER-ISOLATION-STAGE-2 oifname "docker0" counter drop
+add rule ip filter DOCKER-ISOLATION-STAGE-2 counter return
+add rule ip filter DOCKER-USER counter return
+add table ip nat
+add chain ip nat PREROUTING { type nat hook prerouting priority -100; policy accept; }
+add chain ip nat INPUT { type nat hook input priority 100; policy accept; }
+add chain ip nat OUTPUT { type nat hook output priority -100; policy accept; }
+add chain ip nat POSTROUTING { type nat hook postrouting priority 100; policy accept; }
+add chain ip nat DOCKER
+add rule ip nat PREROUTING fib daddr type local counter jump DOCKER
+add rule ip nat OUTPUT ip daddr != 127.0.0.0/8 fib daddr type local counter jump DOCKER
+add rule ip nat POSTROUTING oifname != "docker0" ip saddr 172.17.0.0/16 counter masquerade
+add rule ip nat DOCKER iifname "docker0" counter return
+# Completed on Wed Mar 16 22:06:32 2022
+# </code><strong class="userinput"><code>iptables-restore-translate -f iptables-ruleset.txt &gt; ruleset.nft
+</code></strong><code class="computeroutput"># </code><strong class="userinput"><code>nft -f ruleset.nft
+</code></strong><code class="computeroutput"># </code><strong class="userinput"><code>nft list ruleset</code></strong><code class="computeroutput">
+table inet filter {
+	chain input {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain forward {
+		type filter hook forward priority filter; policy accept;
+	}
+
+	chain output {
+		type filter hook output priority filter; policy accept;
+	}
+}
+table ip nat {
+	chain DOCKER {
+		iifname "docker0" counter packets 0 bytes 0 return
+		iifname "docker0" counter packets 0 bytes 0 return
+	}
+
+	chain POSTROUTING {
+		type nat hook postrouting priority srcnat; policy accept;
+		oifname != "docker0" ip saddr 172.17.0.0/16 counter packets 0 bytes 0 masquerade
+		oifname != "docker0" ip saddr 172.17.0.0/16 counter packets 0 bytes 0 masquerade
+	}
+
+	chain PREROUTING {
+		type nat hook prerouting priority dstnat; policy accept;
+		fib daddr type local counter packets 1 bytes 60 jump DOCKER
+		fib daddr type local counter packets 0 bytes 0 jump DOCKER
+	}
+
+	chain OUTPUT {
+		type nat hook output priority -100; policy accept;
+		ip daddr != 127.0.0.0/8 fib daddr type local counter packets 0 bytes 0 jump DOCKER
+		ip daddr != 127.0.0.0/8 fib daddr type local counter packets 0 bytes 0 jump DOCKER
+	}
+
+	chain INPUT {
+		type nat hook input priority 100; policy accept;
+	}
+}
+table ip filter {
+	chain DOCKER {
+	}
+
+	chain DOCKER-ISOLATION-STAGE-1 {
+		iifname "docker0" oifname != "docker0" counter packets 0 bytes 0 jump DOCKER-ISOLATION-STAGE-2
+		counter packets 0 bytes 0 return
+		iifname "docker0" oifname != "docker0" counter packets 0 bytes 0 jump DOCKER-ISOLATION-STAGE-2
+		counter packets 0 bytes 0 return
+	}
+
+	chain DOCKER-ISOLATION-STAGE-2 {
+		oifname "docker0" counter packets 0 bytes 0 drop
+		counter packets 0 bytes 0 return
+		oifname "docker0" counter packets 0 bytes 0 drop
+		counter packets 0 bytes 0 return
+	}
+
+	chain FORWARD {
+		type filter hook forward priority filter; policy drop;
+		counter packets 0 bytes 0 jump DOCKER-USER
+		counter packets 0 bytes 0 jump DOCKER-ISOLATION-STAGE-1
+		oifname "docker0" ct state related,established counter packets 0 bytes 0 accept
+		oifname "docker0" counter packets 0 bytes 0 jump DOCKER
+		iifname "docker0" oifname != "docker0" counter packets 0 bytes 0 accept
+		iifname "docker0" oifname "docker0" counter packets 0 bytes 0 accept
+		counter packets 0 bytes 0 jump DOCKER-USER
+		counter packets 0 bytes 0 jump DOCKER-ISOLATION-STAGE-1
+		oifname "docker0" ct state established,related counter packets 0 bytes 0 accept
+		oifname "docker0" counter packets 0 bytes 0 jump DOCKER
+		iifname "docker0" oifname != "docker0" counter packets 0 bytes 0 accept
+		iifname "docker0" oifname "docker0" counter packets 0 bytes 0 accept
+	}
+
+	chain DOCKER-USER {
+		counter packets 0 bytes 0 return
+		counter packets 0 bytes 0 return
+	}
+
+	chain INPUT {
+		type filter hook input priority filter; policy accept;
+	}
+
+	chain OUTPUT {
+		type filter hook output priority filter; policy accept;
+	}
+}
+</code></div><p>
+				Las herramientas <span class="command"><strong>iptables-nft</strong></span>, <span class="command"><strong>ip6tables-nft</strong></span>, <span class="command"><strong>arptables-nft</strong></span>, <span class="command"><strong>ebtables-nft</strong></span> son versiones de iptables que usan la API de nftables, de forma que los usuarios puedan seguir usando la vieja sintaxis de iptables con ellas, pero no se recomienda; estas herramientas solo deberían usarse para compatibilidad inversa.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.nftables"/>14.2.3. Sintaxis de <span class="command"><strong>ntf</strong></span></h2></div></div></div><a id="idm23518" class="indexterm"/><p>
+				Las órdenes de <span class="command"><strong>nft</strong></span> permiten manipular tables, cadenas y reglas. La opción <code class="literal">table</code> admite varias operaciones: <code class="literal">add</code>, <code class="literal">create</code>, <code class="literal">delete</code>, <code class="literal">list</code> y <code class="literal">flush</code>. <span class="command"><strong>nft add table ip6 mangle</strong></span> añade una nueva tabla de la familia <code class="literal">ip6</code>.
+			</p><p>
+				Para insertar una nueva cadena base en la tabla <code class="literal">filter</code>, puede ejecutar la siguiente orden (tenga en cuenta que se debe escapar el punto y coma con una barra invertida cuando se usa Bash):
+			</p><div class="screen"><code class="computeroutput"># </code><strong class="userinput"><code>nft add chain filter input { type filter hook input priority 0 \; }</code></strong></div><p>
+				Normalmente las reglas se añaden con la siguiente sintaxis: <span class="command"><strong>nft add rule [<em class="replaceable"><code>familia</code></em>] <em class="replaceable"><code>tabla</code></em> <em class="replaceable"><code>cadena</code></em> handle <em class="replaceable"><code>handle</code></em> statement</strong></span>.
+			</p><p>
+				<span class="command"><strong>insert</strong></span> es similar a la orden <span class="command"><strong>add</strong></span>, pero la regla proporcionada se antepone al principio de la cadena o antes de la regla con el <span class="foreignphrase"><em class="foreignphrase">handle</em></span> proporcionado en vez de al principio o al final de la regla. Por ejemplo, la siguiente orden inserta una regla ante de la regla con el <span class="foreignphrase"><em class="foreignphrase">handle</em></span> número 8:
+			</p><div class="screen"><code class="computeroutput"># </code><strong class="userinput"><code>nft insert rule filter output position 8 ip daddr 127.0.0.8 drop</code></strong></div><a id="idm23550" class="indexterm"/><p>
+				Las órdenes <span class="command"><strong>nft</strong></span> ejecutadas no realizan cambios permanentes en la configuración, así que se pierden si no se guardan. Las reglas del cortafuegos se encuentran en <code class="filename">/etc/nftables.conf</code>. Una forma simple de guardar la configuración actual del cortafuegos es ejecutando <span class="command"><strong>nft list ruleset &gt; /etc/nftables.conf</strong></span> como superusuario.
+			</p><p>
+				<span class="command"><strong>nft</strong></span> permite muchas más operaciones, consulte su página de manual <span class="citerefentry"><span class="refentrytitle">nft</span>(8)</span> para más información.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.install-rules-at-boot"/>14.2.4. Instalación de las reglas en cada arranque</h2></div></div></div><a id="idm23566" class="indexterm"/><a id="idm23571" class="indexterm"/><p>
+				To enable a default firewall in Debian, you need to store the rules in <code class="filename">/etc/nftables.conf</code> and execute <span class="command"><strong>systemctl enable nftables</strong></span> as root. You can stop the firewall by executing <span class="command"><strong>nft flush ruleset</strong></span> as root.
+			</p><p>
+				En otros casos, la forma recomendada es registrar el script de configuración en la directiva <code class="literal">up</code> del archivo <code class="filename">/etc/network/interfaces</code>. En el siguiente ejemplo, el script está guardado como <code class="filename">/usr/local/etc/arrakis.fw</code>.
+			</p><div class="example"><a id="example.network-interfaces-firewall"/><div class="example-title">Ejemplo 14.1. archivo <code class="filename">interfaces</code> llamando al script del firewall</div><div class="example-contents"><div class="programlisting">auto eth0
+iface eth0 inet static
+    address 192.168.0.1
+    network 192.168.0.0
+    netmask 255.255.255.0
+    broadcast 192.168.0.255
+    up /usr/local/etc/arrakis.fw</div></div></div><p>
+				Esto obviamente asume que se está utilizando <span class="pkg">ifupdown</span> para configurar las interfaces de red. Si se está utilizando alguna otra cosa (como <span class="emphasis"><em>NetworkManager</em></span> o <span class="emphasis"><em>systemd-networkd</em></span>), entonces se debe consultar la documentación respectiva para averiguar cómo ejecutar un script después de que se levante la interfaz de red.
+			</p></div></div></body></html>

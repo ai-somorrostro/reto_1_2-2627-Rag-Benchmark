@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>5.3. Estructura de un paquete fuente</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Paquete binario, Paquete fuente, paquete, dpkg, deb, dependencias, conflicto" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.source-package-structure"></a>5.3. Estructura de un paquete fuente</h1></div></div></div><a class="indexterm" id="idm3875"></a><a class="indexterm" id="idm3878"></a><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm3880"></a>5.3.1. Formato</h2></div></div></div><a class="indexterm" id="idm3882"></a><a class="indexterm" id="idm3884"></a><a class="indexterm" id="idm3887"></a><a class="indexterm" id="idm3890"></a><a class="indexterm" id="idm3893"></a><a class="indexterm" id="idm3896"></a><a class="indexterm" id="idm3899"></a><a class="indexterm" id="idm3902"></a><a class="indexterm" id="idm3905"></a><a class="indexterm" id="idm3908"></a><p>
+				Un paquete fuente generalmente consiste de tres archivos: uno <code class="filename">.dsc</code>, uno <code class="filename">.orig.tar.gz</code> y uno <code class="filename">.debian.tar.xz</code> (o <code class="filename">.diff.gz</code>). Ellos permiten la creación de paquetes binarios (<code class="filename">.deb</code> descriptos anteriormente) a partir de los archivos de código fuente del programa, escritos en un lenguaje de programación.
+			</p><p>
+				El archivo <code class="filename">.dsc</code> («Debian Source Control»: control de fuente Debian) es un archivo de texto corto que contiene una cabecera RFC 2822 (de la misma forma que el archivo <code class="filename">control</code> estudiado en la <a class="xref" href="ch05s02.html#sect.control" title="5.2.1. Descripción: el archivo control">Sección 5.2.1, “Descripción: el archivo <code class="filename">control</code>”</a>) que describe el paquete fuente e indica qué otros archivos forman parte del mismo. Está firmado por su encargado, lo que garantiza su autenticidad. Revise la <a class="xref" href="ch06s06.html" title="6.6. Comprobación de la autenticidad de un paquete">Sección 6.6, “Comprobación de la autenticidad de un paquete”</a> para más detalles sobre este tema.
+			</p><div class="example"><a id="idm3923"></a><div class="example-title">Ejemplo 5.1. Un archivo <code class="filename">.dsc</code></div><div class="example-contents"><pre>
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 3.0 (quilt)
+Source: zim
+Binary: zim
+Architecture: all
+Version: 0.73.5-1
+Maintainer: Zim Package Maintainers &lt;zim@packages.debian.org&gt;
+Uploaders: Raphaël Hertzog &lt;hertzog@debian.org&gt;
+Homepage: https://zim-wiki.org
+Standards-Version: 4.5.1
+Vcs-Browser: https://salsa.debian.org/debian/zim
+Vcs-Git: https://salsa.debian.org/debian/zim.git
+Build-Depends: debhelper-compat (= 13), python3, python3-gi, python3-xdg, gir1.2-gtk-3.0, dh-python
+Package-List:
+ zim deb x11 optional arch=all
+Checksums-Sha1:
+ 80d43d5c1c6a47c695079eb02bc8ad36b84d6e57 2159901 zim_0.73.5.orig.tar.gz
+ b1cd86dc4819a80126efbf6ee6eba17a33f451d3 10124 zim_0.73.5-1.debian.tar.xz
+Checksums-Sha256:
+ a36f15d92c3994c0d55b07f83253b3d8b826beb3714865edbabc14f1cc91d63a 2159901 zim_0.73.5.orig.tar.gz
+ 6c2db642d9ac1c2440ed08e0cd584006045b342b255f37ffe42bd5459fb5cb76 10124 zim_0.73.5-1.debian.tar.xz
+Files:
+ fa76ceb8ac7d7354fb0e2bc5607e9faa 2159901 zim_0.73.5.orig.tar.gz
+ a0c824d979efb196cde0176d3cb9c719 10124 zim_0.73.5-1.debian.tar.xz
+
+-----BEGIN PGP SIGNATURE-----
+Comment: Signed by Raphael Hertzog
+
+iQEzBAEBCgAdFiEE1823g1EQnhJ1LsbSA4gdq+vCmrkFAmAa3ooACgkQA4gdq+vC
+mrkq1gf/cs7irmbCSDrADVqsqYBrFJ1FyprE3jiHLNs0OQLryhFj9tzDuilX35VE
+HkCfxSaKkzgvQLYtpuw1VBfhOdngTdHO39U6eljkaScnfLWU8Z5n/q+YeedxItoY
+X3TtzMexFmb4WJqlylfjbXeqbLdYvsILQ3NVnE48AzkaBQlCC2d9bqecZhWiKfzq
+gNxIDVDDhqCXMPe7QCErCBiFPUVpGN7b+6QWN0RxOTLZdj/slRD73rT++VmY+xN1
+L8BSLcjXie+ES11MhQNYaLpCv2vqImlZaxkFWvsKBo9ndRFSbE3/RNK479a4KGve
+KrdpGUJXy9uLPuAMyn5WphwXJ7OZXQ==
+=YFDk
+-----END PGP SIGNATURE-----
+</pre></div></div><a class="indexterm" id="idm3927"></a><a class="indexterm" id="idm3930"></a><p>
+				Note que el paquete fuente también tiene dependencias (<code class="literal">Build-Depends</code>) completamente distintas de aquellas del paquete binario ya que indican las herramientas necesarias para compilar el software en cuestión y construir su paquete binario.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>PRECAUCIÓN</em></span> Espacios de nombres distintos</div></div></div></div><a class="indexterm" id="idm3940"></a><a class="indexterm" id="idm3945"></a><a class="indexterm" id="idm3950"></a><p>
+				Es importante saber que no hay una correspondencia necesaria entre el nombre de un paquete fuente y el de el o los paquetes binarios que genera. Es suficientemente fácil de entender si sabe que cada paquete fuente puede generar varios paquetes binarios. Es por esto que el archivo <code class="filename">.dsc</code> tiene los campos <code class="literal">Source</code> y <code class="literal">Binary</code> para nombrar explícitamente el paquete fuente y almacenar la lista de paquetes binarios que genera, respectivamente.
+			</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CULTURA</em></span> Porqué dividir en varios paquetes</div></div></div></div><p>
+				Frecuentemente un paquete fuente (para un programa dado) puede generar varios paquetes binarios. La división es justificada por la posibilidad de utilizar (partes de) el mismo en varios contextos. Si consideramos una biblioteca compartida, ésta puede ser instalada para hacer funcionar una aplicación (por ejemplo, <span class="pkg">libc6</span>) o para desarrollar un nuevo programa (<span class="pkg">libc6-dev</span> sería el paquete correcto). Encontramos la misma lógica para servicios cliente/servidor donde deseamos instalar el servidor en una máquina y la parte cliente en otras (este es el caso, por ejemplo, de <span class="pkg">openssh-server</span> y <span class="pkg">openssh-client</span>).
+			</p><p>
+				Con la misma frecuencia, la documentación se proporciona en un paquete específico: el usuario puede instalarla independientemente del software y puede optar por eliminarla en cualquier momento para ahorrar espacio en el disco. Además, esto también ahorra espacio en disco en las réplicas de Debian, ya que el paquete de documentación se compartirá entre todas las arquitecturas (en lugar de tener la documentación duplicada en los paquetes de cada arquitectura).
+			</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>PERSPECTIVA</em></span> Diferentes formatos de paquetes fuente</div></div></div></div><a class="indexterm" id="idm3972"></a><a class="indexterm" id="idm3975"></a><p>
+				Originalmente sólo existía un formato de paquete fuente. Este es el formato <code class="literal">1.0</code> que asocia un compendio <code class="filename">.orig.tar.gz</code> con un parche de «debianización» <code class="filename">.diff.gz</code> (también hay una variante que consiste de un simple compendio <code class="filename">.tar.gz</code>, utilizada automáticamente si hay disponible un archivo <code class="filename">.orig.tar.gz</code>).
+			</p><p>
+				Desde Debian 6 <span class="distribution">Squeeze</span>, los desarrolladores Debian tienen la opción de utilizar nuevos formatos que corrigen varios problemas del formato histórico. El formato <code class="literal">3.0 (quilt)</code> puede combinar varios compendios de origen en el mismo paquete fuente: puede incluir compendios <code class="filename">.orig-<em class="replaceable"><code>componente</code></em>.tar.gz</code> además del <code class="filename">.orig.tar.gz</code> usual. Esto es útil con el software distribuido desde origen en varios componentes pero para el que se desea sólo un paquete fuente. Estos compendios también pueden comprimirse con <span class="command"><strong>xz</strong></span> en lugar de <span class="command"><strong>gzip</strong></span>, lo que ahorra espacio en disco y recursos de red. Finalmente, se reemplaza el parche monolítico <code class="filename">.diff.gz</code> por un compendio <code class="filename">.debian.tar.xz</code> que contiene las instrucciones de compilación y un conjunto de parches al origen contribuidos por el desarrollador del paquete. Estos últimos son registrados en un formato compatible con <span class="command"><strong>quilt</strong></span> — una herramienta que facilita la gestión de una serie de parches.
+			</p></div><hr class="delimit-sidebar"/><p>
+				El archivo <code class="filename">.orig.tar.gz</code> es un compendio que contiene el código fuente como es provisto por el desarrollador original. Se le pide a los encargados de paquetes Debian que no modifiquen este compendio para poder verificar fácilmente el origen e integridad del archivo (comparándolo simplemente con una suma de verificación) y para respetar los deseos de algunos autores.
+			</p><p>
+				El archivo <code class="filename">.debian.tar.xz</code> contiene todas las modificaciones realizadas por el desarrollador de Debian, especialmente las agregadas de un directorio <code class="filename">debian</code> que contiene las instrucciones para construir un paquete Debian.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>HERRAMIENTA</em></span> Descomprimiendo un paquete fuente</div></div></div></div><a class="indexterm" id="idm4003"></a><a class="indexterm" id="idm4006"></a><a class="indexterm" id="idm4008"></a><a class="indexterm" id="idm4010"></a><a class="indexterm" id="idm4013"></a><p>
+				Si tiene un paquete fuente, puede utilizar <span class="command"><strong>dpkg-source</strong></span> (del paquete <span class="pkg">dpkg-dev</span>) para descomprimirlo:
+			</p><div class="informalexample"><pre>$ dpkg-source -x zim_0.73.5-1.dsc
+dpkg-source: info: extracting zim in zim-0.73.5
+dpkg-source: info: unpacking zim_0.73.5.orig.tar.gz
+dpkg-source: info: unpacking zim_0.73.5-1.debian.tar.xz</pre></div><p>
+				También puede utilizar <span class="command"><strong>apt</strong></span> para descargar un paquete fuente y descomprimirlo inmediatamente. Necesita, sin embargo, que las líneas <code class="literal">deb-src</code> apropiadas estén presentes en el archivo <code class="filename">/etc/apt/sources.list</code> (para maś detalles, revise la <a class="xref" href="ch06.html#sect.apt-sources.list" title="6.1. Contenido del archivo sources.list">Sección 6.1, “Contenido del archivo <code class="filename">sources.list</code>”</a>). Éstas son utilizadas para listar los orígenes de los paquetes fuente (los servidores en los que se encuentran un grupo de paquetes fuente).
+			</p><pre>$ apt source package
+
+Reading package lists... Done
+NOTICE: 'zim' el empaquetado se mantiene en el sistema de control de versiones 'Git' en:
+https://salsa.debian.org/debian/zim.git
+Por favor use:
+git clone https://salsa.debian.org/debian/zim.git
+to retrieve the latest (possibly unreleased) updates to the package.
+Necesita obtener 2172 kB de archivos fuente.
+Get:1 https://deb.debian.org/debian bullseye/main zim 0.73.5-1 (dsc) [1,580 B]
+Get:2 https://deb.debian.org/debian bullseye/main zim 0.73.5-1 (tar) [2,160 kB]
+Get:3 https://deb.debian.org/debian bullseye/main zim 0.73.5-1 (diff) [10.1 kB]
+Fetched 2,172 kB in 0s (7,176 kB/s)
+dpkg-source: info: extracting zim in zim-0.73.5
+dpkg-source: info: unpacking zim_0.73.5.orig.tar.gz
+dpkg-source: info: unpacking zim_0.73.5-1.debian.tar.xz
+</pre></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm4034"></a>5.3.2. Utilización dentro de Debian</h2></div></div></div><p>
+				El paquete fuente es la base de todo en Debian. Todos los paquetes Debian provienen de un paquete fuente y cada modificación en un paquete Debian es la consecuencia de una modificación realizada al paquete fuente. Los desarrolladores de Debian trabajan con el paquete fuente sabiendo, sin embargo, las consecuencias de sus acciones en los paquetes binarios. Los frutos de su labor se encuentran, entonces, en los paquetes fuentes disponibles desde Debian: puedes volver fácilmente a ellos y todo surge de ellos. <a class="xref" href="ch15.html" title="Capítulo 15. Creación de un paquete Debian">Capítulo 15, <em>Creación de un paquete Debian</em></a> contiene algunos ejemplos.
+			</p><p>
+				Cuando llega una nueva versión de un paquete fuente al servidor Debian, una red de máquinas de diferentes arquitecturas los usará para compilarlo en las distintas arquitecturas soportadas por Debian. </p><div class="url">→ <a class="ulink" href="https://buildd.debian.org/">https://buildd.debian.org/</a></div><p>
+</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>YENDO MÁS ALLÁ</em></span> Subidas de desarrollador únicamente de código fuente</div></div></div></div><p>
+				Justo después del lanzamiento de Debian 10 <span class="distribution">Buster</span> el <a class="link" href="ch01s06.html#srm-team" title="COMUNIDAD El gestor de versiones («Release Manager»)">Equipo de lanzamiento</a> anunció que las cargas binarias del mantenedor ya no se aceptarán para <code class="literal">main</code> y todos los paquetes binarios de este componente deben crearse automáticamente a partir de cargas obligatorias de código fuente únicamente. Si bien las cargas binarias todavía están permitidas para los componentes <code class="literal">contrib</code> y <code class="literal">non-free</code>, no nos centraremos en esta posibilidad ya que debería ser sólo la excepción.
+			</p></div><hr class="delimit-sidebar"/></div></div></body></html>

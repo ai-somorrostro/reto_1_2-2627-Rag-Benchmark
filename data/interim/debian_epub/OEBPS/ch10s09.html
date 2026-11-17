@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>10.9. Herramientas de diagnóstico de red</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Red, Puerta de enlace, TCP/IP, IPv6, DNS, Bind, DHCP, QoS"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.network-diagnosis-tools"/>10.9. Herramientas de diagnóstico de red</h1></div></div></div><a id="idm16380" class="indexterm"/><p>
+			When a network application does not run as expected, it is important to be able to look under the hood. Even when everything seems to run smoothly, running a network diagnosis can help ensure everything is working as it should. Several diagnosis tools exists for this purpose; each one operates on a different level. It would go beyond the scope of this book to discuss all tools, so we will focus on the more well-known and commonly used tools in the following sections.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.netstat"/>10.9.1. Diagnóstico local: <span class="command"><strong>netstat</strong></span></h2></div></div></div><a id="idm16387" class="indexterm"/><p>
+				Mencionemos primero el programa <span class="command"><strong>netstat</strong></span> (en el paquete <span class="pkg">net-tools</span>); muestra un resumen instantáneo de la actividad de red de una máquina. Cuando lo ejecute sin parámetros, mostrará todas las conexiones abiertas; esta lista puede ser demasiado detallada ya que incluye muchos zócalos de dominio Unix (utilizados ampliamente por demonios) que no incluyen la red en absoluto (por ejemplo, la comunicación de <code class="literal">dbus</code>, tráfico <code class="literal">X11</code> y comunicaciones entre sistemas de archivos virtuales y el escritorio).
+			</p><p>
+				Por lo tanto, invocaciones usuales utilizan opciones que modifican el comportamiento de <span class="command"><strong>netstat</strong></span>. Las opciones utilizadas más frecuentemente incluyen:
+			</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+						<code class="literal">-t</code>, que filtra los resultados para incluir sólamente conexiones TCP;
+					</li><li class="listitem">
+						<code class="literal">-u</code>, que realiza algo similar por las conexiones UDP; estas opciones no son mutuamente excluyentes y una de ellas es suficiente para evitar mostrar información sobre conexiones de dominio Unix;
+					</li><li class="listitem">
+						<code class="literal">-a</code>, para mostrar también los zócalos que están escuchando (que esperan conexiones entrantes);
+					</li><li class="listitem"><a id="idm16408" class="indexterm"/>
+						<code class="literal">-n</code>, para mostrar los resultados numéricamente: direcciones IP (sin resolución DNS), números de puerto (sin alias definidos en <code class="filename">/etc/services</code>) y IDs de usuario (sin nombres de usuario);
+					</li><li class="listitem">
+						<code class="literal">-p</code>, enumerar los procesos involucrados; esta opción sólo es útil cuando ejecute <span class="command"><strong>netstat</strong></span> como root ya que los usuarios normales sólo verán sus propios procesos;
+					</li><li class="listitem">
+						<code class="literal">-c</code>, para actualizar continuamente la lista de conexiones.
+					</li></ul></div><p>
+				Otras opciones, documentadas en la página de manual <span class="citerefentry"><span class="refentrytitle">netstat</span>(8)</span>, proveen un control más granular en los resultados mostrados. En la práctica,las primeras cinco opciones son utilizadas juntas tan seguido que los administradores de sistemas y red tiene el acto reflejo de ejecutar <span class="command"><strong>netstat -tupan</strong></span>. Los resultados típicos, en una máquina con poca carga, pueden parecerse a lo siguiente:
+			</p><div class="screen">
+<code class="computeroutput"># </code><strong class="userinput"><code>netstat -tupan</code></strong>
+<code class="computeroutput">Conexiones activas de Internet (servidores y establecidas)
+Proto Reciv-Q Enviado-Q Dirección Local           Dirección externa         Estado PID/Nombre programa
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      397/rpcbind     
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      431/sshd        
+tcp        0      0 0.0.0.0:36568           0.0.0.0:*               LISTEN      407/rpc.statd   
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      762/exim4       
+tcp        0    272 192.168.1.242:22        192.168.1.129:44452     ESTABLISHED 1172/sshd: roland [
+tcp6       0      0 :::111                  :::*                    LISTEN      397/rpcbind     
+tcp6       0      0 :::22                   :::*                    LISTEN      431/sshd        
+tcp6       0      0 ::1:25                  :::*                    LISTEN      762/exim4       
+tcp6       0      0 :::35210                :::*                    LISTEN      407/rpc.statd   
+udp        0      0 0.0.0.0:39376           0.0.0.0:*                           916/dhclient    
+udp        0      0 0.0.0.0:996             0.0.0.0:*                           397/rpcbind     
+udp        0      0 127.0.0.1:1007          0.0.0.0:*                           407/rpc.statd   
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           916/dhclient    
+udp        0      0 0.0.0.0:48720           0.0.0.0:*                           451/avahi-daemon: r
+udp        0      0 0.0.0.0:111             0.0.0.0:*                           397/rpcbind     
+udp        0      0 192.168.1.242:123       0.0.0.0:*                           539/ntpd        
+udp        0      0 127.0.0.1:123           0.0.0.0:*                           539/ntpd        
+udp        0      0 0.0.0.0:123             0.0.0.0:*                           539/ntpd        
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                           451/avahi-daemon: r
+udp        0      0 0.0.0.0:39172           0.0.0.0:*                           407/rpc.statd   
+udp6       0      0 :::996                  :::*                                397/rpcbind     
+udp6       0      0 :::34277                :::*                                407/rpc.statd   
+udp6       0      0 :::54852                :::*                                916/dhclient    
+udp6       0      0 :::111                  :::*                                397/rpcbind     
+udp6       0      0 :::38007                :::*                                451/avahi-daemon: r
+udp6       0      0 fe80::5054:ff:fe99::123 :::*                                539/ntpd        
+udp6       0      0 2001:bc8:3a7e:210:a:123 :::*                                539/ntpd        
+udp6       0      0 2001:bc8:3a7e:210:5:123 :::*                                539/ntpd        
+udp6       0      0 ::1:123                 :::*                                539/ntpd        
+udp6       0      0 :::123                  :::*                                539/ntpd        
+udp6       0      0 :::5353                 :::*                                451/avahi-daemon: r
+</code></div><p>
+				Como es esperado, enumera las conexiones establecidas: dos conexiones SSH en este caso y las aplicaciones esperando conexiones entrantes (mostradas como <code class="literal">LISTEN</code>), notablemente el servidor de correo Exim4 está escuchando en el puerto 25.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.nmap"/>10.9.2. Diagnóstico remoto: <span class="command"><strong>nmap</strong></span></h2></div></div></div><a id="idm16437" class="indexterm"/><p>
+				<span class="command"><strong>nmap</strong></span> (en el paquete del mismo nombre) es, en cierta forma, el equivalente remoto de <span class="command"><strong>netstat</strong></span>. Puede escanear un conjunto de puertos «muy conocidos» de uno o más servidores remotos y enumerar los puertos donde encontró una aplicación que responda conexiones entrantes. Lo que es más, <span class="command"><strong>nmap</strong></span> puede identificar alguna de estas aplicaciones, a veces inclusive también su número de versión. La desventaja de esta herramienta es que, debido a que ejecuta de forma remota, no puede proveer información sobre procesos o usuarios; sin embargo, puede trabajar con varios objetivos al mismo tiempo.
+			</p><p>
+				Una invocación de <span class="command"><strong>nmap</strong></span> típica utilizará la opción <code class="literal">-A</code> (para que <span class="command"><strong>nmap</strong></span> intente identificar las versiones del software de servidor que encuentre) seguido de una o más direcciones IP o nombres DNS de los equipos a escanear. Nuevamente, existen muchas más opciones que proveen un control detallado del comportamiento de <span class="command"><strong>nmap</strong></span>; revise la documentación en la página de manual <span class="citerefentry"><span class="refentrytitle">nmap</span>(1)</span>.
+			</p><div class="screen">
+<code class="computeroutput"># </code><strong class="userinput"><code>nmap debian</code></strong>
+<code class="computeroutput">Starting Nmap 7.80 ( https://nmap.org ) at 2022-02-22 20:58 CET
+Nmap scan report for debian (192.168.122.57)
+Host is up (0.000087s latency).
+Not shown: 996 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+79/tcp  open  finger
+80/tcp  open  http
+113/tcp open  ident
+
+Nmap done: 1 IP address (1 host up) scanned in 0.07 seconds
+# </code><strong class="userinput"><code>nmap -A localhost</code></strong>
+<code class="computeroutput">nmap -A localhost
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-02-22 20:56 CET
+Stats: 0:01:16 elapsed; 0 hosts completed (1 up), 1 undergoing Service Scan
+Service scan Timing: About 83.33% done; ETC: 20:57 (0:00:15 remaining)
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000086s latency).
+Other addresses for localhost (not scanned): ::1
+Not shown: 994 closed ports
+PORT    STATE SERVICE VERSION
+22/tcp  open  ssh     OpenSSH 8.4p1 Debian 5 (protocol 2.0)
+|_auth-owners: foobar
+25/tcp  open  smtp    Postfix smtpd
+|_auth-owners: foobar
+|_smtp-commands: debian, PIPELINING, SIZE 10240000, VRFY, ETRN, STARTTLS, ENHANCEDSTATUSCODES, 8BITMIME, DSN, SMTPUTF8, CHUNKING, 
+| ssl-cert: Subject: commonName=debian
+| Subject Alternative Name: DNS:debian
+| Not valid before: 2022-02-22T14:48:42
+|_Not valid after:  2032-02-20T14:48:42
+|_ssl-date: TLS randomness does not represent time
+79/tcp  open  finger?
+|_auth-owners: foobar
+|_finger: ERROR: Script execution failed (use -d to debug)
+80/tcp  open  http    Apache httpd 2.4.52 ((Debian))
+|_auth-owners: foobar
+|_http-server-header: Apache/2.4.52 (Debian)
+|_http-title: Apache2 Debian Default Page: It works
+113/tcp open  ident   Liedentd (Claimed user: foobar)
+|_auth-owners: foobar
+631/tcp open  ipp     CUPS 2.3
+|_auth-owners: foobar
+| http-robots.txt: 1 disallowed entry 
+|_/
+|_http-server-header: CUPS/2.3 IPP/2.1
+|_http-title: Home - CUPS 2.3.3op2
+Service Info: Host:  debian; OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 87.91 seconds
+</code></div><p>
+				As expected, e.g. the SSH, Apache and Postfix applications are listed. Note that not all applications listen on all IP addresses; since Postfix is only accessible on the <code class="literal">lo</code> loopback interface, it only appears during an analysis of <code class="literal">localhost</code> and not when scanning <code class="literal">debian</code> (which maps to the <code class="literal">enp1s0</code> interface on the same machine).
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.sniffers"/>10.9.3. «Sniffers»: <span class="command"><strong>tcpdump</strong></span> y <span class="command"><strong>wireshark</strong></span></h2></div></div></div><a id="idm16467" class="indexterm"/><a id="idm16470" class="indexterm"/><p>
+				A veces uno necesita revisar lo que sucede literalmente en el cable, paquete por paquete. Estos casos requieren un «analizador de tramas», más comúnmente conocidos como «<span class="emphasis"><em>sniffers</em></span>». Estas herramientas observan todos los paquetes en una interfaz de red dada y los muestran en una forma más amigable.
+			</p><p>
+				La herramienta de culto en este ámbito es <span class="command"><strong>tcpdump</strong></span>, disponible como una herramienta estándar en un amplio rango de plataformas. Permite muchos tipos de capturas de tráfico de red, pero la representación del mismo es bastante críptica. Por lo tanto no la describiremos en más detalle.
+			</p><p>
+				Una herramienta más reciente (y más moderna), <span class="command"><strong>wireshark</strong></span> (en el paquete <span class="pkg">wireshark</span>), se ha convertido en la nueva referencia de análisis de tráfico de red debido a sus módulos de decodificación que permiten un análisis simplificado de los paquetes capturados. Muestra los paquetes gráficamente, organizados basándose en las capas de protocolos. Esto permite al usuario visualizar todos los protocolos involucrados en un paquete. Por ejemplo, en un paquete que contenga un pedido HTTP, <span class="command"><strong>wireshark</strong></span> mostrará por separado la información sobre la capa física, la capa Ethernet, la información IP del paquete, los parámetros de conexión TCP y finalmente el pedido HTTP mismo.
+			</p><div class="figure"><a id="figure.wireshark"/><div class="figure-title">Figura 10.1. El analizador de tráfico de red <span class="command">wireshark</span></div><div class="figure-contents"><div class="mediaobject"><img src="images/wireshark.png" alt="El analizador de tráfico de red wireshark"/></div></div></div><p>
+				En nuestro ejemplo, filtramos los paquetes que viajan sobre SSH (con el filtro <code class="literal">!tcp.port == 22</code>). El paquete mostrado actualmente se produjo en la capa de transporte del protocolo SSHv2.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SUGERENCIA</em></span> <span class="command"><strong>wireshark</strong></span> sin interfaz gráfica: <span class="command"><strong>tshark</strong></span></div></div></div></div><a id="idm16494" class="indexterm"/><p>
+				Cuando no podemos ejecutar una interfaz gráfica, o por cualquier razón no deseamos hacerlo, existe una versión sólo de texto de <span class="command"><strong>wireshark</strong></span> bajo el nombre <span class="command"><strong>tshark</strong></span> (en el paquete independiente <span class="pkg">tshark</span>). La mayoría de la funcionalidad de captura y decodificación está también disponible, pero la falta de interfaz gráfica limita necesariamente la interacción con el programa (filtrar paquetes luego de capturarlos, rastrear una conexión TCP, etc.). Puede utilizarse, sin embargo, como primer intento. Si desea realizar manipulaciones y necesita la interfaz gráfica, puede guardar los paquetes en un archivo y cargarlo en un <span class="command"><strong>wireshark</strong></span> gráfico ejecutando en otra máquina.
+			</p></div><hr class="delimit-sidebar"/></div></div></body></html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>6.3. La orden apt-cache</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="apt, apt-get, apt-cache, aptitude, synaptic, sources.list, apt-cdrom" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.apt-cache"></a>6.3. La orden <span class="command"><strong>apt-cache</strong></span></h1></div></div></div><a class="indexterm" id="idm6315"></a><a class="indexterm" id="idm6318"></a><a class="indexterm" id="idm6321"></a><a class="indexterm" id="idm6324"></a><a class="indexterm" id="idm6327"></a><a class="indexterm" id="idm6329"></a><p>
+			La orden <span class="command"><strong>apt-cache</strong></span> puede mostrar gran parte de la información almacenada en la base de datos interna de APT. Esta información es una especie de caché, ya que se obtiene de las diferentes fuentes definidas en el archivo <code class="filename">sources.list</code>. Esto ocurre durante la operación <span class="command"><strong>apt update</strong></span>.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><a id="sidebar.cache"></a><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>VOCABULARIO</em></span> Caché</div></div></div></div><a class="indexterm" id="idm6339"></a><p>
+			Un caché es un sistema de almacenamiento temporal utilizado para acelerar el acceso frecuente a datos cuando el método de acceso usual es costoso (en cuanto a rendimiento). Este concepto puede aplicarse en numerosas situaciones y en diferentes escalas, desde el núcleo de microprocesadores hasta sistemas de almacenamiento de alta gama.
+		</p><p>
+			En el caso de APT, los archivos de referencia <code class="filename">Packages</code> son los ubicados en las réplicas de Debian. Teniendo eso en cuenta, sería muy poco efectivo que cada búsqueda que queramos hacer en la base de datos por paquetes disponible sea a través de la red. Es por esto que APT almacena una copia de estos archivos (en <code class="filename">/var/lib/apt/lists/</code>) y las búsquedas se realizan dentro de éstos archivos locales. De forma similar, <code class="filename">/var/cache/apt/archives/</code> contiene el caché de paquetes ya descargados (ver la barra lateral <a class="xref" href="ch06s02.html#sidebar.apt-clean" title="YENDO MÁS ALLÁ El caché de archivos .deb"><span class="emphasis"><em>YENDO MÁS ALLÁ</em></span> El caché de archivos <code class="filename">.deb</code></a>) para evitar descargarlos nuevamente si necesita reinstalarlos luego de eliminarlos.
+		</p><p>
+			Por otro lado, es obligatorio ejecutar <span class="command"><strong>apt update</strong></span> de forma regular para actualizar la caché. De lo contrario, tus resultados de búsqueda de paquetes siempre carecerán de las últimas actualizaciones distribuidas por las réplicas de Debian.
+		</p></div><hr class="delimit-sidebar"/><a class="indexterm" id="idm6349"></a><a class="indexterm" id="idm6354"></a><a class="indexterm" id="idm6359"></a><a class="indexterm" id="idm6364"></a><a class="indexterm" id="idm6369"></a><a class="indexterm" id="idm6374"></a><p>
+			La orden <span class="command"><strong>apt-cache</strong></span> puede realizar búsquedas de paquete basándose en palabras clave con <span class="command"><strong>apt-cache search <em class="replaceable"><code>palabra_clave</code></em></strong></span>. También puede mostrar las cabeceras de las versiones disponibles de un paquete con <span class="command"><strong>apt-cache show <em class="replaceable"><code>paquete</code></em></strong></span>. Esta orden provee la descripción de un paquete, sus dependencias, el nombre de su responsable, etc. Ver que <span class="command"><strong>apt search</strong></span>, <span class="command"><strong>apt show</strong></span>, <span class="command"><strong>aptitude search</strong></span> y <span class="command"><strong>aptitude show</strong></span> funcionan de la misma manera.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><a id="sidebar.apt-axi-cache"></a><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> <span class="command"><strong>axi-cache</strong></span></div></div></div></div><a class="indexterm" id="idm6393"></a><a class="indexterm" id="idm6396"></a><p>
+<span class="command"><strong>apt-cache search</strong></span> es una herramienta muy rudimentaria, básicamente implementa <span class="command"><strong>grep</strong></span> sobre la descripción de los paquetes. Generalmente devuelve demasiados resultados o ninguno en absoluto cuando incluye demasiadas palabras clave.
+		</p><a class="indexterm" id="idm6402"></a><p>
+<span class="command"><strong>axi-cache search <em class="replaceable"><code>término</code></em></strong></span>, por el otro lado, provee mejores resultados, ordenados según su relevancia. Utiliza el motor de búsqueda <span class="emphasis"><em>Xapian</em></span> y es parte del paquete <span class="pkg">apt-xapian-index</span> que indexa toda la información de los paquetes (y más, como los archivos <code class="filename">.desktop</code> de todos los paquetes Debian). Está al tanto de las etiquetas (revise el recuadro <a class="xref" href="ch05s02.html#sidebar.debtags" title="YENDO MÁS ALLÁ El campo Tag"><span class="emphasis"><em>YENDO MÁS ALLÁ</em></span> El campo <code class="literal">Tag</code></a>) y devuelve resultados en cuestión de milisegundos.
+		</p><pre>$ axi-cache search package use::searching
+axi-cache search package use::searching
+13 results found.
+Results 1-13:
+100% packagesearch - GUI for searching packages and viewing package information
+87% debtags - Debian Package Tags support tools
+86% whohas - query multiple distributions' package archives
+84% recoll - Personal full text search package
+82% apt-forktracer - utility for tracking non-official package versions
+[..]
+66% apt - commandline package manager
+More terms: debian dpkg search debtags whohas forktracer dctrl
+More tags: role::program admin::package-management suite::debian works-with::software:package interface::commandline scope::utility protocol::http
+</pre></div><hr class="delimit-sidebar"/><a class="indexterm" id="idm6416"></a><a class="indexterm" id="idm6421"></a><p>
+			Algunas funcionalidades son menos utilizadas. Por ejemplo, <span class="command"><strong>apt-cache dumpavail</strong></span> muestra los cabezales de todas las versiones disponibles de todos los paquetes. <span class="command"><strong>apt-cache pkgnames</strong></span> muestra la lista de todos los paquetes que aparecen al menos una vez en la caché.
+		</p><p>
+			Una de las funciones que puede resultar más útil es <span class="command"><strong>apt-cache policy</strong></span>, descrita en la sección siguiente.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.apt-cache-policy"></a>6.3.1. La orden <span class="command"><strong>apt-cache policy</strong></span></h2></div></div></div><a class="indexterm" id="idm6434"></a><a class="indexterm" id="idm6439"></a><p>
+				La orden <span class="command"><strong>apt-cache policy</strong></span> muestra las prioridades de fijación y las propiedades de distribución de cada paquete fuente según se explica en <a class="xref" href="ch06s02.html#sect.apt.priorities" title="6.2.5. Gestión de prioridades de los paquetes">Sección 6.2.5, “Gestión de prioridades de los paquetes”</a>. También puede mostrar las prioridades de fijación para todas las versiones disponibles y fuentes de un paquete. Para el ejemplo de <code class="filename">sources.list</code> usado en <a class="xref" href="ch06.html#example.stable-sources-list" title="Ejemplo 6.2. el archivo /etc/apt/sources.list para usuarios de Debian «stable»">Ejemplo 6.2, “el archivo <code class="filename">/etc/apt/sources.list</code> para usuarios de Debian «stable»”</a> y <code class="literal">APT::Default-Release</code> asignado a <code class="literal">"bullseye"</code>, la salida tiene este aspecto:
+			</p><div class="informalexample"><pre>$ apt-cache policy
+Package files:
+ 100 /var/lib/dpkg/status
+     release a=now
+ 100 https://deb.debian.org/debian bullseye-backports/main amd64 Packages
+     release o=Debian Backports,a=bullseye-backports,n=bullseye-backports,l=Debian Backports,c=main,b=amd64
+     origin deb.debian.org
+ 990 https://deb.debian.org/debian bullseye/non-free amd64 Packages
+     release v=11.0,o=Debian,a=stable,n=bullseye,l=Debian,c=non-free,b=amd64
+     origin deb.debian.org
+ 990 https://deb.debian.org/debian bullseye/contrib amd64 Packages
+     release v=11.0,o=Debian,a=stable,n=bullseye,l=Debian,c=contrib,b=amd64
+     origin deb.debian.org
+ 990 https://deb.debian.org/debian bullseye/main amd64 Packages
+     release v=11.0,o=Debian,a=stable,n=bullseye,l=Debian,c=main,b=amd64
+     origin deb.debian.org
+ 500 http://security.debian.org bullseye-security/main amd64 Packages
+     release v=11,o=Debian,a=stable-security,n=bullseye-security,l=Debian-Security,c=main,b=amd64
+     origin security.debian.org
+Pinned packages:</pre></div><p>
+<span class="command"><strong>apt-cache policy</strong></span> también puede mostrar las propiedades de <span class="foreignphrase"><em class="foreignphrase">pinning</em></span> para todas las versiones y fuentes disponibles de un paquete determinado.
+			</p><div class="informalexample"><pre>$ apt-cache policy limnoria
+limnoria:
+  Installed: 2021.06.15-1
+  Candidate: 2021.06.15-1
+  Version table:
+     2021.07.21-1~bpo11+1 100
+        100 https://deb.debian.org/debian bullseye-backports/main amd64 Packages
+ *** 2021.06.15-1 990
+        990 https://deb.debian.org/debian bullseye/main amd64 Packages
+        100 /var/lib/dpkg/status</pre></div><a class="indexterm" id="idm6464"></a><p>
+				Aunque hay una versión más nueva de <span class="pkg">limnoria</span> en el repositorio <code class="literal">bullseye-backports</code>, APT no la instalará de forma automática basándose en la prioridad. Se tendría que usar <span class="command"><strong>apt install limnoria/bullseye-backports</strong></span> o añadir una prioridad de fijación superior a <code class="filename">/etc/apt/preferences.d/limnoria.pref</code>:
+			</p><div class="informalexample"><pre>Package: limnoria
+Pin: release o=Debian Backports, a=bullseye-backports
+Pin-Priority: 1001</pre><pre>$ apt-cache policy limnoria
+limnoria:
+  Installed: 2021.06.15-1
+  Candidate: 2021.07.21-1~bpo11+1
+  Version table:
+     2021.07.21-1~bpo11+1 1001
+        100 https://deb.debian.org/debian bullseye-backports/main amd64 Packages
+ *** 2021.06.15-1 990
+        990 https://deb.debian.org/debian bullseye/main amd64 Packages
+        100 /var/lib/dpkg/status</pre></div></div></div></body></html>

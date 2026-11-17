@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>B.2. Organización de la jerarquía del sistema de archivos</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="BIOS, Núcleo, Unix, Proceso, Jerarquía, Órdenes básicas" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.filesystem-hierarchy"></a>B.2. Organización de la jerarquía del sistema de archivos</h1></div></div></div><a class="indexterm" id="idm26778"></a><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm26780"></a>B.2.1. El directorio raíz</h2></div></div></div><a class="indexterm" id="idm26782"></a><a class="indexterm" id="idm26785"></a><a class="indexterm" id="idm26788"></a><a class="indexterm" id="idm26791"></a><a class="indexterm" id="idm26794"></a><a class="indexterm" id="idm26797"></a><a class="indexterm" id="idm26800"></a><a class="indexterm" id="idm26803"></a><a class="indexterm" id="idm26806"></a><a class="indexterm" id="idm26809"></a><a class="indexterm" id="idm26812"></a><a class="indexterm" id="idm26815"></a><a class="indexterm" id="idm26818"></a><a class="indexterm" id="idm26821"></a><a class="indexterm" id="idm26824"></a><a class="indexterm" id="idm26827"></a><a class="indexterm" id="idm26830"></a><a class="indexterm" id="idm26833"></a><p>
+				Un sistema Debian está organizado según el <span class="emphasis"><em>estándar de jerarquía de archivos</em></span> (FHS: «File System Hierarchy Standard»). Este estándar define el propósito de cada directorio. Por ejemplo, se describen los directorios de primer nivel como sigue:
+			</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+<code class="filename">/bin/</code>: programas básicos;
+					</li><li class="listitem">
+<code class="filename">/boot/</code>: núcleo Linux y otros archivos necesarios para las primeras etapas del proceso de arranque;
+					</li><li class="listitem">
+<code class="filename">/dev/</code>: archivos de dispositivo;
+					</li><li class="listitem">
+<code class="filename">/etc/</code>: archivos de configuración;
+					</li><li class="listitem"><a class="indexterm" id="idm26852"></a>
+<code class="filename">/home/</code>: archivos personales de los usuarios;
+					</li><li class="listitem">
+<code class="filename">/lib/</code>: bibliotecas básicas;
+					</li><li class="listitem">
+<code class="filename">/media/*</code>: puntos de montaje para dispositivos removibles (CD-ROM, llaves USB, etc.);
+					</li><li class="listitem">
+<code class="filename">/mnt/</code>: punto de montaje temporal;
+					</li><li class="listitem">
+<code class="filename">/opt/</code>: aplicaciones adicionales provistas por terceros;
+					</li><li class="listitem"><a class="indexterm" id="idm26870"></a>
+<code class="filename">/root/</code>: archivos personales del administrador (root);
+					</li><li class="listitem">
+<code class="filename">/run/</code>: datos volátiles en tiempo de ejecución que no persisten entre reinicios;
+					</li><li class="listitem">
+<code class="filename">/sbin/</code>: programas de sistema;
+					</li><li class="listitem">
+<code class="filename">/srv/</code>: datos utilizados por los servidores en este sistema;
+					</li><li class="listitem">
+<code class="filename">/tmp/</code>; archivos temporales; generalmente se vacía este directorio durante el arranque;
+					</li><li class="listitem">
+<code class="filename">/usr/</code>: aplicaciones; este directorio está subdividido en <code class="filename">bin</code>, <code class="filename">sbin</code>, <code class="filename">lib</code> (según la misma lógica que el directorio raíz). Lo que es más, <code class="filename">/usr/share/</code> contiene datos independientes de la arquitectura. El objetivo de <code class="filename">/usr/local/</code> es para que el administrador instale aplicaciones manualmente sin sobreescribir archivos administrados por el sistema de paquetes (<span class="command"><strong>dpkg</strong></span>).
+					</li><li class="listitem"><a class="indexterm" id="idm26896"></a>
+<code class="filename">/var/</code>: datos variables administrados por demonios. Esto incluye archivos de registro, colas, cachés, etc.
+					</li><li class="listitem"><a class="indexterm" id="idm26901"></a>
+<code class="filename">/proc/</code> y <code class="filename">/sys/</code> son específicos del núcleo Linux (y no son parte del FHS). El núcleo los utiliza para exportar datos a espacio de usuario. (vea <a class="xref" href="apbs03.html#sect.userspace-presentation" title="B.3.4. El espacio de usuario">Sección B.3.4, “El espacio de usuario”</a> y <a class="xref" href="apbs05.html" title="B.5. El espacio de usuario">Sección B.5, “El espacio de usuario”</a> para explicaciones acerca de este concepto).
+					</li></ul></div><a class="indexterm" id="idm26909"></a><p>
+				Tenga en cuenta que muchas distribuciones modernas, incluido Debian, incorporan <code class="filename">/bin</code>, <code class="filename">/sbin</code> y <code class="filename">/lib</code> como enlaces simbólicos a los directorios correspondientes por debajo de <code class="filename">/usr</code> para que todos los programas y bibliotecas estén disponibles en un solo árbol. Facilita la protección de la integridad de los archivos del sistema y el uso compartido de esos archivos del sistema entre varios contenedores, etc.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm26917"></a>B.2.2. El directorio personal de los usuarios</h2></div></div></div><a class="indexterm" id="idm26919"></a><a class="indexterm" id="idm26922"></a><a class="indexterm" id="idm26925"></a><p>
+				El contenido del directorio personal de un usuario no está estandarizado, pero sí existen algunas convenciones notables. Una de ellas es que usualmente se refiere al directorio personal de un usuario con una virgulilla («~»). Es útil saberlo ya que los intérpretes de órdenes reemplazan una virgulilla automáticamente con el directorio correcto (generalmente <code class="filename">/home/<em class="replaceable"><code>usuario</code></em>/</code>).
+			</p><a class="indexterm" id="idm26931"></a><a class="indexterm" id="idm26934"></a><p>
+				Tradicionalmente, las aplicaciones almacenan sus archivos de configuración en el directorio personal del usuario, pero sus nombres generalmente comienzan con un punto (por ejemplo, el cliente de correo <span class="command"><strong>mutt</strong></span> almacena su configuración el <code class="filename">~/.muttrc</code>). Tenga en cuenta que los nombres de archivos que comienzan con un punto están escondidos de forma predeterminada; sólo serán enumerados por <span class="command"><strong>ls</strong></span> cuando utilice la opción <code class="literal">-a</code> y por los gestores gráficos de archivos cuando les indique que muestren archivos ocultos.
+			</p><p>
+				Algunos programas también utilizan varios archivos para la configuración organizados en un directorio (por ejemplo, <code class="filename">~/.ssh/</code>). Algunas aplicaciones también utilizan su directorio para almacenar una caché para los datos descargados. Esto significa que esos directorios pueden acabar ocupando mucho espacio en el disco.
+			</p><a class="indexterm" id="idm26943"></a><p>
+				Estos archivos para la configuración almacenados directamente en el directorio personal del usuario, a menudo denominados colectivamente <span class="emphasis"><em>dotfiles</em></span>, han proliferado durante mucho tiempo hasta el punto de que estos directorios pueden estar bastante abarrotados de ellos. Afortunadamente, un esfuerzo liderado colectivamente en FreeDesktop.org ha dado como resultado la "Especificación del Directorio Base XDG", una convención que pretende limpiar estos archivos y directorios. Esta especificación establece que los archivos de configuración deben almacenarse en <code class="filename">~/.config/</code>, los archivos de caché en <code class="filename">~/.cache/</code>, y los archivos con los datos de la aplicación en <code class="filename">~/.local/</code> (o en otros subdirectorios similares). Esta convención está ganando adeptos poco a poco, y varias aplicaciones (especialmente gráficas) han empezado a seguirla.
+			</p><p>
+				Los escritorios gráficos generalmente muestran en el escritorio (es decir, lo que se ve cuando se cierran o minimizan todas las aplicaciones) el contenido del directorio <code class="filename">~/Desktop/</code> (o el término apropiado si el sistema está configurado en otro idioma distinto al inglés).
+			</p><p>
+				Finalmente, el sistema de correo a veces almacena sus correos entrantes en un directorio <code class="filename">~/Mail/</code>.
+			</p></div></div></body></html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>8.10. Compilación de un núcleo</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Configuración, Localización, Locales, Red, Resolución de los nombres, Usuarios, Grupos, Cuentas, Intérprete de línea de órdenes, Consola, Impresión, Gestor de arranque, Compilación de núcleo"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.kernel-compilation"/>8.10. Compilación de un núcleo</h1></div></div></div><a id="idm11484" class="indexterm"/><a id="idm11487" class="indexterm"/><p>
+			El núcleo que provee Debian incluye la mayor cantidad de funcionalidad posible así como también la mayor cantidad de controladores para cubrir el espectro más amplio de configuraciones de hardware. Es por esto que algunos usuarios prefieren compilar el núcleo para incluir sólamente lo que necesiten específicamente. Hay dos razones para esta elección. Primero, podría optimizar el consumo de memoria ya que el código del núcleo, aún cuando no sea utilizado, ocupa memoria por nada (y nunca es «bajado» al espacio de swap ya que utiliza RAM real) lo que puede disminuir el rendimiento general del sistema. Un núcleo compilado localmente también puede limitar el riesgo de problemas de seguridad ya que sólo se compila y ejecuta una fracción del código del núcleo.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>NOTA</em></span> Actualizaciones de seguridad</div></div></div></div><a id="idm11494" class="indexterm"/><p>
+			Si decide compilar su propio núcleo, debe aceptar las consecuencias: Debian no puede asegurar actualizaciones de seguridad para su núcleo personalizado. Al matener el núcleo que provee Debian se beneficia de las actualizaciones preparadas por el equipo de seguridad del Proyecto Debian.
+		</p></div><hr class="delimit-sidebar"/><p>
+			Necesita además recompilar el núcleo si desea utilizar ciertas funcionalidades que sólo están disponibles como parches (y no están incluidas en la versión estándar del núcleo).
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>YENDO MÁS ALLÁ</em></span> El libro del núcleo de Debian («Debian Kernel Handbook»)</div></div></div></div><a id="idm11502" class="indexterm"/><a id="idm11505" class="indexterm"/><p>
+			El equipo del núcleo de Debian administra el «Libro del núcleo de Debian» («Debian Kernel Handbook», disponible también en el paquete <span class="pkg">debian-kernel-handbook</span>) que contiene documentación exhaustiva sobre la mayoría de las tareas relacionadas con el núcleo y cómo se gestionan los paquetes Debian oficiales del núcleo. Este es el primer lugar en el que debería buscar si necesita más información que la que provee esta sección. </p><div class="url">→ <a class="ulink" href="https://kernel-team.pages.debian.net/kernel-handbook/">https://kernel-team.pages.debian.net/kernel-handbook/</a></div><p>
+		</p></div><hr class="delimit-sidebar"/><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.kernel-compilation-prerequisites"/>8.10.1. Introducción y prerequisitos</h2></div></div></div><p>
+				No es sorprendete que Debian administre el núcleo como un paquete, que no es la forma tradicional en la que se compilan e instalan núcleos. Debido a que el núcleo se mantiene bajo el control del sistema de paquetes puede ser eliminado limpiamente o desplegado en varias máquinas. Lo que es más, los scripts asociados con estos paquetes automatizan la interacción con el gestor de arranque y el generador de initrd.
+			</p><p>
+				Las fuenes de Linux en origen contienen todo lo necesario para crear el paquete Debian del núcleo. Sin embargo, necesitará instalar <span class="pkg">build-essential</span> para asegurarse que posee las herramientas necesarias para crear un paquete Debian. Lo que es más, el paso de configuración para el núcleo necesita el paquete <span class="pkg">libncurses5-dev</span> (antes <span class="pkg">libncurses5-dev</span>, que es ahora un paquete de transición). Finalmente, el paquete <span class="pkg">fakeroot</span> le permitirá crear el paquete Debian sin utilizar permisos de administrador.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CULTURA</em></span> Los días de <span class="pkg">kernel-package</span></div></div></div></div><a id="idm11523" class="indexterm"/><a id="idm11526" class="indexterm"/><p>
+				Antes que el sistema de compilación de Linux tuviera la capacidad de crear paquetes Debian apropiados, la forma recomendada de crear dichos paquetes era utilizar <span class="command"><strong>make-kpkg</strong></span>, incluído en el paquete <span class="pkg">kernel-package</span>.
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.kernel-sources"/>8.10.2. Obtención de las fuentes</h2></div></div></div><a id="idm11534" class="indexterm"/><a id="idm11536" class="indexterm"/><a id="idm11539" class="indexterm"/><a id="idm11542" class="indexterm"/><p>
+				Como cualquier cosa que pueda ser útil en un sistema Debian, las fuentes del núcleo Linux están disponibles en un paquete. Para obtenerlas simplemente instale el paquete <span class="pkg">linux-source-<em class="replaceable"><code>versión</code></em></span>. Puede ver las diferentes versiones del núcleo empaquetados por Debian con <span class="command"><strong>apt search ^linux-source</strong></span>. La última versión está disponible en la distribución <span class="distribution">Unstable</span>: puede conseguirlas sin demasiado riesgo (especialmente si tiene configurado APT según las instrucciones de la <a class="xref" href="ch06s02.html#sect.apt-mix-distros" title="6.2.6. Trabajo con varias distribuciones">Sección 6.2.6, “Trabajo con varias distribuciones”</a>). Sepa que el código fuente que contienen estos paquetes no corresponde exactamente con lo publicado por Linus Torvalds y los desarrolladores del núcleo; como todas las distribuciones, Debian aplica una serie de parches, que pueden (o no) ser incluídas en la versión de origen de Linux. Estas modificaciones incluyen retroadaptaciones de correcciones/funcionalidades/controladores de nuevas versiones del núcleo, funcionalidades que no están (completamente) incluídas en el árbol de origen de Linux e inclusive a veces cambios específicos para Debian.
+			</p><p>
+				El resto de esta sección se concentra en la versión 5.10 del núcleo Linux pero los ejemplos pueden, obviamente, adaptarse a la versión particular del núcleo que desee.
+			</p><a id="idm11554" class="indexterm"/><p>
+				Asumimos que instaló el paquete <span class="pkg">linux-source-5.10</span>. Contiene <code class="filename">/usr/src/linux-source-5.10.tar.xz</code>, un archivo comprimido de las fuentes del núcleo. Debe extraer estos archivos en un nuevo directorio (no directamente bajo <code class="filename">/usr/src/</code> ya que no necesita permisos especiales para compilar un núcleo Linux): <code class="filename">~/kernel/</code> es apropiado.
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>mkdir ~/kernel; cd ~/kernel</code></strong>
+<code class="computeroutput">$ </code><strong class="userinput"><code>tar -xaf /usr/src/linux-source-5.10.tar.xz</code></strong></div><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CULTURA</em></span> Ubicación de las fuentes del núcleo</div></div></div></div><a id="idm11573" class="indexterm"/><a id="idm11578" class="indexterm"/><p>
+				Tradicionalmente, las fuentes del núcleo Linux estarían ubicadas en <code class="filename">/usr/src/linux/</code> lo que necesitaría permisos de root para compilarlo. Sin embargo, se debe evitar trabajar con permisos de administración cuando no es necesario. Existe un grupo <code class="literal">src</code> que permite a sus miembros trabajar en este directorio, pero debe evitar trabajar en <code class="filename">/usr/src/</code> de todas formas. Al mantener las fuentes del núcleo en un directorio personal obtiene seguridad en todos lados: no existirán archivos en <code class="filename">/usr/</code> ajenos al sistema de paquetes y no hay riesgos de despistar a los programas que leen <code class="filename">/usr/src/linux</code> al intentar conseguir información sobre el núcleo utilizado.
+			</p></div><hr class="delimit-sidebar"/><p>
+				Para construir un kernel a partir de las fuentes prístinas, simplemente descargue el tarball de la versión de su elección desde <code class="literal">kernel.org</code>, verifique la integridad después de importar la clave de los mantenedores del kernel, y luego proceda como se describe en los siguientes capítulos- </p><div class="url">→ <a class="ulink" href="https://kernel.org/pub/linux/kernel/">https://kernel.org/pub/linux/kernel/</a></div><p> </p><div class="url">→ <a class="ulink" href="https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/tree/keys">https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/tree/keys</a></div><p>
+			</p><div class="informalexample"><div class="screen"><code class="computeroutput">
+$ </code><strong class="userinput"><code>wget https://kernel.org/pub/linux/kernel/v5.x/linux-5.10.62.tar.xz</code></strong><code class="computeroutput">
+[..]
+$ </code><strong class="userinput"><code>wget https://kernel.org/pub/linux/kernel/v5.x/linux-5.10.62.tar.sign</code></strong><code class="computeroutput">
+[..]
+$ </code><strong class="userinput"><code>unxz -c linux-5.10.62.tar.xz | gpg --verify linux-5.10.62.tar.sign -</code></strong><code class="computeroutput">
+gpg: Firma hecha el vie 03 Sep 2021 10:11:35 AM CEST
+gpg:                con clave RSA 647F28654894E3BD457199BE38DBBDC86092693E
+gpg: Buena firma desde "Greg Kroah-Hartman &lt;gregkh@linuxfoundation.org&gt;" [unknown]
+gpg:                 aka "Greg Kroah-Hartman (Linux kernel stable release signing key) &lt;greg@kroah.com&gt;" [unknown]
+gpg:                 aka "Greg Kroah-Hartman &lt;gregkh@kernel.org&gt;" [unknown]
+gpg: ATENCIÓN: ¡Esta clave no está certificada con una firma de confianza!
+gpg:          No hay indicios de que la firma pertenezca al propietario.
+Huella de clave primaria: 647F 2865 4894 E3BD 4571  99BE 38DB BDC8 6092 693E</code>
+</div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.config-kernel"/>8.10.3. Configuración del núcleo</h2></div></div></div><a id="idm11603" class="indexterm"/><a id="idm11606" class="indexterm"/><a id="idm11609" class="indexterm"/><a id="idm11612" class="indexterm"/><a id="idm11615" class="indexterm"/><p>
+				El siguiente paso consiste en configurar el núcleo según sus necesidades. El procedimiento exacto depende de los objetivos.
+			</p><p>
+				Al recompilar una versión más reciente del núcleo (posiblemente con un parche adicional), probablemente mantenga la configuración tan parecida a la propuesta por Debian como le sea posible. En este caso, y en lugar de reconfigurar todo desde cero, es suficiente copiar el archivo <code class="filename">/boot/config-<em class="replaceable"><code>versión</code></em></code> (la versión es la del núcleo utilizado actualmente, que puede encontrarse con <span class="command"><strong>uname -r</strong></span>) en un archivo <code class="filename">.config</code> en el directorio que contenga las fuentes del núcleo. Asegúrese de leer sidebar <a class="xref" href="ch08s10.html#sidebar.kernel-config-keyring" title="TIP Falta debian/certs/debian-uefi-certs.pem"><span class="emphasis"><em>TIP</em></span> Falta <code class="filename">debian/certs/debian-uefi-certs.pem</code></a> en este caso.
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>cp /boot/config-5.10.0-8-amd64 ~/kernel/linux-source-5.10/.config</code></strong></div><p>
+				A menos que necesite cambiar la configuración, puede parar aquí y continua en <a class="xref" href="ch08s10.html#sect.kernel-build" title="8.10.4. Compilación y creación del paquete">Sección 8.10.4, “Compilación y creación del paquete”</a>. Si, por el otro lado, necesita cambiarla o si decide reconfigurar todo desde cero, debe tomarse el tiempo de configurar su núcleo. Hay varias interfaces dedicadas en el directorio de fuentes del núcleo que puede utilizar ejecutando <span class="command"><strong>make <em class="replaceable"><code>objetivo</code></em></strong></span> donde <em class="replaceable"><code>objetivo</code></em> es uno de los valores descriptos a continuación.
+			</p><a id="idm11636" class="indexterm"/><p>
+				<span class="command"><strong>make menuconfig</strong></span> compila y ejecuta una interfaz en modo texto (aquí es donde necesita el paquete <span class="pkg">libncurses5-dev</span>) que permite navegar entre las opciones disponibles en una estructura jerárquica. Pulsar la tecla <span class="keycap"><strong>Espacio</strong></span> cambia el valor de la opción seleccionada y <span class="keycap"><strong>Enter</strong></span> valida el botón seleccionado al pie de la pantalla; <span class="guibutton">Seleccionar</span> vuelve al submenú seleccionado; <span class="guibutton">Salir</span> cierra la pantalla actual y vuelve un paso atrás en la jerarquía; <span class="guibutton">Ayuda</span> mostrará información más detallada sobre el comportamiento de la opción seleccionada. Las flechas del cursor permiten moverse en la lista de opciones y botones. Para salir del programa de configuración, seleccionar <span class="guibutton">Salir</span> del menú principal. El programa luego ofrece guardar los cambios que realizó; acéptar si se está satisfecho con lo seleccionado.
+			</p><a id="idm11649" class="indexterm"/><a id="idm11653" class="indexterm"/><p>
+				Otras interfaces tienen funcionalidades similares pero trabajan con interfaces gráficas más modernas; como <span class="command"><strong>make xconfig</strong></span> que utiliza una interfaz gráfica Qt y <span class="command"><strong>make gconfig</strong></span> que utiliza GTK+. La primera necesita el paquete <span class="pkg">qtbase5-dev</span> mientras que la última depende de los paquetes <span class="pkg">libglade2-dev</span> y <span class="pkg">libgtk2.0-dev</span>.
+			</p><p>
+				Cuando utiliza una de las interfaces de configuración, siempre es buena idea comenzar desde una configuración predeterminada razonable. El núcleo provee tales configuraciones en <code class="filename">arch/<em class="replaceable"><code>arquitectura</code></em>/configs/*_defconfig</code> y puede mover la configuración que desee si ejecuta algo similar a <span class="command"><strong>make x86_64_defconfig</strong></span> (en el caso de un equipo de 64 bits) o <span class="command"><strong>make i386_defconfig</strong></span> (en el caso de un equipo de 32 bits).
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SEGURIDAD</em></span> Gestión de archivos <code class="filename">.config</code> desactualizados</div></div></div></div><a id="idm11672" class="indexterm"/><a id="idm11676" class="indexterm"/><a id="idm11680" class="indexterm"/><p>
+				Cuando provee un archivo <code class="filename">.config</code> que fue generado con otra versión del núcleo (generalmente anterior), tendrá que actualizarlo. Puede hacerlo ejecutando <span class="command"><strong>make oldconfig</strong></span>, que le preguntará interactivamente las preguntas que corresponden a las nuevas opciones de configuración. Si desea utilizar una respuesta predeterminada a todas estas preguntas, puede ejecutar <span class="command"><strong>make olddefconfig</strong></span>. Con <span class="command"><strong>make oldnoconfig</strong></span>, se asumirá una respuesta negativa a todas las preguntas.
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.kernel-build"/>8.10.4. Compilación y creación del paquete</h2></div></div></div><a id="idm11691" class="indexterm"/><a id="idm11694" class="indexterm"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>NOTA</em></span> Limpieza antes de recompilar</div></div></div></div><a id="idm11701" class="indexterm"/><p>
+				Si ya realizó una compilación en el directorio y desea reconstruir todo desde cero (por ejemplo: porque realizó cambios importantes a la configuración del núcleo), tendrá que ejecutar <span class="command"><strong>make clean</strong></span> para eliminar los archivos compilados. <span class="command"><strong>make distclean</strong></span> elimina todavía más archivos generados, incluyendo también su archivo <code class="filename">.config</code>, por lo que deberá asegurarse de respaldarlo primero.
+			</p></div><hr class="delimit-sidebar"/><p>
+				Una vez que la configuración del núcleo está lista, un simple <span class="command"><strong>make deb-pkg</strong></span> generará hasta 5 paquetes Debian:
+			</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="pkg">linux-image-<em class="replaceable"><code>versión</code></em></span></span></dt><dd><p>
+							contiene la imagen del núcleo y los módulos asociados,
+						</p></dd><dt><span class="term"><span class="pkg">linux-headers-<em class="replaceable"><code>versión</code></em></span></span></dt><dd><p>
+							contiene los archivos de cabecera necesarios para crear módulos externos,
+						</p></dd><dt><span class="term"><span class="pkg">linux-firmware-image-<em class="replaceable"><code>versión</code></em></span></span></dt><dd><p>
+							contiene los archivos de firmware necesarios para algunos controladores (este paquete podría faltar cuando construya desde las fuentes del núcleo proporcionadas por Debian),
+						</p></dd><dt><span class="term"><span class="pkg">linux-image-<em class="replaceable"><code>versión</code></em>-dbg</span></span></dt><dd><p>
+							contiene los símbolos de depuración para la imagen del núcleo y sus módulos (sólo se crea si <code class="literal">CONFIG_DEBUG_INFO=y</code>), y
+						</p></dd><dt><span class="term"><span class="pkg">linux-libc-dev</span></span></dt><dd><p>
+							contiene encabezados relevantes para algunas bibliotecas del espacio-usuario como GNU glibc.
+						</p></dd></dl></div><a id="idm11741" class="indexterm"/><a id="idm11745" class="indexterm"/><a id="idm11749" class="indexterm"/><a id="idm11753" class="indexterm"/><a id="idm11757" class="indexterm"/><a id="idm11761" class="indexterm"/><a id="idm11765" class="indexterm"/><a id="idm11769" class="indexterm"/><a id="idm11774" class="indexterm"/><p>
+				La cadena <em class="replaceable"><code>versión</code></em> es la concatenación de la versión de origen (definida por las variables <code class="literal">VERSION</code>, <code class="literal">PATCHLEVEL</code>, <code class="literal">SUBLEVEL</code> y <code class="literal">EXTRAVERSION</code> en el <code class="filename">Makefile</code>), del parámetro de configuración <code class="literal">LOCALVERSION</code> y la variable de entorno <code class="literal">LOCALVERSION</code>. La versión del paquete reutiliza la misma cadena de versión con una revisión adicional que generalmente aumenta (y se almacena en <code class="filename">.version</code>), excepto si la previene con la variable de entorno <code class="literal">KDEB_PKGVERSION</code>.
+			</p><div class="screen"><code class="computeroutput">$ </code><strong class="userinput"><code>make deb-pkg LOCALVERSION=-falcot KDEB_PKGVERSION=$(make kernelversion)-1
+</code></strong><code class="computeroutput">[...]
+$ </code><strong class="userinput"><code>ls ../*.deb
+</code></strong><code class="computeroutput">../linux-headers-5.10.46-falcot_5.10.46-1_amd64.deb
+../linux-image-5.10.46-falcot_5.10.46-1_amd64.deb
+../linux-image-5.10.46-falcot-dbg_5.10.46-1_amd64.deb
+../linux-libc-dev_5.10.46-1_amd64.deb
+</code></div><p>
+				Todo el proceso requiere unos 20 GB de espacio libre, al menos 8 GB de RAM y varias horas de compilación (utilizando un núcleo) para un núcleo Debian amd64 estándar. Estos requisitos se pueden reducir drásticamente deshabilitando la información de depuración usando <code class="literal">CONFIG_DEBUG_INFO=n</code>, pero esto hará imposible rastrear errores del kernel ("ups") usando <span class="command"><strong>gdb</strong></span> y también detendrá la creación del paquete<span class="pkg">linux-image-<em class="replaceable"><code>version</code></em>-dbg</span>.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><a id="sidebar.kernel-config-keyring"/><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>TIP</em></span> Falta <code class="filename">debian/certs/debian-uefi-certs.pem</code></div></div></div></div><a id="idm11805" class="indexterm"/><p>
+				En Debian el núcleo por defecto lleva la siguiente configuración:
+			</p><div class="screen">
+[..]
+#
+# Certificados para comprobación de firmas
+#
+CONFIG_MODULE_SIG_KEY=""
+CONFIG_SYSTEM_TRUSTED_KEYRING=y
+CONFIG_SYSTEM_TRUSTED_KEYS="debian/certs/debian-uefi-certs.pem"
+# CONFIG_SYSTEM_EXTRA_CERTIFICATE is not set
+CONFIG_SECONDARY_TRUSTED_KEYRING=y
+CONFIG_SYSTEM_BLACKLIST_KEYRING=y
+CONFIG_SYSTEM_BLACKLIST_HASH_LIST=""
+# final de Certificados para comprobación de firmas
+[..]</div><p>
+				La creación de un kernel personalizado basado en estas configuraciones fallará si no existe <code class="filename">debian/certs/debian-uefi-certs.pem</code> . Este archivo puede obtenerse del repositorio Git del equipo del kernel y colocarse en el árbol de fuentes, o se puede reemplazar por tu(s) propio(s) certificado(s), o tendrás que deshabilitar la configuración a través de <code class="literal">CONFIG_SYSTEM_TRUSTED_KEYS=""</code>. </p><div class="url">→ <a class="ulink" href="https://salsa.debian.org/kernel-team/linux/-/blob/master/debian/certs/debian-uefi-certs.pem">https://salsa.debian.org/kernel-team/linux/-/blob/master/debian/certs/debian-uefi-certs.pem</a></div><p>
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.modules-build"/>8.10.5. Compilación de módulos externos</h2></div></div></div><a id="idm11817" class="indexterm"/><a id="idm11820" class="indexterm"/><a id="idm11825" class="indexterm"/><a id="idm11828" class="indexterm"/><a id="idm11831" class="indexterm"/><p>
+				Se mantienen algunos módulos fuera del núcleo Linux oficial. Para utilizarlos debe compilarlos junto al núcleo correspondiente. Debian provee algunos módulos de terceros comunes en paquetes dedicados, como <span class="pkg">vpb-driver-source</span> (módulos adicionales extra para el hardware de telefonía Voicetronix) o <span class="pkg">oss4-source</span> (controlador de placas PCEngines ALIX 2/3).
+			</p><a id="idm11838" class="indexterm"/><p>
+				Estos paquetes son muchos y variados, <span class="command"><strong>apt-cache rdepends module-assistant$</strong></span> puede mostrar la lista proporcionada por Debian. Sin embargo, una lista completa no es muy útil ya que no hay una razón particular para compilar módulos externos a menos que sepa que los necesita. En estos casos, la documentación del dispositivo típicamente detallará el o los módulos específicos que necesita para funcionar bajo Linux.
+			</p><a id="idm11845" class="indexterm"/><p>
+				Veamos, por ejemplo, el paquete <span class="pkg">dahdi-source</span>: luego de instalarlo podrá encontrar un compendio <code class="filename">.tar.bz2</code> de las fuentes del módulo en <code class="filename">/usr/src/</code>. Si bien podríamos extraer manualmente el archivo y compilar el módulo, en la práctica preferimos automatizarlo con DKMS (Dynamic Kernel Module Support). La mayoría de los módulos ofrecen la integración necesaria con DKMS en un paquete que finaliza con el sufijo <code class="literal">-dkms</code>. En nuestro caso, sólo necesitamos instalar el paquete <span class="pkg">dahdi-dkms</span> para compilar el módulo del núcleo para el núcleo actual, siempre que esté instalado el paquete <span class="pkg">linux-headers-*</span> que coincida con el núcleo instalado. Por ejemplo, si utiliza <span class="pkg">linux-image-amd64</span> debería instalar también <span class="pkg">linux-headers-amd64</span>.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>VISTA RÁPIDA</em></span> DKMS y Secure Boot</div></div></div></div><a id="idm11860" class="indexterm"/><a id="idm11862" class="indexterm"/><a id="idm11865" class="indexterm"/><a id="idm11868" class="indexterm"/><a id="idm11873" class="indexterm"/><p>
+				En sistemas UEFI con arranque seguro habilitado, los módulos requieren firma antes de que puedan cargarse. Los módulos enviados con los paquetes del núcleo están firmados. Pero los módulos externos no lo están. Afortunadamente, <span class="pkg">dkms</span> ya tiene todo lo que se requiere para firmar módulos construidos.
+			</p><p>
+				Primero, cree una clave privada <code class="filename">/root/dkms.key</code> y un certificado que coincida <code class="filename">/root/dkms.der</code> con <span class="command"><strong>openssl</strong></span>, y lo registra con la orden <span class="command"><strong>mokutil --import /root/dkms.der</strong></span> (ver <code class="filename">/usr/share/doc/dkms/README.md.gz</code> para más detalles). Esto requerirá reiniciar e importar activamente el certificado utilizando la interfaz EFI MOKManager. Una vez hecho esto, la línea <code class="literal">sign_tool</code> en <code class="filename">/etc/dkms/framework.conf</code> debe estar sin comentarios. Los módulos ya construidos deben reconstruirse, para ser firmados por el certificado recién creado e inscrito. Los nuevos módulos se firmarán automáticamente.
+			</p><a id="idm11886" class="indexterm"/><a id="idm11889" class="indexterm"/></div><hr class="delimit-sidebar"/><a id="idm11892" class="indexterm"/><a id="idm11897" class="indexterm"/><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>sudo apt install dahdi-dkms</code></strong>
+<code class="computeroutput">[...]
+Setting up dkms (2.8.4-3) ...
+Setting up linux-headers-5.10.0-8-amd64 (5.10.46-4) ...
+/etc/kernel/header_postinst.d/dkms:
+dkms: running auto installation service for kernel 5.10.0-8-amd64:.
+Setting up dahdi-dkms (1:2.11.1.0.20170917~dfsg-7.4) ...
+Loading new dahdi-2.11.1.0.20170917~dfsg-7.4 DKMS files...
+Building for 5.10.0-8-amd64
+Building initial module for 5.10.0-8-amd64
+Done.
+
+dahdi_dummy.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.10.0-8-amd64/updates/dkms/
+
+dahdi_dynamic_eth.ko:
+Running module version sanity check.
+ - Original module
+   - No original module exists within this kernel
+ - Installation
+   - Installing to /lib/modules/5.10.0-8-amd64/updates/dkms/
+
+[...]
+DKMS: install completed.
+$ </code><strong class="userinput"><code>sudo dkms status</code></strong>
+<code class="computeroutput">dahdi, 2.11.1.0.20170917~dfsg-7.4, 5.10.0-8-amd64, x86_64: installed
+$ </code><strong class="userinput"><code>sudo modinfo dahdi_dummy</code></strong>
+<code class="computeroutput">filename:       /lib/modules/5.10.0-8-amd64/updates/dkms/dahdi_dummy.ko
+license:        GPL v2
+author:         Robert Pleh &lt;robert.pleh@hermes.si&gt;
+description:    Timing-Only Driver
+depends:        dahdi
+retpoline:      Y
+name:           dahdi_dummy
+vermagic:       5.10.0-8-amd64 SMP mod_unload modversions 
+parm:           debug:int
+</code></div><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> module-assistant</div></div></div></div><a id="idm11911" class="indexterm"/><a id="idm11916" class="indexterm"/><a id="idm11919" class="indexterm"/><p>
+				Antes de DKMS, <span class="pkg">module-assistant</span> era la solución más simple para compilar y desplegar módulos del núcleo. Todavía puede utilizarlo, especialmente con paquetes que no poseen integración con DKMS: simplemente ejecutando <span class="command"><strong>module-assistant auto-install dadhi</strong></span> (o su versión corta: <span class="command"><strong>m-a a-i dahdi</strong></span>) se compilará el módulo para el núcleo actual, se creará un nuevo paquete Debian que lo contiene y se lo instalará automáticamente.
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.kernel-patch"/>8.10.6. Aplicación de un parche al núcleo</h2></div></div></div><a id="idm11930" class="indexterm"/><a id="idm11933" class="indexterm"/><p>
+				Algunas funcionalidades no están incluidas en el núcleo estándar debido a falta de madurez o algún desacuerdo con los encargados del núcleo. Dichas funcionalidades pueden ser distribuidas como parches que cualquiera puede aplicar a las fuentes del núcleo.
+			</p><p>
+				Debian a veces proporciona algunos de estos parches en paquetes <span class="pkg">linux-patch-*</span>, pero a veces no llegan a las publicaciones estables (a veces por las mismas razones por las que no son fusionados en el repositorio oficial del núcleo). Estos paquetes instalan archivos en el directorio <code class="filename">/usr/src/kernel-patches/</code>.
+			</p><p>
+				Para aplicar uno o más de estos parches instalados, utilice el programa <span class="command"><strong>patch</strong></span> en el directorio con las fuentes y luego inicie la compilación del núcleo como ya describimos. A continuación se muestra un ejemplo antiguo usando <span class="pkg">linux-patch-grsecurity2</span> and <span class="pkg">linux-source-4.9</span>.
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>cd ~/kernel/linux-source-4.9</code></strong>
+<code class="computeroutput">$ </code><strong class="userinput"><code>make clean</code></strong>
+<code class="computeroutput">$ </code><strong class="userinput"><code>zcat /usr/src/kernel-patches/diffs/grsecurity2/grsecurity-3.1-4.9.11-201702181444.patch.gz | patch -p1</code></strong></div><p>
+				Sepa que un parche dado no necesariamente funcionará con toda versión del núcleo; es posible que <span class="command"><strong>patch</strong></span> falle al aplicarlo en las fuentes del núcleo. Se mostrará un mensaje de error que provee algunos detalles del fallo; en este caso, revise la documentación disponible en el paquete Debian del parche (en el directorio <code class="filename">/usr/share/doc/linux-patch-*/</code>). En la mayoría de los casos, el desarrollador indica para qué versiones del núcleo está creado el parche.
+			</p></div></div></body></html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>11.6. Proxy HTTP/FTP</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Postfix, Apache, NFS, Samba, Squid, OpenLDAP, SIP, SSL, OpenDKIM, SPF" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.http-ftp-proxy"></a>11.6. Proxy HTTP/FTP</h1></div></div></div><a class="indexterm" id="idm19109"></a><a class="indexterm" id="idm19112"></a><a class="indexterm" id="idm19115"></a><a class="indexterm" id="idm19118"></a><p>
+			Un proxy HTTP/FTP funciona como intermediaro para conexiones HTTP y/o FTP. Su rol es doble:
+		</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+					Actuar como caché: los documentos que han sido descargados recientemente son copiados localmente para evitar múltiples descargas.
+				</li><li class="listitem">
+					Servidor de filtro: si el uso del proxy es obligatorio (y se bloquean las conexiones salientes a menos que sean a través del proxy), entonces el proxy puede determinar si se permite o no el pedido.
+				</li></ul></div><a class="indexterm" id="idm19127"></a><a class="indexterm" id="idm19129"></a><p>
+			Falcot Corp eligió a Squid como su servidor proxy.
+		</p><a class="indexterm" id="idm19132"></a><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm19134"></a>11.6.1. Instalación</h2></div></div></div><a class="indexterm" id="idm19136"></a><p>
+				The <span class="pkg">squid</span> Debian package only contains the modular (caching) proxy. Turning it into a filtering server requires installing the additional <span class="pkg">squidguard</span> package. In addition, <span class="pkg">squid-cgi</span> provides a querying and administration interface for a Squid proxy.
+			</p><p>
+				Antes de instalarlo, debe asegurarse que el sistema pueda identificar su propio nombre completo: <span class="command"><strong>hostname f</strong></span> debe devolver el nombre completamente calificado (incluyendo el dominio). Si no lo hace, entonces debe editar el archivo <code class="filename">/etc/hosts</code> para que contenga el nombre completo del sistema (por ejemplo, <code class="literal">arrakis.falcot.com</code>). El nombre oficial del equipo debe ser validado con el administrador de la red para evitar posibles conflictos de nombre.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm19147"></a>11.6.2. Configuración de un caché</h2></div></div></div><a class="indexterm" id="idm19149"></a><a class="indexterm" id="idm19153"></a><a class="indexterm" id="idm19157"></a><p>
+				Activar la funcionalidad de servidor de caché es tan simple como editar el archivo de configuración <code class="filename">/etc/squid/squid.conf</code> y permitir que las máquinas en la red local realicen consultas a través del proxy. El siguiente ejemplo muestra las modificaciones realizadas por los administradores de Falcot Corp:
+			</p><div class="example"><a id="idm19165"></a><div class="example-title">Ejemplo 11.22. El archivo <code class="filename">/etc/squid/squid.conf</code> (extractos)</div><div class="example-contents"><pre>
+# AGREGUE SUS PROPIAS REGLAS AQUÍ PARA PERMITIR ACCESO DE SUS CLIENTES
+#
+include /etc/squid/conf.d/*
+
+# Regla de ejemplo que permite acceso desde su red local. Adapte
+# red local en la sección ACL para incluir sus redes IP (internas)
+# desde las que se debe permitir navegar
+
+acl our_networks src 192.168.1.0/24 192.168.2.0/24
+http_access allow our_networks
+http_access allow localhost
+# Finalmente, negar todo otro acceso a este proxy
+http_access deny all
+</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm19169"></a>11.6.3. Configuración de un filtro</h2></div></div></div><p>
+<span class="command"><strong>squid</strong></span> por sí mismo no realiza el filtrado; esta acción es delegada a <span class="command"><strong>squidGuard</strong></span>. Debe configurar el primero para que interactúe con este último. Esto incluye agregar la siguiente directiva en el archivo <code class="filename">/etc/squid/squid.conf</code>:
+			</p><a class="indexterm" id="idm19175"></a><a class="indexterm" id="idm19178"></a><a class="indexterm" id="idm19182"></a><pre>
+url_rewrite_program /usr/bin/squidGuard -c /etc/squid/squidGuard.conf</pre><p>
+				The <code class="filename">/usr/lib/cgi-bin/squidGuard.cgi</code> CGI program also needs to be installed, using <code class="filename">/usr/share/doc/squidguard/examples/squidGuard.cgi</code> as a starting point. Required modifications to this script are the <code class="varname">$proxy</code> and <code class="varname">$proxymaster</code> variables (the name of the proxy and the administrator's contact email, respectively). The <code class="varname">$image</code> and <code class="varname">$redirect</code> variables should point to existing images representing the rejection of a query.
+			</p><p>
+				The filter is enabled with the <span class="command"><strong>systemctl reload squid</strong></span> command. However, since the <span class="pkg">squidguard</span> package does no filtering by default, it is the administrator's task to define the policy. This can be done by creating the <code class="filename">/etc/squid/squidGuard.conf</code> file (using <code class="filename">/etc/squidguard/squidGuard.conf.default</code> as template if required).
+			</p><a class="indexterm" id="idm19202"></a><p>
+				Debe regenerar la base de datos de trabajo con <span class="command"><strong>update-squidguard</strong></span> luego de cada modificación al archivo de configuración de <span class="command"><strong>squidGuard</strong></span> (o uno de las listas de dominios o URLs que menciona). La sintaxis del archivo de configuración se encuentra documentada en el siguiente sitio web: </p><div class="url">→ <a class="ulink" href="http://www.squidguard.org/Doc/configure.html">http://www.squidguard.org/Doc/configure.html</a></div><p>
+</p><a class="indexterm" id="idm19210"></a><a class="indexterm" id="idm19213"></a><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> E2guardian (una bifurcación de DansGuardian)</div></div></div></div><a class="indexterm" id="idm19220"></a><a class="indexterm" id="idm19222"></a><p>
+				The <span class="pkg">e2guardian</span> package, a DansGuardian fork, is an alternative to <span class="pkg">squidguard</span>. This software does not simply handle a blacklist of forbidden URLs, it can also take advantage of content and anti-virus scanning and it provides broad authentication support.
+			</p></div><hr class="delimit-sidebar"/></div></div></body></html>

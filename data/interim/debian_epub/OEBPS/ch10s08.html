@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>10.8. DHCP</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Red, Puerta de enlace, TCP/IP, IPv6, DNS, Bind, DHCP, QoS"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.dhcp"/>10.8. DHCP</h1></div></div></div><a id="idm16295" class="indexterm"/><a id="idm16298" class="indexterm"/><a id="idm16301" class="indexterm"/><a id="idm16304" class="indexterm"/><p>
+			DHCP (<span class="emphasis"><em>procolo de configuración dinámica de equipos</em></span>: «Dynamic Host Configuration Protocol») es un protocolo mediante el cual una máquina puede obtener su configuración de red automáticamente al iniciar. Esto permite centralizar la administración de las configuraciones de red y asegurar que todos los equipos de escritorio obtengan configuraciones similares.
+		</p><p>
+			Un servidor DHCP provee muchos parámetros relacionados con la red. Los más comunes son una dirección IP y la red a la que pertenece el equipo, pero también puede proveer otra información como servidores DNS, servidores WINS, servidores NTP y más.
+		</p><p>
+			El Internet Software Consortium (involucrado también en el desarrollo de <span class="command"><strong>bind</strong></span>) es el autor principal del servidor DHCP. El paquete Debian correspondiente es <span class="pkg">isc-dhcp-server</span>.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.dhcp-config"/>10.8.1. Configuración</h2></div></div></div><a id="idm16315" class="indexterm"/><a id="idm16318" class="indexterm"/><a id="idm16321" class="indexterm"/><a id="idm16324" class="indexterm"/><a id="idm16329" class="indexterm"/><p>
+				El primer elemento que necesita editar en los archivos de configuración del servidor DHCP (<code class="filename">/etc/dhcp/dhcpd.conf</code>, y <code class="filename">/etc/dhcp/dhcpd6.conf</code> para IPv6) son el nombre de dominio y servidores DNS. Si el servidor es el único en la red local (definido en la propagación de difusión), de activar (o descomentar) la directiva <code class="literal">authoritative</code>. También necesita crear una sección <code class="literal">subnet</code> (subred) describiendo la red local y la información de configuración que proveerá. El siguiente ejemplo define una red local <code class="literal">192.168.0.0/24</code> con un router en <code class="literal">192.168.0.1</code> como puerta de enlace. Las direcciones IP disponibles están en el rango <code class="literal">192.168.0.128</code> a <code class="literal">192.168.0.254</code>.
+			</p><div class="example"><a id="example.dhcp-dhcpd.conf"/><div class="example-title">Ejemplo 10.15. Extracto de <code class="filename">/etc/dhcp/dhcpd.conf</code></div><div class="example-contents"><div class="programlisting">
+#
+# Archivo de configuración de ejemplo para el dhcpd ISC para Debian
+#
+
+# El parámetro ddns-updates-style controla si el servidor intentará o no
+# una actualización de DNS cuando se confirme la asignación. Utilizamos
+# el comportamiento predeterminado de la versión 2 de paquetes ('none', 
+# ya que DHCP v2 no era compatible con DDNS).
+ddns-update-style interim;
+
+# Definición de opciones comunes a todas las redes...
+option domain-name "internal.falcot.com";
+option domain-name-servers ns.internal.falcot.com;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+# Si este servidor DHCP es el servidor DHCP oficial para la red local,
+# debe descomentar la directiva «authoritative».
+authoritative;
+
+# Utilice esto para enviar mensajes de registro dhcp a un archivo de
+# registro distinto (también deberá modificar syslog.conf para completar
+# la redirección).
+log-facility local7;
+
+# Mi subred
+subnet 192.168.0.0 netmask 255.255.255.0 {
+    option routers 192.168.0.1;
+    option broadcast-address 192.168.0.255;
+    range 192.168.0.128 192.168.0.254;
+    ddns-domainname "internal.falcot.com";
+}</div></div></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.dhcp-dns"/>10.8.2. DHCP y DNS</h2></div></div></div><a id="idm16349" class="indexterm"/><a id="idm16352" class="indexterm"/><a id="idm16355" class="indexterm"/><a id="idm16358" class="indexterm"/><p>
+				Una buena funcionalidad es el registro automatizado de clientes DHCP en la zona DNS para que cada máquina obtenga un nombre significativo (en lugar de algo impersonal como <code class="literal">maquina-192-168-0-131.internal.falcot.com</code>). Para utilizar esta funcionalidad necesita configurar el servidor DNS para que acepte actualizaciones de la zona DNS <code class="literal">internal.falcot.com</code> desde el servidor DHCP y configurar este último para que envíe actualizaciones para cada registración.
+			</p><p>
+				En el caso de <span class="command"><strong>bind</strong></span> (véase <a class="xref" href="ch10s07.html#sect.dns-software" title="10.7.1. Software DNS">Sección 10.7.1, “Software DNS”</a>), necesita agregar la directiva <code class="literal">allow-update</code> a cada una de las zonas que puede editar el servidor DHCP (sólo el dominio <code class="literal">internal.falcot.com</code> y su zona inversa). Esta directiva enumera las direcciones IP que pueden realizar estas actualizaciones; por lo tanto deberá incluir las posibles direcciones del servidor DHCP (tanto la dirección local como la dirección pública en caso que sea apropiado).
+			</p><div class="programlisting">
+allow-update { 127.0.0.1 192.168.0.1 212.94.201.10 !any };</div><p>
+				¡Tenga cuidado! Una zona que pueda ser modificada <span class="emphasis"><em>será</em></span> modificada por <span class="command"><strong>bind</strong></span>, y éste último sobreescribirá sus archivos de configuración en intervalos regulares. Debido a que este procedimiento automatizado genera archivos que son menos legibles que aquellos escritos manualmente, los administradores de Falcot administran el dominio <code class="literal">internal.falcot.com</code> con un servidor DNS delegado; esto significa que el archivo de la zona <code class="literal">falcot.com</code> se mantiene firmemente bajo su control manual.
+			</p><p>
+				El extracto de la configuración del servidor DHCP anterior ya incluye las directivas necesarias para las actualizaciones de la zona DNS: son las líneas <code class="literal">ddns-update-style interim;</code> y <code class="literal">ddns-domain-name "internal.falcot.com";</code>.
+			</p></div></div></body></html>

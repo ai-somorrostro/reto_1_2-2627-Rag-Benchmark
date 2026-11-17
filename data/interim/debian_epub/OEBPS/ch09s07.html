@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>9.7. Programación de tareas con cron y atd</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Arranque del sistema, Scripts de inicio, SSH, Telnet, Derechos, Permisos, Supervisión, Inetd, Cron, Respaldo, Conexión en caliente («hotplug»), PCMCIA, APM, ACPI"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.task-scheduling-cron-atd"/>9.7. Programación de tareas con <span class="command"><strong>cron</strong></span> y <span class="command"><strong>atd</strong></span></h1></div></div></div><a id="idm13982" class="indexterm"/><a id="idm13985" class="indexterm"/><a id="idm13988" class="indexterm"/><a id="idm13990" class="indexterm"/><p>
+			<span class="command"><strong>cron</strong></span> is the daemon responsible for executing scheduled and recurring commands (every hour, every day, every week, etc.). <span class="command"><strong>atd</strong></span> deals with commands to be executed a single time, but at a specific moment in the future.
+		</p><p>
+			En un sistema Unix, muchas tareas están programadas para ejecutarse regularmente:
+		</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+					rotar los archivos de registro;
+				</li><li class="listitem">
+					actualizar la base de datos del programa <span class="command"><strong>locate</strong></span>;
+				</li><li class="listitem">
+					respaldos;
+				</li><li class="listitem">
+					scripts de mantenimiento (como limpiar los archivos temporales).
+				</li></ul></div><a id="idm14006" class="indexterm"/><p>
+			De forma predeterminada, todos los usuarios pueden programar tareas para ejecutar. Cada usuario tiene su propio «<span class="emphasis"><em>crontab</em></span>» en el que pueden almacenarlas. Puede editarlo ejecutando <span class="command"><strong>crontab -e</strong></span> (el contenido del mismo es almacenado en el archivo <code class="filename">/var/spool/cron/crontabs/<em class="replaceable"><code>usuario</code></em></code>).
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SEGURIDAD</em></span> Restricción de <span class="command"><strong>cron</strong></span> o <span class="command"><strong>atd</strong></span></div></div></div></div><a id="idm14019" class="indexterm"/><a id="idm14026" class="indexterm"/><a id="idm14033" class="indexterm"/><a id="idm14040" class="indexterm"/><p>
+			Puede restringir el acceso a <span class="command"><strong>crontab</strong></span> creanso un archivo de autorización explícita (una lista blanca) en <code class="filename">/etc/cron.allow</code>, donde indique sólo los usuarios autorizados a programar tareas. Todos los demás quedarán automáticamente excluidos de dicha funcionalidad. A la inversa, si sólo desea bloquear unos pocos usuarios problemáticos, podría agregar sus nombres de usuario en el archivo de prohibición explícita (blacklist), <code class="filename">/etc/cron.deny</code>. Esta misma funcionalidad está disponible para <span class="command"><strong>atd</strong></span> con los archivos <code class="filename">/etc/at.allow</code> y <code class="filename">/etc/at.deny</code>. (también descrita en las páginas del manual).
+		</p></div><hr class="delimit-sidebar"/><a id="idm14054" class="indexterm"/><a id="idm14059" class="indexterm"/><p>
+			El usuario root tiene su propio «<span class="emphasis"><em>crontab</em></span>», pero también puede utilizar el archivo <code class="filename">/etc/crontab</code> o escribir archivos «<span class="emphasis"><em>crontab</em></span>» adicionales en el directorio <code class="filename">/etc/cron.d</code>. Estas dos últimas soluciones tienen la ventaja de poder especificar el usuario bajo el que se ejecutará el programa.
+		</p><p>
+			De forma predeterminada, el paquete <span class="emphasis"><em>cron</em></span> incluye algunas tareas programadas que ejecutan:
+		</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem"><a id="idm14073" class="indexterm"/>
+					programas en el directorio <code class="filename">/etc/cron.hourly/</code> una vez por hora;
+				</li><li class="listitem"><a id="idm14081" class="indexterm"/>
+					programas en el directorio <code class="filename">/etc/cron.daily/</code> una vez por día;
+				</li><li class="listitem"><a id="idm14089" class="indexterm"/>
+					programas en el directorio <code class="filename">/etc/cron.weekly/</code> una vez por semana;
+				</li><li class="listitem"><a id="idm14097" class="indexterm"/>
+					programas en el directorio <code class="filename">/etc/cron.monthly/</code> una vez por mes.
+				</li></ul></div><p>
+			Muchos paquetes Debian dependen de este servicio: agregan sus scripts de mantenimiento en estos directorios, los cuales garantizan un funcionamiento óptimo de sus servicios.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.format-crontab"/>9.7.1. Formato de un archivo <code class="filename">crontab</code></h2></div></div></div><a id="idm14108" class="indexterm"/><a id="idm14113" class="indexterm"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SUGERENCIA</em></span> Atajos de texto para <span class="command"><strong>cron</strong></span></div></div></div></div><p>
+				<span class="command"><strong>cron</strong></span> reconoce algunas abreviaciones que reemplazan los primeros cinco campos de un elemento de <code class="filename">crontab</code>. Corresponden a las opciones de programación más comunes:
+			</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+						<code class="literal">@yearly</code>: una vez por año (1 de Enero a las 00:00);
+					</li><li class="listitem">
+						<code class="literal">@monthly</code>: una vez por mes (el 1ro de mes a las 00:00);
+					</li><li class="listitem">
+						<code class="literal">@weekly</code>: una vez por semana (Domingo a las 00:00);
+					</li><li class="listitem">
+						<code class="literal">@daily</code>: una vez por día (a las 00:00);
+					</li><li class="listitem">
+						<code class="literal">@hourly</code>: una vez por hora (al principio de cada hora).
+					</li></ul></div><p>
+				Se reconocen más abreviaturas, como <code class="literal">@reboot</code>o <code class="literal">@midnight</code>.
+			</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CASO ESPECIAL</em></span> <span class="command"><strong>cron</strong></span> y horarios de verano</div></div></div></div><p>
+				En Debian, <span class="command"><strong>cron</strong></span> tiene en cuenta los cambios de hora (para horarios de verano o, de hecho, cualquier cambio importante en la hora local) de la mejor forma que le es posible. Por lo tanto, las tareas que deben ejecutarse durante una hora que nunca existió (por ejemplo: aquellas programadas para las 02:30 durante el cambio de horario de verano en Francia, ya que el reloj salta de las 02:00 a las 03:00 directamente) se ejecutarán poco después del cambio de hora (por lo tanto, alrededor de las 03:00 DST). Por otro lado, en otoño, las tareas serán ejecutadas sólo una vez cuando podrían ser ejecutadas varias veces (a las 02:30 DST y luego a las 02:30 en horario estándar ya que a las 03:00 DST el reloj vuelve a las 02:00).
+			</p><p>
+				Tenga cuidado, sin embargo, si el orden y el tiempo entre ejecuciones de tareas programadas importa. Debe revisar la compatibilidad de estas limitaciones con el comportamiento de <span class="command"><strong>cron</strong></span>; si es necesario, puede preparar una programación especial para las dos noches problemáticas del año.
+			</p></div><hr class="delimit-sidebar"/><p>
+				Cada línea significativa de un archivo <code class="filename">crontab</code> describe una tarea programada con los siguientes seis (o siete) campos:
+			</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+						the value for the minute (from 0 to 59);
+					</li><li class="listitem">
+						el valor de la hora (de 0 a 23);
+					</li><li class="listitem">
+						el valor del día del mes (de 1 a 31);
+					</li><li class="listitem">
+						el valor del mes (de 1 a 12);
+					</li><li class="listitem">
+						el valor de los días de la semana (de 0 a 7, donde 1 es el lunes y el domingo es tanto el 0 como el 7; también es posible utilizar las tres primeras letras del nombre del día en inglés, como <code class="literal">Sun</code>, <code class="literal">Mon</code>, etc.);
+					</li><li class="listitem">
+						el nombre de usuario bajo el que se ejecutará el programa (en el archivo <code class="filename">/etc/crontab</code> y en los fragmentos ubicados en <code class="filename">/etc/cron.d/</code>, pero no en los archivos de cada usuario);
+					</li><li class="listitem">
+						el programa a ejecutar (cuando se cumpla la condición definida por los primeros cinco campos).
+					</li></ul></div><p>
+				Todos estos detalles están documentados en la página de manual <span class="citerefentry"><span class="refentrytitle">crontab</span>(5)</span>.
+			</p><p>
+				Cada valor se puede expresar como una lista de valores posibles (separados por coma). La sintaxis <code class="literal">a-b</code> describe el intervalo de todos los valores entre <code class="literal">a</code> y <code class="literal">b</code>. La sintaxis <code class="literal">a-b/c</code> describe el intervalo con un incremento de <code class="literal">c</code> (por ejemplo: <code class="literal">0-10/2</code> es lo mismo que <code class="literal">0,2,4,6,8,10</code>. Un asterisco «<code class="literal">*</code>» es un comodín y representa todos los valores posibles.
+			</p><div class="example"><a id="example.crontab"/><div class="example-title">Ejemplo 9.2. Ejemplo de archivo <code class="filename">crontab</code> de usuario</div><div class="example-contents"><div class="programlisting">#Formato
+#min hora dia mes dds    command
+
+# Descargar los datos todas las noches a las 19:25
+ 25  19   *   *   *    $HOME/bin/get.pl
+
+# 08:00 en días de semana (Lunes a Viernes)
+ 00  08   *   *   1-5  $HOME/bin/dosomething
+
+# cada dos horas
+ *  */2   *   *   *    $HOME/bin/dosomethingelse
+
+# Reiniciar el proxy IRC luego de cada reinicio
+@reboot /usr/bin/dircproxy</div></div></div><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SUGERENCIA</em></span> Ejecución de un programa durante el inicio</div></div></div></div><a id="idm14193" class="indexterm"/><p>
+				Para ejecutar un programa sólo una vez, justo después de iniciar el equipo, puede utilizar el macro <code class="literal">@reboot</code> (reiniciar <span class="command"><strong>cron</strong></span> no disparará aquello programado con <code class="literal">@reboot</code>). Este macro reemplaza los primeros cinco campos de un elemento en el archivo «<span class="emphasis"><em>crontab</em></span>».
+			</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> Emulación de <span class="command"><strong>cron</strong></span> mediante <span class="command"><strong>systemd</strong></span></div></div></div></div><p>
+				Es posible emular parte del comportamiento de <span class="command"><strong>cron</strong></span> mediante el mecanismo de temporizadores de <span class="command"><strong>systemd</strong></span> (ver <a class="xref" href="ch09.html#sect.systemd" title="9.1.1. El sistema de inicio systemd">Sección 9.1.1, “El sistema de inicio systemd”</a>).
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.at-command"/>9.7.2. Utilización del programa <span class="command"><strong>at</strong></span></h2></div></div></div><a id="idm14215" class="indexterm"/><p>
+				La orden <span class="command"><strong>at</strong></span> ejecuta un programa en un momento específico en el futuro. Toma el tiempo y la fecha deseados como parámetros de línea de comandos, y el comando a ejecutar en su entrada estándar. Ejecutará el programa como si hubiese ingresado en la consola. <span class="command"><strong>at</strong></span> incluso se encarga de mantener el entorno para poder reproducir las mismas condiciones al ejecutar el programa. Se indica se configura siguiendo las convenciones normales: <code class="literal">16:12</code> o <code class="literal">4:12pm</code> representan las 4 y 12 minutosde la tarde. Se puede especificar la fecha en varios formatos europeos u occidentales, incluyendo <code class="literal">DD.MM.AA</code> (<code class="literal">27.07.15</code> representaría el 27 de Julio de 2015), <code class="literal">AAAA-MM-DD</code> (la misma fecha se representaría como <code class="literal">2015-07-27</code>), <code class="literal">MM/DD/[CC]AA</code> (es decir: <code class="literal">12/25/15</code> o <code class="literal">12/25/2015</code> representan, ambas, el 25 de Diciembre de 2015) o simplemente <code class="literal">MMDDCCAA</code> (de forma que <code class="literal">122515</code> o <code class="literal">12252015</code> también representaría el 25 de Diciembre de 2015). Sin fecha, ejecutará el programa tan pronto como el reloj indique la hora especificada (el mismo día o el siguiente si ya pasó dicha hora ese día). También puede ingresar simplemente «today» o «tomorrow» representando el día actual o el día siguiente, respectivamente.
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>at 09:00 27.07.22 &lt;&lt;END</code></strong>
+<code class="computeroutput">&gt; </code><strong class="userinput"><code>echo "Don't forget to wish a Happy Birthday to Raphaël!" \</code></strong>
+<code class="computeroutput">&gt; </code><strong class="userinput"><code>  | mail lolando@debian.org</code></strong>
+<code class="computeroutput">&gt; </code><strong class="userinput"><code>END</code></strong>
+<code class="computeroutput">warning: commands will be executed using /bin/sh
+job 1 at Wed Jul 27 09:00:00 2022</code></div><p>
+				Una sintaxis alternativa posterga la ejecución por un tiempo determinado: <span class="command"><strong>at now + <em class="replaceable"><code>número</code></em> <em class="replaceable"><code>período</code></em></strong></span>. El <em class="replaceable"><code>período</code></em> puede ser <code class="literal">minutes</code> (minutos), <code class="literal">hours</code> (horas), <code class="literal">days</code> (días) o <code class="literal">weeks</code> (semanas). <em class="replaceable"><code>número</code></em> simplemente indica la cantidad de dichas unidades deben pasar antes de ejecutar el programa.
+			</p><p>
+				Para cancelar una tarea programada con <span class="command"><strong>cron</strong></span>, simplemente ejecute <span class="command"><strong>crontab -e</strong></span> y elimine la línea correspondiente del archivo <span class="emphasis"><em>crontab</em></span>. Para tareas en <span class="command"><strong>at</strong></span> es casi igual de sencillo: ejecute <span class="command"><strong>atrm <em class="replaceable"><code>número-tarea</code></em></strong></span>. El número de tarea es indicado por <span class="command"><strong>at</strong></span> cuando la programó, pero puede volver a encontrarla ejecutando <span class="command"><strong>atq</strong></span> que le proveerá una lista de las tareas programadas actualmente.
+			</p><a id="idm14262" class="indexterm"/><a id="idm14265" class="indexterm"/><a id="idm14268" class="indexterm"/></div></div></body></html>

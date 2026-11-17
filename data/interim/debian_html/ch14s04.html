@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>14.4. Introducción a AppArmor</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Firewall, Netfilter, nftables, IDS/NIDS" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.apparmor"></a>14.4. Introducción a AppArmor</h1></div></div></div><a class="indexterm" id="idm24058"></a><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.apparmor-principles"></a>14.4.1. Principios</h2></div></div></div><a class="indexterm" id="idm24062"></a><a class="indexterm" id="idm24064"></a><a class="indexterm" id="idm24067"></a><a class="indexterm" id="idm24069"></a><p>
+				Apparmor es un sistema de <span class="emphasis"><em>control obligatorio de acceso</em></span> («Mandatory Access Control» o «MAC») basado en la interfaz LSM (<span class="emphasis"><em>módulos de seguridad de Linux</em></span>: «Linux Security Modules»). En la práctica, el núcleo pregunta a AppArmor antes de cada llamada del sistema para saber si un proceso está autorizado a realizar dicha operación. A través de este mecanismo, Apparmor confina un programa a un conjunto limitado de recursos.
+			</p><p>
+				AppArmor aplica un conjunto de reglas (un «perfil») a cada programa. El perfil aplicado por el núcleo depende de la ruta de instalación del programa a ejecutar. Al contrario que en SELinux (descrito en <a class="xref" href="ch14s05.html" title="14.5. Introducción a SELinux">Sección 14.5, “Introducción a SELinux”</a>), las reglas que se aplican no dependen del usuario: a todos los usuarios se les aplica el mismo juego de reglas cuando ejecutan el mismo programa (aunque en cualquier caso siguen teniéndose en cuenta los permisos de usuario tradicionales, lo que puede resultar en un comportamiento distinto).
+			</p><p>
+				Los perfiles de AppArmor se guardan en <code class="filename">/etc/apparmor.d/</code> y contienen una lista de reglas de control de acceso sobre los recursos que puede utilizar cada programa. Los perfiles se compilan y son cargados por el núcleo por la orden <span class="command"><strong>apparmor_parser</strong></span>. Cada perfil se puede cargar bien en modo estrícto (<span class="foreignphrase"><em class="foreignphrase">enforcing</em></span>) o bien en modo relajado (<span class="foreignphrase"><em class="foreignphrase">complaining</em></span>). El modo estricto aplica las reglas y registra las tentativas de violación, mientras que en el modo relajado sólo se registran las llamadas al sistema que hubieran sido bloqueadas, pero no se bloquean realmente.
+			</p><a class="indexterm" id="idm24082"></a></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.apparmor-setup"></a>14.4.2. Activar AppArmour y gestionar los perfiles</h2></div></div></div><a class="indexterm" id="idm24089"></a><p>
+				El soporte de AppArmor está ya integrado en los núcleos estándares proporcionados por Debian. Para activar AppArmor basta con instalar algunos paquetes ejecutando <span class="command"><strong>apt install apparmor apparmor-profiles apparmor-utils</strong></span> con privilegios de superusuario.
+			</p><p>
+				Después de la instalación AppArmor estará operativo, y <span class="command"><strong>aa-status</strong></span> lo confirmará rápidamente:
+			</p><pre>
+# aa-status
+apparmor module is loaded.
+32 profiles are loaded.
+15 profiles are in enforce mode.
+   /usr/bin/man
+[...]
+17 profiles are in complain mode.
+   /usr/sbin/dnsmasq
+[...]
+1 processes have profiles defined.
+1 processes are in enforce mode.
+   /usr/sbin/libvirtd (468) libvirtd
+0 processes are in complain mode.
+0 processes are unconfined but have a profile defined.</pre><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>NOTA</em></span> Otros perfiles de AppArmor</div></div></div></div><a class="indexterm" id="idm24103"></a><p>
+				El paquete <span class="pkg">apparmor-profiles</span> contiene perfiles desarrollados por la comunidad de origen de AppArmor. Para obtener más perfiles es posible instalar <span class="pkg">apparmor-profiles-extra</span>, que contiene perfiles adicionales desarrollados por Ubuntu y Debian.
+			</p></div><hr class="delimit-sidebar"/><a class="indexterm" id="idm24109"></a><a class="indexterm" id="idm24112"></a><a class="indexterm" id="idm24115"></a><p>
+				El estado de cada perfil se puede cambair entre los modos estricto y relajado mediante las órdenes <span class="command"><strong>aa-enforce</strong></span> y <span class="command"><strong>aa-complain</strong></span>, pasándoles como parámetro bien la ruta del ejecutable o la ruta del archivo de perfil. De igual manera se puede desactivar completamente un perfil mediante <span class="command"><strong>aa-disable</strong></span>, o establecerlo en el modo de auditoría (de forma que registre incluso las llamadas del sistema aceptadas) mediante <span class="command"><strong>aa-audit</strong></span>.
+			</p><pre>
+# aa-enforce /usr/bin/pidgin
+Setting /usr/bin/pidgin to enforce mode.
+# aa-complain /usr/sbin/dnsmasq
+Setting /usr/sbin/dnsmasq to complain mode.</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.apparmor-new-profile"></a>14.4.3. Creación de un nuevo perfil</h2></div></div></div><p>
+				A pesar de que crear un perfil AppArmor es bastante sencillo, la mayoría de los programas no disponen de uno. Esta sección muestra cómo crear un nuevo perfil desde cero, símplemente utilizando el programa deseado y dejando que AppArmor monitorice las llamadas al sistema que realiza y los recursos a los que accede.
+			</p><a class="indexterm" id="idm24133"></a><p>
+				Los programas que deben ser confinados de forma prioritaria son aquellos expuestos a la red, puesto que estos serán los blancos más probables para atacantes remotos. Precisamente por eso AppArmor proporciona la orden <span class="command"><strong>aa-unconfined</strong></span>, que lista los programas que exponen al menos un zócalo de red (NT: ¿mejor puerto de red?) sin tener ningún perfil asociado. Con la opción <code class="literal">--paranoid</code> se obtienen todos los procesos que tienen activa al menos una conexión de red y no están confinados.
+			</p><pre>
+# aa-unconfined
+451 /usr/bin/containerd not confined
+467 /usr/sbin/sshd (sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups) not confined
+892 /usr/sbin/exim4 not confined
+</pre><p>
+				In the following example, we will thus try to create a profile for <span class="command"><strong>/sbin/dhclient</strong></span> (there already is a profile shipped by <span class="pkg">apparmor-profiles</span>, so you can compare your results to the official one). For this we will use <span class="command"><strong>aa-genprof dhclient</strong></span>. It will invite you to use the application in another window and when done to come back to <span class="command"><strong>aa-genprof</strong></span> to scan for AppArmor events in the system logs and convert those logs into access rules. For each logged event, it will make one or more rule suggestions that you can either approve or further edit in multiple ways:
+			</p><pre>
+# aa-genprof dhclient
+Writing updated profile for /usr/sbin/dhclient.
+Setting /usr/sbin/dhclient to complain mode.
+
+Before you begin, you may wish to check if a
+profile already exists for the application you
+wish to confine. See the following wiki page for
+more information:
+https://gitlab.com/apparmor/apparmor/wikis/Profiles
+
+Profiling: /usr/sbin/dhclient
+
+Please start the application to be profiled in
+another window and exercise its functionality now.
+
+Once completed, select the "Scan" option below in 
+order to scan the system logs for AppArmor events. 
+
+For each AppArmor event, you will be given the 
+opportunity to choose whether the access should be 
+allowed or denied.
+
+[(S)can system log for AppArmor events] / (F)inish
+S
+Reading log entries from /var/log/syslog.
+
+Profile:  /usr/sbin/dhclient 
+Execute:  /usr/sbin/dhclient-script
+Severity: unknown
+
+(I)nherit / (C)hild / (P)rofile / (N)amed / (U)nconfined / (X) ix On / (D)eny / Abo(r)t / (F)inish
+P
+
+Should AppArmor sanitise the environment when
+switching profiles?
+
+Sanitising environment is more secure,
+but some applications depend on the presence
+of LD_PRELOAD or LD_LIBRARY_PATH.
+
+[(Y)es] / (N)o
+Y
+Writing updated profile for /usr/sbin/dhclient-script.
+Complain-mode changes:
+
+Profile:    /usr/sbin/dhclient 
+Capability: net_raw
+Severity:   8
+
+ [1 - capability net_raw,]
+(A)llow / [(D)eny] / (I)gnore / Audi(t) / Abo(r)t / (F)inish
+A
+Adding capability net_raw, to profile.
+
+Profile:    /usr/sbin/dhclient
+Capability: net_bind_service
+Severity:   8
+
+ [1 - #include &lt;abstractions/nis&gt;]
+  2 - capability net_bind_service,
+(A)llow / [(D)eny] / (I)gnore / Audi(t) / Abo(r)t / (F)inish
+A
+Adding #include &lt;abstractions/nis&gt; to profile.
+
+Profile:  /usr/sbin/dhclient 
+Path:     /etc/ssl/openssl.cnf
+New Mode: owner r
+Severity: 2
+
+ [1 - #include &lt;abstractions/lightdm&gt;]
+  2 - #include &lt;abstractions/openssl&gt;
+  3 - #include &lt;abstractions/ssl_keys&gt;
+  4 - owner /etc/ssl/openssl.cnf r,
+(A)llow / [(D)eny] / (I)gnore / (G)lob / Glob with (E)xtension / (N)ew / Audi(t) / (O)wner permissions off / Abo(r)t / (F)inish
+2
+
+Profile:  /usr/sbin/dhclient
+Path:     /etc/ssl/openssl.cnf
+New Mode: owner r
+Severity: 2
+
+  1 - #include &lt;abstractions/lightdm&gt; 
+ [2 - #include &lt;abstractions/openssl&gt;]
+  3 - #include &lt;abstractions/ssl_keys&gt;
+  4 - owner /etc/ssl/openssl.cnf r, 
+[(A)llow] / (D)eny / (I)gnore / (G)lob / Glob with (E)xtension / (N)ew / Abo(r)t / (F)inish / (M)ore
+A
+[...]
+Profile:  /usr/sbin/dhclient-script 
+Path:     /usr/bin/dash
+New Mode: owner r
+Severity: unknown
+
+  1 - #include &lt;abstractions/gvfs-open&gt;
+ [2 - #include &lt;abstractions/lightdm&gt;]
+  3 - #include &lt;abstractions/ubuntu-browsers.d/plugins-common&gt;
+  4 - #include &lt;abstractions/xdg-open&gt;
+  5 - owner /usr/bin/dash r,
+(A)llow / [(D)eny] / (I)gnore / (G)lob / Glob with (E)xtension / (N)ew / Audi(t) / (O)wner permissions off / Abo(r)t / (F)inish
+A
+Adding #include &lt;abstractions/lightdm&gt; to profile.
+Deleted 2 previous matching profile entries.
+
+= Changed Local Profiles =
+
+The following local profiles were changed. Would you like to save them?
+
+ [1 - /usr/sbin/dhclient]
+  2 - /usr/sbin/dhclient-script
+(S)ave Changes / Save Selec(t)ed Profile / [(V)iew Changes] / View Changes b/w (C)lean profiles / Abo(r)t
+S
+Writing updated profile for /usr/sbin/dhclient.
+Writing updated profile for /usr/sbin/dhclient-script.
+
+Profiling: /usr/sbin/dhclient
+
+Please start the application to be profiled in
+another window and exercise its functionality now.
+
+Once completed, select the "Scan" option below in
+order to scan the system logs for AppArmor events.
+
+For each AppArmor event, you will be given the
+opportunity to choose whether the access should be
+allowed or denied.
+
+[(S)can system log for AppArmor events] / (F)inish
+F
+Setting /usr/sbin/dhclient to enforce mode.
+Setting /usr/sbin/dhclient-script to enforce mode.
+
+Reloaded AppArmor profiles in enforce mode.
+
+Please consider contributing your new profile!
+See the following wiki page for more information:
+https://gitlab.com/apparmor/apparmor/wikis/Profiles
+
+Finished generating profile for /usr/sbin/dhclient.</pre><p>
+				Note that the program does not display back the control characters that you type but for the clarity of the explanation we have included them in the previous transcript.
+			</p><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top"><p><a href="#aa-genprof-execute"><span><img alt="1" src="images/callouts/1.png"/></span></a> </p></td><td align="left" valign="top"><p>
+						El primer evento detectado es la ejecución de otro programa. En este caso se ofrecen varias opciones: puede lanzar el programa con el perfil del programa padre (“Inherit”), con un perfil dedicado (“Profile” o “Name”, que sólo se diferencian por la posibilidad de elegir un nombre de perfil arbitrario), con un sub-perfil del proceso padre (“Child”), o bien puede lanzar sin nigún perfil (“Unconfined”). También puede impedir que el programa se ejecute (“Deny”).
+					</p><p>
+						Cuando se elije lanzar el proceso hijo con un perfil de dedicado que no exista aún, la herramienta creará el perfil que falta y propondrá sugerencias de reglas en la misma sesión de trabajo.
+					</p></td></tr><tr><td align="left" valign="top"><p><a href="#aa-genprof-capability"><span><img alt="2" src="images/callouts/2.png"/></span></a> </p></td><td align="left" valign="top"><p>
+						A nivel del núcelo, los permisos especiales del usuario root se han separado en "capacidades" («capabilities»). Cuando una llamada del sistema requiere una capacidad específica, AppArmor verifica que el perfil permite al programa utilizar esta capacidad.
+					</p></td></tr><tr><td align="left" valign="top"><p><a href="#aa-genprof-read"><span><img alt="3" src="images/callouts/3.png"/></span></a> </p></td><td align="left" valign="top"><p>
+						Aquí el programa requiere el permiso de lectura sobre el archivo <code class="filename">/etc/ssl/openssl.cnf</code>. <span class="command"><strong>aa-genprof</strong></span> ha detectado que este permiso ya se había concedido por varias «abstracciones» y las ofrece como alternativas posibles. Una abstracción proporciona un conjunto reutilizable de reglas de control de acceso, agrupando reglas que duelen utilizarse conjuntamente. En este caso específico el archivo se utiliza normalmente por las funciones relativas a la resolución de nombres de la biblioteca estándar C, y por lo tanto elegimos la opcion «2» para incluir la opción «#include &lt;abstractions/openssl&gt; » y después «A» para autorizarlo.
+					</p></td></tr><tr><td align="left" valign="top"><p><a href="#aa-genprof-other-profile"><span><img alt="4" src="images/callouts/4.png"/></span></a> </p></td><td align="left" valign="top"><p>
+						Hay que tener en cuenta que este intento de acceso no forma parte del perfil dhclient, sino del nuevo perfil que hemos creado cuando hemos autorizado a <code class="filename">/usr/sbin/dhclient-script</code> para que funcione bajo el suyo propio.
+					</p><p>
+						Después de examinar todos los eventos registrados, el programa propone guardar todos los perfiles que se han creado durante la ejecución. En este caso tenemos dos perfiles que guardamos simultáneamente mediante «Save» antes de cerrar el programa con «Finish» (pero podríamos igualmente haberlos guardados individualmente).
+					</p></td></tr></table></div><a class="indexterm" id="idm24181"></a><a class="indexterm" id="idm24184"></a><p>
+<span class="command"><strong>aa-genprof</strong></span> no es sino un pequeño script inteligente que utiliza <span class="command"><strong>aa-logprof</strong></span>: crea un perfil vacío, lo carga en modo relajado y después ejecuta <span class="command"><strong>aa-logprof</strong></span>. Esta última es una utilidad que actualiza un perfil en función de las violaciones que han sido registradas. Por lo tanto se puede volver a ejecutar esta herramienta para mejorar el perfil que se ha creado.
+			</p><p>
+				If you want the generated profile to be complete, you should use the program in all the ways that it is legitimately used. In the case of dhclient, it means running it via Network Manager, running it via ifupdown, running it manually, etc. In the end, you might get a <code class="filename">/etc/apparmor.d/usr.sbin.dhclient</code> close to the profile shipped by <span class="pkg">apparmor-profiles</span> in <code class="filename">/usr/share/apparmor/extra-profiles/sbin.dhclient</code>.
+			</p><a class="indexterm" id="idm24195"></a><p>
+				And <code class="filename">/etc/apparmor.d/usr.sbin.dhclient-script</code> might be similar to <code class="filename">/usr/share/apparmor/extra-profiles/sbin.dhclient</code>, shipped in <span class="pkg">apparmor-profiles</span> too.
+			</p></div></div></body></html>

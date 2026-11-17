@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>10.7. Servidores de nombres de dominio (DNS)</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Red, Puerta de enlace, TCP/IP, IPv6, DNS, Bind, DHCP, QoS" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.domain-name-servers"></a>10.7. Servidores de nombres de dominio (DNS)</h1></div></div></div><a class="indexterm" id="idm16085"></a><a class="indexterm" id="idm16087"></a><a class="indexterm" id="idm16090"></a><a class="indexterm" id="idm16093"></a><p>
+			The <span class="emphasis"><em>Domain Name Service</em></span> (DNS) is a fundamental component of the Internet: it maps host names to IP addresses (and vice-versa), which allows the use of <code class="literal">www.debian.org</code> instead of <code class="literal">130.89.148.77</code> or <code class="literal">2001:67c:2564:a119::77</code>.
+		</p><p>
+			Los registros DNS se organizan en zonas; cada zona coincide con un dominio (o subdominio) o un rango de direcciones IP (ya que generalmente se proveen direcciones IP en rangos consecutivos). Un servidor primario es autoridad sobre los contenidos de una zona; los servidores secundarios, generalmente en otras máquinas, proveen copias de la zona primaria actualizadas regularmente.
+		</p><a class="indexterm" id="idm16102"></a><a class="indexterm" id="idm16105"></a><a class="indexterm" id="idm16108"></a><p>
+			Cada zona puede contener registros de varios tipos (<span class="emphasis"><em>registros de recursos</em></span>: «Resource Records»), estos son algunos de los más comunes:
+		</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+<code class="literal">A</code> (<span class="emphasis"><em>address record</em></span>): IPv4 address. This is the most common form to point a domain to an IPv4 address.
+				<a class="indexterm" id="idm16118"></a></li><li class="listitem">
+<code class="literal">CNAME</code> (<span class="emphasis"><em>canonical name record</em></span>): alias
+				<a class="indexterm" id="idm16127"></a></li><li class="listitem">
+<code class="literal">MX</code>: <span class="emphasis"><em>intercambio de correo</em></span> («mail exchange»), un servidor de correo. Los otros servidores de correo utilizan esta información para encontrar a dónde redirigir los emails enviados a una dirección particular. Cada registro MX tiene una prioridad. Primero se intenta el servidor con mayor prioridad, con el menor número (ver el recuadro <a class="xref" href="ch11.html#sidebar.smtp" title="VOLVER A LOS CIMIENTOS SMTP"><span class="emphasis"><em>VOLVER A LOS CIMIENTOS</em></span> SMTP</a>); se contactan los demás servidores en orden decreciente de prioridad si el primero no responde.
+				<a class="indexterm" id="idm16137"></a></li><li class="listitem">
+<code class="literal"> PTR </code> (<span class="emphasis"><em>pointer </em></span>): asignación de una dirección IP a un nombre. Dicho registro se almacena en una zona de "DNS inverso" con el nombre del rango de direcciones IP. Por ejemplo, <code class="literal">1.168.192.in-addr.arpa </code> es la zona que contiene la asignación inversa para todas las direcciones en el rango <code class="literal">192.168.1.0/24</code>.
+				<a class="indexterm" id="idm16148"></a></li><li class="listitem">
+<code class="literal">AAAA</code> (<span class="emphasis"><em>IPv6 address record</em></span>): dirección IPv6.
+				<a class="indexterm" id="idm16157"></a></li><li class="listitem">
+<code class="literal">NS</code> (<span class="emphasis"><em>name server</em></span>): asocia un nombre con un servidor de nombres. Cada dominio debe tener al menos un registro NS. Estos registros apuntan al servidor DNS que puede responder consultas sobre este dominio; generalmente apuntan a los servidores primarios y secundarios del dominio. Estos registros también permiten delegaciones de DNS; por ejemplo, la zona <code class="literal">falcot.com</code> puede incluir un registro NS para <code class="literal">internal.falcot.com</code>, lo que significa que otro servidor administra la zona <code class="literal">internal.falcot.com</code>. Por supuesto, este servidor debe declarar una zona <code class="literal">internal.falcot.com</code>.
+				<a class="indexterm" id="idm16170"></a></li></ul></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.dns-software"></a>10.7.1. Software DNS</h2></div></div></div><a class="indexterm" id="idm16177"></a><a class="indexterm" id="idm16179"></a><a class="indexterm" id="idm16182"></a><a class="indexterm" id="idm16185"></a><p>
+				The reference name server, Bind, was developed and is maintained by ISC (the <span class="emphasis"><em>Internet Software Consortium</em></span>). It is provided in Debian by the <span class="pkg">bind9</span> package. Version 9 brings two major changes compared to previous versions. First, the DNS server can now run under an unprivileged user, so that a security vulnerability in the server does not grant root privileges to the attacker (as was seen repeatedly with versions 8.x).
+			</p><p>
+				Lo que es más, Bind es compatible con el estándar DNSSEC para firmar (y, por lo tanto, autenticar) registros DNS, lo que permite bloquear datos apócrifos durante ataques con intermediarios («man-in-the-middle»).
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CULTURA</em></span> DNSSEC</div></div></div></div><a class="indexterm" id="idm16198"></a><a class="indexterm" id="idm16200"></a><a class="indexterm" id="idm16203"></a><p>
+				La normativa DNSSEC es bastante compleja; esto explica parcialmente por qué no es utilizada ampliamente aún (aún si puede coexistir perfectamente con servidores DNS que no conozcan de DNSSEC). Para entender los recovecos debería revisar el siguiente artículo. </p><div class="url">→ <a class="ulink" href="https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions">https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions</a></div><p>
+</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.dns-config"></a>10.7.2. Configurando bind</h2></div></div></div><a class="indexterm" id="idm16211"></a><a class="indexterm" id="idm16214"></a><a class="indexterm" id="idm16217"></a><p>
+				Archivos de configuración de <span class="command"><strong>bind</strong></span>, sin importar su versión, tienen la misma estructura.
+			</p><p>
+				Los administradores de Falcot crearon una zona primaria <code class="literal">falcot.com</code> para almacenar información relacionada con este dominio y una zona <code class="literal">168.192.in-addr.arpa</code> para la asociación inversa de direcciones IP en las redes locales.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>PRECAUCIÓN</em></span> Nombres de zonas inversas</div></div></div></div><a class="indexterm" id="idm16229"></a><a class="indexterm" id="idm16232"></a><a class="indexterm" id="idm16234"></a><a class="indexterm" id="idm16237"></a><a class="indexterm" id="idm16240"></a><a class="indexterm" id="idm16243"></a><p>
+				Las zonas inversas tiene un nombre particular. La zona que cubre la red <code class="literal">192.168.0.0/16</code> necesita llamarse <code class="literal">168.192.in-addr.arpa</code>: se invierten los componentes de la dirección IP seguidos del sufijo <code class="literal">in-addr.arpa</code>.
+			</p><p>
+				Para redes IPv6, el sufijo es <code class="literal">ip6.arpa</code> y los componentes de la dirección IP, invertidos, son cada caracter de la dirección IP en su representación hexadecimal completa. Por ejemplo, la red <code class="literal">2001:0bc8:31a0::/48</code> podría utilizar una red llamada <code class="literal">0.a.1.3.8.c.b.0.1.0.0.2.ip6.arpa</code>.
+			</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SUGERENCIA</em></span> Pruebas del servidor DNS</div></div></div></div><a class="indexterm" id="idm16256"></a><p>
+				El programa <span class="command"><strong>host</strong></span> (en el paquete <span class="pkg">bind9-host</span>) consulta un servidor DNS y puede utilizarse para probar la configuración del servidor. Por ejemplo, <span class="command"><strong>host maquina.falcot.com localhost</strong></span> revisa la respuesta del servidor local a la consulta por <code class="literal">maquina.falcot.com</code>. <span class="command"><strong>host <em class="replaceable"><code>direccion.ip</code></em> localhost</strong></span> prueba la resolución inversa.
+			</p></div><hr class="delimit-sidebar"/><a class="indexterm" id="idm16266"></a><p>
+				Los siguientes extractos de configuración, de los archivos de Falcot, pueden servirle como punto de partida para configurar un servidor DNS:
+			</p><div class="example"><a id="example.bind-named.conf.local"></a><div class="example-title">Ejemplo 10.12. Extracto de <code class="filename">/etc/bind/named.conf.local</code></div><div class="example-contents"><pre>
+zone "falcot.com" {
+        type master;
+        file "/etc/bind/db.falcot.com";
+        allow-query { any; };
+        allow-transfer {
+                195.20.105.149/32 ; // ns0.xname.org
+                193.23.158.13/32 ; // ns1.xname.org
+        };
+};
+
+zone "internal.falcot.com" {
+        type master;
+        file "/etc/bind/db.internal.falcot.com";
+        allow-query { 192.168.0.0/16; };
+};
+
+zone "168.192.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.192.168";
+        allow-query { 192.168.0.0/16; };
+};</pre></div></div><div class="example"><a id="example.bind-db.falcot.com"></a><div class="example-title">Ejemplo 10.13. Extracto de <code class="filename">/etc/bind/db.falcot.com</code></div><div class="example-contents"><pre>; Zona falcot.com 
+; admin.falcot.com. =&gt; contacto de la zona: admin@falcot.com
+$TTL    604800
+@       IN      SOA     falcot.com. admin.falcot.com. (
+                        20040121        ; Serial
+                         604800         ; Refresco
+                          86400         ; Reintento
+                        2419200         ; Expiración
+                         604800 )       ; TTL de caché negativo
+;
+; El @ hace referencia al nombre de la zona («falcot.com» aquí)
+; o a $ORIGIN (origen) si se utilizó esta directiva
+;
+@       IN      NS      ns
+@       IN      NS      ns0.xname.org.
+
+internal IN      NS      192.168.0.2
+
+@       IN      A       212.94.201.10
+@       IN      MX      5 mail
+@       IN      MX      10 mail2
+
+ns      IN      A       212.94.201.10
+mail    IN      A       212.94.201.10
+mail2   IN      A       212.94.201.11
+www     IN      A       212.94.201.11
+
+dns     IN      CNAME   ns</pre></div></div><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>PRECAUCIÓN</em></span> Sintaxis de un nombre</div></div></div></div><p>
+				La sintaxis de los nombres de máquinas deben adherirse a reglas estrictas. Por ejemplo, <code class="literal">maquina</code> implica <code class="literal">maquina.<em class="replaceable"><code>dominio</code></em></code>. Si no se debe agregar el nombre de dominio a un nombre, debe escribir dicho nombre como <code class="literal">maquina.</code> (con un punto de sufijo). Por lo tanto, indicar un nombre DNS fuera del dominio actual necesita una sintaxis como <code class="literal">maquina.otrodominio.com.</code> (con el punto final).
+			</p></div><hr class="delimit-sidebar"/><div class="example"><a id="example.bind-db.192.168"></a><div class="example-title">Ejemplo 10.14. Extracto de <code class="filename">/etc/bind/db.192.168</code></div><div class="example-contents"><pre>; Zona inversa para 192.168.0.0/16
+; admin.falcot.com. =&gt; contacto de la zona: admin@falcot.com
+$TTL    604800
+@       IN      SOA     ns.internal.falcot.com. admin.falcot.com. (
+                        20040121        ; Serial
+                         604800         ; Refresco
+                          86400         ; Reintento
+                        2419200         ; Expiración
+                         604800 )       ; TTL de caché negativo
+
+        IN      NS      ns.internal.falcot.com.
+
+; 192.168.0.1 -&gt; arrakis
+1.0     IN      PTR     arrakis.internal.falcot.com.
+; 192.168.0.2 -&gt; neptune
+2.0     IN      PTR     neptune.internal.falcot.com.
+
+; 192.168.3.1 -&gt; pau
+1.3     IN      PTR     pau.internal.falcot.com.</pre></div></div></div></div></body></html>

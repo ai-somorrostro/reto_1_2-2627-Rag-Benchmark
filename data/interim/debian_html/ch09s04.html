@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>9.4. Interfaces de administración</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Arranque del sistema, Scripts de inicio, SSH, Telnet, Derechos, Permisos, Supervisión, Inetd, Cron, Respaldo, Conexión en caliente («hotplug»), PCMCIA, APM, ACPI" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.administration-interfaces"></a>9.4. Interfaces de administración</h1></div></div></div><a class="indexterm" id="idm13490"></a><a class="indexterm" id="idm13493"></a><p>
+			Utilizar una interfaz gráfica para administración es interesante en varias circunstancias. Un administrador no conoce, necesariamente, todos los detalles de la configuración de todos los servicios, y no siempre tendrá tiempo de revisar la documentación correspondiente. Una interfaz gráfica para administración puede, entonces, acelerar el despliegue de un nuevo servicio. También puede simplificar la instalación de servicios que son difíciles de configurar.
+		</p><p>
+			Estas interfaces son sólo ayudas y no un fin en sí mismo. En todos los casos el administrador debe dominar su comportamiento para entender y evitar cualquier problema potencial.
+		</p><p>
+			Debido a que ninguna interfaz es perfecta, puede estar tentado de probar varias soluciones. Debe evitar esto tanto como sea posible ya que, a veces, el método funcionamiento de las diferentes herramientas es incompatible. Aunque todas intentan ser muy flexibles e intentan adoptar el archivo de configuración como única referencia, no siempre pueden integrar cambios externos.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.webmin"></a>9.4.1. Administración en una interfaz web: <span class="command"><strong>webmin</strong></span></h2></div></div></div><a class="indexterm" id="idm13501"></a><a class="indexterm" id="idm13504"></a><p>
+				Esta es, sin lugar a dudas, una de las interfaces de administración más existosas. Es un sistema modular administrador a través de un servidor web, que incluye un amplio rango de áreas y herramientas. Lo que es más, está internacionalizada y está diponible en muchos idiomas.
+			</p><div class="figure"><a id="idm13509"></a><div class="figure-title">Figura 9.5. Panel Webmin</div><div class="figure-contents"><div class="mediaobject"><img alt="Panel Webmin" src="images/webmin.png"/></div></div></div><p>
+				Lamentablemente <span class="command"><strong>webmin</strong></span> ya no es parte de Debian. Su mantenedor en Debian — Jaldhar H. Vyas — eliminó los paquetes que creó porque ya no tenía el tiempo necesario para mantenerlos en un nivel de calidad aceptable. Nadie asumió ese trabajo oficialmente, por lo que Debian no suministra el paquete <span class="command"><strong>webmin</strong></span>.
+			</p><p>
+				Existe, sin embargo, un paquete no oficial distribuido en el sitio web <code class="literal">webmin.com</code>. A diferencia de los paquetes Debian originales, este paquete es monolítico; de forma predeterminada se instalan y activan todos sus módulos de configuración, aún si el servicio correspondiente no está instalado en el equipo.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SEGURIDAD</em></span> Modificación de la contraseña de root</div></div></div></div><p>
+				En el primer inicio de sesión debe identificarse con el usuario root y su contraseña habitual (o los datos de inicio de sesión de cualquier usuario que pertenezca al grupo <code class="literal">sudo</code>) . Es recomendable cambiar la contraseña que utiliza para <span class="command"><strong>webmin</strong></span> tan pronto como sea posible, de forma que aunque ésta pueda verse comprometida, las cuentas de usuario del servidor no se vean implicadas, aunque esto confiera importantes derechos administrativos a la máquina.
+			</p><p>
+				¡Cuidado! Dado que <span class="command"><strong>webmin</strong></span> posee tanta funcionalidad, un usuario malicioso que acceda a él puede comprometer la seguridad de todo el sistema. En general, no se recomiendan este tipo de interfaces para sistemas importantes con fuertes limitaciones de seguridad (firewall, servidores sensibles, etc.), y tampoco se recomienda que se expongan al público.
+			</p></div><hr class="delimit-sidebar"/><p>
+				Webmin se utiliza a través de una interfaz web, pero no necesita instalar Apache. Esencialmente, este software tiene su propio miniservidor web integrado. De forma predeterminada, este servidor escucha en el puerto 10000 y acepta conexiones HTTP seguras.
+			</p><p>
+				Los módulos incluidos cubren una amplia variedad de servicios, entre ellos:
+			</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+						all base services: creation of users and groups, management of <code class="filename">crontab</code> files, service scripts/files, viewing of logs, etc.
+					</li><li class="listitem">
+						bind: configuración del servidor DNS (servicio de nombres);
+					</li><li class="listitem">
+						postfix: configuración del servidor SMTP (correo electrónico);
+					</li><li class="listitem">
+						servicios de red: configuración del super-servidor <span class="command"><strong>xinetd</strong></span>;
+					</li><li class="listitem">
+						quota de disco: administración de cuotas de usuario;
+					</li><li class="listitem">
+						dhcpd: configuración del servidor DHCP;
+					</li><li class="listitem">
+						prpftpd: configuración del servidor FTP;
+					</li><li class="listitem">
+						samba: configuración del servidor de archivos Samba;
+					</li><li class="listitem">
+						software: instalación o eliminación de software desde paquetes Debian y actualizaciones de sistema.
+					</li></ul></div><p>
+				La interfaz de administración está disponible a través de un navegador en <code class="literal">https://localhost:10000</code>. ¡Cuidado! No podrá utilizar directamente todos los módulos. Deberá configurar algunos especificando la ubicación de los archivos de configuración correspondiente y algunos archivos ejecutables (programas). Frecuentemente el sistema le pedirá esa información cuando no pueda activar un módulo que solicite.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> Centro de control de GNOME («Control Center»)</div></div></div></div><a class="indexterm" id="idm13555"></a><p>
+				El proyecto GNOME también provee varias interfaces de administración, a las que generalmente puede acceder a través del elemento «Preferencias» en el menú del usuario en la esquina superior derecha. <span class="command"><strong>gnome-control-center</strong></span> es el programa principal que las unifica, pero muchas de las herramientas de configuración del sistema en general son provistas efectivamente por otros paquetes (<span class="pkg">accountsservice</span>, <span class="pkg">system-config-printer</span>, etc.). Aunque son fáciles de utilizar, sólo cubren una cantidad limitada de servicios básicos: gestión de usuarios, configuración de fecha y hora, configuración de red, configuración de impresión, etc..
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.debconf"></a>9.4.2. Configuración de paquetes: <span class="command"><strong>debconf</strong></span></h2></div></div></div><a class="indexterm" id="idm13565"></a><a class="indexterm" id="idm13570"></a><p>
+				Después de realizar unas pocas preguntas durante la instalación a través de Debconf, muchos paquetes se configuran automáticamente. Se pueden reconfigurar estos paquetes ejecutando <span class="command"><strong>dpkg-reconfigure -p<em class="replaceable"><code>level</code></em> <em class="replaceable"><code>paquete</code></em></strong></span>.
+			</p><p>
+				En la mayoría de los casos, estas configuraciones son muy simples; sólo modifican unas pocas variables importantes en el archivo de configuración. Generalmente se agrupan estas variables entre dos líneas de «demarcación» para que la reconfiguración del paquete sólo afecte el área entre ellas. En otros casos, la reconfiguración no realizará cambios si el script detecta una modificación manual del archivo de configuración para preservar estas intervenciones humanas (debido a que el script no puede asegurar que sus propias modificaciones no afectarán la configuración existente).
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>NORMATIVA DEBIAN</em></span> Preservación de cambios</div></div></div></div><a class="indexterm" id="idm13583"></a><a class="indexterm" id="idm13586"></a><p>
+				La Normativa Debian estipula expresamente que se debe hacer todo para preservar los cambios manuales en los archivos de configuración, por lo que más y más scripts toman precauciones al editar archivos de configuración. El principio general es simple: el script sólo realizará cambios si conoce el estado del archivo de configuración, lo que controla comparando la suma de verificación del archivo con la del último archivo generado automáticamente. Si son iguales, el script está autorizado a realizar cambios en el archivo de configuración. De lo contrario, determina que el archivo fue modificado y pregunta por la acción a tomar (instalar el nuevo archivo, guardar el archivo existente o intentar integrar los nuevos cambios en el archivo actual). Este principio de precaución es, desde hace tiempo, exclusivo de Debian pero otras distribuciones gradualmente comenzaron a aceptarlo.
+			</p><a class="indexterm" id="idm13590"></a><p>
+				Puede utilizar el programa <span class="command"><strong>ucf</strong></span> (en el paquete Debian del mismo nombre) para implementar este comportamiento.
+			</p></div><hr class="delimit-sidebar"/></div></div></body></html>

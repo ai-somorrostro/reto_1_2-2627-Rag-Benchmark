@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>9.6. El superservidor inetd</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Arranque del sistema, Scripts de inicio, SSH, Telnet, Derechos, Permisos, Supervisión, Inetd, Cron, Respaldo, Conexión en caliente («hotplug»), PCMCIA, APM, ACPI" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.inetd"></a>9.6. El superservidor <span class="command"><strong>inetd</strong></span></h1></div></div></div><p>
+			Inetd (frecuentemente llamado «superservidor de internet») es un servidor de servidores. Ejecuta a pedido servidores rara vez utilizados para que no tengan que ejecutar continuamente.
+		</p><a class="indexterm" id="idm13825"></a><a class="indexterm" id="idm13829"></a><p>
+			El archivo <code class="filename">/etc/inetd.conf</code> enumera estos servidores y sus puertos usuales. El programa <span class="command"><strong>inetd</strong></span> escucha en todos estos puertos y cuando detecta una conexión a uno de ellos ejecuta el programa servidor correspondiente.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>DEBIAN POLICY</em></span> Registrar un servidor en <code class="filename">/etc/inetd.conf</code></div></div></div></div><a class="indexterm" id="idm13838"></a><a class="indexterm" id="idm13845"></a><a class="indexterm" id="idm13849"></a><p>
+			Frecuentemente los paquetes desean registrar un nuevo servidor en el archivo <code class="filename">/etc/inetd.conf</code>, pero la Normativa Debian prohíbe que un paquete modifique un archivo de configuración que no le pertenece. Es por esto que se creó el script <span class="command"><strong>updated-inetd</strong></span> (en el paquete del mismo nombre): este script administra el archivo de configuración y otros paquetes pueden utilizarlo para registrar un nuevo servidor en la configuración del superservidor.
+		</p></div><hr class="delimit-sidebar"/><p>
+			Cada línea significativa del archivo <code class="filename">/etc/inetd.conf</code> describe un servidor con siete campos (separados con espacios):
+		</p><a class="indexterm" id="idm13859"></a><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+					El número de puerto TCP o UDP o el nombre del servicio (asociado con un número de puerto estándar con la información en el archivo <code class="filename">/etc/services</code>).
+				<a class="indexterm" id="idm13866"></a></li><li class="listitem">
+					El tipo de zócalo: <code class="literal">stream</code> para una conexión TCP, <code class="literal">dgram</code> para datagramas UDP.
+				</li><li class="listitem">
+					El protocolo: <code class="literal">tcp</code>, <code class="literal">tcp6</code>, <code class="literal">udp</code>, o <code class="literal">udp6</code>.
+				</li><li class="listitem">
+					Las opciones: dos valores posibles, <code class="literal">wait</code> o <code class="literal">nowait</code> para indicarle a <span class="command"><strong>inetd</strong></span> si debe esperar o no a que el proceso ejecutado finalice antes de aceptar una nueva conexión. Para conexiones TCP, fáciles de gestionar simultáneamente, utilizará generalmente <code class="literal">nowait</code>. Para programas que respondan sobre UDP debería utilizar <code class="literal">nowait</code> sólo si el servidor es capaz de gestionar varias conexiones en paralelo. Puede agregar un punto al final de este campo seguido de la cantidad máxima de conexiones autorizadas por minuto (el límite predeterminado es 256).
+				</li><li class="listitem">
+					El nombre del usuario bajo el que ejecutará el servidor.. Opcionalmente se puede añadir el grupo también usando la sintaxis <code class="literal">user.group</code>.
+				</li><li class="listitem">
+					La ruta completa al programa del servidor a ejecutar.
+				</li><li class="listitem">
+					Los parámetros: esta es una lista completa de los parámetros del programa, incluyendo su propio nombre (<code class="literal">argv[0]</code> en C).
+				</li></ul></div><p>
+			El siguiente ejemplo muestra algunos casos de uso después de la instalación <span class="pkg">talkd</span>, <span class="pkg">nullidentd</span> (<span class="pkg">ident-server</span>), y <span class="pkg">fingerd</span>:
+		</p><div class="example"><a id="example.inetd-conf"></a><div class="example-title">Ejemplo 9.1. Extracto de <code class="filename">/etc/inetd.conf</code></div><div class="example-contents"><pre>#:BSD: Shell, login, exec and talk are BSD protocols.
+talk   dgram   udp     wait    nobody.tty   /usr/sbin/in.talkd      in.talkd
+ntalk  dgram   udp     wait    nobody.tty   /usr/sbin/in.ntalkd     in.ntalkd
+
+#:INFO: Info services
+ident  stream  tcp     nowait  nobody       /usr/sbin/nullidentd    nullidentd
+finger stream  tcp     nowait  nobody       /usr/sbin/tcpd          /usr/sbin/in.fingerd
+</pre></div></div><a class="indexterm" id="idm13905"></a><a class="indexterm" id="idm13908"></a><p>
+			Frecuentemente se utiliza el programa <span class="command"><strong>tcpd</strong></span> en el archivo <code class="filename">/etc/inetd.conf</code>. Permite limitar las conexiones entrantes aplicando reglas de control de acceso, documentadas en la página del manual <span class="citerefentry"><span class="refentrytitle">hosts_access</span>(5)</span>, y que puede configurar en los archivos <code class="filename">/etc/hosts.allow</code> y <code class="filename">/etc/hosts.deny</code>. Una vez que determinado que la conexión está autorizada, <span class="command"><strong>tcpd</strong></span> ejecuta el servidor real (en el ejemplo: <span class="command"><strong>in.fingerd</strong></span>). Vale la pena aclarar que <span class="command"><strong>tcpd</strong></span> necesita el nombre con el que se le invoca (que es el primer parámetro: <code class="literal">argv[0]</code>) para identificar el programa real a ejecutar. No debería iniciar la lista de parámetros con <code class="literal">tcpd</code> sino con el programa subyacente.
+		</p><a class="indexterm" id="idm13924"></a><a class="indexterm" id="idm13929"></a><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>COMUNIDAD</em></span> Wietse Venema</div></div></div></div><a class="indexterm" id="idm13937"></a><a class="indexterm" id="idm13939"></a><p>
+			Wietse Venema, programador reconocido por su experiencia sobre seguridad, es el autor del programa <span class="command"><strong>tcpd</strong></span>. También es el creador principal de Postfix, el servidor de correo modular (SMTP, protocolo simple de transferencia de correo: «Simple Mail Transfer Protocol»), diseñado para ser más seguro y confiable que <span class="command"><strong>sendmail</strong></span> que tiene una larga historia de vulnerabilidades de seguridad. Podemos conocer mejor este servidor de correos en <a class="xref" href="ch11.html#sect.smtp-mail-server" title="11.1. Servidor de correo">Sección 11.1, “Servidor de correo”</a>.
+		</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> Otros programas <span class="command"><strong>inetd</strong></span></div></div></div></div><a class="indexterm" id="idm13949"></a><a class="indexterm" id="idm13953"></a><p>
+			Si bien Debian instala <span class="pkg">openbsd-inetd</span> de forma predeterminada, no faltan alternativas: podemos mencionar <span class="pkg">inetutils-inetd</span>, <span class="pkg">rlinetd</span>, y <span class="pkg">xinetd</span>, que todos proporcionan el paquete virtual <span class="pkg">inet-superserver</span>.
+		</p><a class="indexterm" id="idm13963"></a><p>
+			La mayoría de estas alternativas comparten el mismo archivo de configuración <code class="filename">/etc/inetd.conf</code>.
+		</p><p>
+			Esta última muestra de un superservidor ofrece posibilidades muy interesantes. Notablemente, se puede dividir su configuración en varios archivos (almacenados, por supuesto, en el directorio <code class="filename">/etc/xinetd.d/</code>), lo que puede hacer más sencilla la vida del administrador. Se considera más poderoso, pero también más complejo.
+		</p><p>
+			Por último, pero no menos importante, es posible emular el comportamiento de <span class="command"><strong>inetd</strong></span> con el mecanismo de activación de zócalos de <span class="command"><strong>systemd</strong></span> (ver <a class="xref" href="ch09.html#sect.systemd" title="9.1.1. El sistema de inicio systemd">Sección 9.1.1, “El sistema de inicio systemd”</a>).
+		</p></div><hr class="delimit-sidebar"/></div></body></html>

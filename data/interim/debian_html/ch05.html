@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Paquete binario, Paquete fuente, paquete, dpkg, deb, dependencias, conflicto" name="keywords"/></head><body><div class="chapter" xml:lang="es-ES"><div class="titlepage"><div><div><h1 class="title"><a id="packaging-system"></a>Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales</h1></div></div></div><div class="highlights"><p>
+		Como un administrador de un sistema Debian generalmente manejará paquetes <code class="filename">.deb</code> ya que contienen unidades funcionales consistentes (aplicaciones, documentación, etc.) facilitando su instalación y mantenimiento. Por lo tanto, es buena idea saber qué son y cómo utilizarlos.
+	</p></div><p>
+		Este capítulo describe la estructura y los contenidos de paquetes «binarios» y «fuente». Los primeros son archivos utilizables directamente con <span class="command"><strong>dpkg</strong></span>, mientras que los últimos contienen el código fuente así como las instrucciones para crear los paquetes binarios.
+	</p><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.binary-package-structure"></a>5.1. Estructura de un paquete binario</h1></div></div></div><a class="indexterm" id="idm3002"></a><a class="indexterm" id="idm3007"></a><a class="indexterm" id="idm3010"></a><p>
+			El formato del paquete Debian fue diseñado para que su contenido pueda ser extraído en cualquier sistema Unix que tenga los programas clásicos <span class="command"><strong>ar</strong></span>, <span class="command"><strong>tar</strong></span> y <span class="command"><strong>xz</strong></span>, o a veces <span class="command"><strong>gzip</strong></span> o <span class="command"><strong>bzip2</strong></span>. Esta propiedad aparentemente trivial es importante para portabilidad y recuperación en caso de desastres.
+		</p><p>
+			Imagine por ejemplo que eliminó por error el programa <span class="command"><strong>dpkg</strong></span> y que, por lo tanto, ya no puede instalar paquetes Debian. Siendo <span class="command"><strong>dpkg</strong></span> un paquete en sí mismo pareciera como que su sistema estuviese condenado... afortunadamente conoce el formato de un paquete y puede <a class="ulink" href="https://www.debian.org/distrib/packages#search_packages">descargar</a> el archivo <code class="filename">.deb</code> para el paquete <span class="pkg">dpkg</span> e instalarlo manualmente (revise el recuadro <a class="xref" href="ch05.html#sidebar.dpkg-apt-ar" title="HERRAMIENTAS dpkg, APT y ar"><span class="emphasis"><em>HERRAMIENTAS</em></span> <span class="command"><strong>dpkg</strong></span>, <span class="command"><strong>APT</strong></span> y <span class="command"><strong>ar</strong></span></a>). Si por cualquier motivo o problema uno o más de los programas <span class="command"><strong>ar</strong></span>, <span class="command"><strong>tar</strong></span> o <span class="command"><strong>gzip</strong></span>/<span class="command"><strong>xz</strong></span>/<span class="command"><strong>bzip2</strong></span> desaparecieron sólo necesitará copiar el programa faltante de otro sistema (ya que cada uno de ellos funciona de forma completamente autónoma una simple copia bastará). Si su sistema sufre algun evento de peor fortuna e incluso esto no funciona (¿quizás a su sistema le falten bibliotecas a más bajo nivel?), debería intentar la versión estática del programa <span class="command"><strong>busybox</strong></span> (incluido en el paquete <span class="pkg">busybox-static</span>), el cual es inclusive más autocontenido y proporciona órdenes como <span class="command"><strong>busybox ar</strong></span>, <span class="command"><strong>busybox tar</strong></span> y <span class="command"><strong>busybox xz</strong></span>.
+		</p><p>
+<span class="emphasis"><em>En caso de error más vale que también tengas una copia de seguridad de tu sistema (véase <a class="xref" href="ch09s10.html" title="9.10. Respaldo">Sección 9.10, “Respaldo”</a>).</em></span>
+</p><hr class="delimit-sidebar"/><div class="sidebar"><a id="sidebar.dpkg-apt-ar"></a><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>HERRAMIENTAS</em></span> <span class="command"><strong>dpkg</strong></span>, <span class="command"><strong>APT</strong></span> y <span class="command"><strong>ar</strong></span></div></div></div></div><a class="indexterm" id="idm3045"></a><a class="indexterm" id="idm3048"></a><a class="indexterm" id="idm3051"></a><a class="indexterm" id="idm3054"></a><a class="indexterm" id="idm3060"></a><p>
+<span class="command"><strong>dpkg</strong></span> es el programa que maneja los archivos <code class="filename">.deb</code> (paquetes binarios), en particular los extrae, analiza y descomprime.
+		</p><p>
+<acronym class="acronym">APT</acronym> (las siglas de Advanced Packaging Tool) es un grupo de programas que permite la ejecución de modificaciones de más alto nivel al sistema: instalar o eliminar un paquete (mientras mantiene dependencias satisfechas), actualizar la lista de paquetes (<span class="command"><strong>apt update</strong></span>) y actualizar el sistema (<span class="command"><strong>apt upgrade</strong></span>), listar los paquetes disponibles, etc.
+		</p><p>
+			Al igual que el programa <span class="command"><strong>ar</strong></span>, proporcionado por el paquete <span class="pkg">binutils</span>, permite gestionar archivos del mismo nombre:
+		</p><a class="indexterm" id="idm3073"></a><a class="indexterm" id="idm3075"></a><a class="indexterm" id="idm3077"></a><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+<span class="command"><strong>ar t <em class="replaceable"><code>archivo</code></em></strong></span> muestra la lista de archivos contenidos en dicho archivo,
+				</li><li class="listitem">
+<span class="command"><strong>ar x <em class="replaceable"><code>archivo</code></em></strong></span> extrae los ficheros del archivo al directorio de trabajo actual,
+				</li><li class="listitem">
+<span class="command"><strong>ar d <em class="replaceable"><code>archivo</code></em> <em class="replaceable"><code>fichero</code></em></strong></span> borra un fichero del archivo, etc.
+				</li></ul></div><p>
+			Su página de manual <span class="citerefentry"><span class="refentrytitle">ar</span>(1)</span> documenta todas sus demás características. <span class="command"><strong>ar</strong></span> es una herramienta muy rudimentaria que un administrador de Unix sólo usaría en raras ocasiones, pero los administradores utilizan habitualmente <span class="command"><strong>tar</strong></span>, un programa de gestión de archivos y ficheros más evolucionado. Por eso es fácil restaurar <span class="command"><strong>dpkg</strong></span> en caso de una eliminación errónea. Sólo tendrías que descargar el paquete Debian y extraer el contenido del archivo <code class="filename">data.tar.xz</code> en la raíz del sistema (<code class="filename">/</code>):
+		</p><pre>
+# ar x dpkg_1.20.9_amd64.deb
+# tar -C / -p -xJf data.tar.xz</pre></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>VOLVER A LOS CIMIENTOS</em></span> Notación de páginas de manual</div></div></div></div><p>
+			Los principiantes pueden encontrar confusas las referencias como «<span class="citerefentry"><span class="refentrytitle">ar</span>(1)</span>» en la literatura. Generalmente esta es una forma conveniente de referirse a la página de manual titulada <code class="literal">ar</code> en la sección 1.
+		</p><p>
+			Algunas veces se utiliza esta notación para eliminar ambigüedades, por ejemplo para distinguir entre el programa <span class="command"><strong>printf</strong></span>, que también puede indicarse como <span class="citerefentry"><span class="refentrytitle">printf</span>(1)</span>, y la función <code class="function">printf</code> del lenguaje de programación C, que también puede indicarse como <span class="citerefentry"><span class="refentrytitle">printf</span>(3)</span>.
+		</p><p>
+			El <a class="xref" href="ch07.html" title="Capítulo 7. Resolución de problemas y búsqueda de información relevante">Capítulo 7, <em>Resolución de problemas y búsqueda de información relevante</em></a> discute las páginas de manual con más detalles (revise la <a class="xref" href="ch07.html#sect.manual-pages" title="7.1.1. Páginas de manual">Sección 7.1.1, “Páginas de manual”</a>).
+		</p></div><hr class="delimit-sidebar"/><p>
+			Estos son los contenidos de un archivo <code class="filename">.deb</code>:
+		</p><pre>$ ar t dpkg_1.20.9_amd64.deb
+debian-binary
+control.tar.gz
+data.tar.xz
+$ ar x dpkg_1.20.9_amd64.deb
+$ ls
+control.tar.gz  data.tar.xz  debian-binary  dpkg_1.20.9_amd64.deb
+$ tar tJf data.tar.xz | head -n 16
+./
+./etc/
+./etc/alternatives/
+./etc/alternatives/README
+./etc/cron.daily/
+./etc/cron.daily/dpkg
+./etc/dpkg/
+./etc/dpkg/dpkg.cfg
+./etc/dpkg/dpkg.cfg.d/
+./etc/logrotate.d/
+./etc/logrotate.d/alternatives
+./etc/logrotate.d/dpkg
+./sbin/
+./sbin/start-stop-daemon
+./usr/
+./usr/bin/
+$ tar tJf control.tar.xz
+./
+./conffiles
+./control
+./md5sums
+./postrm
+$ cat debian-binary
+2.0</pre><p>
+			Como puede ver, el compendio <span class="command"><strong>ar</strong></span> de un paquete Debian contiene tres archivos:
+		</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="filename">debian-binary</code></span></dt><dd><p>
+						Es un archivo de texto que indica simplemente la versión del archivo de formato de versión de paquete <code class="filename">.deb</code> utilizado. En Debian <span class="distribution">Bullseye</span> sigue siendo la versión 2.0.
+					</p></dd><dt><span class="term"><code class="filename">control.tar.xz</code></span></dt><dd><p>
+						Este compendio contiene toda la metainformación disponible, como el nombre y la versión del paquete, así como algunos «scripts» para ejecutar antes, durante o después de la desinstalación o instalación de este. Alguna de esta metainformación le permite a las herramientas de gestión de paquetes determinar si es posible instalar o desinstalarlo, por ejemplo, según la lista de paquetes que ya se encuentran en el equipo, y si archivos incluidos han sido modificados localmente.
+					</p></dd><dt><span class="term"><code class="filename">data.tar.xz</code>, </span><span class="term"><code class="filename">data.tar.bz2</code>, </span><span class="term"><code class="filename">data.tar.gz</code></span></dt><dd><p>
+						Este compendio contiene todos los archivos a extraerse del paquete; aquí es donde están almacenados los archivos ejecutables, las bibliotecas, la documentación etc. Los paquetes pueden utilizar formatos de compresión diferentes; en ese caso, el archivo tendrá otro nombre para <span class="command"><strong>xz</strong></span>, <span class="command"><strong>bzip2</strong></span> o <span class="command"><strong>gzip</strong></span>.
+					</p></dd></dl></div></div></div></body></html>

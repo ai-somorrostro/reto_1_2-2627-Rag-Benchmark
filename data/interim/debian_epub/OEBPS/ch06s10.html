@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>6.10. Búsqueda de paquetes</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="apt, apt-get, apt-cache, aptitude, synaptic, sources.list, apt-cdrom"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.searching-packages"/>6.10. Búsqueda de paquetes</h1></div></div></div><a id="idm7557" class="indexterm"/><p>
+			Con la enorme y creciente cantidad de software en Debian surge una paradoja: Debian generalmente tiene una herramienta para la mayoría de las tareas, pero dicha herramienta puede ser difícil de encontrar entre tantos paquetes. La falta de forma adecuada de buscar (y encontrar) la herramienta oportuna ha sido un problema durante cierto tiempo. Afortunadamente este problema casi se ha solucionado.
+		</p><p>
+			La búsqueda más trivial posible es buscar el nombre exacto de un paquete. Si <span class="command"><strong>apt show <em class="replaceable"><code>paquete</code></em></strong></span> devuelve un resultado entonces el paquete existe. Desafortunadamante esto necesita saber o adiviar el nombre del paquete, lo que no es siempre posible.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>TIP</em></span> Convenciones de nombres de paquetes</div></div></div></div><a id="idm7567" class="indexterm"/><p>
+			Algunas categorías de paquetes tienen esquemas convencionales de nombres; conocer dicho esquema a veces puede permitirle adivinar nombres de paquetes exactos. Por ejemplo, para módulos Perl, la convención dice que un módulo llamado <code class="literal">XML::Handler::Composer</code> en origen debe ser empaquetado como <span class="pkg">libxml-handler-composer-perl</span>. La biblioteca que permite utilizar el sistema <span class="command"><strong>gconf</strong></span> desde Python es empaquetada como <span class="pkg">python-gconf</span>. Lamentablemente no es posible definir un esquema general de nombres para todos los paquetes, aunque generalmente los encargados de paquetes intentan seguir la elección de los autores originales.
+		</p></div><hr class="delimit-sidebar"/><a id="idm7575" class="indexterm"/><a id="idm7580" class="indexterm"/><p>
+			Un patrón de búsqueda ligeramente más exitoso es una búsqueda en texto plano de los nombres de los paquetes, pero es aún muy limitada. Generalmente puede encontrar resultados buscando en la descripción de los paquetes: dado que cada paquete tiene una descripción más o menos detallada además de su nombre, una búsqueda de palabras clave en estas descripciones generalmente será útil. <span class="command"><strong>apt-cache</strong></span> y <span class="command"><strong>axi-cache</strong></span> son las herramientas más utilizadas para este tipo de búsqueda (véase <a class="xref" href="ch06s03.html#sidebar.apt-axi-cache" title="ALTERNATIVA axi-cache"><span class="emphasis"><em>ALTERNATIVA</em></span> <span class="command"><strong>axi-cache</strong></span></a>); por ejemplo, <span class="command"><strong>apt-cache search video</strong></span> devolverá una lista de todos los paquetes cuyos nombres o descripciones contengan la palabra clave «video».
+		</p><a id="idm7590" class="indexterm"/><a id="idm7595" class="indexterm"/><p>
+			Para búsquedas más complejas necesita herramientas más poderosas como <span class="command"><strong>aptitude</strong></span>. <span class="command"><strong>aptitude</strong></span> le permite buscar según expresiones lógicas basadas en los campos de metadatos de los paquetes. Por ejemplo, la siguiente orden busca aquellos paquetes cuyo nombre contenga <code class="literal">kino</code>, cuya descripción contenga <code class="literal">video</code> y cuyo nombre de encargado contenga <code class="literal">paul</code>:
+		</p><div class="screen">$ <strong class="userinput"><code>aptitude search kino~dvideo~mpaul</code></strong>
+p   kino  - Non-linear editor for Digital Video data
+$ <strong class="userinput"><code>aptitude show kino</code></strong>
+Paquete: kino                                 
+Versión: 1.3.4+dfsg0-1
+Estado: sin instalar
+Prioridad: opcional
+Sección: video
+Desarrollador: Paul Brossier &lt;piem@debian.org&gt;
+Arquitectura: amd64
+Tamaño sin comprimir: 8.316 k
+Dependencias: libasound2 (&gt;= 1.0.16), libavc1394-0 (&gt;= 0.5.3), libavcodec58 (&gt;= 7:4.2),
+         libavformat58 (&gt;= 7:4.2), libavutil56 (&gt;= 7:4.0), libc6 (&gt;= 2.29), libdv4
+         (&gt;= 1.0.0), libgcc-s1 (&gt;= 3.0), libgdk-pixbuf-2.0-0 (&gt;= 2.22.0),
+         libglade2-0 (&gt;= 1:2.6.4-2~), libglib2.0-0 (&gt;= 2.12.0), libgtk2.0-0 (&gt;=
+         2.24.0), libiec61883-0 (&gt;= 1.2.0), libpango-1.0-0 (&gt;= 1.14.0),
+         libpangoft2-1.0-0 (&gt;= 1.14.0), libquicktime2 (&gt;= 2:1.2.2), libraw1394-11
+         (&gt;= 2.1.2), libsamplerate0 (&gt;= 0.1.7), libstdc++6 (&gt;= 9), libswscale5 (&gt;=
+         7:4.0), libx11-6, libxext6, libxml2 (&gt;= 2.7.4), libxv1
+Recomienda: ffmpeg, curl
+Sugiere: udev | hotplug, vorbis-tools, sox, mjpegtools, lame, ffmpeg2theora
+Conflictos con: kino-dvtitler, kino-timfx, kinoplus, kino-dvtitler:i386,
+           kino-timfx:i386, kinoplus:i386, kino:i386
+Reemplaza: kino-dvtitler, kino-timfx, kinoplus, kino-dvtitler:i386,
+          kino-timfx:i386, kinoplus:i386
+Proporciona: kino-dvtitler, kino-timfx, kinoplus
+Descripción: kino-dvtitler, kino-timfx, kinoplus
+Description: Non-linear editor for Digital Video data
+ Kino allows you to record, create, edit, and play movies recorded with DV
+ camcorders. This program uses many keyboard commands for fast navigating and
+ editing inside the movie. 
+ 
+ The kino-timfx, kino-dvtitler and kinoplus sets of plugins, formerly distributed
+ as separate packages, are now provided with Kino.
+Página Principal: http://www.kinodv.org/
+Tags: field::arts, hardware::camera, implemented-in::c, implemented-in::c++,
+      interface::graphical, interface::x11, role::program, scope::application,
+      suite::gnome, uitoolkit::gtk, use::editing, use::learning,
+      works-with::video, x11::application
+</div><p>
+			La búsqueda solo devuelve un paquete, <span class="pkg">kino</span>, que satisface los tres criterios.
+		</p><p>
+			Al ser estas búsquedas multicritero son complejas, lo que explica porqué no se usen tanto como se pudiera. Se desarrolló por lo tanto un nuevo sistema de etiquetas que provee un nuevo enfoque de búsqueda. Los paquetes reciben unas etiquetas que proporcionan una clasificación temática a lo largo de varias cadenas, conocidas como una “clasificación basada en facetas”.. En el caso anterior de <span class="pkg">kino</span>, las etiquetas del paquete indican que Kino es un software basado en Gnome que trabaja con datos de video y cuyo propósito principal es la edición.
+		</p><a id="idm7613" class="indexterm"/><p>
+			Navegar esta clasificación puede ayudarle a buscar un paquete que se corresponda con necesidades conocidas; aún si devuelve una cantidad (moderada) de elementos, el resto de la búsqueda puede realizarse de forma manual. Para hacerlo, puede utilizar el patrón de búsqueda <code class="literal">~G</code> en <span class="command"><strong>aptitude</strong></span>, pero probablemente sea más sencillo simplemente navegar hacia donde se administran las etiquetas o usar el comando <span class="command"><strong>debtags</strong></span> : </p><div class="url">→ <a class="ulink" href="https://debtags.debian.org/">https://debtags.debian.org/</a></div><p>
+		</p><a id="idm7621" class="indexterm"/><a id="idm7624" class="indexterm"/><a id="idm7626" class="indexterm"/><div class="informalexample"><div class="screen"><code class="computeroutput">$ </code><strong class="userinput"><code>debtags search "works-with::video &amp;&amp; use::editing"</code></strong></div></div><p>
+			Seleccionar las etiquetas <code class="literal">works-with::video</code> y <code class="literal">use::editing</code> sólo devuelve unos pocos paquetes que incluyen los editores de video <span class="pkg">kino</span> y <span class="pkg">pitivi</span>. El sistema de clasificación será utilizado más y más con el paso del tiempo y los encargados de los paquetes gradualmente proveerán interfaces de búsqueda eficientes sobre él.
+		</p><p>
+			Resumiendo, la mejor herramienta depende de la complejidad de la búsqueda que desee hacer:
+		</p><div class="itemizedlist"><ul class="itemizedlist"><li class="listitem">
+					<span class="command"><strong>apt-cache</strong></span> sólo permite buscar en el nombre y la descripción de los paquetes, lo que es muy conveniente cuando busque un paquete particular que coincida con unas pocas palabras clave;
+				<a id="idm7643" class="indexterm"/></li><li class="listitem">
+					cuando el criterio de búsqueda incluya también relaciones entre paquetes u otros metadatos como por ejemplo el nombre del encargado, será más útil <span class="command"><strong>synaptic</strong></span>;
+				<a id="idm7649" class="indexterm"/></li><li class="listitem">
+					cuando necesita una búsqueda sobre etiquetas <span class="command"><strong>packagesearch</strong></span> es una buena herramienta, una interfaz gráfica dedicada a buscar paquetes disponibles según varios criterios (incluyendo el nombre de los archivos que contiene). Si desea utilizar la línea de órdenes, <span class="command"><strong>axi-cache</strong></span> es su mejor opción.
+				<a id="idm7656" class="indexterm"/><a id="idm7659" class="indexterm"/></li><li class="listitem">
+					finalmente, cuando la búsqueda implique expresiones complejas con operaciones lógicas, la herramienta a elegir será la sintaxis de patrones de búsqueda de <span class="command"><strong>aptitude</strong></span> que es bastante potente aunque esté relativamente escondida; se puede utilizar tanto en el modo de línea de órdenes como en el modo interactivo.
+				<a id="idm7665" class="indexterm"/></li></ul></div></div></body></html>

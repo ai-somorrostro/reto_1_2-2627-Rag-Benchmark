@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>10.3. Red virtual privada</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Red, Puerta de enlace, TCP/IP, IPv6, DNS, Bind, DHCP, QoS" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.virtual-private-network"></a>10.3. Red virtual privada</h1></div></div></div><a class="indexterm" id="idm15322"></a><a class="indexterm" id="idm15325"></a><a class="indexterm" id="idm15327"></a><a class="indexterm" id="idm15330"></a><p>
+			Una <span class="emphasis"><em>red virtual privada</em></span> (VPN: «Virtual Private Network») es una forma de enlazar dos redes locales diferentes a través de Internet utilizando un túnel; el túnel generalmente está cifrado para confidencialidad. Usualmente se utilizan VPNs para integrar una máquina remota a la red local de una empresa.
+		</p><p>
+			Muchas herramientas proporcionan esta funcionalidad. OpenVPN es una solución eficiente, fácil de desplegar y mantener, basada en SSL/TLS. Otra posibilidad es utilizar IPsec para cifrar el tráfico IP entre dos máquinas; este cifrado es transparente, lo que significa que no necesita modificar las aplicaciones ejecutando en estos equipos para tener en cuenta la VPN. También puede utilizar SSH, además de para sus funcionalidades más convencionales, para proveer una VPN. Finalmente, puede establecer una VPN utilizando el protocolo PPTP de Microsoft. Existen otras soluciones, pero están más allá del alcance de este libro.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.openvpn"></a>10.3.1. OpenVPN</h2></div></div></div><a class="indexterm" id="idm15338"></a><a class="indexterm" id="idm15340"></a><a class="indexterm" id="idm15343"></a><a class="indexterm" id="idm15347"></a><p>
+				OpenVPN es un pedazo de software dedicado a crear redes privadas virtuales. Su configuración involucra crear interfaces de red virtuales en el servidor VPN y en los clientes; es compatible con interfaces <code class="literal">tun</code> (para túneles a nivel de IP) y <code class="literal">tap</code> (para túneles a nivel Ethernet). En la práctica, usualmente utilizará interfaces <code class="literal">tun</code> excepto cuando los clientes VPN deban intengrarse a la red local del servidor a través de un puente Ethernet.
+			</p><p>
+				OpenVPN se basa en OpenSSL para toda la criptografía SSL/TLS y funcionalidades asociadas (confidencialidad, autenticación, integridad, falta de repudio). Puede configurarlo con una llave privada compartida o con un certificado X.509 basado en la infraestructura de llave pública. Se prefiere fuertemente esta última configuración ya que permite más flexibilidad cuando se enfrenta a un número creciente de usuarios itinerantes que acceden a la VPN.
+			</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm15356"></a>10.3.1.1. Configuración del servidor OpenVPN</h3></div></div></div><a class="indexterm" id="idm15358"></a><p>
+					Después de que se hayan creado todos los certificados (siga las intrucciones de <a class="xref" href="ch10s02.html#sect.easy-rsa" title="10.2.2. Infraestructura de llave pública: easy-rsa">Sección 10.2.2, “Infraestructura de llave pública: <span class="emphasis"><em>easy-rsa</em></span>”</a>), necesita copiarlos donde correspondan: la llave pública del certificado raíz (<code class="filename">pki/ca.crt</code>) será almacenada en todas las máquinas (tanto el servidor como los clientes) como <code class="filename">/etc/ssl/certs/Falcot_CA.crt</code>. Solo instalará el certificado del servidor en el servidor (<code class="filename">pki/issued/vpn.falcot.com.crt</code> en <code class="filename">/etc/ssl/certs/vpn.falcot.com.crt</code> y <code class="filename">pki/private/vpn.falcot.com.key</code> en <code class="filename">/etc/ssl/private/vpn.falcot.com.key</code> con permisos restringidos para que sólo el administrador pueda leerlo), con los parámetros Diffie-Hellman correspondientes (<code class="filename">pki/dh.pem</code>) instalados en <code class="filename">/etc/openvpn/dh.pem</code>. Instale los certificados de clientes en el cliente de VPN correspondiente de forma similar.
+				</p><a class="indexterm" id="idm15371"></a><a class="indexterm" id="idm15375"></a><a class="indexterm" id="idm15379"></a><p>
+					El script de inicialización de OpenVPN intenta, de forma predeterminada, iniciar todas las redes privadas virtuales definidas en <code class="filename">/etc/openvpn/*.conf</code>. Configurar un servidor VPN entonces es cuestión de almacenar el archivo de configuración correspondiente en este directorio. Un buen punto de partida es <code class="filename">/usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz</code> que lleva a un servidor bastante estándar. Por supuesto necesitará adaptar algunos parámetros: <code class="literal">ca</code>, <code class="literal">cert</code>, <code class="literal">key</code> y <code class="literal">dh</code> describirán las ubicaciones seleccionadas para cada uno (respectivamente: <code class="literal">/etc/ssl/certs/Falcot_CA.crt</code>, <code class="literal">/etc/ssl/vpn.falcot.com.crt</code>, <code class="literal">/etc/ssl/private/vpn.falcot.com.key</code> y <code class="literal">/etc/openvpn/dh.pem</code>). La directiva <code class="literal">server 10.8.0.0 255.255.255.0</code> define la subred utilizada por la VPN; el servidor utilizará la primera dirección IP en el rango (<code class="literal">10.8.0.1</code>) y se asignarán a los clientes el resto de las direcciones.
+				</p><a class="indexterm" id="idm15396"></a><a class="indexterm" id="idm15400"></a><a class="indexterm" id="idm15403"></a><p>
+					Con esta configuración OpenVPN creará una interfaz de red virtual al iniciar, generalmente con el nombre <code class="literal">tun0</code>. Sin embargo, normalmente se configuran los firewalls al mismo tiempo que las interfaces de red reales, lo que ocurre antes que inicie OpenVPN. La creación de una interfaz de red virtual persistente, y configurar OpenVPN para que la utilice, es una buena práctica recomendada. Esto además permite elegir el nombre de esta interfaz. A tal efecto, <span class="command"><strong>openvpn -mktun -dev vpn -dev-type tun</strong></span> crea una interfaz de red virtual llamada <code class="literal">vpn</code> de tipo <code class="literal">tun</code>; puede integrar fácilmente esta orden en el script de configuración del firewall o en la directiva <code class="literal">up</code> del archivo <code class="filename">/etc/network/interfaces</code>, o se puede añadir para ese propósito una regla de <span class="package">udev</span>. Debe actualizar también el archivo de configuración de OpenVPN de forma acorde, con las directivas <code class="literal">dev vpn</code> y <code class="literal">dev-type tun</code>.
+				</p><a class="indexterm" id="idm15416"></a><p>
+					Sin más cambios, los clientes VPN sólo pueden acceder el servidor VPN en sí a través de la dirección <code class="literal">10.8.0.1</code>. Para permitir a los clientes que accedan la red local (192.168.0.0/24) necesitará agregar una directiva <code class="literal">push route 192.168.0.0 255.255.255.0</code> a la configuración de OpenVPN para que los clientes VPN automáticamente obtengan una ruta de red que les indique que esta red está disponible a través de la VPN. Lo que es más, los equipos en la red local también necesitarán ser informados que la ruta a la VPN es a través del servidor de VPN (esto funciona automáticamente cuando instala el servidor VPN en la puerta de enlace). Otra alternativa es configurar el servidor VPN para realizar enmascaramiento de IPs de forma que las conexiones que provengan de los clientes VPN parezcan provenir del servidor VPN en su lugar (revise la <a class="xref" href="ch10.html#sect.gateway" title="10.1. Puerta de enlace">Sección 10.1, “Puerta de enlace”</a>).
+				</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm15423"></a>10.3.1.2. Configuración del cliente OpenVPN</h3></div></div></div><a class="indexterm" id="idm15425"></a><a class="indexterm" id="idm15428"></a><p>
+					Para configurar un cliente OpenVPN también necesita crear un archivo de configuración en <code class="filename">/etc/openvpn/</code>. Puede conseguir una configuración estándar utilizando <code class="filename">/usr/share/doc/openvpn/examples/sample-config-files/client.conf</code> como punto de partida. La directiva <code class="literal">remote vpn.falcot.com 1194</code> describe la dirección y puerto del servidor OpenVPN; también necesita adaptar <code class="literal">ca</code>, <code class="literal">cert</code> y <code class="literal">key</code> para describir la ubicación de los archivos de llave.
+				</p><a class="indexterm" id="idm15439"></a><a class="indexterm" id="idm15443"></a><a class="indexterm" id="idm15447"></a><p>
+					Si no se debe iniciar la VPN automáticamente durante el inicio, configure la directiva <code class="literal">AUTOSTART</code> como <code class="literal">none</code> en el archivo <code class="filename">/etc/default/openvpn</code>. Siempre es posible iniciar o detener una conexión VPN dada con los comandos<span class="command"><strong>systemctl start openvpn@<em class="replaceable"><code>nombre</code></em></strong></span> y <span class="command"><strong>systemctl stop openvpn@<em class="replaceable"><code>nombre</code></em></strong></span> (donde la conexión <em class="replaceable"><code>nombre</code></em> coincide con aquella definida en <code class="filename">/etc/openvpn/<em class="replaceable"><code>nombre</code></em>.conf</code>).
+				</p><a class="indexterm" id="idm15462"></a><p>
+					El paquete <span class="pkg">network-manager-openvpn-gnome</span> contiene una extensión para Network Manager (ver <a class="xref" href="ch08s02.html#sect.roaming-network-config" title="8.2.5. Configuración de red automática para usuarios itinerantes">Sección 8.2.5, “Configuración de red automática para usuarios itinerantes”</a>) que permite administrar redes privadas virtuales OpenVPN. Esto permite a cada usuario configurar gráficamente las conexiones OpenVPN y controlarlas desde el icono de administración de red.
+				</p><a class="indexterm" id="idm15469"></a></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.ssh-vpn"></a>10.3.2. Red privada virtual con SSH</h2></div></div></div><a class="indexterm" id="idm15474"></a><a class="indexterm" id="idm15477"></a><p>
+				En realidad existen dos formas de crear una red privada virtual con SSH. La histórica involucra establecer una capa PPP sobre el enlace SSH. Se describe este método en el siguiente «howto»: </p><div class="url">→ <a class="ulink" href="https://www.tldp.org/HOWTO/ppp-ssh/">https://www.tldp.org/HOWTO/ppp-ssh/</a></div><p>
+</p><a class="indexterm" id="idm15481"></a><a class="indexterm" id="idm15485"></a><a class="indexterm" id="idm15489"></a><p>
+				El segundo método es más reciente y fue introducido con OpenSSH 4.3; ahora OpenSSH puede crear interfaces de red virtuales (<code class="literal">tun*</code>) en ambos extremos de una conexión SSH y puede configurar estas interfaces virtuales exactamente como si fueran interfaces físicas. Primero debe activar el sistema de túneles configurando <code class="literal">PermitTunnel</code> como «yes» en el archivo de configuración del servidor SSH (<code class="filename">/etc/ssh/sshd_config</code>). Cuando se establece la conexión SSH debe solicitar explícitamente la creación del túnel con la opción <code class="literal">-w any:any</code> (puede reemplaza <code class="literal">any</code> con el número de dispositivo <code class="literal">tun</code> deseado). Esto necesita que el usuario tenga permisos de administrador en ambos extremos para poder crear el dispositivo de red (en otras palabras, debe establecer la conexión como root).
+			</p><p>
+				Ambos métodos para crear redes privadas virtuales sobre SSH son bastante directos. Sin embargo, la VPN que proveen no es la más eficiente disponible; en particular, no maneja muy bien altos niveles de tráfico.
+			</p><p>
+				La explicación es que cuando se encapsula TCP/IP en una conexión TCP/IP (para SSH) se utiliza el protocolo TCP dos veces, una vez para la conexión SSH y una vez dentro del túnel. Esto genera problemas, especialmente debido a la forma en la que TCP se adapta a condiciones de red modificando los tiempo de espera. El siguiente sitio describe el problema en más detalle: </p><div class="url">→ <a class="ulink" href="http://sites.inka.de/sites/bigred/devel/tcp-tcp.html">http://sites.inka.de/sites/bigred/devel/tcp-tcp.html</a></div><p>
+</p><p>
+				Los VPNs a través de SSH deberían, por tanto, restringirse a un túnel único sin ninguna restricción de rendimiento.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.ipsec"></a>10.3.3. IPsec</h2></div></div></div><a class="indexterm" id="idm15507"></a><a class="indexterm" id="idm15509"></a><a class="indexterm" id="idm15512"></a><a class="indexterm" id="idm15515"></a><p>
+				IPsec, despite being the standard in IP VPNs, is rather more involved in its implementation. The IPsec engine itself is integrated in the Linux kernel; the required user-space parts, the control and configuration tools, are provided by the <span class="pkg">libreswan</span> package or the <span class="pkg">strongswan</span> package. Here we describe briefly the first of these options.
+			</p><a class="indexterm" id="idm15521"></a><a class="indexterm" id="idm15526"></a><p>
+				Primero instalamos el paquete <span class="pkg">libreswan</span>. En términos concretos, cada <code class="filename">/etc/ipsec.conf</code> del anfitrión contiene los parámetros para <span class="emphasis"><em>túneles IPsec</em></span> (o <span class="emphasis"><em>Security Associations</em></span>, asociaciones de seguridad, en la terminología de IPsec) de los que se ocupa el anfitrión. Hay muchos ejemplos de configuración en <code class="filename">/usr/share/doc/libreswan/</code>, pero la documentación en línea de Libreswan tiene más ejemplos con explicaciones: </p><div class="url">→ <a class="ulink" href="https://libreswan.org/wiki/">https://libreswan.org/wiki/</a></div><p>
+</p><a class="indexterm" id="idm15536"></a><p>
+				Se puede controlar el servicio IPsec con <span class="command"><strong>systemctl</strong></span>; por ejemplo, <span class="command"><strong>systemctl start ipsec</strong></span> iniciará el servicio IPsec.
+			</p><a class="indexterm" id="idm15543"></a><a class="indexterm" id="idm15545"></a><a class="indexterm" id="idm15548"></a><a class="indexterm" id="idm15552"></a><a class="indexterm" id="idm15554"></a><p>
+				A pesar de su estado como referencia, la complejidad de configuración de IPsec restringe su uso en la práctica. Generalmente se preferirán soluciones basadas en OpenVPN cuando los túneles necesarios no sean muchos ni demasiado dinámicos.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>PRECAUCIÓN</em></span> IPsec y NAT</div></div></div></div><a class="indexterm" id="idm15561"></a><a class="indexterm" id="idm15563"></a><a class="indexterm" id="idm15565"></a><p>
+				Los firewall con NAT y IPsec no funcionan bien juntos: IPsec firma los paquetes y cualquier cambio en estos paquetes que realice el firewall invalidará la firma y el destino rechazará los paquetes. Muchas implementaciones IPsec incluyen la técnica <span class="emphasis"><em>NAT-T</em></span> (<span class="emphasis"><em>NAT Traversal</em></span>), que básicamente encapsula un paquete IP en un paquete UDP estándar.
+			</p></div><hr class="delimit-sidebar"/><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SEGURIDAD</em></span> IPsec y firewalls</div></div></div></div><a class="indexterm" id="idm15574"></a><a class="indexterm" id="idm15576"></a><a class="indexterm" id="idm15578"></a><a class="indexterm" id="idm15581"></a><p>
+				El modo de operación estándar de IPsec involucra intercambio de datos en el puerto UDP 500 para intercambio de llaves (también en el puerto UDP 4500 si utiliza NAT-T). Lo que es más, los paquetes IPsec utilizan dos protocolos IP dedicados que el firewall debe dejar pasar; la recepción de estos paquetes está basada en sus números de protocolo: 50 (ESP) y 51 (AH).
+			</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.pptp"></a>10.3.4. PPTP</h2></div></div></div><a class="indexterm" id="idm15587"></a><a class="indexterm" id="idm15589"></a><a class="indexterm" id="idm15591"></a><p>
+				PPTP (<span class="emphasis"><em>protocolo de túneles punto a punto</em></span>: «Point-to-Point Tunneling Protocol») utiliza dos canales de comunicación, uno para datos de control y otro para los datos; este último utiliza el protocolo GRE (<span class="emphasis"><em>encapsulación genérica de enrutamiento</em></span>: «Generic Routing Encapsulation»). Luego se establece un enlace PPP estándar sobre el canal de intercambio de datos.
+			</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect.pptp-config-client"></a>10.3.4.1. Configuración del cliente</h3></div></div></div><a class="indexterm" id="idm15599"></a><a class="indexterm" id="idm15602"></a><p>
+					El paquete <span class="pkg">pptp-linux</span> contiene un cliente PPTP para Linux fácil de configurar. Las instrucciones a continuación están inspiradas en la documentación oficial: </p><div class="url">→ <a class="ulink" href="http://pptpclient.sourceforge.net/howto-debian.phtml">http://pptpclient.sourceforge.net/howto-debian.phtml</a></div><p>
+</p><a class="indexterm" id="idm15608"></a><p>
+					Los administradores de Falcot crearon varios archivos: <code class="filename">/etc/ppp/options.pptp</code>, <code class="filename">/etc/ppp/peers/falcot</code>, <code class="filename">/etc/ppp/ip-up.d/falcot</code> y <code class="filename">/etc/ppp/ip-down.d/falcot</code>.
+				</p><div class="example"><a id="example.ppp-options.pptp"></a><div class="example-title">Ejemplo 10.2. El archivo <code class="filename">/etc/ppp/options.pptp</code></div><div class="example-contents"><pre>
+# opciones PPP utilizadas en una conexión PPTP
+lock
+noauth
+nobsdcomp
+nodeflate</pre></div></div><div class="example"><a id="example.ppp-peers-falcot"></a><div class="example-title">Ejemplo 10.3. El archivo <code class="filename">/etc/ppp/peers/falcot</code></div><div class="example-contents"><pre>
+# vpn.falcot.com es el servidor PPTP
+pty "pptp vpn.falcot.com --nolaunchpppd"
+# el usuario «vpn» identificará a la conexión
+user vpn
+remotename pptp
+# necesita cifrado
+require-mppe-128
+file /etc/ppp/options.pptp
+ipparam falcot</pre></div></div><div class="example"><a id="example.ppp-ip-up.d-falcot"></a><div class="example-title">Ejemplo 10.4. El archivo <code class="filename">/etc/ppp/ip-up.d/falcot</code></div><div class="example-contents"><pre>
+# Crear la ruta a la red Falcot
+if [ "$6" = "falcot" ]; then
+  # 192.168.0.0/24 es la red Falcot (remota)
+  ip route add 192.168.0.0/24 dev $1
+fi</pre></div></div><div class="example"><a id="example.ppp-ip-down.d-falcot"></a><div class="example-title">Ejemplo 10.5. El archivo <code class="filename">/etc/ppp/ip-down.d/falcot</code></div><div class="example-contents"><pre>
+# Eliminar la ruta a la red Falcot
+if [ "$6" = "falcot" ]; then
+  # 192.168.0.0/24 es la red Falcot (remota)
+  ip route del 192.168.0.0/24 dev $1
+fi</pre></div></div><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SEGURIDAD</em></span> MPPE</div></div></div></div><a class="indexterm" id="idm15637"></a><a class="indexterm" id="idm15639"></a><p>
+					Asegurar PPTP involucra utilizar la funcionalidad MPPE (<span class="emphasis"><em>cifrado punto a punto de Microsoft</em></span>: «Microsoft Point-to-Point Encryption»), disponible como un módulo en los núcleos Debian oficiales.
+				</p></div><hr class="delimit-sidebar"/></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect.pptp-config-serveur"></a>10.3.4.2. Configuración del servidor</h3></div></div></div><a class="indexterm" id="idm15647"></a><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>PRECAUCIÓN</em></span> PPTP y firewalls</div></div></div></div><p>
+					Necesita configurar los firewalls intermedios para que permitan pasar paquetes IP que utilizan el protocolo 47 (GRE). Lo que es más, necesita abrir el puerto 1723 del servidor PPTP para que pueda utilizar el canal de comunicación.
+				</p></div><hr class="delimit-sidebar"/><a class="indexterm" id="idm15654"></a><p>
+<span class="command"><strong>pptpd</strong></span> es el servidor PPTP para Linux. Necesitará cambiar pocas cosas de su archivo de configuración principal, <code class="filename">/etc/pptpd.conf</code>: <span class="emphasis"><em>localip</em></span> (dirección IP local) y <span class="emphasis"><em>remoteip</em></span> (dirección IP remota). En el ejemplo a continuación el servidor PPTP siempre utiliza la dirección <code class="literal">192.168.0.199</code> y los clientes PPTP reciben una dirección IP desde <code class="literal">192.168.0.200</code> a <code class="literal">192.168.0.250</code>.
+				</p><div class="example"><a id="example.pptpd.conf"></a><div class="example-title">Ejemplo 10.6. El archivo <code class="filename">/etc/pptpd.conf</code></div><div class="example-contents"><pre>
+[..]
+# TAG: localip
+# TAG: remoteip
+#       Specifies the local and remote IP address ranges.
+#
+#       These options are ignored if delegate option is set.
+#
+#       Any addresses work as long as the local machine takes care of the
+#       routing.  But if you want to use MS-Windows networking, you should
+#       use IP addresses out of the LAN address space and use the proxyarp
+#       option in the pppd options file, or run bcrelay.
+#
+#       You can specify single IP addresses seperated by commas or you can
+#       specify ranges, or both. For example:
+#
+#               192.168.0.234,192.168.0.245-249,192.168.0.254
+#
+#       IMPORTANT RESTRICTIONS:
+#
+#       1. No spaces are permitted between commas or within addresses.
+#
+#       2. If you give more IP addresses than the value of connections,
+#          it will start at the beginning of the list and go until it
+#          gets connections IPs.  Others will be ignored.
+#
+#       3. No shortcuts in ranges! ie. 234-8 does not mean 234 to 238,
+#          you must type 234-238 if you mean this.
+#
+#       4. If you give a single localIP, that's ok - all local IPs will
+#          be set to the given one. You MUST still give at least one remote
+#          IP for each simultaneous client.
+#
+# (Recommended)
+#localip 192.168.0.1
+#remoteip 192.168.0.234-238,192.168.0.245
+# or
+#localip 192.168.0.234-238,192.168.0.245
+#remoteip 192.168.1.234-238,192.168.1.245
+localip 192.168.0.199
+remoteip 192.168.0.200-250
+</pre></div></div><a class="indexterm" id="idm15671"></a><p>
+					La configuración PPP utilizada por el servidor PPTP también necesita algunos cambios en el archivo <code class="filename">/etc/ppp/pptpd-options</code>. Los parámetros importantes son el nombre del servidor (<code class="literal">pptp</code>), el nombre del dominio (<code class="literal">falcot.com</code> y la dirección IP para los servidores DNS y WINS.
+				</p><div class="example"><a id="example.ppp-pptpd-options"></a><div class="example-title">Ejemplo 10.7. El archivo <code class="filename">/etc/ppp/pptpd-options</code></div><div class="example-contents"><pre>
+## Habilite las instalaciones de depuración de conexiones.
+## (consultar la configuración de syslog para saber a dónde envíar pppd)
+#debug
+
+# Nombre del sistema local para fines de autenticación
+# (debe coincidir con el segundo campo de las entradas de /etc/ppp/chap-secrets)
+nombre pptpd
+
+# Opcional: nombre de dominio que se utilizará para la autenticación
+## cambiar el nombre de dominio a su dominio local
+dominio falcot.com
+
+# Autenticación
+## estos son valores predeterminados razonables para los clientes WinXXXX
+## para la configuración relacionada con la seguridad
+auth
+refuse-pap
+refuse-chap
+refuse-mschap
+# Requerir que el par se autentique a sí mismo usando MS-CHAPv2 [Microsoft
+# Challenge Handshake Authentication Protocol, Versión 2] autenticación.
+require-mschap-v2
+# Requiere cifrado MPPE de 128 bits
+# (tenga en cuenta que MPPE requiere el uso de MSCHAP-V2 durante la autenticación)
+require-mppe-128
+
+# Red y enrutamiento
+## Rellena tus direcciones
+ms-dns 192.168.0.1
+ms-wins 192.168.0.1</pre></div></div><a class="indexterm" id="idm15684"></a><p>
+					El último paso consiste en registrar el usuario <code class="literal">vpn</code> (y su contraseña asociada) en el archivo <code class="filename">/etc/ppp/chap-secrets</code>. A diferencia de otras instancias en las que un asterisco («<code class="literal">*</code>») funcionaría, aquí debe proveer explícitamente el nombre del servidor. Lo que es más, los clientes PPTP Windows se identifican a sí mismo en la forma <code class="literal"><em class="replaceable"><code>DOMINIO</code></em>\\<em class="replaceable"><code>USUARIO</code></em></code> en lugar de sólo proveer un nombre de usuario. Esto explica porqué el archivo también menciona el usuario <code class="literal">FALCOT\\vpn</code>. También es posible especificar una dirección IP individual para los usuarios; un asterisco en este campo especifica que debe utilizar direcciones dinámicas.
+				</p><div class="example"><a id="example.ppp-chap-secrets"></a><div class="example-title">Ejemplo 10.8. El archivo <code class="filename">/etc/ppp/chap-secrets</code></div><div class="example-contents"><pre>
+# Secretos para autenticación utilizando CHAP
+# cliente       servidor secreto     dirección IP
+vpn             pptp     f@Lc3au     *
+FALCOT\\vpn     pptp     f@Lc3au     *</pre></div></div><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>SEGURIDAD</em></span> Vulnerabilidades PPTP</div></div></div></div><a class="indexterm" id="idm15704"></a><p>
+					La primera implementación PPTP de Microsoft tuvo muchas críticas debido a su cantidad de vulnerabilidades de seguridad; la mayoría han sido solucionadas desde entonces en versiones más recientes. La configuración documentada en esta sección utiliza la última versión del protocolo. Sin embargo, debe saber que eliminar algunas opciones (como <code class="literal">require-mppe-128</code> y <code class="literal">require-mschap-v2</code>) podría hacer al servicio nuevamente vulnerable.
+				</p></div><hr class="delimit-sidebar"/></div></div></div></body></html>

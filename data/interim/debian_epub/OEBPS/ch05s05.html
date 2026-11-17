@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>5.5. Coexistencia con otros sistemas de paquetes</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Paquete binario, Paquete fuente, paquete, dpkg, deb, dependencias, conflicto"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.coexistence-with-other-packaging-systems"/>5.5. Coexistencia con otros sistemas de paquetes</h1></div></div></div><a id="idm4487" class="indexterm"/><a id="idm4490" class="indexterm"/><a id="idm4493" class="indexterm"/><a id="idm4495" class="indexterm"/><p>
+			Los paquetes Debian no son los únicos paquetes de software utilizados en el mundo del software libre. El principal competidor es el formato RPM de la distribución Red Hat Linux y sus muchos derivados. Red Hat es una distribución comercial muy popular. Por lo tanto, es muy común que el software provisto por terceros sea ofrecido como paquetes RPM en lugar de paquetes Debian.
+		</p><p>
+			En este caso debe saber que el programa <span class="command"><strong>rpm</strong></span>, que gestiona los paquetes RPM, está disponible como un paquete Debian; por lo que es posible utilizar este formato de paquetes en Debian. Debe tener cuidado sin embargo, y limitar estas manipulaciones a extraer la información de un paquete o verificar su integridad. No es, en realidad, razonable utilizar <span class="command"><strong>rpm</strong></span> para instalar un paquete RPM en un sistema Debian; RPM utiliza su propia base de datos, separada de aquella del software nativo (como <span class="command"><strong>dpkg</strong></span>. Es por esto que no es posible asegurar una coexistencia estable de dos sistemas de paquetes.
+		</p><p>
+			Por el otro lado, la herramienta <span class="pkg">alien</span> puede convertir paquetes RPM en paquetes Debian y viceversa.
+		</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>COMUNIDAD</em></span> Fomentando la adopción de <code class="filename">.deb</code></div></div></div></div><p>
+			Si utiliza el programa <span class="command"><strong>alien</strong></span> frecuentemente para instalar paquetes RPM de alguno de sus proveedores, no dude en escribirle y expresar su fuerte preferencia por el formato <code class="filename">.deb</code>. Note que el formato del paquete no lo es todo: un paquete <code class="filename">.deb</code> construido con <span class="command"><strong>alien</strong></span>, preparado para una versión de Debian diferente a la que utiliza, o inclusive para una distribución derivada como Ubuntu, probablemente no ofrezca el mismo nivel de calidad e integración que un paquete desarrollado específicamente para Debian <span class="distribution">Bullseye</span>.
+		</p></div><hr class="delimit-sidebar"/><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>fakeroot alien --to-deb phpMyAdmin-5.1.1-2.fc35.noarch.rpm</code></strong>
+<code class="computeroutput">[..]
+Atención: omitir la conversión de scripts en el paquete phpMyAdmin: postinst
+Advertencia: utilice el parámetro --scripts para incluir los scripts.
+[..]
+phpmyadmin_5.1.1-3_all.deb generated
+$ </code><strong class="userinput"><code>ls -sh phpmyadmin_5.1.1-3_all.deb</code></strong>
+<code class="computeroutput">  6,0M phpmyadmin_5.1.1-3_all.deb
+$ </code><strong class="userinput"><code>dpkg -c phpmyadmin_5.1.1-3_all.deb</code></strong>
+<code class="computeroutput">drwxr-xr-x root/root         0 2021-08-09 02:02 ./
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./etc/
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./etc/httpd/
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./etc/httpd/conf.d/
+-rw-r--r-- root/root      1181 2021-07-27 09:32 ./etc/httpd/conf.d/phpMyAdmin.conf
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./etc/nginx/
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./etc/nginx/default.d/
+-rw-r--r-- root/root       430 2021-07-27 09:32 ./etc/nginx/default.d/phpMyAdmin.conf
+drwxr-x--- root/root         0 2021-08-09 02:02 ./etc/phpMyAdmin/
+-rw-r----- root/root      4546 2021-07-27 09:34 ./etc/phpMyAdmin/config.inc.php
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./usr/
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./usr/share/
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./usr/share/doc/
+drwxr-xr-x root/root         0 2021-08-09 02:02 ./usr/share/doc/phpMyAdmin/
+[..]
+$ </code><strong class="userinput"><code>dpkg -I phpmyadmin_5.1.1-3_all.deb</code></strong>
+<code class="computeroutput"> new Debian package, version 2.0.
+ size 6195324 bytes: control archive=44444 bytes.
+     102 bytes,     3 lines      conffiles
+     593 bytes,    15 lines      control
+  180405 bytes,  1919 lines      md5sums
+     448 bytes,    11 lines   *  postinst             #!/bin/sh
+ Package: phpmyadmin
+ Version: 5.1.1-3
+ Architecture: all
+ Maintainer: Daniel Leidert &lt;dleidert@debian.org&gt;
+ Installed-Size: 40693
+ Section: alien
+ Priority: extra
+ Description: Una interfaz web para MySQL y MariaDB
+  phpMyAdmin es una herramienta escrita en PHP destinada a manejar la administración de
+  MySQL a través de la Web. Actualmente puede crear y eliminar bases de datos,
+  crear/eliminar/alterar tablas, eliminar/editar/agregar campos, ejecutar cualquier declaración SQL,
+  administrar claves en campos, administrar privilegios, exportar datos en varios formatos y
+  está disponible en 50 idiomas
+  .
+  (Convertido de un paquete rpm por alien versión 8.95.4.)</code></div><p>
+			Encontrará que el proceso es extremadamente simple. Debe saber, sin embargo, que el paquete generado no tiene información sobre dependencias ya que las dependencias de los dos formatos de paquetes no tienen una correspondencia sistemática. El administrador debe, por lo tanto, asegurarse manualmente que el paquete convertido funcionará correctamente y esta es la razón por la que se deben evitar los paquetes Debian así generados tanto como sea posible. Afortunadamente, Debian tiene la colección más grande de paquetes de software entre todas las distribuciones y es probable que lo que sea que busque ya esté allí.
+		</p><p>
+			Revisando la página de manual del programa <span class="command"><strong>alien</strong></span> también notará que este programa es compatible con otros formatos de paquetes, en especial el utilizado por la distribución Slackware (que está compuesto de un simple compendio <code class="filename">tar.gz</code>).
+		</p><p>
+			La estabilidad del software desplegado con la herramienta <span class="command"><strong>dpkg</strong></span> contribuye a la fama de Debian. La suite de herramientas APT descrita en el próximo capítulo preserva esta ventaja al mismo tiempo que liberan al administrador de la carga de gestionar el estado de los paquetes, una tarea difícil pero necesaria.
+		</p></div></body></html>

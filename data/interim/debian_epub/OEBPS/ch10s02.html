@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>10.2. Certificados X.509</title><link rel="stylesheet" type="text/css" href="tdah.css"/><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot"/><meta name="keywords" content="Red, Puerta de enlace, TCP/IP, IPv6, DNS, Bind, DHCP, QoS"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.x509-cert"/>10.2. Certificados X.509</h1></div></div></div><a id="idm15107" class="indexterm"/><a id="idm15110" class="indexterm"/><a id="idm15112" class="indexterm"/><a id="idm15115" class="indexterm"/><a id="idm15117" class="indexterm"/><a id="idm15120" class="indexterm"/><a id="idm15123" class="indexterm"/><a id="idm15126" class="indexterm"/><p>
+			Los certificados son los elementos principales de muchos servicios de red construidos sobre protocolos criptográficos, cuando necesitan algún tipo de autentificación central.
+		</p><a id="idm15129" class="indexterm"/><p>
+			Entre aquellos protocolos, SSL fue inventado por Netscape (<span class="emphasis"><em>capa de zócalos seguros</em></span>: «Secure Socket Layer») para asegurar conexiones con servidores web. Luego fue estandarizado por el IETF bajo el acrónimo TLS (<span class="emphasis"><em>seguridad de capa de transporte</em></span>: «Transport Layer Security»). Desde entonces, TLS ha seguido evolucionando y en nuestros días SSL ha quedado obsoleto debido a múltiples fallos de diseño que se han ido descubriendo.
+		</p><p>
+			El protocolo TLS principalmente trata de proporcionar privacidad e integridad de datos entre dos o más aplicaciones informáticas que se comunican. El caso más común en Internet es la comunicación entre un cliente (p. ej., un navegador web) y un servidor.
+		</p><a id="idm15135" class="indexterm"/><p>
+			A key pair is needed for the exchange of information, which involves a public key that includes information about the identity of the owner and matches a private key. The private key must be kept secret, otherwise the security is compromised. However, anyone can create a key pair, store any identity on it, and pretend to be the identity of their choice. One solution involves the concept of a <span class="emphasis"><em>Certification Authority</em></span> (CA), formalized by the X.509 standard. This term covers an entity that holds a trusted key pair known as a <span class="emphasis"><em>root certificate</em></span>. This certificate is only used to sign other certificates (key pairs), after proper steps have been undertaken to check the identity stored on the key pair. Applications using X.509 can then check the certificates presented to them, if they know about the trusted root certificates.
+		</p><p>
+			Puede implementar una AC (como se describe en <a class="xref" href="ch10s02.html#sect.easy-rsa" title="10.2.2. Infraestructura de llave pública: easy-rsa">Sección 10.2.2, “Infraestructura de llave pública: <span class="emphasis"><em>easy-rsa</em></span>”</a>), pero si tiene la intención de usar el certificado para una página web, tiene que contar con una AC de confianza. Los precios varían de forma significativa, pero es posible implementar una gran seguridad sin gastar apenas dinero.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.trusted-certs"/>10.2.1. Crear certificados de confianza gratuitos</h2></div></div></div><a id="idm15145" class="indexterm"/><a id="idm15148" class="indexterm"/><a id="idm15151" class="indexterm"/><p>
+				Muchos programas crean y usan certificados snakeoil (consulte el recuadro <a class="xref" href="ch11.html#sidebar.snakeoil-certs" title="SEGURIDAD Certificados SSL de Snake oil"><span class="emphasis"><em>SEGURIDAD</em></span> Certificados SSL de <span class="emphasis"><em>Snake oil</em></span></a>). Afortunadamente, el paquete <span class="pkg">certbot</span> trae todo lo que necesitamos para crear nuestros propios certificados de confianza, proporcionados por la iniciativa «Let's Encrypt» (ver el recuadro <a class="xref" href="ch10s02.html#sidebar.letsencrypt" title="CULTURA La iniciativa Let's Encrypt"><span class="emphasis"><em>CULTURA</em></span> La iniciativa Let's Encrypt</a>), que también se puede usar para agentes de transporte de correo (Postfix) y agentes de entrega de correo (Dovecot, Cyrus, etc.).
+			</p><p>
+				Los administradores de Falcot simplemente quieren crear un certificado para su página web, que se ejecuta sobre Apache. Hay un conveniente complemento de Apache para <span class="pkg">certbot</span> que automáticamente edita la configuración de Apache para servir el certificado obtenido, así que hacen uso de este:
+			</p><a id="idm15162" class="indexterm"/><a id="idm15165" class="indexterm"/><a id="idm15168" class="indexterm"/><a id="idm15172" class="indexterm"/><a id="idm15176" class="indexterm"/><div class="screen">
+<code class="computeroutput"># </code><strong class="userinput"><code>apt install python3-certbot-apache
+</code></strong><code class="computeroutput">[...]
+# </code><strong class="userinput"><code>certbot --apache
+</code></strong><code class="computeroutput">aving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator apache, Installer apache
+Enter email address (used for urgent renewal and security notices)
+ (Enter 'c' to cancel): </code><strong class="userinput"><code>admin@falcot.com
+</code></strong><code class="computeroutput">
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server. Do you agree?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: </code><strong class="userinput"><code>Y
+</code></strong><code class="computeroutput">
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing, once your first certificate is successfully issued, to
+share your email address with the Electronic Frontier Foundation, a founding
+partner of the Let's Encrypt project and the non-profit organization that
+develops Certbot? We'd like to send you email about our work encrypting the web,
+EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(Y)es/(N)o: </code><strong class="userinput"><code> N
+</code></strong><code class="computeroutput">
+Account registered.
+
+No names were found in your configuration files. Please enter in your domain
+name(s) (comma and/or space separated)  (Enter 'c' to cancel): </code><strong class="userinput"><code>falcot.com
+</code></strong><code class="computeroutput">
+Requesting a certificate for falcot.com
+Performing the following challenges:
+http-01 challenge for falcot.com
+Enabled Apache rewrite module
+Waiting for verification...
+Cleaning up challenges
+Created an SSL vhost at /etc/apache2/sites-available/000-default-le-ssl.conf
+Enabled Apache socache_shmcb module
+Enabled Apache ssl module
+Deploying Certificate to VirtualHost /etc/apache2/sites-available/000-default-le-ssl.conf
+Enabling available site: /etc/apache2/sites-available/000-default-le-ssl.conf
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites, or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel):</code> <strong class="userinput"><code>2
+</code></strong><code class="computeroutput">
+Enabled Apache rewrite module
+Redirecting vhost in /etc/apache2/sites-enabled/000-default.conf to ssl vhost in /etc/apache2/sites-available/000-default-le-ssl.conf
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://falcot.com
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=falcot.com
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/falcot.com/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/falcot.com/privkey.pem
+   Your cert will expire on 2022-06-04. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
+ - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+</code></div><hr class="delimit-sidebar"/><div class="sidebar"><a id="sidebar.letsencrypt"/><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>CULTURA</em></span> La iniciativa Let's Encrypt</div></div></div></div><a id="idm15198" class="indexterm"/><p>
+				La iniciativa <a class="ulink" href="https://letsencrypt.org/es/">Let's Encrypt</a> es un esfuerzo conjunto para crear una autoridad certificadora (AC) libre, automatizada y abierta, gestionada para el beneficio público. Está apoyada por la <acronym class="acronym">EFF</acronym> y la Linux Foundation. La iniciativa proporciona una herramienta automatizada para adquirir y renovar certificados. Esto reduce la cantidad de esfuerzo manual necesario, especialmente si deben gestionarse varios sitios y dominios. Los certificados también se pueden usar para servidores SIP, XMPP, WebSockets y TURN. El uso del servicio requiere control sobre la información DNS del dominio en cuestión (validación de dominio). </p><div class="url">→ <a class="ulink" href="https://letsencrypt.org/es/how-it-works/">https://letsencrypt.org/es/how-it-works/</a></div><p>
+			</p></div><hr class="delimit-sidebar"/><p>
+				Si prefiere mantener el servidor en funcionamiento durante la creación del certificado, puede ejecutar el complemento webroot para obtener el certificado con los argumentos <span class="command"><strong>certonly</strong></span> y <span class="command"><strong>--webroot</strong></span>. Tendría que especificar un <span class="command"><strong>--webroot-path</strong></span> (abreviado <span class="command"><strong>-w</strong></span>), que debería contener los archivos servidos. La orden tiene este aspecto:
+			</p><div class="screen"><code class="computeroutput"># </code><strong class="userinput"><code>certbot certonly --webroot -w <em class="replaceable"><code>/var/www/html</code></em> -d www.<em class="replaceable"><code>DOMINIO</code></em>.com -d <em class="replaceable"><code>DOMINIO</code></em>.com</code></strong></div><p>
+				Necesita reiniciar todos los servicios usando los certificados que ha creado.
+			</p><a id="idm15216" class="indexterm"/><a id="idm15221" class="indexterm"/><p>
+				Los certificados creados son los llamados certificados de corta duración, que son válidos durante 90 días y deben ser por ello renovados una vez cada tres meses usando la orden <span class="command"><strong>certbot renew</strong></span>. Sin embargo, no deberíamos renovar cada certificado manualmente, sino automáticamente. <span class="pkg">certbot</span> incluye una tarea cron básica en <code class="filename">/etc/cron.d/certbot</code>. Para cerciorarse de que los certificados pueden ser renovados automáticamente, puede ejecutar <span class="command"><strong>certbot renew --dry-run</strong></span>.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.easy-rsa"/>10.2.2. Infraestructura de llave pública: <span class="emphasis"><em>easy-rsa</em></span></h2></div></div></div><a id="idm15232" class="indexterm"/><a id="idm15235" class="indexterm"/><a id="idm15237" class="indexterm"/><a id="idm15239" class="indexterm"/><a id="idm15242" class="indexterm"/><a id="idm15245" class="indexterm"/><a id="idm15247" class="indexterm"/><a id="idm15250" class="indexterm"/><p>
+				También puede crear su propia AC, para lo que usaremos el algoritmo RSA, ampliamente utilizado en criptografía de llave pública. Involucra un «par de llaves», compuestas de una llave privada y una llave pública. Las dos llaves están fuertemente relacionadas entre ellas y sus propiedades matemáticas son tales que un mensaje cifrado con la llave pública sólo puede ser descifrado por alguien que conozca la llave privada, lo que asegura confidencialidad. En la dirección opuesta, un mensaje cifrado con la clave privada puede ser descifrado por cualquiera que conozca la llave pública, lo que permite autenticar el origen del mensaje ya que sólo pudo haber sido generado por alguien con acceso a la llave privada. Cuando se asocie una función de hash digital (MD5, SHA1 o una variante más reciente), esto lleva a un mecanismo de firma que puede aplicarse a cualquier mensaje.
+			</p><p>
+				Dado que los CA públicos sólo expiden certificados a cambio de un pago (importante), también es posible crear una autoridad de certificación privada dentro de la empresa. El paquete <span class="pkg">easy-rsa</span> proporciona herramientas que dan soporte a la infraestructura de certificados X.509, implementados como un conjunto de scripts haciendo uso del comando <span class="command"><strong>openssl</strong></span>.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>ALTERNATIVA</em></span> SSL y TLS</div></div></div></div><a id="idm15259" class="indexterm"/><a id="idm15261" class="indexterm"/><a id="idm15263" class="indexterm"/><a id="idm15265" class="indexterm"/><p>
+				También se puede usar GnuTLS para generar una AC, y encargarse de otras tecnologías que rodean a los protocolos TLS, DTLS y SSL.
+			</p><p>
+				El paquete <span class="pkg">gnutls-bin</span> contiene las utilidades de línea de órdenes. También es útil instalar el paquete <span class="pkg">gnutls-doc</span>, que incluye una extensa documentación.
+			</p></div><hr class="delimit-sidebar"/><p>
+				Los administradores de Falcot Corp utilizan esta herramienta para crear los certificados necesarios, tanto para los servidores como para los clientes. Esto permite que la configuración de todos los clientes sea similar ya que sólo deberán configurarlos para confiar en certificados que provengan de la CA local de Falcot. Esta CA es el primer certificado a crear; para ello los administradores preparan un directorio con los ficheros necesarios para la CA en una ubicación apropiada, preferentemente a una máquina que no está conectada a la red para evitar el riesgo de robo de la llave privada de la CA.
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>make-cadir pki-falcot
+</code></strong><code class="computeroutput">$ </code><strong class="userinput"><code>cd pki-falcot</code></strong></div><p>
+				Luego almacenan los parámetros necesarios en el archivo <code class="filename">vars</code>, que pueden ser descomentados y editados:
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>grep EASYRSA vars
+</code></strong><code class="computeroutput">if [ -z "$EASYRSA_CALLER" ]; then
+# easyrsa.  More specific variables for specific files (e.g., EASYRSA_SSL_CONF)
+#set_var EASYRSA	"${0%/*}"
+#set_var EASYRSA_OPENSSL	"openssl"
+#set_var EASYRSA_OPENSSL	"C:/Program Files/OpenSSL-Win32/bin/openssl.exe"
+#set_var EASYRSA_PKI		"$PWD/pki"
+#set_var EASYRSA_TEMP_DIR	"$EASYRSA_PKI"
+#set_var EASYRSA_DN	"cn_only"
+set_var EASYRSA_REQ_COUNTRY	"FR"
+set_var EASYRSA_REQ_PROVINCE	"Loire"
+set_var EASYRSA_REQ_CITY	"Saint-Étienne"
+set_var EASYRSA_REQ_ORG	"Falcot Corp"
+set_var EASYRSA_REQ_EMAIL	"admin@falcot.com"
+set_var EASYRSA_REQ_OU		"Certificate authority"
+#set_var EASYRSA_KEY_SIZE	2048
+#set_var EASYRSA_ALGO		rsa
+#set_var EASYRSA_CURVE		secp384r1
+#set_var EASYRSA_CA_EXPIRE	3650
+#set_var EASYRSA_CERT_EXPIRE	825
+#set_var EASYRSA_CRL_DAYS	180
+#set_var EASYRSA_CERT_RENEW	30
+#set_var EASYRSA_RAND_SN	"yes"
+#set_var EASYRSA_NS_SUPPORT	"no"
+#set_var EASYRSA_NS_COMMENT	"Easy-RSA Generated Certificate"
+#set_var EASYRSA_TEMP_FILE	"$EASYRSA_PKI/extensions.temp"
+# when undefined here, default behaviour is to look in $EASYRSA_PKI first, then
+# fallback to $EASYRSA for the 'x509-types' dir.  You may override this
+#set_var EASYRSA_EXT_DIR	"$EASYRSA/x509-types"
+#set_var EASYRSA_KDC_REALM      "CHANGEME.EXAMPLE.COM"
+# EASYRSA_PKI or EASYRSA dir (in that order.) NOTE that this file is Easy-RSA
+#set_var EASYRSA_SSL_CONF	"$EASYRSA/openssl-easyrsa.cnf"
+#set_var EASYRSA_REQ_CN		"ChangeMe"
+#set_var EASYRSA_DIGEST		"sha256"
+#set_var EASYRSA_BATCH		""
+$ </code><strong class="userinput"><code>vim vars
+</code></strong><code class="computeroutput">$ </code></div><p>
+				Ahora preparamos el directorio de la infraestructura de clave pública con la siguiente orden:
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>./easyrsa init-pki
+</code></strong><code class="computeroutput">
+
+init-pki complete; ahora puede crear una CA o una petición.
+Su directorio PKI recién creado es: /home/debian/pki-falcot/pki
+
+</code></div><p>
+				El siguiente paso es crear el par de llaves en sí de la CA (durante este paso se almacenarán las dos partes del par de llaves en <code class="filename">pki/ca.crt</code> y <code class="filename">pki/private/ca.key</code>). Podemos añadir la opción <code class="literal">nopass</code> para no tener que introducir una contraseña cada vez que se use la clave privada:
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>./easyrsa build-ca nopass</code></strong>
+<code class="computeroutput">
+Using SSL: openssl OpenSSL 1.1.1k  25 Mar 2021
+Generating RSA private key, 2048 bit long modulus (2 primes)
+..................+++++
+...............................+++++
+e is 65537 (0x010001)
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Common Name (eg: your user, host, or server name) [Easy-RSA CA]:
+
+CA creation complete and you may now import and sign cert requests.
+Your new CA certificate file for publishing is at:
+/home/debian/pki-falcot/pki/ca.crt
+
+</code></div><a id="idm15298" class="indexterm"/><p>
+				Ahora puede crear el certificado, así como también los parámetros Diffie-Hellman necesarios en el servidor para la conexión SSL/TLS. Quieren usarlo para un servidor VPN (consulte la sección <a class="xref" href="ch10s03.html" title="10.3. Red virtual privada">Sección 10.3, “Red virtual privada”</a>) identificado cor el nombre DNS <code class="literal">vpn.falcot.com</code>; se reutiliza este nombre para los archivos de llaves generados (<code class="filename">keys/vpn.falcot.com.crt</code> para el certificado público, <code class="filename">keys/vpn.falcot.com.key</code> para la llave privada):
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>./easyrsa gen-req vpn.falcot.com nopass
+</code></strong><code class="computeroutput">
+Using SSL: openssl OpenSSL 1.1.1k  25 Mar 2021
+Generating a RSA private key
+......................................+++++
+..........................................................................+++++
+writing new private key to '/home/debian/pki-falcot/pki/easy-rsa-5515.0PwyXl/tmp.g1c6u6'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Common Name (eg: your user, host, or server name) [vpn.falcot.com]:
+
+Keypair and certificate request completed. Your files are:
+req: /home/debian/pki-falcot/pki/reqs/vpn.falcot.com.req
+key: /home/debian/pki-falcot/pki/private/vpn.falcot.com.key
+
+
+$ </code><strong class="userinput"><code>./easyrsa sign-req server vpn.falcot.com
+</code></strong><code class="computeroutput">
+Using SSL: openssl OpenSSL 1.1.1k  25 Mar 2021
+
+
+You are about to sign the following certificate.
+Please check over the details shown below for accuracy. Note that this request
+has not been cryptographically verified. Please be sure it came from a trusted
+source or that you have verified the request checksum with the sender.
+
+Request subject, to be signed as a server certificate for 825 days:
+
+subject=
+    commonName                = vpn.falcot.com
+
+
+Type the word 'yes' to continue, or any other input to abort.
+  Confirm request details: <strong class="userinput"><code>yes
+</code></strong>Using configuration from /home/debian/pki-falcot/pki/easy-rsa-5603.87iCIa/tmp.u8r8Fj
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'vpn.falcot.com'
+Certificate is to be certified until May 27 15:26:29 2024 GMT (825 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+Certificate created at: /home/debian/pki-falcot/pki/issued/vpn.falcot.com.crt
+
+
+$ </code><strong class="userinput"><code>./easyrsa gen-dh
+</code></strong><code class="computeroutput">
+Using SSL: openssl OpenSSL 1.1.1k  25 Mar 2021
+Generating DH parameters, 2048 bit long safe prime, generator 2
+This is going to take a long time
+[…]
+
+DH parameters of size 2048 created at /home/debian/pki-falcot/pki/dh.pem
+
+</code></div><p>
+				El siguiente paso crea los certificados para los clientes VPN; necesita un certificado para cada equipo o persona autorizada para utilizar la VPN:
+			</p><div class="screen">
+<code class="computeroutput">$ </code><strong class="userinput"><code>./easyrsa build-client-full JoeSmith nopass
+</code></strong><code class="computeroutput">
+Using SSL: openssl OpenSSL 1.1.1k  25 Mar 2021
+Generating a RSA private key
+...................................+++++
+.........................................................................................+++++
+writing new private key to '/home/debian/pki-falcot/pki/easy-rsa-5694.DOYwSn/tmp.RKlbOE'
+-----
+Using configuration from /home/debian/pki-falcot/pki/easy-rsa-5694.DOYwSn/tmp.d5QHAC
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+commonName            :ASN.1 12:'JoeSmith'
+Certificate is to be certified until May 27 15:29:25 2024 GMT (825 days)
+
+Write out database with 1 new entries
+Data Base Updated
+
+</code></div></div></div></body></html>

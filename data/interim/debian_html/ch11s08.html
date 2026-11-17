@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title>11.8. Servicios de comunicación en tiempo real</title><link href="tdah.css" rel="stylesheet" type="text/css"/><meta content="DocBook XSL Stylesheets Vsnapshot" name="generator"/><meta content="Postfix, Apache, NFS, Samba, Squid, OpenLDAP, SIP, SSL, OpenDKIM, SPF" name="keywords"/></head><body><div class="section"><div class="titlepage"><div><div><h1 class="title"><a id="sect.rtc-services"></a>11.8. Servicios de comunicación en tiempo real</h1></div></div></div><a class="indexterm" id="idm19765"></a><a class="indexterm" id="idm19767"></a><a class="indexterm" id="idm19770"></a><a class="indexterm" id="idm19773"></a><a class="indexterm" id="idm19776"></a><a class="indexterm" id="idm19779"></a><a class="indexterm" id="idm19782"></a><a class="indexterm" id="idm19784"></a><a class="indexterm" id="idm19786"></a><a class="indexterm" id="idm19788"></a><a class="indexterm" id="idm19791"></a><p>
+			Los servicios de comunicación en tiempo real (<span class="foreignphrase"><em class="foreignphrase">Real-Time Communication</em></span>, RTC) agrupan los servicios de voz sobre IP, video/webcam, mensajería instantánea (<span class="foreignphrase"><em class="foreignphrase">instant messaging</em></span>, IM) y de compartición de escritorio. Este capítulo proporciona una breve introducción a tres servicios necesarios para una infraestructura de comunicaicón en tiempo real: un servidor TURN, un servidor SIP y un servidor XMPP. Se pueden encontrar explicaciones más extensas de cómo planificar, instalar y gestionar estos servicios en inglés en <span class="foreignphrase"><em class="foreignphrase">Real-Time Communications Quick Start Guide</em></span>, que contiene incluso ejemplos específicos para Debian. </p><div class="url">→ <a class="ulink" href="https://rtcquickstart.org">https://rtcquickstart.org</a></div><p>
+</p><p>
+			Tanto SIP como XMPP pueden proporcionar la misma funcionalidad. SIP es algo más conociod para la voz sobre IP y para el video, mientras que XMPP se utiliza como protocolo de mensajería instantánea. En realidad ambos pueden ser utilizados para cualquier ade estos servicios. Para optimizar las opciones de conectividad se recomienda utilizar ambos en paralelo.
+		</p><a class="indexterm" id="idm19799"></a><a class="indexterm" id="idm19801"></a><a class="indexterm" id="idm19804"></a><a class="indexterm" id="idm19806"></a><a class="indexterm" id="idm19809"></a><p>
+			Estos servicios dependen de certificados X.509 tanto para autentificación como para propósitos de confidencialidad. Consulte <a class="xref" href="ch10s02.html" title="10.2. Certificados X.509">Sección 10.2, “Certificados X.509”</a> para más información.
+		</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.rtc-dns-settings"></a>11.8.1. Parámetros DNS para los servicios RTC</h2></div></div></div><a class="indexterm" id="idm19815"></a><p>
+				RTC services require DNS SRV and NAPTR records. A sample configuration that can be placed in the zone file for <code class="literal">falcot.com</code> (see also <a class="xref" href="ch10s07.html#example.bind-db.falcot.com" title="Ejemplo 10.13. Extracto de /etc/bind/db.falcot.com">Ejemplo 10.13, “Extracto de <code class="filename">/etc/bind/db.falcot.com</code>”</a>:
+			</p><a class="indexterm" id="idm19821"></a><a class="indexterm" id="idm19826"></a><pre>
+; the server where everything will run
+server1            IN     A      198.51.100.19
+server1            IN     AAAA   2001:DB8:1000:2000::19
+
+; IPv4 only for TURN for now, some clients are buggy with IPv6
+turn-server        IN     A      198.51.100.19
+
+; IPv4 and IPv6 addresses for SIP
+sip-proxy          IN     A      198.51.100.19
+sip-proxy          IN     AAAA   2001:DB8:1000:2000::19
+
+; IPv4 and IPv6 addresses for XMPP
+xmpp-gw            IN     A      198.51.100.19
+xmpp-gw            IN     AAAA   2001:DB8:1000:2000::19
+
+; DNS SRV and NAPTR for STUN / TURN
+_stun._udp  IN SRV    0 1 3467 turn-server.falcot.com.
+_turn._udp  IN SRV    0 1 3467 turn-server.falcot.com.
+@           IN NAPTR  10 0 "s" "RELAY:turn.udp" "" _turn._udp.falcot.com.
+
+; DNS SRV and NAPTR records for SIP
+_sips._tcp  IN SRV    0 1 5061 sip-proxy.falcot.com.
+@           IN NAPTR  10 0 "s" "SIPS+D2T" "" _sips._tcp.falcot.com.
+
+; DNS SRV records for XMPP Server and Client modes:
+_xmpp-client._tcp  IN     SRV    5 0 5222 xmpp-gw.falcot.com.
+_xmpp-server._tcp  IN     SRV    5 0 5269 xmpp-gw.falcot.com.</pre></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.turn-server"></a>11.8.2. Servidor TURN</h2></div></div></div><p>
+				TURN es un servicio que permite a los clientes que se encuentran detrás de un router o firewall con NAT encontrar el camino más eficaz para comunicarse con otros clientes y en caso de no encontrarse ningún camino directo retransmitir los flujos de voz y datos. Se recomienda vivamente instalar un servidor TURN antes de ofrecer ningún otro servicio RTC a los usuarios finales.
+			</p><a class="indexterm" id="idm19835"></a><a class="indexterm" id="idm19838"></a><p>
+				TURN y el protocolo ICE son estándares abiertos. Para sacar provecho de estos protocolos, maximizando la conectividad y minimizando la frustración de los usuarios, es importante asegurarse que todos los programas cliente sean compatibles.
+			</p><a class="indexterm" id="idm19842"></a><p>
+				Para que el agoritmo ICE funcione eficazmente, el servidor tiene que tener do direcciones IPv4 públicas.
+			</p><p>
+				Instale el paquete <span class="pkg">coturn</span> y edite el archivo de configuración <code class="filename">/etc/turnserver.conf</code> . Por defecto, se configura una base de datos SQLite en <code class="filename">/var/db/turndb</code> para los ajustes de las cuentas de usuario, pero se pueden configurar PostgreSQL, MySQL o Redit si se prefiere. Lo más importante es insertar las direcciones IP del servidor.
+			</p><a class="indexterm" id="idm19849"></a><a class="indexterm" id="idm19852"></a><p>
+				The server can be started running <span class="command"><strong>turnserver</strong></span> from the <span class="pkg">coturn</span> package. We want the server to be an automatically started system service. This is the default behavior using <span class="emphasis"><em>systemd</em></span>. Only when using the older SysVinit you have to edit the <code class="filename">/etc/default/coturn</code> file like this:
+			</p><a class="indexterm" id="idm19862"></a><a class="indexterm" id="idm19865"></a><pre>#
+# Uncomment it if you want to have the turnserver running as
+# an automatic system service daemon
+#
+TURNSERVER_ENABLED=1
+</pre><p>
+				Por defecto, el servidor TURN usa un acceso anónimo. Tenemos que añadir los usuarios que queremos usar:
+			</p><a class="indexterm" id="idm19872"></a><pre># turnadmin -a -u roland -p secret_password -r falcot.com
+# turnadmin -A -u admin -p secret_password</pre><p>
+				Usamos el argumento <code class="literal">-a</code> para añadir un usuario normal y <code class="literal">-A</code> para añadir un usuario administrador.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.sip-server"></a>11.8.3. Servidor Proxy SIP</h2></div></div></div><p>
+				Un servidor proxy SIP gestiona las conexiones SIP entrantes y salientes entre distintas organizaciones, los proveedores de enlaces SIP (<span class="foreignphrase"><em class="foreignphrase">SIP trunking</em></span>), las centralitas privadas (<span class="foreignphrase"><em class="foreignphrase">Private Automatic Branch eXchange</em></span>, PBX) como Asterisk, los teléfonos y programas de telefonía SIP y las aplicaciones WebRTC.
+			</p><a class="indexterm" id="idm19890"></a><a class="indexterm" id="idm19893"></a><a class="indexterm" id="idm19896"></a><a class="indexterm" id="idm19899"></a><a class="indexterm" id="idm19902"></a><p>
+				Es altamente recomendable instalar y configurar un proxy SIP antes de intentar poner en servicio una centralita (<span class="foreignphrase"><em class="foreignphrase">PBX</em></span>). El proxy SIP normaliza en gran medida el tráfico que llega a la centralita y proporciona una mayor conectividad y resiliencia.
+			</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect.sip-server-install"></a>11.8.3.1. Instalación de un proxy SIP</h3></div></div></div><a class="indexterm" id="idm19909"></a><p>
+					Install the <span class="pkg">kamailio</span> package and the package for the database backend. The Falcot administrators chose MySQL, so they install <span class="pkg">kamailio-mysql-modules</span> and <span class="pkg">mariadb-server</span>. <code class="filename">/etc/kamailio/kamctlrc</code> is the configuration file for the control tools <span class="command"><strong>kamctl</strong></span> and <span class="command"><strong>kamdbctl</strong></span>. You need to edit and set the <code class="literal">SIP_DOMAIN</code> to your SIP service domain and set the <code class="literal">DBENGINE</code> to MySQL, another database backend can be used.
+				</p><pre>[...]
+## your SIP domain
+SIP_DOMAIN=sip.falcot.com
+
+## chrooted directory
+# CHROOT_DIR="/path/to/chrooted/directory"
+
+## database type: MYSQL, PGSQL, ORACLE, DB_BERKELEY, DBTEXT, or SQLITE
+# by default none is loaded
+#
+# If you want to setup a database with kamdbctl, you must at least specify
+# this parameter.
+DBENGINE=MYSQL
+[...]
+</pre><a class="indexterm" id="idm19924"></a><a class="indexterm" id="idm19927"></a><p>
+					Ahora nos centramos en el archivo de configuración <code class="filename">/etc/kamailio/kamailio.cfg</code>. Falcot necesita la autentificación de usuario y la ubicación de usuario persistente, así que añaden las siguientes directivas <code class="literal">#!define</code> en la parte superior de ese archivo:
+				</p><pre>
+#!KAMAILIO
+#
+# Kamailio (OpenSER) SIP Server v5.2 - default configuration script
+#     - web: https://www.kamailio.org
+#     - git: https://github.com/kamailio/kamailio
+#!define WITH_MYSQL
+#!define WITH_AUTH
+#!define WITH_USRLOCDB
+[...]
+</pre><p>
+					Kamailio needs a database structure that we can create running <span class="command"><strong>kamdbctl create</strong></span> as root. Finally, we can add some users with <span class="command"><strong>kamctl</strong></span>.
+				</p><a class="indexterm" id="idm19941"></a><a class="indexterm" id="idm19944"></a><pre># kamdbctl create
+[...]
+# kamctl add roland secret_password</pre><p>
+					Once everything is properly configured you can start or restart the service with <span class="command"><strong>systemctl restart kamailio</strong></span>, you can connect with a SIP client providing the IP address and the port (5090 is the default port). The users have the following id: <code class="literal"><em class="replaceable"><code>roland</code></em>@<em class="replaceable"><code>sip.falcot.com</code></em></code>, and they can login using a client (see <a class="xref" href="ch13s09.html" title="13.9. Software de comunicaciones en tiempo real">Sección 13.9, “Software de comunicaciones en tiempo real”</a>).
+				</p><a class="indexterm" id="idm19960"></a></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.xmpp-server"></a>11.8.4. Servidor XMPP</h2></div></div></div><a class="indexterm" id="idm19966"></a><p>
+				Un servidor XMPP gestiona la conectividad entre usuarios locales XMPP y usuarios XMPP en otros dominios de la red pública Internet.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>VOCABULARIO</em></span> ¿XMPP o Jabber?</div></div></div></div><p>
+				En ocasiones se menciona XMPP como Jabber. De hecho, Jabber es una marca y XMPP es el nombre oficial del estándard.
+			</p><a class="indexterm" id="idm19973"></a></div><hr class="delimit-sidebar"/><p>
+<span class="pkg">prosody</span> is a popular XMPP server that operates reliably on Debian servers.
+			</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect.xmpp-server-install"></a>11.8.4.1. Instalar el servidor XMPP</h3></div></div></div><a class="indexterm" id="idm19979"></a><p>
+					Instale el paquete <span class="pkg">prosody</span>.
+				</p><p>
+					Revisar el fichero de configuración <code class="filename">/etc/prosody/prosody.cfg.lua</code>. Lo más importante en agregar los JIDs de los usuarios a los que se les permite gestionar el servidor.
+				</p><a class="indexterm" id="idm19986"></a><pre>
+admins = { "joe@falcot.com" }</pre><p>
+					También se necesita un fichero de configuracion por cada dominio. Copiar el ejemplo de <code class="filename">/etc/prosody/conf.avail/example.com.cfg.lua</code> y usarlo como punto de partida. Este es <code class="literal">falcot.com.cfg.lua</code>:
+				</p><a class="indexterm" id="idm19995"></a><pre>
+VirtualHost "falcot.com"
+        enabled = true
+        ssl = {
+                key = "/etc/ssl/private/falcot.com.key";
+                certificate = "/etc/ssl/certs/falcot.com.pem";
+                }
+
+-- Set up a MUC (multi-user chat) room server on conference.example.com:
+Component "conference.falcot.com" "muc"
+</pre><p>
+					Para activar el dominio debe haber un enlace simbólico de <code class="filename">/etc/prosody/conf.d/</code>. Créelo de este modo:
+				</p><a class="indexterm" id="idm20003"></a><pre># ln -s /etc/prosody/conf.avail/falcot.com.cfg.lua /etc/prosody/conf.d/</pre><p>
+					Reinicie el servicio para usar la nueva configuración.
+				</p><a class="indexterm" id="idm20012"></a></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect.xmpp-server-management"></a>11.8.4.2. Gestionando el servidor XMPP</h3></div></div></div><a class="indexterm" id="idm20018"></a><a class="indexterm" id="idm20023"></a><p>
+					Some management operations can be performed using the <span class="command"><strong>prosodyctl</strong></span> command line utility. For example, to add the administrator account specified in <code class="filename">/etc/prosody/prosody.cfg.lua</code>:
+				</p><pre># prosodyctl adduser joe@falcot.com
+</pre><p>
+					Para más detalles sobre cómo personalizar la configuración, vea la <a class="ulink" href="https://prosody.im/doc/configure">documentación en línea de Prosody</a>.
+				</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.rtc-port-443"></a>11.8.5. Servicios corriendo en el puerto 443</h2></div></div></div><p>
+				Alguno administradores prefieren ejecutar todos sus servicios RTC en el puerto 443. Esto facilita a los usuarios conectarse desde lugares remotos, tales como hoteles y aeropuertos. Donde el resto de puertos pueden estar bloqueados o el tráfico de Internet se redirige a través de servidores proxy HTTP.
+			</p><p>
+				Para usar esta estrategia cada servicio (SIP, XMPP y TURN) necesita una dirección IP distinta. Todos los servicios pueden estar todavía en el mismo equipo, ya que Linux soporta múltiples IP en un solo equipo. El número de puerto, 443, debe especificarse en los ficheros de configuración de cada uno de los procesos, y también en los registros SRV del DNS.
+			</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="sect.rtc-webrtc"></a>11.8.6. Agregando WebRTC</h2></div></div></div><a class="indexterm" id="idm20040"></a><a class="indexterm" id="idm20042"></a><p>
+				Falcot quiere permitir a los clientes realizar llamadas telefónicas directamente desde el sitio web. Los administradores de Flacot también quieren usar WebRTC como parte de su plan de contingencia, de modo que el personal pueda hacer uso de los navegadores web desde casa y hacer uso del sistema de telefonía de la empresa y trabajar normalmente en caso de emergencia.
+			</p><hr class="delimit-sidebar"/><div class="sidebar"><div class="titlepage"><div><div><div class="sidebar-title"><span class="emphasis"><em>EN LA PRÁCTICA</em></span> Pruebe WebRTC</div></div></div></div><a class="indexterm" id="idm20049"></a><p>
+				If you have not tried WebRTC before, there are various sites that give an online demonstration and test facilities. </p><div class="url">→ <a class="ulink" href="https://sip5060.net/test-calls">https://sip5060.net/test-calls</a></div><p>
+</p></div><hr class="delimit-sidebar"/><p>
+				WebRTC es una tecnología que evoluciona rápidamente, y es esencial hacer uso de los paquetes de las distribuciones <span class="distribution">Testing</span>. Otra opción es compilar el software.
+			</p><p>
+				WebRTC usa una simple API para proveer de RTC a navegadores y aplicaciones móviles, es software libre y está siendo desarrollado por Google. </p><div class="url">→ <a class="ulink" href="https://webrtc.org">https://webrtc.org</a></div><p>
+</p><a class="indexterm" id="idm20058"></a><p>
+				A very flexible approach is using GStreamer's WebRTC implementation. It enables pipeline-based multimedia applications, which allows developing interesting and highly efficient applications. A good starting point is the following demo by Centricular, the main company that is developing it: </p><div class="url">→ <a class="ulink" href="https://gitlab.freedesktop.org/gstreamer/gst-examples">https://gitlab.freedesktop.org/gstreamer/gst-examples</a></div><p>
+</p><a class="indexterm" id="idm20062"></a><p>
+				Portales web más avanzados de tipo click-para-llamar normalmente hacen uso de scripts en la parte de servidor para generar dinámicamente el fichero <code class="literal">config.js</code>. El código fuente de <a class="ulink" href="https://www.drupal.org/project/drucall">DruCall</a> muestra cómo hacerlo con PHP.
+			</p><a class="indexterm" id="idm20067"></a><p>
+				Este capítulo sólo analiza una parte de todo el software de servidor disponible; sin embargo, describimos la mayoría de los servicios de red. Ahora es el momento de un capítulo aún más técnico: profundizaremos en los detalles de algunos conceptos, describiremos los despliegues masivos y la virtualización.
+			</p></div></div></body></html>
