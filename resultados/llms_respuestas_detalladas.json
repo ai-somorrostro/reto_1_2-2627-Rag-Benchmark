@@ -241,6 +241,246 @@
   },
   {
     "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q16",
+    "pregunta": "¿Cuál es la duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. - Parte 1/8]\nRespuesta: 40 horas semanales de trabajo efectivo de promedio en cómputo anual.",
+    "respuesta_esperada": "La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual (artículo 34.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q17",
+    "pregunta": "¿Cuántas horas como mínimo deben mediar entre el final de una jornada laboral y el comienzo de la siguiente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. - Parte 2/8]\nRespuesta:  Deben mediar, como mínimo, doce horas.",
+    "respuesta_esperada": "Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas (artículo 34.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q18",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador por traslado del domicilio habitual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. - Parte 3/15]\nRespuesta: Un día por traslado del domicilio habitual.",
+    "respuesta_esperada": "Dispone de un día de permiso retribuido por traslado del domicilio habitual (artículo 37.3.c).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q19",
+    "pregunta": "¿A cuántas gratificaciones o pagas extraordinarias al año tiene derecho un trabajador según la ley?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 31. Gratificaciones extraordinarias.]\nRespuesta: Un trabajador tiene derecho a dos gratificaciones extraordinarias al año, una de ellas con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores. Igualmente se fijará por convenio colectivo la cuantía de tales gratificaciones.",
+    "respuesta_esperada": "Tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o acuerdo (artículo 31).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q20",
+    "pregunta": "¿Qué antigüedad mínima en la empresa se exige para pedir una excedencia voluntaria y cuál es su duración mínima y máxima?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 46. Excedencias. (Parte 1)]\nRespuesta: Para pedir una excedencia voluntaria se requiere una antigüedad mínima de un año en la empresa. El derecho a la excedencia voluntaria se puede ejercer por un plazo no menor a cuatro meses y no mayor a cinco años.",
+    "respuesta_esperada": "Se exige al menos una antigüedad de un año en la empresa, por un plazo no menor a cuatro meses y no mayor a cinco años (artículo 46.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q21",
+    "pregunta": "¿En cuántos días hábiles caduca el ejercicio de la acción contra el despido o resolución de contratos temporales?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 59. Prescripción y caducidad. (Parte 2)]\nRespuesta: El plazo de caducidad quedará interrumpido por la presentación de la solicitud de conciliación ante el órgano público de mediación, arbitraje y conciliación competente. Los días serán hábiles y el plazo de caducidad a todos los efectos es de **veinte días** siguientes de aquel en que se hubiera producido.",
+    "respuesta_esperada": "Caduca a los veinte días hábiles siguientes a aquel en que se hubiera producido el despido (artículo 59.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q22",
+    "pregunta": "¿En qué plazos prescriben las faltas leves, graves y muy graves de los trabajadores desde que la empresa tiene conocimiento?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 60. Prescripción]\nRespuesta: Las faltas leves prescribirán a los diez días; las graves, a los veinte días, y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión y, en todo caso, a los seis meses de haberse cometido.",
+    "respuesta_esperada": "Las faltas leves prescriben a los diez días, las graves a los veinte días y las muy graves a los sesenta días desde que la empresa tuvo conocimiento, y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q23",
+    "pregunta": "¿Cuál es el plazo de preaviso en una extinción por causas objetivas y de cuántas horas semanales de licencia retribuida dispone el trabajador para buscar nuevo empleo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. - Parte 2/6]\nRespuesta: El plazo de preaviso en una extinción por causas objetivas es de quince días, computado desde la entrega de la comunicación personal al trabajador hasta la extinción del contrato de trabajo.  El trabajador dispone de una licencia de seis horas semanales con el fin de buscar nuevo empleo durante el periodo de preaviso.",
+    "respuesta_esperada": "El plazo de preaviso es de quince días y durante ese periodo el trabajador tiene derecho a una licencia retribuida de seis horas semanales para buscar nuevo empleo (artículo 53.1.c y 53.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q24",
+    "pregunta": "¿Qué diferencia existe respecto a la conservación del puesto de trabajo entre la excedencia forzosa y la excedencia voluntaria?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 46. Excedencias. (Parte 1)]\nRespuesta: La excedencia forzosa, que dará derecho a la conservación del puesto y al cómputo de la antigüedad de su vigencia, se concederá por la designación o elección para un cargo público que imposibilite la asistencia al trabajo. El reingreso deberá ser solicitado dentro del mes siguiente al cese en el cargo público. \n \n Fuente: [Artículo 46. Excedencias. (Parte 5)]\nRespuesta:  El trabajador en excedencia voluntaria conserva solo un derecho preferente al reingreso en las vacantes de igual o similar categoría a la suya que hubiera o se produjeran en la empresa.",
+    "respuesta_esperada": "La excedencia forzosa da derecho a la conservación del puesto de trabajo y al cómputo de la antigüedad (artículo 46.1), mientras que el trabajador en excedencia voluntaria conserva solo un derecho preferente al reingreso en las vacantes de igual o similar categoría (artículo 46.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q25",
+    "pregunta": "¿En qué se diferencian los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años frente a los trabajadores adultos?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. (Parte 3)]\nRespuesta: Los trabajadores menores de dieciocho años tienen un límite de jornada diaria de ocho horas, incluyendo tiempo dedicado a la formación, y un periodo de descanso mínimo de treinta minutos cuando la jornada diaria exceda de cuatro horas y media.  En cambio, los trabajadores adultos tienen un límite de jornada diaria de nueve horas, con un periodo de descanso de al menos doce horas entre jornadas.",
+    "respuesta_esperada": "Los menores de dieciocho años no pueden realizar más de ocho horas diarias frente a las nueve horas ordinarias de los adultos (artículo 34.3), y su descanso en jornada continuada debe ser de al menos treinta minutos si excede cuatro horas y media, frente a quince minutos tras seis horas para adultos (artículo 34.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q26",
+    "pregunta": "¿Qué diferencia existe en cuanto a indemnización entre una extinción por causas objetivas y un despido disciplinario declarado procedente?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. (Parte 5)]\nRespuesta: En caso de procedencia, el trabajador tendrá derecho a la indemnización prevista en el apartado 1, consolidándola de haberla recibido, y se entenderá en situación de desempleo por causa a él no imputable.",
+    "respuesta_esperada": "En la extinción por causas objetivas corresponde una indemnización de veinte días de salario por año de servicio con un máximo de doce mensualidades (artículo 53.1.b), mientras que el despido disciplinario procedente convalida la extinción sin derecho a indemnización ni salarios de tramitación (artículo 55.7).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q27",
+    "pregunta": "¿Cuál es el plazo general de prescripción de las acciones derivadas del contrato de trabajo y cómo se compara con el plazo máximo absoluto de prescripción de las faltas de los trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 60. Prescripción]\nRespuesta: El plazo general de prescripción de las acciones derivadas del contrato de trabajo es conforme a lo establecido en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, aprobado por el Real Decreto Legislativo 5/2000, de 4 de agosto.  El plazo máximo absoluto de prescripción de las faltas de los trabajadores es de: \n*  10 días para faltas leves\n*  20 días para faltas graves\n*  6 meses a partir de la fecha en que la empresa tuvo conocimiento de su comisión, en todo caso.",
+    "respuesta_esperada": "Las acciones derivadas del contrato de trabajo sin plazo especial prescriben al año de su terminación (artículo 59.1), mientras que las faltas de los trabajadores prescriben a los diez, veinte o sesenta días desde su conocimiento y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q28",
+    "pregunta": "¿Qué porcentaje exacto de retención de IRPF debe aplicar la empresa en la nómina de un trabajador que gana 30.000 euros brutos al año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Artículo 26. Del salario. - Parte 1/2]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Los porcentajes y tramos de retención del IRPF se regulan en la normativa fiscal y tributaria, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q29",
+    "pregunta": "¿Cuántos días de permiso retribuido corresponden a un trabajador por la intervención veterinaria de una mascota o animal doméstico?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El Estatuto de los Trabajadores no contempla permisos retribuidos por atención veterinaria a mascotas.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q30",
+    "pregunta": "¿Cuál es el importe exacto en euros de la sanción económica que impone la Inspección de Trabajo por no llevar registro horario?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las cuantías de las sanciones laborales se regulan en la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS), no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
     "documento": "debian",
     "pregunta_id": "deb_q01",
     "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
@@ -471,6 +711,246 @@
     "tipo": "sin_respuesta",
     "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso (Parte 33)]\nRespuesta: No aparece en el documento.",
     "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q16",
+    "pregunta": "¿En qué archivo se almacena el nombre principal o canónico de un equipo Debian y qué orden se utiliza para comunicarlo al núcleo Linux?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [1.3. El funcionamiento interno del proyecto Debian (Parte 47)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "Se almacena en el archivo «/etc/hostname» y se comunica al núcleo Linux a través de la orden «hostname» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q17",
+    "pregunta": "¿En qué archivo de configuración y precedidas por qué palabra clave se indican las direcciones IP de los servidores DNS en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres (Parte 4)]\nRespuesta: El archivo /etc/resolv.conf se puede manejar automáticamente (y sobrescrivir) cuando NetworkManager gestiona la red o se configura a través de DHCP, o cuando está instalado resolvconf o está activado systemd-resolved(8).",
+    "respuesta_esperada": "Se indican en el archivo «/etc/resolv.conf», precediendo cada dirección IP con la palabra clave «nameserver» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q18",
+    "pregunta": "¿Qué archivo se edita en Debian para modificar variables de GRUB 2 sin perder los cambios y qué orden regenera /boot/grub/grub.cfg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.8. Configuración del gestor de arranque (Parte 15)]\nRespuesta: Se edita el archivo /etc/default/grub para modificar variables de GRUB 2 sin perder los cambios y luego /boot/grub/grub.cfg se regenera.",
+    "respuesta_esperada": "Las modificaciones se realizan a través de variables en «/etc/default/grub» y el archivo «/boot/grub/grub.cfg» se regenera ejecutando «update-grub» (Sección 8.8).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q19",
+    "pregunta": "¿Qué macro especial se utiliza en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 1)]\nRespuesta: @reboot",
+    "respuesta_esperada": "Se utiliza la macro «@reboot» (Sección 9.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q20",
+    "pregunta": "¿Qué programa incluido en el paquete bind9-host se utiliza para consultar un servidor DNS y probar su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [10.7. Servidores de nombres de dominio (DNS) (Parte 5)]\nRespuesta: El programa host (en el paquete bind9-host) se utiliza para consultar un servidor DNS y probar su configuración.",
+    "respuesta_esperada": "El programa «host» (Sección 10.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q21",
+    "pregunta": "¿Qué comando de LVM se emplea para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso (Parte 25)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "El comando «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q22",
+    "pregunta": "¿Qué herramienta de prevención de intrusos monitoriza ficheros de registro buscando fallos de autenticación y en qué directorio guarda su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "La herramienta de prevención de intrusos que monitoriza ficheros de registro buscando fallos de autenticación y en qué directorio guarda su configuración es AIDE.  \n \n  Fuente: [14.3. Supervisión: prevención, detección, disuasión (Parte 15)] \n Respuesta: AIDE guarda su configuración en el directorio /var/lib/aide/aide.db.",
+    "respuesta_esperada": "La herramienta «Fail2Ban» (paquete «fail2ban»), que guarda sus archivos de configuración en «/etc/fail2ban/» (Sección 14.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q23",
+    "pregunta": "¿Qué conjunto de herramientas implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows?",
+    "tipo": "directa",
+    "respuesta_modelo": "Samba. \nFuente: [11.5. Configuración de espacios compartidos Windows con Samba (Parte 1)] \nRespuesta: Samba.",
+    "respuesta_esperada": "«Samba» (paquete «samba») (Sección 11.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q24",
+    "pregunta": "¿En qué archivos se almacenan los usuarios y las contraseñas con hash en Debian y qué comandos bloquean el archivo para editarlos de forma segura?",
+    "tipo": "combinada",
+    "respuesta_modelo": "En Debian, los usuarios y las contraseñas con hash se almacenan en los archivos /etc/passwd y /etc/shadow. Para editar estos archivos de forma segura, se pueden utilizar los comandos vipw para editar /etc/passwd y vigr para editar /etc/group.",
+    "respuesta_esperada": "Los usuarios se almacenan en «/etc/passwd» y las contraseñas con hash en «/etc/shadow» (Sección 8.4). Para editarlos con bloqueo seguro se utiliza «vipw» (con la opción «-s» para editar shadow) y «vigr» para «/etc/group» (Sección 8.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q25",
+    "pregunta": "¿En qué se diferencian cron, atd y anacron a la hora de programar tareas en un sistema Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 3)]\nRespuesta: Cron, atd y anacron son herramientas para programar tareas en un sistema Debian.  Cron se encarga de ejecutar tareas programadas con intervalos regulares, como rotar archivos de registro o actualizar la base de datos. AtD se utiliza para ejecutar tareas una sola vez a una fecha y hora específica. Anacron se encarga de ejecutar tareas que se programan para ejecutarse cuando el sistema no está encendido.",
+    "respuesta_esperada": "«cron» ejecuta tareas programadas recurrentes y «atd» ejecuta comandos una sola vez en un momento futuro concreto (Sección 9.7), mientras que «anacron» gestiona tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q26",
+    "pregunta": "¿Qué son los sistemas de archivos virtuales /proc/ y /sys/ y qué información ofrece cada uno sobre el núcleo Linux?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Los sistemas de archivos virtuales /proc/ y /sys/ son métodos prácticos para obtener información del núcleo Linux.  /proc/ describe el estado actual del núcleo: los archivos en este directorio contienen información sobre los procesos ejecutándose en el sistema y su hardware.  Por otro lado, /sys/ ofrece acceso a los objetos internos del núcleo, especialmente aquellos que representan los distintos dispositivos en el sistema.  El núcleo puede, entonces, compartir mucha información: el estado de cada dispositivo (por ejemplo, si está en modo de ahorro de energía), si es un dispositivo removible, etc. \nFuente: [Capítulo 9. Servicios Unix (Parte 19)]\nRespuesta: /proc/ describe el estado actual del núcleo: los archivos en este directorio contienen información sobre los procesos ejecutándose en el sistema y su hardware.  Por otro lado, /sys/ ofrece acceso a los objetos internos del núcleo, especialmente aquellos que representan los distintos dispositivos en el sistema.  El núcleo puede, entonces, compartir mucha información: el estado de cada dispositivo (por ejemplo, si está en modo de ahorro de energía), si es un dispositivo removible, etc.",
+    "respuesta_esperada": "Son sistemas de archivos virtuales generados por el núcleo Linux (Sección 8.3): «/proc/» describe el estado actual del núcleo y los procesos en ejecución, mientras que «/sys/» provee acceso a los objetos internos del núcleo que representan los dispositivos del sistema (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q27",
+    "pregunta": "En LVM, ¿qué relación existe entre un grupo de volúmenes (VG) y un volumen lógico (LV), y qué comando crea un volumen lógico?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 12. Administración avanzada (Parte 32)]\nRespuesta: En LVM, un grupo de volúmenes (VG) se compone de varios volúmenes lógicos (LV). El comando que crea un volumen lógico es `lvm`.",
+    "respuesta_esperada": "Un VG agrupa volúmenes físicos como un disco virtual extensible y un LV es una porción de un VG comparable a una partición en «/dev» (Capítulo 12), que se crea utilizando el programa «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q28",
+    "pregunta": "¿Qué cmdlet de PowerShell se ejecuta en Debian Bullseye para administrar directivas de grupo (GPO) de Windows Server?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. PowerShell y las directivas GPO pertenecen a entornos Microsoft Windows Server, no al manual del Administrador de Debian.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q29",
+    "pregunta": "¿Qué parámetro del comando pacman -Syu recomienda el manual de Debian para resolver conflictos en paquetes del repositorio AUR?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. pacman y AUR son herramientas propias de Arch Linux, mientras que Debian usa APT y dpkg.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q30",
+    "pregunta": "¿En qué archivo de /opt/homebrew/etc se configuran los repositorios oficiales del sistema en Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Homebrew es un gestor de paquetes típico de macOS; Debian utiliza APT configurado en /etc/apt/sources.list.",
     "evaluacion": {
       "correccion": 2,
       "fiel": true,
@@ -721,6 +1201,246 @@
   },
   {
     "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q16",
+    "pregunta": "¿Cuál es la duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual?",
+    "tipo": "directa",
+    "respuesta_modelo": "La duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual es cuarenta horas.",
+    "respuesta_esperada": "La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual (artículo 34.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q17",
+    "pregunta": "¿Cuántas horas como mínimo deben mediar entre el final de una jornada laboral y el comienzo de la siguiente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Según el fragmento de contexto, entre el final de una jornada laboral y el comienzo de la siguiente, se deben mediar al menos doce horas.",
+    "respuesta_esperada": "Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas (artículo 34.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q18",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador por traslado del domicilio habitual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)\nRespuesta: Un día por traslado del domicilio habitual.",
+    "respuesta_esperada": "Dispone de un día de permiso retribuido por traslado del domicilio habitual (artículo 37.3.c).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q19",
+    "pregunta": "¿A cuántas gratificaciones o pagas extraordinarias al año tiene derecho un trabajador según la ley?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 31. Gratificaciones extraordinarias.\nRespuesta: Un trabajador tiene derecho a dos gratificaciones extraordinarias al año, una de ellas con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores.",
+    "respuesta_esperada": "Tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o acuerdo (artículo 31).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q20",
+    "pregunta": "¿Qué antigüedad mínima en la empresa se exige para pedir una excedencia voluntaria y cuál es su duración mínima y máxima?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 46. Excedencias. (Parte 1)\nRespuesta: Para pedir una excedencia voluntaria, se exige una antigüedad mínima en la empresa de un año. La duración mínima de la excedencia voluntaria es de cuatro meses, mientras que la duración máxima no se especifica en el fragmento.",
+    "respuesta_esperada": "Se exige al menos una antigüedad de un año en la empresa, por un plazo no menor a cuatro meses y no mayor a cinco años (artículo 46.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q21",
+    "pregunta": "¿En cuántos días hábiles caduca el ejercicio de la acción contra el despido o resolución de contratos temporales?",
+    "tipo": "directa",
+    "respuesta_modelo": "El ejercicio de la acción contra el despido o resolución de contratos temporales caducará a los veinte días siguientes de aquel en que se hubiera producido. Los días serán hábiles y el plazo de caducidad a todos los efectos.",
+    "respuesta_esperada": "Caduca a los veinte días hábiles siguientes a aquel en que se hubiera producido el despido (artículo 59.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q22",
+    "pregunta": "¿En qué plazos prescriben las faltas leves, graves y muy graves de los trabajadores desde que la empresa tiene conocimiento?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 60. Prescripción, Sección 1.ª]\nRespuesta: Las faltas leves prescribirán a los diez días; las graves, a los veinte días; y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión.",
+    "respuesta_esperada": "Las faltas leves prescriben a los diez días, las graves a los veinte días y las muy graves a los sesenta días desde que la empresa tuvo conocimiento, y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q23",
+    "pregunta": "¿Cuál es el plazo de preaviso en una extinción por causas objetivas y de cuántas horas semanales de licencia retribuida dispone el trabajador para buscar nuevo empleo?",
+    "tipo": "directa",
+    "respuesta_modelo": "El plazo de preaviso en una extinción por causas objetivas es de quince días, computado desde la entrega de la comunicación personal al trabajador hasta la extinción del contrato de trabajo. Durante el periodo de preaviso, el trabajador tiene derecho a una licencia de seis horas semanales con el fin de buscar nuevo empleo, sin pérdida de su retribución.",
+    "respuesta_esperada": "El plazo de preaviso es de quince días y durante ese periodo el trabajador tiene derecho a una licencia retribuida de seis horas semanales para buscar nuevo empleo (artículo 53.1.c y 53.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q24",
+    "pregunta": "¿Qué diferencia existe respecto a la conservación del puesto de trabajo entre la excedencia forzosa y la excedencia voluntaria?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 46. Excedencias. (Parte 1)]\nRespuesta: La excedencia forzosa conservará el puesto de trabajo y el cómputo de la antigüedad de su vigencia, mientras que la excedencia voluntaria no conservará este derecho.",
+    "respuesta_esperada": "La excedencia forzosa da derecho a la conservación del puesto de trabajo y al cómputo de la antigüedad (artículo 46.1), mientras que el trabajador en excedencia voluntaria conserva solo un derecho preferente al reingreso en las vacantes de igual o similar categoría (artículo 46.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q25",
+    "pregunta": "¿En qué se diferencian los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años frente a los trabajadores adultos?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. (Parte 3/8)]\nRespuesta: Los menores de dieciocho años tienen límites de jornada diaria más reducidos que los trabajadores adultos, con un máximo de ocho horas diarias en lugar de nueve horas para los adultos. Además, cuando la duración de la jornada diaria continúa más de seis horas, se establece un periodo de descanso de no menos de quince minutos, mientras que para los trabajadores adultos no se menciona ninguna restricción en horas de descanso durante la jornada diaria continuada.",
+    "respuesta_esperada": "Los menores de dieciocho años no pueden realizar más de ocho horas diarias frente a las nueve horas ordinarias de los adultos (artículo 34.3), y su descanso en jornada continuada debe ser de al menos treinta minutos si excede cuatro horas y media, frente a quince minutos tras seis horas para adultos (artículo 34.4).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q26",
+    "pregunta": "¿Qué diferencia existe en cuanto a indemnización entre una extinción por causas objetivas y un despido disciplinario declarado procedente?",
+    "tipo": "combinada",
+    "respuesta_modelo": "En cuanto a la indemnización, la extinción por causas objetivas y el despido disciplinario son dos procesos diferentes con diferentes efectos. En el caso de la extinción por causas objetivas, el trabajador tiene derecho a la indemnización prevista en el apartado 1 del artículo 53, consolidándose esta indemnización si se ha recibido. Esta indemnización será consolidada como si se tratase de un desempleo no imputable. En el caso del despido disciplinario, la indemnización se determina según las normas aplicables en el artículo 53.\n\nEn cuanto al procedimiento, la extinción por causas objetivas tiene un plazo de preaviso de quince días, durante el cual el trabajador tiene derecho a una licencia de seis horas semanales para buscar nuevo empleo. En el caso del despido disciplinario, no se aplican los mismos plazos de preaviso.\n\nAdemás, en el",
+    "respuesta_esperada": "En la extinción por causas objetivas corresponde una indemnización de veinte días de salario por año de servicio con un máximo de doce mensualidades (artículo 53.1.b), mientras que el despido disciplinario procedente convalida la extinción sin derecho a indemnización ni salarios de tramitación (artículo 55.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q27",
+    "pregunta": "¿Cuál es el plazo general de prescripción de las acciones derivadas del contrato de trabajo y cómo se compara con el plazo máximo absoluto de prescripción de las faltas de los trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 60. Prescripción, Sección 1.ª del Capítulo V]\nRespuesta: El plazo general de prescripción de las acciones derivadas del contrato de trabajo es de seis meses, mientras que el plazo máximo absoluto de prescripción de las faltas de los trabajadores es de seis meses en caso de faltas leves, de sesenta días en caso de graves y de sesenta días en caso de muy graves.",
+    "respuesta_esperada": "Las acciones derivadas del contrato de trabajo sin plazo especial prescriben al año de su terminación (artículo 59.1), mientras que las faltas de los trabajadores prescriben a los diez, veinte o sesenta días desde su conocimiento y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q28",
+    "pregunta": "¿Qué porcentaje exacto de retención de IRPF debe aplicar la empresa en la nómina de un trabajador que gana 30.000 euros brutos al año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Los porcentajes y tramos de retención del IRPF se regulan en la normativa fiscal y tributaria, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q29",
+    "pregunta": "¿Cuántos días de permiso retribuido corresponden a un trabajador por la intervención veterinaria de una mascota o animal doméstico?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El Estatuto de los Trabajadores no contempla permisos retribuidos por atención veterinaria a mascotas.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q30",
+    "pregunta": "¿Cuál es el importe exacto en euros de la sanción económica que impone la Inspección de Trabajo por no llevar registro horario?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las cuantías de las sanciones laborales se regulan en la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS), no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
     "documento": "debian",
     "pregunta_id": "deb_q01",
     "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
@@ -951,6 +1671,246 @@
     "tipo": "sin_respuesta",
     "respuesta_modelo": "No aparece en el documento.",
     "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q16",
+    "pregunta": "¿En qué archivo se almacena el nombre principal o canónico de un equipo Debian y qué orden se utiliza para comunicarlo al núcleo Linux?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.4. Bases de datos de usuarios y grupos (Parte 3)]\nRespuesta: El nombre principal o canónico de un equipo Debian se almacena en el archivo /etc/passwd. El orden utilizado para comunicarlo al núcleo Linux es el nombre único y el número de usuario.",
+    "respuesta_esperada": "Se almacena en el archivo «/etc/hostname» y se comunica al núcleo Linux a través de la orden «hostname» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q17",
+    "pregunta": "¿En qué archivo de configuración y precedidas por qué palabra clave se indican las direcciones IP de los servidores DNS en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres (Parte 4)]\nRespuesta: nameserver",
+    "respuesta_esperada": "Se indican en el archivo «/etc/resolv.conf», precediendo cada dirección IP con la palabra clave «nameserver» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q18",
+    "pregunta": "¿Qué archivo se edita en Debian para modificar variables de GRUB 2 sin perder los cambios y qué orden regenera /boot/grub/grub.cfg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Capítulo 8. Configuración del sistema operativo (Parte 16)]\nRespuesta: En Debian, se edita el archivo /etc/default/grub para modificar variables de GRUB 2 sin perder los cambios. Este archivo se regenera automáticamente cuando se actualiza el sistema o se ejecuta el comando update-grub.",
+    "respuesta_esperada": "Las modificaciones se realizan a través de variables en «/etc/default/grub» y el archivo «/boot/grub/grub.cfg» se regenera ejecutando «update-grub» (Sección 8.8).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q19",
+    "pregunta": "¿Qué macro especial se utiliza en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo?",
+    "tipo": "directa",
+    "respuesta_modelo": "@reboot",
+    "respuesta_esperada": "Se utiliza la macro «@reboot» (Sección 9.7).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q20",
+    "pregunta": "¿Qué programa incluido en el paquete bind9-host se utiliza para consultar un servidor DNS y probar su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "El programa incluido en el paquete bind9-host utilizado para consultar un servidor DNS y probar su configuración es host.",
+    "respuesta_esperada": "El programa «host» (Sección 10.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q21",
+    "pregunta": "¿Qué comando de LVM se emplea para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "El comando de LVM utilizado para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian es \"vgcreate\". Por ejemplo, para crear un grupo de volúmenes llamado \"mygroup\" y un volumen lógico llamado \"mylv\", se utilizaría el siguiente comando:\n\n# vgcreate mygroup /dev/sda1 /dev/sdb1\n\nEn este ejemplo, \"/dev/sda1\" y \"/dev/sdb1\" son los discos físicos que se agregan al grupo de volúmenes \"mygroup\" para crear el volumen lógico \"mylv\".",
+    "respuesta_esperada": "El comando «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q22",
+    "pregunta": "¿Qué herramienta de prevención de intrusos monitoriza ficheros de registro buscando fallos de autenticación y en qué directorio guarda su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [14.3.4.3. Monitorización de archivos: AIDE]\nRespuesta: La herramienta AIDE monitoriza ficheros de registro buscando fallos de autenticación y guarda su configuración en el directorio /var/lib/aide/aide.db.",
+    "respuesta_esperada": "La herramienta «Fail2Ban» (paquete «fail2ban»), que guarda sus archivos de configuración en «/etc/fail2ban/» (Sección 14.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q23",
+    "pregunta": "¿Qué conjunto de herramientas implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows?",
+    "tipo": "directa",
+    "respuesta_modelo": "Samba es el conjunto de herramientas que implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows.",
+    "respuesta_esperada": "«Samba» (paquete «samba») (Sección 11.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q24",
+    "pregunta": "¿En qué archivos se almacenan los usuarios y las contraseñas con hash en Debian y qué comandos bloquean el archivo para editarlos de forma segura?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: 8.4. Bases de datos de usuarios y grupos (Parte 1)\nRespuesta: En Debian, los usuarios y contraseñas con hash se almacenan en los archivos /etc/passwd y /etc/shadow. Para editar estos archivos de forma segura, se pueden utilizar los programas vipw y vigr, que bloquean el archivo en cuestión antes de ejecutar el editor de texto (vi por defecto, a menos que se haya modificado la variable de entorno EDITOR). La opción -s en vipw permite editar el archivo shadow correspondiente.",
+    "respuesta_esperada": "Los usuarios se almacenan en «/etc/passwd» y las contraseñas con hash en «/etc/shadow» (Sección 8.4). Para editarlos con bloqueo seguro se utiliza «vipw» (con la opción «-s» para editar shadow) y «vigr» para «/etc/group» (Sección 8.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q25",
+    "pregunta": "¿En qué se diferencian cron, atd y anacron a la hora de programar tareas en un sistema Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 1)]\nRespuesta: cron es un daemon responsable de ejecutar comandos programados y recurrentes (por ejemplo, cada hora, día, semana, etc.). atd se encarga de comandos a ejecutar una vez, pero a un momento específico en el futuro. En un sistema Unix, muchas tareas están programadas para ejecutarse regularmente, como rotar los archivos de registro, actualizar la base de datos del programa locate, hacer copias de seguridad, etc. Cada usuario tiene su propio \"crontab\" en el que pueden almacenar las tareas. Anacron es un demonio que completa cron en equipos que no están encendidos todo el tiempo. Dado que las tareas recurrentes están programadas para la mitad de la noche, no ejecutarán nunca si la máquina está apagada en esos momentos. El propósito de anacron es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando",
+    "respuesta_esperada": "«cron» ejecuta tareas programadas recurrentes y «atd» ejecuta comandos una sola vez en un momento futuro concreto (Sección 9.7), mientras que «anacron» gestiona tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q26",
+    "pregunta": "¿Qué son los sistemas de archivos virtuales /proc/ y /sys/ y qué información ofrece cada uno sobre el núcleo Linux?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Fragmento de contexto 8.3. Definición del nombre de equipo y configuración del servicio de nombres (Parte 1)]\nRespuesta: Los sistemas de archivos virtuales /proc/ y /sys/ son sistemas de archivos que se generan a través de sistemas de archivos virtuales. /proc/ es un sistema de archivos que muestra información del núcleo, mostrando archivos virtuales que pueden ser leídos para obtener información sobre el núcleo. /sys/ es un sistema de archivos que proporciona acceso a los objetos internos del núcleo, especialmente a los dispositivos en el sistema. /sys/ puede proporcionar mucha información sobre el estado de cada dispositivo, como si está en modo de ahorro de energía o si es un dispositivo removible. /proc/ describe el estado actual del núcleo, con archivos en este directorio que contienen información sobre los procesos ejecutándose en el sistema y su hardware.",
+    "respuesta_esperada": "Son sistemas de archivos virtuales generados por el núcleo Linux (Sección 8.3): «/proc/» describe el estado actual del núcleo y los procesos en ejecución, mientras que «/sys/» provee acceso a los objetos internos del núcleo que representan los dispositivos del sistema (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q27",
+    "pregunta": "En LVM, ¿qué relación existe entre un grupo de volúmenes (VG) y un volumen lógico (LV), y qué comando crea un volumen lógico?",
+    "tipo": "combinada",
+    "respuesta_modelo": "En LVM, un grupo de volúmenes (VG) es un conjunto de discos físicos que se organizan como un solo dispositivo. Un volumen lógico (LV) es una porción de un VG que se puede ver como un dispositivo de bloque. El comando que crea un volumen lógico en LVM es \"lvcreate\".",
+    "respuesta_esperada": "Un VG agrupa volúmenes físicos como un disco virtual extensible y un LV es una porción de un VG comparable a una partición en «/dev» (Capítulo 12), que se crea utilizando el programa «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q28",
+    "pregunta": "¿Qué cmdlet de PowerShell se ejecuta en Debian Bullseye para administrar directivas de grupo (GPO) de Windows Server?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. PowerShell y las directivas GPO pertenecen a entornos Microsoft Windows Server, no al manual del Administrador de Debian.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q29",
+    "pregunta": "¿Qué parámetro del comando pacman -Syu recomienda el manual de Debian para resolver conflictos en paquetes del repositorio AUR?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. pacman y AUR son herramientas propias de Arch Linux, mientras que Debian usa APT y dpkg.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q30",
+    "pregunta": "¿En qué archivo de /opt/homebrew/etc se configuran los repositorios oficiales del sistema en Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Homebrew es un gestor de paquetes típico de macOS; Debian utiliza APT configurado en /etc/apt/sources.list.",
     "evaluacion": {
       "correccion": 2,
       "fiel": true,
@@ -1201,6 +2161,246 @@
   },
   {
     "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q16",
+    "pregunta": "¿Cuál es la duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. (Parte 1)]\nRespuesta: La duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual es de cuarenta horas.",
+    "respuesta_esperada": "La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual (artículo 34.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q17",
+    "pregunta": "¿Cuántas horas como mínimo deben mediar entre el final de una jornada laboral y el comienzo de la siguiente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. (Parte 2)]\nRespuesta: Al menos doce horas.",
+    "respuesta_esperada": "Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas (artículo 34.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q18",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador por traslado del domicilio habitual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)]\nRespuesta: Un día por traslado del domicilio habitual.",
+    "respuesta_esperada": "Dispone de un día de permiso retribuido por traslado del domicilio habitual (artículo 37.3.c).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q19",
+    "pregunta": "¿A cuántas gratificaciones o pagas extraordinarias al año tiene derecho un trabajador según la ley?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 31. Gratificaciones extraordinarias.]\nRespuesta: Dos gratificaciones extraordinarias al año.",
+    "respuesta_esperada": "Tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o acuerdo (artículo 31).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q20",
+    "pregunta": "¿Qué antigüedad mínima en la empresa se exige para pedir una excedencia voluntaria y cuál es su duración mínima y máxima?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 46. Excedencias. - Parte 1/5]\nRespuesta: El trabajador con al menos una antigüedad en la empresa de un año tiene derecho a que se le reconozca la posibilidad de situarse en excedencia voluntaria por un plazo no menor a cuatro meses y no mayor a cinco años.",
+    "respuesta_esperada": "Se exige al menos una antigüedad de un año en la empresa, por un plazo no menor a cuatro meses y no mayor a cinco años (artículo 46.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q21",
+    "pregunta": "¿En cuántos días hábiles caduca el ejercicio de la acción contra el despido o resolución de contratos temporales?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 59. Prescripción y caducidad. - Parte 1/2]\nRespuesta: El ejercicio de la acción contra el despido o resolución de contratos temporales caducará a los veinte días siguientes de aquel en que se hubiera producido. Los días serán hábiles y el plazo de caducidad a todos los efectos.",
+    "respuesta_esperada": "Caduca a los veinte días hábiles siguientes a aquel en que se hubiera producido el despido (artículo 59.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q22",
+    "pregunta": "¿En qué plazos prescriben las faltas leves, graves y muy graves de los trabajadores desde que la empresa tiene conocimiento?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 58. Faltas y sanciones de los trabajadores.]\nRespuesta: Las faltas leves prescriben a los diez días, las graves a los veinte días, y las muy graves a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión y, en todo caso, a los seis meses de haberse cometido.",
+    "respuesta_esperada": "Las faltas leves prescriben a los diez días, las graves a los veinte días y las muy graves a los sesenta días desde que la empresa tuvo conocimiento, y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q23",
+    "pregunta": "¿Cuál es el plazo de preaviso en una extinción por causas objetivas y de cuántas horas semanales de licencia retribuida dispone el trabajador para buscar nuevo empleo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. (Parte 2)]\nRespuesta: El plazo de preaviso en una extinción por causas objetivas es de quince días, computado desde la entrega de la comunicación personal al trabajador hasta la extinción del contrato de trabajo. Durante el periodo de preaviso, el trabajador tendrá derecho a una licencia de seis horas semanales con el fin de buscar nuevo empleo.",
+    "respuesta_esperada": "El plazo de preaviso es de quince días y durante ese periodo el trabajador tiene derecho a una licencia retribuida de seis horas semanales para buscar nuevo empleo (artículo 53.1.c y 53.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q24",
+    "pregunta": "¿Qué diferencia existe respecto a la conservación del puesto de trabajo entre la excedencia forzosa y la excedencia voluntaria?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 46. Excedencias. (Parte 1)]\nRespuesta: La excedencia forzosa da derecho a la conservación del puesto y al cómputo de la antigüedad de su vigencia, mientras que la excedencia voluntaria no garantiza la conservación del puesto, solo conserva un derecho preferente al reingreso en las vacantes de igual o similar categoría a la suya que hubiera o se produjeran en la empresa.",
+    "respuesta_esperada": "La excedencia forzosa da derecho a la conservación del puesto de trabajo y al cómputo de la antigüedad (artículo 46.1), mientras que el trabajador en excedencia voluntaria conserva solo un derecho preferente al reingreso en las vacantes de igual o similar categoría (artículo 46.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q25",
+    "pregunta": "¿En qué se diferencian los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años frente a los trabajadores adultos?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. (Parte 3)]\nRespuesta: Para menores de dieciocho años, el periodo de descanso tendrá una duración mínima de treinta minutos y deberá establecerse siempre que la duración de la jornada diaria continuada exceda de cuatro horas y media. En contraste, no se especifica ningún límite mínimo de descanso para los trabajadores adultos.",
+    "respuesta_esperada": "Los menores de dieciocho años no pueden realizar más de ocho horas diarias frente a las nueve horas ordinarias de los adultos (artículo 34.3), y su descanso en jornada continuada debe ser de al menos treinta minutos si excede cuatro horas y media, frente a quince minutos tras seis horas para adultos (artículo 34.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q26",
+    "pregunta": "¿Qué diferencia existe en cuanto a indemnización entre una extinción por causas objetivas y un despido disciplinario declarado procedente?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. (Parte 5)]\nRespuesta: En el caso de una extinción por causas objetivas declarada procedente, el trabajador tendrá derecho a la indemnización prevista en el apartado 1, consolidándola de haberla recibido, y se entenderá en situación de desempleo por causa a él no imputable. En el caso del despido disciplinario declarado procedente, no se especifica explícitamente la indemnización en el fragmento proporcionado.",
+    "respuesta_esperada": "En la extinción por causas objetivas corresponde una indemnización de veinte días de salario por año de servicio con un máximo de doce mensualidades (artículo 53.1.b), mientras que el despido disciplinario procedente convalida la extinción sin derecho a indemnización ni salarios de tramitación (artículo 55.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q27",
+    "pregunta": "¿Cuál es el plazo general de prescripción de las acciones derivadas del contrato de trabajo y cómo se compara con el plazo máximo absoluto de prescripción de las faltas de los trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 60. Prescripción.]\nRespuesta: Las infracciones cometidas por el empresario prescriben conforme a lo establecido en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, aprobado por el Real Decreto Legislativo 5/2000, de 4 de agosto. Respecto a los trabajadores, las faltas leves prescriben a los diez días; las graves, a los veinte días, y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión y, en todo caso, a los seis meses de haberse cometido. Por lo tanto, el plazo general de prescripción de las acciones derivadas del contrato de trabajo es diferente al plazo máximo absoluto de prescripción de las faltas de los trabajadores.",
+    "respuesta_esperada": "Las acciones derivadas del contrato de trabajo sin plazo especial prescriben al año de su terminación (artículo 59.1), mientras que las faltas de los trabajadores prescriben a los diez, veinte o sesenta días desde su conocimiento y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q28",
+    "pregunta": "¿Qué porcentaje exacto de retención de IRPF debe aplicar la empresa en la nómina de un trabajador que gana 30.000 euros brutos al año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Los porcentajes y tramos de retención del IRPF se regulan en la normativa fiscal y tributaria, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q29",
+    "pregunta": "¿Cuántos días de permiso retribuido corresponden a un trabajador por la intervención veterinaria de una mascota o animal doméstico?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El Estatuto de los Trabajadores no contempla permisos retribuidos por atención veterinaria a mascotas.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q30",
+    "pregunta": "¿Cuál es el importe exacto en euros de la sanción económica que impone la Inspección de Trabajo por no llevar registro horario?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las cuantías de las sanciones laborales se regulan en la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS), no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
     "documento": "debian",
     "pregunta_id": "deb_q01",
     "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
@@ -1431,6 +2631,246 @@
     "tipo": "sin_respuesta",
     "respuesta_modelo": "Fuente: [4.2.16. Concurso de popularidad de paquetes Debian]\nRespuesta: No aparece en el documento.",
     "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q16",
+    "pregunta": "¿En qué archivo se almacena el nombre principal o canónico de un equipo Debian y qué orden se utiliza para comunicarlo al núcleo Linux?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [1.3. El funcionamiento interno del proyecto Debian (Parte 47)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "Se almacena en el archivo «/etc/hostname» y se comunica al núcleo Linux a través de la orden «hostname» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q17",
+    "pregunta": "¿En qué archivo de configuración y precedidas por qué palabra clave se indican las direcciones IP de los servidores DNS en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres (Parte 4)]\nRespuesta: Las direcciones IP de los servidores DNS se indican en el archivo /etc/resolv.conf, precedidas por la palabra clave nameserver.",
+    "respuesta_esperada": "Se indican en el archivo «/etc/resolv.conf», precediendo cada dirección IP con la palabra clave «nameserver» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q18",
+    "pregunta": "¿Qué archivo se edita en Debian para modificar variables de GRUB 2 sin perder los cambios y qué orden regenera /boot/grub/grub.cfg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.8. Configuración del gestor de arranque (Parte 15)]\nRespuesta: Para modificar variables de GRUB 2 sin perder los cambios en Debian, se debe editar el archivo /etc/default/grub. El orden para regenerar /boot/grub/grub.cfg es ejecutar el comando sudo update-grub.",
+    "respuesta_esperada": "Las modificaciones se realizan a través de variables en «/etc/default/grub» y el archivo «/boot/grub/grub.cfg» se regenera ejecutando «update-grub» (Sección 8.8).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q19",
+    "pregunta": "¿Qué macro especial se utiliza en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 6)]\nRespuesta: El macro especial que se utiliza en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo es @reboot.",
+    "respuesta_esperada": "Se utiliza la macro «@reboot» (Sección 9.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q20",
+    "pregunta": "¿Qué programa incluido en el paquete bind9-host se utiliza para consultar un servidor DNS y probar su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [10.7. Servidores de nombres de dominio (DNS) (Parte 5)]\nRespuesta: El programa host (en el paquete bind9-host) se utiliza para consultar un servidor DNS y probar su configuración.",
+    "respuesta_esperada": "El programa «host» (Sección 10.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q21",
+    "pregunta": "¿Qué comando de LVM se emplea para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso (Parte 26)]\nRespuesta: El comando para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian es \"lvcreate\". Por ejemplo, para crear un volumen lógico llamado \"mis_datos\" de 10 GB en el grupo de volúmenes llamado \"mis_volumes\", se utiliza el siguiente comando:\n\n```\nlvcreate -n mis_datos -L 10G /dev/mis_volumes\n```",
+    "respuesta_esperada": "El comando «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q22",
+    "pregunta": "¿Qué herramienta de prevención de intrusos monitoriza ficheros de registro buscando fallos de autenticación y en qué directorio guarda su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [14.3. Supervisión: prevención, detección, disuasión (Parte 1)]\nRespuesta: El programa logcheck monitoriza ficheros de registro y busca fallos de autenticación. Su configuración se guarda en el directorio /etc.",
+    "respuesta_esperada": "La herramienta «Fail2Ban» (paquete «fail2ban»), que guarda sus archivos de configuración en «/etc/fail2ban/» (Sección 14.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q23",
+    "pregunta": "¿Qué conjunto de herramientas implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Capítulo 3. Análisis de la instalación existente y migración (Parte 2)]\nRespuesta: Samba es el conjunto de herramientas que implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows.",
+    "respuesta_esperada": "«Samba» (paquete «samba») (Sección 11.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q24",
+    "pregunta": "¿En qué archivos se almacenan los usuarios y las contraseñas con hash en Debian y qué comandos bloquean el archivo para editarlos de forma segura?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [8.4. Bases de datos de usuarios y grupos (Parte 1)]\nRespuesta: Los usuarios se almacenan en el archivo /etc/passwd y las contraseñas con hash se almacenan en el archivo /etc/shadow. Para editar estos archivos de forma segura se utilizan los comandos vipw para editar el archivo /etc/passwd y vigr para editar /etc/group. Estos programas bloquean el archivo en cuestión antes de ejecutar el editor de texto.",
+    "respuesta_esperada": "Los usuarios se almacenan en «/etc/passwd» y las contraseñas con hash en «/etc/shadow» (Sección 8.4). Para editarlos con bloqueo seguro se utiliza «vipw» (con la opción «-s» para editar shadow) y «vigr» para «/etc/group» (Sección 8.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q25",
+    "pregunta": "¿En qué se diferencian cron, atd y anacron a la hora de programar tareas en un sistema Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 1)]\nRespuesta: Cron es el demonio responsable de ejecutar tareas programadas y recurrentes, como por ejemplo cada hora, día o semana. Atd se encarga de ejecutar comandos una sola vez, pero a un momento específico en el futuro. Anacron, por otro lado, es un demonio que completa a cron en equipos que no están encendidos todo el tiempo. Anacron ejecuta las tareas recurrentes teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.",
+    "respuesta_esperada": "«cron» ejecuta tareas programadas recurrentes y «atd» ejecuta comandos una sola vez en un momento futuro concreto (Sección 9.7), mientras que «anacron» gestiona tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q26",
+    "pregunta": "¿Qué son los sistemas de archivos virtuales /proc/ y /sys/ y qué información ofrece cada uno sobre el núcleo Linux?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres (Parte 1)]\nRespuesta: Los sistemas de archivos virtuales /proc/ y /sys/ son métodos prácticos para obtener información del núcleo Linux y comunicarle información. /proc/ muestra archivos virtuales que muestran el estado actual del núcleo, incluyendo información sobre los procesos ejecutándose en el sistema y su hardware. Por otro lado, /sys/ se generó específicamente para proveer acceso a los objetos internos del núcleo, especialmente aquellos que representan los distintos dispositivos en el sistema.\n\nFuente: [Capítulo 9. Servicios Unix (Parte 19)]\nRespuesta: El sistema de archivos /proc/ muestra el estado actual del núcleo, incluyendo información sobre los procesos ejecutándose en el sistema y su hardware.",
+    "respuesta_esperada": "Son sistemas de archivos virtuales generados por el núcleo Linux (Sección 8.3): «/proc/» describe el estado actual del núcleo y los procesos en ejecución, mientras que «/sys/» provee acceso a los objetos internos del núcleo que representan los dispositivos del sistema (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q27",
+    "pregunta": "En LVM, ¿qué relación existe entre un grupo de volúmenes (VG) y un volumen lógico (LV), y qué comando crea un volumen lógico?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 12. Administración avanzada (Parte 31)]\nRespuesta: Un grupo de volúmenes (VG) es una agrupación de PVs (volúmenes físicos), y un volumen lógico (LV) es una porción de un VG. El comando para crear un volumen lógico es `lvcreate`.",
+    "respuesta_esperada": "Un VG agrupa volúmenes físicos como un disco virtual extensible y un LV es una porción de un VG comparable a una partición en «/dev» (Capítulo 12), que se crea utilizando el programa «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q28",
+    "pregunta": "¿Qué cmdlet de PowerShell se ejecuta en Debian Bullseye para administrar directivas de grupo (GPO) de Windows Server?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. PowerShell y las directivas GPO pertenecen a entornos Microsoft Windows Server, no al manual del Administrador de Debian.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q29",
+    "pregunta": "¿Qué parámetro del comando pacman -Syu recomienda el manual de Debian para resolver conflictos en paquetes del repositorio AUR?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Capítulo 7. Resolución de problemas y búsqueda de información relevante (Parte 11)]\nRespuesta: No aparece en el documento.\n\nFuente: [Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT (Parte 21)]\nRespuesta: No aparece en el documento.\n\nEn resumen, el documento no proporciona información sobre el parámetro del comando pacman -Syu recomendado por el manual de Debian para resolver conflictos en paquetes del repositorio AUR.",
+    "respuesta_esperada": "No aparece en el documento. pacman y AUR son herramientas propias de Arch Linux, mientras que Debian usa APT y dpkg.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q30",
+    "pregunta": "¿En qué archivo de /opt/homebrew/etc se configuran los repositorios oficiales del sistema en Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT (Parte 9)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Homebrew es un gestor de paquetes típico de macOS; Debian utiliza APT configurado en /etc/apt/sources.list.",
     "evaluacion": {
       "correccion": 2,
       "fiel": true,
@@ -1681,6 +3121,246 @@
   },
   {
     "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q16",
+    "pregunta": "¿Cuál es la duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. - Parte 1/8]\nRespuesta: La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual.",
+    "respuesta_esperada": "La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual (artículo 34.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q17",
+    "pregunta": "¿Cuántas horas como mínimo deben mediar entre el final de una jornada laboral y el comienzo de la siguiente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. - Parte 2/8]\nRespuesta: Deben mediar, como mínimo, doce horas entre el final de una jornada y el comienzo de la siguiente.",
+    "respuesta_esperada": "Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas (artículo 34.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q18",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador por traslado del domicilio habitual?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)\nRespuesta: Un día de permiso retribuido dispone un trabajador por traslado del domicilio habitual.",
+    "respuesta_esperada": "Dispone de un día de permiso retribuido por traslado del domicilio habitual (artículo 37.3.c).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q19",
+    "pregunta": "¿A cuántas gratificaciones o pagas extraordinarias al año tiene derecho un trabajador según la ley?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 31. Gratificaciones extraordinarias.]\nRespuesta: Un trabajador tiene derecho a dos gratificaciones extraordinarias al año, una relacionada con las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores.",
+    "respuesta_esperada": "Tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o acuerdo (artículo 31).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q20",
+    "pregunta": "¿Qué antigüedad mínima en la empresa se exige para pedir una excedencia voluntaria y cuál es su duración mínima y máxima?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 46. Excedencias. - Parte 1/5]\nRespuesta: Para pedir una excedencia voluntaria, el trabajador debe tener al menos una antigüedad en la empresa de un año. El plazo mínimo de la excedencia voluntaria es de cuatro meses, mientras que la duración máxima no puede superar los cinco años.",
+    "respuesta_esperada": "Se exige al menos una antigüedad de un año en la empresa, por un plazo no menor a cuatro meses y no mayor a cinco años (artículo 46.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q21",
+    "pregunta": "¿En cuántos días hábiles caduca el ejercicio de la acción contra el despido o resolución de contratos temporales?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 59. Prescripción y caducidad. (Parte 1)\nRespuesta: El ejercicio de la acción contra el despido o resolución de contratos temporales caduca a los veinte días siguientes de aquel en que se hubiera producido.",
+    "respuesta_esperada": "Caduca a los veinte días hábiles siguientes a aquel en que se hubiera producido el despido (artículo 59.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q22",
+    "pregunta": "¿En qué plazos prescriben las faltas leves, graves y muy graves de los trabajadores desde que la empresa tiene conocimiento?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 60. Prescripción.\nRespuesta: Las faltas leves prescribirán a los diez días; las graves, a los veinte días, y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión.",
+    "respuesta_esperada": "Las faltas leves prescriben a los diez días, las graves a los veinte días y las muy graves a los sesenta días desde que la empresa tuvo conocimiento, y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q23",
+    "pregunta": "¿Cuál es el plazo de preaviso en una extinción por causas objetivas y de cuántas horas semanales de licencia retribuida dispone el trabajador para buscar nuevo empleo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. - Parte 2/6]\nRespuesta: El plazo de preaviso en una extinción por causas objetivas es de quince días. Durante este periodo, el trabajador, o su representante legal si se trata de una persona con discapacidad que lo tuviera, tendrá derecho, sin pérdida de su retribución, a una licencia de seis horas semanales con el fin de buscar nuevo empleo.",
+    "respuesta_esperada": "El plazo de preaviso es de quince días y durante ese periodo el trabajador tiene derecho a una licencia retribuida de seis horas semanales para buscar nuevo empleo (artículo 53.1.c y 53.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q24",
+    "pregunta": "¿Qué diferencia existe respecto a la conservación del puesto de trabajo entre la excedencia forzosa y la excedencia voluntaria?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: Artículo 46. Excedencias. (Parte 5/5)\nRespuesta: La excedencia forzosa da derecho a la conservación del puesto y al cómputo de la antigüedad de su vigencia, mientras que la excedencia voluntaria no menciona la conservación del puesto ni el cómputo de antigüedad.",
+    "respuesta_esperada": "La excedencia forzosa da derecho a la conservación del puesto de trabajo y al cómputo de la antigüedad (artículo 46.1), mientras que el trabajador en excedencia voluntaria conserva solo un derecho preferente al reingreso en las vacantes de igual o similar categoría (artículo 46.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q25",
+    "pregunta": "¿En qué se diferencian los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años frente a los trabajadores adultos?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 34. Jornada. - Parte 2/8]\nRespuesta: Los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años se diferencian de los de los trabajadores adultos en los siguientes aspectos:\n\n1. Jornada diaria: Los trabajadores menores de dieciocho años no pueden realizar más de ocho horas diarias de trabajo efectivo, incluyendo el tiempo dedicado a la formación. En contraste, los trabajadores adultos no tienen un límite específico de horas diarias de trabajo efectivo, aunque sí hay un límite de nueve horas diarias en el caso de la distribución irregular de la jornada.\n\n2. Descanso en jornada continuada: Si la duración de la jornada diaria continuada excede de cuatro horas y media, los menores de dieciocho años deben tener un periodo de descanso de al menos treinta minutos. Para los trabajadores adultos, el periodo de descanso mínimo es de quince minutos si la jornada diaria continuada excede de seis horas.",
+    "respuesta_esperada": "Los menores de dieciocho años no pueden realizar más de ocho horas diarias frente a las nueve horas ordinarias de los adultos (artículo 34.3), y su descanso en jornada continuada debe ser de al menos treinta minutos si excede cuatro horas y media, frente a quince minutos tras seis horas para adultos (artículo 34.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q26",
+    "pregunta": "¿Qué diferencia existe en cuanto a indemnización entre una extinción por causas objetivas y un despido disciplinario declarado procedente?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. (Parte 6)]\nRespuesta: Según el fragmento proporcionado, la indemnización en caso de extinción por causas objetivas declarada procedente es similar a la indemnización en un despido disciplinario declarado procedente. Ambos producirán iguales efectos, con la única diferencia mencionada en el punto a), que indica que el trabajador tendrá derecho a la indemnización prevista en el apartado 1, consolidándola si ya la ha recibido, y se entenderá en situación de desempleo por causa a él no imputable. No se especifica una diferencia adicional en cuanto a la indemnización entre ambos casos.",
+    "respuesta_esperada": "En la extinción por causas objetivas corresponde una indemnización de veinte días de salario por año de servicio con un máximo de doce mensualidades (artículo 53.1.b), mientras que el despido disciplinario procedente convalida la extinción sin derecho a indemnización ni salarios de tramitación (artículo 55.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q27",
+    "pregunta": "¿Cuál es el plazo general de prescripción de las acciones derivadas del contrato de trabajo y cómo se compara con el plazo máximo absoluto de prescripción de las faltas de los trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 60. Prescripción.]\nRespuesta: El plazo general de prescripción de las acciones derivadas del contrato de trabajo no se especifica en el fragmento proporcionado. Según el artículo 60, las prescripciones se rigen por lo establecido en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, aprobado por el Real Decreto Legislativo 5/2000, de 4 de agosto, lo que implica que el plazo general no aparece en el documento.\n\nEn cuanto al plazo máximo absoluto de prescripción de las faltas de los trabajadores, las faltas leves prescribirán a los diez días; las graves, a los veinte días, y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión, y en todo caso, a los seis meses de haberse cometido.",
+    "respuesta_esperada": "Las acciones derivadas del contrato de trabajo sin plazo especial prescriben al año de su terminación (artículo 59.1), mientras que las faltas de los trabajadores prescriben a los diez, veinte o sesenta días desde su conocimiento y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q28",
+    "pregunta": "¿Qué porcentaje exacto de retención de IRPF debe aplicar la empresa en la nómina de un trabajador que gana 30.000 euros brutos al año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Los porcentajes y tramos de retención del IRPF se regulan en la normativa fiscal y tributaria, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q29",
+    "pregunta": "¿Cuántos días de permiso retribuido corresponden a un trabajador por la intervención veterinaria de una mascota o animal doméstico?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El Estatuto de los Trabajadores no contempla permisos retribuidos por atención veterinaria a mascotas.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q30",
+    "pregunta": "¿Cuál es el importe exacto en euros de la sanción económica que impone la Inspección de Trabajo por no llevar registro horario?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las cuantías de las sanciones laborales se regulan en la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS), no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
     "documento": "debian",
     "pregunta_id": "deb_q01",
     "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
@@ -1911,6 +3591,246 @@
     "tipo": "sin_respuesta",
     "respuesta_modelo": "No aparece en el documento.",
     "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q16",
+    "pregunta": "¿En qué archivo se almacena el nombre principal o canónico de un equipo Debian y qué orden se utiliza para comunicarlo al núcleo Linux?",
+    "tipo": "directa",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "Se almacena en el archivo «/etc/hostname» y se comunica al núcleo Linux a través de la orden «hostname» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q17",
+    "pregunta": "¿En qué archivo de configuración y precedidas por qué palabra clave se indican las direcciones IP de los servidores DNS en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres - Parte 4/6]\nRespuesta: En el archivo /etc/resolv.conf, las direcciones IP de los servidores DNS se indican precedidas por la palabra clave nameserver.",
+    "respuesta_esperada": "Se indican en el archivo «/etc/resolv.conf», precediendo cada dirección IP con la palabra clave «nameserver» (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q18",
+    "pregunta": "¿Qué archivo se edita en Debian para modificar variables de GRUB 2 sin perder los cambios y qué orden regenera /boot/grub/grub.cfg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.8. Configuración del gestor de arranque - Parte 15/19]\nRespuesta: Para modificar variables de GRUB 2 sin perder los cambios, se edita el archivo /etc/default/grub. La orden que regenera /boot/grub/grub.cfg es update-grub.",
+    "respuesta_esperada": "Las modificaciones se realizan a través de variables en «/etc/default/grub» y el archivo «/boot/grub/grub.cfg» se regenera ejecutando «update-grub» (Sección 8.8).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q19",
+    "pregunta": "¿Qué macro especial se utiliza en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 6)]\nRespuesta: La macro especial utilizada en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo es @reboot.",
+    "respuesta_esperada": "Se utiliza la macro «@reboot» (Sección 9.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q20",
+    "pregunta": "¿Qué programa incluido en el paquete bind9-host se utiliza para consultar un servidor DNS y probar su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [SUGERENCIA Pruebas del servidor DNS]\nRespuesta: El programa host, que se encuentra en el paquete bind9-host, se utiliza para consultar un servidor DNS y probar la configuración del servidor.",
+    "respuesta_esperada": "El programa «host» (Sección 10.7).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q21",
+    "pregunta": "¿Qué comando de LVM se emplea para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso - Parte 26/39]\nRespuesta: El comando de LVM que se emplea para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian es `lvcreate`. Sin embargo, el fragmento de contexto no proporciona el comando exacto, solo explica el proceso general.",
+    "respuesta_esperada": "El comando «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q22",
+    "pregunta": "¿Qué herramienta de prevención de intrusos monitoriza ficheros de registro buscando fallos de autenticación y en qué directorio guarda su configuración?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [14.3.4. Detección de cambios - Parte 10/23]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "La herramienta «Fail2Ban» (paquete «fail2ban»), que guarda sus archivos de configuración en «/etc/fail2ban/» (Sección 14.3).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q23",
+    "pregunta": "¿Qué conjunto de herramientas implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Capítulo 3. Análisis de la instalación existente y migración - Parte 2/4]\nRespuesta: La herramienta que implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows es Samba.",
+    "respuesta_esperada": "«Samba» (paquete «samba») (Sección 11.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q24",
+    "pregunta": "¿En qué archivos se almacenan los usuarios y las contraseñas con hash en Debian y qué comandos bloquean el archivo para editarlos de forma segura?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [8.4. Bases de datos de usuarios y grupos - Parte 1/11]\nRespuesta: En Debian, los usuarios se almacenan en el archivo /etc/passwd y las contraseñas con hash se almacenan en el archivo /etc/shadow. Para editar de forma segura estos archivos, se utilizan los comandos vipw para editar /etc/passwd y vigr para editar /etc/group. Estos programas bloquean el archivo en cuestión antes de ejecutar el editor de texto, generalmente vi, para evitar corrupción del archivo.",
+    "respuesta_esperada": "Los usuarios se almacenan en «/etc/passwd» y las contraseñas con hash en «/etc/shadow» (Sección 8.4). Para editarlos con bloqueo seguro se utiliza «vipw» (con la opción «-s» para editar shadow) y «vigr» para «/etc/group» (Sección 8.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q25",
+    "pregunta": "¿En qué se diferencian cron, atd y anacron a la hora de programar tareas en un sistema Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 1)]\nRespuesta: Cron y atd son dos herramientas para programar tareas en un sistema Unix, incluyendo sistemas Debian. Cron se encarga de ejecutar tareas programadas de forma regular, como cada hora, día, semana o mes. Atd, por otro lado, se utiliza para programar tareas que deben ejecutarse una sola vez en un momento específico del futuro.\n\nFuente: [9.8. Programación de tareas asincrónicas: anacron (Parte 1)]\nRespuesta: Anacron, en cambio, se utiliza en sistemas que no están encendidos todo el tiempo. Anacron asegura que las tareas programadas para ejecutarse regularmente se realicen cuando el sistema esté encendido, incluso si se ha pasado un período sin que el sistema estuviera en funcionamiento. Esto es especialmente útil para tareas que deben realizarse diariamente, semanalmente o mensualmente, pero que pueden ser omitidas si el sistema está apagado durante el tiempo programado.",
+    "respuesta_esperada": "«cron» ejecuta tareas programadas recurrentes y «atd» ejecuta comandos una sola vez en un momento futuro concreto (Sección 9.7), mientras que «anacron» gestiona tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q26",
+    "pregunta": "¿Qué son los sistemas de archivos virtuales /proc/ y /sys/ y qué información ofrece cada uno sobre el núcleo Linux?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres - Parte 1/6]\nRespuesta: Los sistemas de archivos virtuales /proc/ y /sys/ son métodos prácticos para obtener información del núcleo y comunicarle información. El sistema /proc/ describe el estado actual del núcleo, mostrando información sobre los procesos ejecutándose en el sistema y su hardware. Por otro lado, el sistema /sys/ se diseñó para proporcionar acceso a los objetos internos del núcleo, especialmente a los que representan los distintos dispositivos en el sistema. Este sistema sólo existe desde la versión de núcleo 2.6.",
+    "respuesta_esperada": "Son sistemas de archivos virtuales generados por el núcleo Linux (Sección 8.3): «/proc/» describe el estado actual del núcleo y los procesos en ejecución, mientras que «/sys/» provee acceso a los objetos internos del núcleo que representan los dispositivos del sistema (Sección 8.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q27",
+    "pregunta": "En LVM, ¿qué relación existe entre un grupo de volúmenes (VG) y un volumen lógico (LV), y qué comando crea un volumen lógico?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 12. Administración avanzada (Parte 31)]\nRespuesta: En LVM, un grupo de volúmenes (VG) es una agrupación de volúmenes físicos (PVs) que se pueden tratar como un solo disco. Un volumen lógico (LV) es una porción de un VG, similar a cómo una partición es una porción de un disco físico. No hay una relación directa de cantidad entre VG y LV, ya que un VG puede ser dividido en un número ilimitado de LVs, y un LV puede ser creado en cualquier VG, independientemente del número de PVs que componen el VG.\n\nFuente: [4.2. Instalación, paso a paso (Parte 26)]\nRespuesta: El comando para crear un volumen lógico en LVM es `lvcreate`. Este comando se utiliza para crear un nuevo volumen lógico dentro de un grupo de volúmenes existente.",
+    "respuesta_esperada": "Un VG agrupa volúmenes físicos como un disco virtual extensible y un LV es una porción de un VG comparable a una partición en «/dev» (Capítulo 12), que se crea utilizando el programa «lvcreate» (Capítulo 12).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q28",
+    "pregunta": "¿Qué cmdlet de PowerShell se ejecuta en Debian Bullseye para administrar directivas de grupo (GPO) de Windows Server?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. PowerShell y las directivas GPO pertenecen a entornos Microsoft Windows Server, no al manual del Administrador de Debian.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q29",
+    "pregunta": "¿Qué parámetro del comando pacman -Syu recomienda el manual de Debian para resolver conflictos en paquetes del repositorio AUR?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. pacman y AUR son herramientas propias de Arch Linux, mientras que Debian usa APT y dpkg.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q30",
+    "pregunta": "¿En qué archivo de /opt/homebrew/etc se configuran los repositorios oficiales del sistema en Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Homebrew es un gestor de paquetes típico de macOS; Debian utiliza APT configurado en /etc/apt/sources.list.",
     "evaluacion": {
       "correccion": 2,
       "fiel": true,

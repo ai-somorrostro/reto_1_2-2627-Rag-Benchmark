@@ -146,5 +146,153 @@
     "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
     "referencia": "No aparece en el documento",
     "chunks_esperados": []
+  },
+  {
+    "id": "deb_q16",
+    "tipo": "directa",
+    "pregunta": "¿En qué archivo se almacena el nombre principal o canónico de un equipo Debian y qué orden se utiliza para comunicarlo al núcleo Linux?",
+    "respuesta_esperada": "Se almacena en el archivo «/etc/hostname» y se comunica al núcleo Linux a través de la orden «hostname» (Sección 8.3).",
+    "referencia": "Sección 8.3",
+    "chunks_esperados": [
+      "deb_0430"
+    ]
+  },
+  {
+    "id": "deb_q17",
+    "tipo": "directa",
+    "pregunta": "¿En qué archivo de configuración y precedidas por qué palabra clave se indican las direcciones IP de los servidores DNS en Debian?",
+    "respuesta_esperada": "Se indican en el archivo «/etc/resolv.conf», precediendo cada dirección IP con la palabra clave «nameserver» (Sección 8.3).",
+    "referencia": "Sección 8.3",
+    "chunks_esperados": [
+      "deb_0433"
+    ]
+  },
+  {
+    "id": "deb_q18",
+    "tipo": "directa",
+    "pregunta": "¿Qué archivo se edita en Debian para modificar variables de GRUB 2 sin perder los cambios y qué orden regenera /boot/grub/grub.cfg?",
+    "respuesta_esperada": "Las modificaciones se realizan a través de variables en «/etc/default/grub» y el archivo «/boot/grub/grub.cfg» se regenera ejecutando «update-grub» (Sección 8.8).",
+    "referencia": "Sección 8.8",
+    "chunks_esperados": [
+      "deb_0474"
+    ]
+  },
+  {
+    "id": "deb_q19",
+    "tipo": "directa",
+    "pregunta": "¿Qué macro especial se utiliza en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo?",
+    "respuesta_esperada": "Se utiliza la macro «@reboot» (Sección 9.7).",
+    "referencia": "Sección 9.7",
+    "chunks_esperados": [
+      "deb_0604"
+    ]
+  },
+  {
+    "id": "deb_q20",
+    "tipo": "directa",
+    "pregunta": "¿Qué programa incluido en el paquete bind9-host se utiliza para consultar un servidor DNS y probar su configuración?",
+    "respuesta_esperada": "El programa «host» (Sección 10.7).",
+    "referencia": "Sección 10.7",
+    "chunks_esperados": [
+      "deb_0696"
+    ]
+  },
+  {
+    "id": "deb_q21",
+    "tipo": "directa",
+    "pregunta": "¿Qué comando de LVM se emplea para crear un volumen lógico (LV) dentro de un grupo de volúmenes en Debian?",
+    "respuesta_esperada": "El comando «lvcreate» (Capítulo 12).",
+    "referencia": "Capítulo 12",
+    "chunks_esperados": [
+      "deb_0883"
+    ]
+  },
+  {
+    "id": "deb_q22",
+    "tipo": "directa",
+    "pregunta": "¿Qué herramienta de prevención de intrusos monitoriza ficheros de registro buscando fallos de autenticación y en qué directorio guarda su configuración?",
+    "respuesta_esperada": "La herramienta «Fail2Ban» (paquete «fail2ban»), que guarda sus archivos de configuración en «/etc/fail2ban/» (Sección 14.3).",
+    "referencia": "Sección 14.3",
+    "chunks_esperados": [
+      "deb_1065"
+    ]
+  },
+  {
+    "id": "deb_q23",
+    "tipo": "directa",
+    "pregunta": "¿Qué conjunto de herramientas implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows?",
+    "respuesta_esperada": "«Samba» (paquete «samba») (Sección 11.5).",
+    "referencia": "Sección 11.5",
+    "chunks_esperados": [
+      "deb_0805"
+    ]
+  },
+  {
+    "id": "deb_q24",
+    "tipo": "combinada",
+    "pregunta": "¿En qué archivos se almacenan los usuarios y las contraseñas con hash en Debian y qué comandos bloquean el archivo para editarlos de forma segura?",
+    "respuesta_esperada": "Los usuarios se almacenan en «/etc/passwd» y las contraseñas con hash en «/etc/shadow» (Sección 8.4). Para editarlos con bloqueo seguro se utiliza «vipw» (con la opción «-s» para editar shadow) y «vigr» para «/etc/group» (Sección 8.4).",
+    "referencia": "Sección 8.4",
+    "chunks_esperados": [
+      "deb_0436",
+      "deb_0437"
+    ]
+  },
+  {
+    "id": "deb_q25",
+    "tipo": "combinada",
+    "pregunta": "¿En qué se diferencian cron, atd y anacron a la hora de programar tareas en un sistema Debian?",
+    "respuesta_esperada": "«cron» ejecuta tareas programadas recurrentes y «atd» ejecuta comandos una sola vez en un momento futuro concreto (Sección 9.7), mientras que «anacron» gestiona tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente (Sección 9.8).",
+    "referencia": "Secciones 9.7 y 9.8",
+    "chunks_esperados": [
+      "deb_0599",
+      "deb_0607"
+    ]
+  },
+  {
+    "id": "deb_q26",
+    "tipo": "combinada",
+    "pregunta": "¿Qué son los sistemas de archivos virtuales /proc/ y /sys/ y qué información ofrece cada uno sobre el núcleo Linux?",
+    "respuesta_esperada": "Son sistemas de archivos virtuales generados por el núcleo Linux (Sección 8.3): «/proc/» describe el estado actual del núcleo y los procesos en ejecución, mientras que «/sys/» provee acceso a los objetos internos del núcleo que representan los dispositivos del sistema (Sección 8.3).",
+    "referencia": "Sección 8.3",
+    "chunks_esperados": [
+      "deb_0430",
+      "deb_0431"
+    ]
+  },
+  {
+    "id": "deb_q27",
+    "tipo": "combinada",
+    "pregunta": "En LVM, ¿qué relación existe entre un grupo de volúmenes (VG) y un volumen lógico (LV), y qué comando crea un volumen lógico?",
+    "respuesta_esperada": "Un VG agrupa volúmenes físicos como un disco virtual extensible y un LV es una porción de un VG comparable a una partición en «/dev» (Capítulo 12), que se crea utilizando el programa «lvcreate» (Capítulo 12).",
+    "referencia": "Capítulo 12",
+    "chunks_esperados": [
+      "deb_0877",
+      "deb_0883"
+    ]
+  },
+  {
+    "id": "deb_q28",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué cmdlet de PowerShell se ejecuta en Debian Bullseye para administrar directivas de grupo (GPO) de Windows Server?",
+    "respuesta_esperada": "No aparece en el documento. PowerShell y las directivas GPO pertenecen a entornos Microsoft Windows Server, no al manual del Administrador de Debian.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "deb_q29",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué parámetro del comando pacman -Syu recomienda el manual de Debian para resolver conflictos en paquetes del repositorio AUR?",
+    "respuesta_esperada": "No aparece en el documento. pacman y AUR son herramientas propias de Arch Linux, mientras que Debian usa APT y dpkg.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "deb_q30",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿En qué archivo de /opt/homebrew/etc se configuran los repositorios oficiales del sistema en Debian Bullseye?",
+    "respuesta_esperada": "No aparece en el documento. Homebrew es un gestor de paquetes típico de macOS; Debian utiliza APT configurado en /etc/apt/sources.list.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
   }
 ]

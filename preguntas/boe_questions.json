@@ -146,5 +146,153 @@
     "respuesta_esperada": "No aparece en el documento. El artículo 37.3 solo contempla permisos por fallecimiento para cónyuge, pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad (padres, hijos, abuelos, nietos, hermanos); tíos y primos no están contemplados.",
     "referencia": "No aparece en el documento",
     "chunks_esperados": []
+  },
+  {
+    "id": "boe_q16",
+    "tipo": "directa",
+    "pregunta": "¿Cuál es la duración máxima de la jornada ordinaria de trabajo semanal en cómputo anual?",
+    "respuesta_esperada": "La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual (artículo 34.1).",
+    "referencia": "Artículo 34.1",
+    "chunks_esperados": [
+      "boe_0118"
+    ]
+  },
+  {
+    "id": "boe_q17",
+    "tipo": "directa",
+    "pregunta": "¿Cuántas horas como mínimo deben mediar entre el final de una jornada laboral y el comienzo de la siguiente?",
+    "respuesta_esperada": "Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas (artículo 34.3).",
+    "referencia": "Artículo 34.3",
+    "chunks_esperados": [
+      "boe_0119"
+    ]
+  },
+  {
+    "id": "boe_q18",
+    "tipo": "directa",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador por traslado del domicilio habitual?",
+    "respuesta_esperada": "Dispone de un día de permiso retribuido por traslado del domicilio habitual (artículo 37.3.c).",
+    "referencia": "Artículo 37.3.c",
+    "chunks_esperados": [
+      "boe_0136"
+    ]
+  },
+  {
+    "id": "boe_q19",
+    "tipo": "directa",
+    "pregunta": "¿A cuántas gratificaciones o pagas extraordinarias al año tiene derecho un trabajador según la ley?",
+    "respuesta_esperada": "Tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o acuerdo (artículo 31).",
+    "referencia": "Artículo 31",
+    "chunks_esperados": [
+      "boe_0103"
+    ]
+  },
+  {
+    "id": "boe_q20",
+    "tipo": "directa",
+    "pregunta": "¿Qué antigüedad mínima en la empresa se exige para pedir una excedencia voluntaria y cuál es su duración mínima y máxima?",
+    "respuesta_esperada": "Se exige al menos una antigüedad de un año en la empresa, por un plazo no menor a cuatro meses y no mayor a cinco años (artículo 46.2).",
+    "referencia": "Artículo 46.2",
+    "chunks_esperados": [
+      "boe_0193"
+    ]
+  },
+  {
+    "id": "boe_q21",
+    "tipo": "directa",
+    "pregunta": "¿En cuántos días hábiles caduca el ejercicio de la acción contra el despido o resolución de contratos temporales?",
+    "respuesta_esperada": "Caduca a los veinte días hábiles siguientes a aquel en que se hubiera producido el despido (artículo 59.3).",
+    "referencia": "Artículo 59.3",
+    "chunks_esperados": [
+      "boe_0274"
+    ]
+  },
+  {
+    "id": "boe_q22",
+    "tipo": "directa",
+    "pregunta": "¿En qué plazos prescriben las faltas leves, graves y muy graves de los trabajadores desde que la empresa tiene conocimiento?",
+    "respuesta_esperada": "Las faltas leves prescriben a los diez días, las graves a los veinte días y las muy graves a los sesenta días desde que la empresa tuvo conocimiento, y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "referencia": "Artículo 60.2",
+    "chunks_esperados": [
+      "boe_0276"
+    ]
+  },
+  {
+    "id": "boe_q23",
+    "tipo": "directa",
+    "pregunta": "¿Cuál es el plazo de preaviso en una extinción por causas objetivas y de cuántas horas semanales de licencia retribuida dispone el trabajador para buscar nuevo empleo?",
+    "respuesta_esperada": "El plazo de preaviso es de quince días y durante ese periodo el trabajador tiene derecho a una licencia retribuida de seis horas semanales para buscar nuevo empleo (artículo 53.1.c y 53.2).",
+    "referencia": "Artículo 53.1.c y 53.2",
+    "chunks_esperados": [
+      "boe_0259"
+    ]
+  },
+  {
+    "id": "boe_q24",
+    "tipo": "combinada",
+    "pregunta": "¿Qué diferencia existe respecto a la conservación del puesto de trabajo entre la excedencia forzosa y la excedencia voluntaria?",
+    "respuesta_esperada": "La excedencia forzosa da derecho a la conservación del puesto de trabajo y al cómputo de la antigüedad (artículo 46.1), mientras que el trabajador en excedencia voluntaria conserva solo un derecho preferente al reingreso en las vacantes de igual o similar categoría (artículo 46.5).",
+    "referencia": "Artículos 46.1 y 46.5",
+    "chunks_esperados": [
+      "boe_0193",
+      "boe_0197"
+    ]
+  },
+  {
+    "id": "boe_q25",
+    "tipo": "combinada",
+    "pregunta": "¿En qué se diferencian los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años frente a los trabajadores adultos?",
+    "respuesta_esperada": "Los menores de dieciocho años no pueden realizar más de ocho horas diarias frente a las nueve horas ordinarias de los adultos (artículo 34.3), y su descanso en jornada continuada debe ser de al menos treinta minutos si excede cuatro horas y media, frente a quince minutos tras seis horas para adultos (artículo 34.4).",
+    "referencia": "Artículos 34.3 y 34.4",
+    "chunks_esperados": [
+      "boe_0119",
+      "boe_0120"
+    ]
+  },
+  {
+    "id": "boe_q26",
+    "tipo": "combinada",
+    "pregunta": "¿Qué diferencia existe en cuanto a indemnización entre una extinción por causas objetivas y un despido disciplinario declarado procedente?",
+    "respuesta_esperada": "En la extinción por causas objetivas corresponde una indemnización de veinte días de salario por año de servicio con un máximo de doce mensualidades (artículo 53.1.b), mientras que el despido disciplinario procedente convalida la extinción sin derecho a indemnización ni salarios de tramitación (artículo 55.7).",
+    "referencia": "Artículos 53.1.b y 55.7",
+    "chunks_esperados": [
+      "boe_0258",
+      "boe_0269"
+    ]
+  },
+  {
+    "id": "boe_q27",
+    "tipo": "combinada",
+    "pregunta": "¿Cuál es el plazo general de prescripción de las acciones derivadas del contrato de trabajo y cómo se compara con el plazo máximo absoluto de prescripción de las faltas de los trabajadores?",
+    "respuesta_esperada": "Las acciones derivadas del contrato de trabajo sin plazo especial prescriben al año de su terminación (artículo 59.1), mientras que las faltas de los trabajadores prescriben a los diez, veinte o sesenta días desde su conocimiento y en todo caso a los seis meses de haberse cometido (artículo 60.2).",
+    "referencia": "Artículos 59.1 y 60.2",
+    "chunks_esperados": [
+      "boe_0274",
+      "boe_0276"
+    ]
+  },
+  {
+    "id": "boe_q28",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué porcentaje exacto de retención de IRPF debe aplicar la empresa en la nómina de un trabajador que gana 30.000 euros brutos al año?",
+    "respuesta_esperada": "No aparece en el documento. Los porcentajes y tramos de retención del IRPF se regulan en la normativa fiscal y tributaria, no en el Estatuto de los Trabajadores.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "boe_q29",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Cuántos días de permiso retribuido corresponden a un trabajador por la intervención veterinaria de una mascota o animal doméstico?",
+    "respuesta_esperada": "No aparece en el documento. El Estatuto de los Trabajadores no contempla permisos retribuidos por atención veterinaria a mascotas.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
+  },
+  {
+    "id": "boe_q30",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Cuál es el importe exacto en euros de la sanción económica que impone la Inspección de Trabajo por no llevar registro horario?",
+    "respuesta_esperada": "No aparece en el documento. Las cuantías de las sanciones laborales se regulan en la Ley sobre Infracciones y Sanciones en el Orden Social (LISOS), no en el Estatuto de los Trabajadores.",
+    "referencia": "No aparece en el documento",
+    "chunks_esperados": []
   }
 ]
