@@ -1,0 +1,78 @@
+{
+  "tabla_b_calidad": [
+    {
+      "modelo": "Gemma-2-2B",
+      "tamano": "2.6B",
+      "cuantizacion": "Q4_0",
+      "correccion_media": 1.67,
+      "respuestas_fieles_pct": 96.7,
+      "abstencion_correcta": "5/6",
+      "falsas_abstenciones": 3,
+      "formato_idioma_pct": 100.0
+    },
+    {
+      "modelo": "Granite-3-2B",
+      "tamano": "2.6B",
+      "cuantizacion": "Q4_K_M",
+      "correccion_media": 1.63,
+      "respuestas_fieles_pct": 96.7,
+      "abstencion_correcta": "5/6",
+      "falsas_abstenciones": 2,
+      "formato_idioma_pct": 76.7
+    },
+    {
+      "modelo": "Mistral-7B",
+      "tamano": "7.2B",
+      "cuantizacion": "Q4_K_M",
+      "correccion_media": 1.67,
+      "respuestas_fieles_pct": 100.0,
+      "abstencion_correcta": "6/6",
+      "falsas_abstenciones": 4,
+      "formato_idioma_pct": 100.0
+    },
+    {
+      "modelo": "Qwen-2.5-7B",
+      "tamano": "7.6B",
+      "cuantizacion": "Q4_K_M",
+      "correccion_media": 1.73,
+      "respuestas_fieles_pct": 100.0,
+      "abstencion_correcta": "6/6",
+      "falsas_abstenciones": 4,
+      "formato_idioma_pct": 100.0
+    }
+  ],
+  "tabla_c_coste": [
+    {
+      "modelo": "Gemma-2-2B",
+      "stack": "Ollama",
+      "ttft_s": 0.05,
+      "tokens_per_s": 89.0,
+      "latencia_s": 0.4,
+      "vram_gb": 1.52
+    },
+    {
+      "modelo": "Granite-3-2B",
+      "stack": "Ollama",
+      "ttft_s": 0.007,
+      "tokens_per_s": 86.7,
+      "latencia_s": 0.46,
+      "vram_gb": 1.49
+    },
+    {
+      "modelo": "Mistral-7B",
+      "stack": "Ollama",
+      "ttft_s": 0.016,
+      "tokens_per_s": 69.6,
+      "latencia_s": 0.68,
+      "vram_gb": 4.07
+    },
+    {
+      "modelo": "Qwen-2.5-7B",
+      "stack": "Ollama",
+      "ttft_s": 0.016,
+      "tokens_per_s": 71.0,
+      "latencia_s": 0.51,
+      "vram_gb": 4.36
+    }
+  ]
+}

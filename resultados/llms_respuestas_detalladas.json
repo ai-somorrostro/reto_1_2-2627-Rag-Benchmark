@@ -1,0 +1,1922 @@
+[
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q01",
+    "pregunta": "¿Cuántos días de vacaciones anuales retribuidas corresponden por ley como mínimo a un trabajador?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 38. Vacaciones anuales. (Parte 1)]\nRespuesta: El periodo de vacaciones anuales retribuidas, no sustituible por compensación económica, será el pactado en convenio colectivo o contrato individual. En ningún caso la duración será inferior a treinta días naturales.",
+    "respuesta_esperada": "Como mínimo corresponden treinta días naturales al año (artículo 38.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q02",
+    "pregunta": "¿Cuál es el número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 35. Horas extraordinarias. (Parte 1)]\nRespuesta: El número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria es ochenta.",
+    "respuesta_esperada": "El número máximo de horas extraordinarias es de ochenta al año (artículo 35.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q03",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador con motivo de contraer matrimonio?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)]\nRespuesta: Quince días naturales.",
+    "respuesta_esperada": "Dispone de quince días naturales de permiso retribuido (artículo 37.3.a).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q04",
+    "pregunta": "¿A partir de qué edad mínima está permitida con carácter general la admisión al trabajo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 6. Trabajo de los menores.]\nRespuesta: A partir de los 16 años se prohíbe la admisión al trabajo.",
+    "respuesta_esperada": "Está permitida a partir de los dieciséis años; se prohíbe la admisión al trabajo a menores de dieciséis años salvo en espectáculos públicos autorizados (artículo 6.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q05",
+    "pregunta": "¿Cuál es la duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. - Parte 1/15]\nRespuesta: La duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores es de dos días ininterrumpidos.",
+    "respuesta_esperada": "El descanso semanal mínimo ininterrumpido es de un día y medio, acumulable por períodos de hasta catorce días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q06",
+    "pregunta": "¿Qué intervalo horario se considera legalmente como trabajo nocturno?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. - Parte 1]\nRespuesta: Entre las diez de la noche y las seis de la mañana.",
+    "respuesta_esperada": "Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana (artículo 36.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q07",
+    "pregunta": "Si un despido es declarado improcedente y el empresario opta por la indemnización, ¿a cuántos días de salario por año de servicio asciende y cuál es el límite máximo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 56. Despido improcedente. (Parte 1)]\nRespuesta: El empresario tendrá derecho a una indemnización equivalente a treinta y tres días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año, hasta un máximo de veinticuatro mensualidades.",
+    "respuesta_esperada": "Asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año, hasta un máximo de veinticuatro mensualidades (artículo 56.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q08",
+    "pregunta": "¿Qué duración máxima puede tener pactado el periodo de prueba para los técnicos titulados si el convenio colectivo no dispone otra cosa?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 14. Periodo de prueba. - Parte 1/3]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "La duración máxima no podrá exceder de seis meses para los técnicos titulados (artículo 14.1).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q09",
+    "pregunta": "¿Qué órgano de representación unitaria corresponde elegir a los trabajadores en centros de trabajo de menos de 50 empleados frente a los de 50 o más trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 62. Delegados de personal.]\nRespuesta: En centros de trabajo de menos de 50 empleados, corresponde elegir a los trabajadores un delegado de personal. En centros de trabajo de 50 o más empleados, se puede elegir un delegado de personal o un comité de empresa.",
+    "respuesta_esperada": "En centros de trabajo de más de diez y menos de cincuenta trabajadores la representación corresponde a los delegados de personal (artículo 62), mientras que en centros con cincuenta o más trabajadores se constituye un comité de empresa (artículo 63).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q10",
+    "pregunta": "¿Qué percepciones económicas integran el concepto legal de salario y cómo responde el Fondo de Garantía Salarial (FOGASA) en caso de insolvencia de la empresa para abonarlas?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 33. El Fondo de Garantía Salarial. (Parte 1)]\nRespuesta: El concepto legal de salario incluye la cantidad reconocida como tal en acto de conciliación o en resolución judicial por todos los conceptos a que se refiere el artículo 26.1, así como los salarios de tramitación en los supuestos en que legalmente procedan. El Fondo de Garantía Salarial (FOGASA) se encarga de abonar a los trabajadores el importe de los salarios pendientes de pago a causa de insolvencia o concurso del empresario. El FOGASA abonará un importe máximo de ciento veinte días de salario, multiplicado por el doble del salario mínimo interprofesional diario, incluyendo la parte proporcional de las pagas extraordinarias.",
+    "respuesta_esperada": "El salario comprende la totalidad de las percepciones económicas, dinerarias o en especie, obtenidas por la prestación profesional de servicios laborales (artículo 26.1). Si la empresa se declara insolvente o en concurso, el FOGASA abona a los trabajadores los salarios pendientes reconocidos dentro de los límites y topes legalmente establecidos (artículo 33.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q11",
+    "pregunta": "¿Qué limitaciones especiales tienen los trabajadores menores de dieciocho años en cuanto al trabajo nocturno y a la duración de su descanso semanal?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. (Parte 1)]\nRespuesta: Los trabajadores menores de dieciocho años no podrán realizar trabajos nocturnos ni aquellas actividades o puestos de trabajo respecto a los que se establezcan limitaciones a su contratación conforme a lo dispuesto en la Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos Laborales, y en las normas reglamentarias aplicables.",
+    "respuesta_esperada": "Queda terminantemente prohibido el trabajo nocturno a los menores de dieciocho años (artículo 6.2), y su descanso semanal ininterrumpido debe ser de al menos dos días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q12",
+    "pregunta": "Si una empresa traslada a un trabajador a un centro de trabajo que exige cambio de residencia, ¿qué compensación económica le corresponde si rechaza el traslado y rescinde su contrato laboral?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 40. Movilidad geográfica. - Parte 11]\nRespuesta: El trabajador tendrá derecho a una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades.",
+    "respuesta_esperada": "Si decide no aceptar el traslado y extinguir la relación contractual (artículo 49.1.h), el trabajador percibe una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año y con un máximo de doce mensualidades (artículo 40.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q13",
+    "pregunta": "¿A cuántos euros asciende exactamente el importe mensual del Salario Mínimo Interprofesional fijado para este año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Artículo 27. Salario mínimo interprofesional. (Parte 1)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 27 dice que el Gobierno fija anualmente el salario mínimo previa consulta sindical, pero no incluye cifras concretas en euros.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q14",
+    "pregunta": "¿Cuántos años mínimos de cotización efectiva se exigen a un trabajador para acceder al 100% de la pensión contributiva de jubilación ordinaria?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Disposición adicional décima. Cláusulas de los convenios colectivos referidas al cumplimiento de la edad ordinaria de jubilación. - Parte 1/4]\nRespuesta:  La persona trabajadora afectada por la extinción del contrato de trabajo deberá reunir los requisitos exigidos por la normativa de Seguridad Social para tener derecho al cien por ciento de la pensión ordinaria de jubilación en su modalidad contributiva.",
+    "respuesta_esperada": "No aparece en el documento. Los requisitos de cálculo, porcentajes y años cotizados para la pensión de jubilación se regulan en la Ley General de la Seguridad Social, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": false,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q15",
+    "pregunta": "¿Cuántos días remunerados de permiso corresponden por el fallecimiento de un tío o de un primo carnal del trabajador?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 37.3 solo contempla permisos por fallecimiento para cónyuge, pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad (padres, hijos, abuelos, nietos, hermanos); tíos y primos no están contemplados.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q01",
+    "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [5.4.1. Instalación de paquetes]\nRespuesta: dpkg -i paquete.deb",
+    "respuesta_esperada": "Se utiliza el comando «dpkg -i nombre_paquete.deb» (o «dpkg --install») (Sección 5.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q02",
+    "pregunta": "¿En qué archivo principal de configuración del sistema se definen las fuentes y repositorios de paquetes que consulta APT?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.2. Los programas aptitude, apt-get y apt (Parte 22)]\nRespuesta:  En el archivo /etc/apt/preferences y /etc/apt/preferences.d/",
+    "respuesta_esperada": "En el archivo «/etc/apt/sources.list» (Capítulo 6).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q03",
+    "pregunta": "¿Qué comando de APT se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.8. Manutención de un sistema actualizado (Parte 2)]\nRespuesta:  apt update",
+    "respuesta_esperada": "Se ejecuta «apt update» o «apt-get update» (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q04",
+    "pregunta": "¿Qué herramienta permite buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.10. Búsqueda de paquetes (Parte 1)]\nRespuesta:  La herramienta que permite buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados es synaptic.",
+    "respuesta_esperada": "La herramienta «apt-file» (Sección 6.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q05",
+    "pregunta": "¿Dónde se localiza el fichero principal de configuración del demonio del servidor SSH (OpenSSH) en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.2. Inicio de sesión remoto (Parte 6)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "En la ruta «/etc/ssh/sshd_config» (Sección 9.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q06",
+    "pregunta": "¿Qué programa o servicio se utiliza en Debian para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.8. Programación de tareas asincrónicas: anacron (Parte 1)]\nRespuesta: Anacron es el programa que se utiliza en Debian para programar tareas asincrónicas en equipos como portátiles que no permanecen encendidos continuamente.",
+    "respuesta_esperada": "El servicio «anacron» (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q07",
+    "pregunta": "¿Cuál es la herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [14.2. Firewall o el filtrado de paquetes (Parte 2)]\nRespuesta: El subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye es nftables.",
+    "respuesta_esperada": "El cortafuegos «nftables» (subsistema de filtrado de paquetes del núcleo Linux) (Sección 14.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q08",
+    "pregunta": "¿Qué comando se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.9.4. Compartición de permisos de administración]\nRespuesta: El comando sudo permite a un usuario confiable ejecutar cualquier orden como root. Para hacerlo, el usuario simplemente ejecuta sudo programa y provee su contraseña personal como autenticación.",
+    "respuesta_esperada": "El comando «sudo» (Sección 9.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q09",
+    "pregunta": "¿Qué papel desempeña dpkg en comparación con las herramientas APT a la hora de gestionar paquetes e instalar dependencias en Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales (Parte 3)]\nRespuesta: dpkg es el programa que maneja los archivos .deb (paquetes binarios), en particular los extrae, analiza y descomprime.  \n \n \n Fuente: [5.4. Manipulación de paquetes con dpkg (Parte 1)]\nRespuesta:  dpkg es el programa base para manejar paquetes Debian en el sistema. Si tiene paquetes .deb, dpkg es lo que permite instalar o analizar sus contenidos. Pero este programa sólo tiene una visión parcial del universo Debian: sabe lo que está instalado en el sistema y lo que se le provee en la línea de órdenes, pero no sabe nada más de otros paquetes disponibles. Como tal, fallará si no se satisface una dependencia. Por el contrario, herramientas como apt y aptitude crearán una lista de dependencias para instalar todo tan automáticamente como sea posible. \n \n \n Fuente: [5.4. Manipulación de paquetes con dpkg - Parte 1/20]\nRespuesta:  dpkg es el programa base para manejar paquetes Debian en el sistema. Si tiene paquetes .deb, dpkg es lo que permite instalar o analizar sus",
+    "respuesta_esperada": "«dpkg» es la herramienta de bajo nivel que manipula directamente los paquetes .deb en el sistema pero no resuelve ni descarga dependencias de repositorios automáticamente (Sección 5.4), mientras que «APT» (apt / apt-get) es la herramienta de alto nivel que gestiona repositorios remotos, calcula el árbol de dependencias e invoca internamente a dpkg para la instalación (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q10",
+    "pregunta": "¿En qué se diferencian las acciones de desinstalar un paquete (remove) y purgarlo (purge) tanto en dpkg como en APT en relación con los ficheros de configuración?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales (Parte 3)]\nRespuesta: En dpkg, la orden `dpkg --purge` o `dpkg -P` elimina los archivos de configuración junto con los paquetes que dependen del paquete que se está eliminando.  En APT, la orden `apt-get remove --purge` o `aptitude purge` también elimina los archivos de configuración, pero se realiza una desinstalación completa.",
+    "respuesta_esperada": "La desinstalación ordinaria («remove») borra los ficheros ejecutables y datos del programa pero conserva los archivos de configuración en el sistema (Sección 5.4), mientras que la opción purgar («purge») elimina tanto el paquete como la totalidad de sus ficheros de configuración (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q11",
+    "pregunta": "¿En qué archivo se definen los parámetros de una interfaz de red estática en Debian clásico y con qué órdenes se activa o desactiva dicha interfaz?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso (Parte 13)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "Se definen en el fichero «/etc/network/interfaces» mediante la estrofa «iface ... inet static» (Sección 8.2), y se activa o desactiva mediante los comandos «ifup <interfaz>» e «ifdown <interfaz>» (Sección 8.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q12",
+    "pregunta": "¿Cómo interactúan el diario binario de systemd-journald y el demonio rsyslog tradicional a la hora de gestionar y registrar eventos del sistema?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [9.5. syslog Eventos de sistema (Parte 1)]\nRespuesta:  El demonio rsyslogd es responsable de recolectar los mensajes de servicio que provienen de aplicaciones y el núcleo para luego distribuirlos en archivos de registros (usualmente almacenados en el directorio /var/log/).  systemd recolecta los registros antes de que rsyslogd los gestione.",
+    "respuesta_esperada": "«systemd-journald» recoge de forma centralizada e indexada los eventos del sistema y del arranque en un diario binario (Sección 8.9), y reenvía dichos registros al demonio «rsyslog» (syslog tradicional) para que los filtre y escriba en archivos de texto plano según su prioridad y categoría (Sección 9.5).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q13",
+    "pregunta": "¿Cuál es la sintaxis exacta del comando dnf para activar repositorios COPR en una instalación de Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT (Parte 8)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las herramientas DNF y los repositorios COPR pertenecen a la distribución Fedora / Red Hat; Debian utiliza el gestor APT con repositorios definidos en sources.list y paquetes DEB.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q14",
+    "pregunta": "¿Qué clave del registro de Windows bajo la ruta HKEY_LOCAL_MACHINE\\SYSTEM modifica el instalador de Debian para configurar el arranque dual?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian es un sistema operativo GNU/Linux que utiliza el gestor de arranque GRUB y no modifica registros ni claves HKEY de Windows.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Gemma-2-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q15",
+    "pregunta": "¿Qué parámetro del comando ipfw de FreeBSD se utiliza para compilar reglas de inspección con estado en Debian?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso (Parte 33)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q01",
+    "pregunta": "¿Cuántos días de vacaciones anuales retribuidas corresponden por ley como mínimo a un trabajador?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 38. Vacaciones anuales. (Parte 1)]\nRespuesta: Según la ley, los trabajadores tienen derecho a un mínimo de treinta días naturales de vacaciones anuales retribuidas.",
+    "respuesta_esperada": "Como mínimo corresponden treinta días naturales al año (artículo 38.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q02",
+    "pregunta": "¿Cuál es el número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 35. Horas extraordinarias. (Parte 1)\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "El número máximo de horas extraordinarias es de ochenta al año (artículo 35.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q03",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador con motivo de contraer matrimonio?",
+    "tipo": "directa",
+    "respuesta_modelo": "Un trabajador con motivo de contraer matrimonio dispone de cuántos días de permiso retribuido?",
+    "respuesta_esperada": "Dispone de quince días naturales de permiso retribuido (artículo 37.3.a).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q04",
+    "pregunta": "¿A partir de qué edad mínima está permitida con carácter general la admisión al trabajo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 6. Trabajo de los menores.]\nRespuesta: La admisión al trabajo a los menores de diecisésix años está prohibida.",
+    "respuesta_esperada": "Está permitida a partir de los dieciséis años; se prohíbe la admisión al trabajo a menores de dieciséis años salvo en espectáculos públicos autorizados (artículo 6.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q05",
+    "pregunta": "¿Cuál es la duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 1)]\nRespuesta: La duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores es de dos días ininterrumpidos.",
+    "respuesta_esperada": "El descanso semanal mínimo ininterrumpido es de un día y medio, acumulable por períodos de hasta catorce días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q06",
+    "pregunta": "¿Qué intervalo horario se considera legalmente como trabajo nocturno?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. - Parte 1/5\nRespuesta: El trabajo nocturno se considera el realizado entre las diez de la noche y las seis de la mañana.",
+    "respuesta_esperada": "Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana (artículo 36.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q07",
+    "pregunta": "Si un despido es declarado improcedente y el empresario opta por la indemnización, ¿a cuántos días de salario por año de servicio asciende y cuál es el límite máximo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 56. Despido improcedente. - Parte 1/2]\nRespuesta: La indemnización por despido improcedente asciende a treinta y tres días de salario por año de servicio, con un límite máximo de setecientos veinte días de salario.",
+    "respuesta_esperada": "Asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año, hasta un máximo de veinticuatro mensualidades (artículo 56.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q08",
+    "pregunta": "¿Qué duración máxima puede tener pactado el periodo de prueba para los técnicos titulados si el convenio colectivo no dispone otra cosa?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 14. Periodo de prueba. - Parte 1/3\nRespuesta: El periodo de prueba no podrá exceder de seis meses para los técnicos titulados.",
+    "respuesta_esperada": "La duración máxima no podrá exceder de seis meses para los técnicos titulados (artículo 14.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q09",
+    "pregunta": "¿Qué órgano de representación unitaria corresponde elegir a los trabajadores en centros de trabajo de menos de 50 empleados frente a los de 50 o más trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 62. Delegados de personal.]\nRespuesta: Los trabajadores elegirán, mediante sufragio libre, personal, secreto y directo a los delegados de personal en el número siguiente: hasta treinta trabajadores, uno; de treinta y uno a cuarenta y nueve, tres.",
+    "respuesta_esperada": "En centros de trabajo de más de diez y menos de cincuenta trabajadores la representación corresponde a los delegados de personal (artículo 62), mientras que en centros con cincuenta o más trabajadores se constituye un comité de empresa (artículo 63).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q10",
+    "pregunta": "¿Qué percepciones económicas integran el concepto legal de salario y cómo responde el Fondo de Garantía Salarial (FOGASA) en caso de insolvencia de la empresa para abonarlas?",
+    "tipo": "combinada",
+    "respuesta_modelo": "El concepto legal de salario se refiere a la remuneración económica que se paga a los trabajadores por su trabajo. El Fondo de Garantía Salarial (FOGASA) se encarga de abonar a los trabajadores los salarios pendientes de pago a causa de insolvencia o concurso del empresario.\n\nEn caso de insolvencia de la empresa, el FOGASA se encarga de abonar los salarios pendientes de pago a los trabajadores. El importe de los salarios pendientes se calcula en función del doble del salario mínimo interprofesional diario, incluyendo la parte proporcional de las pagas extraordinarias. El FOGASA no puede abonar un importe superior a la cantidad resultante de multiplicar el doble del salario mínimo interprofesional diario por el número de días de salario pendiente de pago, con un máximo de ciento veinte días.\n\nEn resumen, el FOGASA se encarga de abonar los salarios",
+    "respuesta_esperada": "El salario comprende la totalidad de las percepciones económicas, dinerarias o en especie, obtenidas por la prestación profesional de servicios laborales (artículo 26.1). Si la empresa se declara insolvente o en concurso, el FOGASA abona a los trabajadores los salarios pendientes reconocidos dentro de los límites y topes legalmente establecidos (artículo 33.1).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q11",
+    "pregunta": "¿Qué limitaciones especiales tienen los trabajadores menores de dieciocho años en cuanto al trabajo nocturno y a la duración de su descanso semanal?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. - Parte 1/5]\nRespuesta: Los trabajadores menores de dieciocho años no pueden realizar trabajos nocturnos y no pueden trabajar horas extraordinarias. Además, su jornada de trabajo no puede exceder de ocho horas diarias de promedio en un periodo de referencia de quince días. No se permiten horas extraordinarias para los trabajadores menores de dieciocho años.\n\nFuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. - Parte 3/5]\nRespuesta: No se aparece esta información en el fragmento proporcionado.\n\nFuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. (Parte 3)]\nRespuesta: No se aparece esta información en",
+    "respuesta_esperada": "Queda terminantemente prohibido el trabajo nocturno a los menores de dieciocho años (artículo 6.2), y su descanso semanal ininterrumpido debe ser de al menos dos días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q12",
+    "pregunta": "Si una empresa traslada a un trabajador a un centro de trabajo que exige cambio de residencia, ¿qué compensación económica le corresponde si rechaza el traslado y rescinde su contrato laboral?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: Artículo 40. Movilidad geográfica. (Parte 2)\nRespuesta: Si un trabajador rechaza un traslado y rescinde su contrato laboral, tendrá derecho a optar entre el traslado, percibiendo una compensación por gastos, o la extinción de su contrato, percibiendo una indemnización de veinte días de salario por año de servicio, prorateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades. La compensación a que se refiere el primer supuesto comprenderá tanto los gastos propios como los de los familiares a su cargo, en los términos que se convengan entre las partes, y nunca será inferior a los límites mínimos establecidos en los convenios colectivos.",
+    "respuesta_esperada": "Si decide no aceptar el traslado y extinguir la relación contractual (artículo 49.1.h), el trabajador percibe una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año y con un máximo de doce mensualidades (artículo 40.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q13",
+    "pregunta": "¿A cuántos euros asciende exactamente el importe mensual del Salario Mínimo Interprofesional fijado para este año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 27 dice que el Gobierno fija anualmente el salario mínimo previa consulta sindical, pero no incluye cifras concretas en euros.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q14",
+    "pregunta": "¿Cuántos años mínimos de cotización efectiva se exigen a un trabajador para acceder al 100% de la pensión contributiva de jubilación ordinaria?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "En la disposición adicional décima, cláusula 1a, se establece que la persona trabajadora afectada por la extinción del contrato de trabajo debe reunir los requisitos exigidos por la normativa de Seguridad Social para tener derecho al cien por ciento de la pensión ordinaria de jubilación en su modalidad contributiva. No se especifica un número específico de años de cotización efectiva mínimos, sino que se refiere a los requisitos exigidos por la normativa de Seguridad Social. Por lo tanto, la respuesta es: No se especifican los años de cotización efectiva mínimos.",
+    "respuesta_esperada": "No aparece en el documento. Los requisitos de cálculo, porcentajes y años cotizados para la pensión de jubilación se regulan en la Ley General de la Seguridad Social, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": false,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "boe",
+    "pregunta_id": "boe_q15",
+    "pregunta": "¿Cuántos días remunerados de permiso corresponden por el fallecimiento de un tío o de un primo carnal del trabajador?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 37.3 solo contempla permisos por fallecimiento para cónyuge, pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad (padres, hijos, abuelos, nietos, hermanos); tíos y primos no están contemplados.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q01",
+    "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [5.4. Manipulación de paquetes con dpkg (Parte 1)]\nRespuesta: dpkg -i paquete.deb",
+    "respuesta_esperada": "Se utiliza el comando «dpkg -i nombre_paquete.deb» (o «dpkg --install») (Sección 5.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q02",
+    "pregunta": "¿En qué archivo principal de configuración del sistema se definen las fuentes y repositorios de paquetes que consulta APT?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT - Parte 1/26]\nRespuesta: En el archivo /etc/apt/sources.list se definen las fuentes y repositorios de paquetes que consulta APT.",
+    "respuesta_esperada": "En el archivo «/etc/apt/sources.list» (Capítulo 6).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q03",
+    "pregunta": "¿Qué comando de APT se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.8. Manutención de un sistema actualizado - Parte 2/5]\nRespuesta: apt update",
+    "respuesta_esperada": "Se ejecuta «apt update» o «apt-get update» (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q04",
+    "pregunta": "¿Qué herramienta permite buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales (Parte 6)]\nRespuesta: control.tar.xz\n\nLa herramienta control.tar.xz contiene toda la metainformación disponible, como el nombre y la versión del paquete, así como algunos «scripts» para ejecutar antes, durante o después de la desinstalación o instalación de este. Algunas de esta metainformación permite a las herramientas de gestión de paquetes determinar si es posible instalar o desinstalarlo, por ejemplo, según la lista de paquetes que ya se encuentran en el equipo, y si archivos incluidos han sido modificados localmente.\n\nFuente: [Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales (Parte 6)]\nRespuesta: data.tar.xz\n\nLa herramienta data.tar.xz contiene todos los archivos a extraerse del paquete; aquí es donde están almacenados los archivos",
+    "respuesta_esperada": "La herramienta «apt-file» (Sección 6.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q05",
+    "pregunta": "¿Dónde se localiza el fichero principal de configuración del demonio del servidor SSH (OpenSSH) en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.2. Inicio de sesión remoto (Parte 3)]\nRespuesta: El fichero principal de configuración del demonio del servidor SSH (OpenSSH) en Debian se encuentra en el directorio /etc/ssh/.",
+    "respuesta_esperada": "En la ruta «/etc/ssh/sshd_config» (Sección 9.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q06",
+    "pregunta": "¿Qué programa o servicio se utiliza en Debian para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente?",
+    "tipo": "directa",
+    "respuesta_modelo": "anacron es el demonio que completa cron en equipos que no están encendidos todo el tiempo en Debian. Se utiliza para ejecutar tareas recurrentes en equipos que no están disponibles durante todo el tiempo, como portátiles.",
+    "respuesta_esperada": "El servicio «anacron» (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q07",
+    "pregunta": "¿Cuál es la herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables?",
+    "tipo": "directa",
+    "respuesta_modelo": "La herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables es nftables.",
+    "respuesta_esperada": "El cortafuegos «nftables» (subsistema de filtrado de paquetes del núcleo Linux) (Sección 14.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q08",
+    "pregunta": "¿Qué comando se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.9. Otras configuraciones: sincronización de tiempo, registros, acceso compartido… (Parte 12)]\nRespuesta: El comando sudo se utiliza para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root. El usuario confiable simplemente debe ejecutar sudo el comando que deseaba ejecutar como root y proporcionar su contraseña personal como autenticación.",
+    "respuesta_esperada": "El comando «sudo» (Sección 9.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q09",
+    "pregunta": "¿Qué papel desempeña dpkg en comparación con las herramientas APT a la hora de gestionar paquetes e instalar dependencias en Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "dpkg es una herramienta de sistema para instalar y analizar paquetes .deb, mientras que APT es un grupo de programas que permite realizar modificaciones más avanzadas en el sistema, como instalar o eliminar paquetes mientras mantienen las dependencias satisfechas, actualizar la lista de paquetes y actualizar el sistema. APT también es compatible con otros formatos de paquetes y contribuye a la estabilidad del software desplegado con la herramienta dpkg.",
+    "respuesta_esperada": "«dpkg» es la herramienta de bajo nivel que manipula directamente los paquetes .deb en el sistema pero no resuelve ni descarga dependencias de repositorios automáticamente (Sección 5.4), mientras que «APT» (apt / apt-get) es la herramienta de alto nivel que gestiona repositorios remotos, calcula el árbol de dependencias e invoca internamente a dpkg para la instalación (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q10",
+    "pregunta": "¿En qué se diferencian las acciones de desinstalar un paquete (remove) y purgarlo (purge) tanto en dpkg como en APT en relación con los ficheros de configuración?",
+    "tipo": "combinada",
+    "respuesta_modelo": "En dpkg y APT, la acción de desinstalar un paquete (remove) elimina los archivos del paquete, pero mantiene los archivos de configuración para facilitar una posible reinstalación. Por otro lado, la acción de purgar un paquete (purge) elimina no solo los archivos del paquete, sino también los archivos de configuración y algunos archivos temporales, así como los datos generados por un demonio asociado con el paquete. En resumen, purge es una eliminación más completa que remove.",
+    "respuesta_esperada": "La desinstalación ordinaria («remove») borra los ficheros ejecutables y datos del programa pero conserva los archivos de configuración en el sistema (Sección 5.4), mientras que la opción purgar («purge») elimina tanto el paquete como la totalidad de sus ficheros de configuración (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q11",
+    "pregunta": "¿En qué archivo se definen los parámetros de una interfaz de red estática en Debian clásico y con qué órdenes se activa o desactiva dicha interfaz?",
+    "tipo": "combinada",
+    "respuesta_modelo": "En Debian clásico, los parámetros de una interfaz de red estática se definen en el archivo /etc/network/interfaces. Para activar o desactivar una interfaz, se pueden utilizar los comandos ifconfig o ip, dependiendo del kernel utilizado. Por ejemplo, para activar la interfaz enérgica eth0, se puede utilizar el comando ifconfig eth0 up, mientras que para desactivarla, se puede utilizar ifconfig eth0 down. En Debian Buster, se recomienda utilizar update-alternatives para actualizar la interfaz de red estática.",
+    "respuesta_esperada": "Se definen en el fichero «/etc/network/interfaces» mediante la estrofa «iface ... inet static» (Sección 8.2), y se activa o desactiva mediante los comandos «ifup <interfaz>» e «ifdown <interfaz>» (Sección 8.2).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q12",
+    "pregunta": "¿Cómo interactúan el diario binario de systemd-journald y el demonio rsyslog tradicional a la hora de gestionar y registrar eventos del sistema?",
+    "tipo": "combinada",
+    "respuesta_modelo": "El diario binario de systemd-journald y el demonio rsyslog tradicional interactúan de manera diferente para gestionar y registrar eventos del sistema.\n\nEl demonio rsyslogd es responsable de recolectar los mensajes de servicio que provienen de aplicaciones y el núcleo, y distribuirlos en archivos de registros. Obedece a su archivo de configuración: /etc/rsyslog.conf. Cada mensaje de registro es asociado con un subsistema de aplicaciones (llamados «facility» en la documentación): auth y authpriv, cron, daemon, ftp, kern, lpr, mail, news, syslog, user. Los registros se almacenan en /var/log/ o alguno de sus subdirectorios.\n\nPor otro lado, systemd-journald es un sistema de registro integrado en systemd, el sistema de inicio del sistema operativo. Al utilizar systemd, los registros se recogen por systemd antes de ser reenviados a rsyslogd. Por lo tanto, también están disponibles a través del historial (\"journal\") de systemd y pueden ser consultados mediante",
+    "respuesta_esperada": "«systemd-journald» recoge de forma centralizada e indexada los eventos del sistema y del arranque en un diario binario (Sección 8.9), y reenvía dichos registros al demonio «rsyslog» (syslog tradicional) para que los filtre y escriba en archivos de texto plano según su prioridad y categoría (Sección 9.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": false
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q13",
+    "pregunta": "¿Cuál es la sintaxis exacta del comando dnf para activar repositorios COPR en una instalación de Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las herramientas DNF y los repositorios COPR pertenecen a la distribución Fedora / Red Hat; Debian utiliza el gestor APT con repositorios definidos en sources.list y paquetes DEB.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q14",
+    "pregunta": "¿Qué clave del registro de Windows bajo la ruta HKEY_LOCAL_MACHINE\\SYSTEM modifica el instalador de Debian para configurar el arranque dual?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian es un sistema operativo GNU/Linux que utiliza el gestor de arranque GRUB y no modifica registros ni claves HKEY de Windows.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Granite-3-2B",
+    "documento": "debian",
+    "pregunta_id": "deb_q15",
+    "pregunta": "¿Qué parámetro del comando ipfw de FreeBSD se utiliza para compilar reglas de inspección con estado en Debian?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q01",
+    "pregunta": "¿Cuántos días de vacaciones anuales retribuidas corresponden por ley como mínimo a un trabajador?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 38. Vacaciones anuales. (Parte 1)]\nRespuesta: El periodo de vacaciones anuales retribuidas, no sustituible por compensación económica, será el pactado en convenio colectivo o contrato individual. En ningún caso la duración será inferior a treinta días naturales. (No se especifica un mínimo legal en el documento proporcionado.)",
+    "respuesta_esperada": "Como mínimo corresponden treinta días naturales al año (artículo 38.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q02",
+    "pregunta": "¿Cuál es el número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 35. Horas extraordinarias. (Parte 1)]\nRespuesta: El número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria es de ochenta horas. Sin embargo, si el trabajador realiza una jornada en cómputo anual inferior a la jornada general en la empresa, el número máximo anual de horas extraordinarias se reducirá en la misma proporción que exista entre tales jornadas.",
+    "respuesta_esperada": "El número máximo de horas extraordinarias es de ochenta al año (artículo 35.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q03",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador con motivo de contraer matrimonio?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)]\nRespuesta: El trabajador dispone de quince días de permiso retribuido con motivo de contraer matrimonio.",
+    "respuesta_esperada": "Dispone de quince días naturales de permiso retribuido (artículo 37.3.a).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q04",
+    "pregunta": "¿A partir de qué edad mínima está permitida con carácter general la admisión al trabajo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 6. Trabajo de los menores.]\nRespuesta: Se prohíbe la admisión al trabajo a los menores de dieciséis años.",
+    "respuesta_esperada": "Está permitida a partir de los dieciséis años; se prohíbe la admisión al trabajo a menores de dieciséis años salvo en espectáculos públicos autorizados (artículo 6.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q05",
+    "pregunta": "¿Cuál es la duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 1)]\nRespuesta: Los trabajadores tendrán derecho a un descanso mínimo semanal de día y medio ininterrumpido, como regla general, compuesto por la tarde del sábado o, en su caso, la mañana del lunes y el día completo del domingo. La duración del descanso semanal de los menores de dieciocho años será, como mínimo, de dos días ininterrumpidos.",
+    "respuesta_esperada": "El descanso semanal mínimo ininterrumpido es de un día y medio, acumulable por períodos de hasta catorce días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q06",
+    "pregunta": "¿Qué intervalo horario se considera legalmente como trabajo nocturno?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. (Parte 1)]\nRespuesta: El trabajo realizado entre las diez de la noche y las seis de la mañana se considera trabajo nocturno.",
+    "respuesta_esperada": "Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana (artículo 36.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q07",
+    "pregunta": "Si un despido es declarado improcedente y el empresario opta por la indemnización, ¿a cuántos días de salario por año de servicio asciende y cuál es el límite máximo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Disposición transitoria undécima. Indemnizaciones por despido improcedente. (Parte 1)]\nRespuesta: La indemnización por despido asciende a cuarenta y cinco días de salario por año de servicio por el tiempo de prestación de servicios anterior al 12 de febrero de 2012, y a treinta y tres días de salario por año de servicio por el tiempo de prestación de servicios posterior. El importe indemnizatorio resultante no podrá ser superior a setecientos veinte días de salario, salvo que del cálculo de la indemnización por el periodo anterior al 12 de febrero de 2012 resultase un número de días superior, en cuyo caso se aplicará este como importe indemnizatorio máximo, sin que dicho importe pueda ser superior a cuarenta y dos mensualidades, en ningún caso.",
+    "respuesta_esperada": "Asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año, hasta un máximo de veinticuatro mensualidades (artículo 56.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q08",
+    "pregunta": "¿Qué duración máxima puede tener pactado el periodo de prueba para los técnicos titulados si el convenio colectivo no dispone otra cosa?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 14. Periodo de prueba. (Parte 1)]\nRespuesta: La duración del periodo de prueba para los técnicos titulados no podrá exceder de seis meses, según lo establecido en el documento.",
+    "respuesta_esperada": "La duración máxima no podrá exceder de seis meses para los técnicos titulados (artículo 14.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q09",
+    "pregunta": "¿Qué órgano de representación unitaria corresponde elegir a los trabajadores en centros de trabajo de menos de 50 empleados frente a los de 50 o más trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 62. Delegados de personal.]\nRespuesta: Los trabajadores elegirán a los delegados de personal en centros de trabajo de menos de 50 empleados.",
+    "respuesta_esperada": "En centros de trabajo de más de diez y menos de cincuenta trabajadores la representación corresponde a los delegados de personal (artículo 62), mientras que en centros con cincuenta o más trabajadores se constituye un comité de empresa (artículo 63).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q10",
+    "pregunta": "¿Qué percepciones económicas integran el concepto legal de salario y cómo responde el Fondo de Garantía Salarial (FOGASA) en caso de insolvencia de la empresa para abonarlas?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 33. El Fondo de Garantía Salarial. (Parte 1)]\nRespuesta: El concepto legal de salario incluye la cantidad reconocida como tal en acto de conciliación o en resolución judicial por todos los conceptos a que se refiere el artículo 26.1, así como los salarios de tramitación en los supuestos en que legalmente procedan. El Fondo de Garantía Salarial (FOGASA) abonará al trabajador el importe de los salarios pendientes de pago a causa de insolvencia o concurso del empresario, pero solo hasta un máximo de ciento veinte días de salario pendiente de pago.",
+    "respuesta_esperada": "El salario comprende la totalidad de las percepciones económicas, dinerarias o en especie, obtenidas por la prestación profesional de servicios laborales (artículo 26.1). Si la empresa se declara insolvente o en concurso, el FOGASA abona a los trabajadores los salarios pendientes reconocidos dentro de los límites y topes legalmente establecidos (artículo 33.1).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q11",
+    "pregunta": "¿Qué limitaciones especiales tienen los trabajadores menores de dieciocho años en cuanto al trabajo nocturno y a la duración de su descanso semanal?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 6. Trabajo de los menores.]\nRespuesta: Los trabajadores menores de dieciocho años no pueden realizar trabajos nocturnos ni horas extraordinarias. Además, no se les permite intervención en espectáculos públicos en casos no excepcionales. En cuanto al descanso semanal, no aparece especificado ningún límite especial en el documento proporcionado.",
+    "respuesta_esperada": "Queda terminantemente prohibido el trabajo nocturno a los menores de dieciocho años (artículo 6.2), y su descanso semanal ininterrumpido debe ser de al menos dos días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q12",
+    "pregunta": "Si una empresa traslada a un trabajador a un centro de trabajo que exige cambio de residencia, ¿qué compensación económica le corresponde si rechaza el traslado y rescinde su contrato laboral?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 40. Movilidad geográfica. (Parte 2)]\nRespuesta: El trabajador tendrá derecho a percibir una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades.",
+    "respuesta_esperada": "Si decide no aceptar el traslado y extinguir la relación contractual (artículo 49.1.h), el trabajador percibe una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año y con un máximo de doce mensualidades (artículo 40.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q13",
+    "pregunta": "¿A cuántos euros asciende exactamente el importe mensual del Salario Mínimo Interprofesional fijado para este año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Artículo 27. Salario mínimo interprofesional. (Parte 1)]\nRespuesta: No aparece en el documento que se proporcionó información específica sobre el importe mensual del Salario Mínimo Interprofesional fijado para este año.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 27 dice que el Gobierno fija anualmente el salario mínimo previa consulta sindical, pero no incluye cifras concretas en euros.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q14",
+    "pregunta": "¿Cuántos años mínimos de cotización efectiva se exigen a un trabajador para acceder al 100% de la pensión contributiva de jubilación ordinaria?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Disposición adicional décima. Cláusulas de los convenios colectivos referidas al cumplimiento de la edad ordinaria de jubilación. (Parte 1)]\nRespuesta: No aparece en el documento la información sobre cuántos años mínimos de cotización efectiva se exigen a un trabajador para acceder al 100% de la pensión contributiva de jubilación ordinaria.",
+    "respuesta_esperada": "No aparece en el documento. Los requisitos de cálculo, porcentajes y años cotizados para la pensión de jubilación se regulan en la Ley General de la Seguridad Social, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q15",
+    "pregunta": "¿Cuántos días remunerados de permiso corresponden por el fallecimiento de un tío o de un primo carnal del trabajador?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)]\nRespuesta: No aparece en el documento.\n\nFuente: [Artículo 37. Descanso semanal, fiestas y permisos. - Parte 3/15]\nRespuesta: No aparece en el documento.\n\nFuente: [Artículo 48. Suspensión con reserva de puesto de trabajo. (Parte 3)]\nRespuesta: No aparece en el documento.\n\nFuente: [Artículo 48. Suspensión con reserva de puesto de trabajo. - Parte 3/10]\nRespuesta: No aparece en el documento.\n\nFuente: [Artículo 49. Extinción del contrato. (Parte 2)]\nRespuesta: No aparece en el documento.\n\nFuente: [Artículo 49. Extinción del contrato. - Parte 2/7",
+    "respuesta_esperada": "No aparece en el documento. El artículo 37.3 solo contempla permisos por fallecimiento para cónyuge, pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad (padres, hijos, abuelos, nietos, hermanos); tíos y primos no están contemplados.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q01",
+    "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [5.4.1. Instalación de paquetes]\nRespuesta: El comando y parámetro de bajo nivel que se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg es -i o --install.",
+    "respuesta_esperada": "Se utiliza el comando «dpkg -i nombre_paquete.deb» (o «dpkg --install») (Sección 5.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q02",
+    "pregunta": "¿En qué archivo principal de configuración del sistema se definen las fuentes y repositorios de paquetes que consulta APT?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Capítulo 6.2. Los programas aptitude, apt-get y apt (Parte 22)]\nRespuesta: APT consulta los archivos /etc/apt/preferences y /etc/apt/preferences.d/ para definir las fuentes y repositorios de paquetes.",
+    "respuesta_esperada": "En el archivo «/etc/apt/sources.list» (Capítulo 6).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q03",
+    "pregunta": "¿Qué comando de APT se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [15.3. Creación de un repositorio de paquetes para APT (Parte 1)]\nRespuesta: No aparece en el documento la información sobre el comando para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados en APT.",
+    "respuesta_esperada": "Se ejecuta «apt update» o «apt-get update» (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q04",
+    "pregunta": "¿Qué herramienta permite buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.10. Búsqueda de paquetes (Parte 1)]\nRespuesta: La herramienta adecuada para buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados es packagesearch.",
+    "respuesta_esperada": "La herramienta «apt-file» (Sección 6.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q05",
+    "pregunta": "¿Dónde se localiza el fichero principal de configuración del demonio del servidor SSH (OpenSSH) en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.2. Inicio de sesión remoto (Parte 6)]\nRespuesta: No aparece en el documento que se proporcionó sobre el inicio de sesión remoto en Debian que se refiere a la protección de la llave privada.",
+    "respuesta_esperada": "En la ruta «/etc/ssh/sshd_config» (Sección 9.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q06",
+    "pregunta": "¿Qué programa o servicio se utiliza en Debian para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.8. Programación de tareas asincrónicas: anacron (Parte 1)]\nRespuesta: El programa o servicio que se utiliza en Debian para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente es anacron.",
+    "respuesta_esperada": "El servicio «anacron» (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q07",
+    "pregunta": "¿Cuál es la herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [14.2. Firewall o el filtrado de paquetes (Parte 2)]\nRespuesta: La herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables es nftables.",
+    "respuesta_esperada": "El cortafuegos «nftables» (subsistema de filtrado de paquetes del núcleo Linux) (Sección 14.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q08",
+    "pregunta": "¿Qué comando se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.9.4. Compartición de permisos de administración]\nRespuesta: Para ejecutar un comando con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root, el usuario simplemente ejecuta el comando sudo seguido del comando que desea ejecutar. Por ejemplo, si un usuario desea ejecutar el comando \"ls -l\" con privilegios de root, puede ejecutar \"sudo ls -l\".",
+    "respuesta_esperada": "El comando «sudo» (Sección 9.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q09",
+    "pregunta": "¿Qué papel desempeña dpkg en comparación con las herramientas APT a la hora de gestionar paquetes e instalar dependencias en Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales (Parte 3)]\nRespuesta: dpkg es la herramienta que maneja los archivos .deb (paquetes binarios), en particular los extrae, analiza y descomprime. Por otro lado, APT es un grupo de programas que permite la ejecución de modificaciones de más alto nivel al sistema, incluyendo instalar o eliminar un paquete (mientras mantiene dependencias satisfechas), actualizar la lista de paquetes y actualizar el sistema, listar los paquetes disponibles, etc. En comparación, dpkg es más básica y se utiliza para instalar un paquete Debian ya disponible, mientras que APT crea una lista de dependencias para instalar todo tan automáticamente como sea posible.",
+    "respuesta_esperada": "«dpkg» es la herramienta de bajo nivel que manipula directamente los paquetes .deb en el sistema pero no resuelve ni descarga dependencias de repositorios automáticamente (Sección 5.4), mientras que «APT» (apt / apt-get) es la herramienta de alto nivel que gestiona repositorios remotos, calcula el árbol de dependencias e invoca internamente a dpkg para la instalación (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q10",
+    "pregunta": "¿En qué se diferencian las acciones de desinstalar un paquete (remove) y purgarlo (purge) tanto en dpkg como en APT en relación con los ficheros de configuración?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Capítulo 5. Sistema de paquetes: herramientas y principios fundamentales (Parte 3)]\nRespuesta: La acción de desinstalar un paquete (remove) en dpkg y APT solo elimina el paquete y sus dependencias, manteniendo los archivos de configuración. Por otro lado, la acción de purgar un paquete (purge) en dpkg y APT elimina no solo el paquete y sus dependencias, sino también los archivos de configuración y otros archivos relacionados.",
+    "respuesta_esperada": "La desinstalación ordinaria («remove») borra los ficheros ejecutables y datos del programa pero conserva los archivos de configuración en el sistema (Sección 5.4), mientras que la opción purgar («purge») elimina tanto el paquete como la totalidad de sus ficheros de configuración (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 1,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q11",
+    "pregunta": "¿En qué archivo se definen los parámetros de una interfaz de red estática en Debian clásico y con qué órdenes se activa o desactiva dicha interfaz?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [8.2. Configuración de red (Parte 9)]\nRespuesta: Los parámetros de una interfaz de red estática en Debian clásico se definen en un archivo de configuración de red llamado interfaces. El comando para activar o desactivar dicha interfaz es ifup o ifdown, respectivamente.",
+    "respuesta_esperada": "Se definen en el fichero «/etc/network/interfaces» mediante la estrofa «iface ... inet static» (Sección 8.2), y se activa o desactiva mediante los comandos «ifup <interfaz>» e «ifdown <interfaz>» (Sección 8.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q12",
+    "pregunta": "¿Cómo interactúan el diario binario de systemd-journald y el demonio rsyslog tradicional a la hora de gestionar y registrar eventos del sistema?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [7.2. Procedimientos comunes (Parte 6)]\nRespuesta: Cuando se utiliza systemd, los registros se recogen por systemd antes de ser reenviados a rsyslogd. Por lo tanto, también están disponibles a través del historial (\"journal\") de systemd y puden ser consultados mediante journalctl. No se menciona en el documento cómo interactúan directamente el diario binario de systemd-journald y el demonio rsyslog tradicional.",
+    "respuesta_esperada": "«systemd-journald» recoge de forma centralizada e indexada los eventos del sistema y del arranque en un diario binario (Sección 8.9), y reenvía dichos registros al demonio «rsyslog» (syslog tradicional) para que los filtre y escriba en archivos de texto plano según su prioridad y categoría (Sección 9.5).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q13",
+    "pregunta": "¿Cuál es la sintaxis exacta del comando dnf para activar repositorios COPR en una instalación de Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT (Parte 8)]\nRespuesta: No aparece en el documento.\n\nFuente: [Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT (Parte 9)]\nRespuesta: No aparece en el documento.\n\nEn resumen, el documento proporcionado trata sobre la instalación de Debian y la utilización de herramientas como yum y APT, pero no se menciona la sintaxis exacta del comando dnf para activar repositorios COPR en una instalación de Debian Bullseye.",
+    "respuesta_esperada": "No aparece en el documento. Las herramientas DNF y los repositorios COPR pertenecen a la distribución Fedora / Red Hat; Debian utiliza el gestor APT con repositorios definidos en sources.list y paquetes DEB.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q14",
+    "pregunta": "¿Qué clave del registro de Windows bajo la ruta HKEY_LOCAL_MACHINE\\SYSTEM modifica el instalador de Debian para configurar el arranque dual?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [4.2. Instalación, paso a paso (Parte 3)]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian es un sistema operativo GNU/Linux que utiliza el gestor de arranque GRUB y no modifica registros ni claves HKEY de Windows.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Mistral-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q15",
+    "pregunta": "¿Qué parámetro del comando ipfw de FreeBSD se utiliza para compilar reglas de inspección con estado en Debian?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [4.2.16. Concurso de popularidad de paquetes Debian]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q01",
+    "pregunta": "¿Cuántos días de vacaciones anuales retribuidas corresponden por ley como mínimo a un trabajador?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 38. Vacaciones anuales. - Parte 1/3]\nRespuesta: Según la ley, el periodo de vacaciones anuales retribuidas mínimo es de treinta días naturales.",
+    "respuesta_esperada": "Como mínimo corresponden treinta días naturales al año (artículo 38.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q02",
+    "pregunta": "¿Cuál es el número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 35. Horas extraordinarias. (Parte 1/3)\nRespuesta: El número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria es de ochenta horas, salvo que se establezca lo contrario en un convenio colectivo o contrato individual de trabajo.",
+    "respuesta_esperada": "El número máximo de horas extraordinarias es de ochenta al año (artículo 35.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q03",
+    "pregunta": "¿De cuántos días de permiso retribuido dispone un trabajador con motivo de contraer matrimonio?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)]\nRespuesta: Un trabajador dispone de quince días naturales de permiso retribuido con motivo de contraer matrimonio.",
+    "respuesta_esperada": "Dispone de quince días naturales de permiso retribuido (artículo 37.3.a).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q04",
+    "pregunta": "¿A partir de qué edad mínima está permitida con carácter general la admisión al trabajo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 6. Trabajo de los menores.\nRespuesta: A partir de los dieciséis años está permitida con carácter general la admisión al trabajo.",
+    "respuesta_esperada": "Está permitida a partir de los dieciséis años; se prohíbe la admisión al trabajo a menores de dieciséis años salvo en espectáculos públicos autorizados (artículo 6.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q05",
+    "pregunta": "¿Cuál es la duración mínima del descanso semanal ininterrumpido que garantiza la ley a los trabajadores?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: Artículo 37. Descanso semanal, fiestas y permisos. (Parte 1/15)\nRespuesta: La ley garantiza un descanso semanal ininterrumpido mínimo de un día y medio. Este descanso puede comprender la tarde del sábado o, en su caso, la mañana del lunes y el día completo del domingo.",
+    "respuesta_esperada": "El descanso semanal mínimo ininterrumpido es de un día y medio, acumulable por períodos de hasta catorce días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q06",
+    "pregunta": "¿Qué intervalo horario se considera legalmente como trabajo nocturno?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. - Parte 1/5]\nRespuesta: Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana.",
+    "respuesta_esperada": "Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana (artículo 36.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q07",
+    "pregunta": "Si un despido es declarado improcedente y el empresario opta por la indemnización, ¿a cuántos días de salario por año de servicio asciende y cuál es el límite máximo?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 56. Despido improcedente. - Parte 1/2]\nRespuesta: Si un despido es declarado improcedente y el empresario opta por la indemnización, la indemnización asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año, hasta un máximo de veinticuatro mensualidades.",
+    "respuesta_esperada": "Asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año, hasta un máximo de veinticuatro mensualidades (artículo 56.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q08",
+    "pregunta": "¿Qué duración máxima puede tener pactado el periodo de prueba para los técnicos titulados si el convenio colectivo no dispone otra cosa?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [Artículo 14. Periodo de prueba. - Parte 1/3]\nRespuesta: La duración máxima pactada para el periodo de prueba para los técnicos titulados, en defecto de pacto en convenio, no podrá exceder de seis meses.",
+    "respuesta_esperada": "La duración máxima no podrá exceder de seis meses para los técnicos titulados (artículo 14.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q09",
+    "pregunta": "¿Qué órgano de representación unitaria corresponde elegir a los trabajadores en centros de trabajo de menos de 50 empleados frente a los de 50 o más trabajadores?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 62. Delegados de personal.]\nRespuesta: En centros de trabajo de menos de 50 empleados, los trabajadores elegirán a los delegados de personal. En centros de trabajo de 50 o más trabajadores, corresponde la representación a los comités de empresa.",
+    "respuesta_esperada": "En centros de trabajo de más de diez y menos de cincuenta trabajadores la representación corresponde a los delegados de personal (artículo 62), mientras que en centros con cincuenta o más trabajadores se constituye un comité de empresa (artículo 63).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q10",
+    "pregunta": "¿Qué percepciones económicas integran el concepto legal de salario y cómo responde el Fondo de Garantía Salarial (FOGASA) en caso de insolvencia de la empresa para abonarlas?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 33. El Fondo de Garantía Salarial. - Parte 1/12]\nRespuesta: Según el texto, el concepto legal de salario incluye la cantidad reconocida como tal en acto de conciliación o en resolución judicial por todos los conceptos a que se refiere el artículo 26.1. Además, se incluyen los salarios de tramitación en los supuestos en que legalmente procedan. En caso de insolvencia de la empresa, el Fondo de Garantía Salarial (FOGASA) abonará a los trabajadores el importe de los salarios pendientes de pago, siempre que no supere el doble del salario mínimo interprofesional diario, incluyendo la parte proporcional de las pagas extraordinarias, por el número de días de salario pendiente de pago, con un máximo de ciento veinte días.",
+    "respuesta_esperada": "El salario comprende la totalidad de las percepciones económicas, dinerarias o en especie, obtenidas por la prestación profesional de servicios laborales (artículo 26.1). Si la empresa se declara insolvente o en concurso, el FOGASA abona a los trabajadores los salarios pendientes reconocidos dentro de los límites y topes legalmente establecidos (artículo 33.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q11",
+    "pregunta": "¿Qué limitaciones especiales tienen los trabajadores menores de dieciocho años en cuanto al trabajo nocturno y a la duración de su descanso semanal?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: Artículo 6. Trabajo de los menores.\nRespuesta: Los trabajadores menores de dieciocho años no podrán realizar trabajos nocturnos. Además, no podrán realizar horas extraordinarias. No obstante, no se especifican limitaciones especiales en cuanto a la duración de su descanso semanal en el fragmento proporcionado.",
+    "respuesta_esperada": "Queda terminantemente prohibido el trabajo nocturno a los menores de dieciocho años (artículo 6.2), y su descanso semanal ininterrumpido debe ser de al menos dos días (artículo 37.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q12",
+    "pregunta": "Si una empresa traslada a un trabajador a un centro de trabajo que exige cambio de residencia, ¿qué compensación económica le corresponde si rechaza el traslado y rescinde su contrato laboral?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [Artículo 40. Movilidad geográfica. - Parte 2/12]\nRespuesta: Si un trabajador rechaza el traslado y rescinde su contrato laboral, corresponde una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades.",
+    "respuesta_esperada": "Si decide no aceptar el traslado y extinguir la relación contractual (artículo 49.1.h), el trabajador percibe una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los períodos inferiores a un año y con un máximo de doce mensualidades (artículo 40.1).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q13",
+    "pregunta": "¿A cuántos euros asciende exactamente el importe mensual del Salario Mínimo Interprofesional fijado para este año?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 27 dice que el Gobierno fija anualmente el salario mínimo previa consulta sindical, pero no incluye cifras concretas en euros.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q14",
+    "pregunta": "¿Cuántos años mínimos de cotización efectiva se exigen a un trabajador para acceder al 100% de la pensión contributiva de jubilación ordinaria?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Los requisitos de cálculo, porcentajes y años cotizados para la pensión de jubilación se regulan en la Ley General de la Seguridad Social, no en el Estatuto de los Trabajadores.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "boe",
+    "pregunta_id": "boe_q15",
+    "pregunta": "¿Cuántos días remunerados de permiso corresponden por el fallecimiento de un tío o de un primo carnal del trabajador?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. - Parte 3/15]\nRespuesta: No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. El artículo 37.3 solo contempla permisos por fallecimiento para cónyuge, pareja de hecho o parientes hasta el segundo grado de consanguinidad o afinidad (padres, hijos, abuelos, nietos, hermanos); tíos y primos no están contemplados.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q01",
+    "pregunta": "¿Qué comando y parámetro de bajo nivel se utiliza para instalar un archivo local de paquete Debian (.deb) mediante la herramienta dpkg?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [5.4.1. Instalación de paquetes]\nRespuesta: Se utiliza el comando `dpkg` con el parámetro `-i` o `--install` para instalar un archivo local de paquete Debian (.deb).",
+    "respuesta_esperada": "Se utiliza el comando «dpkg -i nombre_paquete.deb» (o «dpkg --install») (Sección 5.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q02",
+    "pregunta": "¿En qué archivo principal de configuración del sistema se definen las fuentes y repositorios de paquetes que consulta APT?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.2. Los programas aptitude, apt-get y apt - Parte 22]\nRespuesta: En el archivo Release, que APT descarga junto con los archivos Packages, se identifica cada origen de paquetes y se especifica el origen, el nombre de la distribución y su versión. Sin embargo, no se menciona específicamente un archivo principal de configuración donde se definen las fuentes y repositorios de paquetes. Según el fragmento, APT descarga el archivo Release junto con los archivos Packages para obtener información sobre los orígenes de paquetes, pero no se indica que este sea el archivo principal de configuración para definir estas fuentes y repositorios.",
+    "respuesta_esperada": "En el archivo «/etc/apt/sources.list» (Capítulo 6).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q03",
+    "pregunta": "¿Qué comando de APT se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.8. Manutención de un sistema actualizado - Parte 2/5]\nRespuesta: El comando de APT que se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados es `apt update`.",
+    "respuesta_esperada": "Se ejecuta «apt update» o «apt-get update» (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q04",
+    "pregunta": "¿Qué herramienta permite buscar a qué paquete pertenece un fichero concreto o encontrar ficheros contenidos en paquetes aún no instalados?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [6.10. Búsqueda de paquetes (Parte 7)]\nRespuesta: packagesearch es una buena herramienta para buscar a qué paquete pertenece un fichero concreto o para encontrar ficheros contenidos en paquetes aún no instalados.",
+    "respuesta_esperada": "La herramienta «apt-file» (Sección 6.4).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q05",
+    "pregunta": "¿Dónde se localiza el fichero principal de configuración del demonio del servidor SSH (OpenSSH) en Debian?",
+    "tipo": "directa",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "En la ruta «/etc/ssh/sshd_config» (Sección 9.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q06",
+    "pregunta": "¿Qué programa o servicio se utiliza en Debian para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [9.8. Programación de tareas asincrónicas: anacron - Parte 1/3]\nRespuesta: En equipos como portátiles que no permanecen encendidos continuamente, se utiliza el programa anacron para programar tareas asíncronas. Este servicio completa la función de cron en equipos que no están encendidos todo el tiempo, asegurándose de que las tareas recurrentes se ejecuten incluso si el equipo estaba apagado durante el momento programado.",
+    "respuesta_esperada": "El servicio «anacron» (Sección 9.8).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q07",
+    "pregunta": "¿Cuál es la herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [14.2. Firewall o el filtrado de paquetes - Parte 2/16]\nRespuesta: La herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye, sustituyendo a iptables, es nftables.",
+    "respuesta_esperada": "El cortafuegos «nftables» (subsistema de filtrado de paquetes del núcleo Linux) (Sección 14.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q08",
+    "pregunta": "¿Qué comando se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root?",
+    "tipo": "directa",
+    "respuesta_modelo": "Fuente: [8.9.4. Compartición de permisos de administración, Parte 12/22]\nRespuesta: El comando que se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root es sudo.",
+    "respuesta_esperada": "El comando «sudo» (Sección 9.3).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q09",
+    "pregunta": "¿Qué papel desempeña dpkg en comparación con las herramientas APT a la hora de gestionar paquetes e instalar dependencias en Debian?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [5.4. Manipulación de paquetes con dpkg - Parte 1/20]\nRespuesta: dpkg es una herramienta de sistema que se encarga principalmente de la instalación y análisis de paquetes .deb. Sin embargo, dpkg tiene limitaciones ya que no puede gestionar dependencias de forma automática. Por otro lado, APT (Advanced Packaging Tool) es una herramienta más cercana al usuario que se encarga de crear una lista de dependencias para instalar todo de forma automática. APT y dpkg trabajan juntas, cada una con sus particularidades, para tareas específicas en el sistema Debian.",
+    "respuesta_esperada": "«dpkg» es la herramienta de bajo nivel que manipula directamente los paquetes .deb en el sistema pero no resuelve ni descarga dependencias de repositorios automáticamente (Sección 5.4), mientras que «APT» (apt / apt-get) es la herramienta de alto nivel que gestiona repositorios remotos, calcula el árbol de dependencias e invoca internamente a dpkg para la instalación (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q10",
+    "pregunta": "¿En qué se diferencian las acciones de desinstalar un paquete (remove) y purgarlo (purge) tanto en dpkg como en APT en relación con los ficheros de configuración?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [6.2. Los programas aptitude, apt-get y apt (Parte 5)]\nRespuesta: En dpkg y APT, la acción de desinstalar un paquete (remove) solo elimina el paquete y sus archivos, manteniendo los archivos de configuración. En cambio, purgar un paquete (purge) con dpkg -P, apt-get remove --purge o aptitude purge, elimina el paquete y sus archivos, incluyendo los archivos de configuración.",
+    "respuesta_esperada": "La desinstalación ordinaria («remove») borra los ficheros ejecutables y datos del programa pero conserva los archivos de configuración en el sistema (Sección 5.4), mientras que la opción purgar («purge») elimina tanto el paquete como la totalidad de sus ficheros de configuración (Sección 6.2).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q11",
+    "pregunta": "¿En qué archivo se definen los parámetros de una interfaz de red estática en Debian clásico y con qué órdenes se activa o desactiva dicha interfaz?",
+    "tipo": "combinada",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "Se definen en el fichero «/etc/network/interfaces» mediante la estrofa «iface ... inet static» (Sección 8.2), y se activa o desactiva mediante los comandos «ifup <interfaz>» e «ifdown <interfaz>» (Sección 8.2).",
+    "evaluacion": {
+      "correccion": 0,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": true,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q12",
+    "pregunta": "¿Cómo interactúan el diario binario de systemd-journald y el demonio rsyslog tradicional a la hora de gestionar y registrar eventos del sistema?",
+    "tipo": "combinada",
+    "respuesta_modelo": "Fuente: [7.2. Procedimientos comunes (Parte 6)]\nRespuesta: Cuando se utiliza systemd, los registros se recogen por systemd antes de ser reenviados a rsyslogd. Por lo tanto, estos registros también están disponibles a través del historial (\"journal\") de systemd y pueden ser consultados mediante journalctl. Esto significa que el diario binario de systemd-journald y el demonio rsyslog tradicional trabajan en conjunto para gestionar y registrar eventos del sistema, con systemd-journald recolectando la información y rsyslogd manejando la distribución y almacenamiento de estos registros.",
+    "respuesta_esperada": "«systemd-journald» recoge de forma centralizada e indexada los eventos del sistema y del arranque en un diario binario (Sección 8.9), y reenvía dichos registros al demonio «rsyslog» (syslog tradicional) para que los filtre y escriba en archivos de texto plano según su prioridad y categoría (Sección 9.5).",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": false,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q13",
+    "pregunta": "¿Cuál es la sintaxis exacta del comando dnf para activar repositorios COPR en una instalación de Debian Bullseye?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Las herramientas DNF y los repositorios COPR pertenecen a la distribución Fedora / Red Hat; Debian utiliza el gestor APT con repositorios definidos en sources.list y paquetes DEB.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q14",
+    "pregunta": "¿Qué clave del registro de Windows bajo la ruta HKEY_LOCAL_MACHINE\\SYSTEM modifica el instalador de Debian para configurar el arranque dual?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian es un sistema operativo GNU/Linux que utiliza el gestor de arranque GRUB y no modifica registros ni claves HKEY de Windows.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  },
+  {
+    "modelo": "Qwen-2.5-7B",
+    "documento": "debian",
+    "pregunta_id": "deb_q15",
+    "pregunta": "¿Qué parámetro del comando ipfw de FreeBSD se utiliza para compilar reglas de inspección con estado en Debian?",
+    "tipo": "sin_respuesta",
+    "respuesta_modelo": "No aparece en el documento.",
+    "respuesta_esperada": "No aparece en el documento. Debian utiliza el filtrado de paquetes del núcleo Linux mediante nftables e iptables; ipfw es una utilidad exclusiva del sistema operativo FreeBSD.",
+    "evaluacion": {
+      "correccion": 2,
+      "fiel": true,
+      "abstencion_correcta": true,
+      "falsa_abstencion": false,
+      "formato_idioma": true
+    }
+  }
+]
