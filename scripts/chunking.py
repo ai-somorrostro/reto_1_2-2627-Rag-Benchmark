@@ -9,8 +9,28 @@ CARPETA_CHUNKS.mkdir(parents=True, exist_ok=True)
 # ---------------- BOE: un chunk por artículo o disposición ----------------
 texto = (RAIZ / "data" / "interim" / "boe_limpio.md").read_text(encoding="utf-8")
 
+# Docling a veces junta varios encabezados en una línea o al final de un párrafo.
+# 1. Separar "TÍTULO ... CAPÍTULO ...", "Sección ... Artículo N." en líneas distintas
+lineas_separadas = []
+for linea in texto.split("\n"):
+    if re.match(r"^(TÍTULO|CAPÍTULO|Sección|SECCIÓN)\b", linea):
+        linea = re.sub(r"\s+(?=(CAPÍTULO|Sección|SECCIÓN)\s)", "\n", linea)
+        linea = re.sub(r"\s+(?=Artículo \d+[^\n]{0,6}\. [A-ZÁÉÍÓÚ])", "\n", linea)
+    lineas_separadas.append(linea)
+texto = "\n".join(lineas_separadas)
+
+# 2. Separar "Disposición adicional/transitoria/... <ordinal>." pegada al final de un párrafo
+texto = re.sub(
+    r"(?<=[.;:])\s+(?=Disposición (adicional|transitoria|derogatoria|final) [a-zñéáíóú]+\. [A-ZÁÉÍÓÚ])",
+    "\n\n",
+    texto,
+)
+
 patron_articulo = re.compile(
     r"^(#+\s*)?(Artículo \d+( (bis|ter|quater|quinquies|sexies|septies|octies))?\.|Disposición (adicional|transitoria|derogatoria|final)\b)"
+)
+patron_cabecera = re.compile(
+    r"^((?:Artículo \d+(?: (?:bis|ter|quater|quinquies|sexies|septies|octies))?|Disposición (?:adicional|transitoria|derogatoria|final)(?: \w+)?)\.(?:\s+[^.]+\.)?)(.*)$"
 )
 patron_titulo = re.compile(r"^(#+\s*)?(TÍTULO|CAPÍTULO)\b")
 patron_seccion = re.compile(r"^(#+\s*)?(Sección|SECCIÓN)\b")
@@ -23,28 +43,46 @@ esperando_nombre = False
 for linea in texto.split("\n"):
     limpia = linea.strip("# ").strip()
 
-    if esperando_nombre and limpia != "" and not patron_articulo.match(linea):
+    if esperando_nombre and limpia != "" and not patron_articulo.match(linea) and not patron_titulo.match(linea) and not patron_seccion.match(linea):
         estructura = estructura + " - " + limpia
         esperando_nombre = False
         continue
 
     if patron_titulo.match(linea):
         estructura = limpia
-        esperando_nombre = True
+        esperando_nombre = len(limpia.split()) <= 3
         continue
 
     if patron_seccion.match(linea):
         estructura = limpia
+        esperando_nombre = False
         continue
 
     if patron_articulo.match(linea):
+        esperando_nombre = False
         if actual is not None:
             chunks_boe.append(actual)
+        estructura_chunk = estructura
+        if limpia.startswith("Disposición"):
+            estructura_chunk = "Disposiciones"
+
+        # A veces docling deja el título pegado al primer párrafo en la misma línea:
+        # el título es "Artículo N. Texto del título." y lo demás es cuerpo.
+        titulo = limpia
+        resto = ""
+        encontrado = patron_cabecera.match(limpia)
+        if encontrado:
+            titulo = encontrado.group(1).strip()
+            resto = encontrado.group(2).strip()
+
+        texto_inicial = titulo
+        if resto != "":
+            texto_inicial = titulo + "\n\n" + resto
         actual = {
             "id": "boe_" + str(len(chunks_boe) + 1),
-            "titulo": limpia,
-            "estructura": estructura,
-            "texto": limpia,
+            "titulo": titulo,
+            "estructura": estructura_chunk,
+            "texto": texto_inicial,
         }
         continue
 
