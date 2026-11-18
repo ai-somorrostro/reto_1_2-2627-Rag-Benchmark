@@ -1,0 +1,147 @@
+[
+  {
+    "id": "chunk_debian_0",
+    "texto": "El archivo /etc/apt/sources.list contiene las líneas que indican a APT de dónde descargar los paquetes. Cada línea indica el tipo de archivo (deb o deb-src), la URL del repositorio, la distribución y los componentes.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT",
+        "6.1 Rellenar el archivo sources.list"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_1",
+    "texto": "Para actualizar la lista de paquetes disponibles se usa el comando apt update. Después, apt upgrade instala las versiones nuevas de los paquetes ya instalados sin eliminar ninguno.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT",
+        "6.2 Los comandos apt, apt-get y apt-cache"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_2",
+    "texto": "apt install paquete instala un paquete y sus dependencias. apt remove lo elimina conservando los archivos de configuración, mientras que apt purge elimina también la configuración.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 6. Mantenimiento y actualizaciones: las herramientas APT",
+        "6.2 Los comandos apt, apt-get y apt-cache"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_3",
+    "texto": "El nombre del equipo se guarda en el archivo /etc/hostname. La resolución de nombres locales se configura en /etc/hosts y los servidores DNS en /etc/resolv.conf.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 8. Configuración básica: red, cuentas, impresión",
+        "8.1 Configurar el sistema para la red"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_4",
+    "texto": "Las interfaces de red se describen en /etc/network/interfaces. Una dirección estática se declara con las opciones address, netmask y gateway, y DHCP con la palabra dhcp.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 8. Configuración básica: red, cuentas, impresión",
+        "8.1 Configurar el sistema para la red",
+        "8.1.2 Interfaces de red"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_5",
+    "texto": "systemd es el sistema de inicio por defecto. Los servicios se gestionan con systemctl: systemctl start arranca un servicio, systemctl enable lo activa en el arranque y systemctl status muestra su estado.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 9. Servicios Unix",
+        "9.1 Arranque del sistema"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_6",
+    "texto": "Los registros del sistema se consultan con journalctl. La opción -u filtra por unidad y -b muestra solo los mensajes del arranque actual.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 9. Servicios Unix",
+        "9.2 Registros del sistema"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_7",
+    "texto": "Las páginas del manual se leen con man. La documentación adicional de cada paquete se instala en /usr/share/doc/paquete/.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 7. Resolución de problemas y búsqueda de información relevante",
+        "7.1 Fuentes de documentación"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_8",
+    "texto": "Los sitios virtuales de Apache se definen en /etc/apache2/sites-available/. El comando a2ensite activa un sitio y a2dissite lo desactiva. Después hay que recargar el servicio.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 11. Servicios de red",
+        "11.2 Servidor web (Apache)"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_9",
+    "texto": "mdadm gestiona los volúmenes RAID por software. Con LVM se agrupan volúmenes físicos en grupos de volúmenes, y de ellos se crean volúmenes lógicos.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 12. Administración avanzada",
+        "12.1 RAID y LVM"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_10",
+    "texto": "Durante la instalación, el particionado guiado puede ocupar todo el disco o usar LVM. Un esquema habitual separa /, /home y la partición de intercambio (swap).",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 4. Instalación",
+        "4.3 Particionado"
+      ]
+    }
+  },
+  {
+    "id": "chunk_debian_11",
+    "texto": "Una política de seguridad parte del análisis de riesgos. Hay que decidir qué se protege, frente a quién y con qué coste, antes de elegir herramientas.",
+    "metadatos": {
+      "schema_name": "docling_core.transforms.chunker.DocMeta",
+      "version": "1.0.0",
+      "headings": [
+        "Capítulo 14. Seguridad",
+        "14.1 Definir una política de seguridad"
+      ]
+    }
+  }
+]

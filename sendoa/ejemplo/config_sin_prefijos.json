@@ -1,0 +1,6 @@
+{
+  "prefijo_consulta": "",
+  "prefijo_documento": "",
+  "batch_size": 32,
+  "normalizar": true
+}

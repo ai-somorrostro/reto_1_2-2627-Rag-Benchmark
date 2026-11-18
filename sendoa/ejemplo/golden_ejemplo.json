@@ -1,0 +1,65 @@
+[
+  {
+    "id": "g01",
+    "tipo": "directa",
+    "pregunta": "¿Qué archivo le dice a APT de qué repositorios debe bajar los paquetes?",
+    "respuesta_esperada": "/etc/apt/sources.list",
+    "chunks_correctos": [
+      "chunk_debian_0"
+    ]
+  },
+  {
+    "id": "g02",
+    "tipo": "directa",
+    "pregunta": "¿Cómo veo solo los mensajes del último arranque?",
+    "respuesta_esperada": "journalctl -b",
+    "chunks_correctos": [
+      "chunk_debian_6"
+    ]
+  },
+  {
+    "id": "g03",
+    "tipo": "directa",
+    "pregunta": "¿Qué orden activa un sitio virtual de Apache?",
+    "respuesta_esperada": "a2ensite",
+    "chunks_correctos": [
+      "chunk_debian_8"
+    ]
+  },
+  {
+    "id": "g04",
+    "tipo": "directa",
+    "pregunta": "¿Qué diferencia hay entre quitar un paquete y purgarlo?",
+    "respuesta_esperada": "remove conserva la configuración; purge también la elimina",
+    "chunks_correctos": [
+      "chunk_debian_2"
+    ]
+  },
+  {
+    "id": "g05",
+    "tipo": "directa",
+    "pregunta": "¿Cómo refresco el listado de paquetes y luego instalo las novedades?",
+    "respuesta_esperada": "apt update y apt upgrade",
+    "chunks_correctos": [],
+    "secciones_correctas": [
+      "6.2 Los comandos apt, apt-get y apt-cache"
+    ]
+  },
+  {
+    "id": "g06",
+    "tipo": "combinada",
+    "pregunta": "¿Qué ficheros toco para ponerle nombre al equipo y darle una IP fija?",
+    "respuesta_esperada": "/etc/hostname y /etc/network/interfaces",
+    "chunks_correctos": [
+      "chunk_debian_3",
+      "chunk_debian_4"
+    ]
+  },
+  {
+    "id": "g07",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué versión de PostgreSQL incluye Debian por defecto?",
+    "respuesta_esperada": "No aparece en el documento",
+    "chunks_correctos": []
+  }
+]

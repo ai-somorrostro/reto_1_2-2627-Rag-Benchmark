@@ -1,0 +1,12 @@
+# Entornos virtuales (cubre los nombres más comunes)
+.venv/
+venv/
+env/
+ENV/
+.ENV/
+
+# Variables de entorno locales (claves API, contraseñas)
+.env
+
+# sendoa/
+sendoa/resultados/*.npy

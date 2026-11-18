@@ -1,0 +1,6 @@
+{
+  "prefijo_consulta": "query: ",
+  "prefijo_documento": "passage: ",
+  "batch_size": 32,
+  "normalizar": true
+}

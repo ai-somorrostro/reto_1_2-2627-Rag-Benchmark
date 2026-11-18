@@ -1,0 +1,285 @@
+{
+  "meta": {
+    "fecha_hora": "2026-11-18T07:27:22",
+    "modelo": "intfloat/multilingual-e5-small",
+    "backend": "st",
+    "escenario": "debian",
+    "parametros": 117653760,
+    "dimension": 384,
+    "max_seq_length": 512,
+    "versiones": {
+      "python": "3.12.3",
+      "numpy": "2.5.5",
+      "torch": "2.15.0+cu132",
+      "sentence_transformers": "6.3.0"
+    },
+    "chunks_fichero": "sendoa/ejemplo/chunks_ejemplo.json",
+    "chunks_sha256": "40f9f55f2d9ea2a58e4df1119027e78f3df3141d836b735d4a6ec30373263551",
+    "golden_fichero": "sendoa/ejemplo/golden_ejemplo.json",
+    "golden_sha256": "c2e4a4b9d692fd8ed9086c0ee0db2ed395d3fdf007a06b64e14418e659bf533e",
+    "n_chunks": 12,
+    "n_preguntas": 7,
+    "comando": "sendoa/eval_retrieval.py --modelo intfloat/multilingual-e5-small --escenario debian --chunks sendoa/ejemplo/chunks_ejemplo.json --golden sendoa/ejemplo/golden_ejemplo.json --config sendoa/ejemplo/config_e5.json --salida sendoa/resultados"
+  },
+  "config": {
+    "prefijo_consulta": "query: ",
+    "prefijo_documento": "passage: ",
+    "criterio_combinadas": "todos",
+    "incluir_titulos": false,
+    "extra": {
+      "batch_size": 32,
+      "normalizar": true
+    }
+  },
+  "metricas": {
+    "recall@1": 0.8333333333333334,
+    "recall@3": 1.0,
+    "recall@5": 1.0,
+    "mrr": 1.0,
+    "n_preguntas_con_respuesta": 6,
+    "por_tipo": {
+      "directa": {
+        "recall@1": 1.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "n": 5
+      },
+      "combinada": {
+        "recall@1": 0.0,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 1.0,
+        "n": 1
+      }
+    }
+  },
+  "coste": {
+    "carga_modelo_s": 20.038,
+    "indexado_s": 0.016,
+    "consultas_s": 0.008,
+    "indice_mb": 0.018,
+    "vram_pico_torch_gb": 0.453,
+    "vram_reservada_pico_torch_gb": 0.477,
+    "vram_pico_nvidia_smi_gb": null,
+    "turno_exclusivo": false,
+    "chunks_truncados_por_limite": 0,
+    "max_tokens_de_un_chunk": 64
+  },
+  "avisos": [],
+  "detalle": [
+    {
+      "id": "g01",
+      "tipo": "directa",
+      "pregunta": "¿Qué archivo le dice a APT de qué repositorios debe bajar los paquetes?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_0",
+          "puntuacion": 0.89254
+        },
+        {
+          "chunk": "chunk_debian_2",
+          "puntuacion": 0.87303
+        },
+        {
+          "chunk": "chunk_debian_1",
+          "puntuacion": 0.85937
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.83531
+        },
+        {
+          "chunk": "chunk_debian_8",
+          "puntuacion": 0.82889
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "g02",
+      "tipo": "directa",
+      "pregunta": "¿Cómo veo solo los mensajes del último arranque?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_6",
+          "puntuacion": 0.86073
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.81848
+        },
+        {
+          "chunk": "chunk_debian_3",
+          "puntuacion": 0.80054
+        },
+        {
+          "chunk": "chunk_debian_5",
+          "puntuacion": 0.79947
+        },
+        {
+          "chunk": "chunk_debian_1",
+          "puntuacion": 0.79649
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "g03",
+      "tipo": "directa",
+      "pregunta": "¿Qué orden activa un sitio virtual de Apache?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_8",
+          "puntuacion": 0.90481
+        },
+        {
+          "chunk": "chunk_debian_3",
+          "puntuacion": 0.81711
+        },
+        {
+          "chunk": "chunk_debian_1",
+          "puntuacion": 0.81374
+        },
+        {
+          "chunk": "chunk_debian_0",
+          "puntuacion": 0.81251
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.80331
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "g04",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre quitar un paquete y purgarlo?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_2",
+          "puntuacion": 0.86127
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.80591
+        },
+        {
+          "chunk": "chunk_debian_1",
+          "puntuacion": 0.79857
+        },
+        {
+          "chunk": "chunk_debian_0",
+          "puntuacion": 0.79037
+        },
+        {
+          "chunk": "chunk_debian_8",
+          "puntuacion": 0.78955
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "g05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo refresco el listado de paquetes y luego instalo las novedades?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_1",
+          "puntuacion": 0.89455
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.85885
+        },
+        {
+          "chunk": "chunk_debian_2",
+          "puntuacion": 0.85036
+        },
+        {
+          "chunk": "chunk_debian_0",
+          "puntuacion": 0.84895
+        },
+        {
+          "chunk": "chunk_debian_6",
+          "puntuacion": 0.83262
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "g06",
+      "tipo": "combinada",
+      "pregunta": "¿Qué ficheros toco para ponerle nombre al equipo y darle una IP fija?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_3",
+          "puntuacion": 0.86519
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.82169
+        },
+        {
+          "chunk": "chunk_debian_4",
+          "puntuacion": 0.82133
+        },
+        {
+          "chunk": "chunk_debian_0",
+          "puntuacion": 0.81787
+        },
+        {
+          "chunk": "chunk_debian_6",
+          "puntuacion": 0.81543
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "g07",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Qué versión de PostgreSQL incluye Debian por defecto?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_0",
+          "puntuacion": 0.8252
+        },
+        {
+          "chunk": "chunk_debian_1",
+          "puntuacion": 0.81548
+        },
+        {
+          "chunk": "chunk_debian_2",
+          "puntuacion": 0.80909
+        },
+        {
+          "chunk": "chunk_debian_7",
+          "puntuacion": 0.80782
+        },
+        {
+          "chunk": "chunk_debian_3",
+          "puntuacion": 0.79869
+        }
+      ]
+    }
+  ]
+}
