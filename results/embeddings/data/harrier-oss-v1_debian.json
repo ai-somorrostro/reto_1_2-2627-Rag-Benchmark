@@ -1,0 +1,760 @@
+{
+  "summary": {
+    "model_key": "harrier-oss-v1",
+    "model_repo": "microsoft/harrier-oss-v1-0.6b",
+    "parameters": "600M",
+    "dimension": 1024,
+    "scenario_key": "debian",
+    "scenario_name": "Manual del Administrador de Debian (Debian)",
+    "total_chunks": 1062,
+    "total_questions": 15,
+    "evaluable_questions": 12,
+    "unanswerable_questions": 3,
+    "stack": "vLLM",
+    "vllm_version": "0.34.0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_device": "NVIDIA A800 40GB Active MIG 3g.20gb",
+    "timestamp_iso": "2026-11-19T07:53:39.789756",
+    "recall_at_1_hit": 0.4167,
+    "recall_at_3_hit": 0.5833,
+    "recall_at_5_hit": 0.75,
+    "recall_at_1_all": 0.25,
+    "recall_at_3_all": 0.5,
+    "recall_at_5_all": 0.75,
+    "recall_at_1_macro": 0.3333,
+    "recall_at_3_macro": 0.5417,
+    "recall_at_5_macro": 0.75,
+    "mrr": 0.5573,
+    "index_time_sec": 5.339,
+    "index_speed_chunks_per_sec": 198.92,
+    "index_size_mb": 4.15,
+    "vram_peak_gb": 3.505,
+    "query_retrieval_time_sec": 0.0336
+  },
+  "questions": [
+    {
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_116_p2",
+          "similarity": 0.6873,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_120_p4",
+          "similarity": 0.6801,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_96_p2",
+          "similarity": 0.6746,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_105_p1",
+          "similarity": 0.6744,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_355_p2",
+          "similarity": 0.6744,
+          "is_gold": false
+        }
+      ],
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "all@1": false,
+      "all@3": false,
+      "all@5": false,
+      "proportional@5": 0.0,
+      "reciprocal_rank": 0.1667
+    },
+    {
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_85_p5",
+          "similarity": 0.6747,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_91_p1",
+          "similarity": 0.6389,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_122_p4",
+          "similarity": 0.6124,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_105_p2",
+          "similarity": 0.6092,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_105_p1",
+          "similarity": 0.6043,
+          "is_gold": true
+        }
+      ],
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "all@1": false,
+      "all@3": false,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 0.2
+    },
+    {
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_116_p2",
+          "similarity": 0.7227,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_116_p6",
+          "similarity": 0.6985,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_355_p2",
+          "similarity": 0.6888,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_106_p2",
+          "similarity": 0.6789,
+          "is_gold": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_84_p2",
+          "similarity": 0.6722,
+          "is_gold": false
+        }
+      ],
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "all@1": false,
+      "all@3": false,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 0.25
+    },
+    {
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_133_p4",
+          "similarity": 0.5896,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_92_p4",
+          "similarity": 0.5551,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_381_p1",
+          "similarity": 0.5504,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_324_p2",
+          "similarity": 0.5459,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_116_p7",
+          "similarity": 0.5446,
+          "is_gold": false
+        }
+      ],
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "all@1": false,
+      "all@3": false,
+      "all@5": false,
+      "proportional@5": 0.0,
+      "reciprocal_rank": 0.0625
+    },
+    {
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_162_p2",
+          "similarity": 0.572,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_162_p1",
+          "similarity": 0.5526,
+          "is_gold": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_275_p2",
+          "similarity": 0.544,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_273_p2",
+          "similarity": 0.5358,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_391_p3",
+          "similarity": 0.5246,
+          "is_gold": false
+        }
+      ],
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": false,
+      "all@3": true,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 0.5
+    },
+    {
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_190_p3",
+          "similarity": 0.6648,
+          "is_gold": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_207_p5",
+          "similarity": 0.6409,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_190_p4",
+          "similarity": 0.6395,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_190_p1",
+          "similarity": 0.5973,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_190_p7",
+          "similarity": 0.5945,
+          "is_gold": false
+        }
+      ],
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": true,
+      "all@3": true,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_98_p5",
+          "similarity": 0.7009,
+          "is_gold": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_105_p4",
+          "similarity": 0.6783,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_351_p4",
+          "similarity": 0.664,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_90_p4",
+          "similarity": 0.6564,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_106_p2",
+          "similarity": 0.6405,
+          "is_gold": false
+        }
+      ],
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": true,
+      "all@3": true,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_203_p1",
+          "similarity": 0.6322,
+          "is_gold": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_203_p2",
+          "similarity": 0.6125,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_202_p2",
+          "similarity": 0.6044,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_202_p1",
+          "similarity": 0.5819,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_202_p3",
+          "similarity": 0.5699,
+          "is_gold": false
+        }
+      ],
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": true,
+      "all@3": true,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_204_p1",
+          "similarity": 0.6083,
+          "is_gold": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_202_p2",
+          "similarity": 0.5968,
+          "is_gold": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_203_p2",
+          "similarity": 0.5886,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_202_p3",
+          "similarity": 0.5859,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_208_p2",
+          "similarity": 0.5853,
+          "is_gold": false
+        }
+      ],
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": false,
+      "all@3": true,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_156_p1",
+          "similarity": 0.663,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_158_p1",
+          "similarity": 0.6543,
+          "is_gold": true
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_157_p1",
+          "similarity": 0.6336,
+          "is_gold": true
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_253_p3",
+          "similarity": 0.588,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_161_p2",
+          "similarity": 0.5838,
+          "is_gold": false
+        }
+      ],
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": false,
+      "all@3": true,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 0.5
+    },
+    {
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_130_p1",
+          "similarity": 0.6497,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_114_p2",
+          "similarity": 0.6158,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_136_p2",
+          "similarity": 0.6115,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_110_p2",
+          "similarity": 0.6032,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_50_p3",
+          "similarity": 0.5978,
+          "is_gold": false
+        }
+      ],
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "all@1": false,
+      "all@3": false,
+      "all@5": false,
+      "proportional@5": 0.0,
+      "reciprocal_rank": 0.0084
+    },
+    {
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_120_p4",
+          "similarity": 0.6831,
+          "is_gold": true
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_120_p2",
+          "similarity": 0.6669,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_106_p2",
+          "similarity": 0.6502,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_120_p3",
+          "similarity": 0.634,
+          "is_gold": true
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_53_p2",
+          "similarity": 0.6309,
+          "is_gold": false
+        }
+      ],
+      "hit@1": true,
+      "hit@3": true,
+      "hit@5": true,
+      "all@1": false,
+      "all@3": false,
+      "all@5": true,
+      "proportional@5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "id": "DEB_N01",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo Docker en Debian?",
+      "respuesta_esperada": "No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.",
+      "gold_chunks": [],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_287_p3",
+          "similarity": 0.5825,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_184_p1",
+          "similarity": 0.5788,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_90_p1",
+          "similarity": 0.575,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_285_p6",
+          "similarity": 0.5711,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_72_p1",
+          "similarity": 0.5621,
+          "is_gold": false
+        }
+      ],
+      "hit@1": null,
+      "hit@3": null,
+      "hit@5": null,
+      "all@5": null,
+      "reciprocal_rank": null
+    },
+    {
+      "id": "DEB_N02",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿En qué fecha exacta deja de tener soporte Debian 11?",
+      "respuesta_esperada": "No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.",
+      "gold_chunks": [],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_40_p2",
+          "similarity": 0.5928,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_34_p1",
+          "similarity": 0.5876,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_359_p1",
+          "similarity": 0.5834,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_34_p2",
+          "similarity": 0.5817,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_19_p2",
+          "similarity": 0.5725,
+          "is_gold": false
+        }
+      ],
+      "hit@1": null,
+      "hit@3": null,
+      "hit@5": null,
+      "all@5": null,
+      "reciprocal_rank": null
+    },
+    {
+      "id": "DEB_N03",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo aplicaciones en formato Flatpak?",
+      "respuesta_esperada": "No aparece en el documento.",
+      "gold_chunks": [],
+      "top5": [
+        {
+          "rank": 1,
+          "chunk_id": "debian_354_p6",
+          "similarity": 0.6085,
+          "is_gold": false
+        },
+        {
+          "rank": 2,
+          "chunk_id": "debian_95_p2",
+          "similarity": 0.5584,
+          "is_gold": false
+        },
+        {
+          "rank": 3,
+          "chunk_id": "debian_79_p2",
+          "similarity": 0.5571,
+          "is_gold": false
+        },
+        {
+          "rank": 4,
+          "chunk_id": "debian_95_p4",
+          "similarity": 0.5525,
+          "is_gold": false
+        },
+        {
+          "rank": 5,
+          "chunk_id": "debian_184_p1",
+          "similarity": 0.5511,
+          "is_gold": false
+        }
+      ],
+      "hit@1": null,
+      "hit@3": null,
+      "hit@5": null,
+      "all@5": null,
+      "reciprocal_rank": null
+    }
+  ]
+}
