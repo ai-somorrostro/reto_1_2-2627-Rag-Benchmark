@@ -1,0 +1,47 @@
+# Configuración de la Fase 2. La entrada de Fase 1 está congelada:
+# si cambia alguno de estos hashes, el benchmark se detiene.
+
+[benchmark]
+chunks_dir = "artifacts/chunks"
+questions_dir = "data/golden_set"
+output_dir = "artifacts/embeddings"
+device = "auto"
+batch_size = 16
+top_k = [1, 3, 5]
+
+[benchmark.chunk_files]
+"debian-en" = "artifacts/chunks-english/debian-en.jsonl"
+
+[frozen_inputs.chunks_sha256]
+boe = "c1ff0754574ce7f0b7afd9981321573c92130b21208e937b0098f37ce52fcb28"
+debian = "2f7b059aa93e0df61cd9e2269bf046ff8425798d40f2fd4b455fab0173773216"
+"debian-en" = "96283d6a346588a7472d18e995123f36c254000084540a69e79295f1f8907f89"
+
+[frozen_inputs.questions_sha256]
+boe = "004b8902eeade621b4f58e4cedb6bc68b2d4a6c425b7a48827bf7574d6c32bfc"
+debian = "8eac2a1a6feb0d3c534396f649193a970eb7ca1cb61b65831fa377af8c159b5f"
+"debian-en" = "6a6f658bebf577695aa3d5855799142fb1fa6b1d32720dfd3a81501ccdba4353"
+
+[models.snowflake_arctic_embed_l_v2_0]
+model_id = "Snowflake/snowflake-arctic-embed-l-v2.0"
+input_mode = "tokenizer"
+pooling = "auto"
+query_prefix = "query: "
+document_prefix = ""
+max_length = 8192
+
+[models.nemotron_3_5_embed_1b_bf16]
+model_id = "nvidia/Nemotron-3.5-Embed-1B-BF16"
+input_mode = "chat_template"
+pooling = "auto"
+query_prefix = "query:"
+document_prefix = "passage:"
+max_length = 32768
+
+[models.hs_embed_1]
+model_id = "hindsight-ai/hs-embed-1"
+input_mode = "tokenizer"
+pooling = "auto"
+query_prefix = ""
+document_prefix = ""
+max_length = 8192
