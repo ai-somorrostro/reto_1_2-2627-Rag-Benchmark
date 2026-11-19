@@ -51,6 +51,8 @@ El golden set de cada escenario incluye:
 
 Cada pregunta lleva su respuesta esperada y los fragmentos del corpus que la contienen. No copiéis frases literales del documento en las preguntas.
 
+Los conjuntos de preguntas de este proyecto están en [`data/golden_set/`](data/golden_set/) y su formato se describe en [docs/pipeline/golden-set.md](docs/pipeline/golden-set.md).
+
 | Tipo | Pregunta de ejemplo | Respuesta esperada |
 | --- | --- | --- |
 | Directa | ¿Cuántos días de vacaciones me corresponden como mínimo? | 30 días naturales (art. 38) |
@@ -60,6 +62,13 @@ Cada pregunta lleva su respuesta esperada y los fragmentos del corpus que la con
 
 Objetivo: elegir un embedding por escenario midiendo solo el retrieval, sin LLM.
 
+- Los modelos fijados para el benchmark son `snowflake-arctic-embed-l-v2.0`,
+  `Nemotron-3.5-Embed-1B-BF16` y `hs-embed-1`. Sus IDs locales, prefijos,
+  pooling y límites están en [`config/embeddings.toml`](config/embeddings.toml).
+- Debian se mide con el manual español y también con el manual inglés usando
+  las mismas preguntas en español. Los chunks y el golden set ingleses están
+  separados en `artifacts/chunks-english/` y `data/golden_set/debian-en.jsonl`.
+- Ejecución e interpretación de métricas: [docs/pipeline/embedding-benchmark.md](docs/pipeline/embedding-benchmark.md).
 - **Mínimo a reportar por modelo:** Recall@1, Recall@3, Recall@5, MRR, tiempo de indexado, tamaño del índice y VRAM.
 - **Criterio:** mejor Recall@5; desempate por MRR y después por coste.
 - **Ojo:** algunos modelos necesitan prefijos o instrucciones en la consulta. Sin ellos, la comparación no es justa.
@@ -144,13 +153,24 @@ Trampas habituales:
 
 Rellenad una tabla de cada tipo por escenario. Son las que se enseñan el viernes.
 
-**Tabla A. Embeddings**
+**Tabla A. Embeddings — BOE**
 
 | Modelo | Parámetros | Dimensión | Recall@1 | Recall@3 | Recall@5 | MRR | Indexado (s) | Índice (MB) | VRAM (GB) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
+| hs-embed-1 | 0.11B | 384 | 0.333 | 0.583 | 0.750 | 0.711 | 0.94 | 0.51 | 0.57 |
+| Nemotron-3.5-Embed-1B-BF16 | 1.55B | 2048 | 0.583 | 0.833 | 1.000 | 0.944 | 4.02 | 2.73 | 3.23 |
+| snowflake-arctic-embed-l-v2.0 | 0.57B | 1024 | 0.500 | 0.833 | 0.917 | 0.892 | 10.68 | 1.36 | 2.36 |
+
+**Tabla A. Embeddings — Debian (preguntas en español, corpus por idioma)**
+
+| Modelo | Idioma del corpus | Parámetros | Dimensión | Recall@1 | Recall@3 | Recall@5 | MRR | Indexado (s) | Índice (MB) | VRAM (GB) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| hs-embed-1 | Español | 0.11B | 384 | 0.417 | 0.583 | 0.667 | 0.756 | 4.10 | 1.57 | 0.92 |
+| hs-embed-1 | Inglés | 0.11B | 384 | 0.417 | 0.667 | 0.833 | 0.795 | 3.89 | 1.49 | 0.92 |
+| Nemotron-3.5-Embed-1B-BF16 | Español | 1.55B | 2048 | 0.417 | 0.750 | 0.833 | 0.799 | 20.56 | 8.39 | 3.87 |
+| Nemotron-3.5-Embed-1B-BF16 | Inglés | 1.55B | 2048 | 0.417 | 0.750 | 0.833 | 0.799 | 18.68 | 7.92 | 3.85 |
+| snowflake-arctic-embed-l-v2.0 | Español | 0.57B | 1024 | 0.500 | 0.583 | 0.583 | 0.801 | 58.12 | 4.20 | 2.74 |
+| snowflake-arctic-embed-l-v2.0 | Inglés | 0.57B | 1024 | 0.500 | 0.750 | 0.750 | 0.879 | 54.85 | 3.96 | 2.77 |
 
 **Tabla B. LLMs: calidad**
 
