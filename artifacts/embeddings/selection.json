@@ -1,0 +1,98 @@
+{
+  "boe": {
+    "winner": "nemotron_3_5_embed_1b_bf16",
+    "ranking": [
+      {
+        "rank": 1,
+        "model": "nemotron_3_5_embed_1b_bf16",
+        "recall@5": 1.0,
+        "mrr": 0.9444444444444445,
+        "vram_peak_gb": 3.2319326400756836,
+        "index_time_seconds": 4.016689368989319,
+        "index_size_mb": 2.7266845703125
+      },
+      {
+        "rank": 2,
+        "model": "snowflake_arctic_embed_l_v2_0",
+        "recall@5": 0.9166666666666666,
+        "mrr": 0.8916666666666666,
+        "vram_peak_gb": 2.364473819732666,
+        "index_time_seconds": 10.676899715035688,
+        "index_size_mb": 1.3634033203125
+      },
+      {
+        "rank": 3,
+        "model": "hs_embed_1",
+        "recall@5": 0.75,
+        "mrr": 0.7106800766283525,
+        "vram_peak_gb": 0.574923038482666,
+        "index_time_seconds": 0.9444310149992816,
+        "index_size_mb": 0.5113525390625
+      }
+    ]
+  },
+  "debian": {
+    "winner": "nemotron_3_5_embed_1b_bf16",
+    "ranking": [
+      {
+        "rank": 1,
+        "model": "nemotron_3_5_embed_1b_bf16",
+        "recall@5": 0.8333333333333334,
+        "mrr": 0.7986111111111112,
+        "vram_peak_gb": 3.8659744262695312,
+        "index_time_seconds": 20.559231576044112,
+        "index_size_mb": 8.3907470703125
+      },
+      {
+        "rank": 2,
+        "model": "hs_embed_1",
+        "recall@5": 0.6666666666666666,
+        "mrr": 0.7555555555555555,
+        "vram_peak_gb": 0.9186501502990723,
+        "index_time_seconds": 4.102564687025733,
+        "index_size_mb": 1.5733642578125
+      },
+      {
+        "rank": 3,
+        "model": "snowflake_arctic_embed_l_v2_0",
+        "recall@5": 0.5833333333333334,
+        "mrr": 0.8011904761904761,
+        "vram_peak_gb": 2.74468994140625,
+        "index_time_seconds": 58.12313227500999,
+        "index_size_mb": 4.1954345703125
+      }
+    ]
+  },
+  "debian-en": {
+    "winner": "nemotron_3_5_embed_1b_bf16",
+    "ranking": [
+      {
+        "rank": 1,
+        "model": "nemotron_3_5_embed_1b_bf16",
+        "recall@5": 0.8333333333333334,
+        "mrr": 0.7992424242424243,
+        "vram_peak_gb": 3.84786319732666,
+        "index_time_seconds": 18.67656628997065,
+        "index_size_mb": 7.9219970703125
+      },
+      {
+        "rank": 2,
+        "model": "hs_embed_1",
+        "recall@5": 0.8333333333333334,
+        "mrr": 0.7954545454545454,
+        "vram_peak_gb": 0.9193301200866699,
+        "index_time_seconds": 3.8933629899984226,
+        "index_size_mb": 1.4854736328125
+      },
+      {
+        "rank": 3,
+        "model": "snowflake_arctic_embed_l_v2_0",
+        "recall@5": 0.75,
+        "mrr": 0.8793859649122807,
+        "vram_peak_gb": 2.7658004760742188,
+        "index_time_seconds": 54.85394142504083,
+        "index_size_mb": 3.9610595703125
+      }
+    ]
+  }
+}

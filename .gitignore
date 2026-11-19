@@ -5,3 +5,5 @@ __pycache__/
 vllm-env/
 *.egg-info/
 *.jsonl.tmp
+
+artifacts/embeddings/**/*.npy
