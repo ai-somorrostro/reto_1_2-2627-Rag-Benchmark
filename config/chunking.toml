@@ -1,0 +1,42 @@
+# Configuración del troceado (Fase 1).
+# Una vez congelada, no se cambia: los IDs de chunk son la base del golden set
+# y de las fases 2 y 3. Los cambios en este fichero invalidan los resultados.
+#
+# Las rutas son relativas a la raíz del repositorio.
+
+out_dir = "artifacts/chunks"
+
+[defaults]
+# Presupuesto máximo por chunk, en tokens estimados.
+max_tokens = 500
+# Aviso (no error) si un chunk queda por debajo de este tamaño.
+min_tokens = 80
+# Texto repetido entre chunks consecutivos para no cortar ideas.
+overlap_tokens = 60
+# Estimador conservador para español: caracteres / tokens.
+# Se recalibrará con el tokenizador del embedding ganador en la Fase 2.
+chars_per_token = 3.6
+# Anteponer el título de la sección al texto del chunk (ayuda al retrieval
+# y permite citar sin depender solo de los metadatos).
+include_section_title = true
+
+[scenarios.boe]
+# Estatuto de los Trabajadores, texto consolidado.
+source = "data/Estatuto_Trabajadores_HTML.md"
+# Artículos largos (p. ej. 37, 38) se parten por apartados.
+max_tokens = 420
+overlap_tokens = 50
+
+[scenarios.debian]
+# Manual del Administrador de Debian, edición española.
+source = "data/Manual_Debian_Spanish.md"
+# Prosa con comandos y rutas: algo más de margen por sección.
+max_tokens = 520
+overlap_tokens = 80
+
+# Extra opcional del enunciado: mismo manual en inglés para medir preguntas
+# en español sobre corpus en inglés. Descomentar cuando se vaya a usar.
+# [scenarios.debian_en]
+# source = "data/Manual_Debian_English.md"
+# max_tokens = 520
+# overlap_tokens = 80
