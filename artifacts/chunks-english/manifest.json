@@ -1,0 +1,22 @@
+{
+  "config": "config/chunking-debian-en.toml",
+  "config_sha256": "151d55ee1b92d06a129b906637809e6bca2438d234510e58418709b32432fcbd",
+  "scenarios": {
+    "debian-en": {
+      "generated_at": "2026-11-18T08:01:57+00:00",
+      "output": "artifacts/chunks-english/debian-en.jsonl",
+      "parser_warnings": [],
+      "source": "data/Manual_Debian_English.md",
+      "source_sha256": "750d512e7f9c7254f0648a55b44af5dd6b2ef36b56d0864296013efacee99cbb",
+      "stats": {
+        "chars_total": 1217471,
+        "chunks": 1014,
+        "tokens_max": 520,
+        "tokens_median": 372,
+        "tokens_min": 11,
+        "tokens_p95": 512
+      }
+    }
+  },
+  "updated_at": "2026-11-18T08:01:57+00:00"
+}

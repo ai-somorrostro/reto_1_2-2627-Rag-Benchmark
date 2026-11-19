@@ -1,0 +1,16 @@
+# Troceado separado del corpus inglés para el extra de comparación
+# multilingüe. No modifica la configuración congelada de Fase 1.
+
+out_dir = "artifacts/chunks-english"
+
+[defaults]
+max_tokens = 500
+min_tokens = 80
+overlap_tokens = 60
+chars_per_token = 3.6
+include_section_title = true
+
+[scenarios.debian-en]
+source = "data/Manual_Debian_English.md"
+max_tokens = 520
+overlap_tokens = 80
