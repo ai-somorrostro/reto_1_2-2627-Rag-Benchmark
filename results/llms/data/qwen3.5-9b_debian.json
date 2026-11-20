@@ -1,0 +1,1075 @@
+{
+  "meta": {
+    "modelo": "qwen3.5-9b",
+    "repo": "Qwen/Qwen3.5-9B",
+    "tamano": "9B",
+    "categoria": "mediano",
+    "cuantizacion": "FP8",
+    "dtype": "bfloat16",
+    "stack": "vLLM",
+    "stack_version": "0.34.0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_device": "NVIDIA A800 40GB Active MIG 3g.20gb",
+    "escenario": "debian",
+    "embedding": "bge-m3",
+    "top_k": 5,
+    "opciones": {
+      "temperature": 0.0,
+      "num_predict": 512,
+      "num_ctx": 8192,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "prefix_caching": false
+    },
+    "memoria": "kv_cache_memory_bytes=2.0 GB",
+    "vllm_extra": {
+      "limit_mm_per_prompt": {
+        "image": 0,
+        "video": 0
+      }
+    },
+    "prompt_sistema": "Eres un asistente que responde preguntas usando ÚNICAMENTE los fragmentos proporcionados.\n\nReglas:\n1. Responde solo con información que aparezca en los fragmentos. No uses conocimientos propios.\n2. Si la respuesta no está en los fragmentos, responde exactamente: \"No aparece en el documento\" y nada más.\n3. Cita siempre la sección de donde sale la respuesta (aparece en la línea «Fuente» de cada fragmento).\n4. Responde en español y de forma breve.",
+    "prompt_usuario": "Fragmentos:\n\n{fragmentos}\n\nPregunta: {pregunta}",
+    "timestamp": "2026-11-20T15:50:28",
+    "tiempo_carga_s": 78.95,
+    "tokens_prompt_max": 2423,
+    "vram_base_gb": 0.279,
+    "vram_pico_gb": 14.273
+  },
+  "coste": {
+    "preguntas": [
+      "DEB_D01",
+      "DEB_D02",
+      "DEB_D03",
+      "DEB_C01",
+      "DEB_N01"
+    ],
+    "rondas_medidas": 3,
+    "mediana": {
+      "ttft_s": 0.4548,
+      "tokens_por_s": 44.75,
+      "latencia_total_s": 3.229,
+      "tokens_salida": 128
+    },
+    "mediana_por_pregunta": {
+      "DEB_D01": {
+        "ttft_s": 0.4645,
+        "tokens_por_s": 44.05,
+        "latencia_total_s": 1.4404,
+        "tokens_salida": 44
+      },
+      "DEB_D02": {
+        "ttft_s": 0.465,
+        "tokens_por_s": 44.75,
+        "latencia_total_s": 3.5265,
+        "tokens_salida": 138
+      },
+      "DEB_D03": {
+        "ttft_s": 0.4232,
+        "tokens_por_s": 44.2,
+        "latencia_total_s": 3.2966,
+        "tokens_salida": 128
+      },
+      "DEB_C01": {
+        "ttft_s": 0.3343,
+        "tokens_por_s": 44.38,
+        "latencia_total_s": 3.2405,
+        "tokens_salida": 130
+      },
+      "DEB_N01": {
+        "ttft_s": 0.4548,
+        "tokens_por_s": 44.83,
+        "latencia_total_s": 0.5664,
+        "tokens_salida": 6
+      }
+    },
+    "ejecuciones": {
+      "DEB_D01": [
+        {
+          "respuesta": "Para que APT descargue la lista más reciente de paquetes disponibles, debe ejecutar la orden **apt update**.\n\n**Fuente:** Fragmento 3 (6.2.1. Inicialización)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4642,
+          "latencia_total_s": 1.4404,
+          "tokens_salida": 44,
+          "tokens_por_s": 44.05,
+          "tokens_prompt": 2142,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Para que APT descargue la lista más reciente de paquetes disponibles, debe ejecutar la orden **apt update**.\n\n**Fuente:** Fragmento 3 (6.2.1. Inicialización)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4647,
+          "latencia_total_s": 1.4141,
+          "tokens_salida": 44,
+          "tokens_por_s": 45.29,
+          "tokens_prompt": 2142,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Para que APT descargue la lista más reciente de paquetes disponibles, debe ejecutar la orden **apt update**.\n\n**Fuente:** Fragmento 3 (6.2.1. Inicialización)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4645,
+          "latencia_total_s": 1.4417,
+          "tokens_salida": 44,
+          "tokens_por_s": 44.0,
+          "tokens_prompt": 2142,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_D02": [
+        {
+          "respuesta": "La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa**: se mantienen todos los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, lo que permite reinstalar el programa rápidamente con la misma configuración.\n\nEn cambio, la eliminación con `purge` (o `-P`) es **completa**: elimina todo lo asociado con el paquete, incluyendo los archivos de configuración.\n\n**Fuente:** Fragmento 2 (Sección 5.4.2. Eliminación de un paquete) y Fragmento 4 (Sección 6.2.2. Instalación y eliminación).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4643,
+          "latencia_total_s": 3.4889,
+          "tokens_salida": 138,
+          "tokens_por_s": 45.29,
+          "tokens_prompt": 2138,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa**: se mantienen todos los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, lo que permite reinstalar el programa rápidamente con la misma configuración.\n\nEn cambio, la eliminación con `purge` (o `-P`) es **completa**: elimina todo lo asociado con el paquete, incluyendo los archivos de configuración.\n\n**Fuente:** Fragmento 2 (Sección 5.4.2. Eliminación de un paquete) y Fragmento 4 (Sección 6.2.2. Instalación y eliminación).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.465,
+          "latencia_total_s": 3.5265,
+          "tokens_salida": 138,
+          "tokens_por_s": 44.75,
+          "tokens_prompt": 2138,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa**: se mantienen todos los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, lo que permite reinstalar el programa rápidamente con la misma configuración.\n\nEn cambio, la eliminación con `purge` (o `-P`) es **completa**: elimina todo lo asociado con el paquete, incluyendo los archivos de configuración.\n\n**Fuente:** Fragmento 2 (Sección 5.4.2. Eliminación de un paquete) y Fragmento 4 (Sección 6.2.2. Instalación y eliminación).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4658,
+          "latencia_total_s": 3.5487,
+          "tokens_salida": 138,
+          "tokens_por_s": 44.44,
+          "tokens_prompt": 2138,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_D03": [
+        {
+          "respuesta": "Según los fragmentos proporcionados, no aparece información específica sobre en qué ficheros revisar lo que han hecho `apt` y `aptitude` al instalar o actualizar paquetes.\n\n*Nota: El documento menciona que `aptitude` permite revisar información como dependencias, conflictos y descripciones de los paquetes (Fragmento 3), y que `apt-file` guarda información de contenidos en archivos `Contents-*` (Fragmento 2), pero no detalla los ficheros de registro o estado generados directamente por la acción de instalación o actualización de estos comandos.*\n\n**Respuesta:** No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4228,
+          "latencia_total_s": 3.229,
+          "tokens_salida": 128,
+          "tokens_por_s": 45.26,
+          "tokens_prompt": 1949,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Según los fragmentos proporcionados, no aparece información específica sobre en qué ficheros revisar lo que han hecho `apt` y `aptitude` al instalar o actualizar paquetes.\n\n*Nota: El documento menciona que `aptitude` permite revisar información como dependencias, conflictos y descripciones de los paquetes (Fragmento 3), y que `apt-file` guarda información de contenidos en archivos `Contents-*` (Fragmento 2), pero no detalla los ficheros de registro o estado generados directamente por la acción de instalación o actualización de estos comandos.*\n\n**Respuesta:** No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4233,
+          "latencia_total_s": 3.3212,
+          "tokens_salida": 128,
+          "tokens_por_s": 43.83,
+          "tokens_prompt": 1949,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Según los fragmentos proporcionados, no aparece información específica sobre en qué ficheros revisar lo que han hecho `apt` y `aptitude` al instalar o actualizar paquetes.\n\n*Nota: El documento menciona que `aptitude` permite revisar información como dependencias, conflictos y descripciones de los paquetes (Fragmento 3), y que `apt-file` guarda información de contenidos en archivos `Contents-*` (Fragmento 2), pero no detalla los ficheros de registro o estado generados directamente por la acción de instalación o actualización de estos comandos.*\n\n**Respuesta:** No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4232,
+          "latencia_total_s": 3.2966,
+          "tokens_salida": 128,
+          "tokens_por_s": 44.2,
+          "tokens_prompt": 1949,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_C01": [
+        {
+          "respuesta": "Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se utiliza el demonio **anacron**, el cual completa a **cron** ejecutando las tareas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.\n\nSi el equipo está apagado en el momento programado (por ejemplo, a las 3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, lo que puede utilizar poder de procesamiento del equipo.\n\n*Fuente: 9.8. Programación de tareas asincrónicas: anacron*",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3345,
+          "latencia_total_s": 3.1856,
+          "tokens_salida": 130,
+          "tokens_por_s": 45.25,
+          "tokens_prompt": 1525,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se utiliza el demonio **anacron**, el cual completa a **cron** ejecutando las tareas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.\n\nSi el equipo está apagado en el momento programado (por ejemplo, a las 3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, lo que puede utilizar poder de procesamiento del equipo.\n\n*Fuente: 9.8. Programación de tareas asincrónicas: anacron*",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3343,
+          "latencia_total_s": 3.2616,
+          "tokens_salida": 130,
+          "tokens_por_s": 44.07,
+          "tokens_prompt": 1525,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se utiliza el demonio **anacron**, el cual completa a **cron** ejecutando las tareas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.\n\nSi el equipo está apagado en el momento programado (por ejemplo, a las 3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, lo que puede utilizar poder de procesamiento del equipo.\n\n*Fuente: 9.8. Programación de tareas asincrónicas: anacron*",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3337,
+          "latencia_total_s": 3.2405,
+          "tokens_salida": 130,
+          "tokens_por_s": 44.38,
+          "tokens_prompt": 1525,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_N01": [
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4564,
+          "latencia_total_s": 0.5665,
+          "tokens_salida": 6,
+          "tokens_por_s": 45.42,
+          "tokens_prompt": 2106,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4548,
+          "latencia_total_s": 0.5664,
+          "tokens_salida": 6,
+          "tokens_por_s": 44.83,
+          "tokens_prompt": 2106,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.4544,
+          "latencia_total_s": 0.566,
+          "tokens_salida": 6,
+          "tokens_por_s": 44.81,
+          "tokens_prompt": 2106,
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  },
+  "respuestas": [
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "chunks_contexto": [
+        "debian_96_p2",
+        "debian_122_p1",
+        "debian_104_p1",
+        "debian_105_p1",
+        "debian_123_p3"
+      ],
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para que APT descargue la lista más reciente de paquetes disponibles, debe ejecutar la orden **apt update**.\n\n**Fuente:** Fragmento 3 (6.2.1. Inicialización)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.4521,
+      "tokens_salida": 44,
+      "tokens_por_s": null,
+      "tokens_prompt": 2142,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_85_p5",
+        "debian_91_p1",
+        "debian_122_p3",
+        "debian_105_p1",
+        "debian_105_p2"
+      ],
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa**: se mantienen todos los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, lo que permite reinstalar el programa rápidamente con la misma configuración.\n\nEn cambio, la eliminación con `purge` (o `-P`) es **completa**: elimina todo lo asociado con el paquete, incluyendo los archivos de configuración.\n\n**Fuente:** Fragmento 2 (Sección 5.4.2. Eliminación de un paquete) y Fragmento 4 (Sección 6.2.2. Instalación y eliminación).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.5505,
+      "tokens_salida": 138,
+      "tokens_por_s": null,
+      "tokens_prompt": 2138,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "chunks_contexto": [
+        "debian_120_p2",
+        "debian_114_p1",
+        "debian_79_p2",
+        "debian_50_p1",
+        "debian_114_p2"
+      ],
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Según los fragmentos proporcionados, no aparece información específica sobre en qué ficheros revisar lo que han hecho `apt` y `aptitude` al instalar o actualizar paquetes.\n\n*Nota: El documento menciona que `aptitude` permite revisar información como dependencias, conflictos y descripciones de los paquetes (Fragmento 3), y que `apt-file` guarda información de contenidos en archivos `Contents-*` (Fragmento 2), pero no detalla los ficheros de registro o estado generados directamente por la acción de instalación o actualización de estos comandos.*\n\n**Respuesta:** No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.223,
+      "tokens_salida": 128,
+      "tokens_por_s": null,
+      "tokens_prompt": 1949,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "chunks_contexto": [
+        "debian_133_p4",
+        "debian_381_p1",
+        "debian_130_p6",
+        "debian_130_p2",
+        "debian_175_p1"
+      ],
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La herramienta que encuentra la ubicación de un archivo casi al instante es **locate**.\n\n*   **Cómo funciona:** Consulta una base de datos que almacena la ubicación de todos los archivos del sistema.\n*   **Fuente:** Fragmento 5 (8.9.6. locate y updatedb)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.7181,
+      "tokens_salida": 64,
+      "tokens_por_s": null,
+      "tokens_prompt": 1510,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "chunks_contexto": [
+        "debian_162_p1",
+        "debian_331_p4",
+        "debian_160_p2",
+        "debian_328_p2",
+        "debian_261_p4"
+      ],
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para dar de alta un usuario nuevo, se utiliza el programa **adduser** (Fragmento 1).\n\nPara permitirle usar el sonido del equipo, es necesario agregarlo al grupo **audio** ejecutando el comando **adduser** seguido del nombre del usuario y el nombre del grupo (Fragmento 1).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.9614,
+      "tokens_salida": 66,
+      "tokens_por_s": null,
+      "tokens_prompt": 2260,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "chunks_contexto": [
+        "debian_190_p3",
+        "debian_190_p7",
+        "debian_190_p4",
+        "debian_190_p1",
+        "debian_207_p5"
+      ],
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para conectarte por SSH sin escribir la contraseña cada vez, puedes seguir estos pasos basados en los fragmentos proporcionados:\n\n1.  **Generar una pareja de claves:** En tu máquina cliente, genera una clave pública y privada usando el comando `ssh-keygen -t rsa`.\n2.  **Copiar la clave pública:** Usa el comando `ssh-copy-id server` para añadir tu clave pública al archivo `~/.ssh/authorized_keys` en el servidor. Si no tienes acceso SSH aún, debes pedirle al administrador que añada tu clave manualmente.\n3.  **Alternativa con passphrase (Opcional):** Si la clave privada no tiene una \"frase de contraseña\" (passphrase) al crearla, las conexiones posteriores funcionarán sin contraseña. Si la tiene, puedes usar **ssh-agent** para mantener la clave en memoria y evitar reintroducir la frase cada vez:\n    *   Inicia el agente con `eval $(ssh-agent)`.\n    *   Añade la clave con `ssh-add` (una vez por sesión de trabajo).\n\n*Fuente: Fragmento 1, Fragmento 3*",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 5.7799,
+      "tokens_salida": 241,
+      "tokens_por_s": null,
+      "tokens_prompt": 1759,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "chunks_contexto": [
+        "debian_98_p5",
+        "debian_113_p2",
+        "debian_120_p4",
+        "debian_53_p2",
+        "debian_105_p4"
+      ],
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para instalar la nueva versión de un paquete cuando ya tienes `bullseye-backports` en las fuentes pero APT no lo hace automáticamente, debes usar explícitamente la sintaxis de la distribución en la orden de instalación.\n\nSegún el documento:\n*   Se puede indicar la distribución de origen utilizando la orden: `apt install paquete/distribución`.\n*   En el caso específico de `bullseye-backports`, el ejemplo muestra: `sudo apt-get install paquete/bullseye-backports` o `sudo apt-get install -t /bullseye-backports paquete`.\n\n**Fuente:** Fragmento 1 (líneas 14-17) y Fragmento 2 (líneas 10-11).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.9404,
+      "tokens_salida": 157,
+      "tokens_por_s": null,
+      "tokens_prompt": 1868,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "chunks_contexto": [
+        "debian_203_p1",
+        "debian_204_p1",
+        "debian_397_p2",
+        "debian_202_p3",
+        "debian_378_p1"
+      ],
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para ejecutar un comando una sola vez en un momento específico, debe utilizar la orden **at**.\n\n*   **Orden:** `at`\n*   **Cómo pasar la hora:** Se indica el tiempo y la fecha deseados como parámetros de línea de comandos.\n    *   Para la hora, se usan formatos como `HH:MM` (ej. `09:00`).\n    *   Para la fecha, se pueden usar formatos como `DD.MM.AA`, `AAAA-MM-DD`, `MM/DD/[CC]AA` o simplemente palabras como «today» o «tomorrow».\n\n**Ejemplo de uso:**\n```bash\n$ at 09:00 tomorrow <<END\n> <comando_a_ejecutar>\n> END\n```\n\n*Fuente: Fragmento 1 (9.7.2. Utilización del programa at)*",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 4.5782,
+      "tokens_salida": 188,
+      "tokens_por_s": null,
+      "tokens_prompt": 1563,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "chunks_contexto": [
+        "debian_204_p1",
+        "debian_321_p1",
+        "debian_338_p1",
+        "debian_69_p1",
+        "debian_344_p1"
+      ],
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se utiliza el demonio **anacron**, el cual completa a **cron** ejecutando las tareas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.\n\nSi el equipo está apagado en el momento programado (por ejemplo, a las 3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, lo que puede utilizar poder de procesamiento del equipo.\n\n*Fuente: 9.8. Programación de tareas asincrónicas: anacron*",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.2568,
+      "tokens_salida": 130,
+      "tokens_por_s": null,
+      "tokens_prompt": 1525,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "chunks_contexto": [
+        "debian_156_p1",
+        "debian_157_p1",
+        "debian_158_p1",
+        "debian_217_p4",
+        "debian_385_p1"
+      ],
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El hash de la contraseña de un usuario se guarda en el archivo **`/etc/shadow`**.\n\nEs más seguro que guardarlo en `/etc/passwd` porque:\n*   El archivo `/etc/shadow` **no puede ser leído por usuarios normales**.\n*   En cambio, cualquiera puede leer las contraseñas con *hash* en `/etc/passwd`, lo que permitiría a un «cracker» intentar revelarlas mediante ataques de «fuerza bruta» o «ataque de diccionario».\n\n**Fuente:** Fragmento 3 (Sección \"Seguridad del archivo `/etc/shadow`\") y Fragmento 1 (Sección \"8.4. Bases de datos de usuarios y grupos\").",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.7598,
+      "tokens_salida": 154,
+      "tokens_por_s": null,
+      "tokens_prompt": 1712,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_110_p2",
+        "debian_90_p1",
+        "debian_184_p1",
+        "debian_130_p1",
+        "debian_89_p1"
+      ],
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.5193,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 1866,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "chunks_contexto": [
+        "debian_120_p4",
+        "debian_120_p2",
+        "debian_106_p1",
+        "debian_104_p1",
+        "debian_109_p2"
+      ],
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.\n\nAunque los fragmentos mencionan el procedimiento de actualización y el cambio de fuentes (Fragmento 2) y describen las diferencias entre `upgrade` y `full-upgrade` (Fragmento 3), no contienen información específica sobre la recomendación de realizar la actualización en \"dos pasos\" ni el orden exacto a seguir para ese caso particular.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.1925,
+      "tokens_salida": 80,
+      "tokens_por_s": null,
+      "tokens_prompt": 1909,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N01",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo Docker en Debian?",
+      "respuesta_esperada": "No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.",
+      "chunks_contexto": [
+        "debian_90_p1",
+        "debian_59_p3",
+        "debian_184_p1",
+        "debian_57_p1",
+        "debian_53_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.5618,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 2106,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N02",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿En qué fecha exacta deja de tener soporte Debian 11?",
+      "respuesta_esperada": "No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.",
+      "chunks_contexto": [
+        "debian_359_p1",
+        "debian_15_p1",
+        "debian_285_p8",
+        "debian_34_p2",
+        "debian_34_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.6293,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 2423,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N03",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo aplicaciones en formato Flatpak?",
+      "respuesta_esperada": "No aparece en el documento.",
+      "chunks_contexto": [
+        "debian_184_p1",
+        "debian_90_p1",
+        "debian_355_p3",
+        "debian_79_p1",
+        "debian_354_p6"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.5329,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 1951,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "chunks_contexto": [
+        "debian_104_p1"
+      ],
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la orden **apt update**.\n\n**Fuente:** 6.2.1. Inicialización",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.9708,
+      "tokens_salida": 39,
+      "tokens_por_s": null,
+      "tokens_prompt": 555,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_105_p1"
+      ],
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La diferencia es que la orden `apt remove` elimina el paquete, mientras que la orden `apt purge` realiza una desinstalación completa, eliminando también los archivos de configuración.\n\n**Fuente:** 6.2.2. Instalación y eliminación",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.3431,
+      "tokens_salida": 54,
+      "tokens_por_s": null,
+      "tokens_prompt": 577,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "chunks_contexto": [
+        "debian_106_p2"
+      ],
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Los resultados de las operaciones de **apt** y **aptitude** se registran en los ficheros `/var/log/apt/history.log` y `/var/log/apt/term.log`.\n\n**Fuente:** Fragmento 1 (línea 10)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.2684,
+      "tokens_salida": 54,
+      "tokens_por_s": null,
+      "tokens_prompt": 426,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "chunks_contexto": [
+        "debian_175_p1"
+      ],
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La herramienta que encuentra el archivo casi al instante es **locate**. Obtiene la información de una base de datos que almacena la ubicación de todos los archivos del sistema, la cual se actualiza diariamente con **updatedb**.\n\nFuente: 8.9.6. locate y updatedb",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.4308,
+      "tokens_salida": 61,
+      "tokens_por_s": null,
+      "tokens_prompt": 405,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "chunks_contexto": [
+        "debian_162_p1"
+      ],
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar el programa **adduser** con el nombre del usuario y el nombre del grupo *audio* (por ejemplo: `adduser usuario audio`). Esto agrega al usuario al grupo *audio*, lo que le otorga permisos para acceder a los dispositivos de audio.\n\n**Fuente:** Fragmento 1 (líneas que describen el uso de `adduser` para agregar un usuario a un grupo diferente a su grupo principal, específicamente el ejemplo del grupo *audio*).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.6989,
+      "tokens_salida": 117,
+      "tokens_por_s": null,
+      "tokens_prompt": 559,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "chunks_contexto": [
+        "debian_190_p3"
+      ],
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para conectarte por SSH sin escribir la contraseña cada vez, debes seguir estos pasos según el documento:\n\n1.  Generar un par de llaves en la máquina cliente ejecutando: `ssh-keygen -t rsa`.\n2.  La clave pública generada se almacena en `~/.ssh/id_rsa.pub` y la privada en `~/.ssh/id_rsa`.\n3.  Usar el comando `ssh-copy-id server` para agregar la clave pública al archivo `~/.ssh/authorized_keys` en el servidor.\n4.  Si el acceso SSH no está habilitado aún, es necesario pedirle al administrador que agregue la clave manualmente.\n\n**Fuente:** Fragmento 1 (Sección 9.2.1.1. Autenticación basada en llaves)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.8225,
+      "tokens_salida": 169,
+      "tokens_por_s": null,
+      "tokens_prompt": 474,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "chunks_contexto": [
+        "debian_98_p5"
+      ],
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para instalar la nueva versión desde el repositorio `stable-backports`, debes indicar explícitamente a `APT` que lo haga. Puedes usar uno de los siguientes comandos:\n\n*   `sudo apt-get install paquete/bullseye-backports`\n*   `sudo apt-get install -t /bullseye-backports paquete`\n\n**Fuente:** 6.1.2. Repositorios para usuarios de Stable (parte 5 de 5)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.3007,
+      "tokens_salida": 97,
+      "tokens_por_s": null,
+      "tokens_prompt": 520,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "chunks_contexto": [
+        "debian_203_p1"
+      ],
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para ejecutar un comando una sola vez mañana a las 9:00, debes usar la orden **at** con el parámetro `tomorrow 09:00`.\n\n*   **Orden:** `at`\n*   **Formato de hora:** Se indica la hora en formato `HH:MM` (por ejemplo, `09:00`).\n*   **Formato de fecha:** Se puede ingresar simplemente «today» o «tomorrow» para representar el día actual o el día siguiente, respectivamente.\n\n**Fuente:** 9.7.2. Utilización del programa at",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.0243,
+      "tokens_salida": 129,
+      "tokens_por_s": null,
+      "tokens_prompt": 646,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "chunks_contexto": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para programar la copia de seguridad, se debe escribir la tarea en el archivo `/etc/anacrontab` utilizando el programa **nice** para reducir su prioridad de ejecución.\n\nSi el equipo está apagado a la hora programada (3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.\n\n*Fuente: 9.8. Programación de tareas asincrónicas: anacron*",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.6541,
+      "tokens_salida": 111,
+      "tokens_por_s": null,
+      "tokens_prompt": 1028,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "chunks_contexto": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El hash de la contraseña se guarda en el archivo **`/etc/shadow`**.\n\nEs más seguro que guardarlo en `/etc/passwd` porque:\n*   El archivo `/etc/shadow` **no puede ser leído por usuarios normales**.\n*   En cambio, cualquiera puede leer las contraseñas con *hash* en `/etc/passwd`, lo que permitiría a un «cracker» intentar revelarlas mediante ataques de «fuerza bruta» o «ataque de diccionario».\n\n**Fuente:** Fragmento 2 (Secciones: \"El archivo de contraseñas ocultas y cifradas: /etc/shadow\" y \"Seguridad del archivo `/etc/shadow`\").",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.4903,
+      "tokens_salida": 148,
+      "tokens_por_s": null,
+      "tokens_prompt": 890,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Para averiguar qué paquete trae un ejecutable aunque no esté instalado, debes usar la orden **apt-file search** con el patrón del nombre del archivo.\n\n*   **Para buscar el paquete:** La orden `apt-file search <patrón>` listará todos los paquetes que contienen un nombre de archivo o ruta que coincida con el patrón.\n*   **Para instalarlo:** Una vez identificado el paquete, puedes instalarlo usando la orden **apt install <paquete>**.\n\n**Fuente:** Fragmento 1 (sección 6.4. La orden apt-file) y Fragmento 2 (sección 6.2.2. Instalación y eliminación).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.4073,
+      "tokens_salida": 144,
+      "tokens_por_s": null,
+      "tokens_prompt": 1015,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "qwen3.5-9b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "chunks_contexto": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Se recomienda actualizar en dos pasos para facilitar el trabajo de las herramientas de gestión de paquetes y generalmente asegurar que se tengan las últimas versiones de las mismas, que pueden haber acumulado correcciones de errores y mejoras necesarias para finalizar la actualización de la distribución completa.\n\nEl orden recomendado es:\n1.  Primero, realizar una actualización mínima con **apt upgrade**.\n2.  Luego, realizar la actualización en sí con **apt full-upgrade**, **aptitude** o **synaptic**.\n\nFuente: 6.7.1. Procedimiento recomendado (parte 3 de 4) y 6.7.1. Procedimiento recomendado (parte 4 de 4)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.2482,
+      "tokens_salida": 141,
+      "tokens_por_s": null,
+      "tokens_prompt": 628,
+      "finish_reason": "stop"
+    }
+  ]
+}

@@ -1,0 +1,778 @@
+W1120 15:32:38.022000 155186 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:32:38.066000 155186 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:32:38.066000 155186 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: lfm3-1.7b (LiquidAI/LFM3-1.7B) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+(MainProcess pid=155186) INFO 11-20 15:32:45 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'model': 'LiquidAI/LFM3-1.7B'}
+(MainProcess pid=155186) WARNING 11-20 15:32:53 [flashinfer.py:107] FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(MainProcess pid=155186) INFO 11-20 15:32:54 [model.py:761] Resolved architecture: Lfm3ForCausalLM
+(MainProcess pid=155186) INFO 11-20 15:32:54 [model.py:2214] Using max model len 8192
+(MainProcess pid=155186) INFO 11-20 15:32:54 [scheduler.py:354] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=155186) WARNING 11-20 15:32:56 [weight_utils.py:383] --quantization fp8 is deprecated for online quantization; use --quantization fp8_per_tensor instead.
+(MainProcess pid=155186) WARNING 11-20 15:32:57 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=155186) WARNING 11-20 15:32:57 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(MainProcess pid=155186) INFO 11-20 15:32:57 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=155186) INFO 11-20 15:32:57 [vllm.py:1917] Cudagraph is disabled under eager mode
+(MainProcess pid=155186) INFO 11-20 15:32:57 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]Fetching 18 files:   6%|▌         | 1/18 [00:00<00:07,  2.16it/s]Fetching 18 files:  78%|███████▊  | 14/18 [00:00<00:00, 18.89it/s]Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 20.10it/s]
+(MainProcess pid=155186) WARNING 11-20 15:32:59 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(MainProcess pid=155186) INFO 11-20 15:32:59 [numa_utils.py:575] Automatic NUMA binding unavailable on this host; starting unbound. Enable debug logging for the skip reason.
+W1120 15:33:01.099000 155428 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:33:01.100000 155428 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:33:01.100000 155428 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(EngineCore pid=155428) INFO 11-20 15:33:06 [core.py:153] Initializing a V1 LLM engine (v0.34.0) with config: model='LiquidAI/LFM3-1.7B', speculative_config=None, tokenizer='LiquidAI/LFM3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=LiquidAI/LFM3-1.7B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_token_budget': 5120, 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'use_breakable_cudagraph': False, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'prefill_cudagraph_capture_token_sizes': None, 'max_prefill_cudagraph_capture_tokens': None, 'decode_cudagraph_capture_request_sizes': None, 'max_decode_cudagraph_capture_requests': None, 'max_decode_cudagraph_capture_tokens': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_rocm_aiter_gemm_warmup=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None, rdna_hybrid_w4a16_prefill_dequant='disable')
+(EngineCore pid=155428) INFO 11-20 15:33:07 [parallel_state.py:1935] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_ca9cefa3087d4190ac88d97bd2dc6e8f backend=nccl
+(EngineCore pid=155428) INFO 11-20 15:33:07 [parallel_state.py:2394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=155428) INFO 11-20 15:33:07 [cuda.py:239] NVIDIA Confidential Computing not detected via NVML
+(EngineCore pid=155428) INFO 11-20 15:33:08 [model_runner.py:412] Loading model from scratch...
+(EngineCore pid=155428) INFO 11-20 15:33:08 [__init__.py:818] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerTensorOnlineLinearMethod
+(EngineCore pid=155428) INFO 11-20 15:33:08 [cuda.py:549] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=155428) INFO 11-20 15:33:08 [flash_attn.py:1131] Using FlashAttention version 2
+(EngineCore pid=155428) INFO 11-20 15:33:08 [base_loader.py:164] Quantizing 107 layers of types: feed_forward.w13: 24 (from linear: fp8_per_tensor_static); feed_forward.w2: 24 (from linear: fp8_per_tensor_static); self_attn.gate_proj: 11 (from linear: fp8_per_tensor_static); self_attn.o_proj: 11 (from linear: fp8_per_tensor_static); self_attn.qkv_proj: 11 (from linear: fp8_per_tensor_static); short_conv.in_proj: 13 (from linear: fp8_per_tensor_static); short_conv.out_proj: 13 (from linear: fp8_per_tensor_static)
+(EngineCore pid=155428) INFO 11-20 15:33:08 [base_loader.py:95] Initializing model took 0.687712 seconds
+(EngineCore pid=155428) INFO 11-20 15:34:01 [weight_utils.py:567] Time spent downloading weights for LiquidAI/LFM3-1.7B: 51.852812 seconds
+(EngineCore pid=155428) INFO 11-20 15:34:01 [weight_utils.py:1154] Filesystem type for checkpoints: BTRFS. Checkpoint size: 3.22 GiB. Available RAM: 1.04 GiB.
+(EngineCore pid=155428) INFO 11-20 15:34:01 [weight_utils.py:1184] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (3.22 GiB) exceeds 90% of available RAM (1.04 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore pid=155428) WARNING 11-20 15:34:01 [marlin_utils_fp8.py:98] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+(EngineCore pid=155428) WARNING 11-20 15:34:01 [marlin_utils.py:238] Marlin requires thread-tile padding for some weight shapes in this model. Activations and/or outputs of the padded layers are padded/sliced on every forward; performance may be degraded.
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.05s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.05s/it]
+
+(EngineCore pid=155428) INFO 11-20 15:34:02 [default_loader.py:543] Loading weights took 1.18 seconds
+(EngineCore pid=155428) INFO 11-20 15:34:02 [base_loader.py:177] Online quantization as part of model loading took 0.59 seconds
+(EngineCore pid=155428) INFO 11-20 15:34:03 [model_runner.py:441] Model loading took 2.01 GiB memory and 55.789471 seconds
+(EngineCore pid=155428) WARNING 11-20 15:34:03 [topk_topp_sampler.py:126] FlashInfer top-p/top-k sampling unavailable: FlashInfer kernels are disabled; falling back. Set VLLM_USE_FLASHINFER_SAMPLER=0 to silence.
+(EngineCore pid=155428) INFO 11-20 15:34:03 [torch_utils.py:301] Reducing Torch threads from 6 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=155428) INFO 11-20 15:34:03 [interface.py:1144] Padding mamba page size by 433.33% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=155428) INFO 11-20 15:34:03 [utils.py:419] Using LBNHC KV cache layout.
+(EngineCore pid=155428) WARNING 11-20 15:34:03 [kv_cache_planning.py:583] Add 2 padding layers, may waste at most 15.38% KV cache memory
+(EngineCore pid=155428) WARNING 11-20 15:34:03 [kv_cache_planning.py:583] Add 4 padding layers, may waste at most 66.67% KV cache memory
+(EngineCore pid=155428) INFO 11-20 15:34:04 [marlin_utils.py:661] Marlin kernel can achieve better performance for small size_n with experimental use_atomic_add feature. You can consider set environment variable VLLM_MARLIN_USE_ATOMIC_ADD to 1 if possible.
+(EngineCore pid=155428) INFO 11-20 15:34:07 [gpu_worker.py:708] Initial free memory 19.1 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=155428) INFO 11-20 15:34:07 [kv_cache_utils.py:1168] GPU KV cache size: 69,167 tokens, Maximum concurrency for 8,192 tokens per request: 8.44x
+(EngineCore pid=155428) INFO 11-20 15:34:07 [kv_cache_utils.py:861] kv cache group sizes (8192, 8192, 8192, 64, 64, 64)
+(EngineCore pid=155428) INFO 11-20 15:34:07 [kv_cache_utils.py:862] kv lcm block sizes 8192
+(EngineCore pid=155428) INFO 11-20 15:34:08 [core.py:458] init engine (profile, create kv cache, warmup model) took 4.68 s
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 1500.41it/s]
+(EngineCore pid=155428) WARNING 11-20 15:34:09 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(EngineCore pid=155428) WARNING 11-20 15:34:09 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=155428) INFO 11-20 15:34:09 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=155428) INFO 11-20 15:34:09 [vllm.py:1917] Cudagraph is disabled under eager mode
+(EngineCore pid=155428) INFO 11-20 15:34:09 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=155186) INFO 11-20 15:34:10 [hf.py:743] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+[+] Cargado en 93.0 s (kv_cache_memory_bytes=2.0 GB)
+  [retrieval] BOE_D01: 'No aparece en el documento. Los fragmentos mencionan descansos semanales, fiestas, permiso'
+  [retrieval] BOE_D02: 'No aparece en el documento. Según el Fragmento 1, en el supuesto de contratos temporales d'
+  [retrieval] BOE_D03: 'No aparece en el documento. Sin embargo, en el Fragmento 1 se menciona: "El número de hora'
+  [retrieval] BOE_D04: 'No aparece en el documento.'
+  [retrieval] BOE_D05: 'No aparece en el documento. Sin embargo, según el Fragmento 1 (Artículo 31. Gratificacione'
+  [retrieval] BOE_D06: 'No aparece en el documento.'
+  [retrieval] BOE_D07: 'No aparece en el documento. Los fragmentos proporcionados no contienen información específ'
+  [retrieval] BOE_D08: 'No aparece en el documento. Los fragmentos mencionan plazos para optar entre readmisión o '
+  [retrieval] BOE_C01: 'No aparece en el documento. Sin embargo, según el Fragmento 5 (Artículo 50) y el Fragmento'
+  [retrieval] BOE_C02: 'Según el Fragmento 1 (Artículo 35. Horas extraordinarias):\n\n- "Tendrán la consideración de'
+  [retrieval] BOE_C03: 'No aparece en el documento. Sin embargo, según el Fragmento 4 (Artículo 54. Despido discip'
+  [retrieval] BOE_C04: 'No aparece en el documento. Los fragmentos proporcionados tratan sobre movilidad geográfic'
+  [retrieval] BOE_N01: 'No aparece en el documento.'
+  [retrieval] BOE_N02: 'No aparece en el documento.'
+  [retrieval] BOE_N03: 'No aparece en el documento.'
+  [oraculo] BOE_D01: 'De la información del Artículo 38 (Vacaciones anuales):\n\n- La duración mínima de las vacac'
+  [oraculo] BOE_D02: 'Según el Fragmento 1, Artículo 14. Periodo de prueba (parte 2 de 3):\n\n- En defecto de pact'
+  [oraculo] BOE_D03: 'Según el Fragmento 1 (Artículo 35. Horas extraordinarias):\n\n- "El número de horas extraord'
+  [oraculo] BOE_D04: 'Según el Fragmento 1, Artículo 34. Jornada:\n\n- Entre el final de una jornada y el comienzo'
+  [oraculo] BOE_D05: 'Según el Artículo 31 de "Gratificaciones extraordinarias" (Fragmento 1):\n\n- El trabajador '
+  [oraculo] BOE_D06: 'No aparece en el documento. El fragmento menciona los días de ausentismo por motivos, pero'
+  [oraculo] BOE_D07: 'No aparece en el documento. El fragmento menciona que el trabajador con al menos una antig'
+  [oraculo] BOE_D08: 'Según el Fragmento 1, Artículo 59:\n\n- El ejercicio de la acción contra el despido o resolu'
+  [oraculo] BOE_C01: 'No aparece en el documento. Los fragmentos mencionan la extinción por causas objetivas (Ar'
+  [oraculo] BOE_C02: 'Según el Fragmento 2 (Artículo 35. Horas extraordinarias):\n\n- El número de horas extraordi'
+  [oraculo] BOE_C03: 'Según el Fragmento 1, el contrato de trabajo podrá extinguirse por decisión del empresario'
+  [oraculo] BOE_C04: 'De acuerdo con los fragmentos:\n\n- Para el traslado a otro centro de trabajo (artículo 40):'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- lfm3-1.7b/boe: TTFT 0.1011 s | 63.89 tok/s | latencia 2.8003 s | VRAM pico 5.361 GB | prompt máx. 2159 tokens → results/llms/data/lfm3-1.7b_boe.json
+(MainProcess pid=155186) INFO 11-20 15:36:06 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=155428) INFO 11-20 15:36:06 [core.py:1698] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=155428) INFO 11-20 15:36:06 [core.py:1889] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=155428) INFO 11-20 15:36:06 [core.py:1920] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=155428) INFO 11-20 15:36:06 [core.py:1746] [shutdown] EngineCore: exiting busy loop
+W1120 15:36:14.946000 156375 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:36:15.009000 156375 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:36:15.010000 156375 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: llama3.2-3b (meta-llama/Llama-3.2-3B-Instruct) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+(MainProcess pid=156375) INFO 11-20 15:36:28 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'model': 'meta-llama/Llama-3.2-3B-Instruct'}
+(MainProcess pid=156375) WARNING 11-20 15:36:37 [flashinfer.py:107] FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(MainProcess pid=156375) INFO 11-20 15:36:38 [model.py:761] Resolved architecture: LlamaForCausalLM
+(MainProcess pid=156375) INFO 11-20 15:36:38 [model.py:2214] Using max model len 8192
+(MainProcess pid=156375) INFO 11-20 15:36:38 [scheduler.py:354] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=156375) WARNING 11-20 15:36:40 [weight_utils.py:383] --quantization fp8 is deprecated for online quantization; use --quantization fp8_per_tensor instead.
+Parse safetensors files:   0%|          | 0/2 [00:00<?, ?it/s]Parse safetensors files:  50%|█████     | 1/2 [00:00<00:00,  3.10it/s]Parse safetensors files: 100%|██████████| 2/2 [00:00<00:00,  5.99it/s]
+(MainProcess pid=156375) WARNING 11-20 15:36:41 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=156375) WARNING 11-20 15:36:41 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(MainProcess pid=156375) INFO 11-20 15:36:41 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=156375) INFO 11-20 15:36:41 [vllm.py:1917] Cudagraph is disabled under eager mode
+(MainProcess pid=156375) INFO 11-20 15:36:41 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files:  69%|██████▉   | 9/13 [00:00<00:00, 33.36it/s]Fetching 13 files: 100%|██████████| 13/13 [00:01<00:00,  9.27it/s]Fetching 13 files: 100%|██████████| 13/13 [00:01<00:00, 10.90it/s]
+(MainProcess pid=156375) WARNING 11-20 15:36:43 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(MainProcess pid=156375) INFO 11-20 15:36:43 [numa_utils.py:575] Automatic NUMA binding unavailable on this host; starting unbound. Enable debug logging for the skip reason.
+W1120 15:36:44.918000 156642 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:36:44.918000 156642 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:36:44.919000 156642 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(EngineCore pid=156642) INFO 11-20 15:36:50 [core.py:153] Initializing a V1 LLM engine (v0.34.0) with config: model='meta-llama/Llama-3.2-3B-Instruct', speculative_config=None, tokenizer='meta-llama/Llama-3.2-3B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=meta-llama/Llama-3.2-3B-Instruct, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_token_budget': 5120, 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'use_breakable_cudagraph': False, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'prefill_cudagraph_capture_token_sizes': None, 'max_prefill_cudagraph_capture_tokens': None, 'decode_cudagraph_capture_request_sizes': None, 'max_decode_cudagraph_capture_requests': None, 'max_decode_cudagraph_capture_tokens': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_rocm_aiter_gemm_warmup=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None, rdna_hybrid_w4a16_prefill_dequant='disable')
+(EngineCore pid=156642) INFO 11-20 15:36:51 [parallel_state.py:1935] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_f8e8df0ca7aa482984446bec20d7439a backend=nccl
+(EngineCore pid=156642) INFO 11-20 15:36:51 [parallel_state.py:2394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=156642) INFO 11-20 15:36:52 [cuda.py:239] NVIDIA Confidential Computing not detected via NVML
+(EngineCore pid=156642) INFO 11-20 15:36:52 [model_runner.py:412] Loading model from scratch...
+(EngineCore pid=156642) INFO 11-20 15:36:52 [__init__.py:818] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerTensorOnlineLinearMethod
+(EngineCore pid=156642) INFO 11-20 15:36:54 [cuda.py:549] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=156642) INFO 11-20 15:36:54 [flash_attn.py:1131] Using FlashAttention version 2
+(EngineCore pid=156642) INFO 11-20 15:36:54 [base_loader.py:164] Quantizing 112 layers of types: mlp.down_proj: 28 (from linear: fp8_per_tensor_static); mlp.gate_up_proj: 28 (from linear: fp8_per_tensor_static); self_attn.o_proj: 28 (from linear: fp8_per_tensor_static); self_attn.qkv_proj: 28 (from linear: fp8_per_tensor_static)
+(EngineCore pid=156642) INFO 11-20 15:36:54 [base_loader.py:95] Initializing model took 2.189158 seconds
+(EngineCore pid=156642) INFO 11-20 15:38:16 [weight_utils.py:567] Time spent downloading weights for meta-llama/Llama-3.2-3B-Instruct: 81.640528 seconds
+(EngineCore pid=156642) INFO 11-20 15:38:16 [weight_utils.py:1154] Filesystem type for checkpoints: BTRFS. Checkpoint size: 5.98 GiB. Available RAM: 0.81 GiB.
+(EngineCore pid=156642) INFO 11-20 15:38:16 [weight_utils.py:1184] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (5.98 GiB) exceeds 90% of available RAM (0.81 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+(EngineCore pid=156642) WARNING 11-20 15:38:17 [marlin_utils_fp8.py:98] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+Loading safetensors checkpoint shards:  50% Completed | 1/2 [00:00<00:00,  1.29it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.81it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.70it/s]
+
+(EngineCore pid=156642) INFO 11-20 15:38:18 [default_loader.py:543] Loading weights took 1.22 seconds
+(EngineCore pid=156642) INFO 11-20 15:38:18 [base_loader.py:177] Online quantization as part of model loading took 0.17 seconds
+(EngineCore pid=156642) INFO 11-20 15:38:19 [model_runner.py:441] Model loading took 3.42 GiB memory and 87.367808 seconds
+(EngineCore pid=156642) WARNING 11-20 15:38:19 [topk_topp_sampler.py:126] FlashInfer top-p/top-k sampling unavailable: FlashInfer kernels are disabled; falling back. Set VLLM_USE_FLASHINFER_SAMPLER=0 to silence.
+(EngineCore pid=156642) INFO 11-20 15:38:19 [torch_utils.py:301] Reducing Torch threads from 6 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=156642) INFO 11-20 15:38:19 [utils.py:419] Using LBNHC KV cache layout.
+(EngineCore pid=156642) INFO 11-20 15:38:23 [gpu_worker.py:708] Initial free memory 19.1 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=156642) INFO 11-20 15:38:23 [kv_cache_utils.py:1168] GPU KV cache size: 18,688 tokens, Maximum concurrency for 8,192 tokens per request: 2.28x
+(EngineCore pid=156642) INFO 11-20 15:38:24 [core.py:458] init engine (profile, create kv cache, warmup model) took 4.67 s
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files: 100%|██████████| 13/13 [00:00<00:00, 1557.97it/s]
+Parse safetensors files:   0%|          | 0/2 [00:00<?, ?it/s]Parse safetensors files:  50%|█████     | 1/2 [00:00<00:00,  3.05it/s]Parse safetensors files: 100%|██████████| 2/2 [00:00<00:00,  5.94it/s]
+(EngineCore pid=156642) WARNING 11-20 15:38:25 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(EngineCore pid=156642) WARNING 11-20 15:38:25 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=156642) INFO 11-20 15:38:25 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=156642) INFO 11-20 15:38:25 [vllm.py:1917] Cudagraph is disabled under eager mode
+(EngineCore pid=156642) INFO 11-20 15:38:25 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=156375) INFO 11-20 15:38:25 [hf.py:743] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+[+] Cargado en 130.8 s (kv_cache_memory_bytes=2.0 GB)
+  [retrieval] BOE_D01: 'Según el artículo 37.1, los trabajadores tendrán derecho a un descanso mínimo semanal, acu'
+  [retrieval] BOE_D02: 'No aparece en el documento.'
+  [retrieval] BOE_D03: 'Según el artículo 35.1, el número de horas extraordinarias no podrá ser superior a ochenta'
+  [retrieval] BOE_D04: 'No aparece en el documento.'
+  [retrieval] BOE_D05: 'Según el artículo 31, el trabajador tiene derecho a dos gratificaciones extraordinarias al'
+  [retrieval] BOE_D06: 'No aparece en el documento.'
+  [retrieval] BOE_D07: 'No aparece en el documento.'
+  [retrieval] BOE_D08: 'No aparece en el documento.'
+  [retrieval] BOE_C01: 'Según el artículo 53, si el despido es declarado improcedente, el empresario podrá optar e'
+  [retrieval] BOE_C02: 'Según el artículo 35.1, se consideran horas extraordinarias aquellas que se realicen sobre'
+  [retrieval] BOE_C03: 'No aparece en el documento.'
+  [retrieval] BOE_C04: 'Según el artículo 40. Movilidad geográfica, si dejas la empresa porque te trasladan a otra'
+  [retrieval] BOE_N01: 'No aparece en el documento.'
+  [retrieval] BOE_N02: 'No aparece en el documento.'
+  [retrieval] BOE_N03: 'No aparece en el documento.'
+  [oraculo] BOE_D01: 'Según el artículo 38, el periodo de vacaciones anuales retribuidas será de al menos 30 día'
+  [oraculo] BOE_D02: 'No aparece en el documento.'
+  [oraculo] BOE_D03: 'Sí, el tope de horas extraordinarias que se pueden realizar en un año es de ochenta horas.'
+  [oraculo] BOE_D04: 'No aparece en el documento.'
+  [oraculo] BOE_D05: 'Según el artículo 31, el trabajador tiene derecho a dos gratificaciones extraordinarias al'
+  [oraculo] BOE_D06: 'Según el artículo 37, la persona trabajadora tiene derecho a quince días naturales en caso'
+  [oraculo] BOE_D07: 'No aparece en el documento.'
+  [oraculo] BOE_D08: 'No aparece en el documento.'
+  [oraculo] BOE_C01: 'Según el artículo 56.2, si el despido es declarado improcedente, el empresario puede optar'
+  [oraculo] BOE_C02: 'No aparece en el documento.'
+  [oraculo] BOE_C03: 'Según el artículo 54.1, el despido disciplinario se puede extinguir por incumplimiento gra'
+  [oraculo] BOE_C04: 'Según el artículo 40, si te trasladan a otra ciudad, tendrás derecho a una compensación po'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- llama3.2-3b/boe: TTFT 0.2042 s | 66.41 tok/s | latencia 0.776 s | VRAM pico 7.072 GB | prompt máx. 2435 tokens → results/llms/data/llama3.2-3b_boe.json
+(MainProcess pid=156375) INFO 11-20 15:39:06 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=156642) INFO 11-20 15:39:06 [core.py:1698] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=156642) INFO 11-20 15:39:06 [core.py:1889] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=156642) INFO 11-20 15:39:06 [core.py:1920] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=156642) INFO 11-20 15:39:06 [core.py:1746] [shutdown] EngineCore: exiting busy loop
+W1120 15:39:12.758000 157494 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:39:12.801000 157494 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:39:12.801000 157494 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: nemotron-bolt-e4b (nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+(MainProcess pid=157494) INFO 11-20 15:39:21 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'model': 'nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB'}
+Traceback (most recent call last):
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 393, in <module>
+    main()
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 377, in main
+    run(modelos[0], escenarios[0], oraculo=not a.sin_oraculo, n_coste=a.n_coste, rondas=a.rondas)
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 283, in run
+    llm, modo_memoria = cargar_llm(cfg["repo"], cfg.get("extra"))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 207, in cargar_llm
+    llm = LLM(**comunes, kv_cache_memory_bytes=int(KV_CACHE_GB * 2**30))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 352, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 183, in from_engine_args
+    vllm_config = engine_args.create_engine_config(usage_context)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 2313, in create_engine_config
+    model_config = self.create_model_config()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 2025, in create_model_config
+    return ModelConfig(
+           ^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+  Value error, Invalid repository ID or local directory specified: 'nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB'.
+Please verify the following requirements:
+1. Provide a valid Hugging Face repository ID.
+2. Specify a local directory that contains a recognized configuration file.
+   - For Hugging Face models: ensure the presence of a 'config.json'.
+   - For Mistral models: ensure the presence of a 'params.json'.
+ [type=value_error, input_value=ArgsKwargs((), {'model': ...nderer_num_workers': 1}), input_type=ArgsKwargs]
+    For further information visit https://errors.pydantic.dev/2.14/v/value_error
+W1120 15:39:24.586000 157607 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:39:24.656000 157607 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:39:24.657000 157607 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: qwen3.5-9b (Qwen/Qwen3.5-9B) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+(MainProcess pid=157607) INFO 11-20 15:39:31 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'limit_mm_per_prompt': {'image': 0, 'video': 0}, 'model': 'Qwen/Qwen3.5-9B'}
+(MainProcess pid=157607) INFO 11-20 15:39:32 [model.py:761] Resolved architecture: Qwen3_5ForConditionalGeneration
+(MainProcess pid=157607) INFO 11-20 15:39:32 [model.py:2214] Using max model len 8192
+(MainProcess pid=157607) WARNING 11-20 15:39:32 [flashinfer.py:107] FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 1434.11it/s]
+(MainProcess pid=157607) INFO 11-20 15:39:35 [model.py:984] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(MainProcess pid=157607) INFO 11-20 15:39:35 [model.py:1041] Disabled mm_prefix attention mode because multimodal inputs are configuration-disabled. Attention backends without mm_prefix support may now be selected.
+(MainProcess pid=157607) INFO 11-20 15:39:35 [scheduler.py:354] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=157607) WARNING 11-20 15:39:35 [weight_utils.py:383] --quantization fp8 is deprecated for online quantization; use --quantization fp8_per_tensor instead.
+(MainProcess pid=157607) WARNING 11-20 15:39:35 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=157607) INFO 11-20 15:39:35 [vllm.py:815] Auto-enabling VLLM_USE_BREAKABLE_CUDAGRAPH=1. Set VLLM_USE_BREAKABLE_CUDAGRAPH=0 to opt out.
+(MainProcess pid=157607) INFO 11-20 15:39:35 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=157607) INFO 11-20 15:39:35 [vllm.py:1917] Cudagraph is disabled under eager mode
+(MainProcess pid=157607) INFO 11-20 15:39:35 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=157607) WARNING 11-20 15:39:38 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(MainProcess pid=157607) INFO 11-20 15:39:38 [numa_utils.py:575] Automatic NUMA binding unavailable on this host; starting unbound. Enable debug logging for the skip reason.
+W1120 15:39:39.512000 157760 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:39:39.513000 157760 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:39:39.513000 157760 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(EngineCore pid=157760) INFO 11-20 15:39:45 [core.py:153] Initializing a V1 LLM engine (v0.34.0) with config: model='Qwen/Qwen3.5-9B', speculative_config=None, tokenizer='Qwen/Qwen3.5-9B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=Qwen/Qwen3.5-9B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_token_budget': 5120, 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'use_breakable_cudagraph': True, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'prefill_cudagraph_capture_token_sizes': None, 'max_prefill_cudagraph_capture_tokens': None, 'decode_cudagraph_capture_request_sizes': None, 'max_decode_cudagraph_capture_requests': None, 'max_decode_cudagraph_capture_tokens': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_rocm_aiter_gemm_warmup=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None, rdna_hybrid_w4a16_prefill_dequant='disable')
+(EngineCore pid=157760) INFO 11-20 15:39:45 [parallel_state.py:1935] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_60812526d6aa44f2916469581dbd1922 backend=nccl
+(EngineCore pid=157760) INFO 11-20 15:39:45 [parallel_state.py:2394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=157760) INFO 11-20 15:39:46 [cuda.py:239] NVIDIA Confidential Computing not detected via NVML
+(EngineCore pid=157760) INFO 11-20 15:39:47 [model_runner.py:412] Loading model from scratch...
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 1418.35it/s]
+(EngineCore pid=157760) INFO 11-20 15:39:48 [__init__.py:818] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerTensorOnlineLinearMethod
+(EngineCore pid=157760) INFO 11-20 15:39:48 [cuda.py:608] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(EngineCore pid=157760) INFO 11-20 15:39:48 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(EngineCore pid=157760) INFO 11-20 15:39:48 [qwen_gdn_linear_attn.py:379] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(EngineCore pid=157760) INFO 11-20 15:39:48 [cuda.py:549] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=157760) INFO 11-20 15:39:48 [flash_attn.py:1131] Using FlashAttention version 2
+(EngineCore pid=157760) INFO 11-20 15:39:48 [base_loader.py:164] Quantizing 262 layers of types: attn.proj: 27 (from linear: fp8_per_tensor_static); attn.qkv: 27 (from linear: fp8_per_tensor_static); linear_attn.in_proj_ba: 24 (from linear: fp8_per_tensor_static); linear_attn.in_proj_qkvz: 24 (from linear: fp8_per_tensor_static); linear_attn.out_proj: 24 (from linear: fp8_per_tensor_static); mlp.down_proj: 32 (from linear: fp8_per_tensor_static); mlp.gate_up_proj: 32 (from linear: fp8_per_tensor_static); mlp.linear_fc1: 27 (from linear: fp8_per_tensor_static); mlp.linear_fc2: 27 (from linear: fp8_per_tensor_static); self_attn.o_proj: 8 (from linear: fp8_per_tensor_static); self_attn.qkv_proj: 8 (from linear: fp8_per_tensor_static); visual.merger.linear_fc1: 1 (from linear: fp8_per_tensor_static); visual.merger.linear_fc2: 1 (from linear: fp8_per_tensor_static)
+(EngineCore pid=157760) INFO 11-20 15:39:48 [base_loader.py:95] Initializing model took 1.119479 seconds
+(EngineCore pid=157760) INFO 11-20 15:39:48 [weight_utils.py:1154] Filesystem type for checkpoints: BTRFS. Checkpoint size: 17.98 GiB. Available RAM: 0.69 GiB.
+(EngineCore pid=157760) INFO 11-20 15:39:48 [weight_utils.py:1184] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (17.98 GiB) exceeds 90% of available RAM (0.69 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=157760) WARNING 11-20 15:39:52 [marlin_utils_fp8.py:98] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:03<00:11,  3.84s/it]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:04<00:04,  2.09s/it]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:08<00:02,  2.77s/it]
+(EngineCore pid=157760) WARNING 11-20 15:39:57 [utils.py:345] Attempted to load weight layers.0.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:39:58 [utils.py:345] Attempted to load weight layers.1.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:39:58 [utils.py:345] Attempted to load weight layers.10.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:00 [utils.py:345] Attempted to load weight layers.12.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:01 [utils.py:345] Attempted to load weight layers.13.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:02 [utils.py:345] Attempted to load weight layers.14.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:03 [utils.py:345] Attempted to load weight layers.16.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:04 [utils.py:345] Attempted to load weight layers.17.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:05 [utils.py:345] Attempted to load weight layers.18.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:07 [utils.py:345] Attempted to load weight layers.2.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:08 [utils.py:345] Attempted to load weight layers.20.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:09 [utils.py:345] Attempted to load weight layers.21.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:10 [utils.py:345] Attempted to load weight layers.22.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:12 [utils.py:345] Attempted to load weight layers.24.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:12 [utils.py:345] Attempted to load weight layers.25.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:13 [utils.py:345] Attempted to load weight layers.26.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:14 [utils.py:345] Attempted to load weight layers.28.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:15 [utils.py:345] Attempted to load weight layers.29.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:16 [utils.py:345] Attempted to load weight layers.30.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:16 [utils.py:345] Attempted to load weight layers.4.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:17 [utils.py:345] Attempted to load weight layers.5.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:17 [utils.py:345] Attempted to load weight layers.6.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:18 [utils.py:345] Attempted to load weight layers.8.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=157760) WARNING 11-20 15:40:18 [utils.py:345] Attempted to load weight layers.9.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:31<00:00, 10.88s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:31<00:00,  7.90s/it]
+
+(EngineCore pid=157760) INFO 11-20 15:40:20 [default_loader.py:543] Loading weights took 31.68 seconds
+(EngineCore pid=157760) INFO 11-20 15:40:20 [base_loader.py:177] Online quantization as part of model loading took 0.39 seconds
+(EngineCore pid=157760) INFO 11-20 15:40:21 [model_runner.py:441] Model loading took 10.27 GiB memory and 34.761019 seconds
+(EngineCore pid=157760) WARNING 11-20 15:40:21 [topk_topp_sampler.py:126] FlashInfer top-p/top-k sampling unavailable: FlashInfer kernels are disabled; falling back. Set VLLM_USE_FLASHINFER_SAMPLER=0 to silence.
+(EngineCore pid=157760) INFO 11-20 15:40:21 [torch_utils.py:301] Reducing Torch threads from 6 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=157760) INFO 11-20 15:40:21 [interface.py:1120] Setting attention block size to 576 tokens to ensure that attention page size is >= mamba page size.
+(EngineCore pid=157760) INFO 11-20 15:40:21 [interface.py:1144] Padding mamba page size by 9.92% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=157760) INFO 11-20 15:40:21 [utils.py:419] Using LBNHC KV cache layout.
+(EngineCore pid=157760) INFO 11-20 15:40:22 [marlin_utils.py:661] Marlin kernel can achieve better performance for small size_n with experimental use_atomic_add feature. You can consider set environment variable VLLM_MARLIN_USE_ATOMIC_ADD to 1 if possible.
+(EngineCore pid=157760) INFO 11-20 15:40:25 [gpu_worker.py:708] Initial free memory 19.1 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=157760) INFO 11-20 15:40:25 [kv_cache_utils.py:1168] GPU KV cache size: 51,427 tokens, Maximum concurrency for 8,192 tokens per request: 6.28x
+(EngineCore pid=157760) INFO 11-20 15:40:25 [kv_cache_utils.py:861] kv cache group sizes (8192, 8192, 8192, 576)
+(EngineCore pid=157760) INFO 11-20 15:40:25 [kv_cache_utils.py:862] kv lcm block sizes 73728
+(EngineCore pid=157760) INFO 11-20 15:40:25 [qwen_triton_warmup.py:405] Warming up Qwen GDN Triton kernels for model_type=qwen3_5_text.
+(EngineCore pid=157760) INFO 11-20 15:40:25 [core.py:458] init engine (profile, create kv cache, warmup model) took 3.87 s
+(EngineCore pid=157760) WARNING 11-20 15:40:25 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(EngineCore pid=157760) INFO 11-20 15:40:25 [vllm.py:815] Auto-enabling VLLM_USE_BREAKABLE_CUDAGRAPH=1. Set VLLM_USE_BREAKABLE_CUDAGRAPH=0 to opt out.
+(EngineCore pid=157760) INFO 11-20 15:40:25 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=157760) INFO 11-20 15:40:25 [vllm.py:1917] Cudagraph is disabled under eager mode
+(EngineCore pid=157760) INFO 11-20 15:40:25 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=157607) INFO 11-20 15:40:26 [hf.py:743] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+[+] Cargado en 61.9 s (kv_cache_memory_bytes=2.0 GB)
+  [retrieval] BOE_D01: 'Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, que no '
+  [retrieval] BOE_D02: 'Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, se'
+  [retrieval] BOE_D03: 'Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Ar'
+  [retrieval] BOE_D04: 'Lo más pronto que pueden hacerle entrar al día siguiente es a las 11:00.\n\n**Fuente:** Artí'
+  [retrieval] BOE_D05: 'Tienes derecho a **dos gratificaciones extraordinarias al año**:\n1. Una con ocasión de las'
+  [retrieval] BOE_D06: 'Te corresponden quince días naturales libres pagados por tu matrimonio, según el apartado '
+  [retrieval] BOE_D07: 'Para dejar la empresa un tiempo para hacer un máster y luego volver, necesitas tener **al '
+  [retrieval] BOE_D08: 'Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despi'
+  [retrieval] BOE_C01: 'Si el despido por causas objetivas se declara improcedente por un juez, la indemnización c'
+  [retrieval] BOE_C02: 'No aparece en el documento.\n\n*Nota: Los fragmentos proporcionados definen las horas extrao'
+  [retrieval] BOE_C03: 'Sí, pueden despedirlo por esa causa. Según el **Artículo 54**, se considera incumplimiento'
+  [retrieval] BOE_C04: 'Si te trasladan a otra ciudad y decides dejar la empresa, te corresponde una indemnización'
+  [retrieval] BOE_N01: 'No aparece en el documento.'
+  [retrieval] BOE_N02: 'No aparece en el documento.'
+  [retrieval] BOE_N03: 'No aparece en el documento.'
+  [oraculo] BOE_D01: 'Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas y las fe'
+  [oraculo] BOE_D02: 'Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, ya'
+  [oraculo] BOE_D03: 'Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Ar'
+  [oraculo] BOE_D04: 'Lo más pronto que pueden hacerte entrar al día siguiente es a las 11:00.\n\n**Fuente:** Artí'
+  [oraculo] BOE_D05: 'Tienes derecho a dos gratificaciones extraordinarias al año: una con ocasión de las fiesta'
+  [oraculo] BOE_D06: 'Te corresponden quince días naturales de ausencia con derecho a remuneración por motivo de'
+  [oraculo] BOE_D07: 'Para dejar la empresa un tiempo y luego volver, necesitas tener al menos **un año de antig'
+  [oraculo] BOE_D08: 'Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despi'
+  [oraculo] BOE_C01: 'Si el despido es declarado improcedente por un juez, la indemnización cambia de la previst'
+  [oraculo] BOE_C02: 'Se consideran horas extraordinarias aquellas que se realicen sobre la duración máxima de l'
+  [oraculo] BOE_C03: 'Sí, pueden despedirlo por ese motivo y deben comunicarlo de la siguiente manera:\n\n1.  **So'
+  [oraculo] BOE_C04: 'Si te trasladan a otra ciudad, te corresponde una indemnización de veinte días de salario '
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- qwen3.5-9b/boe: TTFT 0.4104 s | 45.04 tok/s | latencia 1.3498 s | VRAM pico 14.273 GB | prompt máx. 2159 tokens → results/llms/data/qwen3.5-9b_boe.json
+(MainProcess pid=157607) INFO 11-20 15:42:09 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=157760) INFO 11-20 15:42:09 [core.py:1698] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=157760) INFO 11-20 15:42:09 [core.py:1889] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=157760) INFO 11-20 15:42:09 [core.py:1920] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=157760) INFO 11-20 15:42:09 [core.py:1746] [shutdown] EngineCore: exiting busy loop
+W1120 15:42:15.843000 158659 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:42:15.887000 158659 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:42:15.888000 158659 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: lfm3-1.7b (LiquidAI/LFM3-1.7B) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+(MainProcess pid=158659) INFO 11-20 15:42:22 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'model': 'LiquidAI/LFM3-1.7B'}
+(MainProcess pid=158659) INFO 11-20 15:42:23 [model.py:761] Resolved architecture: Lfm3ForCausalLM
+(MainProcess pid=158659) INFO 11-20 15:42:23 [model.py:2214] Using max model len 8192
+(MainProcess pid=158659) INFO 11-20 15:42:23 [scheduler.py:354] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=158659) WARNING 11-20 15:42:23 [flashinfer.py:107] FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(MainProcess pid=158659) WARNING 11-20 15:42:24 [weight_utils.py:383] --quantization fp8 is deprecated for online quantization; use --quantization fp8_per_tensor instead.
+(MainProcess pid=158659) WARNING 11-20 15:42:25 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=158659) WARNING 11-20 15:42:25 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(MainProcess pid=158659) INFO 11-20 15:42:25 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=158659) INFO 11-20 15:42:25 [vllm.py:1917] Cudagraph is disabled under eager mode
+(MainProcess pid=158659) INFO 11-20 15:42:25 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 2105.16it/s]
+(MainProcess pid=158659) WARNING 11-20 15:42:27 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(MainProcess pid=158659) INFO 11-20 15:42:27 [numa_utils.py:575] Automatic NUMA binding unavailable on this host; starting unbound. Enable debug logging for the skip reason.
+W1120 15:42:28.411000 158800 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:42:28.412000 158800 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:42:28.412000 158800 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(EngineCore pid=158800) INFO 11-20 15:42:34 [core.py:153] Initializing a V1 LLM engine (v0.34.0) with config: model='LiquidAI/LFM3-1.7B', speculative_config=None, tokenizer='LiquidAI/LFM3-1.7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=LiquidAI/LFM3-1.7B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_token_budget': 5120, 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'use_breakable_cudagraph': False, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'prefill_cudagraph_capture_token_sizes': None, 'max_prefill_cudagraph_capture_tokens': None, 'decode_cudagraph_capture_request_sizes': None, 'max_decode_cudagraph_capture_requests': None, 'max_decode_cudagraph_capture_tokens': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_rocm_aiter_gemm_warmup=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None, rdna_hybrid_w4a16_prefill_dequant='disable')
+(EngineCore pid=158800) INFO 11-20 15:42:34 [parallel_state.py:1935] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_d643e89fce37490680dd32d28329baba backend=nccl
+(EngineCore pid=158800) INFO 11-20 15:42:34 [parallel_state.py:2394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=158800) INFO 11-20 15:42:35 [cuda.py:239] NVIDIA Confidential Computing not detected via NVML
+(EngineCore pid=158800) INFO 11-20 15:42:35 [model_runner.py:412] Loading model from scratch...
+(EngineCore pid=158800) INFO 11-20 15:42:35 [__init__.py:818] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerTensorOnlineLinearMethod
+(EngineCore pid=158800) INFO 11-20 15:42:36 [cuda.py:549] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=158800) INFO 11-20 15:42:36 [flash_attn.py:1131] Using FlashAttention version 2
+(EngineCore pid=158800) INFO 11-20 15:42:36 [base_loader.py:164] Quantizing 107 layers of types: feed_forward.w13: 24 (from linear: fp8_per_tensor_static); feed_forward.w2: 24 (from linear: fp8_per_tensor_static); self_attn.gate_proj: 11 (from linear: fp8_per_tensor_static); self_attn.o_proj: 11 (from linear: fp8_per_tensor_static); self_attn.qkv_proj: 11 (from linear: fp8_per_tensor_static); short_conv.in_proj: 13 (from linear: fp8_per_tensor_static); short_conv.out_proj: 13 (from linear: fp8_per_tensor_static)
+(EngineCore pid=158800) INFO 11-20 15:42:36 [base_loader.py:95] Initializing model took 0.691153 seconds
+(EngineCore pid=158800) INFO 11-20 15:42:36 [weight_utils.py:1154] Filesystem type for checkpoints: BTRFS. Checkpoint size: 3.22 GiB. Available RAM: 0.92 GiB.
+(EngineCore pid=158800) INFO 11-20 15:42:36 [weight_utils.py:1184] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (3.22 GiB) exceeds 90% of available RAM (0.92 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore pid=158800) WARNING 11-20 15:42:40 [marlin_utils_fp8.py:98] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+(EngineCore pid=158800) WARNING 11-20 15:42:41 [marlin_utils.py:238] Marlin requires thread-tile padding for some weight shapes in this model. Activations and/or outputs of the padded layers are padded/sliced on every forward; performance may be degraded.
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:18<00:00, 18.19s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:18<00:00, 18.19s/it]
+
+(EngineCore pid=158800) INFO 11-20 15:42:55 [default_loader.py:543] Loading weights took 18.30 seconds
+(EngineCore pid=158800) INFO 11-20 15:42:55 [base_loader.py:177] Online quantization as part of model loading took 0.17 seconds
+(EngineCore pid=158800) INFO 11-20 15:42:56 [model_runner.py:441] Model loading took 2.01 GiB memory and 20.985108 seconds
+(EngineCore pid=158800) WARNING 11-20 15:42:56 [topk_topp_sampler.py:126] FlashInfer top-p/top-k sampling unavailable: FlashInfer kernels are disabled; falling back. Set VLLM_USE_FLASHINFER_SAMPLER=0 to silence.
+(EngineCore pid=158800) INFO 11-20 15:42:56 [torch_utils.py:301] Reducing Torch threads from 6 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=158800) INFO 11-20 15:42:56 [interface.py:1144] Padding mamba page size by 433.33% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=158800) INFO 11-20 15:42:56 [utils.py:419] Using LBNHC KV cache layout.
+(EngineCore pid=158800) WARNING 11-20 15:42:56 [kv_cache_planning.py:583] Add 2 padding layers, may waste at most 15.38% KV cache memory
+(EngineCore pid=158800) WARNING 11-20 15:42:56 [kv_cache_planning.py:583] Add 4 padding layers, may waste at most 66.67% KV cache memory
+(EngineCore pid=158800) INFO 11-20 15:42:56 [marlin_utils.py:661] Marlin kernel can achieve better performance for small size_n with experimental use_atomic_add feature. You can consider set environment variable VLLM_MARLIN_USE_ATOMIC_ADD to 1 if possible.
+(EngineCore pid=158800) INFO 11-20 15:42:57 [gpu_worker.py:708] Initial free memory 19.1 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=158800) INFO 11-20 15:42:57 [kv_cache_utils.py:1168] GPU KV cache size: 69,167 tokens, Maximum concurrency for 8,192 tokens per request: 8.44x
+(EngineCore pid=158800) INFO 11-20 15:42:57 [kv_cache_utils.py:861] kv cache group sizes (8192, 8192, 8192, 64, 64, 64)
+(EngineCore pid=158800) INFO 11-20 15:42:57 [kv_cache_utils.py:862] kv lcm block sizes 8192
+(EngineCore pid=158800) INFO 11-20 15:42:57 [core.py:458] init engine (profile, create kv cache, warmup model) took 1.52 s
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]Fetching 18 files: 100%|██████████| 18/18 [00:00<00:00, 1675.34it/s]
+(EngineCore pid=158800) WARNING 11-20 15:42:59 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(EngineCore pid=158800) WARNING 11-20 15:42:59 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=158800) INFO 11-20 15:42:59 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=158800) INFO 11-20 15:42:59 [vllm.py:1917] Cudagraph is disabled under eager mode
+(EngineCore pid=158800) INFO 11-20 15:42:59 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=158659) INFO 11-20 15:42:59 [hf.py:743] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+[+] Cargado en 44.1 s (kv_cache_memory_bytes=2.0 GB)
+  [retrieval] DEB_D01: 'No aparece en el documento. Según el Fragmento 2, para obtener la lista de paquetes dispon'
+  [retrieval] DEB_D02: "No aparece en el documento. (La información sobre diferencias entre 'remove' y 'purge' se "
+  [retrieval] DEB_D03: 'No aparece en el documento. Sin embargo, según el Fragmento 1, se menciona que la orden **'
+  [retrieval] DEB_D04: 'No aparece en el documento. Sin embargo, según el Fragmento 5 (Fuente: 8.9.6. locate y upd'
+  [retrieval] DEB_D05: 'No aparece en el documento.'
+  [retrieval] DEB_D06: 'No aparece en el documento. Sin embargo, según el Fragmento 1, para automatizar la conexió'
+  [retrieval] DEB_D07: 'No aparece en el documento. Según el Fragmento 2, para instalar la nueva versión de `bulls'
+  [retrieval] DEB_D08: 'No aparece en el documento.'
+  [retrieval] DEB_C01: 'No aparece en el documento. Sin embargo, según el Fragmento 1, **anacron** se utiliza para'
+  [retrieval] DEB_C02: 'No aparece en el documento. Sin embargo, según el Fragmento 1, el archivo `/etc/shadow` al'
+  [retrieval] DEB_C03: 'No aparece en el documento. (El fragmento 1 menciona `aptitude why` para ver por qué un pa'
+  [retrieval] DEB_C04: 'No aparece en el documento.'
+  [retrieval] DEB_N01: 'No aparece en el documento.'
+  [retrieval] DEB_N02: 'No aparece en el documento.'
+  [retrieval] DEB_N03: 'No aparece en el documento.'
+  [oraculo] DEB_D01: 'De la sección 6.2.1. Inicialización (Fragmento 1): Para cualquier trabajo con APT necesita'
+  [oraculo] DEB_D02: 'No aparece en el documento. (El fragmento menciona que **apt remove** elimina paquetes y *'
+  [oraculo] DEB_D03: 'De la información del Fragmento 1:\n\n- "Los resultados de estas operaciones son registrados'
+  [oraculo] DEB_D04: 'De la primera fragmento:\n\n- **Locate** puede encontrar la ubicación de un archivo cuando s'
+  [oraculo] DEB_D05: 'De la información proporcionada no aparece cómo doy de alta un usuario nuevo y le permito '
+  [oraculo] DEB_D06: 'De la sección "Autenticación basada en llaves" del Fragmento 9.2.1.1:\n\n1. El usuario gener'
+  [oraculo] DEB_D07: 'De la información del Fragmento 1:\n\n- Se menciona que `APT` no instalará versiones nuevas '
+  [oraculo] DEB_D08: 'De la información del Fragmento 1:\n\n- La orden **at** ejecuta un programa en un momento es'
+  [oraculo] DEB_C01: 'No aparece en el documento.'
+  [oraculo] DEB_C02: 'No aparece en el documento. Sin embargo, según el Fragmento 1, la contraseña está cifrada '
+  [oraculo] DEB_C03: 'No aparece en el documento.'
+  [oraculo] DEB_C04: 'No aparece en el documento. (El fragmento 6.7.1. Procedimiento recomendado, parte 3 de 4, '
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- lfm3-1.7b/debian: TTFT 0.1167 s | 60.89 tok/s | latencia 2.4123 s | VRAM pico 5.361 GB | prompt máx. 2432 tokens → results/llms/data/lfm3-1.7b_debian.json
+(MainProcess pid=158659) INFO 11-20 15:44:55 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=158800) INFO 11-20 15:44:55 [core.py:1698] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=158800) INFO 11-20 15:44:55 [core.py:1889] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=158800) INFO 11-20 15:44:55 [core.py:1920] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=158800) INFO 11-20 15:44:55 [core.py:1746] [shutdown] EngineCore: exiting busy loop
+W1120 15:45:01.721000 159559 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:45:01.769000 159559 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:45:01.770000 159559 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: llama3.2-3b (meta-llama/Llama-3.2-3B-Instruct) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+(MainProcess pid=159559) INFO 11-20 15:45:08 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'model': 'meta-llama/Llama-3.2-3B-Instruct'}
+(MainProcess pid=159559) INFO 11-20 15:45:09 [model.py:761] Resolved architecture: LlamaForCausalLM
+(MainProcess pid=159559) INFO 11-20 15:45:09 [model.py:2214] Using max model len 8192
+(MainProcess pid=159559) INFO 11-20 15:45:09 [scheduler.py:354] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=159559) WARNING 11-20 15:45:09 [flashinfer.py:107] FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(MainProcess pid=159559) WARNING 11-20 15:45:10 [weight_utils.py:383] --quantization fp8 is deprecated for online quantization; use --quantization fp8_per_tensor instead.
+Parse safetensors files:   0%|          | 0/2 [00:00<?, ?it/s]Parse safetensors files:  50%|█████     | 1/2 [00:00<00:00,  2.84it/s]Parse safetensors files: 100%|██████████| 2/2 [00:00<00:00,  4.19it/s]Parse safetensors files: 100%|██████████| 2/2 [00:00<00:00,  3.91it/s]
+(MainProcess pid=159559) WARNING 11-20 15:45:11 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=159559) WARNING 11-20 15:45:11 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(MainProcess pid=159559) INFO 11-20 15:45:11 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=159559) INFO 11-20 15:45:11 [vllm.py:1917] Cudagraph is disabled under eager mode
+(MainProcess pid=159559) INFO 11-20 15:45:11 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files: 100%|██████████| 13/13 [00:00<00:00, 1791.32it/s]
+(MainProcess pid=159559) WARNING 11-20 15:45:13 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(MainProcess pid=159559) INFO 11-20 15:45:13 [numa_utils.py:575] Automatic NUMA binding unavailable on this host; starting unbound. Enable debug logging for the skip reason.
+W1120 15:45:14.249000 159707 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:45:14.250000 159707 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:45:14.251000 159707 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(EngineCore pid=159707) INFO 11-20 15:45:19 [core.py:153] Initializing a V1 LLM engine (v0.34.0) with config: model='meta-llama/Llama-3.2-3B-Instruct', speculative_config=None, tokenizer='meta-llama/Llama-3.2-3B-Instruct', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=meta-llama/Llama-3.2-3B-Instruct, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_token_budget': 5120, 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'use_breakable_cudagraph': False, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'prefill_cudagraph_capture_token_sizes': None, 'max_prefill_cudagraph_capture_tokens': None, 'decode_cudagraph_capture_request_sizes': None, 'max_decode_cudagraph_capture_requests': None, 'max_decode_cudagraph_capture_tokens': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_rocm_aiter_gemm_warmup=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None, rdna_hybrid_w4a16_prefill_dequant='disable')
+(EngineCore pid=159707) INFO 11-20 15:45:20 [parallel_state.py:1935] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_4a29f7d49e6145809987133961018195 backend=nccl
+(EngineCore pid=159707) INFO 11-20 15:45:20 [parallel_state.py:2394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=159707) INFO 11-20 15:45:21 [cuda.py:239] NVIDIA Confidential Computing not detected via NVML
+(EngineCore pid=159707) INFO 11-20 15:45:21 [model_runner.py:412] Loading model from scratch...
+(EngineCore pid=159707) INFO 11-20 15:45:21 [__init__.py:818] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerTensorOnlineLinearMethod
+(EngineCore pid=159707) INFO 11-20 15:45:22 [cuda.py:549] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=159707) INFO 11-20 15:45:22 [flash_attn.py:1131] Using FlashAttention version 2
+(EngineCore pid=159707) INFO 11-20 15:45:22 [base_loader.py:164] Quantizing 112 layers of types: mlp.down_proj: 28 (from linear: fp8_per_tensor_static); mlp.gate_up_proj: 28 (from linear: fp8_per_tensor_static); self_attn.o_proj: 28 (from linear: fp8_per_tensor_static); self_attn.qkv_proj: 28 (from linear: fp8_per_tensor_static)
+(EngineCore pid=159707) INFO 11-20 15:45:22 [base_loader.py:95] Initializing model took 0.717125 seconds
+(EngineCore pid=159707) INFO 11-20 15:45:22 [weight_utils.py:1154] Filesystem type for checkpoints: BTRFS. Checkpoint size: 5.98 GiB. Available RAM: 0.47 GiB.
+(EngineCore pid=159707) INFO 11-20 15:45:22 [weight_utils.py:1184] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (5.98 GiB) exceeds 90% of available RAM (0.47 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+(EngineCore pid=159707) WARNING 11-20 15:45:27 [marlin_utils_fp8.py:98] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+Loading safetensors checkpoint shards:  50% Completed | 1/2 [00:27<00:27, 27.65s/it]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:35<00:00, 16.18s/it]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:35<00:00, 17.90s/it]
+
+(EngineCore pid=159707) INFO 11-20 15:45:58 [default_loader.py:543] Loading weights took 35.85 seconds
+(EngineCore pid=159707) INFO 11-20 15:45:58 [base_loader.py:177] Online quantization as part of model loading took 0.31 seconds
+(EngineCore pid=159707) INFO 11-20 15:45:59 [model_runner.py:441] Model loading took 3.42 GiB memory and 38.630370 seconds
+(EngineCore pid=159707) WARNING 11-20 15:45:59 [topk_topp_sampler.py:126] FlashInfer top-p/top-k sampling unavailable: FlashInfer kernels are disabled; falling back. Set VLLM_USE_FLASHINFER_SAMPLER=0 to silence.
+(EngineCore pid=159707) INFO 11-20 15:45:59 [torch_utils.py:301] Reducing Torch threads from 6 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=159707) INFO 11-20 15:45:59 [utils.py:419] Using LBNHC KV cache layout.
+(EngineCore pid=159707) INFO 11-20 15:46:02 [gpu_worker.py:708] Initial free memory 19.1 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=159707) INFO 11-20 15:46:02 [kv_cache_utils.py:1168] GPU KV cache size: 18,688 tokens, Maximum concurrency for 8,192 tokens per request: 2.28x
+(EngineCore pid=159707) INFO 11-20 15:46:02 [core.py:458] init engine (profile, create kv cache, warmup model) took 2.99 s
+Fetching 13 files:   0%|          | 0/13 [00:00<?, ?it/s]Fetching 13 files: 100%|██████████| 13/13 [00:00<00:00, 1463.00it/s]
+Parse safetensors files:   0%|          | 0/2 [00:00<?, ?it/s]Parse safetensors files:  50%|█████     | 1/2 [00:00<00:00,  3.33it/s]Parse safetensors files: 100%|██████████| 2/2 [00:00<00:00,  6.14it/s]
+(EngineCore pid=159707) WARNING 11-20 15:46:04 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(EngineCore pid=159707) WARNING 11-20 15:46:04 [vllm.py:1733] Inductor compilation was disabled by user settings, optimizations settings that are only active during inductor compilation will be ignored.
+(EngineCore pid=159707) INFO 11-20 15:46:04 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=159707) INFO 11-20 15:46:04 [vllm.py:1917] Cudagraph is disabled under eager mode
+(EngineCore pid=159707) INFO 11-20 15:46:04 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=159559) INFO 11-20 15:46:04 [hf.py:743] Detected the chat template content format to be 'string'. You can set `--chat-template-content-format` to override this.
+[+] Cargado en 62.7 s (kv_cache_memory_bytes=2.0 GB)
+  [retrieval] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la or'
+  [retrieval] DEB_D02: 'Fuente: 5.2.2. Scripts de configuración\n\nLa principal diferencia entre desinstalar un paqu'
+  [retrieval] DEB_D03: 'No aparece en el documento.'
+  [retrieval] DEB_D04: 'Fuente: 7.1.1. Páginas de manual\n\n**locate** puede encontrar la ubicación de un archivo cu'
+  [retrieval] DEB_D05: 'Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar *'
+  [retrieval] DEB_D06: 'Fuente: 9.2.1. Inicio seguro de sesión remota: SSH (parte 3 de 10)\n\nOpenSSH está dividido '
+  [retrieval] DEB_D07: 'No aparece en el documento.'
+  [retrieval] DEB_D08: 'Para ejecutar un comando una sola vez mañana a las 9:00, debes utilizar el macro `@reboot`'
+  [retrieval] DEB_C01: 'No aparece en el documento.'
+  [retrieval] DEB_C02: 'Fuente: 8.4.1. Lista de usuarios: /etc/passwd\n\nLa contraseña cifrada se almacena en el arc'
+  [retrieval] DEB_C03: 'No aparece en el documento.'
+  [retrieval] DEB_C04: 'No aparece en el documento.'
+  [retrieval] DEB_N01: 'No aparece en el documento.'
+  [retrieval] DEB_N02: 'No aparece en el documento.'
+  [retrieval] DEB_N03: 'No aparece en el documento.'
+  [oraculo] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar **apt'
+  [oraculo] DEB_D02: 'Según el fragmento, la diferencia entre desinstalar un paquete con **apt remove** y con **'
+  [oraculo] DEB_D03: 'Según el fragmento, puedes revisar lo que han hecho **apt** y **aptitude** en los siguient'
+  [oraculo] DEB_D04: 'El programa **locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte '
+  [oraculo] DEB_D05: 'Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, ejecuta el coman'
+  [oraculo] DEB_D06: 'Para conectarte por SSH a un servidor sin escribir la contraseña cada vez, sigue estos pas'
+  [oraculo] DEB_D07: 'No aparece en el documento.'
+  [oraculo] DEB_D08: 'Para ejecutar un comando una sola vez mañana a las 9:00, debes utilizar el comando `at` co'
+  [oraculo] DEB_C01: 'No aparece en el documento.'
+  [oraculo] DEB_C02: 'Según el fragmento 2, el hash de la contraseña de un usuario se guarda en el archivo `/etc'
+  [oraculo] DEB_C03: 'Para averiguar qué paquete trae un programa y lo instalar, puedes utilizar la orden **apt-'
+  [oraculo] DEB_C04: 'No aparece en el documento.'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- llama3.2-3b/debian: TTFT 0.21 s | 66.43 tok/s | latencia 0.3149 s | VRAM pico 7.072 GB | prompt máx. 2473 tokens → results/llms/data/llama3.2-3b_debian.json
+(MainProcess pid=159559) INFO 11-20 15:46:48 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=159707) INFO 11-20 15:46:48 [core.py:1698] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=159707) INFO 11-20 15:46:48 [core.py:1889] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=159707) INFO 11-20 15:46:48 [core.py:1920] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=159707) INFO 11-20 15:46:48 [core.py:1746] [shutdown] EngineCore: exiting busy loop
+W1120 15:46:54.627000 160369 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:46:54.674000 160369 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:46:54.674000 160369 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: nemotron-bolt-e4b (nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+(MainProcess pid=160369) INFO 11-20 15:47:01 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'model': 'nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB'}
+Traceback (most recent call last):
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 393, in <module>
+    main()
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 377, in main
+    run(modelos[0], escenarios[0], oraculo=not a.sin_oraculo, n_coste=a.n_coste, rondas=a.rondas)
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 283, in run
+    llm, modo_memoria = cargar_llm(cfg["repo"], cfg.get("extra"))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/scripts/benchmark_llms_vllm.py", line 207, in cargar_llm
+    llm = LLM(**comunes, kv_cache_memory_bytes=int(KV_CACHE_GB * 2**30))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/entrypoints/llm.py", line 352, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/v1/engine/llm_engine.py", line 183, in from_engine_args
+    vllm_config = engine_args.create_engine_config(usage_context)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 2313, in create_engine_config
+    model_config = self.create_model_config()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/vllm/engine/arg_utils.py", line 2025, in create_model_config
+    return ModelConfig(
+           ^^^^^^^^^^^^
+  File "/home/g1-2/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/pydantic/_internal/_dataclasses.py", line 121, in __init__
+    s.__pydantic_validator__.validate_python(ArgsKwargs(args, kwargs), self_instance=s)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for ModelConfig
+  Value error, Invalid repository ID or local directory specified: 'nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB'.
+Please verify the following requirements:
+1. Provide a valid Hugging Face repository ID.
+2. Specify a local directory that contains a recognized configuration file.
+   - For Hugging Face models: ensure the presence of a 'config.json'.
+   - For Mistral models: ensure the presence of a 'params.json'.
+ [type=value_error, input_value=ArgsKwargs((), {'model': ...nderer_num_workers': 1}), input_type=ArgsKwargs]
+    For further information visit https://errors.pydantic.dev/2.14/v/value_error
+W1120 15:47:05.081000 160460 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:47:05.127000 160460 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:47:05.127000 160460 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+
+======================================================================
+LLM: qwen3.5-9b (Qwen/Qwen3.5-9B) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+(MainProcess pid=160460) INFO 11-20 15:47:12 [startup.py:96] non-default args: {'dtype': 'bfloat16', 'seed': 42, 'max_model_len': 8192, 'enable_prefix_caching': False, 'kv_cache_memory_bytes': 2147483648, 'disable_log_stats': True, 'quantization': 'fp8', 'enforce_eager': True, 'limit_mm_per_prompt': {'image': 0, 'video': 0}, 'model': 'Qwen/Qwen3.5-9B'}
+(MainProcess pid=160460) INFO 11-20 15:47:13 [model.py:761] Resolved architecture: Qwen3_5ForConditionalGeneration
+(MainProcess pid=160460) INFO 11-20 15:47:13 [model.py:2214] Using max model len 8192
+(MainProcess pid=160460) WARNING 11-20 15:47:13 [flashinfer.py:107] FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 1421.00it/s]
+(MainProcess pid=160460) INFO 11-20 15:47:16 [model.py:984] All limits of multimodal modalities supported by the model are set to 0, running in text-only mode.
+(MainProcess pid=160460) INFO 11-20 15:47:16 [model.py:1041] Disabled mm_prefix attention mode because multimodal inputs are configuration-disabled. Attention backends without mm_prefix support may now be selected.
+(MainProcess pid=160460) INFO 11-20 15:47:16 [scheduler.py:354] Chunked prefill is enabled with max_num_batched_tokens=8192.
+(MainProcess pid=160460) WARNING 11-20 15:47:16 [weight_utils.py:383] --quantization fp8 is deprecated for online quantization; use --quantization fp8_per_tensor instead.
+(MainProcess pid=160460) WARNING 11-20 15:47:16 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(MainProcess pid=160460) INFO 11-20 15:47:16 [vllm.py:815] Auto-enabling VLLM_USE_BREAKABLE_CUDAGRAPH=1. Set VLLM_USE_BREAKABLE_CUDAGRAPH=0 to opt out.
+(MainProcess pid=160460) INFO 11-20 15:47:16 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(MainProcess pid=160460) INFO 11-20 15:47:16 [vllm.py:1917] Cudagraph is disabled under eager mode
+(MainProcess pid=160460) INFO 11-20 15:47:16 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=160460) WARNING 11-20 15:47:20 [system_utils.py:157] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+(MainProcess pid=160460) INFO 11-20 15:47:20 [numa_utils.py:575] Automatic NUMA binding unavailable on this host; starting unbound. Enable debug logging for the skip reason.
+W1120 15:47:21.185000 160631 torch/_opaque_base.py:6] torch._opaque_base is deprecated, use torch._custom_class_base instead
+W1120 15:47:21.186000 160631 torch/_library/opaque_object.py:288] register_opaque_type is deprecated, use register_custom_class instead
+W1120 15:47:21.186000 160631 torch/_library/opaque_object.py:211] typ='value' is deprecated, use typ='constant' instead
+FlashInfer kernels are disabled: flashinfer-cubin is not installed and nvcc (CUDA_HOME, CUDA_PATH, PATH or /usr/local/cuda) or ninja (PATH) is missing. Set CUDA_HOME to a CUDA toolkit and put ninja on PATH, or run `vllm download-kernels`.
+(EngineCore pid=160631) INFO 11-20 15:47:26 [core.py:153] Initializing a V1 LLM engine (v0.34.0) with config: model='Qwen/Qwen3.5-9B', speculative_config=None, tokenizer='Qwen/Qwen3.5-9B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=main, tokenizer_revision=main, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, decode_context_parallel_size=1, dcp_comm_backend=ag_rs, disable_custom_all_reduce=False, quantization=fp8, quantization_config=None, enforce_eager=True, aux_output_config=AuxOutputConfig(enable_return_routed_experts=False, max_bytes=None), kv_cache_dtype=auto, device_config=cuda, structured_outputs_config=StructuredOutputsConfig(backend='auto', disable_any_whitespace=False, disable_additional_properties=False, reasoning_parser='', reasoning_parser_plugin='', enable_in_reasoning=False), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None, per_request_spec_decode_metrics='none', kv_cache_metrics=False, kv_cache_metrics_sample=0.01, custom_histogram_buckets=None, cudagraph_metrics=False, enable_layerwise_nvtx_tracing=False, enable_mfu_metrics=False, enable_mm_processor_stats=False, enable_logging_iteration_details=False, jit_monitor_mode='warn', jit_monitor_verbose=False), seed=42, served_model_name=Qwen/Qwen3.5-9B, enable_prefix_caching=False, enable_chunked_prefill=True, pooler_config=None, compilation_config={'mode': <CompilationMode.NONE: 0>, 'debug_dump_path': None, 'cache_dir': '', 'compile_cache_save_format': 'binary', 'backend': 'inductor', 'custom_ops': ['all'], 'ir_enable_torch_wrap': False, 'splitting_ops': [], 'compile_mm_encoder': False, 'cudagraph_mm_encoder': False, 'encoder_cudagraph_token_budgets': [], 'encoder_cudagraph_max_token_budget': 5120, 'encoder_cudagraph_max_vision_items_per_batch': 0, 'encoder_cudagraph_max_frames_per_batch': None, 'cudagraph_decoder_replay': True, 'decoder_replay_cudagraph_capture_sizes': [], 'decoder_replay_trim_threshold': 768, 'compile_sizes': [], 'compile_ranges_endpoints': [8192], 'inductor_compile_config': {'enable_auto_functionalized_v2': False, 'combo_kernels': True, 'benchmark_combo_kernel': True}, 'inductor_passes': {}, 'cudagraph_mode': <CUDAGraphMode.NONE: 0>, 'use_breakable_cudagraph': True, 'cudagraph_num_of_warmups': 0, 'cudagraph_capture_sizes': [], 'prefill_cudagraph_capture_token_sizes': None, 'max_prefill_cudagraph_capture_tokens': None, 'decode_cudagraph_capture_request_sizes': None, 'max_decode_cudagraph_capture_requests': None, 'max_decode_cudagraph_capture_tokens': None, 'cudagraph_copy_inputs': False, 'cudagraph_specialize_lora': True, 'use_inductor_graph_partition': False, 'pass_config': {'fuse_norm_quant': True, 'fuse_act_quant': True, 'fuse_attn_quant': False, 'fuse_allreduce_rms': False, 'enable_qk_norm_rope_fusion': False, 'fuse_rope_kvcache_cat_mla': False, 'fuse_act_padding': False, 'fuse_qk_norm_rope_kvcache': False}, 'max_cudagraph_capture_size': 0, 'dynamic_shapes_config': {'type': <DynamicShapesType.BACKED: 'backed'>, 'evaluate_guards': False, 'assume_32_bit_indexing': False}, 'local_cache_dir': None, 'fast_moe_cold_start': False, 'static_all_moe_layers': []}, kernel_config=KernelConfig(ir_op_priority=IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native']), enable_flashinfer_autotune=True, enable_rocm_segmented_attn_autotune=False, enable_rocm_aiter_gemm_warmup=False, enable_cutedsl_warmup=True, enable_jit_warmup=False, monokernel=False, moe_backend='auto', sparse_indexer_topk_backend='auto', linear_backend='auto', linear_backend_per_quant=None, rdna_hybrid_w4a16_prefill_dequant='disable')
+(EngineCore pid=160631) INFO 11-20 15:47:27 [parallel_state.py:1935] world_size=1 rank=0 local_rank=0 distributed_init_method=file:///tmp/vllm_dist_bf6118c0b6494bf7b3fe8524e6ce4671 backend=nccl
+(EngineCore pid=160631) INFO 11-20 15:47:27 [parallel_state.py:2394] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, PCP rank 0, TP rank 0, ETP rank 0, EP rank N/A, EPLB rank N/A
+(EngineCore pid=160631) INFO 11-20 15:47:28 [cuda.py:239] NVIDIA Confidential Computing not detected via NVML
+(EngineCore pid=160631) INFO 11-20 15:47:29 [model_runner.py:412] Loading model from scratch...
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 1416.04it/s]
+(EngineCore pid=160631) INFO 11-20 15:47:29 [__init__.py:818] Selected MarlinFP8ScaledMMLinearKernel for Fp8PerTensorOnlineLinearMethod
+(EngineCore pid=160631) INFO 11-20 15:47:29 [cuda.py:608] Using backend AttentionBackendEnum.FLASH_ATTN for vit attention
+(EngineCore pid=160631) INFO 11-20 15:47:29 [mm_encoder_attention.py:372] Using AttentionBackendEnum.FLASH_ATTN for MMEncoderAttention.
+(EngineCore pid=160631) INFO 11-20 15:47:29 [qwen_gdn_linear_attn.py:379] Using Triton/FLA GDN prefill kernel (requested=auto, head_k_dim=128).
+(EngineCore pid=160631) INFO 11-20 15:47:30 [cuda.py:549] Using FLASH_ATTN attention backend out of potential backends: ['FLASH_ATTN', 'FLASHINFER', 'TRITON_ATTN', 'FLEX_ATTENTION'].
+(EngineCore pid=160631) INFO 11-20 15:47:30 [flash_attn.py:1131] Using FlashAttention version 2
+(EngineCore pid=160631) INFO 11-20 15:47:30 [base_loader.py:164] Quantizing 262 layers of types: attn.proj: 27 (from linear: fp8_per_tensor_static); attn.qkv: 27 (from linear: fp8_per_tensor_static); linear_attn.in_proj_ba: 24 (from linear: fp8_per_tensor_static); linear_attn.in_proj_qkvz: 24 (from linear: fp8_per_tensor_static); linear_attn.out_proj: 24 (from linear: fp8_per_tensor_static); mlp.down_proj: 32 (from linear: fp8_per_tensor_static); mlp.gate_up_proj: 32 (from linear: fp8_per_tensor_static); mlp.linear_fc1: 27 (from linear: fp8_per_tensor_static); mlp.linear_fc2: 27 (from linear: fp8_per_tensor_static); self_attn.o_proj: 8 (from linear: fp8_per_tensor_static); self_attn.qkv_proj: 8 (from linear: fp8_per_tensor_static); visual.merger.linear_fc1: 1 (from linear: fp8_per_tensor_static); visual.merger.linear_fc2: 1 (from linear: fp8_per_tensor_static)
+(EngineCore pid=160631) INFO 11-20 15:47:30 [base_loader.py:95] Initializing model took 1.014101 seconds
+(EngineCore pid=160631) INFO 11-20 15:47:30 [weight_utils.py:1154] Filesystem type for checkpoints: BTRFS. Checkpoint size: 17.98 GiB. Available RAM: 0.00 GiB.
+(EngineCore pid=160631) INFO 11-20 15:47:30 [weight_utils.py:1184] Auto-prefetch is disabled because the filesystem (BTRFS) is not a recognized network FS (NFS/Lustre) and the checkpoint size (17.98 GiB) exceeds 90% of available RAM (0.00 GiB).
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+(EngineCore pid=160631) WARNING 11-20 15:47:36 [marlin_utils_fp8.py:98] Your GPU does not have native support for FP8 computation but FP8 quantization is being used. Weight-only FP8 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:06<00:19,  6.63s/it]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:16<00:17,  8.55s/it]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:33<00:12, 12.54s/it]
+(EngineCore pid=160631) WARNING 11-20 15:48:04 [utils.py:345] Attempted to load weight layers.0.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:05 [utils.py:345] Attempted to load weight layers.1.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:05 [utils.py:345] Attempted to load weight layers.10.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:06 [utils.py:345] Attempted to load weight layers.12.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:06 [utils.py:345] Attempted to load weight layers.13.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:06 [utils.py:345] Attempted to load weight layers.14.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:07 [utils.py:345] Attempted to load weight layers.16.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:07 [utils.py:345] Attempted to load weight layers.17.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:08 [utils.py:345] Attempted to load weight layers.18.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:09 [utils.py:345] Attempted to load weight layers.2.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:09 [utils.py:345] Attempted to load weight layers.20.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:09 [utils.py:345] Attempted to load weight layers.21.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:09 [utils.py:345] Attempted to load weight layers.22.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:10 [utils.py:345] Attempted to load weight layers.24.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:11 [utils.py:345] Attempted to load weight layers.25.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:11 [utils.py:345] Attempted to load weight layers.26.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:12 [utils.py:345] Attempted to load weight layers.28.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:12 [utils.py:345] Attempted to load weight layers.29.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:12 [utils.py:345] Attempted to load weight layers.30.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:13 [utils.py:345] Attempted to load weight layers.4.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:14 [utils.py:345] Attempted to load weight layers.5.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:14 [utils.py:345] Attempted to load weight layers.6.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:15 [utils.py:345] Attempted to load weight layers.8.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+(EngineCore pid=160631) WARNING 11-20 15:48:15 [utils.py:345] Attempted to load weight layers.9.linear_attn.norm.weight with dtype torch.float32 into parameter with dtype torch.bfloat16
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:47<00:00, 12.93s/it]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:47<00:00, 11.83s/it]
+
+(EngineCore pid=160631) INFO 11-20 15:48:17 [default_loader.py:543] Loading weights took 47.41 seconds
+(EngineCore pid=160631) INFO 11-20 15:48:18 [base_loader.py:177] Online quantization as part of model loading took 0.48 seconds
+(EngineCore pid=160631) INFO 11-20 15:48:19 [model_runner.py:441] Model loading took 10.27 GiB memory and 50.389057 seconds
+(EngineCore pid=160631) WARNING 11-20 15:48:19 [topk_topp_sampler.py:126] FlashInfer top-p/top-k sampling unavailable: FlashInfer kernels are disabled; falling back. Set VLLM_USE_FLASHINFER_SAMPLER=0 to silence.
+(EngineCore pid=160631) INFO 11-20 15:48:19 [torch_utils.py:301] Reducing Torch threads from 6 to 1 for serving. Set OMP_NUM_THREADS in the external environment to override.
+(EngineCore pid=160631) INFO 11-20 15:48:19 [interface.py:1120] Setting attention block size to 576 tokens to ensure that attention page size is >= mamba page size.
+(EngineCore pid=160631) INFO 11-20 15:48:19 [interface.py:1144] Padding mamba page size by 9.92% to ensure that mamba page size and attention page size are exactly equal.
+(EngineCore pid=160631) INFO 11-20 15:48:19 [utils.py:419] Using LBNHC KV cache layout.
+(EngineCore pid=160631) INFO 11-20 15:48:19 [marlin_utils.py:661] Marlin kernel can achieve better performance for small size_n with experimental use_atomic_add feature. You can consider set environment variable VLLM_MARLIN_USE_ATOMIC_ADD to 1 if possible.
+(EngineCore pid=160631) INFO 11-20 15:48:22 [gpu_worker.py:708] Initial free memory 19.1 GiB, reserved 2.0 GiB memory for KV Cache as specified by kv_cache_memory_bytes config and skipped memory profiling. This does not respect the gpu_memory_utilization config. Only use kv_cache_memory_bytes config when you want manual control of KV cache memory size. If OOM'ed, check the difference of initial free memory between the current run and the previous run where kv_cache_memory_bytes is suggested and update it correspondingly.
+(EngineCore pid=160631) INFO 11-20 15:48:22 [kv_cache_utils.py:1168] GPU KV cache size: 51,427 tokens, Maximum concurrency for 8,192 tokens per request: 6.28x
+(EngineCore pid=160631) INFO 11-20 15:48:22 [kv_cache_utils.py:861] kv cache group sizes (8192, 8192, 8192, 576)
+(EngineCore pid=160631) INFO 11-20 15:48:22 [kv_cache_utils.py:862] kv lcm block sizes 73728
+(EngineCore pid=160631) INFO 11-20 15:48:22 [qwen_triton_warmup.py:405] Warming up Qwen GDN Triton kernels for model_type=qwen3_5_text.
+(EngineCore pid=160631) INFO 11-20 15:48:23 [core.py:458] init engine (profile, create kv cache, warmup model) took 3.92 s
+(EngineCore pid=160631) WARNING 11-20 15:48:23 [vllm.py:1709] Enforce eager set, disabling torch.compile, CUDAGraphs, and JIT kernel warmup. This is equivalent to setting -cc.mode=none -cc.cudagraph_mode=none and --kernel_config.enable_jit_warmup=False
+(EngineCore pid=160631) INFO 11-20 15:48:23 [vllm.py:815] Auto-enabling VLLM_USE_BREAKABLE_CUDAGRAPH=1. Set VLLM_USE_BREAKABLE_CUDAGRAPH=0 to opt out.
+(EngineCore pid=160631) INFO 11-20 15:48:23 [kernel.py:517] Final IR op priority after setting platform defaults: IrOpPriorityConfig(rms_norm=['vllm_c', 'native'], fused_add_rms_norm=['vllm_c', 'native'], gelu_and_mul_sparse=['triton', 'native'])
+(EngineCore pid=160631) INFO 11-20 15:48:23 [vllm.py:1917] Cudagraph is disabled under eager mode
+(EngineCore pid=160631) INFO 11-20 15:48:23 [compilation.py:393] Enabled custom fusions: norm_quant, act_quant
+(MainProcess pid=160460) INFO 11-20 15:48:23 [hf.py:743] Detected the chat template content format to be 'openai'. You can set `--chat-template-content-format` to override this.
+[+] Cargado en 79.0 s (kv_cache_memory_bytes=2.0 GB)
+  [retrieval] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debe ejecutar la ord'
+  [retrieval] DEB_D02: 'La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa**: se'
+  [retrieval] DEB_D03: 'Según los fragmentos proporcionados, no aparece información específica sobre en qué ficher'
+  [retrieval] DEB_D04: 'La herramienta que encuentra la ubicación de un archivo casi al instante es **locate**.\n\n*'
+  [retrieval] DEB_D05: 'Para dar de alta un usuario nuevo, se utiliza el programa **adduser** (Fragmento 1).\n\nPara'
+  [retrieval] DEB_D06: 'Para conectarte por SSH sin escribir la contraseña cada vez, puedes seguir estos pasos bas'
+  [retrieval] DEB_D07: 'Para instalar la nueva versión de un paquete cuando ya tienes `bullseye-backports` en las '
+  [retrieval] DEB_D08: 'Para ejecutar un comando una sola vez en un momento específico, debe utilizar la orden **a'
+  [retrieval] DEB_C01: 'Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se ut'
+  [retrieval] DEB_C02: 'El hash de la contraseña de un usuario se guarda en el archivo **`/etc/shadow`**.\n\nEs más '
+  [retrieval] DEB_C03: 'No aparece en el documento'
+  [retrieval] DEB_C04: 'No aparece en el documento.\n\nAunque los fragmentos mencionan el procedimiento de actualiza'
+  [retrieval] DEB_N01: 'No aparece en el documento'
+  [retrieval] DEB_N02: 'No aparece en el documento'
+  [retrieval] DEB_N03: 'No aparece en el documento'
+  [oraculo] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la or'
+  [oraculo] DEB_D02: 'La diferencia es que la orden `apt remove` elimina el paquete, mientras que la orden `apt '
+  [oraculo] DEB_D03: 'Los resultados de las operaciones de **apt** y **aptitude** se registran en los ficheros `'
+  [oraculo] DEB_D04: 'La herramienta que encuentra el archivo casi al instante es **locate**. Obtiene la informa'
+  [oraculo] DEB_D05: 'Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar e'
+  [oraculo] DEB_D06: 'Para conectarte por SSH sin escribir la contraseña cada vez, debes seguir estos pasos segú'
+  [oraculo] DEB_D07: 'Para instalar la nueva versión desde el repositorio `stable-backports`, debes indicar expl'
+  [oraculo] DEB_D08: 'Para ejecutar un comando una sola vez mañana a las 9:00, debes usar la orden **at** con el'
+  [oraculo] DEB_C01: 'Para programar la copia de seguridad, se debe escribir la tarea en el archivo `/etc/anacro'
+  [oraculo] DEB_C02: 'El hash de la contraseña se guarda en el archivo **`/etc/shadow`**.\n\nEs más seguro que gua'
+  [oraculo] DEB_C03: 'Para averiguar qué paquete trae un ejecutable aunque no esté instalado, debes usar la orde'
+  [oraculo] DEB_C04: 'Se recomienda actualizar en dos pasos para facilitar el trabajo de las herramientas de ges'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- qwen3.5-9b/debian: TTFT 0.4548 s | 44.75 tok/s | latencia 3.229 s | VRAM pico 14.273 GB | prompt máx. 2423 tokens → results/llms/data/qwen3.5-9b_debian.json
+(MainProcess pid=160460) INFO 11-20 15:50:28 [utils.py:628] [shutdown] Process manager: send sigterm to process EngineCore
+(EngineCore pid=160631) INFO 11-20 15:50:28 [core.py:1698] [shutdown] EngineCore: trigger received signal=SIGTERM
+(EngineCore pid=160631) INFO 11-20 15:50:28 [core.py:1889] [shutdown] EngineCore: start mode=abort timeout=0s
+(EngineCore pid=160631) INFO 11-20 15:50:28 [core.py:1920] [shutdown] EngineCore: request processing complete; starting resource teardown
+(EngineCore pid=160631) INFO 11-20 15:50:28 [core.py:1746] [shutdown] EngineCore: exiting busy loop
+
+>>> Lanzando proceso: lfm3-1.7b / boe
+
+>>> Lanzando proceso: llama3.2-3b / boe
+
+>>> Lanzando proceso: nemotron-bolt-e4b / boe
+[!] nemotron-bolt-e4b/boe terminó con código 1; sigo con el siguiente
+
+>>> Lanzando proceso: qwen3.5-9b / boe
+
+>>> Lanzando proceso: lfm3-1.7b / debian
+
+>>> Lanzando proceso: llama3.2-3b / debian
+
+>>> Lanzando proceso: nemotron-bolt-e4b / debian
+[!] nemotron-bolt-e4b/debian terminó con código 1; sigo con el siguiente
+
+>>> Lanzando proceso: qwen3.5-9b / debian
+
+Hecho. Siguiente paso: python scripts/generar_tablas_llm.py --plantilla

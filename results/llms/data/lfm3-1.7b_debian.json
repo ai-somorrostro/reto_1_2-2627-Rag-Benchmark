@@ -1,0 +1,1070 @@
+{
+  "meta": {
+    "modelo": "lfm3-1.7b",
+    "repo": "LiquidAI/LFM3-1.7B",
+    "tamano": "1,7B",
+    "categoria": "pequeño",
+    "cuantizacion": "FP8",
+    "dtype": "bfloat16",
+    "stack": "vLLM",
+    "stack_version": "0.34.0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_device": "NVIDIA A800 40GB Active MIG 3g.20gb",
+    "escenario": "debian",
+    "embedding": "bge-m3",
+    "top_k": 5,
+    "opciones": {
+      "temperature": 0.0,
+      "num_predict": 512,
+      "num_ctx": 8192,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "prefix_caching": false
+    },
+    "memoria": "kv_cache_memory_bytes=2.0 GB",
+    "vllm_extra": {},
+    "prompt_sistema": "Eres un asistente que responde preguntas usando ÚNICAMENTE los fragmentos proporcionados.\n\nReglas:\n1. Responde solo con información que aparezca en los fragmentos. No uses conocimientos propios.\n2. Si la respuesta no está en los fragmentos, responde exactamente: \"No aparece en el documento\" y nada más.\n3. Cita siempre la sección de donde sale la respuesta (aparece en la línea «Fuente» de cada fragmento).\n4. Responde en español y de forma breve.",
+    "prompt_usuario": "Fragmentos:\n\n{fragmentos}\n\nPregunta: {pregunta}",
+    "timestamp": "2026-11-20T15:44:55",
+    "tiempo_carga_s": 44.12,
+    "tokens_prompt_max": 2432,
+    "vram_base_gb": 0.279,
+    "vram_pico_gb": 5.361
+  },
+  "coste": {
+    "preguntas": [
+      "DEB_D01",
+      "DEB_D02",
+      "DEB_D03",
+      "DEB_C01",
+      "DEB_N01"
+    ],
+    "rondas_medidas": 3,
+    "mediana": {
+      "ttft_s": 0.1167,
+      "tokens_por_s": 60.89,
+      "latencia_total_s": 2.4123,
+      "tokens_salida": 140
+    },
+    "mediana_por_pregunta": {
+      "DEB_D01": {
+        "ttft_s": 0.1206,
+        "tokens_por_s": 60.89,
+        "latencia_total_s": 2.4035,
+        "tokens_salida": 140
+      },
+      "DEB_D02": {
+        "ttft_s": 0.1213,
+        "tokens_por_s": 60.66,
+        "latencia_total_s": 4.3248,
+        "tokens_salida": 256
+      },
+      "DEB_D03": {
+        "ttft_s": 0.1115,
+        "tokens_por_s": 60.7,
+        "latencia_total_s": 2.4013,
+        "tokens_salida": 140
+      },
+      "DEB_C01": {
+        "ttft_s": 0.0867,
+        "tokens_por_s": 60.71,
+        "latencia_total_s": 2.4753,
+        "tokens_salida": 146
+      },
+      "DEB_N01": {
+        "ttft_s": 0.1167,
+        "tokens_por_s": 61.19,
+        "latencia_total_s": 0.2153,
+        "tokens_salida": 7
+      }
+    },
+    "ejecuciones": {
+      "DEB_D01": [
+        {
+          "respuesta": "No aparece en el documento. Según el Fragmento 2, para obtener la lista de paquetes disponibles del archivo de Debian se puede usar la orden **apt-show-versions** o **aptitude search ~o**. También se menciona que el objetivo de la orden **ap update** es descargar el archivo `Packages` (o `Sources`) de cada origen de paquetes.\n\nFuente: 6.7.3. Limpieza tras una Actualización (Sección 6.7.3.1. Paquetes eliminados del Archivo de Debian y 6.2.1. Inicialización, Fragmento 2).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1211,
+          "latencia_total_s": 2.4186,
+          "tokens_salida": 140,
+          "tokens_por_s": 60.5,
+          "tokens_prompt": 2295,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. Según el Fragmento 2, para obtener la lista de paquetes disponibles del archivo de Debian se puede usar la orden **apt-show-versions** o **aptitude search ~o**. También se menciona que el objetivo de la orden **ap update** es descargar el archivo `Packages` (o `Sources`) de cada origen de paquetes.\n\nFuente: 6.7.3. Limpieza tras una Actualización (Sección 6.7.3.1. Paquetes eliminados del Archivo de Debian y 6.2.1. Inicialización, Fragmento 2).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1206,
+          "latencia_total_s": 2.4035,
+          "tokens_salida": 140,
+          "tokens_por_s": 60.89,
+          "tokens_prompt": 2295,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. Según el Fragmento 2, para obtener la lista de paquetes disponibles del archivo de Debian se puede usar la orden **apt-show-versions** o **aptitude search ~o**. También se menciona que el objetivo de la orden **ap update** es descargar el archivo `Packages` (o `Sources`) de cada origen de paquetes.\n\nFuente: 6.7.3. Limpieza tras una Actualización (Sección 6.7.3.1. Paquetes eliminados del Archivo de Debian y 6.2.1. Inicialización, Fragmento 2).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1204,
+          "latencia_total_s": 2.3995,
+          "tokens_salida": 140,
+          "tokens_por_s": 60.99,
+          "tokens_prompt": 2295,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_D02": [
+        {
+          "respuesta": "No aparece en el documento. (La información sobre diferencias entre 'remove' y 'purge' se menciona en los fragmentos, pero no se especifica la diferencia exacta en la respuesta solicitada.) Sin embargo, puedo extraer de los fragmentos:\n\n- **Remove** (sin purgar): Elimina los archivos del paquete, pero mantiene los archivos de configuración y otros datos (por ejemplo, ejecutar `dpkg -r` o `dpkg -r debian-cd`).\n- **Purge** (con `dpkg --purge` o `dpkg -P`): Elimina también los archivos de configuración y otros archivos temporales (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`, etc.).\n\nPor lo tanto, la diferencia principal es que **purge** elimina de forma más completa, incluyendo configuración y archivos temporales, mientras que **remove** solo elimina los archivos del paquete sin eliminar los archivos de configuración.\n\nFuente: Fragmento 2 (5.4.2. Eliminación de un paquete) y Fragmento 5 (6.2.2. Instalación y eliminación).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.122,
+          "latencia_total_s": 4.3265,
+          "tokens_salida": 256,
+          "tokens_por_s": 60.65,
+          "tokens_prompt": 2299,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. (La información sobre diferencias entre 'remove' y 'purge' se menciona en los fragmentos, pero no se especifica la diferencia exacta en la respuesta solicitada.) Sin embargo, puedo extraer de los fragmentos:\n\n- **Remove** (sin purgar): Elimina los archivos del paquete, pero mantiene los archivos de configuración y otros datos (por ejemplo, ejecutar `dpkg -r` o `dpkg -r debian-cd`).\n- **Purge** (con `dpkg --purge` o `dpkg -P`): Elimina también los archivos de configuración y otros archivos temporales (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`, etc.).\n\nPor lo tanto, la diferencia principal es que **purge** elimina de forma más completa, incluyendo configuración y archivos temporales, mientras que **remove** solo elimina los archivos del paquete sin eliminar los archivos de configuración.\n\nFuente: Fragmento 2 (5.4.2. Eliminación de un paquete) y Fragmento 5 (6.2.2. Instalación y eliminación).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1213,
+          "latencia_total_s": 4.3248,
+          "tokens_salida": 256,
+          "tokens_por_s": 60.66,
+          "tokens_prompt": 2299,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. (La información sobre diferencias entre 'remove' y 'purge' se menciona en los fragmentos, pero no se especifica la diferencia exacta en la respuesta solicitada.) Sin embargo, puedo extraer de los fragmentos:\n\n- **Remove** (sin purgar): Elimina los archivos del paquete, pero mantiene los archivos de configuración y otros datos (por ejemplo, ejecutar `dpkg -r` o `dpkg -r debian-cd`).\n- **Purge** (con `dpkg --purge` o `dpkg -P`): Elimina también los archivos de configuración y otros archivos temporales (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`, etc.).\n\nPor lo tanto, la diferencia principal es que **purge** elimina de forma más completa, incluyendo configuración y archivos temporales, mientras que **remove** solo elimina los archivos del paquete sin eliminar los archivos de configuración.\n\nFuente: Fragmento 2 (5.4.2. Eliminación de un paquete) y Fragmento 5 (6.2.2. Instalación y eliminación).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1198,
+          "latencia_total_s": 4.3061,
+          "tokens_salida": 256,
+          "tokens_por_s": 60.91,
+          "tokens_prompt": 2299,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_D03": [
+        {
+          "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, se menciona que la orden **debsums** puede comprobar si se han alterado archivos en el sistema local usando la información en `/var/lib/dpkg/info/`*`paquete`*`.md5sums (Sección 5.2.3). También, en el Fragmento 3, se habla de la interfaz **aptitude** para revisar paquetes. Pero no se especifica explícitamente en qué ficheros revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes.\n\nNo aparece en el documento.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1125,
+          "latencia_total_s": 2.3831,
+          "tokens_salida": 140,
+          "tokens_por_s": 61.22,
+          "tokens_prompt": 2105,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, se menciona que la orden **debsums** puede comprobar si se han alterado archivos en el sistema local usando la información en `/var/lib/dpkg/info/`*`paquete`*`.md5sums (Sección 5.2.3). También, en el Fragmento 3, se habla de la interfaz **aptitude** para revisar paquetes. Pero no se especifica explícitamente en qué ficheros revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes.\n\nNo aparece en el documento.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1115,
+          "latencia_total_s": 2.4123,
+          "tokens_salida": 140,
+          "tokens_por_s": 60.41,
+          "tokens_prompt": 2105,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, se menciona que la orden **debsums** puede comprobar si se han alterado archivos en el sistema local usando la información en `/var/lib/dpkg/info/`*`paquete`*`.md5sums (Sección 5.2.3). También, en el Fragmento 3, se habla de la interfaz **aptitude** para revisar paquetes. Pero no se especifica explícitamente en qué ficheros revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes.\n\nNo aparece en el documento.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1115,
+          "latencia_total_s": 2.4013,
+          "tokens_salida": 140,
+          "tokens_por_s": 60.7,
+          "tokens_prompt": 2105,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_C01": [
+        {
+          "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, **anacron** se utiliza para ejecutar tareas recurrentes cuando el equipo no está encendido, programándose en `/etc/anacrontab` con el programa **nice** para reducir su prioridad. Esto permite que las tareas se ejecuten unos minutos después de iniciar la máquina, considerando los períodos en que el equipo no funcionó.\n\nPara la pregunta sobre una copia de seguridad cada día a las 3:00 en un portátil que a menudo está apagado, no hay información específica en los fragmentos sobre programar copias de seguridad diarias o su configuración en portátiles.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.087,
+          "latencia_total_s": 2.4753,
+          "tokens_salida": 146,
+          "tokens_por_s": 60.71,
+          "tokens_prompt": 1585,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, **anacron** se utiliza para ejecutar tareas recurrentes cuando el equipo no está encendido, programándose en `/etc/anacrontab` con el programa **nice** para reducir su prioridad. Esto permite que las tareas se ejecuten unos minutos después de iniciar la máquina, considerando los períodos en que el equipo no funcionó.\n\nPara la pregunta sobre una copia de seguridad cada día a las 3:00 en un portátil que a menudo está apagado, no hay información específica en los fragmentos sobre programar copias de seguridad diarias o su configuración en portátiles.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.0865,
+          "latencia_total_s": 2.492,
+          "tokens_salida": 146,
+          "tokens_por_s": 60.28,
+          "tokens_prompt": 1585,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, **anacron** se utiliza para ejecutar tareas recurrentes cuando el equipo no está encendido, programándose en `/etc/anacrontab` con el programa **nice** para reducir su prioridad. Esto permite que las tareas se ejecuten unos minutos después de iniciar la máquina, considerando los períodos en que el equipo no funcionó.\n\nPara la pregunta sobre una copia de seguridad cada día a las 3:00 en un portátil que a menudo está apagado, no hay información específica en los fragmentos sobre programar copias de seguridad diarias o su configuración en portátiles.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.0867,
+          "latencia_total_s": 2.4676,
+          "tokens_salida": 146,
+          "tokens_por_s": 60.9,
+          "tokens_prompt": 1585,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_N01": [
+        {
+          "respuesta": "No aparece en el documento.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1167,
+          "latencia_total_s": 0.2153,
+          "tokens_salida": 7,
+          "tokens_por_s": 60.9,
+          "tokens_prompt": 2194,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1152,
+          "latencia_total_s": 0.2114,
+          "tokens_salida": 7,
+          "tokens_por_s": 62.34,
+          "tokens_prompt": 2194,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento.",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.1174,
+          "latencia_total_s": 0.2155,
+          "tokens_salida": 7,
+          "tokens_por_s": 61.19,
+          "tokens_prompt": 2194,
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  },
+  "respuestas": [
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "chunks_contexto": [
+        "debian_96_p2",
+        "debian_122_p1",
+        "debian_104_p1",
+        "debian_105_p1",
+        "debian_123_p3"
+      ],
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Según el Fragmento 2, para obtener la lista de paquetes disponibles del archivo de Debian se puede usar la orden **apt-show-versions** o **aptitude search ~o**. También se menciona que el objetivo de la orden **ap update** es descargar el archivo `Packages` (o `Sources`) de cada origen de paquetes.\n\nFuente: 6.7.3. Limpieza tras una Actualización (Sección 6.7.3.1. Paquetes eliminados del Archivo de Debian y 6.2.1. Inicialización, Fragmento 2).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.4094,
+      "tokens_salida": 140,
+      "tokens_por_s": null,
+      "tokens_prompt": 2295,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_85_p5",
+        "debian_91_p1",
+        "debian_122_p3",
+        "debian_105_p1",
+        "debian_105_p2"
+      ],
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. (La información sobre diferencias entre 'remove' y 'purge' se menciona en los fragmentos, pero no se especifica la diferencia exacta en la respuesta solicitada.) Sin embargo, puedo extraer de los fragmentos:\n\n- **Remove** (sin purgar): Elimina los archivos del paquete, pero mantiene los archivos de configuración y otros datos (por ejemplo, ejecutar `dpkg -r` o `dpkg -r debian-cd`).\n- **Purge** (con `dpkg --purge` o `dpkg -P`): Elimina también los archivos de configuración y otros archivos temporales (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`, etc.).\n\nPor lo tanto, la diferencia principal es que **purge** elimina de forma más completa, incluyendo configuración y archivos temporales, mientras que **remove** solo elimina los archivos del paquete sin eliminar los archivos de configuración.\n\nFuente: Fragmento 2 (5.4.2. Eliminación de un paquete) y Fragmento 5 (6.2.2. Instalación y eliminación).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 4.2291,
+      "tokens_salida": 256,
+      "tokens_por_s": null,
+      "tokens_prompt": 2299,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "chunks_contexto": [
+        "debian_120_p2",
+        "debian_114_p1",
+        "debian_79_p2",
+        "debian_50_p1",
+        "debian_114_p2"
+      ],
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, se menciona que la orden **debsums** puede comprobar si se han alterado archivos en el sistema local usando la información en `/var/lib/dpkg/info/`*`paquete`*`.md5sums (Sección 5.2.3). También, en el Fragmento 3, se habla de la interfaz **aptitude** para revisar paquetes. Pero no se especifica explícitamente en qué ficheros revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes.\n\nNo aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.3445,
+      "tokens_salida": 140,
+      "tokens_por_s": null,
+      "tokens_prompt": 2105,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "chunks_contexto": [
+        "debian_133_p4",
+        "debian_381_p1",
+        "debian_130_p6",
+        "debian_130_p2",
+        "debian_175_p1"
+      ],
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 5 (Fuente: 8.9.6. locate y updatedb), el programa **locate** puede encontrar la ubicación de un archivo cuando solo se conoce parte de su nombre y devuelve el resultado casi instantáneamente. Esta información se encuentra en la sección sobre **locate y updatedb**.\n\n«*localizar* es lo suficientemente inteligente como para devolver sólo los archivos que son accesibles al usuario que ejecuta el comando a pesar de que utiliza una base de datos que conoce todos los archivos del sistema (ya que su implementación **actualizarb** se ejecuta con derechos de root).» (Fragmento 5, Fuente: 8.9.6. locate y updatedb)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.7598,
+      "tokens_salida": 167,
+      "tokens_por_s": null,
+      "tokens_prompt": 1586,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "chunks_contexto": [
+        "debian_162_p1",
+        "debian_331_p4",
+        "debian_160_p2",
+        "debian_328_p2",
+        "debian_261_p4"
+      ],
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.2184,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 2315,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "chunks_contexto": [
+        "debian_190_p3",
+        "debian_190_p7",
+        "debian_190_p4",
+        "debian_190_p1",
+        "debian_207_p5"
+      ],
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, para automatizar la conexión por SSH se puede usar un sistema de autenticación basada en llaves: generar un par de claves con **ssh-keygen -t rsa**, copiar la clave pública al servidor usando **ssh-copy-id server** (o añadirla manualmente si no está habilitado), y luego usar **ssh-add** para mantener las claves en memoria durante una sesión de trabajo.\n\nSegún el Fragmento 2, las claves SSH también pueden firmarse mediante certificado usando las directivas `TrustedUserCAKeys` y `HostCertificate` en `/etc/ssh/sshd_config`.\n\nPara evitar escribir la contraseña cada vez al conectarse a un servidor remoto por SSH, se recomienda configurar el servidor para confiar en las claves del cliente firmadas con el mismo certificado, o utilizar **ssh-agent** junto con **ssh-add** para manejar las claves privadas sin reintroducir la frase de contraseña.\n\nFuente: 9.2.1. Inicio seguro de sesión remota: SSH (Fragmento 1, Fragmento 2, Fragmento 4).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 4.3492,
+      "tokens_salida": 262,
+      "tokens_por_s": null,
+      "tokens_prompt": 1842,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "chunks_contexto": [
+        "debian_98_p5",
+        "debian_113_p2",
+        "debian_120_p4",
+        "debian_53_p2",
+        "debian_105_p4"
+      ],
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Según el Fragmento 2, para instalar la nueva versión de `bullseye-backports` de `limnoria` (o cualquier paquete) cuando APT no lo hace automáticamente, se puede usar:\n\n- `apt install limnoria/bullseye-backports`, o\n- añadir una prioridad de fijación superior a `/etc/apt/preferences.d/limnoria.pref`.\n\nTambién se menciona que si el archivo `sources.list` indica varias distribuciones, se puede indicar la versión del paquete o la distribución de origen (Stable, Testing o Unstable) con `apt install paquete/=versión` o `apt install paquete/versión.distribución`. Para `bullseye-backports` en las fuentes, se recomienda configurar la preferencia de fijación para que APT instale la versión más nueva de `bullseye-backports` de `limnoria`.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.539,
+      "tokens_salida": 214,
+      "tokens_por_s": null,
+      "tokens_prompt": 1924,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "chunks_contexto": [
+        "debian_203_p1",
+        "debian_204_p1",
+        "debian_397_p2",
+        "debian_202_p3",
+        "debian_378_p1"
+      ],
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.1798,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 1549,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "chunks_contexto": [
+        "debian_204_p1",
+        "debian_321_p1",
+        "debian_338_p1",
+        "debian_69_p1",
+        "debian_344_p1"
+      ],
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, **anacron** se utiliza para ejecutar tareas recurrentes cuando el equipo no está encendido, programándose en `/etc/anacrontab` con el programa **nice** para reducir su prioridad. Esto permite que las tareas se ejecuten unos minutos después de iniciar la máquina, considerando los períodos en que el equipo no funcionó.\n\nPara la pregunta sobre una copia de seguridad cada día a las 3:00 en un portátil que a menudo está apagado, no hay información específica en los fragmentos sobre programar copias de seguridad diarias o su configuración en portátiles.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.401,
+      "tokens_salida": 146,
+      "tokens_por_s": null,
+      "tokens_prompt": 1585,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "chunks_contexto": [
+        "debian_156_p1",
+        "debian_157_p1",
+        "debian_158_p1",
+        "debian_217_p4",
+        "debian_385_p1"
+      ],
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, el archivo `/etc/shadow` almacena las contraseñas con *hash*, mientras que `/etc/passwd` muestra la lista de usuarios. El Fragmento 3 indica que `/etc/shadow` contiene los campos de contraseña cifrada y su vencimiento, y que a diferencia de `/etc/passwd`, `/etc/shadow` no puede ser leída por usuarios normales, lo que lo hace más seguro.\n\nNo aparece en el documento. (La pregunta sobre el archivo donde se guarda el hash de la contraseña y la seguridad respecto a /etc/passwd no tiene una respuesta explícita en los fragmentos.)\n\nNo aparece en el documento. (La pregunta específica sobre el directorio personal de los usuarios y dónde se guarda realmente el hash de la contraseña no está respondida en los fragmentos.)\n\nNo aparece en el documento. (La pregunta no está presente en los fragmentos proporcionados.)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.4539,
+      "tokens_salida": 211,
+      "tokens_por_s": null,
+      "tokens_prompt": 1780,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_110_p2",
+        "debian_90_p1",
+        "debian_184_p1",
+        "debian_130_p1",
+        "debian_89_p1"
+      ],
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": true,
+      "respuesta": "No aparece en el documento. (El fragmento 1 menciona `aptitude why` para ver por qué un paquete está instalado; el fragmento 2 describe `dpkg -i` para instalar un paquete `.deb`, pero no explica cómo averiguar qué paquete trae un ejecutable solo con su nombre del ejecutable. No hay información específica sobre ese procedimiento en los fragmentos.)\n\nNo aparece en el documento. (El fragmento 5 menciona que `dpkg` maneja paquetes `.deb` e instala contenidos, pero no detalla cómo identificar qué paquete trae un ejecutable sin instalar. No hay una respuesta concreta.)\n\nNo aparece en el documento. (Los fragmentos hablan de `apt`, `aptitude`, `dpkg`, `deborphan`, `debfoster`, y convenciones de nombres de paquetes, pero no abordan específicamente cómo averiguar qué paquete trae un ejecutable cuando solo se conoce el nombre del ejecutable.)\n\nNo aparece en el documento. (El fragmento 4 habla de buscar el nombre exacto de un paquete usando `apt show`, pero no explica cómo saber qué paquete lo trae si solo se conoce el ejecutable.)\n\nNo aparece en el documento. (El fragmento 3 menciona instalar un núcleo compilado con `dpkg -i`, pero no describe el proceso de identificar el paquete que proporciona un programa sin saber su nombre.)\n\nNo aparece en el documento. (El fragmento 1 muestra `aptitude why` para ver dependencias de un paquete instalado, pero no para identificar qué paquete trae un ejecutable no instalado.)\n\nNo aparece en el documento. (Ningún fragmento proporciona pasos para averiguar qué paquete trae un ejecutable solo con su nombre del ejecutable y luego instalarlo.)\n\nNo aparece en el documento. (El fragmento 2 muestra `dpkg -i` para desempaquetar un `.deb`, pero no explica cómo determinar el paquete que contiene un ejecutable específico.)\n\nNo aparece en el documento. (El fragmento 5 menciona que `dpkg` solo tiene una visión parcial y que `apt` crea listas de dependencias, pero no detalla cómo saber qué paquete trae un ejecutable.)\n\nNo aparece en el documento. (El fragmento 6.10 (Fragmento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 8.3074,
+      "tokens_salida": 512,
+      "tokens_por_s": null,
+      "tokens_prompt": 1974,
+      "finish_reason": "length"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "chunks_contexto": [
+        "debian_120_p4",
+        "debian_120_p2",
+        "debian_106_p1",
+        "debian_104_p1",
+        "debian_109_p2"
+      ],
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.2082,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 2022,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N01",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo Docker en Debian?",
+      "respuesta_esperada": "No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.",
+      "chunks_contexto": [
+        "debian_90_p1",
+        "debian_59_p3",
+        "debian_184_p1",
+        "debian_57_p1",
+        "debian_53_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.2138,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 2194,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N02",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿En qué fecha exacta deja de tener soporte Debian 11?",
+      "respuesta_esperada": "No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.",
+      "chunks_contexto": [
+        "debian_359_p1",
+        "debian_15_p1",
+        "debian_285_p8",
+        "debian_34_p2",
+        "debian_34_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.2246,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 2432,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N03",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo aplicaciones en formato Flatpak?",
+      "respuesta_esperada": "No aparece en el documento.",
+      "chunks_contexto": [
+        "debian_184_p1",
+        "debian_90_p1",
+        "debian_355_p3",
+        "debian_79_p1",
+        "debian_354_p6"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.2054,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 2034,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "chunks_contexto": [
+        "debian_104_p1"
+      ],
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la sección 6.2.1. Inicialización (Fragmento 1): Para cualquier trabajo con APT necesita actualizar la lista de paquetes; puede hacer esto simplemente con **apt update**.\n\nNo aparece en el documento: No, la pregunta pide qué ejecutar para que APT descargue la lista más reciente de paquetes disponibles, y el fragmento indica que se hace con `apt update`.\n\nRespuesta: **apt update** (Fuente: 6.2.1. Inicialización, Fragmento 1).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.8933,
+      "tokens_salida": 117,
+      "tokens_por_s": null,
+      "tokens_prompt": 581,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_105_p1"
+      ],
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. (El fragmento menciona que **apt remove** elimina paquetes y **ap purge** realiza una desinstalación completa, pero no explica la diferencia detallada entre ambos.)\n\nNo aparece en el documento. (La pregunta sobre la diferencia entre desinstalar con `remove` y con `purge` no está respondida en los fragmentos.)\n\nNo aparece en el documento. (No hay información sobre esa distinción en los fragmentos.)\n\nNo aparece en el documento. (La pregunta no está presente en los fragmentos proporcionados.)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.0119,
+      "tokens_salida": 120,
+      "tokens_por_s": null,
+      "tokens_prompt": 618,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "chunks_contexto": [
+        "debian_106_p2"
+      ],
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la información del Fragmento 1:\n\n- \"Los resultados de estas operaciones son registrados en `/var/log/apt/history.log` y `/var/log/apt/term.log`, mientras que **dpkg** mantiene su registro en un archivo llamado `/var/log/dpkg.log`.\"\n\nPor lo tanto, los archivos donde se pueden revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes son:\n\n- `/var/log/apt/history.log`\n- `/var/log/apt/term.log`\n\nFuente: 6.2.3. Actualización del sistema (parte 2 de 2)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.2385,
+      "tokens_salida": 134,
+      "tokens_por_s": null,
+      "tokens_prompt": 439,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "chunks_contexto": [
+        "debian_175_p1"
+      ],
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la primera fragmento:\n\n- **Locate** puede encontrar la ubicación de un archivo cuando sólo se sabe parte del nombre y devuelve el resultado casi instantáneamente consultando una base de datos actualizada diariamente con **updatedb**.\n- Fuente: 8.9.6. locate y updatedb\n\nSolo recuerdo parte del nombre de un fichero. La herramienta que lo encuentra casi al instante es **locate** (o su alternativa **plocate**), y la información se obtiene de la base de datos actualizada por **updatedb**.\n\n**Respuesta:** La herramienta es **locate** (o **plocate** como alternativa), y la información proviene de la base de datos actualizada diariamente mediante **updatedb**.\n\nFuente: 8.9.6. locate y updatedb",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.9104,
+      "tokens_salida": 174,
+      "tokens_por_s": null,
+      "tokens_prompt": 416,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "chunks_contexto": [
+        "debian_162_p1"
+      ],
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la información proporcionada no aparece cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo.\n\nNo aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.5662,
+      "tokens_salida": 32,
+      "tokens_por_s": null,
+      "tokens_prompt": 584,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "chunks_contexto": [
+        "debian_190_p3"
+      ],
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la sección \"Autenticación basada en llaves\" del Fragmento 9.2.1.1:\n\n1. El usuario genera un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la clave pública se guarda en `~/.ssh/id_rsa.pub` y la privada en `~/.ssh/id_rsa`.\n2. Para añadir la clave al servidor, el usuario puede usar **ssh-copy-id server** (donde `server` es el nombre de servidor) o pedir al administrador que lo haga manualmente si el SSH no está habilitado.\n\n**Respuesta:** Para conectar por SSH sin escribir la contraseña cada vez, genera una clave con `ssh-keygen -t rsa`, copia la clave pública al servidor usando `ssh-copy-id server`, y luego puedes autenticarte con la clave privada (o usar autenticación basada en llaves del servidor).\n\nFuente: 9.2.1. Inicio seguro de sesión remota: SSH, sección 9.2.1.1. Autenticación basada en llaves (Fragmento 1).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 4.1561,
+      "tokens_salida": 249,
+      "tokens_por_s": null,
+      "tokens_prompt": 503,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "chunks_contexto": [
+        "debian_98_p5"
+      ],
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la información del Fragmento 1:\n\n- Se menciona que `APT` no instalará versiones nuevas a menos que se indique explícitamente o si ya lo hizo con una versión anterior de la retroadaptación.\n- Se da un ejemplo de cómo forzar la instalación de la nueva versión: \n  ```\n  $ sudo apt-get install paquete/bullseye-backports\n  $ sudo apt-get install -t /bullseye-backports paquete\n  ```\n\nPor lo tanto, para instalar la nueva versión de bullseye-backports, debes usar el comando con la opción `-t /bullseye-backports`.\n\nFuente: 6.1.2. Repositorios para usuarios de Stable (parte 5 de 5)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.801,
+      "tokens_salida": 167,
+      "tokens_por_s": null,
+      "tokens_prompt": 550,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "chunks_contexto": [
+        "debian_203_p1"
+      ],
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "De la información del Fragmento 1:\n\n- La orden **at** ejecuta un programa en un momento específico en el futuro.\n- Se indica la hora con formato como `HH:MM` o `HH:MMpm` (ej. `09:00` o `4:12pm`).\n- Para la fecha, se puede usar «today» o «tomorrow» para el día actual o siguiente, o especificar una fecha.\n\nPara ejecutar una sola vez mañana a las 9:00, usarías la orden `at` con la hora `09:00` y la fecha «tomorrow» (o la fecha específica de mañana). Por ejemplo: `at tomorrow 09:00`.\n\nEn el fragmento se muestra un ejemplo: `$ at 09:00 27.07.22 <<END`, lo que indica hora `09:00` y fecha `27.07.22`. Para mañana sin fecha explícita, se puede usar «tomorrow» o la fecha del día siguiente.\n\n**Respuesta:** Usa la orden `at` con la hora `09:00` y indica «tomorrow» para la fecha del día siguiente. Por ejemplo: `at tomorrow 09:00`.\n\nFuente: 9.7.2. Utilización del programa at (Línea: «$ at 09:00 27.07.22 <<END» y «job 1 at Wed Jul 27 09:00:00 2022»)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 5.1763,
+      "tokens_salida": 312,
+      "tokens_por_s": null,
+      "tokens_prompt": 603,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "chunks_contexto": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.1749,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 1018,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "chunks_contexto": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. Sin embargo, según el Fragmento 1, la contraseña está cifrada en `/etc/shadow` y el valor especial «`x`» indica que la contraseña cifrada está almacenada en `/etc/shadow`. El Fragmento 2 menciona que `/etc/shadow` no puede ser leída por usuarios normales y que es más seguro porque no está en `/etc/passwd`, que es accesible para cualquier usuario.\n\nRespuesta: El hash de la contraseña de un usuario se guarda realmente en el archivo `/etc/shadow` (como se indica en el Fragmento 1: \"El valor especial «`x`» indica que la contraseña cifrada está almacenada en `/etc/shadow\"; y en el Fragmento 2: \"El archivo `/etc/shadow` contiene los siguientes campos: nombre de usuario; contraseña cifrada...\"). Se considera más seguro que guardarlo en `/etc/passwd` porque, según el Fragmento 2, a diferencia de `/etc/passwd`, `/etc/shadow` no puede ser leído por usuarios normales, lo que dificulta el acceso no autorizado.\n\nFuente: 8.4.1. Lista de usuarios: /etc/passwd (Fragmento 1); 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow (Fragmento 2).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 5.0339,
+      "tokens_salida": 305,
+      "tokens_por_s": null,
+      "tokens_prompt": 925,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.1614,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 1090,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "lfm3-1.7b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "chunks_contexto": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento. (El fragmento 6.7.1. Procedimiento recomendado, parte 3 de 4, menciona la necesidad de realizar una actualización mínima con **apt upgrade** antes de la actualización completa, pero no especifica el orden de los dos pasos ni la razón de recomendar dos pasos para el cambio de fuentes de APT.)\n\nNo aparece en el documento. (El fragmento 6.7.1. Procedimiento recomendado, parte 4 de 4, describe la actualización en sí con **apt full-upgrade**, **aptitude** o **synaptic**, pero no explica por qué se recomienda actualizar en dos pasos ni el orden específico para cambiar las fuentes de APT de Buster a Bullseye.)\n\nNo aparece en el documento. (Ningún fragmento menciona el cambio de fuentes de APT de Buster a Bullseye ni la razón por la que se recomienda actualizar en dos pasos para este cambio.)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.357,
+      "tokens_salida": 203,
+      "tokens_por_s": null,
+      "tokens_prompt": 660,
+      "finish_reason": "stop"
+    }
+  ]
+}

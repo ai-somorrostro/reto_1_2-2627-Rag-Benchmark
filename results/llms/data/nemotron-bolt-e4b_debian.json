@@ -1,0 +1,1076 @@
+{
+  "meta": {
+    "modelo": "nemotron-bolt-e4b",
+    "repo": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16",
+    "tamano": "8B (4B efect.)",
+    "categoria": "mediano",
+    "cuantizacion": "FP8",
+    "dtype": "bfloat16",
+    "stack": "vLLM",
+    "stack_version": "0.34.0",
+    "torch_version": "2.14.0+cu130",
+    "cuda_device": "NVIDIA A800 40GB Active MIG 3g.20gb",
+    "escenario": "debian",
+    "embedding": "bge-m3",
+    "top_k": 5,
+    "opciones": {
+      "temperature": 0.0,
+      "num_predict": 512,
+      "num_ctx": 8192,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "prefix_caching": false
+    },
+    "memoria": "kv_cache_memory_bytes=2.0 GB",
+    "vllm_extra": {
+      "limit_mm_per_prompt": {
+        "image": 0,
+        "audio": 0,
+        "video": 0
+      }
+    },
+    "prompt_sistema": "Eres un asistente que responde preguntas usando ÚNICAMENTE los fragmentos proporcionados.\n\nReglas:\n1. Responde solo con información que aparezca en los fragmentos. No uses conocimientos propios.\n2. Si la respuesta no está en los fragmentos, responde exactamente: \"No aparece en el documento\" y nada más.\n3. Cita siempre la sección de donde sale la respuesta (aparece en la línea «Fuente» de cada fragmento).\n4. Responde en español y de forma breve.",
+    "prompt_usuario": "Fragmentos:\n\n{fragmentos}\n\nPregunta: {pregunta}",
+    "timestamp": "2026-11-20T16:13:21",
+    "tiempo_carga_s": 38.32,
+    "tokens_prompt_max": 2369,
+    "vram_base_gb": 0.279,
+    "vram_pico_gb": 14.797
+  },
+  "coste": {
+    "preguntas": [
+      "DEB_D01",
+      "DEB_D02",
+      "DEB_D03",
+      "DEB_C01",
+      "DEB_N01"
+    ],
+    "rondas_medidas": 3,
+    "mediana": {
+      "ttft_s": 0.3103,
+      "tokens_por_s": 26.71,
+      "latencia_total_s": 1.0953,
+      "tokens_salida": 22
+    },
+    "mediana_por_pregunta": {
+      "DEB_D01": {
+        "ttft_s": 0.3103,
+        "tokens_por_s": 26.75,
+        "latencia_total_s": 1.0953,
+        "tokens_salida": 22
+      },
+      "DEB_D02": {
+        "ttft_s": 0.3173,
+        "tokens_por_s": 26.56,
+        "latencia_total_s": 2.9153,
+        "tokens_salida": 70
+      },
+      "DEB_D03": {
+        "ttft_s": 0.291,
+        "tokens_por_s": 26.72,
+        "latencia_total_s": 0.4779,
+        "tokens_salida": 6
+      },
+      "DEB_C01": {
+        "ttft_s": 0.2226,
+        "tokens_por_s": 26.7,
+        "latencia_total_s": 3.7065,
+        "tokens_salida": 94
+      },
+      "DEB_N01": {
+        "ttft_s": 0.3133,
+        "tokens_por_s": 26.92,
+        "latencia_total_s": 0.5013,
+        "tokens_salida": 6
+      }
+    },
+    "ejecuciones": {
+      "DEB_D01": [
+        {
+          "respuesta": "Se puede hacer con **apt update** (Fuente: 6.2.1. Inicialización)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3112,
+          "latencia_total_s": 1.0982,
+          "tokens_salida": 22,
+          "tokens_por_s": 26.68,
+          "tokens_prompt": 2091,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Se puede hacer con **apt update** (Fuente: 6.2.1. Inicialización)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.31,
+          "latencia_total_s": 1.0949,
+          "tokens_salida": 22,
+          "tokens_por_s": 26.75,
+          "tokens_prompt": 2091,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Se puede hacer con **apt update** (Fuente: 6.2.1. Inicialización)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3103,
+          "latencia_total_s": 1.0953,
+          "tokens_salida": 22,
+          "tokens_por_s": 26.75,
+          "tokens_prompt": 2091,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_D02": [
+        {
+          "respuesta": "Con `remove` se mantienen los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, mientras que con `purge` se eliminan también los archivos de configuración (Fuente: 5.4.2. Eliminación de un paquete)\nFuente: 5.4.2. Eliminación de un paquete",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3173,
+          "latencia_total_s": 2.9153,
+          "tokens_salida": 70,
+          "tokens_por_s": 26.56,
+          "tokens_prompt": 2123,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Con `remove` se mantienen los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, mientras que con `purge` se eliminan también los archivos de configuración (Fuente: 5.4.2. Eliminación de un paquete)\nFuente: 5.4.2. Eliminación de un paquete",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3171,
+          "latencia_total_s": 2.9268,
+          "tokens_salida": 70,
+          "tokens_por_s": 26.44,
+          "tokens_prompt": 2123,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "Con `remove` se mantienen los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, mientras que con `purge` se eliminan también los archivos de configuración (Fuente: 5.4.2. Eliminación de un paquete)\nFuente: 5.4.2. Eliminación de un paquete",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3194,
+          "latencia_total_s": 2.9036,
+          "tokens_salida": 70,
+          "tokens_por_s": 26.7,
+          "tokens_prompt": 2123,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_D03": [
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.291,
+          "latencia_total_s": 0.4757,
+          "tokens_salida": 6,
+          "tokens_por_s": 27.07,
+          "tokens_prompt": 1965,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.2907,
+          "latencia_total_s": 0.4779,
+          "tokens_salida": 6,
+          "tokens_por_s": 26.72,
+          "tokens_prompt": 1965,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.2917,
+          "latencia_total_s": 0.4789,
+          "tokens_salida": 6,
+          "tokens_por_s": 26.71,
+          "tokens_prompt": 1965,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_C01": [
+        {
+          "respuesta": "**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo (Fuente: 9.8. Programación de tareas asincrónicas: anacron). El propósito de **anacron** es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando (Fuente: 9.8. Programación de tareas asincrónicas: anacron).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.2226,
+          "latencia_total_s": 3.6959,
+          "tokens_salida": 94,
+          "tokens_por_s": 26.78,
+          "tokens_prompt": 1496,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo (Fuente: 9.8. Programación de tareas asincrónicas: anacron). El propósito de **anacron** es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando (Fuente: 9.8. Programación de tareas asincrónicas: anacron).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.2226,
+          "latencia_total_s": 3.7644,
+          "tokens_salida": 94,
+          "tokens_por_s": 26.26,
+          "tokens_prompt": 1496,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo (Fuente: 9.8. Programación de tareas asincrónicas: anacron). El propósito de **anacron** es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando (Fuente: 9.8. Programación de tareas asincrónicas: anacron).",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.2229,
+          "latencia_total_s": 3.7065,
+          "tokens_salida": 94,
+          "tokens_por_s": 26.7,
+          "tokens_prompt": 1496,
+          "finish_reason": "stop"
+        }
+      ],
+      "DEB_N01": [
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3127,
+          "latencia_total_s": 0.4985,
+          "tokens_salida": 6,
+          "tokens_por_s": 26.92,
+          "tokens_prompt": 2107,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3133,
+          "latencia_total_s": 0.5013,
+          "tokens_salida": 6,
+          "tokens_por_s": 26.6,
+          "tokens_prompt": 2107,
+          "finish_reason": "stop"
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.3369,
+          "latencia_total_s": 0.5163,
+          "tokens_salida": 6,
+          "tokens_por_s": 27.87,
+          "tokens_prompt": 2107,
+          "finish_reason": "stop"
+        }
+      ]
+    }
+  },
+  "respuestas": [
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "chunks_contexto": [
+        "debian_96_p2",
+        "debian_122_p1",
+        "debian_104_p1",
+        "debian_105_p1",
+        "debian_123_p3"
+      ],
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Se puede hacer con **apt update** (Fuente: 6.2.1. Inicialización)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.1467,
+      "tokens_salida": 22,
+      "tokens_por_s": null,
+      "tokens_prompt": 2091,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_85_p5",
+        "debian_91_p1",
+        "debian_122_p3",
+        "debian_105_p1",
+        "debian_105_p2"
+      ],
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Con `remove` se mantienen los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, mientras que con `purge` se eliminan también los archivos de configuración (Fuente: 5.4.2. Eliminación de un paquete)\nFuente: 5.4.2. Eliminación de un paquete",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.9999,
+      "tokens_salida": 70,
+      "tokens_por_s": null,
+      "tokens_prompt": 2123,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "chunks_contexto": [
+        "debian_120_p2",
+        "debian_114_p1",
+        "debian_79_p2",
+        "debian_50_p1",
+        "debian_114_p2"
+      ],
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.4884,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 1965,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "chunks_contexto": [
+        "debian_133_p4",
+        "debian_381_p1",
+        "debian_130_p6",
+        "debian_130_p2",
+        "debian_175_p1"
+      ],
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El programa **locate** encuentra la ubicación de un archivo cuando solo se sabe parte del nombre, devolviendo un resultado casi instantáneamente porque consulta una base de datos que almacena la ubicación de todos los archivos del sistema, la cual se actualiza diariamente con **updatedb** (Fuente: 8.9.6. locate y updatedb).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.8984,
+      "tokens_salida": 71,
+      "tokens_por_s": null,
+      "tokens_prompt": 1476,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "chunks_contexto": [
+        "debian_162_p1",
+        "debian_331_p4",
+        "debian_160_p2",
+        "debian_328_p2",
+        "debian_261_p4"
+      ],
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Primero se deben crear las cuentas Unix utilizando **adduser** (Fuente: 11.5.1.2.2. Añadir usuarios). Para que un usuario pueda acceder a dispositivos de audio, debe agregarse al grupo *audio* ejecutando **adduser** ***`usuario`*** ***`grupo`*** (Fuente: 8.5. Creación de cuentas).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.3247,
+      "tokens_salida": 78,
+      "tokens_por_s": null,
+      "tokens_prompt": 2328,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "chunks_contexto": [
+        "debian_190_p3",
+        "debian_190_p7",
+        "debian_190_p4",
+        "debian_190_p1",
+        "debian_207_p5"
+      ],
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El usuario puede generar un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la clave pública se guarda en `~/.ssh/id_rsa.pub` y la privada en `~/.ssh/id_rsa`. Luego, puede usar **ssh-copy-id** ***`server`*** para añadir su clave pública al archivo `~/.ssh/authorized_keys` en el servidor, o pedir al administrador que la añada manualmente si el acceso SSH no está habilitado aún (Fuente: 9.2.1. Inicio seguro de sesión remota: SSH).\n\nAlternativamente, **ssh-agent** permite mantener las claves privadas en memoria para no tener que reintroducir la contraseña regularmente, usando **ssh-add** (una vez por sesión de trabajo) (Fuente: 9.2.1. Inicio seguro de sesión remota: SSH).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 7.5389,
+      "tokens_salida": 187,
+      "tokens_por_s": null,
+      "tokens_prompt": 1766,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "chunks_contexto": [
+        "debian_98_p5",
+        "debian_113_p2",
+        "debian_120_p4",
+        "debian_53_p2",
+        "debian_105_p4"
+      ],
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Se puede instalar la nueva versión usando `$ sudo apt-get install paquete/bullseye-backports` o `$ sudo apt-get install -t /bullseye-backports paquete` (Fuente: 6.1.2. Repositorios para usuarios de Stable).\nAlternativamente, se puede usar `apt install limnoria/bullseye-backports` o añadir una prioridad de fijación superior a `/etc/apt/preferences.d/limnoria.pref` (Fuente: 6.3.1. La orden apt-cache policy).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 4.8121,
+      "tokens_salida": 118,
+      "tokens_por_s": null,
+      "tokens_prompt": 1886,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "chunks_contexto": [
+        "debian_203_p1",
+        "debian_204_p1",
+        "debian_397_p2",
+        "debian_202_p3",
+        "debian_378_p1"
+      ],
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La orden **at** ejecuta un programa en un momento específico en el futuro, y se puede indicar la hora como `09:00` (Fuente: 9.7.2). Para especificar la fecha de mañana, se puede usar «tomorrow» (Fuente: 9.7.2).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.5828,
+      "tokens_salida": 64,
+      "tokens_por_s": null,
+      "tokens_prompt": 1536,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "chunks_contexto": [
+        "debian_204_p1",
+        "debian_321_p1",
+        "debian_338_p1",
+        "debian_69_p1",
+        "debian_344_p1"
+      ],
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo (Fuente: 9.8. Programación de tareas asincrónicas: anacron). El propósito de **anacron** es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando (Fuente: 9.8. Programación de tareas asincrónicas: anacron).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.6934,
+      "tokens_salida": 94,
+      "tokens_por_s": null,
+      "tokens_prompt": 1496,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "chunks_contexto": [
+        "debian_156_p1",
+        "debian_157_p1",
+        "debian_158_p1",
+        "debian_217_p4",
+        "debian_385_p1"
+      ],
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El archivo `/etc/shadow` almacena las contraseñas con *hash* y no puede ser leído por usuarios normales, a diferencia de `/etc/passwd` (Fuente: 8.4. Bases de datos de usuarios y grupos; Fuente: 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.163,
+      "tokens_salida": 77,
+      "tokens_por_s": null,
+      "tokens_prompt": 1667,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_110_p2",
+        "debian_90_p1",
+        "debian_184_p1",
+        "debian_130_p1",
+        "debian_89_p1"
+      ],
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.4658,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 1860,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "chunks_contexto": [
+        "debian_120_p4",
+        "debian_120_p2",
+        "debian_106_p1",
+        "debian_104_p1",
+        "debian_109_p2"
+      ],
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_en_contexto": false,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.4699,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 1891,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N01",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo Docker en Debian?",
+      "respuesta_esperada": "No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.",
+      "chunks_contexto": [
+        "debian_90_p1",
+        "debian_59_p3",
+        "debian_184_p1",
+        "debian_57_p1",
+        "debian_53_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.501,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 2107,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N02",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿En qué fecha exacta deja de tener soporte Debian 11?",
+      "respuesta_esperada": "No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.",
+      "chunks_contexto": [
+        "debian_359_p1",
+        "debian_15_p1",
+        "debian_285_p8",
+        "debian_34_p2",
+        "debian_34_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.5457,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 2369,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "retrieval",
+      "id": "DEB_N03",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo instalo aplicaciones en formato Flatpak?",
+      "respuesta_esperada": "No aparece en el documento.",
+      "chunks_contexto": [
+        "debian_184_p1",
+        "debian_90_p1",
+        "debian_355_p3",
+        "debian_79_p1",
+        "debian_354_p6"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.4815,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 1975,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D01",
+      "tipo": "directa",
+      "pregunta": "¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?",
+      "respuesta_esperada": "apt update (sección 6.2.1).",
+      "chunks_contexto": [
+        "debian_104_p1"
+      ],
+      "gold_chunks": [
+        "debian_104_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "**apt update** (Fuente: 6.2.1. Inicialización)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.7262,
+      "tokens_salida": 18,
+      "tokens_por_s": null,
+      "tokens_prompt": 534,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?",
+      "respuesta_esperada": "apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_105_p1"
+      ],
+      "gold_chunks": [
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "**apt remove** elimina el paquete, mientras que **ap purge** realiza una desinstalación completa eliminando también los archivos de configuración.\nFuente: 6.2.2. Instalación y eliminación",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.6644,
+      "tokens_salida": 43,
+      "tokens_por_s": null,
+      "tokens_prompt": 570,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D03",
+      "tipo": "directa",
+      "pregunta": "¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?",
+      "respuesta_esperada": "En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).",
+      "chunks_contexto": [
+        "debian_106_p2"
+      ],
+      "gold_chunks": [
+        "debian_106_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Los resultados de estas operaciones son registrados en `/var/log/apt/history.log` y `/var/log/apt/term.log` (Fuente: 6.2.3. Actualización del sistema)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.7897,
+      "tokens_salida": 47,
+      "tokens_por_s": null,
+      "tokens_prompt": 422,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D04",
+      "tipo": "directa",
+      "pregunta": "Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?",
+      "respuesta_esperada": "locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).",
+      "chunks_contexto": [
+        "debian_175_p1"
+      ],
+      "gold_chunks": [
+        "debian_175_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El programa **locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte del nombre y devuelve un resultado casi instantáneamente ya que consulta una base de datos que almacena la ubicación de todos los archivos del sistema (Fuente: 8.9.6. locate y updatedb)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.2859,
+      "tokens_salida": 60,
+      "tokens_por_s": null,
+      "tokens_prompt": 387,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?",
+      "respuesta_esperada": "Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).",
+      "chunks_contexto": [
+        "debian_162_p1"
+      ],
+      "gold_chunks": [
+        "debian_162_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Se puede crear un usuario ejecutando **adduser** ***`usuario`*** ***`grupo`***, por ejemplo, si el usuario pertenece al grupo *audio* puede acceder dispositivos de audio (Fuente: 8.5. Creación de cuentas)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.001,
+      "tokens_salida": 52,
+      "tokens_por_s": null,
+      "tokens_prompt": 548,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D06",
+      "tipo": "directa",
+      "pregunta": "Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?",
+      "respuesta_esperada": "Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).",
+      "chunks_contexto": [
+        "debian_190_p3"
+      ],
+      "gold_chunks": [
+        "debian_190_p3"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El usuario genera un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la clave pública generada se almacena en `~/.ssh/id_rsa.pub`, y la clave privada correspondiente se almacena en `~/.ssh/id_rsa`. Luego, el usuario puede usar **ssh-copy-id** ***`server`*** para añadir su clave pública al archivo `~/.ssh/authorized_keys` en el servidor, o pedir al administrador que añada la clave manualmente si el acceso SSH no está habilitado aún.\nFuente: 9.2.1.1. Autenticación basada en llaves",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 5.2611,
+      "tokens_salida": 138,
+      "tokens_por_s": null,
+      "tokens_prompt": 476,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D07",
+      "tipo": "directa",
+      "pregunta": "Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?",
+      "respuesta_esperada": "APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).",
+      "chunks_contexto": [
+        "debian_98_p5"
+      ],
+      "gold_chunks": [
+        "debian_98_p5"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "$ sudo apt-get install paquete/bullseye-backports\no\n$ sudo apt-get install -t /bullseye-backports paquete\nFuente: 6.1.2. Repositorios para usuarios de Stable",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.8852,
+      "tokens_salida": 49,
+      "tokens_por_s": null,
+      "tokens_prompt": 517,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_D08",
+      "tipo": "directa",
+      "pregunta": "Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?",
+      "respuesta_esperada": "La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).",
+      "chunks_contexto": [
+        "debian_203_p1"
+      ],
+      "gold_chunks": [
+        "debian_203_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La orden a usar es **at** (Fuente: 9.7.2). Para especificar mañana, se puede usar «tomorrow» (Fuente: 9.7.2). La hora se puede indicar como `09:00` (Fuente: 9.7.2).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.3832,
+      "tokens_salida": 62,
+      "tokens_por_s": null,
+      "tokens_prompt": 636,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C01",
+      "tipo": "combinada",
+      "pregunta": "Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?",
+      "respuesta_esperada": "Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).",
+      "chunks_contexto": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_chunks": [
+        "debian_202_p2",
+        "debian_204_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo, y su propósito es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.\nFuente: 9.8. Programación de tareas asincrónicas: anacron",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.7386,
+      "tokens_salida": 69,
+      "tokens_por_s": null,
+      "tokens_prompt": 1026,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C02",
+      "tipo": "combinada",
+      "pregunta": "¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?",
+      "respuesta_esperada": "En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).",
+      "chunks_contexto": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_chunks": [
+        "debian_157_p1",
+        "debian_158_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "El archivo `/etc/shadow` contiene la contraseña cifrada y no puede ser leído por usuarios normales, a diferencia de `/etc/passwd` (Fuente: 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.2213,
+      "tokens_salida": 57,
+      "tokens_por_s": null,
+      "tokens_prompt": 874,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C03",
+      "tipo": "combinada",
+      "pregunta": "Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?",
+      "respuesta_esperada": "Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).",
+      "chunks_contexto": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_chunks": [
+        "debian_114_p1",
+        "debian_105_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "La orden **apt-file search** ***`pattern`*** listará todos los paquetes, los que contienen un nombre de archivo o ruta que coincide con el patrón. (Fuente: 6.4. La orden apt-file)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.9439,
+      "tokens_salida": 49,
+      "tokens_por_s": null,
+      "tokens_prompt": 1023,
+      "finish_reason": "stop"
+    },
+    {
+      "modelo": "nemotron-bolt-e4b",
+      "escenario": "debian",
+      "modo": "oraculo",
+      "id": "DEB_C04",
+      "tipo": "combinada",
+      "pregunta": "Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?",
+      "respuesta_esperada": "Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).",
+      "chunks_contexto": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_chunks": [
+        "debian_120_p3",
+        "debian_120_p4"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "posible_truncado": false,
+      "cortado_por_num_predict": false,
+      "respuesta": "Se recomienda hacer la actualización en dos pasos para facilitar el trabajo de las herramientas de gestión de paquetes y generalmente asegurar las últimas versiones de los paquetes, que pueden tener correcciones de errores y mejoras necesarias para finalizar la actualización de la distribución completa. La primera actualización debe ser con **apt upgrade**, y la segunda con **apt full-upgrade**, **aptitude**> o **synaptic**.\nFuente: 6.7.1. Procedimiento recomendado",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.5004,
+      "tokens_salida": 92,
+      "tokens_por_s": null,
+      "tokens_prompt": 611,
+      "finish_reason": "stop"
+    }
+  ]
+}

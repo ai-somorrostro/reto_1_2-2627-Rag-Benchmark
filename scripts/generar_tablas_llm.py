@@ -133,17 +133,21 @@ def tabla_oraculo(filas, resultados):
     if not con_oraculo:
         return []
     out = ["\n### Extra. Retrieval frente a oráculo (solo preguntas con respuesta)\n",
-           "| Modelo | Corrección con retrieval | Corrección con oráculo | Fallos atribuibles al retrieval |",
-           "| --- | --- | --- | --- |"]
+           "| Modelo | Corrección con retrieval | Corrección con oráculo | Fallo del retrieval | Fallo por ruido |",
+           "| --- | --- | --- | --- | --- |"]
     for m in con_oraculo:
         ret = {f["id"]: f for f in filas if f["modelo"] == m and f["modo"] == "retrieval" and f["tipo"] != "sin_respuesta"}
         ora = {f["id"]: f for f in filas if f["modelo"] == m and f["modo"] == "oraculo"}
         c_ret, _ = media(num(ret[i]["correccion"]) for i in ora if i in ret)
         c_ora, _ = media(num(f["correccion"]) for f in ora.values())
-        fallos = [i for i in ora if i in ret and num(ora[i]["correccion"]) == 2
+        mejora = [i for i in ora if i in ret and num(ora[i]["correccion"]) == 2
                   and num(ret[i]["correccion"]) is not None and num(ret[i]["correccion"]) < 2]
-        out.append(f"| `{m}` | {fmt(c_ret)} | {fmt(c_ora)} | {', '.join(fallos) or 'ninguno'} |")
-    out.append("\n> Fallo atribuible al retrieval: con el chunk correcto la respuesta es correcta (2) y con el retrieval no.")
+        f_ret = [i for i in mejora if str(ret[i].get("gold_en_contexto")) != "1"]
+        f_ruido = [i for i in mejora if str(ret[i].get("gold_en_contexto")) == "1"]
+        out.append(f"| `{m}` | {fmt(c_ret)} | {fmt(c_ora)} | {', '.join(f_ret) or 'ninguno'} | {', '.join(f_ruido) or 'ninguno'} |")
+    out.append("\n> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: el chunk correcto "
+               "no llegó al top-k. **Fallo por ruido**: sí llegó, pero los demás fragmentos despistaron al LLM "
+               "(no es culpa del embedding).")
     return out
 
 

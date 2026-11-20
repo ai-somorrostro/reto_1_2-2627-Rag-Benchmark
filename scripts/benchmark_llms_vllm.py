@@ -62,11 +62,17 @@ EMBEDDING_GANADOR = {
 
 # Modelos (seleccion_llms.md §2), en su repositorio oficial de Hugging Face (safetensors, no GGUF).
 # Comprobad en cada ficha que vuestra versión de vLLM soporta la arquitectura.
+# `extra`: argumentos de vLLM solo para ese modelo. En los multimodales se ponen a 0 las
+# modalidades que no usamos para que vLLM no cargue ni reserve memoria para el codificador
+# de imagen/vídeo: así la VRAM compara solo la parte de texto, como en los demás.
+# Si en el log de un modelo aparecen líneas de "vit", "vision", "audio" o "Encoder cache",
+# añadidle lo mismo con las modalidades que tenga.
+SOLO_TEXTO = {"limit_mm_per_prompt": {"image": 0, "video": 0}}
 MODELOS = {
-    "lfm3-1.7b":         {"repo": "LiquidAI/LFM3-1.7B",                      "tamano": "1,7B",           "categoria": "pequeño"},
-    "llama3.2-3b":       {"repo": "meta-llama/Llama-3.2-3B-Instruct",        "tamano": "3B",             "categoria": "pequeño"},
-    "nemotron-bolt-e4b": {"repo": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB", "tamano": "8B (4B efect.)", "categoria": "mediano"},
-    "qwen3.5-9b":        {"repo": "Qwen/Qwen3.5-9B",                         "tamano": "9B",             "categoria": "mediano"},
+    "lfm3-1.7b":         {"repo": "LiquidAI/LFM3-1.7B",                      "tamano": "1,7B",           "categoria": "pequeño", "extra": {}},
+    "llama3.2-3b":       {"repo": "meta-llama/Llama-3.2-3B-Instruct",        "tamano": "3B",             "categoria": "pequeño", "extra": {}},
+    "nemotron-bolt-e4b": {"repo": "nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16", "tamano": "8B (4B efect.)", "categoria": "mediano", "extra": {"limit_mm_per_prompt": {"image": 0, "audio": 0, "video": 0}}},
+    "qwen3.5-9b":        {"repo": "Qwen/Qwen3.5-9B",                         "tamano": "9B",             "categoria": "mediano", "extra": SOLO_TEXTO},
 }
 
 SCENARIOS = {
@@ -193,9 +199,9 @@ def preguntas_coste(golden, n=5):
 # ---------------------------------------------------------------------------
 # vLLM
 # ---------------------------------------------------------------------------
-def cargar_llm(repo):
+def cargar_llm(repo, extra=None):
     from vllm import LLM
-    comunes = dict(model=repo, dtype=DTYPE, quantization=CUANTIZACION, max_model_len=MAX_MODEL_LEN,
+    comunes = dict(**(extra or {}), model=repo, dtype=DTYPE, quantization=CUANTIZACION, max_model_len=MAX_MODEL_LEN,
                    enable_prefix_caching=False, enforce_eager=True, seed=SEED, disable_log_stats=True)
     try:
         llm = LLM(**comunes, kv_cache_memory_bytes=int(KV_CACHE_GB * 2**30))
@@ -274,7 +280,7 @@ def run(model_key, scen_key, oraculo=True, n_coste=5, rondas=3):
 
     try:
         t0 = time.perf_counter()
-        llm, modo_memoria = cargar_llm(cfg["repo"])
+        llm, modo_memoria = cargar_llm(cfg["repo"], cfg.get("extra"))
         t_carga = time.perf_counter() - t0
         gen = Generador(llm)
         print(f"[+] Cargado en {t_carga:.1f} s ({modo_memoria})")
@@ -332,7 +338,7 @@ def run(model_key, scen_key, oraculo=True, n_coste=5, rondas=3):
         "escenario": scen_key, "embedding": emb, "top_k": TOP_K,
         "opciones": {"temperature": TEMPERATURA, "num_predict": MAX_TOKENS_SALIDA, "num_ctx": MAX_MODEL_LEN,
                      "seed": SEED, "chat_template_kwargs": CHAT_TEMPLATE_KWARGS, "prefix_caching": False},
-        "memoria": modo_memoria, "prompt_sistema": PROMPT_SISTEMA.replace("{cita}", scen["cita"]),
+        "memoria": modo_memoria, "vllm_extra": cfg.get("extra", {}), "prompt_sistema": PROMPT_SISTEMA.replace("{cita}", scen["cita"]),
         "prompt_usuario": PROMPT_USUARIO, "timestamp": ahora(), "tiempo_carga_s": round(t_carga, 2),
         "tokens_prompt_max": max((r["tokens_prompt"] for r in respuestas), default=None),
         "vram_base_gb": vram_base_gb, "vram_pico_gb": round(vram_pico_gb, 3) if vram_pico_gb else None,
