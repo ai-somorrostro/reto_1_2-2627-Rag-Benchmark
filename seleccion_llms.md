@@ -13,24 +13,24 @@ Criterios de elección: idioma (español), memoria, ventana de contexto, varieda
 
 ## 2. Modelos elegidos
 
-| Tamaño | Modelo | Familia | Parámetros | Español | Licencia | Formato usado |
+| Tamaño | Modelo (repositorio usado) | Familia | Parámetros | Español | Licencia | Formato usado |
 |---|---|---|---|---|---|---|
-| Pequeño | `LiquidAI/LFM3-1.7B` | Liquid (LFM3, arquitectura híbrida) | 1,73B | Sí (16 idiomas) | LFM Open License v1.0 | GGUF `LiquidAI/LFM3-1.7B-GGUF` |
-| Pequeño | `meta-llama/Llama-3.2-3B-Instruct` | Llama | 3B | Sí (soporte oficial) | Llama 3.2 Community License (acceso restringido, hay que aceptarla en HF) | GGUF (Ollama `llama3.2:3b`) |
-| Mediano | `Qwen/Qwen3.5-9B` | Qwen | ~9B | Sí (multilingüe) | Apache 2.0 *(comprobar en la card)* | GGUF Q4_K_M |
-| Mediano | `nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB` | Gemma 4 + post-entrenamiento NVIDIA | 8B totales / 4B efectivos | Sí *(comprobar en la card)* | OpenMDW-1.1 *(comprobar)* | GGUF oficial Q4_K_M |
+| Pequeño | `LiquidAI/LFM3-1.7B` | Liquid (LFM3, arquitectura híbrida) | 1,73B | Sí (16 idiomas) | LFM Open License v1.0 | Safetensors BF16 → FP8 al cargar |
+| Pequeño | `meta-llama/Llama-3.2-3B-Instruct` | Llama | 3B | Sí (soporte oficial) | Llama 3.2 Community License (acceso restringido: hay que aceptarla en HF) | Safetensors BF16 → FP8 al cargar |
+| Mediano | `Qwen/Qwen3.5-9B` | Qwen | ~9B | Sí (multilingüe) | Apache 2.0 | Safetensors BF16 → FP8 al cargar, modo solo texto |
+| Mediano | `nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16` | Gemma 4 + post-entrenamiento NVIDIA | 8B totales / 4B efectivos | Sí | OpenMDW-1.1 | Safetensors BF16 → FP8 al cargar, modo solo texto |
 
-> Rellenad las celdas marcadas *(comprobar)* con lo que diga la model card de Hugging Face y con la salida de `ollama show <modelo>`.
+> **Cambio respecto al plan inicial:** para Nemotron se planeó `NVIDIA-Nemotron-3.5-Bolt-E4B-4GB`, pero ese repositorio es solo el GGUF Q4_K_M (sin `config.json`) y vLLM no lo carga. Se usa la versión en formato Hugging Face, `-BF16`.
 
 ## 3. Justificación
 
 - **Variedad:** cuatro familias distintas (Liquid, Llama, Qwen y Gemma/NVIDIA), en lugar de varios tamaños del mismo modelo.
 - **Idioma:** todos incluyen español entre sus idiomas.
 - **Modelos oficiales:** se evitan las variantes comunitarias (merges, destilados, versiones "uncensored"), porque no se puede verificar su procedencia y pueden alterar justo lo que medimos (fidelidad y abstención).
-- **LFM3-1.7B:** muy ligero (~1 GB en Q4) y con contexto largo. Su card recomienda usarlo con retrieval para las tareas que dependen de conocimiento, así que encaja con un RAG.
+- **LFM3-1.7B:** muy ligero y con contexto largo. Su card recomienda usarlo con retrieval para las tareas que dependen de conocimiento, así que encaja con un RAG.
 - **Llama-3.2-3B-Instruct:** la referencia más usada en el rango pequeño, con mucho soporte en los stacks.
 - **Qwen3.5-9B:** de los modelos abiertos más fuertes en el rango de 7–9B, y multilingüe.
-- **Nemotron 3.5 Bolt E4B:** 8B parámetros en total, así que entra en la categoría mediana. Basado en Gemma 4 E4B. **Nota:** calcula como un modelo de ~4B efectivos, lo que debería hacerlo más rápido que otros de 8B. Lo indicamos para que la comparación sea transparente.
+- **Nemotron 3.5 Bolt E4B:** 8B parámetros en total, así que entra en la categoría mediana. Basado en Gemma 4 E4B. Calcula como un modelo de ~4B efectivos, por lo que se esperaba que fuera más rápido que otros de 8B. **Medido:** en nuestro stack fue el más lento (≈27 tok/s frente a ≈45 de Qwen3.5-9B) y ocupa más VRAM (ver §6), porque carga los 8B completos y vLLM usa kernels más lentos en esta GPU (`TRITON_ATTN`, FP8 Marlin).
 
 ## 4. Candidatos descartados
 
@@ -39,81 +39,91 @@ Criterios de elección: idioma (español), memoria, ventana de contexto, varieda
 | `xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic` | Comunitario. Destilado para matemáticas y STEM, con las negativas eliminadas ("abliteration"): puede afectar a la abstención. Razonamiento activado por defecto |
 | `Jackrong/DeepSeek-V4-Pro-Qwen3.5-9B` | Comunitario, orientado a razonamiento matemático, no a RAG en español |
 | `meta-llama/Llama-3.2-1B` | Es la versión base (no instruct). Se sustituye por la de 3B Instruct |
-| `BSC-LT/salamandra-2b/7b-instruct` | Interesante por ser español, pero sin versión oficial en Ollama y entrenado con datos del BOE (riesgo de que responda de memoria). Posible extra |
+| `BSC-LT/salamandra-2b/7b-instruct` | Interesante por ser español, pero entrenado con datos del BOE (riesgo de que responda de memoria). Posible extra |
 | `meta-llama/Llama-3.1-8B-Instruct` | Alternativa válida en el rango mediano. Descartado para no repetir familia con Llama-3.2-3B |
 
 ## 5. Stack de inferencia
 
-- **Stack principal:** Ollama (sobre llama.cpp, con modelos en GGUF).
-- **Justificación:** instalación sencilla, modelos ya cuantizados, API local compatible con OpenAI y reproducible (`ollama show` da la versión y la cuantización exactas).
-- **Extra opcional:** comparar con `llama.cpp` (llama-server) o con vLLM usando el mismo modelo y la misma cuantización.
-
-Para cargar un GGUF de Hugging Face que no esté en la biblioteca de Ollama:
-
-```bash
-ollama run hf.co/<usuario>/<repo-GGUF>:Q4_K_M
-```
+- **Stack usado:** vLLM (modo offline, clase `LLM`), el mismo que en la Fase 2 de embeddings.
+- **Justificación:** un único stack para todo el benchmark; carga los modelos oficiales de Hugging Face sin conversiones; nunca trunca el prompt en silencio (da error si no cabe); y permite fijar la misma caché KV para todos, de modo que la VRAM medida compara modelos y no la reserva del motor.
+- **Plan inicial descartado:** Ollama con GGUF Q4_K_M. Se cambió a vLLM para usar el mismo stack que en los embeddings.
+- **Script:** `scripts/benchmark_llms_vllm.py` (un proceso por modelo y escenario). Tablas: `scripts/generar_tablas_llm.py`.
+- **Versión:** vLLM 0.34.0, PyTorch 2.14.0+cu130, NVIDIA A800 40GB (instancia MIG 3g.20gb). El script guarda la versión real en cada JSON de resultados.
 
 ## 6. Cuantización y memoria
 
-Misma cuantización para todos: **Q4_K_M**.
+Misma cuantización para todos: **FP8** (cuantización al cargar con `quantization="fp8"`, pesos BF16 de origen).
 
-Estimación: VRAM ≈ parámetros × 0,6 (Q4) + 1–3 GB de caché KV + ~1 GB del embedding.
+- **Por qué FP8 y no BF16:** Qwen3.5-9B en BF16 ocupa ~18 GB y no cabe en la instancia de 20 GB junto a la caché.
+- **Por qué FP8 y no Q4:** vLLM no carga bien los GGUF; FP8 es la cuantización que aplica al cargar y es la misma para los cuatro modelos.
+- **Nota de hardware:** la A800 (Ampere) no calcula en FP8; vLLM lo aplica solo a los pesos (kernel Marlin). Ahorra memoria, pero no acelera.
+- **Modo solo texto:** Qwen3.5-9B y Nemotron son multimodales. Se cargan con `limit_mm_per_prompt` a 0 para que vLLM no reserve memoria para los codificadores de imagen, audio y vídeo. Con ellos activos la VRAM pico subía de 14,3 a 15,9 GB (Qwen) y de 14,8 a 15,1 GB (Nemotron).
+- **Caché KV:** fija en 2 GB para todos (`kv_cache_memory_bytes`).
 
-| Modelo | Pesos Q4 (aprox.) | Total estimado | ¿Cabe en 20 GB? | ¿Cabe en 8 GB (Plan B)? |
+VRAM pico medida (toda la instancia MIG, con caché KV de 2 GB):
+
+| Modelo | Pesos en GPU (log de vLLM) | VRAM pico medida | ¿Cabe en 20 GB? | ¿Cabe en 8 GB (Plan B)? |
 |---|---|---|---|---|
-| LFM3-1.7B | ~1 GB | ~3 GB | Sí | Sí |
-| Llama-3.2-3B-Instruct | ~2 GB | ~4 GB | Sí | Sí |
-| Nemotron Bolt E4B | ~4–6 GB | ~6–8 GB | Sí | Justo |
-| Qwen3.5-9B | ~5,5–6 GB | ~8–9 GB | Sí | Justo / no |
+| LFM3-1.7B | 2,0 GB | 5,4 GB | Sí | Sí |
+| Llama-3.2-3B-Instruct | 3,4 GB | 7,1 GB | Sí | Justo (sin contar el embedding) |
+| Nemotron Bolt E4B | 10,5 GB | 14,8 GB | Sí | No |
+| Qwen3.5-9B | 10,3 GB | 14,3 GB | Sí | No |
 
-> La VRAM real se mide durante la prueba (pico), con `nvidia-smi --query-gpu=memory.used --format=csv -l 1 > vram_<modelo>.log`.
-
-Extra opcional: repetir un modelo (por ejemplo, Qwen3.5-9B) en **Q8_0** para comparar Q4 con Q8.
+> La estimación inicial en Q4 (pesos × 0,6) no aplica: con FP8 los pesos ocupan ~1 byte por parámetro, y Nemotron carga además tablas de embeddings por capa muy grandes.
 
 ## 7. Configuración común (igual para todos)
 
 | Parámetro | Valor |
 |---|---|
-| Temperatura | 0 |
-| top-k del retrieval | 5 *(fijar el definitivo)* |
-| Límite de tokens de salida (`num_predict`) | 512 *(fijar)* |
-| Ventana de contexto (`num_ctx`) | 8192 |
-| Modo de razonamiento | **Desactivado** (`"think": false` en Ollama) |
+| Temperatura | 0 (`seed` = 42) |
+| top-k del retrieval | 5 (top-5 guardado por el embedding ganador en la Fase 2) |
+| Límite de tokens de salida (`max_tokens`) | 512 |
+| Ventana de contexto (`max_model_len`) | 8192 (prompt más largo medido: ~2.500 tokens) |
+| Modo de razonamiento | Desactivado (`chat_template_kwargs={"enable_thinking": False}`) |
+| Caché de prefijos | Desactivada (para que repetir una pregunta no abarate el TTFT) |
 | Prompt | El mismo para todos (ver abajo) |
-| Embedding | El ganador de la Fase 2 para cada escenario |
+| Embedding | BOE: `harrier-oss-v1`. Debian: `bge-m3` |
 
-### Prompt (borrador)
+### Prompt (final)
+
+Se envía como plantilla de chat (mensaje de sistema + mensaje de usuario). `{cita}` vale «el artículo» en el BOE y «la sección» en Debian.
 
 ```text
+[sistema]
 Eres un asistente que responde preguntas usando ÚNICAMENTE los fragmentos proporcionados.
 
 Reglas:
-1. Responde solo con información que aparezca en los fragmentos.
-2. Si la respuesta no está en los fragmentos, responde exactamente: "No aparece en el documento".
-3. Cita siempre el artículo (BOE) o la sección (Debian) de donde sale la respuesta.
+1. Responde solo con información que aparezca en los fragmentos. No uses conocimientos propios.
+2. Si la respuesta no está en los fragmentos, responde exactamente: "No aparece en el documento" y nada más.
+3. Cita siempre {cita} de donde sale la respuesta (aparece en la línea «Fuente» de cada fragmento).
 4. Responde en español y de forma breve.
 
+[usuario]
 Fragmentos:
-{fragmentos}
+
+[Fragmento 1]
+Fuente: <artículo o sección del chunk>
+<texto del chunk>
+
+... (5 fragmentos)
 
 Pregunta: {pregunta}
-Respuesta:
 ```
 
 ## 8. Trampas a evitar
 
-- [ ] Modo de razonamiento desactivado en Qwen3.5 y Nemotron.
-- [ ] `num_ctx` suficiente: prompt + 5 chunks + respuesta. Si no, los fragmentos se cortan sin dar error.
-- [ ] Misma cuantización (Q4_K_M) para todos.
-- [ ] Usar siempre la versión **instruct**.
-- [ ] Calentar el modelo antes de medir: descartar la primera ejecución, repetir 3 veces y usar la mediana.
-- [ ] Anotar en cada ejecución: modelo, versión, cuantización, stack, parámetros, fecha y hora.
+- [x] Modo de razonamiento desactivado en Qwen3.5 y Nemotron (el script avisa si detecta `<think>`).
+- [x] Contexto suficiente: prompt + 5 chunks + respuesta caben en 8192 tokens; vLLM daría error si no.
+- [x] Misma cuantización (FP8) para todos.
+- [x] Usar siempre la versión **instruct**.
+- [x] Calentar el modelo antes de medir: se descarta la primera ronda, se repite 3 veces y se usa la mediana.
+- [x] Anotar en cada ejecución: modelo, versión, cuantización, stack, parámetros, fecha y hora (en `meta` de cada JSON).
+- [x] Multimodales en modo solo texto, para que la VRAM sea comparable.
 
-## 9. Evidencias que hay que guardar
+## 9. Evidencias guardadas
 
-- Salida de `ollama show <modelo>` para cada modelo.
-- `ollama --version`.
-- Registros de VRAM (`vram_<modelo>.log`).
-- Respuestas brutas de cada modelo con su puntuación a mano (corrección 0–2, fiel sí/no, abstención, formato e idioma).
-- Ficheros de resultados de los que salen las Tablas B y C.
+- Respuestas brutas y métricas por modelo y escenario: `results/llms/data/<modelo>_<escenario>.json`.
+- Registros de VRAM: `results/llms/logs/vram_<modelo>_<escenario>.log`.
+- Logs completos de ejecución: `results/llms/logs/ejecucion_completa.log`, `results/llms/logs/nemotron.log`.
+- Puntuación a mano (corrección 0–2, fiel, abstención, formato e idioma): `results/llms/puntuacion_boe.csv` y `puntuacion_debian.csv`.
+- Tablas B y C: `results/llms/tablas_b_c.md`.
