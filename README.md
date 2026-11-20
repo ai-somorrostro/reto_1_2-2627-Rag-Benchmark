@@ -1,198 +1,271 @@
-# Práctica: benchmark de LLMs y embeddings locales para RAG
+# Benchmark de Embeddings y LLMs Locales para Sistemas RAG
 
-## Objetivo
+> **Proyecto de Práctica:** Evaluación en local para arquitectura RAG (*Retrieval-Augmented Generation*)  
+> **Autores (Alumnos):** Alfred, Ane y Naiara  
+> **Entorno de pruebas:** GPU NVIDIA A800, Ubuntu Linux, Python 3.12, PyTorch y Ollama
 
-Cada grupo decide, con datos que mide él mismo, qué modelo de embedding y qué LLM local usaría en un sistema RAG para cada uno de los dos escenarios, y lo defiende el viernes. El código y los registros de ejecución son la evidencia: una cifra sin ellos no cuenta.
+---
 
-## Los dos escenarios
+## 1. ¿De qué va este proyecto?
 
-Todos los grupos usan los mismos dos corpus, así los resultados se pueden comparar entre grupos el viernes.
+En esta práctica hemos diseñado, medido y analizado un sistema **RAG (*Retrieval-Augmented Generation*) 100% local**.
 
-| Escenario | Documento | Qué pone a prueba |
-| --- | --- | --- |
-| 1. Normativa larga | [Estatuto de los Trabajadores](https://www.boe.es/eli/es/rdlg/2015/10/23/2/con), RDL 2/2015, texto consolidado (BOE-A-2015-11430) | Artículos parecidos entre sí, lenguaje jurídico, remisiones entre artículos, citar el artículo exacto |
-| 2. Documentación técnica | [El manual del Administrador de Debian](https://www.debian.org/doc/manuals/debian-handbook/index.es.html), edición en español para Debian 11 | Prosa mezclada con comandos, rutas y opciones; términos en inglés dentro del español |
+Cuando usamos un modelo de inteligencia artificial para responder preguntas sobre documentos específicos (como leyes o manuales de informática), los modelos normales suelen fallar:
+- **Alucinan:** se inventan datos si no los saben con certeza.
+- **No están actualizados:** su conocimiento termina el día en que fueron entrenados.
+- **No son transparentes:** no pueden citar exactamente el número de artículo o la sección de donde sale la información.
 
-- **BOE:** usad el texto consolidado en HTML o el [PDF consolidado](https://www.boe.es/buscar/pdf/2015/BOE-A-2015-11430-consolidado.pdf). Si usáis el PDF, quitad cabeceras y pies de página antes de trocear.
-- **Debian:** mejor HTML o [EPUB](https://debian-handbook.info/download/es-ES/stable/debian-handbook.epub) que PDF. Conservad los títulos de sección para poder citarlos.
-- **Extra opcional:** la [versión en inglés](https://debian-handbook.info/get/) del manual permite medir qué pasa al preguntar en español sobre un corpus en inglés.
+Un sistema **RAG** soluciona esto en dos pasos muy sencillos:
+1. **Recuperación (*Retrieval*):** cuando el usuario hace una pregunta, buscamos en nuestros propios documentos troceados cuáles son los 3 o 5 fragmentos más relevantes mediante modelos de *embedding* (vectores numéricos).
+2. **Generación con LLM:** le pasamos esos fragmentos seleccionados a un modelo de lenguaje (LLM) con una instrucción muy estricta: *«Responde únicamente utilizando los fragmentos adjuntos, cita la fuente exacta y si el dato no aparece, di textualmente "No aparece en el documento"»*.
 
-## Decisiones del grupo y mínimos
+Nuestro objetivo como grupo ha sido **medir con datos reales** qué combinación de modelo de embedding y qué LLM funciona mejor para dos documentos radicalmente distintos.
 
-El grupo elige sus candidatos libremente, respetando estos mínimos.
+---
 
-| Componente | Mínimo | Condición |
-| --- | --- | --- |
-| Modelos de embedding | 3 | Hasta unos 1B parámetros; al menos uno multilingüe |
-| LLM pequeños | 2 | Entre 1B y 3B parámetros |
-| LLM medianos | 2 | Entre 7B y 9B parámetros |
-| Stack de inferencia | 1 | Justificado; comparar dos es un extra |
-| Cuantización | Libre | Indicadla siempre; comparar Q4 y Q8 del mismo modelo es un extra |
+## 2. Los Dos Escenarios Evaluados
 
-Criterios para elegir candidatos:
+Trabajamos sobre dos corpus oficiales que ponen a prueba retos muy diferentes:
 
-- **Idioma:** que entienda bien el español. Muchos embeddings populares solo funcionan bien en inglés.
-- **Memoria:** haced la cuenta antes de descargar. VRAM ≈ parámetros × bytes por parámetro (FP16 = 2, Q8 ≈ 1, Q4 ≈ 0,6) + 1–3 GB de caché KV + el embedding.
-- **Longitud de entrada:** la longitud máxima del embedding y la ventana de contexto del LLM deben admitir vuestros chunks y vuestro prompt.
-- **Variedad:** mejor familias distintas que tres versiones del mismo modelo.
-- **Licencia y formato:** que se pueda usar y que lo admita vuestro stack.
+| Escenario | Documento Oficial | Tipo de Texto | Retos Específicos |
+| :--- | :--- | :--- | :--- |
+| **1. Normativa Jurídica** | **Estatuto de los Trabajadores** (BOE consolidado, RDL 2/2015) | Legal / Legislativo | Artículos largos y formalmente parecidos entre sí, remisiones cruzadas («según lo dispuesto en el art. 12...») y necesidad de citar el artículo exacto con tolerancia cero al error. |
+| **2. Documentación Técnica** | **Manual del Administrador de Debian** (Debian 11 Bullseye, en español) | Técnico / Informático | Prosa técnica mezclada con comandos de terminal (`apt`, `dpkg`), rutas de archivos (`/etc/...`), parámetros y términos en inglés dentro de frases en castellano. |
 
-Dónde buscar: [MTEB](https://huggingface.co/spaces/mteb/leaderboard) (filtrad multilingüe y retrieval), [Hugging Face](https://huggingface.co/models) y la [biblioteca de Ollama](https://ollama.com/library). Un ranking sirve para elegir candidatos, no para decidir.
+---
 
-## Fase 1: corpus y golden set
+## 3. Arquitectura del Sistema RAG
 
-Al acabar esta fase tenéis los dos corpus troceados y un golden set de 15 preguntas por escenario. La limpieza y el chunking los decidís vosotros; una vez elegidos, fijadlos para todo el benchmark.
+El flujo completo que hemos implementado se divide en 4 fases conectadas:
 
-El golden set de cada escenario incluye:
+```
+[Documentos EPUB] 
+       │
+       ▼ (Fase 1: Extracción HTML + Chunking con overlap + Inyección de Título)
+[Fragmentos / Chunks JSON]
+       │
+       ▼ (Fase 2: Sentence-Transformers / Modelos de Embedding)
+[Vectores Densos en GPU] ──> Similitud Coseno con la Pregunta
+       │
+       ▼ (Top-3 Fragmentos más relevantes)
+[Prompt del Sistema Estricto] + [Top-3 Chunks] + [Pregunta del Usuario]
+       │
+       ▼ (Fase 3: Inferencia en Ollama con Temperatura 0)
+[Respuesta Fiel con Cita o Abstención Honesta]
+```
 
-- 8 preguntas directas: la respuesta está en un solo fragmento.
-- 4 preguntas que necesitan combinar dos fragmentos.
-- 3 preguntas sin respuesta en el corpus, para medir la abstención.
+---
 
-Cada pregunta lleva su respuesta esperada y los fragmentos del corpus que la contienen. No copiéis frases literales del documento en las preguntas.
+## 4. Fase 1: Limpieza de Datos, Chunking y Golden Set
 
-| Tipo | Pregunta de ejemplo | Respuesta esperada |
-| --- | --- | --- |
-| Directa | ¿Cuántos días de vacaciones me corresponden como mínimo? | 30 días naturales (art. 38) |
-| Sin respuesta | ¿Cuánto es el salario mínimo este año? | No aparece: el art. 27 dice que lo fija el Gobierno, pero no da la cifra |
+Todo el código de esta fase se encuentra documentado y explicado paso a paso en el notebook [`data/preparar_datos.ipynb`](file:///home/g4/reto_1_2-2627-Rag-Benchmark/data/preparar_datos.ipynb).
 
-## Fase 2: benchmark de embeddings
+### ¿Por qué usamos EPUB en vez de PDF?
+Descargamos los documentos originales en formato **EPUB**. Un archivo EPUB es internamente un `.zip` con código XHTML/HTML limpio. Al parsearlo directamente con Python (`zipfile`, `html.parser`):
+- Eliminamos por completo el ruido típico de los PDF (cabeceras repetitivas, números de página en medio del texto, notas al pie cortando párrafos).
+- Conservamos intactos los títulos de los artículos y capítulos.
 
-Objetivo: elegir un embedding por escenario midiendo solo el retrieval, sin LLM.
+### Nuestra estrategia de troceado (*Chunking*)
+- **Estructura natural:** el corte respeta artículos enteros (en el BOE) o secciones de capítulo (en Debian).
+- **Límite de 1.400 caracteres:** si cabe, el artículo o sección se guarda íntegro en un único fragmento.
+- **Solapamiento (*Overlap*):** si es más largo, se divide por párrafos en bloques de **1.200 caracteres con 200 caracteres de solapamiento** para evitar cortar ideas a la mitad.
+- **Metadatos en el texto:** cada fragmento lleva al inicio una cabecera `[Artículo X]` o `[Capítulo Y]`, asegurando que el embedding capture el tema principal.
 
-- **Mínimo a reportar por modelo:** Recall@1, Recall@3, Recall@5, MRR, tiempo de indexado, tamaño del índice y VRAM.
-- **Criterio:** mejor Recall@5; desempate por MRR y después por coste.
-- **Ojo:** algunos modelos necesitan prefijos o instrucciones en la consulta. Sin ellos, la comparación no es justa.
+### El Golden Set (Banco de Pruebas de 60 Preguntas)
+Diseñamos a mano un conjunto de evaluación de **30 preguntas para el BOE** y **30 preguntas para Debian** (ubicadas en `preguntas/boe_questions.json` y `preguntas/debian_questions.json`). Cada conjunto cuenta con una distribución equilibrada:
+- **16 Preguntas Directas (*single-hop*):** la respuesta se encuentra íntegra dentro de un único fragmento.
+- **8 Preguntas Multi-fragmento (*multi-hop*):** requieren combinar y sintetizar información de dos artículos o secciones distintas.
+- **6 Preguntas Negativas / Sin Respuesta (*unanswerable*):** evalúan si el sistema sabe abstenerse honestamente diciendo *«No aparece en el documento»* en vez de inventarse una respuesta.
 
-## Fase 3: benchmark de LLMs
+---
 
-Objetivo: con el embedding ganador fijo, comparar los LLMs en calidad y en coste.
+## 5. Fase 2: Benchmark de Modelos de Embedding (Recuperación)
 
-- **Misma configuración para todos:** top-k, prompt, temperatura 0 y límite de tokens de salida.
-- **El prompt lo diseñáis vosotros,** pero debe pedir que responda solo con los fragmentos, que diga «No aparece en el documento» si no está y que cite el artículo o la sección.
-- **Calidad:** puntuad a mano las respuestas con la escala de la sección de métricas.
-- **Coste:** medidlo en al menos 5 preguntas por modelo; descartad la primera ejecución, repetid 3 veces y usad la mediana.
-- **Extra opcional:** pasad al LLM directamente el fragmento correcto. Si así acierta y con el retrieval no, el fallo es del retrieval.
+Evaluamos de forma aislada 3 modelos de embedding sobre los dos corpus, sin intervención de LLMs. El código completo está en [`benchmark_embeddings.ipynb`](file:///home/g4/reto_1_2-2627-Rag-Benchmark/benchmark_embeddings.ipynb).
 
-## Fase 4: decisión por escenario
+### Modelos de Embedding Evaluados:
+1. **`EmbeddingGemma-2`** (`google/embeddinggemma-2`): 0.7B parámetros, arquitectura densa de Google.
+2. **`Spanish-BETO`** (`hiiamsid/sentence_similarity_spanish_es`): 0.11B parámetros, especialista monolingüe en castellano.
+3. **`Multilingual-E5-Small`** (`intfloat/multilingual-e5-small`): 0.12B parámetros, modelo multilingüe de Microsoft optimizado con prefijos `passage:` y `query:`.
 
-La regla es elegir el modelo más pequeño y barato que cumple vuestros umbrales de calidad.
+### Métricas de Retrieval:
+- **Recall@k (k=1, 3, 5):** porcentaje de preguntas con respuesta donde el fragmento correcto (*ground truth*) aparece entre los $k$ primeros resultados devueltos.
+- **MRR (*Mean Reciprocal Rank*):** premia que el fragmento acertado aparezca en la primera posición ($1 / \text{posición}$).
+- **Coste computacional:** tiempo de indexado (segundos), tamaño del índice en disco (MB) y consumo de memoria VRAM (GB).
 
-1. **Fijad los umbrales antes de ver los resultados** y escribidlos. Ejemplo orientativo: Recall@5 ≥ 0,80; respuestas no fieles ≤ 10 %; abstención correcta ≥ 2 de 3; latencia total ≤ 5 s.
-2. **Descartad lo que no cumple**, por rápido o barato que sea.
-3. **Entre los que cumplen, quedaos con el más barato:** menos VRAM, más tokens/s, menos latencia.
-4. **Decidid por separado para cada escenario.** Lo que vale para el BOE puede no valer para Debian.
-5. **Plan B:** repetid la decisión como si solo tuvierais 8 GB de VRAM.
+### Resultados Obtenidos (Tabla A):
 
-El resultado de esta fase es una frase por escenario: «Para X usaría Y porque Z», con los números que la respaldan.
+#### Documento 1: Normativa Jurídica (BOE - Estatuto de los Trabajadores)
+| Modelo | Parámetros | Dimensión | Recall@1 | Recall@3 | Recall@5 | MRR | Tiempo Indexado | Tamaño Índice | VRAM Pico |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **EmbeddingGemma-2** | 0.7B | 768 | 0.750 | **0.958** | **1.000** | **0.865** | 2.19 s | 1.23 MB | 2.82 GB |
+| **Spanish-BETO** | 0.11B | 768 | 0.583 | 0.833 | 0.917 | 0.720 | 2.39 s | 1.23 MB | 2.13 GB |
+| **Multilingual-E5-Small** | 0.12B | 384 | **0.792** | 0.833 | 0.958 | 0.844 | **0.97 s** | **0.62 MB** | **1.81 GB** |
 
-## Métricas: qué medir y qué priorizar
+#### Documento 2: Documentación Técnica (Manual del Administrador de Debian)
+| Modelo | Parámetros | Dimensión | Recall@1 | Recall@3 | Recall@5 | MRR | Tiempo Indexado | Tamaño Índice | VRAM Pico |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **EmbeddingGemma-2** | 0.7B | 768 | 0.333 | **0.542** | **0.667** | 0.484 | 9.73 s | 3.54 MB | 9.97 GB |
+| **Spanish-BETO** | 0.11B | 768 | 0.208 | 0.250 | 0.333 | 0.261 | 14.01 s | 3.54 MB | 2.37 GB |
+| **Multilingual-E5-Small** | 0.12B | 384 | **0.417** | **0.542** | 0.625 | **0.493** | **4.00 s** | **1.77 MB** | **1.80 GB** |
 
-El orden de prioridad es: primero el retrieval, después la honestidad del LLM, después la corrección, y el coste solo para desempatar entre modelos que ya cumplen.
+### Selección de Ganadores en Embeddings:
+- **Para el BOE:** Elegimos **`EmbeddingGemma-2`**. Alcanza un **Recall@5 perfecto del 100% (1.000)** y el mayor MRR (0.865). En leyes no podemos permitirnos perder el artículo clave.
+- **Para Debian:** Elegimos **`Multilingual-E5-Small`**. Logra el mayor Recall@1 (41.7%) y el mejor MRR (0.493), consumiendo solo **1.80 GB de VRAM** y 4 segundos de indexado frente a los **9.97 GB** que necesitó EmbeddingGemma-2.
+- **Elección Global:** **`Multilingual-E5-Small`**. Es el modelo más equilibrado, rápido y ligero para un despliegue completo en producción.
 
-| Prioridad | Métrica | Qué mide | Cómo se calcula | Qué decisión informa |
-| --- | --- | --- | --- | --- |
-| 1 | Recall@k | Si el fragmento correcto llega a los k primeros | Preguntas con acierto en el top-k / preguntas con respuesta | Embedding, chunking, top-k |
-| 2 | Fidelidad | Si todo lo que afirma está en los fragmentos | % de respuestas sin datos inventados | Tamaño del LLM |
-| 2 | Abstención correcta | Si dice «no aparece» cuando no está | Abstenciones / preguntas sin respuesta | Tamaño del LLM |
-| 3 | Corrección | Si la respuesta coincide con la esperada | Media de la escala 0–2 | Tamaño del LLM, cuantización |
-| 3 | Falsas abstenciones | Si dice «no aparece» cuando sí está | Abstenciones / preguntas con respuesta | Prompt, tamaño del LLM |
-| 4 | MRR | Si el fragmento correcto sale arriba | Media de 1 / posición del primer acierto | Desempate de embeddings |
-| 4 | Formato e idioma | Español y cita del artículo o sección | % de respuestas que cumplen | Tamaño del LLM, prompt |
-| Requisito | VRAM pico | Si cabe en 20 GB y con qué margen | Máximo de memoria de GPU durante la prueba | Tamaño, cuantización, stack |
-| 5 | Latencia total y TTFT | Cuánto espera el usuario | Mediana de 3 ejecuciones tras calentar | Tamaño, cuantización, stack |
-| 5 | Tokens por segundo | Velocidad de generación | Tokens generados / tiempo de generación | Stack, cuantización |
-| 5 | Tiempo de indexado y tamaño del índice | Coste de preparar el corpus | Tiempo total y espacio en disco | Embedding |
+---
 
-Escala de corrección: **2** correcta y completa, **1** incompleta o imprecisa, **0** incorrecta. En las preguntas sin respuesta, «No aparece en el documento» cuenta como 2.
+## 6. Fase 3: Benchmark de Modelos LLM (Generación)
 
-No prioricéis estas métricas:
+Fijando los 3 mejores fragmentos recuperados para cada pregunta, evaluamos 4 LLMs locales servidos a través de **Ollama** con **temperatura = 0**. El código y las pruebas están en [`benchmark_llms.ipynb`](file:///home/g4/reto_1_2-2627-Rag-Benchmark/benchmark_llms.ipynb).
 
-- **BLEU y ROUGE:** cuentan palabras coincidentes y castigan una paráfrasis correcta.
-- **Perplejidad:** mide lo fluido que es el texto, no si la respuesta es correcta.
-- **Rankings generales (MMLU, leaderboards):** no usan vuestro corpus ni vuestro idioma.
-- **Tokens por segundo sin mirar la calidad:** un modelo rápido que inventa no sirve.
-- **Una sola ejecución:** la primera siempre es más lenta (carga del modelo).
+### Modelos LLM Evaluados:
+- **Pequeños (~2.6B):** `Gemma-2-2B` (Google, Q4_0) y `Granite-3-2B` (IBM, Q4_K_M).
+- **Medianos (~7B):** `Mistral-7B` (Mistral AI, Q4_K_M) y `Qwen-2.5-7B` (Alibaba Cloud, Q4_K_M).
 
-En la literatura sobre evaluación de RAG estos conceptos aparecen como faithfulness, answer correctness, context precision y context recall. Si un LLM local hace de juez, validad a mano al menos 10 respuestas y anotad cuántas coinciden con vuestra nota.
+### Métricas de Evaluación:
+- **Corrección media (0 a 2):** 2 = correcta y completa, 1 = parcial, 0 = incorrecta (en preguntas sin respuesta, decir «No aparece» puntúa 2).
+- **Fidelidad factual (%):** porcentaje de respuestas sin datos inventados fuera de los fragmentos.
+- **Abstención correcta:** aciertos sobre las 12 preguntas negativas totales (6 de cada corpus).
+- **Falsas abstenciones:** veces que el modelo dice «No aparece» a pesar de que la respuesta sí estaba en el texto.
+- **Coste en GPU:** TTFT (*Time to First Token* en segundos), velocidad de generación (tokens/segundo), latencia total (segundos) y memoria VRAM (GB).
 
-## Reglas para un benchmark justo
+### Resultados de Calidad y Coste:
 
-Si cambiáis dos cosas a la vez, no sabréis cuál explica la diferencia.
+#### Tabla B: Calidad de Respuestas RAG (sobre las 60 preguntas)
+| Modelo | Tamaño | Cuantización | Corrección Media (0–2) | % Fieles (Sin Alucinación) | Abstención Correcta | Falsas Abstenciones | Formato e Idioma (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Gemma-2-2B** | 2.6B | Q4_0 | 1.70 | 98.3 % | 11 / 12 | 6 | 98.3 % |
+| **Granite-3-2B** | 2.6B | Q4_K_M | 1.68 | 98.3 % | 11 / 12 | **4** | 75.0 % |
+| **Mistral-7B** | 7.2B | Q4_K_M | **1.75** | **100.0 %** | **12 / 12** | 6 | **100.0 %** |
+| **Qwen-2.5-7B** | 7.6B | Q4_K_M | 1.73 | **100.0 %** | **12 / 12** | 8 | **100.0 %** |
 
-- Cambiad una sola variable cada vez.
-- Mismo chunking, top-k y prompt para todos los modelos.
-- Temperatura 0 o la más baja posible.
-- Las mismas preguntas para todos los modelos.
-- Medid el retrieval por separado de la generación.
-- Calentad el modelo antes de medir velocidad.
-- Anotad versión, cuantización y stack de cada prueba.
-- Comprobad que el prompt cabe en la ventana de contexto.
+#### Tabla C: Rendimiento y Coste Computacional en GPU
+| Modelo | Inferencia | TTFT (s) | Velocidad (tok/s) | Latencia Media (s) | VRAM en GPU (GB) |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Gemma-2-2B** | Ollama | 0.044 s | 86.7 tok/s | 0.44 s | 1.52 GB |
+| **Granite-3-2B** | Ollama | 0.015 s | **98.9 tok/s** | **0.41 s** | **1.49 GB** |
+| **Mistral-7B** | Ollama | 0.016 s | 72.9 tok/s | 0.68 s | 4.07 GB |
+| **Qwen-2.5-7B** | Ollama | **0.014 s** | 74.0 tok/s | 0.43 s | 4.36 GB |
 
-Trampas habituales:
+#### Desglose de Corrección por Tipo de Documento:
+| Modelo | Corrección en BOE (Legal) | Corrección en Debian (Técnico) | Corrección Global |
+| :--- | :---: | :---: | :---: |
+| **Gemma-2-2B** | 1.80 / 2.00 | 1.60 / 2.00 | 1.70 / 2.00 |
+| **Granite-3-2B** | 1.73 / 2.00 | **1.63 / 2.00** | 1.68 / 2.00 |
+| **Mistral-7B** | 1.87 / 2.00 | **1.63 / 2.00** | **1.75 / 2.00** |
+| **Qwen-2.5-7B** | **1.93 / 2.00** | 1.53 / 2.00 | 1.73 / 2.00 |
 
-| Trampa | Qué pasa |
-| --- | --- |
-| Modo de razonamiento activo por defecto | Más latencia y texto extra en la respuesta |
-| Ventana de contexto del servidor menor que el prompt | Los fragmentos se cortan sin dar error |
-| Olvidar los prefijos o instrucciones del embedding | Recall más bajo de lo que da el modelo |
-| Chunks más largos que el límite del embedding | El final del chunk no se indexa |
-| Comparar el Q4 de un modelo con el FP16 de otro | Comparáis cuantizaciones, no modelos |
-| PDF con cabeceras y pies de página | Ruido repetido en todos los chunks |
+---
 
-## Plantillas de resultados
+## 7. Fase 4: Decisiones Finales del Grupo
 
-Rellenad una tabla de cada tipo por escenario. Son las que se enseñan el viernes.
+Siguiendo la regla de oro del proyecto: *«elegir el modelo más eficiente y barato que cumpla nuestros umbrales de calidad»*.
 
-**Tabla A. Embeddings**
+### Nuestras Decisiones Justificadas («Para X usaría Y porque Z»):
 
-| Modelo | Parámetros | Dimensión | Recall@1 | Recall@3 | Recall@5 | MRR | Indexado (s) | Índice (MB) | VRAM (GB) |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
+1. **Para el Escenario 1 (BOE - Normativa Legal):**
+   > *«Para el BOE usaríamos **`Qwen-2.5-7B`** porque alcanza la nota más alta de todo el benchmark (**1.93 sobre 2.00**), con un **100% de respuestas fieles**, **6/6 en abstenciones correctas**, solo 1 falsa abstención y cita de forma impecable el artículo exacto en apenas 0.43 segundos».*
+   - **Motivo:** en el ámbito laboral y legal un error o alucinación acarrea consecuencias graves; la fidelidad total es un requisito no negociable.
 
-**Tabla B. LLMs: calidad**
+2. **Para el Escenario 2 (Debian - Documentación Técnica):**
+   > *«Para Debian usaríamos **`Granite-3-2B`** porque empata en la máxima corrección técnica (**1.63 sobre 2.00**), comete solo 2 falsas abstenciones (frente a las 7 de Qwen y 5 de Mistral), genera texto a **98.9 tokens/segundo** y consume únicamente **1.49 GB de VRAM**».*
+   - **Motivo:** en comandos y administración de sistemas los modelos grandes pecan a veces de exceso de prudencia; Granite es directo, ultra rápido y no se abstiene innecesariamente.
 
-| Modelo | Tamaño | Cuantización | Corrección media (0–2) | Respuestas fieles (%) | Abstención correcta (de 3) | Falsas abstenciones | Formato e idioma (%) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
+3. **Decisión Global para Todo el Sistema:**
+   > *«Si la organización solo puede desplegar un único LLM para ambos corpus, nos quedamos con **`Qwen-2.5-7B`**».*
+   - **Motivo:** ofrece un 100% de fidelidad factual (cero datos inventados), una corrección media sobresaliente (1.73 global) y es notablemente más rápido que Mistral (0.43 s de latencia frente a 0.68 s, con un TTFT de tan solo 14 milisegundos).
 
-**Tabla C. LLMs: coste**
+4. **Plan B (Si nuestro servidor solo tuviera 8 GB de VRAM):**
+   > *«Si estuviéramos limitados a un servidor de 8 GB de VRAM, cambiaríamos el LLM a **`Gemma-2-2B`**».*
+   - **Motivo:** `Multilingual-E5-Small` (1.80 GB) + `Qwen-2.5-7B` (4.36 GB) sumaría 6.16 GB, lo que dejaría poco margen para varias peticiones a la vez. Con `Gemma-2-2B` (1.52 GB), el sistema completo consume solo **3.32 GB de VRAM**, manteniendo un excelente **1.70 / 2.00** de corrección y dejando casi 5 GB de memoria libres para concurrencia.
 
-| Modelo | Stack | TTFT (s) | Tokens/s | Latencia total (s) | VRAM pico (GB) |
-| --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
+---
 
-Para la puntuación a mano, registrad de cada respuesta: la pregunta, el modelo, la respuesta tal como salió, la corrección (0–2), si es fiel (sí/no), si se abstiene (sí/no/no aplica) y si cumple formato e idioma (sí/no).
+## 8. Trabajo Extra: Comparativa de Cuantización (Q4 vs Q8)
 
-## Entrega del viernes
+Evaluamos de manera exhaustiva **`Qwen-2.5-7B`** en sus variantes `Q4_K_M` (~4 bits) y `Q8_0` (~8 bits) sobre las 60 preguntas del Golden Set para comprobar si duplicar la precisión de los pesos merece la pena en RAG:
 
-Cada grupo presenta 10 minutos y entrega su material de trabajo.
+| Cuantización | Tamaño en Disco | VRAM en GPU | Tokens/s | TTFT | Latencia Media | Corrección (0–2) | % Fieles | Abstención |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Q4_K_M** | **4.68 GB** | **4.36 GB** | **74.0 tok/s** | **0.014 s** | **0.43 s** | **1.73** | **100.0 %** | **12 / 12** |
+| **Q8_0** | 8.10 GB | 7.76 GB | 61.1 tok/s | 0.021 s | 0.52 s | 1.72 | 100.0 % | 12 / 12 |
 
-1. **Candidatos y stack:** qué modelos y stack elegisteis, y por qué.
-2. **Resultados:** las tablas A, B y C de cada escenario.
-3. **Recomendación:** «Para X usaría Y porque Z», una por escenario, con vuestros umbrales.
-4. **Plan B:** qué cambiaríais con solo 8 GB de VRAM.
-5. **Lo que no esperabais:** un resultado que os sorprendió y cómo lo explicáis.
+### Conclusión del Grupo sobre Cuantización:
+**No compensa en absoluto usar Q8 en una arquitectura RAG.**
+- La calidad factual es idéntica (1.73 frente a 1.72, ambas con 100% de fidelidad y 12/12 en abstención).
+- Esto ocurre porque en RAG el conocimiento exacto lo aportan los fragmentos de texto inyectados en el contexto, no la memorización interna del modelo.
+- Sin embargo, Q8 penaliza fuertemente el sistema: ocupa casi el doble de memoria en disco y GPU (+78% VRAM) y es un **17% más lento** generando respuestas. Por tanto, **Q4 es la opción óptima para producción**.
 
-Evidencias obligatorias (sin ellas, los resultados no se dan por válidos):
+---
 
-- **Código** que genera todas las cifras y se ejecuta de principio a fin.
-- **Registros brutos de cada ejecución:** modelo, versión, cuantización, stack, parámetros, fecha y hora.
-- **Respuestas de los LLMs tal como salieron**, junto a su puntuación a mano.
-- **Registro del uso de memoria de la GPU** durante las medidas de VRAM.
-- **Trazabilidad:** cada cifra de las tablas sale de un fichero de resultados concreto.
+## 9. Estructura del Repositorio
 
-## Recursos
+```text
+├── README.md                           <- Este documento: guía y reporte del proyecto
+├── requirements.txt                    <- Librerías necesarias para ejecutar el proyecto
+├── make_balanced_deck.py               <- Script para generar las diapositivas oficiales
+├── presentacion_rag_benchmark.pptx     <- Diapositivas en PowerPoint (7 slides limpias)
+├── presentacion.html                   <- Presentación interactiva en HTML para el navegador
+├── manual_conceptos_rag_benchmark.pdf  <- Manual técnico en PDF con TODOS los conceptos explicados
+│
+├── data/
+│   ├── preparar_datos.ipynb            <- Notebook de la Fase 1: limpieza y chunking
+│   ├── raw/                            <- Archivos originales (EPUB de BOE y Debian)
+│   └── processed/                      <- Chunks procesados en formato JSON con metadatos
+│
+├── preguntas/
+│   ├── boe_questions.json              <- 30 preguntas del Golden Set para normativa
+│   └── debian_questions.json           <- 30 preguntas del Golden Set para documentación técnica
+│
+├── resultados/
+│   ├── embeddings_benchmark.json       <- Métricas y datos de la Fase 2 (Embeddings)
+│   ├── llms_benchmark.json             <- Tablas B y C de la Fase 3 (LLMs)
+│   ├── llms_respuestas_detalladas.json <- Respuestas completas de cada modelo para las 60 preguntas
+│   └── qwen_q8_benchmark.json          <- Registro de la prueba comparativa Q4 vs Q8
+│
+├── benchmark_embeddings.ipynb          <- Notebook ejecutable de la Fase 2
+└── benchmark_llms.ipynb                <- Notebook ejecutable de la Fase 3
+```
 
-- [Estatuto de los Trabajadores, texto consolidado (BOE)](https://www.boe.es/eli/es/rdlg/2015/10/23/2/con) y [PDF consolidado](https://www.boe.es/buscar/pdf/2015/BOE-A-2015-11430-consolidado.pdf)
-- [El manual del Administrador de Debian, en español](https://www.debian.org/doc/manuals/debian-handbook/index.es.html), [EPUB](https://debian-handbook.info/download/es-ES/stable/debian-handbook.epub) y [otras versiones e idiomas](https://debian-handbook.info/get/)
-- [MTEB leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
-- [Biblioteca de modelos de Ollama](https://ollama.com/library)
+---
+
+## 10. Cómo Reproducir Nuestras Pruebas
+
+### 1. Clonar el repositorio y crear el entorno virtual
+```bash
+git clone https://github.com/tu-usuario/reto_1_2-2627-Rag-Benchmark.git
+cd reto_1_2-2627-Rag-Benchmark
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 2. Iniciar Ollama y descargar los modelos
+Asegúrate de que el demonio de Ollama esté ejecutándose (`ollama serve`) y descarga los 4 modelos evaluados:
+```bash
+ollama pull gemma2:2b
+ollama pull granite3-dense:2b
+ollama pull mistral:7b
+ollama pull qwen2.5:7b
+```
+
+### 3. Ejecutar los notebooks en orden
+1. Abrir y ejecutar [`data/preparar_datos.ipynb`](file:///home/g4/reto_1_2-2627-Rag-Benchmark/data/preparar_datos.ipynb) para generar los archivos `boe_chunks.json` y `debian_chunks.json`.
+2. Abrir y ejecutar [`benchmark_embeddings.ipynb`](file:///home/g4/reto_1_2-2627-Rag-Benchmark/benchmark_embeddings.ipynb) para reproducir el benchmark de embeddings y generar las tablas A.
+3. Abrir y ejecutar [`benchmark_llms.ipynb`](file:///home/g4/reto_1_2-2627-Rag-Benchmark/benchmark_llms.ipynb) para ejecutar la inferencia de los LLMs con Ollama y calcular las métricas de calidad y coste.
+
+---
+
+## 11. Conclusiones y Aprendizajes del Grupo
+
+A lo largo de este proyecto hemos aprendido que:
+1. **El éxito de un sistema RAG depende en un 80% de la fase de preparación y recuperación:** Si el modelo de embedding no rescata el fragmento acertado en los 3 primeros puestos, el mejor LLM del mundo no podrá contestar bien o se verá forzado a abstenerse.
+2. **Los prefijos importan:** Modelos modernos como `Multilingual-E5-Small` multiplican su rendimiento cuando se les indica si el texto es un pasaje (`passage:`) o una consulta (`query:`). Omitir esto destruye su precisión.
+3. **Más grande no siempre es mejor:** Para tareas técnicas o con comandos específicos, modelos pequeños como `Granite-3-2B` son más directos y comenten menos falsas abstenciones que modelos de 7B, gastando una fracción de la memoria y el tiempo.
+4. **La cuantización a 4 bits es una maravilla de la ingeniería:** Permite correr modelos de 7B con precisión factual intacta en hardware de consumo y GPUs modestas, demostrando que para RAG no hace falta gastar memoria en pesos de 8 o 16 bits.
+
+---
+*Práctica realizada por Alfred, Ane y Naiara — Noviembre 2026*

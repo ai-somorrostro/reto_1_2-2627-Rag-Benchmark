@@ -5,3 +5,6 @@ pillow
 torchvision
 pandas
 tabulate
+reportlab
+matplotlib
+python-pptx

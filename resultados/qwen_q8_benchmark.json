@@ -1,0 +1,800 @@
+{
+  "calidad_q8": {
+    "modelo": "Qwen-2.5-7B (Q8)",
+    "tamano": "7.6B",
+    "cuantizacion": "Q8_0",
+    "correccion_media": 1.72,
+    "respuestas_fieles_pct": 100.0,
+    "abstencion_correcta": "12/12",
+    "falsas_abstenciones": 8,
+    "formato_idioma_pct": 100.0
+  },
+  "coste_q8": {
+    "ttft_s": 0.021,
+    "tokens_per_s": 61.1,
+    "latencia_s": 0.57,
+    "vram_gb": 7.54
+  },
+  "respuestas_q8": [
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q01",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 38. Vacaciones anuales. - Parte 1/3]\nRespuesta: Según la ley, el mínimo de días de vacaciones anuales retribuidas es de treinta días naturales."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q02",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 35. Horas extraordinarias. (Parte 1)]\nRespuesta: El número máximo de horas extraordinarias que puede realizar un trabajador al año en jornada ordinaria es de ochenta horas, salvo que se establezca lo contrario en el apartado 3 del artículo."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q03",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 3)]\nRespuesta: Un trabajador dispone de quince días naturales de permiso retribuido con motivo de contraer matrimonio."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q04",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: Artículo 6. Trabajo de los menores.\nRespuesta: A partir de la edad mínima permitida es dieciséis años, ya que se prohíbe la admisión al trabajo a los menores de dieciséis años."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q05",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. (Parte 1)]\nRespuesta: La ley garantiza un descanso semanal ininterrumpido mínimo de un día y medio para los trabajadores. Este descanso puede comprender la tarde del sábado o, en su caso, la mañana del lunes, y el día completo del domingo."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q06",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 36. Trabajo nocturno, trabajo a turnos y ritmo de trabajo. (Parte 1)]\nRespuesta: El intervalo horario que se considera legalmente como trabajo nocturno es el realizado entre las diez de la noche y las seis de la mañana."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q07",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 56. Despido improcedente. (Parte 1)]\nRespuesta: Si un despido es declarado improcedente y el empresario opta por la indemnización, la indemnización asciende a treinta y tres días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año, hasta un máximo de veinticuatro mensualidades."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q08",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 14. Periodo de prueba. - Parte 1/3]\nRespuesta: La duración máxima pactada para el periodo de prueba para los técnicos titulados, en defecto de pacto en convenio colectivo, no podrá exceder de seis meses."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q09",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 62. Delegados de personal.]\nRespuesta: En centros de trabajo de menos de 50 empleados, los trabajadores elegirán a los delegados de personal. En contraste, en centros de trabajo que cuenten con 50 o más trabajadores, corresponde la constitución de un comité de empresa."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q10",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 33. El Fondo de Garantía Salarial. - Parte 1/12]\nRespuesta: Según el artículo, el concepto legal de salario incluye la cantidad reconocida como tal en acto de conciliación o en resolución judicial por todos los conceptos a que se refiere el artículo 26.1, así como los salarios de tramitación en los supuestos en que legalmente procedan. El Fondo de Garantía Salarial (FOGASA) abonará a los trabajadores el importe de los salarios pendientes de pago a causa de insolvencia o concurso del empresario, siempre que no pueda abonar un importe superior a la cantidad resultante de multiplicar el doble del salario mínimo interprofesional diario, incluyendo la parte proporcional de las pagas extraordinarias, por el número de días de salario pendiente de pago, con un máximo de ciento veinte días."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q11",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 6. Trabajo de los menores.]\nRespuesta: Los trabajadores menores de dieciocho años no pueden realizar trabajos nocturnos. Además, no pueden realizar horas extraordinarias. No obstante, no se especifican limitaciones especiales en cuanto a la duración de su descanso semanal en el fragmento proporcionado."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q12",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 40. Movilidad geográfica. - Parte 2/12]\nRespuesta: Si un trabajador rechaza el traslado y rescinde su contrato laboral, corresponde una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q13",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q14",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q15",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. - Parte 3/15]\nRespuesta: No aparece en el documento."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q16",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 34. Jornada. - Parte 1/8]\nRespuesta: La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q17",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 34. Jornada. - Parte 2/8]\nRespuesta: Deben mediar, como mínimo, doce horas entre el final de una jornada laboral y el comienzo de la siguiente."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q18",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 37. Descanso semanal, fiestas y permisos. - Parte 3/15]\nRespuesta: Un día retribuido."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q19",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 31. Gratificaciones extraordinarias.]\nRespuesta: Un trabajador tiene derecho a dos gratificaciones extraordinarias al año según la ley. Una de ellas se produce con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q20",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 46. Excedencias. - Parte 1/5]\nRespuesta: Para pedir una excedencia voluntaria, el trabajador debe tener al menos una antigüedad en la empresa de un año. La duración mínima de la excedencia voluntaria es de cuatro meses y la máxima es de cinco años."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q21",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 59. Prescripción y caducidad. - Parte 1/2]\nRespuesta: El ejercicio de la acción contra el despido o resolución de contratos temporales caduca a los veinte días hábiles siguientes de aquel en que se hubiera producido."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q22",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 60. Prescripción.]\nRespuesta: Las faltas leves prescribirán a los diez días, las graves a los veinte días, y las muy graves a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q23",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. - Parte 2/6]\nRespuesta: El plazo de preaviso en una extinción por causas objetivas es de quince días, computado desde la entrega de la comunicación personal al trabajador hasta la extinción del contrato de trabajo. Durante este periodo, el trabajador, o su representante legal si se trata de una persona con discapacidad que lo tuviera, tendrá derecho, sin pérdida de su retribución, a una licencia de seis horas semanales con el fin de buscar nuevo empleo."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q24",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 46. Excedencias. (Parte 1)]\nRespuesta: La excedencia forzosa da derecho a la conservación del puesto y al cómputo de la antigüedad de su vigencia, mientras que la excedencia voluntaria no menciona la conservación del puesto de trabajo ni el cómputo de antigüedad como derechos específicos."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q25",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 34. Jornada. (Parte 2)]\nRespuesta: Los límites de jornada diaria y el descanso en jornada continuada para menores de dieciocho años frente a los trabajadores adultos se diferencian de la siguiente manera:\n\n1. En cuanto a la jornada diaria, los trabajadores menores de dieciocho años no pueden realizar más de ocho horas diarias de trabajo efectivo, incluyendo el tiempo dedicado a la formación. En contraste, los trabajadores adultos no tienen un límite específico de horas diarias de trabajo efectivo, aunque sí existe un límite de nueve horas diarias para los adultos, salvo que se establezca otra distribución del tiempo de trabajo diario por convenio colectivo o acuerdo entre la empresa y los representantes de los trabajadores.\n\n2. En cuanto al descanso en jornada continuada, si la duración de la jornada diaria excede de seis horas, se debe establecer un periodo de descanso de duración no inferior a quince minutos. Para los menores de dieciocho años, si la duración de la jornada di"
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q26",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 53. Forma y efectos de la extinción por causas objetivas. (Parte 6)]\nRespuesta: No aparece en el documento una diferencia específica en cuanto a indemnización entre una extinción por causas objetivas y un despido disciplinario declarado procedente. Sin embargo, el fragmento menciona que la calificación por la autoridad judicial de la nulidad, procedencia o improcedencia de la decisión extintiva producirá iguales efectos que los indicados para el despido disciplinario, con las siguientes modificaciones. Esto sugiere que, en caso de procedencia, el trabajador tendrá derecho a la indemnización prevista, consolidándola si la ha recibido, y se entenderá en situación de desempleo por causa a él no imputable."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q27",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Artículo 60. Prescripción.]\nRespuesta: El plazo general de prescripción de las acciones derivadas del contrato de trabajo no se especifica directamente en el fragmento proporcionado. Sin embargo, se menciona que las infracciones cometidas por el empresario prescribirán conforme a lo establecido en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, aprobado por el Real Decreto Legislativo 5/2000, de 4 de agosto. En cuanto al plazo máximo absoluto de prescripción de las faltas de los trabajadores, este es de seis meses para las faltas muy graves, y de diez, veinte y sesenta días para las faltas leves, graves y muy graves, respectivamente, a partir de la fecha en que la empresa tuvo conocimiento de su comisión."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q28",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q29",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "boe",
+      "pregunta_id": "boe_q30",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q01",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [5.4.1. Instalación de paquetes]\nRespuesta: Se utiliza el comando dpkg con el parámetro -i o --install para instalar un archivo local de paquete Debian (.deb)."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q02",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [6.2. Los programas aptitude, apt-get y apt - Parte 22]\nRespuesta: En el archivo Release, que APT descarga junto con los archivos Packages, se identifica cada origen de paquetes y se especifica el origen, el nombre de la distribución y su versión. Sin embargo, no se menciona específicamente un archivo principal de configuración donde se definen las fuentes y repositorios de paquetes. Según el fragmento proporcionado, APT descarga el archivo Release junto con los archivos Packages para obtener información sobre los orígenes de paquetes, pero no se indica un archivo único de configuración para esto."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q03",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [6.8. Manutención de un sistema actualizado - Parte 2]\nRespuesta: El comando de APT que se debe ejecutar para sincronizar y actualizar el listado local de paquetes disponibles desde los repositorios configurados es `apt update`."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q04",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [6.10. Búsqueda de paquetes (Parte 7)]\nRespuesta: packagesearch es una buena herramienta para buscar a qué paquete pertenece un fichero concreto o para encontrar ficheros contenidos en paquetes aún no instalados."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q05",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q06",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [9.8. Programación de tareas asincrónicas: anacron - Parte 1/3]\nRespuesta: En Debian se utiliza el programa anacron para programar tareas asíncronas en equipos como portátiles que no permanecen encendidos continuamente. Este programa se encarga de ejecutar tareas recurrentes que podrían no haberse ejecutado debido a que el equipo estaba apagado en los momentos programados."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q07",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [14.2. Firewall o el filtrado de paquetes - Parte 2/16]\nRespuesta: La herramienta y subsistema del núcleo que actúa como cortafuegos predeterminado moderno para el filtrado de paquetes en Debian Bullseye sustituyendo a iptables es nftables."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q08",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [8.9. Otras configuraciones: sincronización de tiempo, registros, acceso compartido… (Parte 12)]\nRespuesta: El comando que se emplea para ejecutar un comando puntual con privilegios de superusuario (root) sin necesidad de abrir una shell de sesión permanente como root es sudo."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q09",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [5.4. Manipulación de paquetes con dpkg (Parte 1)]\nRespuesta: dpkg es considerado una herramienta de sistema que maneja los archivos .deb (paquetes binarios), permitiendo tareas como extraer, analizar y descomprimir estos archivos. Sin embargo, dpkg tiene limitaciones ya que sólo tiene una visión parcial del universo Debian y puede fallar si no se satisface una dependencia. Por otro lado, APT (Advanced Packaging Tool) es una herramienta más cercana al usuario que evita las limitaciones de dpkg, creando una lista de dependencias para instalar todo tan automáticamente como sea posible."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q10",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [6.2. Los programas aptitude, apt-get y apt (Parte 5)]\nRespuesta: En dpkg y APT, la acción de desinstalar un paquete (remove) mantiene los archivos de configuración, mientras que purgar un paquete (purge) elimina también estos archivos de configuración. Además, purgar un paquete ejecuta el script postrm y pasa el argumento purge, lo cual no ocurre con la acción de desinstalar."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q11",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q12",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 1,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [7.2. Procedimientos comunes (Parte 6)]\nRespuesta: Cuando se utiliza systemd, los registros se recogen por systemd antes de ser reenviados a rsyslogd. Estos registros también están disponibles a través del historial (\"journal\") de systemd y pueden ser consultados mediante el comando journalctl. Esto significa que el diario binario de systemd-journald y el demonio rsyslog tradicional interactúan en que systemd-journald recopila los registros y luego rsyslogd los recibe y puede distribuirlos según su configuración."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q13",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q14",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q15",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q16",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q17",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres - Parte 4/6]\nRespuesta: En el archivo /etc/resolv.conf, las direcciones IP de los servidores DNS se indican precedidas por la palabra clave nameserver."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q18",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [8.8. Configuración del gestor de arranque (Parte 15)]\nRespuesta: Para modificar variables de GRUB 2 sin perder los cambios, se edita el archivo /etc/default/grub. La orden que regenera /boot/grub/grub.cfg es update-grub."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q19",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 6)]\nRespuesta: La macro especial utilizada en un archivo crontab de usuario para ejecutar un programa una sola vez justo después de iniciar el equipo es @reboot."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q20",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [10.7. Servidores de nombres de dominio (DNS) - Parte 5/7]\nRespuesta: El programa host, que se incluye en el paquete bind9-host, se utiliza para consultar un servidor DNS y probar su configuración."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q21",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [4.2. Instalación, paso a paso (Parte 26)]\nRespuesta: No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q22",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [14.3.4. Detección de cambios, Parte 10/23]\nRespuesta: No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q23",
+      "tipo": "directa",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Capítulo 3. Análisis de la instalación existente y migración - Parte 2/4]\nRespuesta: El conjunto de herramientas que implementa el protocolo SMB/CIFS en Debian para compartir archivos e impresoras con máquinas Windows es Samba."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q24",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [8.4. Bases de datos de usuarios y grupos - Parte 1/11]\nRespuesta: En Debian, los usuarios se almacenan en el archivo /etc/passwd y las contraseñas con hash se almacenan en el archivo /etc/shadow. Para editar estos archivos de forma segura, se utilizan los comandos vipw y vigr. Estos programas bloquean el archivo en cuestión antes de ejecutar el editor de texto, lo que ayuda a prevenir la corrupción del archivo."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q25",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 0,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": true,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [9.7. Programación de tareas con cron y atd (Parte 1)]\nRespuesta: Cron y atd son dos herramientas para programar tareas en un sistema Unix, pero tienen diferentes funciones. Cron es el daemon que ejecuta tareas programadas de forma regular, como diariamente, semanalmente o mensualmente. Atd, por otro lado, se encarga de ejecutar tareas una sola vez en un momento específico del futuro.\n\nFuente: [9.8. Programación de tareas asincrónicas: anacron (Parte 1)]\nRespuesta: Anacron es una herramienta que complementa a cron en sistemas que no están encendidos todo el tiempo. Anacron se encarga de ejecutar tareas que no se realizaron debido a que el sistema estaba apagado, asegurando que las tareas recurrentes se ejecuten según el horario programado."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q26",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [8.3. Definición del nombre de equipo y configuración del servicio de nombres - Parte 1/6]\nRespuesta: Los sistemas de archivos virtuales /proc/ y /sys/ son métodos prácticos para obtener información del núcleo y comunicarle información. El sistema /proc/ describe el estado actual del núcleo, mostrando información sobre los procesos ejecutándose en el sistema y su hardware. Por otro lado, /sys/ se diseñó para proporcionar acceso a los objetos internos del núcleo, especialmente aquellos que representan los distintos dispositivos en el sistema. /sys/ sólo existe desde la versión de núcleo 2.6."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q27",
+      "tipo": "combinada",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": false,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "Fuente: [Capítulo 12. Administración avanzada (Parte 31)]\nRespuesta: En LVM, un grupo de volúmenes (VG) es una colección de volúmenes físicos (PVs) que se pueden utilizar como un solo disco virtual. Un volumen lógico (LV) es una porción de un VG, similar a una partición en un disco físico. La división de un VG en varios LVs es independiente de sus componentes físicos. No se especifica un comando específico para crear un volumen lógico en el fragmento proporcionado."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q28",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q29",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    },
+    {
+      "documento": "debian",
+      "pregunta_id": "deb_q30",
+      "tipo": "sin_respuesta",
+      "evaluacion": {
+        "correccion": 2,
+        "fiel": true,
+        "abstencion_correcta": true,
+        "falsa_abstencion": false,
+        "formato_idioma": true
+      },
+      "respuesta": "No aparece en el documento."
+    }
+  ]
+}
