@@ -1,0 +1,391 @@
+﻿modelo;modo;id;tipo;pregunta;respuesta_esperada;respuesta_modelo;gold_en_contexto;cita_auto;abstiene;correccion;fiel;formato_idioma;notas
+lfm3-1.7b;retrieval;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;"No aparece en el documento. Según el Fragmento 2, para obtener la lista de paquetes disponibles del archivo de Debian se puede usar la orden **apt-show-versions** o **aptitude search ~o**. También se menciona que el objetivo de la orden **ap update** es descargar el archivo `Packages` (o `Sources`) de cada origen de paquetes.
+
+Fuente: 6.7.3. Limpieza tras una Actualización (Sección 6.7.3.1. Paquetes eliminados del Archivo de Debian y 6.2.1. Inicialización, Fragmento 2).";1;1;1;0;1;0;"[borrador IA] Abstiene y luego propone apt-show-versions; menciona apt update de pasada"
+lfm3-1.7b;retrieval;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"No aparece en el documento. (La información sobre diferencias entre 'remove' y 'purge' se menciona en los fragmentos, pero no se especifica la diferencia exacta en la respuesta solicitada.) Sin embargo, puedo extraer de los fragmentos:
+
+- **Remove** (sin purgar): Elimina los archivos del paquete, pero mantiene los archivos de configuración y otros datos (por ejemplo, ejecutar `dpkg -r` o `dpkg -r debian-cd`).
+- **Purge** (con `dpkg --purge` o `dpkg -P`): Elimina también los archivos de configuración y otros archivos temporales (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`, etc.).
+
+Por lo tanto, la diferencia principal es que **purge** elimina de forma más completa, incluyendo configuración y archivos temporales, mientras que **remove** solo elimina los archivos del paquete sin eliminar los archivos de configuración.
+
+Fuente: Fragmento 2 (5.4.2. Eliminación de un paquete) y Fragmento 5 (6.2.2. Instalación y eliminación).";1;1;1;0;1;0;[borrador IA] Abstiene y luego explica bien la diferencia
+lfm3-1.7b;retrieval;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";"No aparece en el documento. Sin embargo, según el Fragmento 1, se menciona que la orden **debsums** puede comprobar si se han alterado archivos en el sistema local usando la información en `/var/lib/dpkg/info/`*`paquete`*`.md5sums (Sección 5.2.3). También, en el Fragmento 3, se habla de la interfaz **aptitude** para revisar paquetes. Pero no se especifica explícitamente en qué ficheros revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes.
+
+No aparece en el documento.";0;1;1;0;1;0;[borrador IA] Chunk correcto no recuperado
+lfm3-1.7b;retrieval;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";"No aparece en el documento. Sin embargo, según el Fragmento 5 (Fuente: 8.9.6. locate y updatedb), el programa **locate** puede encontrar la ubicación de un archivo cuando solo se conoce parte de su nombre y devuelve el resultado casi instantáneamente. Esta información se encuentra en la sección sobre **locate y updatedb**.
+
+«*localizar* es lo suficientemente inteligente como para devolver sólo los archivos que son accesibles al usuario que ejecuta el comando a pesar de que utiliza una base de datos que conoce todos los archivos del sistema (ya que su implementación **actualizarb** se ejecuta con derechos de root).» (Fragmento 5, Fuente: 8.9.6. locate y updatedb)";1;1;1;0;1;0;[borrador IA] Abstiene y luego responde locate
+lfm3-1.7b;retrieval;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;No aparece en el documento.;1;0;1;0;1;1;[borrador IA]
+lfm3-1.7b;retrieval;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"No aparece en el documento. Sin embargo, según el Fragmento 1, para automatizar la conexión por SSH se puede usar un sistema de autenticación basada en llaves: generar un par de claves con **ssh-keygen -t rsa**, copiar la clave pública al servidor usando **ssh-copy-id server** (o añadirla manualmente si no está habilitado), y luego usar **ssh-add** para mantener las claves en memoria durante una sesión de trabajo.
+
+Según el Fragmento 2, las claves SSH también pueden firmarse mediante certificado usando las directivas `TrustedUserCAKeys` y `HostCertificate` en `/etc/ssh/sshd_config`.
+
+Para evitar escribir la contraseña cada vez al conectarse a un servidor remoto por SSH, se recomienda configurar el servidor para confiar en las claves del cliente firmadas con el mismo certificado, o utilizar **ssh-agent** junto con **ssh-add** para manejar las claves privadas sin reintroducir la frase de contraseña.
+
+Fuente: 9.2.1. Inicio seguro de sesión remota: SSH (Fragmento 1, Fragmento 2, Fragmento 4).";1;1;1;0;1;0;[borrador IA] Abstiene y luego da los pasos correctos
+lfm3-1.7b;retrieval;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;"No aparece en el documento. Según el Fragmento 2, para instalar la nueva versión de `bullseye-backports` de `limnoria` (o cualquier paquete) cuando APT no lo hace automáticamente, se puede usar:
+
+- `apt install limnoria/bullseye-backports`, o
+- añadir una prioridad de fijación superior a `/etc/apt/preferences.d/limnoria.pref`.
+
+También se menciona que si el archivo `sources.list` indica varias distribuciones, se puede indicar la versión del paquete o la distribución de origen (Stable, Testing o Unstable) con `apt install paquete/=versión` o `apt install paquete/versión.distribución`. Para `bullseye-backports` en las fuentes, se recomienda configurar la preferencia de fijación para que APT instale la versión más nueva de `bullseye-backports` de `limnoria`.";1;0;1;0;1;0;[borrador IA]
+lfm3-1.7b;retrieval;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;No aparece en el documento.;1;0;1;0;1;1;[borrador IA]
+lfm3-1.7b;retrieval;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";"No aparece en el documento. Sin embargo, según el Fragmento 1, **anacron** se utiliza para ejecutar tareas recurrentes cuando el equipo no está encendido, programándose en `/etc/anacrontab` con el programa **nice** para reducir su prioridad. Esto permite que las tareas se ejecuten unos minutos después de iniciar la máquina, considerando los períodos en que el equipo no funcionó.
+
+Para la pregunta sobre una copia de seguridad cada día a las 3:00 en un portátil que a menudo está apagado, no hay información específica en los fragmentos sobre programar copias de seguridad diarias o su configuración en portátiles.";0;0;1;0;1;0;[borrador IA]
+lfm3-1.7b;retrieval;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"No aparece en el documento. Sin embargo, según el Fragmento 1, el archivo `/etc/shadow` almacena las contraseñas con *hash*, mientras que `/etc/passwd` muestra la lista de usuarios. El Fragmento 3 indica que `/etc/shadow` contiene los campos de contraseña cifrada y su vencimiento, y que a diferencia de `/etc/passwd`, `/etc/shadow` no puede ser leída por usuarios normales, lo que lo hace más seguro.
+
+No aparece en el documento. (La pregunta sobre el archivo donde se guarda el hash de la contraseña y la seguridad respecto a /etc/passwd no tiene una respuesta explícita en los fragmentos.)
+
+No aparece en el documento. (La pregunta específica sobre el directorio personal de los usuarios y dónde se guarda realmente el hash de la contraseña no está respondida en los fragmentos.)
+
+No aparece en el documento. (La pregunta no está presente en los fragmentos proporcionados.)";1;0;1;0;1;0;[borrador IA] Abstiene, responde bien y vuelve a abstenerse varias veces
+lfm3-1.7b;retrieval;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;"No aparece en el documento. (El fragmento 1 menciona `aptitude why` para ver por qué un paquete está instalado; el fragmento 2 describe `dpkg -i` para instalar un paquete `.deb`, pero no explica cómo averiguar qué paquete trae un ejecutable solo con su nombre del ejecutable. No hay información específica sobre ese procedimiento en los fragmentos.)
+
+No aparece en el documento. (El fragmento 5 menciona que `dpkg` maneja paquetes `.deb` e instala contenidos, pero no detalla cómo identificar qué paquete trae un ejecutable sin instalar. No hay una respuesta concreta.)
+
+No aparece en el documento. (Los fragmentos hablan de `apt`, `aptitude`, `dpkg`, `deborphan`, `debfoster`, y convenciones de nombres de paquetes, pero no abordan específicamente cómo averiguar qué paquete trae un ejecutable cuando solo se conoce el nombre del ejecutable.)
+
+No aparece en el documento. (El fragmento 4 habla de buscar el nombre exacto de un paquete usando `apt show`, pero no explica cómo saber qué paquete lo trae si solo se conoce el ejecutable.)
+
+No aparece en el documento. (El fragmento 3 menciona instalar un núcleo compilado con `dpkg -i`, pero no describe el proceso de identificar el paquete que proporciona un programa sin saber su nombre.)
+
+No aparece en el documento. (El fragmento 1 muestra `aptitude why` para ver dependencias de un paquete instalado, pero no para identificar qué paquete trae un ejecutable no instalado.)
+
+No aparece en el documento. (Ningún fragmento proporciona pasos para averiguar qué paquete trae un ejecutable solo con su nombre del ejecutable y luego instalarlo.)
+
+No aparece en el documento. (El fragmento 2 muestra `dpkg -i` para desempaquetar un `.deb`, pero no explica cómo determinar el paquete que contiene un ejecutable específico.)
+
+No aparece en el documento. (El fragmento 5 menciona que `dpkg` solo tiene una visión parcial y que `apt` crea listas de dependencias, pero no detalla cómo saber qué paquete trae un ejecutable.)
+
+No aparece en el documento. (El fragmento 6.10 (Fragmento";0;1;1;0;1;0;[borrador IA] Repite la abstención en bucle hasta cortarse
+lfm3-1.7b;retrieval;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;No aparece en el documento.;0;0;1;0;1;1;[borrador IA]
+lfm3-1.7b;retrieval;DEB_N01;sin_respuesta;¿Cómo instalo Docker en Debian?;No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.;No aparece en el documento.;;0;1;2;1;1;[borrador IA]
+lfm3-1.7b;retrieval;DEB_N02;sin_respuesta;¿En qué fecha exacta deja de tener soporte Debian 11?;No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.;No aparece en el documento.;;0;1;2;1;1;[borrador IA]
+lfm3-1.7b;retrieval;DEB_N03;sin_respuesta;¿Cómo instalo aplicaciones en formato Flatpak?;No aparece en el documento.;No aparece en el documento.;;0;1;2;1;1;[borrador IA]
+lfm3-1.7b;oraculo;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;"De la sección 6.2.1. Inicialización (Fragmento 1): Para cualquier trabajo con APT necesita actualizar la lista de paquetes; puede hacer esto simplemente con **apt update**.
+
+No aparece en el documento: No, la pregunta pide qué ejecutar para que APT descargue la lista más reciente de paquetes disponibles, y el fragmento indica que se hace con `apt update`.
+
+Respuesta: **apt update** (Fuente: 6.2.1. Inicialización, Fragmento 1).";1;1;0;2;1;1;[borrador IA] Correcta, aunque mete una línea 'No aparece…: No' incoherente
+lfm3-1.7b;oraculo;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"No aparece en el documento. (El fragmento menciona que **apt remove** elimina paquetes y **ap purge** realiza una desinstalación completa, pero no explica la diferencia detallada entre ambos.)
+
+No aparece en el documento. (La pregunta sobre la diferencia entre desinstalar con `remove` y con `purge` no está respondida en los fragmentos.)
+
+No aparece en el documento. (No hay información sobre esa distinción en los fragmentos.)
+
+No aparece en el documento. (La pregunta no está presente en los fragmentos proporcionados.)";1;0;1;0;1;0;[borrador IA] Abstiene en bucle con el fragmento correcto
+lfm3-1.7b;oraculo;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";"De la información del Fragmento 1:
+
+- ""Los resultados de estas operaciones son registrados en `/var/log/apt/history.log` y `/var/log/apt/term.log`, mientras que **dpkg** mantiene su registro en un archivo llamado `/var/log/dpkg.log`.""
+
+Por lo tanto, los archivos donde se pueden revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes son:
+
+- `/var/log/apt/history.log`
+- `/var/log/apt/term.log`
+
+Fuente: 6.2.3. Actualización del sistema (parte 2 de 2)";1;1;0;2;1;1;[borrador IA]
+lfm3-1.7b;oraculo;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";"De la primera fragmento:
+
+- **Locate** puede encontrar la ubicación de un archivo cuando sólo se sabe parte del nombre y devuelve el resultado casi instantáneamente consultando una base de datos actualizada diariamente con **updatedb**.
+- Fuente: 8.9.6. locate y updatedb
+
+Solo recuerdo parte del nombre de un fichero. La herramienta que lo encuentra casi al instante es **locate** (o su alternativa **plocate**), y la información se obtiene de la base de datos actualizada por **updatedb**.
+
+**Respuesta:** La herramienta es **locate** (o **plocate** como alternativa), y la información proviene de la base de datos actualizada diariamente mediante **updatedb**.
+
+Fuente: 8.9.6. locate y updatedb";1;1;0;2;1;1;[borrador IA]
+lfm3-1.7b;oraculo;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;"De la información proporcionada no aparece cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo.
+
+No aparece en el documento.";1;0;1;0;1;0;[borrador IA] Se abstiene con el fragmento correcto
+lfm3-1.7b;oraculo;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"De la sección ""Autenticación basada en llaves"" del Fragmento 9.2.1.1:
+
+1. El usuario genera un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la clave pública se guarda en `~/.ssh/id_rsa.pub` y la privada en `~/.ssh/id_rsa`.
+2. Para añadir la clave al servidor, el usuario puede usar **ssh-copy-id server** (donde `server` es el nombre de servidor) o pedir al administrador que lo haga manualmente si el SSH no está habilitado.
+
+**Respuesta:** Para conectar por SSH sin escribir la contraseña cada vez, genera una clave con `ssh-keygen -t rsa`, copia la clave pública al servidor usando `ssh-copy-id server`, y luego puedes autenticarte con la clave privada (o usar autenticación basada en llaves del servidor).
+
+Fuente: 9.2.1. Inicio seguro de sesión remota: SSH, sección 9.2.1.1. Autenticación basada en llaves (Fragmento 1).";1;1;0;2;1;1;[borrador IA]
+lfm3-1.7b;oraculo;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;"De la información del Fragmento 1:
+
+- Se menciona que `APT` no instalará versiones nuevas a menos que se indique explícitamente o si ya lo hizo con una versión anterior de la retroadaptación.
+- Se da un ejemplo de cómo forzar la instalación de la nueva versión: 
+  ```
+  $ sudo apt-get install paquete/bullseye-backports
+  $ sudo apt-get install -t /bullseye-backports paquete
+  ```
+
+Por lo tanto, para instalar la nueva versión de bullseye-backports, debes usar el comando con la opción `-t /bullseye-backports`.
+
+Fuente: 6.1.2. Repositorios para usuarios de Stable (parte 5 de 5)";1;1;0;2;1;1;[borrador IA]
+lfm3-1.7b;oraculo;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;"De la información del Fragmento 1:
+
+- La orden **at** ejecuta un programa en un momento específico en el futuro.
+- Se indica la hora con formato como `HH:MM` o `HH:MMpm` (ej. `09:00` o `4:12pm`).
+- Para la fecha, se puede usar «today» o «tomorrow» para el día actual o siguiente, o especificar una fecha.
+
+Para ejecutar una sola vez mañana a las 9:00, usarías la orden `at` con la hora `09:00` y la fecha «tomorrow» (o la fecha específica de mañana). Por ejemplo: `at tomorrow 09:00`.
+
+En el fragmento se muestra un ejemplo: `$ at 09:00 27.07.22 <<END`, lo que indica hora `09:00` y fecha `27.07.22`. Para mañana sin fecha explícita, se puede usar «tomorrow» o la fecha del día siguiente.
+
+**Respuesta:** Usa la orden `at` con la hora `09:00` y indica «tomorrow» para la fecha del día siguiente. Por ejemplo: `at tomorrow 09:00`.
+
+Fuente: 9.7.2. Utilización del programa at (Línea: «$ at 09:00 27.07.22 <<END» y «job 1 at Wed Jul 27 09:00:00 2022»)";1;1;0;2;1;1;[borrador IA]
+lfm3-1.7b;oraculo;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";No aparece en el documento.;1;0;1;0;1;1;[borrador IA] Se abstiene con los fragmentos correctos
+lfm3-1.7b;oraculo;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"No aparece en el documento. Sin embargo, según el Fragmento 1, la contraseña está cifrada en `/etc/shadow` y el valor especial «`x`» indica que la contraseña cifrada está almacenada en `/etc/shadow`. El Fragmento 2 menciona que `/etc/shadow` no puede ser leída por usuarios normales y que es más seguro porque no está en `/etc/passwd`, que es accesible para cualquier usuario.
+
+Respuesta: El hash de la contraseña de un usuario se guarda realmente en el archivo `/etc/shadow` (como se indica en el Fragmento 1: ""El valor especial «`x`» indica que la contraseña cifrada está almacenada en `/etc/shadow""; y en el Fragmento 2: ""El archivo `/etc/shadow` contiene los siguientes campos: nombre de usuario; contraseña cifrada...""). Se considera más seguro que guardarlo en `/etc/passwd` porque, según el Fragmento 2, a diferencia de `/etc/passwd`, `/etc/shadow` no puede ser leído por usuarios normales, lo que dificulta el acceso no autorizado.
+
+Fuente: 8.4.1. Lista de usuarios: /etc/passwd (Fragmento 1); 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow (Fragmento 2).";1;1;1;0;1;0;[borrador IA] Abstiene y luego responde bien
+lfm3-1.7b;oraculo;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;No aparece en el documento.;1;0;1;0;1;1;[borrador IA] Se abstiene con los fragmentos correctos
+lfm3-1.7b;oraculo;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;"No aparece en el documento. (El fragmento 6.7.1. Procedimiento recomendado, parte 3 de 4, menciona la necesidad de realizar una actualización mínima con **apt upgrade** antes de la actualización completa, pero no especifica el orden de los dos pasos ni la razón de recomendar dos pasos para el cambio de fuentes de APT.)
+
+No aparece en el documento. (El fragmento 6.7.1. Procedimiento recomendado, parte 4 de 4, describe la actualización en sí con **apt full-upgrade**, **aptitude** o **synaptic**, pero no explica por qué se recomienda actualizar en dos pasos ni el orden específico para cambiar las fuentes de APT de Buster a Bullseye.)
+
+No aparece en el documento. (Ningún fragmento menciona el cambio de fuentes de APT de Buster a Bullseye ni la razón por la que se recomienda actualizar en dos pasos para este cambio.)";1;1;1;0;1;0;[borrador IA]
+llama3.2-3b;retrieval;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la orden `apt update`.;1;0;0;2;1;0;[borrador IA] No cita sección
+llama3.2-3b;retrieval;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"Fuente: 5.2.2. Scripts de configuración
+
+La principal diferencia entre desinstalar un paquete con **dpkg remove** y con **dpkg purge** es que **dpkg purge** elimina todos los archivos de configuración y scripts de mantenimiento, mientras que **dpkg remove** solo elimina los archivos del paquete.";1;1;0;2;1;1;"[borrador IA] Explica con dpkg; cita 5.2.2"
+llama3.2-3b;retrieval;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";No aparece en el documento.;0;0;1;0;1;1;[borrador IA] Chunk no recuperado: abstención razonable
+llama3.2-3b;retrieval;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";"Fuente: 7.1.1. Páginas de manual
+
+**locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte del nombre. Devuelve un resultado casi instantáneamente ya que consulta una base de datos que almacena la ubicación de todos los archivos del sistema; se actualiza esta base de datos diariamente con **updatedb**.";1;1;0;2;1;1;[borrador IA] Cita '7.1.1 Páginas de manual' (sección dudosa)
+llama3.2-3b;retrieval;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar **smbpasswd -a** ***`usuario`*** y luego agregar el siguiente parámetro: ***`audio`***. Por ejemplo, ***`smbpasswd -a usuario audio`***.;1;0;0;0;0;0;[borrador IA] Inventa 'smbpasswd -a usuario audio'
+llama3.2-3b;retrieval;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"Fuente: 9.2.1. Inicio seguro de sesión remota: SSH (parte 3 de 10)
+
+OpenSSH está dividido en dos paquetes: la parte del cliente se encuentra en el paquete openssh-client y el servidor en el paquete openssh-server. El metapaquete ssh depende de ambas partes y facilita la instalación conjunta (**apt install ssh**), mientras que el task-ssh-server, a menudo elegido durante la instalación inicial, depende del paquete servidor solamente.
+
+### 9.2.1.1. Autenticación basada en llaves
+
+Cada vez que alguien inicia sesión a través de SSH, el servidor remoto pide una contraseña para autenticar al usuario. Esto puede ser problemático si desea automatizar la conexión o si utiliza una herramienta que necesita conexiones frecuentes sobre SSH. Es por esto que SSH ofrece un sistema de autenticación basada en llaves.
+
+The user generates a key pair on the client machine with **ssh-keygen -t rsa**; the so generated public key is stored in `~/.ssh/id_rsa.pub`, while the corresponding private key is stored in `~/.ssh/id_rsa`. The user can then use **ssh-copy-id** ***`server`*** to add their public key to the `~/.ssh/authorized_keys` file on the server, o, si SSH access hasn't been enabled yet, they have to ask the administrator to add their key manually.";1;1;0;2;1;0;[borrador IA] Copia el fragmento, con un párrafo en inglés
+llama3.2-3b;retrieval;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;No aparece en el documento.;1;0;1;0;1;1;[borrador IA] Falsa abstención (chunk en contexto)
+llama3.2-3b;retrieval;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;"Para ejecutar un comando una sola vez mañana a las 9:00, debes utilizar el macro `@reboot` y especificar la hora de manera que se entienda como una hora de la noche. Por ejemplo, si quieres que se ejecute a las 9:00 de la mañana, debes especificar `09:00` en lugar de `09:00` (sin el 0 al principio).
+
+Por ejemplo, la orden sería:
+
+```
+$ echo ""Don't forget to wish a Happy Birthday to Raphaël!"" | mail lolando@debian.org
+```
+
+Y debes especificar la hora de la siguiente manera:
+
+```
+$ at 09:00 27.07.22 <<END
+> echo ""Don't forget to wish a Happy Birthday to Raphaël!"" \
+>   | mail lolando@debian.org
+> END
+```
+
+En este caso, la hora se especifica como `09:00` y se entiende como una hora de la noche.";1;1;0;0;0;0;[borrador IA] @reboot y 'hora de la noche' inventados
+llama3.2-3b;retrieval;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";No aparece en el documento.;0;0;1;0;1;1;[borrador IA] Chunks no recuperados
+llama3.2-3b;retrieval;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"Fuente: 8.4.1. Lista de usuarios: /etc/passwd
+
+La contraseña cifrada se almacena en el archivo `/etc/shadow` y no en `/etc/passwd`. Esto es más seguro porque `/etc/shadow` no puede ser leído por usuarios normales, lo que evita que los datos de contraseña sean accesibles a cualquier persona que no sea el administrador del sistema.";1;1;0;2;1;1;[borrador IA]
+llama3.2-3b;retrieval;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;No aparece en el documento.;0;0;1;0;1;1;[borrador IA] Chunks no recuperados
+llama3.2-3b;retrieval;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;No aparece en el documento.;0;0;1;0;1;1;[borrador IA] Recuperado solo en parte
+llama3.2-3b;retrieval;DEB_N01;sin_respuesta;¿Cómo instalo Docker en Debian?;No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.;No aparece en el documento.;;0;1;2;1;1;[borrador IA]
+llama3.2-3b;retrieval;DEB_N02;sin_respuesta;¿En qué fecha exacta deja de tener soporte Debian 11?;No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.;No aparece en el documento.;;0;1;2;1;1;[borrador IA]
+llama3.2-3b;retrieval;DEB_N03;sin_respuesta;¿Cómo instalo aplicaciones en formato Flatpak?;No aparece en el documento.;No aparece en el documento.;;0;1;2;1;1;[borrador IA]
+llama3.2-3b;oraculo;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar **apt update**.;1;0;0;2;1;0;[borrador IA] No cita sección
+llama3.2-3b;oraculo;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";Según el fragmento, la diferencia entre desinstalar un paquete con **apt remove** y con **apt purge** es que **apt purge** elimina también los archivos de configuración, mientras que **apt remove** solo elimina el paquete y sus dependencias. (Fuente: 6.2.2. Instalación y eliminación);1;1;0;2;0;1;[borrador IA] Añade 'y sus dependencias' a remove (no está en el fragmento)
+llama3.2-3b;oraculo;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";"Según el fragmento, puedes revisar lo que han hecho **apt** y **aptitude** en los siguientes ficheros:
+
+- `/var/log/apt/history.log`
+- `/var/log/apt/term.log`
+- `/var/log/dpkg.log` (con **dpkg**)";1;0;0;2;1;0;[borrador IA] No cita sección
+llama3.2-3b;oraculo;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";El programa **locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte del nombre. Sacan la información de una base de datos que almacena la ubicación de todos los archivos del sistema.;1;0;0;2;1;0;[borrador IA] No cita sección
+llama3.2-3b;oraculo;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, ejecuta el comando `adduser usuario grupo audio`.;1;0;0;1;1;0;[borrador IA] 'adduser usuario grupo audio': sintaxis errónea y sin el paso de crear la cuenta
+llama3.2-3b;oraculo;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"Para conectarte por SSH a un servidor sin escribir la contraseña cada vez, sigue estos pasos:
+
+1. Genera una clave pública y privada en tu máquina cliente con **ssh-keygen -t rsa**.
+2. Almacena la clave pública en `~/.ssh/id_rsa.pub`.
+3. Almacena la clave privada en `~/.ssh/id_rsa`.
+4. Copia la clave pública a la máquina del servidor con **ssh-copy-id** ***`server`***.
+5. O, si SSH no ha sido habilitado, pide al administrador que agregue tu clave pública a `~/.ssh/authorized_keys` en la máquina del servidor.";1;0;0;2;1;0;[borrador IA] No cita sección
+llama3.2-3b;oraculo;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;No aparece en el documento.;1;0;1;0;1;1;[borrador IA] Se abstiene con el fragmento correcto
+llama3.2-3b;oraculo;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;"Para ejecutar un comando una sola vez mañana a las 9:00, debes utilizar el comando `at` con la siguiente sintaxis:
+
+```
+at mañana 09:00 <<END
+> comando
+> END
+```
+
+En este caso, el comando sería `echo ""Don't forget to wish a Happy Birthday to Raphaël!"" | mail lolando@debian.org`.";1;0;0;1;1;0;[borrador IA] Usa 'at mañana 09:00' (debe ser tomorrow)
+llama3.2-3b;oraculo;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";No aparece en el documento.;1;0;1;0;1;1;[borrador IA] Se abstiene con los fragmentos correctos
+llama3.2-3b;oraculo;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"Según el fragmento 2, el hash de la contraseña de un usuario se guarda en el archivo `/etc/shadow`. Esto es más seguro que guardarlo en `/etc/passwd` porque `/etc/shadow` no puede ser leído por usuarios normales, lo que evita que los cráceres puedan intentar ""romper"" las contraseñas a través de métodos de fuerza bruta. (Fuente: 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow)";1;1;0;2;1;1;[borrador IA]
+llama3.2-3b;oraculo;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;Para averiguar qué paquete trae un programa y lo instalar, puedes utilizar la orden **apt-file search** ***`nombre del ejecutable`***. Por ejemplo, si solo sabes que hay un programa llamado `axi-cache`, puedes ejecutar la orden **apt-file search bin/axi-cache**. Si el programa está instalado, la orden **apt-file list** ***`nombre del ejecutable`*** te mostrará todos los archivos incluidos en el paquete.;1;0;0;1;1;0;"[borrador IA] apt-file search sí; falta el paso de instalar"
+llama3.2-3b;oraculo;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;No aparece en el documento.;1;0;1;0;1;1;[borrador IA] Se abstiene con los fragmentos correctos
+nemotron-bolt-e4b;retrieval;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;Se puede hacer con **apt update** (Fuente: 6.2.1. Inicialización);1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"Con `remove` se mantienen los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, mientras que con `purge` se eliminan también los archivos de configuración (Fuente: 5.4.2. Eliminación de un paquete)
+Fuente: 5.4.2. Eliminación de un paquete";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";No aparece en el documento;0;0;1;0;1;1;[borrador IA] Chunk no recuperado: abstención razonable
+nemotron-bolt-e4b;retrieval;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";El programa **locate** encuentra la ubicación de un archivo cuando solo se sabe parte del nombre, devolviendo un resultado casi instantáneamente porque consulta una base de datos que almacena la ubicación de todos los archivos del sistema, la cual se actualiza diariamente con **updatedb** (Fuente: 8.9.6. locate y updatedb).;1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;Primero se deben crear las cuentas Unix utilizando **adduser** (Fuente: 11.5.1.2.2. Añadir usuarios). Para que un usuario pueda acceder a dispositivos de audio, debe agregarse al grupo *audio* ejecutando **adduser** ***`usuario`*** ***`grupo`*** (Fuente: 8.5. Creación de cuentas).;1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"El usuario puede generar un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la clave pública se guarda en `~/.ssh/id_rsa.pub` y la privada en `~/.ssh/id_rsa`. Luego, puede usar **ssh-copy-id** ***`server`*** para añadir su clave pública al archivo `~/.ssh/authorized_keys` en el servidor, o pedir al administrador que la añada manualmente si el acceso SSH no está habilitado aún (Fuente: 9.2.1. Inicio seguro de sesión remota: SSH).
+
+Alternativamente, **ssh-agent** permite mantener las claves privadas en memoria para no tener que reintroducir la contraseña regularmente, usando **ssh-add** (una vez por sesión de trabajo) (Fuente: 9.2.1. Inicio seguro de sesión remota: SSH).";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;"Se puede instalar la nueva versión usando `$ sudo apt-get install paquete/bullseye-backports` o `$ sudo apt-get install -t /bullseye-backports paquete` (Fuente: 6.1.2. Repositorios para usuarios de Stable).
+Alternativamente, se puede usar `apt install limnoria/bullseye-backports` o añadir una prioridad de fijación superior a `/etc/apt/preferences.d/limnoria.pref` (Fuente: 6.3.1. La orden apt-cache policy).";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;La orden **at** ejecuta un programa en un momento específico en el futuro, y se puede indicar la hora como `09:00` (Fuente: 9.7.2). Para especificar la fecha de mañana, se puede usar «tomorrow» (Fuente: 9.7.2).;1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo (Fuente: 9.8. Programación de tareas asincrónicas: anacron). El propósito de **anacron** es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando (Fuente: 9.8. Programación de tareas asincrónicas: anacron).;0;1;0;1;1;1;"[borrador IA] Solo anacron; falta el formato de crontab"
+nemotron-bolt-e4b;retrieval;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"El archivo `/etc/shadow` almacena las contraseñas con *hash* y no puede ser leído por usuarios normales, a diferencia de `/etc/passwd` (Fuente: 8.4. Bases de datos de usuarios y grupos; Fuente: 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow).";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;No aparece en el documento;0;0;1;0;1;1;[borrador IA] Chunks no recuperados
+nemotron-bolt-e4b;retrieval;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;No aparece en el documento;0;0;1;0;1;1;[borrador IA] Recuperado solo en parte
+nemotron-bolt-e4b;retrieval;DEB_N01;sin_respuesta;¿Cómo instalo Docker en Debian?;No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.;No aparece en el documento;;0;1;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_N02;sin_respuesta;¿En qué fecha exacta deja de tener soporte Debian 11?;No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.;No aparece en el documento;;0;1;2;1;1;[borrador IA]
+nemotron-bolt-e4b;retrieval;DEB_N03;sin_respuesta;¿Cómo instalo aplicaciones en formato Flatpak?;No aparece en el documento.;No aparece en el documento;;0;1;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;**apt update** (Fuente: 6.2.1. Inicialización);1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"**apt remove** elimina el paquete, mientras que **ap purge** realiza una desinstalación completa eliminando también los archivos de configuración.
+Fuente: 6.2.2. Instalación y eliminación";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";Los resultados de estas operaciones son registrados en `/var/log/apt/history.log` y `/var/log/apt/term.log` (Fuente: 6.2.3. Actualización del sistema);1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";El programa **locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte del nombre y devuelve un resultado casi instantáneamente ya que consulta una base de datos que almacena la ubicación de todos los archivos del sistema (Fuente: 8.9.6. locate y updatedb);1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;Se puede crear un usuario ejecutando **adduser** ***`usuario`*** ***`grupo`***, por ejemplo, si el usuario pertenece al grupo *audio* puede acceder dispositivos de audio (Fuente: 8.5. Creación de cuentas);1;1;0;1;1;1;"[borrador IA] 'adduser usuario grupo' genérico; no separa crear cuenta y añadir a audio"
+nemotron-bolt-e4b;oraculo;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"El usuario genera un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la clave pública generada se almacena en `~/.ssh/id_rsa.pub`, y la clave privada correspondiente se almacena en `~/.ssh/id_rsa`. Luego, el usuario puede usar **ssh-copy-id** ***`server`*** para añadir su clave pública al archivo `~/.ssh/authorized_keys` en el servidor, o pedir al administrador que añada la clave manualmente si el acceso SSH no está habilitado aún.
+Fuente: 9.2.1.1. Autenticación basada en llaves";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;"$ sudo apt-get install paquete/bullseye-backports
+o
+$ sudo apt-get install -t /bullseye-backports paquete
+Fuente: 6.1.2. Repositorios para usuarios de Stable";1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;La orden a usar es **at** (Fuente: 9.7.2). Para especificar mañana, se puede usar «tomorrow» (Fuente: 9.7.2). La hora se puede indicar como `09:00` (Fuente: 9.7.2).;1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";"**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el tiempo, y su propósito es ejecutarlas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.
+Fuente: 9.8. Programación de tareas asincrónicas: anacron";1;1;0;1;1;1;"[borrador IA] Solo anacron; falta el formato de crontab"
+nemotron-bolt-e4b;oraculo;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;El archivo `/etc/shadow` contiene la contraseña cifrada y no puede ser leído por usuarios normales, a diferencia de `/etc/passwd` (Fuente: 8.4.2. El archivo de contraseñas ocultas y cifradas: /etc/shadow).;1;1;0;2;1;1;[borrador IA]
+nemotron-bolt-e4b;oraculo;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;La orden **apt-file search** ***`pattern`*** listará todos los paquetes, los que contienen un nombre de archivo o ruta que coincide con el patrón. (Fuente: 6.4. La orden apt-file);1;1;0;1;1;1;"[borrador IA] apt-file search sí; falta el paso de instalar"
+nemotron-bolt-e4b;oraculo;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;"Se recomienda hacer la actualización en dos pasos para facilitar el trabajo de las herramientas de gestión de paquetes y generalmente asegurar las últimas versiones de los paquetes, que pueden tener correcciones de errores y mejoras necesarias para finalizar la actualización de la distribución completa. La primera actualización debe ser con **apt upgrade**, y la segunda con **apt full-upgrade**, **aptitude**> o **synaptic**.
+Fuente: 6.7.1. Procedimiento recomendado";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;"Para que APT descargue la lista más reciente de paquetes disponibles, debe ejecutar la orden **apt update**.
+
+**Fuente:** Fragmento 3 (6.2.1. Inicialización)";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa**: se mantienen todos los archivos de configuración, scripts del encargado, archivos de registros y otros datos de usuarios, lo que permite reinstalar el programa rápidamente con la misma configuración.
+
+En cambio, la eliminación con `purge` (o `-P`) es **completa**: elimina todo lo asociado con el paquete, incluyendo los archivos de configuración.
+
+**Fuente:** Fragmento 2 (Sección 5.4.2. Eliminación de un paquete) y Fragmento 4 (Sección 6.2.2. Instalación y eliminación).";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";"Según los fragmentos proporcionados, no aparece información específica sobre en qué ficheros revisar lo que han hecho `apt` y `aptitude` al instalar o actualizar paquetes.
+
+*Nota: El documento menciona que `aptitude` permite revisar información como dependencias, conflictos y descripciones de los paquetes (Fragmento 3), y que `apt-file` guarda información de contenidos en archivos `Contents-*` (Fragmento 2), pero no detalla los ficheros de registro o estado generados directamente por la acción de instalación o actualización de estos comandos.*
+
+**Respuesta:** No aparece en el documento";0;0;1;0;1;0;"[borrador IA] Chunk no recuperado; abstiene con texto añadido"
+qwen3.5-9b;retrieval;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";"La herramienta que encuentra la ubicación de un archivo casi al instante es **locate**.
+
+*   **Cómo funciona:** Consulta una base de datos que almacena la ubicación de todos los archivos del sistema.
+*   **Fuente:** Fragmento 5 (8.9.6. locate y updatedb)";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;"Para dar de alta un usuario nuevo, se utiliza el programa **adduser** (Fragmento 1).
+
+Para permitirle usar el sonido del equipo, es necesario agregarlo al grupo **audio** ejecutando el comando **adduser** seguido del nombre del usuario y el nombre del grupo (Fragmento 1).";1;0;0;2;1;0;[borrador IA] Cita solo 'Fragmento 1', no la sección
+qwen3.5-9b;retrieval;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"Para conectarte por SSH sin escribir la contraseña cada vez, puedes seguir estos pasos basados en los fragmentos proporcionados:
+
+1.  **Generar una pareja de claves:** En tu máquina cliente, genera una clave pública y privada usando el comando `ssh-keygen -t rsa`.
+2.  **Copiar la clave pública:** Usa el comando `ssh-copy-id server` para añadir tu clave pública al archivo `~/.ssh/authorized_keys` en el servidor. Si no tienes acceso SSH aún, debes pedirle al administrador que añada tu clave manualmente.
+3.  **Alternativa con passphrase (Opcional):** Si la clave privada no tiene una ""frase de contraseña"" (passphrase) al crearla, las conexiones posteriores funcionarán sin contraseña. Si la tiene, puedes usar **ssh-agent** para mantener la clave en memoria y evitar reintroducir la frase cada vez:
+    *   Inicia el agente con `eval $(ssh-agent)`.
+    *   Añade la clave con `ssh-add` (una vez por sesión de trabajo).
+
+*Fuente: Fragmento 1, Fragmento 3*";1;0;0;2;1;0;[borrador IA] Cita solo 'Fragmento 1, Fragmento 3'
+qwen3.5-9b;retrieval;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;"Para instalar la nueva versión de un paquete cuando ya tienes `bullseye-backports` en las fuentes pero APT no lo hace automáticamente, debes usar explícitamente la sintaxis de la distribución en la orden de instalación.
+
+Según el documento:
+*   Se puede indicar la distribución de origen utilizando la orden: `apt install paquete/distribución`.
+*   En el caso específico de `bullseye-backports`, el ejemplo muestra: `sudo apt-get install paquete/bullseye-backports` o `sudo apt-get install -t /bullseye-backports paquete`.
+
+**Fuente:** Fragmento 1 (líneas 14-17) y Fragmento 2 (líneas 10-11).";1;0;0;2;1;0;[borrador IA] Cita solo 'Fragmento 1/2 (líneas…)'
+qwen3.5-9b;retrieval;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;"Para ejecutar un comando una sola vez en un momento específico, debe utilizar la orden **at**.
+
+*   **Orden:** `at`
+*   **Cómo pasar la hora:** Se indica el tiempo y la fecha deseados como parámetros de línea de comandos.
+    *   Para la hora, se usan formatos como `HH:MM` (ej. `09:00`).
+    *   Para la fecha, se pueden usar formatos como `DD.MM.AA`, `AAAA-MM-DD`, `MM/DD/[CC]AA` o simplemente palabras como «today» o «tomorrow».
+
+**Ejemplo de uso:**
+```bash
+$ at 09:00 tomorrow <<END
+> <comando_a_ejecutar>
+> END
+```
+
+*Fuente: Fragmento 1 (9.7.2. Utilización del programa at)*";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";"Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se utiliza el demonio **anacron**, el cual completa a **cron** ejecutando las tareas teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.
+
+Si el equipo está apagado en el momento programado (por ejemplo, a las 3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, lo que puede utilizar poder de procesamiento del equipo.
+
+*Fuente: 9.8. Programación de tareas asincrónicas: anacron*";0;1;0;1;1;1;"[borrador IA] Solo anacron; falta el formato de crontab"
+qwen3.5-9b;retrieval;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"El hash de la contraseña de un usuario se guarda en el archivo **`/etc/shadow`**.
+
+Es más seguro que guardarlo en `/etc/passwd` porque:
+*   El archivo `/etc/shadow` **no puede ser leído por usuarios normales**.
+*   En cambio, cualquiera puede leer las contraseñas con *hash* en `/etc/passwd`, lo que permitiría a un «cracker» intentar revelarlas mediante ataques de «fuerza bruta» o «ataque de diccionario».
+
+**Fuente:** Fragmento 3 (Sección ""Seguridad del archivo `/etc/shadow`"") y Fragmento 1 (Sección ""8.4. Bases de datos de usuarios y grupos"").";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;No aparece en el documento;0;0;1;0;1;1;[borrador IA] Chunks no recuperados
+qwen3.5-9b;retrieval;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;"No aparece en el documento.
+
+Aunque los fragmentos mencionan el procedimiento de actualización y el cambio de fuentes (Fragmento 2) y describen las diferencias entre `upgrade` y `full-upgrade` (Fragmento 3), no contienen información específica sobre la recomendación de realizar la actualización en ""dos pasos"" ni el orden exacto a seguir para ese caso particular.";0;0;1;0;1;0;"[borrador IA] Recuperado solo en parte; abstiene con texto añadido"
+qwen3.5-9b;retrieval;DEB_N01;sin_respuesta;¿Cómo instalo Docker en Debian?;No aparece en el documento. Docker solo se menciona de pasada en las secciones del cortafuegos (ufw/nftables), sin instrucciones de instalación.;No aparece en el documento;;0;1;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_N02;sin_respuesta;¿En qué fecha exacta deja de tener soporte Debian 11?;No aparece en el documento. El manual dice que cada versión estable tiene unos 5 años de soporte (seguridad + LTS), pero no da una fecha concreta.;No aparece en el documento;;0;1;2;1;1;[borrador IA]
+qwen3.5-9b;retrieval;DEB_N03;sin_respuesta;¿Cómo instalo aplicaciones en formato Flatpak?;No aparece en el documento.;No aparece en el documento;;0;1;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_D01;directa;¿Qué tengo que ejecutar para que APT descargue la lista más reciente de paquetes disponibles?;apt update (sección 6.2.1).;"Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la orden **apt update**.
+
+**Fuente:** 6.2.1. Inicialización";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_D02;directa;¿Qué diferencia hay entre desinstalar un paquete con remove y con purge?;"apt remove elimina el paquete; apt purge hace una desinstalación completa que también borra sus archivos de configuración (sección 6.2.2).";"La diferencia es que la orden `apt remove` elimina el paquete, mientras que la orden `apt purge` realiza una desinstalación completa, eliminando también los archivos de configuración.
+
+**Fuente:** 6.2.2. Instalación y eliminación";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_D03;directa;¿En qué ficheros puedo revisar lo que han hecho apt y aptitude al instalar o actualizar paquetes?;"En /var/log/apt/history.log y /var/log/apt/term.log; dpkg, por su parte, registra en /var/log/dpkg.log (sección 6.2.3).";"Los resultados de las operaciones de **apt** y **aptitude** se registran en los ficheros `/var/log/apt/history.log` y `/var/log/apt/term.log`.
+
+**Fuente:** Fragmento 1 (línea 10)";1;0;0;2;1;0;[borrador IA] Cita 'Fragmento 1 (línea 10)', no la sección
+qwen3.5-9b;oraculo;DEB_D04;directa;Solo recuerdo parte del nombre de un fichero. ¿Qué herramienta lo encuentra casi al instante y de dónde saca la información?;"locate, que consulta una base de datos con la ubicación de todos los archivos; esa base se actualiza a diario con updatedb (sección 8.9.6).";"La herramienta que encuentra el archivo casi al instante es **locate**. Obtiene la información de una base de datos que almacena la ubicación de todos los archivos del sistema, la cual se actualiza diariamente con **updatedb**.
+
+Fuente: 8.9.6. locate y updatedb";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_D05;directa;¿Cómo doy de alta un usuario nuevo y le permito usar el sonido del equipo?;Con adduser usuario para crear la cuenta, y adduser usuario audio para añadirlo al grupo audio (sección 8.5).;"Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar el programa **adduser** con el nombre del usuario y el nombre del grupo *audio* (por ejemplo: `adduser usuario audio`). Esto agrega al usuario al grupo *audio*, lo que le otorga permisos para acceder a los dispositivos de audio.
+
+**Fuente:** Fragmento 1 (líneas que describen el uso de `adduser` para agregar un usuario a un grupo diferente a su grupo principal, específicamente el ejemplo del grupo *audio*).";1;0;0;1;1;0;"[borrador IA] Junta crear la cuenta y añadir a audio en un solo comando; cita solo el fragmento"
+qwen3.5-9b;oraculo;DEB_D06;directa;Quiero conectarme por SSH a un servidor sin escribir la contraseña cada vez. ¿Qué pasos sigo?;Generar un par de claves en el cliente con ssh-keygen -t rsa (pública en ~/.ssh/id_rsa.pub, privada en ~/.ssh/id_rsa) y copiar la pública al servidor con ssh-copy-id servidor, que la añade a ~/.ssh/authorized_keys (sección 9.2.1).;"Para conectarte por SSH sin escribir la contraseña cada vez, debes seguir estos pasos según el documento:
+
+1.  Generar un par de llaves en la máquina cliente ejecutando: `ssh-keygen -t rsa`.
+2.  La clave pública generada se almacena en `~/.ssh/id_rsa.pub` y la privada en `~/.ssh/id_rsa`.
+3.  Usar el comando `ssh-copy-id server` para agregar la clave pública al archivo `~/.ssh/authorized_keys` en el servidor.
+4.  Si el acceso SSH no está habilitado aún, es necesario pedirle al administrador que agregue la clave manualmente.
+
+**Fuente:** Fragmento 1 (Sección 9.2.1.1. Autenticación basada en llaves)";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_D07;directa;Tengo bullseye-backports en las fuentes, pero APT me sigue instalando la versión antigua. ¿Cómo instalo la nueva?;APT no instala retroadaptaciones salvo que se le indique explícitamente: apt-get install paquete/bullseye-backports (o con -t bullseye-backports) (sección 6.1.2.4).;"Para instalar la nueva versión desde el repositorio `stable-backports`, debes indicar explícitamente a `APT` que lo haga. Puedes usar uno de los siguientes comandos:
+
+*   `sudo apt-get install paquete/bullseye-backports`
+*   `sudo apt-get install -t /bullseye-backports paquete`
+
+**Fuente:** 6.1.2. Repositorios para usuarios de Stable (parte 5 de 5)";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_D08;directa;Necesito que un comando se ejecute una sola vez mañana a las 9:00. ¿Qué orden uso y cómo le paso la hora?;La orden at: recibe la hora y la fecha como parámetros (p. ej. at 09:00 tomorrow, o una fecha como 27.07.22) y el comando a ejecutar por la entrada estándar (sección 9.7.2).;"Para ejecutar un comando una sola vez mañana a las 9:00, debes usar la orden **at** con el parámetro `tomorrow 09:00`.
+
+*   **Orden:** `at`
+*   **Formato de hora:** Se indica la hora en formato `HH:MM` (por ejemplo, `09:00`).
+*   **Formato de fecha:** Se puede ingresar simplemente «today» o «tomorrow» para representar el día actual o el día siguiente, respectivamente.
+
+**Fuente:** 9.7.2. Utilización del programa at";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_C01;combinada;Quiero que una copia de seguridad se lance cada día a las 3:00 en un portátil que a menudo está apagado a esa hora. ¿Cómo se escribe la programación y qué pasa si el equipo está apagado?;"Cada línea de crontab lleva minuto (0-59), hora (0-23), día del mes, mes y día de la semana, más el usuario en /etc/crontab, y el programa; para las 3:00 cada día: minuto 0, hora 3 y el resto con asterisco (sección 9.7.1). Si el equipo está apagado a esa hora, cron no ejecuta la tarea; anacron la lanza teniendo en cuenta el tiempo que estuvo apagado (sección 9.8).";"Para programar la copia de seguridad, se debe escribir la tarea en el archivo `/etc/anacrontab` utilizando el programa **nice** para reducir su prioridad de ejecución.
+
+Si el equipo está apagado a la hora programada (3:00), **anacron** ejecutará la tarea unos minutos después de iniciar la máquina, teniendo en cuenta los períodos de tiempo en los que el equipo no estuvo funcionando.
+
+*Fuente: 9.8. Programación de tareas asincrónicas: anacron*";1;1;0;1;1;1;"[borrador IA] Habla de /etc/anacrontab; falta el formato de crontab"
+qwen3.5-9b;oraculo;DEB_C02;combinada;¿En qué fichero se guarda realmente el hash de la contraseña de un usuario y por qué es más seguro que guardarlo en /etc/passwd?;En /etc/passwd el campo de contraseña vale «x», que indica que está en /etc/shadow (sección 8.4.1). /etc/shadow no lo pueden leer los usuarios normales, lo que evita ataques de diccionario sobre los hashes (sección 8.4.2).;"El hash de la contraseña se guarda en el archivo **`/etc/shadow`**.
+
+Es más seguro que guardarlo en `/etc/passwd` porque:
+*   El archivo `/etc/shadow` **no puede ser leído por usuarios normales**.
+*   En cambio, cualquiera puede leer las contraseñas con *hash* en `/etc/passwd`, lo que permitiría a un «cracker» intentar revelarlas mediante ataques de «fuerza bruta» o «ataque de diccionario».
+
+**Fuente:** Fragmento 2 (Secciones: ""El archivo de contraseñas ocultas y cifradas: /etc/shadow"" y ""Seguridad del archivo `/etc/shadow`"").";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_C03;combinada;Me falta un programa y solo sé el nombre del ejecutable. ¿Cómo averiguo qué paquete lo trae, aunque no esté instalado, y lo instalo?;Con apt-file search patrón (tras apt-file update) se ve qué paquete contiene ese archivo (sección 6.4), y luego se instala con apt install paquete (sección 6.2.2).;"Para averiguar qué paquete trae un ejecutable aunque no esté instalado, debes usar la orden **apt-file search** con el patrón del nombre del archivo.
+
+*   **Para buscar el paquete:** La orden `apt-file search <patrón>` listará todos los paquetes que contienen un nombre de archivo o ruta que coincida con el patrón.
+*   **Para instalarlo:** Una vez identificado el paquete, puedes instalarlo usando la orden **apt install <paquete>**.
+
+**Fuente:** Fragmento 1 (sección 6.4. La orden apt-file) y Fragmento 2 (sección 6.2.2. Instalación y eliminación).";1;1;0;2;1;1;[borrador IA]
+qwen3.5-9b;oraculo;DEB_C04;combinada;Ya he cambiado las fuentes de APT de Buster a Bullseye. ¿Por qué se recomienda actualizar en dos pasos y qué orden se usa en cada uno?;Primero una actualización mínima con apt upgrade, que deja al día las propias herramientas de gestión de paquetes y facilita el resto (parte 3). Después la actualización completa con apt full-upgrade (o aptitude/synaptic), revisando las acciones sugeridas antes de aceptarlas (parte 4) (sección 6.7.1).;"Se recomienda actualizar en dos pasos para facilitar el trabajo de las herramientas de gestión de paquetes y generalmente asegurar que se tengan las últimas versiones de las mismas, que pueden haber acumulado correcciones de errores y mejoras necesarias para finalizar la actualización de la distribución completa.
+
+El orden recomendado es:
+1.  Primero, realizar una actualización mínima con **apt upgrade**.
+2.  Luego, realizar la actualización en sí con **apt full-upgrade**, **aptitude** o **synaptic**.
+
+Fuente: 6.7.1. Procedimiento recomendado (parte 3 de 4) y 6.7.1. Procedimiento recomendado (parte 4 de 4)";1;1;0;2;1;1;[borrador IA]
