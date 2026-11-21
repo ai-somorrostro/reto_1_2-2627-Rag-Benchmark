@@ -18,10 +18,11 @@ El enunciado está en [`README.md`](README.md). Este documento explica cómo rep
 | 2. Tablas A, B y C | [`results/embeddings/tabla_a_embeddings.md`](results/embeddings/tabla_a_embeddings.md), [`results/llms/tablas_b_c.md`](results/llms/tablas_b_c.md) |
 | 3. Recomendación y umbrales | [`decision_fase4.md`](decision_fase4.md) §1 a §5 |
 | 4. Plan B | [`decision_fase4.md`](decision_fase4.md) §5 |
-| 5. Lo que no esperábamos | [`decision_fase4.md`](decision_fase4.md) §8 |
+| 5. Lo que no esperábamos | [`decision_fase4.md`](decision_fase4.md) §8, [`analisis_fallos_rag.md`](analisis_fallos_rag.md) |
 | Golden set | [`golden-set/`](golden-set/) (15 preguntas por escenario: 8 directas, 4 combinadas, 3 sin respuesta) y [`golden_set_revision.md`](golden-set/golden_set_revision.md) |
 | Gráficos y comparativas visuales | [`results/graficos/`](results/graficos/) (generados con `scripts/generar_graficos.py`) |
 | Diapositivas y guion de defensa | [`presentacion/`](presentacion/) (`slides.md`, visor interactivo `index.html` y [`guion_defensa_10min.md`](presentacion/guion_defensa_10min.md)) |
+| Auditoría de trazabilidad y Plan B | `scripts/auditar_trazabilidad.py` y `scripts/estimador_memoria_plan_b.py` |
 
 ## Entorno
 
