@@ -1,0 +1,9 @@
+model,model_id,size_category,checkpoint_parameters_billions,checkpoint_dtype,quantization,scenario,responses,correctness_mean_0_2,faithful_percent,correct_abstentions_of_3,false_abstentions,format_language_percent
+granite_4_1_8b_llmon_preview,ibm-granite/granite-4.1-8b-llmon-preview,medium,8.79159296,bfloat16,none,boe,15,1.6666666666666667,93.33333333333333,3,0,100.0
+granite_4_1_8b_llmon_preview,ibm-granite/granite-4.1-8b-llmon-preview,medium,8.79159296,bfloat16,none,debian,15,1.6,86.66666666666667,1,0,53.333333333333336
+llama_3_2_3b_instruct,meta-llama/Llama-3.2-3B-Instruct,small,3.212749824,bfloat16,none,boe,15,0.6666666666666666,46.666666666666664,3,8,26.666666666666668
+llama_3_2_3b_instruct,meta-llama/Llama-3.2-3B-Instruct,small,3.212749824,bfloat16,none,debian,15,1.1333333333333333,60.0,3,1,20.0
+qwen2_5_3b_instruct,Qwen/Qwen2.5-3B-Instruct,small,3.085938688,bfloat16,none,boe,15,1.5333333333333334,66.66666666666667,3,3,33.333333333333336
+qwen2_5_3b_instruct,Qwen/Qwen2.5-3B-Instruct,small,3.085938688,bfloat16,none,debian,15,1.4,80.0,1,0,6.666666666666667
+qwen2_5_7b_instruct,Qwen/Qwen2.5-7B-Instruct,medium,7.615616512,bfloat16,none,boe,15,1.7333333333333334,93.33333333333333,3,1,86.66666666666667
+qwen2_5_7b_instruct,Qwen/Qwen2.5-7B-Instruct,medium,7.615616512,bfloat16,none,debian,15,1.6666666666666667,93.33333333333333,2,0,46.666666666666664
