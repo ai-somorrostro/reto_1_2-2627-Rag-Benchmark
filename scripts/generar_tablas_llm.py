@@ -180,10 +180,10 @@ def notas(resultados):
         if any(r["razonamiento_detectado"] for r in d["respuestas"]):
             problemas.append("se detectó razonamiento (think) en alguna respuesta")
         if any(r["posible_truncado"] for r in d["respuestas"]):
-            problemas.append("algún prompt roza num_ctx")
+            problemas.append("algún prompt roza max_model_len")
         cortadas = sum(1 for r in d["respuestas"] if r["cortado_por_num_predict"])
         if cortadas:
-            problemas.append(f"{cortadas} respuestas cortadas por num_predict")
+            problemas.append(f"{cortadas} respuesta{'s' if cortadas != 1 else ''} cortada{'s' if cortadas != 1 else ''} por max_tokens")
         if problemas:
             out.append(f"- **{m}:** " + "; ".join(problemas))
     return (["\n**Avisos**\n"] + out) if out else []
@@ -208,7 +208,7 @@ def main():
         o = meta0["opciones"]
         md.append(f"## Escenario: {nombre}\n")
         md.append(f"Stack: {meta0.get('stack', 'Ollama')} · cuantización {meta0['cuantizacion']} · embedding: `{meta0['embedding']}` · top-k = {meta0['top_k']} · temperatura {o['temperature']} · "
-                  f"num_predict {o['num_predict']} · num_ctx {o['num_ctx']} · mismo prompt para todos\n")
+                  f"max_tokens {o['num_predict']} · max_model_len {o['num_ctx']} · mismo prompt para todos\n")
         filas = leer_csv(esc)
         md += tabla_b(esc, resultados, filas)
         md += tabla_oraculo(filas, resultados)

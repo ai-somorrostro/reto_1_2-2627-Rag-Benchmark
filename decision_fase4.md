@@ -5,8 +5,6 @@
 **Datos:** Fase 2 (`results/embeddings/tabla_a_embeddings.md`) y Fase 3 (`results/llms/tablas_b_c.md`).
 Las notas de calidad salen de `results/llms/puntuacion_*.csv`: primera pasada hecha con IA con criterios fijos y revisada a mano por el grupo (**10 filas revisadas, 0 cambiadas (coincidencia 10 de 10)**).
  
-> Si al revisar habéis cambiado notas, actualizad las cifras de las tablas 3 y 4 con `tablas_b_c.md`.
- 
 ---
  
 ## 1. Umbrales
@@ -68,7 +66,7 @@ Solo cumple **Nemotron**. Qwen empata en todo lo de prioridad 1–3, pero solo c
  
 **VRAM total:** 14,8 GB (Nemotron) + ~1,1 GB (bge-m3, FP16) ≈ 15,9 GB < 20 GB ✅
  
-> Las 3 falsas abstenciones de Nemotron y Qwen en Debian (`DEB_D03`, `DEB_C03`, `DEB_C04`) son preguntas en las que bge-m3 no recuperó el chunk correcto. Con el oráculo, los dos aciertan: el límite en Debian es el retrieval, no el LLM.
+> Las 3 falsas abstenciones de Nemotron y Qwen en Debian (`DEB_D03`, `DEB_C03`, `DEB_C04`) son preguntas en las que bge-m3 no recuperó todos los chunks necesarios en el top-5: en `DEB_D03` falta el único chunk relevante, en la combinada `DEB_C03` no llega ninguno de los dos y en `DEB_C04` llega solo uno de los dos (`debian_120_p4`). Con el oráculo, Qwen acierta las tres (2/2) y Nemotron acierta `DEB_D03` y `DEB_C04` (2/2) y responde de forma incompleta en `DEB_C03` (1/2). En Debian el límite principal es el retrieval, no el LLM.
  
 ---
  

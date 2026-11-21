@@ -2,7 +2,7 @@
 
 ## Escenario: Estatuto de los Trabajadores (BOE)
 
-Stack: vLLM · cuantización FP8 · embedding: `harrier-oss-v1` · top-k = 5 · temperatura 0.0 · num_predict 512 · num_ctx 8192 · mismo prompt para todos
+Stack: vLLM · cuantización FP8 · embedding: `harrier-oss-v1` · top-k = 5 · temperatura 0.0 · max_tokens 512 · max_model_len 8192 · mismo prompt para todos
 
 ### Tabla B. LLMs: calidad (con retrieval)
 
@@ -37,7 +37,7 @@ Stack: vLLM · cuantización FP8 · embedding: `harrier-oss-v1` · top-k = 5 · 
 
 ## Escenario: Manual del Administrador de Debian
 
-Stack: vLLM · cuantización FP8 · embedding: `bge-m3` · top-k = 5 · temperatura 0.0 · num_predict 512 · num_ctx 8192 · mismo prompt para todos
+Stack: vLLM · cuantización FP8 · embedding: `bge-m3` · top-k = 5 · temperatura 0.0 · max_tokens 512 · max_model_len 8192 · mismo prompt para todos
 
 ### Tabla B. LLMs: calidad (con retrieval)
 
@@ -70,6 +70,6 @@ Stack: vLLM · cuantización FP8 · embedding: `bge-m3` · top-k = 5 · temperat
 
 **Avisos**
 
-- **lfm3-1.7b:** 1 respuestas cortadas por num_predict
+- **lfm3-1.7b:** 1 respuesta cortada por max_tokens
 
 ---
