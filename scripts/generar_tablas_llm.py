@@ -157,11 +157,7 @@ def tabla_c(resultados):
            "| --- | --- | --- | --- | --- | --- |"]
     for m, d in resultados.items():
         c, meta = d["coste"]["mediana"], d["meta"]
-        if meta.get("stack_version"):
-            stack = f"{meta['stack']} {meta['stack_version']}"
-        else:
-            v = meta.get("ollama_version") or ""
-            stack = "Ollama " + ("" if v.startswith("[") else v.split()[-1])
+        stack = f"{meta['stack']} {meta['stack_version']}"
         out.append(f"| `{m}` | {stack} | "
                    f"{fmt(c['ttft_s'])} | {fmt(c['tokens_por_s'], 1)} | {fmt(c['latencia_total_s'])} | "
                    f"{fmt(meta['vram_pico_gb'])} |")
@@ -175,8 +171,6 @@ def notas(resultados):
         problemas = []
         if "gpu_memory_utilization" in (meta.get("memoria") or ""):
             problemas.append("VRAM medida con gpu_memory_utilization: refleja la reserva de vLLM, no el modelo")
-        if "CPU" in (meta.get("ollama_ps") or ""):
-            problemas.append("`ollama ps` muestra parte del modelo en CPU")
         if any(r["razonamiento_detectado"] for r in d["respuestas"]):
             problemas.append("se detectó razonamiento (think) en alguna respuesta")
         if any(r["posible_truncado"] for r in d["respuestas"]):
@@ -207,7 +201,7 @@ def main():
         meta0 = next(iter(resultados.values()))["meta"]
         o = meta0["opciones"]
         md.append(f"## Escenario: {nombre}\n")
-        md.append(f"Stack: {meta0.get('stack', 'Ollama')} · cuantización {meta0['cuantizacion']} · embedding: `{meta0['embedding']}` · top-k = {meta0['top_k']} · temperatura {o['temperature']} · "
+        md.append(f"Stack: {meta0['stack']} · cuantización {meta0['cuantizacion']} · embedding: `{meta0['embedding']}` · top-k = {meta0['top_k']} · temperatura {o['temperature']} · "
                   f"max_tokens {o['num_predict']} · max_model_len {o['num_ctx']} · mismo prompt para todos\n")
         filas = leer_csv(esc)
         md += tabla_b(esc, resultados, filas)
