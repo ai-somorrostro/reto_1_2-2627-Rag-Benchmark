@@ -101,3 +101,12 @@ Solo caben los dos LLM pequeños, y hay que sumar el embedding (~1,1 GB):
 - La VRAM se midió con la caché KV fija en 2 GB y para toda la instancia MIG (incluye el contexto de CUDA).
 - FP8 en una A800 (Ampere) solo ahorra memoria; en una GPU con FP8 nativo los tiempos serían distintos.
  
+---
+
+## 8. Lo que no esperábamos
+
+1. **Nemotron, con 4B parámetros efectivos, es el LLM más lento y no el más rápido.** Esperábamos que calculara como un modelo de ~4B, pero da **27 tok/s**, frente a 45 de Qwen3.5-9B y 66 de Llama-3.2-3B, y su VRAM pico (14,8 GB) supera la de Qwen (14,3 GB). *Explicación:* vLLM carga los 8B parámetros completos (incluidas las tablas de embeddings por capa) y en esta GPU usa kernels más lentos para su arquitectura (`TRITON_ATTN` y FP8 Marlin, que en Ampere solo comprime los pesos). Tener «4B efectivos» ahorra cómputo en teoría, pero no memoria, y en nuestro stack tampoco tiempo. (Datos: `results/llms/tablas_b_c.md`, Tabla C; detalle en `seleccion_llms.md` §3 y §6.)
+
+2. **El mejor embedding cambia de un corpus a otro.** harrier-oss-v1 recupera **12 de 12** en el BOE (Recall@5 = 1,00) y es el peor en Debian (0,75), mientras que bge-m3, el más antiguo y el único encoder, es el único que llega a 0,80 en Debian (0,83). Un mismo ranking de MTEB no predice el resultado en los dos corpus. *Hipótesis (no comprobada):* el BOE es prosa jurídica en español «limpio», y Debian mezcla español con comandos, rutas y términos en inglés, donde los modelos se comportan de forma distinta. (Datos: `results/embeddings/tabla_a_embeddings.md`.)
+
+3. **LFM3-1.7B no inventa, pero casi nunca responde.** Se abstiene en 11 de 12 preguntas con respuesta en el BOE y en 12 de 12 en Debian, aunque en el BOE el chunk correcto estaba en el top-5 en todas. Si le pasamos solo el fragmento correcto (oráculo), su corrección sube de **0,08 a 1,25** en el BOE y de **0,00 a 1,00** en Debian. *Explicación:* el fallo no es del retrieval sino del ruido. Con 5 fragmentos parecidos, el modelo pequeño no encuentra la respuesta y aplica la regla de abstención del prompt. Por eso su 93–100 % de fidelidad engaña: es fiel porque no dice nada. (Datos: `results/llms/tablas_b_c.md`, tabla «Retrieval frente a oráculo».)
