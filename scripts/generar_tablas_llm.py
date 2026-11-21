@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Genera las Tablas B (calidad) y C (coste) de la Fase 3 a partir de:
-  - results/llms/data/<modelo>_<escenario>.json   (salida de benchmark_llms_vllm.py o benchmark_llms_ollama.py)
+  - results/llms/data/<modelo>_<escenario>.json   (salida de benchmark_llms_vllm.py)
   - results/llms/puntuacion_<escenario>.csv       (vuestra puntuación a mano)
 
 Paso 1:  python scripts/generar_tablas_llm.py --plantilla
