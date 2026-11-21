@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benchmark RAG: Embeddings y LLMs Locales - Grupo 1</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --accent2: #a855f7;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+    .badge { background: #1e3a5f; color: #7dd3fc; padding: 3px 8px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    .timer-container { display: flex; align-items: center; gap: 12px; font-family: monospace; font-size: 1.1rem; }
+    .timer-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+    .timer-btn:hover { background: var(--border); }
+    .time-display { font-weight: bold; color: var(--accent); }
+    .time-warn { color: var(--warning); }
+    .time-danger { color: var(--danger); }
+
+    main {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 36px;
+    }
+    .slide {
+      position: absolute;
+      top: 24px; bottom: 24px; left: 36px; right: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 12px; color: #fff; line-height: 1.2; }
+    h2 { font-size: 1.8rem; margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+    h3 { font-size: 1.2rem; margin: 12px 0 8px; color: #cbd5e1; }
+    p, li { font-size: 1.05rem; line-height: 1.6; color: #cbd5e1; }
+    ul { list-style: none; }
+    ul li::before { content: "▹"; color: var(--accent); font-weight: bold; display: inline-block; width: 1.2em; }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .card-highlight {
+      border-color: var(--accent);
+      background: linear-gradient(145deg, #1e293b, #0f233a);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: #0f172a; color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(56, 189, 248, 0.05); }
+    .win { color: var(--success); font-weight: bold; }
+    
+    .chart-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-top: 12px;
+    }
+    .chart-container img {
+      max-width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: rgba(15, 23, 42, 0.8);
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .nav-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+    .speaker-pill {
+      background: #312e81;
+      color: #c7d2fe;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span>⚡ Benchmark RAG</span>
+      <span class="badge">Grupo 1</span>
+    </div>
+    <div class="timer-container">
+      <span class="time-display" id="timeDisplay">10:00</span>
+      <button class="timer-btn" id="startBtn">Iniciar</button>
+      <button class="timer-btn" id="resetBtn">Reset</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- SLIDE 1 -->
+    <div class="slide active">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <span class="badge" style="font-size: 0.9rem; padding: 6px 14px; margin-bottom: 16px;">Práctica: Benchmark de LLMs y Embeddings Locales</span>
+        <h1>Evaluación Experimental para RAG</h1>
+        <h3 style="color: var(--accent); font-weight: 400; max-width: 800px; margin-bottom: 32px;">
+          Análisis empírico de Retrieval y Generación sobre Normativa Española (BOE) y Documentación Técnica (Debian)
+        </h3>
+        <div class="card" style="display: inline-block; padding: 14px 28px; text-align: left;">
+          <p><strong>Equipo 1:</strong> Nicolás Pascual · Aimar Mora · Íñigo Guzmán</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">Hardware: NVIDIA A800 40GB (MIG 3g.20gb) · vLLM 0.34.0 FP8</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="slide">
+      <h2>1. Contexto, Escenarios y Stack de Inferencia</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Los Dos Corpus Evaluados</h3>
+          <ul style="margin-top: 12px; display: flex; flex-direction: column; gap: 12px;">
+            <li><strong>Escenario 1 · BOE (Estatuto de los Trabajadores):</strong>
+              <br><small style="color: var(--text-muted);">Prosa jurídica homogénea, artículos fuertemente referenciados entre sí, necesidad de citar el artículo exacto sin alucinar.</small>
+            </li>
+            <li><strong>Escenario 2 · Manual de Debian (Administrador):</strong>
+              <br><small style="color: var(--text-muted);">Prosa técnica intercalada con comandos de consola, rutas y términos en inglés dentro de la sintaxis en español.</small>
+            </li>
+          </ul>
+        </div>
+        <div class="card card-highlight">
+          <h3>Stack de Inferencia y Justificación</h3>
+          <ul style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+            <li><strong>Motor:</strong> <code>vLLM 0.34.0</code> unificado en Fase 2 y Fase 3. Permite medir VRAM real sin capas intermedias.</li>
+            <li><strong>Cuantización:</strong> <code>FP8</code> uniforme en todos los modelos (ejecutado como solo-pesos en Ampere).</li>
+            <li><strong>Aislamiento de Memoria:</strong> Misma caché KV fija a 2 GB para todos los LLMs. Mismo top-5 y temperatura 0.0.</li>
+            <li><strong>Golden Set:</strong> 15 preguntas por escenario (8 directas, 4 combinadas y 3 de abstención sin respuesta).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+      <h2>2. Fase 2: Benchmark de Embeddings</h2>
+      <div class="grid-2">
+        <div>
+          <table>
+            <thead>
+              <tr><th>Escenario</th><th>Modelo</th><th>Recall@5 (Hit)</th><th>MRR</th><th>VRAM</th></tr>
+            </thead>
+            <tbody>
+              <tr><td rowspan="3"><strong>BOE</strong></td><td>bge-m3</td><td>0.8333</td><td>0.6983</td><td>1.89 GB</td></tr>
+              <tr><td>Qwen3-Emb</td><td>0.8333</td><td>0.6991</td><td>3.51 GB</td></tr>
+              <tr style="background: rgba(16, 185, 129, 0.15);"><td class="win">harrier-oss-v1 (Ganador)</td><td class="win">1.0000</td><td class="win">0.7361</td><td>3.51 GB</td></tr>
+              <tr><td rowspan="3"><strong>Debian</strong></td><td class="win">bge-m3 (Ganador)</td><td class="win">0.8333</td><td class="win">0.6219</td><td>1.90 GB</td></tr>
+              <tr><td>Qwen3-Emb</td><td>0.7500</td><td>0.5769</td><td>3.49 GB</td></tr>
+              <tr><td>harrier-oss-v1</td><td>0.7500</td><td>0.5573</td><td>3.51 GB</td></tr>
+            </tbody>
+          </table>
+          <div class="card" style="margin-top: 14px;">
+            <p><strong>Hallazgo crítico:</strong> El ranking de MTEB no es absoluto. <em>harrier</em> es perfecto en el dominio legal (100% de recuperación), pero cae al 75% en el técnico. <em>bge-m3</em> es el único que supera el umbral en Debian gracias a su entrenamiento multilingüe técnico.</p>
+          </div>
+        </div>
+        <div class="chart-container">
+          <img src="../results/graficos/embeddings_comparativa.png" alt="Comparativa Embeddings">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 4 -->
+    <div class="slide">
+      <h2>3. Fase 3: Benchmark de LLMs · Calidad</h2>
+      <div class="grid-2">
+        <div>
+          <table>
+            <thead>
+              <tr><th>Escenario</th><th>Modelo</th><th>Corrección (0-2)</th><th>Fidelidad</th><th>Falsas Abst.</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>BOE</td><td>lfm3-1.7b</td><td>0.93</td><td>93 %</td><td>11 de 12</td></tr>
+              <tr><td>BOE</td><td>llama3.2-3b</td><td>0.93</td><td>100 %</td><td>6 de 12</td></tr>
+              <tr><td>BOE</td><td>nemotron-bolt</td><td>1.60</td><td>100 %</td><td>1 de 12</td></tr>
+              <tr style="background: rgba(16, 185, 129, 0.15);"><td>BOE</td><td class="win">qwen3.5-9b</td><td class="win">1.87</td><td class="win">100 %</td><td class="win">1 de 12</td></tr>
+              <tr><td>Debian</td><td>lfm3-1.7b</td><td>0.93</td><td>93 %</td><td>12 de 12</td></tr>
+              <tr><td>Debian</td><td>llama3.2-3b</td><td>1.07</td><td>87 %</td><td>5 de 12</td></tr>
+              <tr style="background: rgba(16, 185, 129, 0.15);"><td>Debian</td><td class="win">nemotron-bolt</td><td class="win">1.53</td><td class="win">100 %</td><td class="win">3 de 12</td></tr>
+              <tr><td>Debian</td><td>qwen3.5-9b</td><td>1.53</td><td>100 %</td><td>3 de 12</td></tr>
+            </tbody>
+          </table>
+          <div class="card" style="margin-top: 14px;">
+            <p><strong>Histeria de abstención:</strong> Los modelos de 1.7B y 3B se abstienen masivamente incluso cuando el chunk correcto está en el top-5. En Debian, Nemotron y Qwen empatan en corrección (1.53), pero Nemotron clava el formato de citación técnica al <strong>100%</strong> frente al 67% de Qwen.</p>
+          </div>
+        </div>
+        <div class="chart-container">
+          <img src="../results/graficos/llms_calidad.png" alt="Calidad LLMs">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5 -->
+    <div class="slide">
+      <h2>4. Fase 3: Benchmark de LLMs · Coste y Rendimiento</h2>
+      <div class="grid-2">
+        <div>
+          <table>
+            <thead>
+              <tr><th>Modelo</th><th>TTFT (s)</th><th>Tokens/s</th><th>Latencia</th><th>VRAM Pico</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>lfm3-1.7b</td><td>0.10 s</td><td>63.9 tok/s</td><td>2.80 s</td><td>5.36 GB</td></tr>
+              <tr><td>llama3.2-3b</td><td>0.20 s</td><td><strong>66.4 tok/s</strong></td><td><strong>0.78 s</strong></td><td>7.07 GB</td></tr>
+              <tr style="color: var(--danger);"><td>nemotron-bolt</td><td>0.27 s</td><td>26.7 tok/s</td><td>1.50 s</td><td>14.80 GB</td></tr>
+              <tr style="color: var(--accent);"><td>qwen3.5-9b</td><td>0.41 s</td><td>45.0 tok/s</td><td>1.35 s</td><td>14.27 GB</td></tr>
+            </tbody>
+          </table>
+          <div class="card" style="margin-top: 14px;">
+            <p><strong>Rendimiento en inferencia:</strong></p>
+            <ul style="margin-top: 8px; display: flex; flex-direction: column; gap: 8px;">
+              <li><code>Llama-3.2-3B</code> es el más rápido con 66 tok/s y latencia submétrica, pero inservible por su tasa de falsas abstenciones.</li>
+              <li><code>Qwen3.5-9B</code> mantiene una velocidad sobresaliente de 45 tok/s ofreciendo la mayor calidad global del benchmark.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="chart-container">
+          <img src="../results/graficos/llms_coste_velocidad.png" alt="Coste LLMs">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6 -->
+    <div class="slide">
+      <h2>5. Recomendaciones Finales por Escenario</h2>
+      <div class="grid-2">
+        <div class="card card-highlight">
+          <span class="badge" style="background: #047857; color: #a7f3d0;">Escenario 1: BOE (Estatuto de los Trabajadores)</span>
+          <h3 style="margin-top: 12px; color: #fff;">harrier-oss-v1 (0.6B) + Qwen3.5-9B (FP8)</h3>
+          <ul style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Recuperación perfecta:</strong> Recall@5 = 1.0000 (12 de 12 preguntas).</li>
+            <li><strong>Máxima precisión:</strong> 1.87 / 2.0 en corrección y 100% fidelidad sin alucinaciones.</li>
+            <li><strong>Excelente equilibrio:</strong> 45 tok/s de velocidad en GPU A800 con 14.3 GB de VRAM pico.</li>
+          </ul>
+        </div>
+        <div class="card card-highlight">
+          <span class="badge" style="background: #1d4ed8; color: #bfdbfe;">Escenario 2: Manual de Debian</span>
+          <h3 style="margin-top: 12px; color: #fff;">bge-m3 (568M) + Nemotron-Bolt-E4B (FP8)</h3>
+          <ul style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Retrieval robusto:</strong> bge-m3 es el único embedding que supera el umbral del 80% (0.83).</li>
+            <li><strong>Fidelidad y Cita:</strong> Nemotron empata en corrección (1.53) y supera a Qwen en citación de sección técnica (100% vs 67%).</li>
+            <li><strong>Compromiso:</strong> Aceptamos una menor velocidad (26.7 tok/s) a cambio de cero fallos de formato en entorno técnico.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7 -->
+    <div class="slide">
+      <h2>6. Plan B: Restricción a 8 GB de VRAM</h2>
+      <div class="grid-2">
+        <div>
+          <div class="card" style="border-left: 4px solid var(--danger);">
+            <h3 style="color: var(--danger);">Conclusión del Grupo 1</h3>
+            <p><strong>Ninguno de los modelos que supera los umbrales de calidad cabe en 8 GB de VRAM.</strong></p>
+          </div>
+          <ul style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+            <li><code>Qwen3.5-9B</code> (14.27 GB) y <code>Nemotron-Bolt</code> (14.80 GB) se desbordan de largo.</li>
+            <li><code>LFM3-1.7B</code> (5.36 GB) y <code>Llama-3.2-3B</code> (7.07 GB) sí caben en 8 GB, pero <strong>fallan estrepitosamente en calidad</strong> (falsas abstenciones del 50% al 92%).</li>
+          </ul>
+          <div class="card" style="margin-top: 14px; background: #0f172a;">
+            <p><strong>Propuesta de Ingeniería para el Plan B:</strong></p>
+            <p style="font-size: 0.95rem; margin-top: 6px; color: var(--accent);">Cuantizar Qwen3.5-9B a <strong>AWQ 4-bits</strong> o <strong>GGUF Q4_K_M</strong> en llama.cpp (ocupa ~6.5 GB de VRAM total), preservando la capacidad de razonamiento en lugar de desplegar un modelo pequeño deficiente.</p>
+          </div>
+        </div>
+        <div class="chart-container">
+          <img src="../results/graficos/llms_vram_plan_b.png" alt="Plan B VRAM">
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8 -->
+    <div class="slide">
+      <h2>7. Lo que no esperábamos (Anomalías Técnicas)</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3 style="color: var(--warning);">1. La Paradoja de Nemotron</h3>
+          <p style="font-size: 0.9rem; margin-top: 8px;">NVIDIA lo anuncia con "4B de parámetros efectivos", pero resultó ser el <strong>más lento de todos (26.7 tok/s)</strong> y consumió 14.8 GB de VRAM.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;"><em>Causa:</em> vLLM carga los 8B completos y recurre a kernels menos optimizados (TRITON_ATTN + FP8 Marlin en Ampere).</p>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--warning);">2. Inconsistencia de Embeddings</h3>
+          <p style="font-size: 0.9rem; margin-top: 8px;"><em>Harrier</em> arrasa en BOE (100% Recall) pero es el peor en Debian (75%).</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;"><em>Lección:</em> MTEB no predice el comportamiento ante jerga mixta en inglés/español. Hay que medir siempre sobre el corpus destino.</p>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--warning);">3. La Bipolaridad de LFM3</h3>
+          <p style="font-size: 0.9rem; margin-top: 8px;">Se abstiene en 11 de 12 preguntas por reflejo ("No aparece en el documento")... e inmediatamente después <strong>acierta la respuesta</strong>.</p>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;"><em>Diagnóstico:</em> Sensibilidad extrema al ruido. Con el chunk exacto (oráculo) su nota sube de 0.67 a 1.25.</p>
+        </div>
+      </div>
+      <div class="chart-container" style="margin-top: 16px;">
+        <img src="../results/graficos/retrieval_vs_oraculo.png" style="max-height: 280px;" alt="Retrieval vs Oráculo">
+      </div>
+    </div>
+
+    <!-- SLIDE 9 -->
+    <div class="slide">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <h2>Trazabilidad y Evidencias Obligatorias</h2>
+        <div class="card" style="max-width: 800px; text-align: left; margin: 20px 0;">
+          <ul>
+            <li><strong>Código 100% reproducible:</strong> Scripts automatizados desde la raíz con <code>uv</code>.</li>
+            <li><strong>Registros brutos:</strong> Logs de VRAM segundo a segundo y respuestas en JSON/CSV.</li>
+            <li><strong>Transparencia:</strong> Criterios de puntuación documentados en <code>decision_fase4.md</code>.</li>
+          </ul>
+        </div>
+        <h1 style="color: var(--accent); font-size: 2rem;">¿Preguntas?</h1>
+        <p style="color: var(--text-muted); margin-top: 8px;">Grupo 1 · Repositorio: <code>ai-somorrostro/reto_1_2-2627-Rag-Benchmark</code> (rama <code>grupo-1</code>)</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="speaker-pill" id="speakerPill">Ponente: Nicolás</div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <span id="slideIndicator">1 / 9</span>
+      <button class="nav-btn" id="prevBtn">◀ Anterior</button>
+      <button class="nav-btn" id="nextBtn">Siguiente ▶</button>
+    </div>
+  </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideIndicator = document.getElementById('slideIndicator');
+    const speakerPill = document.getElementById('speakerPill');
+    let currentSlide = 0;
+
+    const speakers = [
+      "Ponente: Todos",
+      "Ponente: Nicolás (00:00 - 01:30)",
+      "Ponente: Aimar (01:30 - 03:30)",
+      "Ponente: Íñigo (03:30 - 05:00)",
+      "Ponente: Íñigo (05:00 - 06:15)",
+      "Ponente: Íñigo (06:15 - 07:15)",
+      "Ponente: Íñigo (07:15 - 08:00)",
+      "Ponente: Íñigo / Nicolás (08:00 - 09:30)",
+      "Ponente: Todo el equipo (09:30 - 10:00)"
+    ];
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      currentSlide = index;
+      slideIndicator.textContent = `${index + 1} / ${slides.length}`;
+      speakerPill.textContent = speakers[index] || "Ponente: Grupo 1";
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        showSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        showSlide(currentSlide - 1);
+      }
+    });
+
+    // Temporizador
+    let timeLeft = 600; // 10 minutos
+    let timerId = null;
+    const timeDisplay = document.getElementById('timeDisplay');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function updateTimer() {
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      timeDisplay.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+      if (timeLeft <= 120 && timeLeft > 30) {
+        timeDisplay.className = "time-display time-warn";
+      } else if (timeLeft <= 30) {
+        timeDisplay.className = "time-display time-danger";
+      } else {
+        timeDisplay.className = "time-display";
+      }
+      if (timeLeft > 0) timeLeft--;
+    }
+
+    startBtn.addEventListener('click', () => {
+      if (!timerId) {
+        timerId = setInterval(updateTimer, 1000);
+        startBtn.textContent = "Pausar";
+      } else {
+        clearInterval(timerId);
+        timerId = null;
+        startBtn.textContent = "Reanudar";
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      clearInterval(timerId);
+      timerId = null;
+      timeLeft = 600;
+      updateTimer();
+      startBtn.textContent = "Iniciar";
+    });
+  </script>
+</body>
+</html>

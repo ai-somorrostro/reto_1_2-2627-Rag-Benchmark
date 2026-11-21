@@ -20,6 +20,8 @@ El enunciado está en [`README.md`](README.md). Este documento explica cómo rep
 | 4. Plan B | [`decision_fase4.md`](decision_fase4.md) §5 |
 | 5. Lo que no esperábamos | [`decision_fase4.md`](decision_fase4.md) §8 |
 | Golden set | [`golden-set/`](golden-set/) (15 preguntas por escenario: 8 directas, 4 combinadas, 3 sin respuesta) y [`golden_set_revision.md`](golden-set/golden_set_revision.md) |
+| Gráficos y comparativas visuales | [`results/graficos/`](results/graficos/) (generados con `scripts/generar_graficos.py`) |
+| Diapositivas y guion de defensa | [`presentacion/`](presentacion/) (`slides.md`, visor interactivo `index.html` y [`guion_defensa_10min.md`](presentacion/guion_defensa_10min.md)) |
 
 ## Entorno
 
