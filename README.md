@@ -81,6 +81,7 @@ Objetivo: con el embedding ganador fijo, comparar los LLMs en calidad y en coste
 - **El prompt lo diseñáis vosotros,** pero debe pedir que responda solo con los fragmentos, que diga «No aparece en el documento» si no está y que cite el artículo o la sección.
 - **Calidad:** puntuad a mano las respuestas con la escala de la sección de métricas.
 - **Coste:** medidlo en al menos 5 preguntas por modelo; descartad la primera ejecución, repetid 3 veces y usad la mediana.
+- **Ejecución local:** candidatos, comandos, registros y puntuación manual: [docs/pipeline/llm-benchmark.md](docs/pipeline/llm-benchmark.md).
 - **Extra opcional:** pasad al LLM directamente el fragmento correcto. Si así acierta y con el retrieval no, el fallo es del retrieval.
 
 ## Fase 4: decisión por escenario
@@ -172,23 +173,56 @@ Rellenad una tabla de cada tipo por escenario. Son las que se enseñan el vierne
 | snowflake-arctic-embed-l-v2.0 | Español | 0.57B | 1024 | 0.500 | 0.583 | 0.583 | 0.801 | 58.12 | 4.20 | 2.74 |
 | snowflake-arctic-embed-l-v2.0 | Inglés | 0.57B | 1024 | 0.500 | 0.750 | 0.750 | 0.879 | 54.85 | 3.96 | 2.77 |
 
-**Tabla B. LLMs: calidad**
+**Tabla B. LLMs: calidad — BOE**
 
 | Modelo | Tamaño | Cuantización | Corrección media (0–2) | Respuestas fieles (%) | Abstención correcta (de 3) | Falsas abstenciones | Formato e idioma (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |
+| Qwen2.5-3B-Instruct | 3.09B | Ninguna (BF16) | 1.53 | 66.7 | 3/3 | 3 | 33.3 |
+| Llama-3.2-3B-Instruct | 3.21B | Ninguna (BF16) | 0.67 | 46.7 | 3/3 | 8 | 26.7 |
+| Qwen2.5-7B-Instruct | 7.62B | Ninguna (BF16) | 1.73 | 93.3 | 3/3 | 1 | 86.7 |
+| Granite-4.1-8B-llmon-preview | 8.79B | Ninguna (BF16) | 1.67 | 93.3 | 3/3 | 0 | 100.0 |
 
-**Tabla C. LLMs: coste**
+**Tabla B. LLMs: calidad — Debian**
+
+| Modelo | Tamaño | Cuantización | Corrección media (0–2) | Respuestas fieles (%) | Abstención correcta (de 3) | Falsas abstenciones | Formato e idioma (%) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Qwen2.5-3B-Instruct | 3.09B | Ninguna (BF16) | 1.40 | 80.0 | 1/3 | 0 | 6.7 |
+| Llama-3.2-3B-Instruct | 3.21B | Ninguna (BF16) | 1.13 | 60.0 | 3/3 | 1 | 20.0 |
+| Qwen2.5-7B-Instruct | 7.62B | Ninguna (BF16) | 1.67 | 93.3 | 2/3 | 0 | 46.7 |
+| Granite-4.1-8B-llmon-preview | 8.79B | Ninguna (BF16) | 1.60 | 86.7 | 1/3 | 0 | 53.3 |
+
+**Tabla C. LLMs: coste — BOE**
 
 | Modelo | Stack | TTFT (s) | Tokens/s | Latencia total (s) | VRAM pico (GB) |
 | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
-|  |  |  |  |  |  |
+| Qwen2.5-3B-Instruct | vLLM | 0.11 | 70.48 | 1.21 | 6.75 |
+| Llama-3.2-3B-Instruct | vLLM | 0.11 | 86.55 | 0.19 | 6.85 |
+| Qwen2.5-7B-Instruct | vLLM | 0.24 | 44.79 | 2.16 | 15.66 |
+| Granite-4.1-8B-llmon-preview | vLLM | 0.30 | 36.01 | 4.88 | 17.20 |
+
+**Tabla C. LLMs: coste — Debian**
+
+| Modelo | Stack | TTFT (s) | Tokens/s | Latencia total (s) | VRAM pico (GB) |
+| --- | --- | --- | --- | --- | --- |
+| Qwen2.5-3B-Instruct | vLLM | 0.12 | 71.89 | 1.34 | 6.75 |
+| Llama-3.2-3B-Instruct | vLLM | 0.12 | 86.60 | 0.45 | 6.85 |
+| Qwen2.5-7B-Instruct | vLLM | 0.26 | 44.73 | 3.43 | 15.66 |
+| Granite-4.1-8B-llmon-preview | vLLM | 0.32 | 35.98 | 2.88 | 17.20 |
+
+Las puntuaciones de calidad son anotaciones manuales de las 15 respuestas por
+modelo y escenario, comparadas con la respuesta esperada y los fragmentos
+recuperados. Una abstención correcta en preguntas sin respuesta se considera
+fiel y no necesita cita; las respuestas sustantivas deben estar en español y
+citar un artículo o sección para contar en «Formato e idioma». El detalle por
+respuesta está en [`scores.jsonl`](artifacts/llms/20261120T122007.077886Z/scores.jsonl)
+y las métricas derivadas en
+[`quality_summary.csv`](artifacts/llms/20261120T122007.077886Z/quality_summary.csv).
+Las métricas de coste son medianas de cinco preguntas con tres repeticiones por
+pregunta después del calentamiento; la VRAM pico es la reservada por PyTorch.
+Los datos brutos están en
+[`responses.jsonl`](artifacts/llms/20261120T122007.077886Z/responses.jsonl),
+[`cost_runs.jsonl`](artifacts/llms/20261120T122007.077886Z/cost_runs.jsonl)
+y [`cost_summary.csv`](artifacts/llms/20261120T122007.077886Z/cost_summary.csv).
 
 Para la puntuación a mano, registrad de cada respuesta: la pregunta, el modelo, la respuesta tal como salió, la corrección (0–2), si es fiel (sí/no), si se abstiene (sí/no/no aplica) y si cumple formato e idioma (sí/no).
 
