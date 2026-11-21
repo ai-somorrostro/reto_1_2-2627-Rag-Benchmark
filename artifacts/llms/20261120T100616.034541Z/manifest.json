@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "run_id": "20261120T100616.034541Z",
+  "status": "failed",
+  "created_at": "2026-11-20T10:06:16+00:00",
+  "config_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/config/llms.toml",
+  "config_sha256": "0ebadb3447f38071e54be6fd65135791d44ed8c28e28b5354714ec59d4c11041",
+  "prompt_version": "ragbench-llm-v1",
+  "scenarios": [
+    "boe",
+    "debian"
+  ],
+  "models": {
+    "qwen2_5_3b_instruct": {
+      "model_id": "Qwen/Qwen2.5-3B-Instruct",
+      "model_path": "/home/g3/.cache/huggingface/hub/models--Qwen--Qwen2.5-3B-Instruct/snapshots/aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "model_revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+      "size_category": "small",
+      "checkpoint_parameters": 3085938688,
+      "checkpoint_parameters_billions": 3.085938688,
+      "checkpoint_dtype": "bfloat16",
+      "quantization": "none",
+      "prompt_format": "chat_template"
+    },
+    "llama_3_2_3b_instruct": {
+      "model_id": "meta-llama/Llama-3.2-3B-Instruct",
+      "model_path": "/home/g3/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B-Instruct/snapshots/0cb88a4f764b7a12671c53f0838cd831a0843b95",
+      "model_revision": "0cb88a4f764b7a12671c53f0838cd831a0843b95",
+      "size_category": "small",
+      "checkpoint_parameters": 3212749824,
+      "checkpoint_parameters_billions": 3.212749824,
+      "checkpoint_dtype": "bfloat16",
+      "quantization": "none",
+      "prompt_format": "chat_template"
+    },
+    "qwen2_5_7b_instruct": {
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "model_path": "/home/g3/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct/snapshots/a09a35458c702b33eeacc393d103063234e8bc28",
+      "model_revision": "a09a35458c702b33eeacc393d103063234e8bc28",
+      "size_category": "medium",
+      "checkpoint_parameters": 7615616512,
+      "checkpoint_parameters_billions": 7.615616512,
+      "checkpoint_dtype": "bfloat16",
+      "quantization": "none",
+      "prompt_format": "chat_template"
+    }
+  },
+  "top_k": 5,
+  "temperature": 0.0,
+  "max_tokens": 256,
+  "max_model_len": 8192,
+  "gpu_memory_utilization": 0.9,
+  "seed": 42,
+  "prefix_caching": false,
+  "cost_question_count": 5,
+  "cost_repeats": 3,
+  "stack": "vLLM",
+  "vllm_version": "0.34.0",
+  "torch_version": "2.14.0+cu130",
+  "transformers_version": "5.22.2",
+  "python_version": "3.12.3",
+  "gpu": "NVIDIA A800 40GB Active MIG 3g.20gb",
+  "gpu_total_memory_gb": 19.625,
+  "embedding_selection_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/artifacts/embeddings/selection.json",
+  "embedding_selection_sha256": "04ebf795cbf3fa8839ea940b2eb8e14e8850defc2a72733a3877e9efcd7aeb10",
+  "inputs": {
+    "boe": {
+      "embedding_model": "nemotron_3_5_embed_1b_bf16",
+      "chunks_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/artifacts/chunks/boe.jsonl",
+      "chunks_sha256": "c1ff0754574ce7f0b7afd9981321573c92130b21208e937b0098f37ce52fcb28",
+      "questions_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/data/golden_set/boe.jsonl",
+      "questions_sha256": "004b8902eeade621b4f58e4cedb6bc68b2d4a6c425b7a48827bf7574d6c32bfc",
+      "retrieval_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/artifacts/embeddings/nemotron-3-5-embed-1b-bf16/boe/results.jsonl",
+      "retrieval_sha256": "1ececa34f6262d9122dc60b4c5ad9960f2a52532f489ba890791cb7c09e711f6"
+    },
+    "debian": {
+      "embedding_model": "nemotron_3_5_embed_1b_bf16",
+      "chunks_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/artifacts/chunks/debian.jsonl",
+      "chunks_sha256": "2f7b059aa93e0df61cd9e2269bf046ff8425798d40f2fd4b455fab0173773216",
+      "questions_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/data/golden_set/debian.jsonl",
+      "questions_sha256": "8eac2a1a6feb0d3c534396f649193a970eb7ca1cb61b65831fa377af8c159b5f",
+      "retrieval_path": "/home/g3/reto_1_2-2627-Rag-Benchmark/artifacts/embeddings/nemotron-3-5-embed-1b-bf16/debian/results.jsonl",
+      "retrieval_sha256": "7eda54688fa18547ab2afa198aca0cc3d6064f340e23acb64c2fd3300f6023b7"
+    }
+  },
+  "completed_models": [
+    "qwen2_5_3b_instruct",
+    "llama_3_2_3b_instruct",
+    "qwen2_5_7b_instruct"
+  ],
+  "failed_at": "2026-11-20T10:41:28+00:00",
+  "failed_model": "granite_4_1_8b_llmon_preview",
+  "error": "vLLM could not reserve enough KV cache at max_model_len=8192 and gpu_memory_utilization=0.9; 0.24 GiB was available, 1.25 GiB required."
+}
