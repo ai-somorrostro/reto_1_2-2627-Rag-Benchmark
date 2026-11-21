@@ -145,9 +145,9 @@ def tabla_oraculo(filas, resultados):
         f_ret = [i for i in mejora if str(ret[i].get("gold_en_contexto")) != "1"]
         f_ruido = [i for i in mejora if str(ret[i].get("gold_en_contexto")) == "1"]
         out.append(f"| `{m}` | {fmt(c_ret)} | {fmt(c_ora)} | {', '.join(f_ret) or 'ninguno'} | {', '.join(f_ruido) or 'ninguno'} |")
-    out.append("\n> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: el chunk correcto "
-               "no llegó al top-k. **Fallo por ruido**: sí llegó, pero los demás fragmentos despistaron al LLM "
-               "(no es culpa del embedding).")
+    out.append("\n> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: no llegaron al top-k "
+               "todos los chunks necesarios (en las combinadas basta con que falte uno). **Fallo por ruido**: llegaron "
+               "todos, pero los demás fragmentos despistaron al LLM (no es culpa del embedding).")
     return out
 
 

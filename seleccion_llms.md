@@ -57,7 +57,7 @@ Misma cuantización para todos: **FP8** (cuantización al cargar con `quantizati
 - **Por qué FP8 y no BF16:** Qwen3.5-9B en BF16 ocupa ~18 GB y no cabe en la instancia de 20 GB junto a la caché.
 - **Por qué FP8 y no Q4:** vLLM no carga bien los GGUF; FP8 es la cuantización que aplica al cargar y es la misma para los cuatro modelos.
 - **Nota de hardware:** la A800 (Ampere) no calcula en FP8; vLLM lo aplica solo a los pesos (kernel Marlin). Ahorra memoria, pero no acelera.
-- **Modo solo texto:** Qwen3.5-9B y Nemotron son multimodales. Se cargan con `limit_mm_per_prompt` a 0 para que vLLM no reserve memoria para los codificadores de imagen, audio y vídeo. Con ellos activos la VRAM pico subía de 14,3 a 15,9 GB (Qwen) y de 14,8 a 15,1 GB (Nemotron).
+- **Modo solo texto:** Qwen3.5-9B y Nemotron son multimodales. Se cargan con `limit_mm_per_prompt` a 0 para que vLLM no reserve memoria para los codificadores de imagen, audio y vídeo. Con ellos activos, la VRAM pico de Qwen subía de 14,3 a 15,9 GB (ejecución de prueba del 20/11/2026 a las 14:31, guardada en el commit `706b415`: `results/llms/data/qwen3.5-9b_boe.json`). En Nemotron también subía, pero esa ejecución no se conservó, así que no damos la cifra.
 - **Caché KV:** fija en 2 GB para todos (`kv_cache_memory_bytes`).
 
 VRAM pico medida (toda la instancia MIG, con caché KV de 2 GB):
@@ -79,6 +79,7 @@ VRAM pico medida (toda la instancia MIG, con caché KV de 2 GB):
 | top-k del retrieval | 5 (top-5 guardado por el embedding ganador en la Fase 2) |
 | Límite de tokens de salida (`max_tokens`) | 512 |
 | Ventana de contexto (`max_model_len`) | 8192 (prompt más largo medido: ~2.500 tokens) |
+| Latencia total | Solo la generación del LLM (petición completa a vLLM). No incluye el retrieval, porque se reutiliza el top-5 de la Fase 2; la búsqueda cuesta ~0,03 s por pregunta (`query_retrieval_time_sec` en `results/embeddings/data/*.json`) y no cambia ninguna comparación |
 | Modo de razonamiento | Desactivado (`chat_template_kwargs={"enable_thinking": False}`) |
 | Caché de prefijos | Desactivada (para que repetir una pregunta no abarate el TTFT) |
 | Prompt | El mismo para todos (ver abajo) |
@@ -109,6 +110,19 @@ Fuente: <artículo o sección del chunk>
 
 Pregunta: {pregunta}
 ```
+
+### Criterios de puntuación a mano
+
+Se aplican igual a los cuatro modelos. Escala del enunciado para la corrección.
+
+| Campo | Valor | Criterio |
+|---|---|---|
+| Corrección | 2 / 1 / 0 | 2: correcta y completa. 1: incompleta o imprecisa (también si añade un dato que no está en los fragmentos). 0: incorrecta, o se abstiene teniendo respuesta y no dice nada más. Si se abstiene y después responde, se puntúa ese texto, tanto para premiar como para penalizar (la fila sigue contando como abstención). En las preguntas sin respuesta, abstenerse vale 2 |
+| Fiel | 1 / 0 | 0 si afirma algo que no está en los fragmentos |
+| Abstiene | 1 / 0 | 1 si la respuesta **empieza** diciendo que la información no aparece, aunque luego añada texto. Casi siempre es la frase exacta; en 2 casos es otra redacción («Según los fragmentos proporcionados, no aparece información…»). Si responde y al final dice que una parte no aparece, cuenta como respuesta (0) |
+| Formato e idioma | 1 / 0 | 1 si está en español y cita el artículo (BOE) o la sección (Debian), tal y como aparece en la línea «Fuente». 0 si solo cita «Fragmento N». La abstención sola («No aparece en el documento») cuenta como 1, porque es exactamente lo que pide el prompt. Abstenerse y después añadir texto cuenta como 0, porque el prompt pide esa frase «y nada más» |
+
+> El criterio de formato decide el escenario Debian: ver `decision_fase4.md` §6.
 
 ## 8. Trampas a evitar
 

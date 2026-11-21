@@ -50,9 +50,8 @@ MAX_MODEL_LEN = 8192            # ventana de contexto (vLLM da error si el promp
 CUANTIZACION = "fp8"            # la misma para todos; en Ampere (A800) vLLM la ejecuta como FP8 solo-pesos
 DTYPE = "bfloat16"
 KV_CACHE_GB = 2.0               # misma caché KV para todos (el README estima 1–3 GB)
-GPU_MEM_UTIL_FALLBACK = 0.80    # solo si vuestra versión de vLLM no admite kv_cache_memory_bytes
 
-# Embedding ganador de la Fase 2 por escenario. ¡Revisadlo!
+# Embedding ganador de la Fase 2 por escenario (decision_fase4.md §2).
 #   BOE: harrier gana con cualquier criterio (Recall@5 = 1,00).
 #   Debian: con el criterio Hit del README gana bge-m3 (0,83); con el estricto, harrier (0,75).
 EMBEDDING_GANADOR = {
@@ -61,12 +60,11 @@ EMBEDDING_GANADOR = {
 }
 
 # Modelos (seleccion_llms.md §2), en su repositorio oficial de Hugging Face (safetensors, no GGUF).
-# Comprobad en cada ficha que vuestra versión de vLLM soporta la arquitectura.
 # `extra`: argumentos de vLLM solo para ese modelo. En los multimodales se ponen a 0 las
 # modalidades que no usamos para que vLLM no cargue ni reserve memoria para el codificador
 # de imagen/vídeo: así la VRAM compara solo la parte de texto, como en los demás.
 # Si en el log de un modelo aparecen líneas de "vit", "vision", "audio" o "Encoder cache",
-# añadidle lo mismo con las modalidades que tenga.
+# hay que añadirle lo mismo con las modalidades que tenga.
 SOLO_TEXTO = {"limit_mm_per_prompt": {"image": 0, "video": 0}}
 MODELOS = {
     "lfm3-1.7b":         {"repo": "LiquidAI/LFM3-1.7B",                      "tamano": "1,7B",           "categoria": "pequeño", "extra": {}},
@@ -203,13 +201,8 @@ def cargar_llm(repo, extra=None):
     from vllm import LLM
     comunes = dict(**(extra or {}), model=repo, dtype=DTYPE, quantization=CUANTIZACION, max_model_len=MAX_MODEL_LEN,
                    enable_prefix_caching=False, enforce_eager=True, seed=SEED, disable_log_stats=True)
-    try:
-        llm = LLM(**comunes, kv_cache_memory_bytes=int(KV_CACHE_GB * 2**30))
-        return llm, f"kv_cache_memory_bytes={KV_CACHE_GB} GB"
-    except TypeError:
-        # Versiones de vLLM sin ese parámetro: la VRAM medida será la reserva de gpu_memory_utilization
-        llm = LLM(**comunes, gpu_memory_utilization=GPU_MEM_UTIL_FALLBACK)
-        return llm, f"gpu_memory_utilization={GPU_MEM_UTIL_FALLBACK} (la VRAM pico refleja la reserva, no el modelo)"
+    llm = LLM(**comunes, kv_cache_memory_bytes=int(KV_CACHE_GB * 2**30))
+    return llm, f"kv_cache_memory_bytes={KV_CACHE_GB} GB"
 
 
 class Generador:

@@ -8,21 +8,21 @@ Stack: vLLM · cuantización FP8 · embedding: `harrier-oss-v1` · top-k = 5 · 
 
 | Modelo | Tamaño | Cuantización | Corrección media (0–2) | Respuestas fieles (%) | Abstención correcta (de 3) | Falsas abstenciones | Formato e idioma (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `lfm3-1.7b` | 1,7B | FP8 | 0,47 | 93 % | 3 de 3 | 11 de 12 | 40 % |
+| `lfm3-1.7b` | 1,7B | FP8 | 0,93 | 93 % | 3 de 3 | 11 de 12 | 40 % |
 | `llama3.2-3b` | 3B | FP8 | 0,93 | 100 % | 3 de 3 | 6 de 12 | 93 % |
 | `nemotron-bolt-e4b` | 8B (4B efect.) | FP8 | 1,60 | 100 % | 3 de 3 | 1 de 12 | 100 % |
-| `qwen3.5-9b` | 9B | FP8 | 1,80 | 100 % | 3 de 3 | 1 de 12 | 93 % |
+| `qwen3.5-9b` | 9B | FP8 | 1,87 | 100 % | 3 de 3 | 1 de 12 | 93 % |
 
 ### Extra. Retrieval frente a oráculo (solo preguntas con respuesta)
 
 | Modelo | Corrección con retrieval | Corrección con oráculo | Fallo del retrieval | Fallo por ruido |
 | --- | --- | --- | --- | --- |
-| `lfm3-1.7b` | 0,08 | 1,25 | ninguno | BOE_D01, BOE_D03, BOE_D04, BOE_D05, BOE_D08, BOE_C03 |
+| `lfm3-1.7b` | 0,67 | 1,25 | ninguno | BOE_D01, BOE_D04, BOE_D08 |
 | `llama3.2-3b` | 0,67 | 0,92 | ninguno | BOE_D01, BOE_D06, BOE_C03 |
 | `nemotron-bolt-e4b` | 1,50 | 1,75 | ninguno | BOE_D02, BOE_C02 |
-| `qwen3.5-9b` | 1,75 | 2,00 | ninguno | BOE_C01, BOE_C02 |
+| `qwen3.5-9b` | 1,83 | 2,00 | ninguno | BOE_C01, BOE_C02 |
 
-> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: el chunk correcto no llegó al top-k. **Fallo por ruido**: sí llegó, pero los demás fragmentos despistaron al LLM (no es culpa del embedding).
+> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: no llegaron al top-k todos los chunks necesarios (en las combinadas basta con que falte uno). **Fallo por ruido**: llegaron todos, pero los demás fragmentos despistaron al LLM (no es culpa del embedding).
 
 ### Tabla C. LLMs: coste (mediana de 3 rondas tras descartar la primera, 5 preguntas)
 
@@ -43,7 +43,7 @@ Stack: vLLM · cuantización FP8 · embedding: `bge-m3` · top-k = 5 · temperat
 
 | Modelo | Tamaño | Cuantización | Corrección media (0–2) | Respuestas fieles (%) | Abstención correcta (de 3) | Falsas abstenciones | Formato e idioma (%) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `lfm3-1.7b` | 1,7B | FP8 | 0,40 | 100 % | 3 de 3 | 12 de 12 | 40 % |
+| `lfm3-1.7b` | 1,7B | FP8 | 0,93 | 93 % | 3 de 3 | 12 de 12 | 40 % |
 | `llama3.2-3b` | 3B | FP8 | 1,07 | 87 % | 3 de 3 | 5 de 12 | 73 % |
 | `nemotron-bolt-e4b` | 8B (4B efect.) | FP8 | 1,53 | 100 % | 3 de 3 | 3 de 12 | 100 % |
 | `qwen3.5-9b` | 9B | FP8 | 1,53 | 100 % | 3 de 3 | 3 de 12 | 67 % |
@@ -52,12 +52,12 @@ Stack: vLLM · cuantización FP8 · embedding: `bge-m3` · top-k = 5 · temperat
 
 | Modelo | Corrección con retrieval | Corrección con oráculo | Fallo del retrieval | Fallo por ruido |
 | --- | --- | --- | --- | --- |
-| `lfm3-1.7b` | 0,00 | 1,00 | DEB_D03 | DEB_D01, DEB_D04, DEB_D06, DEB_D07, DEB_D08 |
-| `llama3.2-3b` | 0,83 | 1,25 | DEB_D03 | ninguno |
+| `lfm3-1.7b` | 0,67 | 1,00 | DEB_D03 | DEB_D01, DEB_D07, DEB_D08 |
+| `llama3.2-3b` | 0,83 | 1,17 | DEB_D03 | ninguno |
 | `nemotron-bolt-e4b` | 1,42 | 1,75 | DEB_D03, DEB_C04 | ninguno |
 | `qwen3.5-9b` | 1,42 | 1,83 | DEB_D03, DEB_C03, DEB_C04 | ninguno |
 
-> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: el chunk correcto no llegó al top-k. **Fallo por ruido**: sí llegó, pero los demás fragmentos despistaron al LLM (no es culpa del embedding).
+> Con el chunk correcto acierta (2) y con el retrieval no. **Fallo del retrieval**: no llegaron al top-k todos los chunks necesarios (en las combinadas basta con que falte uno). **Fallo por ruido**: llegaron todos, pero los demás fragmentos despistaron al LLM (no es culpa del embedding).
 
 ### Tabla C. LLMs: coste (mediana de 3 rondas tras descartar la primera, 5 preguntas)
 
