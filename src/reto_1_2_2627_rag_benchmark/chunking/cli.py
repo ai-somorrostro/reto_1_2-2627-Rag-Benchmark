@@ -117,6 +117,11 @@ def build_parser() -> argparse.ArgumentParser:
         "embeddings", help="benchmark local de recuperación con embeddings"
     )
     configure_parser(embeddings)
+
+    from ..llms.cli import configure_parser as configure_llms_parser
+
+    llms = areas.add_parser("llms", help="benchmark local de generación con LLMs")
+    configure_llms_parser(llms)
     return parser
 
 
