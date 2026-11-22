@@ -1,0 +1,1456 @@
+======================================================================
+Benchmark RAG - Embedding: intfloat/multilingual-e5-large
+Escenario: debian
+Corpus: /home/g2/reto_1_2-2627-Rag-Benchmark/debian.md
+LLM: HuggingFaceTB/SmolLM2-1.7B-Instruct (1.7B, pequeno) - cuantizacion: fp16
+Dispositivo: cuda
+Config: top_k=3, max_new_tokens=350, chunk=1200/200
+======================================================================
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:35] Escenario: debian | Pregunta: DEB_001
+Categoria: Metadatos y contexto | Dificultad: Básica
+Pregunta: ¿Quiénes son los autores de «El manual del Administrador de Debian» y en qué colección y fecha se publicó originalmente su primera edición?
+Referencia: Prefacio - Reconocimientos (OEBPS/pr02s06.html)
+Respuesta esperada: Los autores son Raphaël Hertzog y Roland Mas. El libro nació en la colección francesa «Cahier de l'Admin» de la editorial Eyrolles y su primera edición salió a la luz el 14 de octubre de 2004.
+--- Recuperados (top 3) ---
+  [1] chunk=31 score=0.8687
+      uir en el libro están documentadas en el sitio web del libro:
+
+→ [https://debian-handbook.info/contribute/](https://debian-handbook.info/contribute/)
+
+# 6. Reconocimientos
+
+## 6.1. Un poco de historia
+
+En 2003, Nat Makarévitch se puso en contacto con Raphaël porque quería publicar un libro sobre Debian en la colección *Cahier de l'Admin* («libro del administrador») que estaba coordinando para Eyrolles, un editor francés de libros técnicos. Raphaël aceptó escribirlo inmediatamente. La primera edición salió a la luz el 14 de octubre de 2004 y tuvo un gran éxito - se agotó apenas cuatro meses más tarde.
+
+Desde entonces, hemos publicado 7 ediciones del libro en francés, uno para cada versión posterior de Debian (excepto para Debian 9). Roland, quien inicialmente trabajó en el libro como corrector, poco a poco se convirtió en su co-autor.
+
+Si bien estábamos satisfechos, obviamente, con el éxito del libro siempre esperamos que Eyrolles convenciera a un editor internacional para que realizara la traducción al inglés. Hemos recibido numerosos comentarios que explican cómo el libro ayudó a gente a empezar con Debian y estábamos interesados en ayudar a más personas de la misma manera.
+  [2] chunk=10 score=0.8529
+      # El manual del Administrador de Debian
+
+## Debian Bullseye del descubrimiento al dominio
+
+### Raphaël Hertzog
+
+`<`[`hertzog@debian.org`](mailto:hertzog@debian.org)`>`
+
+### Roland Mas
+
+`<`[`lolando@debian.org`](mailto:lolando@debian.org)`>`
+
+Copyright © 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Raphaël Hertzog
+
+Copyright © 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Roland Mas
+
+Copyright © 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Freexian SARL
+
+ISBN: 979-10-91414-21-0 (Edición inglesa en papel)
+
+ISBN: 979-10-91414-22-7 (Edición inglesa en formato electrónico)
+
+Este libro está disponible bajo los términos de dos licencias compatibles con las directrices de software libre de Debian.
+
+Aviso de licencia «Creative Commons»:  Este libro está bajo la licencia Creative Commons Atribución-CompartirIgual 3.0 Unported.
+
+→ [https://creativecommons.org/licenses/by-sa/3.0/deed.es](https://creativecommons.org/licenses/by-sa/3.0/deed.es)
+  [3] chunk=32 score=0.8528
+      alizara la traducción al inglés. Hemos recibido numerosos comentarios que explican cómo el libro ayudó a gente a empezar con Debian y estábamos interesados en ayudar a más personas de la misma manera.
+
+Por desgracia, no conseguimos contactar con ningún editor de habla inglesa que estuviera dispuesto a correr el riesgo de traducir y publicar el libro. No nos dejamos intimidar por este pequeño contratiempo y negociamos con nuestro editor francés, Eyrolles y recuperamos los derechos necesarios para traducir el libro al inglés y publicarlo nosotros mismos. Gracias a una [campaña de financiación colectiva](https://www.ulule.com/debian-handbook/) («crowdfunding»), trabajamos en la traducción desde Diciembre de 2011 y Mayo de 2012. ¡Así nació el «Libro del administrador de Debian» y fue publicado bajo una licencia de software libre!
+
+Si bien este fue un avance importante, sabíamos que nuestra historia no acabaría hasta que contribuyéramos el libro en francés como una traducción oficial del libro en inglés. Esto no fue posible originalmente porque Eyrolles todavía distribuía comercialmente el libro en francés bajo una licencia privativa.
+--- Respuesta LLM ---
+El libro "El manual del Administrador de Debian" se publicó originalmente en la colección "Cahier de l'Admin" («libro del administrador») de Eyrolles en 2004.
+--- Datos ---
+  latencia_total_s=1.00
+  tokens_generados=55
+  tokens_por_s=54.7
+  score_max=0.8687
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:35] Escenario: debian | Pregunta: DEB_002
+Categoria: Metadatos y contexto | Dificultad: Básica
+Pregunta: ¿Qué datos de adopción de Debian se destacan en el Prólogo del manual respecto a servidores web y exploración espacial?
+Referencia: Prólogo (OEBPS/pr01.html)
+Respuesta esperada: En torno al 10 % de los servidores web de Internet ejecutan Debian (cifra que se acerca al 20 % al incluir sistemas operativos basados en Debian), y Debian fue seleccionado como el sistema operativo elegido para la Estación Espacial Internacional.
+--- Recuperados (top 3) ---
+  [1] chunk=13 score=0.8784
+      //debian-handbook.info](https://debian-handbook.info/)
+
+Resumen
+
+Un libro de referencia que presenta la distribución Debian, desde la instalación incial hasta la configuración de servicios.
+
+# Prólogo
+
+Me complace tener la oportunidad de darte la bienvenida a Debian y al Manual del Administrador Debian. Mucha gente ha elegido Debian: en torno al 10% de los servidores web de Internet corren Debian. Cuando incluimos sistemas operativos basados en Debian, este número se acerca al 20%. Debian fue seleccionado como el sistema operativo elegido para la Estación Espacial Internacional. Bien en una investigación científica puntera o bien en un proyecto para cultivar alimentos luchando contra la contaminación, Debian se usa para alimentar los ordenadores que lo hacen posible.
+
+¿Por qué Debian es actractivo para grandes corporaciones, investigadores, activistas y aficionados? Creo que la respuesta está en la flexibilidad de Debian y su comunidad.
+  [2] chunk=1 score=0.8609
+      - [**Prólogo**](pr01.html)
+- [**Prefacio**](pr02.html)
+- [**1. El proyecto Debian**](ch01.html)
+    - [**1.1. ¿Qué es Debian?**](#sect.what-is-debian)
+    - [**1.2. Los documentos de fundación**](ch01s02.html)
+    - [**1.3. El funcionamiento interno del proyecto Debian**](ch01s03.html)
+    - [**1.4. Seguir las noticias de Debian**](ch01s04.html)
+    - [**1.5. El papel de las distribuciones**](ch01s05.html)
+    - [**1.6. Ciclo de vida de una versión**](ch01s06.html)
+- [**2. Presentación del caso de estudio**](ch02.html)
+    - [**2.1. Necesidades de TI de rápido crecimiento**](#sect.fast-growing-it-needs)
+    - [**2.2. Plan maestro**](ch02s02.html)
+    - [**2.3. ¿Por qué una distribución GNU/Linux?**](ch02s03.html)
+    - [**2.4. ¿Por qué la distribución Debian?**](ch02s04.html)
+    - [**2.5. ¿Por qué Debian Bullseye?**](ch02s05.html)
+- [**3. Análisis de la instalación existente y migración**](ch03.html)
+    - [**3.1. Coexistencia en entornos heterogéneos**](#sect.heterogeneous-environments)
+    - [**3.2. Cómo migrar**](ch03s02.html)
+- [**4. Instalación**](ch04.html)
+    - [**4.1. Métodos de instalación**](#sect.installation-methods)
+    - [**4.2. Instalación, paso a paso**](ch04s02.h
+  [3] chunk=25 score=0.8561
+      rador.
+
+El **capítulo 7** será un paréntesis importante, describe los flujos de trabajo para usar eficientemente la documentación y para comprender rápidamente los problemas con el fin de resolverlos.
+
+Los capítulos siguientes proporcionarán una visión más detallada del sistema, empezando por la infraestructura básica y los servicios (**desde el capítulo 8 hasta el 10**) y se irá avanzado progresivamente hasta las aplicaciones de usuario en el **capítulo 13**. El **capítulo 12** trata de temas más avanzados relacionados directamente con los administradores de grandes conjuntos de equipos (incluyendo servidores), mientras que el **capítulo 14** es una breve introducción al tema más amplio que es la seguridad y proporciona algunas claves para evitar la mayoría de los problemas.
+
+El **capítulo 15** es para administradores que quieran profundizar y crear sus propios paquetes Debian. Para terminar el **capítulo 16** describe el posible futuro de Debian.
+
+*VOCABULARIO* Paquete Debian
+--- Respuesta LLM ---
+El Prólogo del manual de Debian destaca que mucha gente ha elegido Debian para ser usado en servidores web y en la estación espacial.
+--- Datos ---
+  latencia_total_s=0.57
+  tokens_generados=41
+  tokens_por_s=71.4
+  score_max=0.8784
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:38] Escenario: debian | Pregunta: DEB_003
+Categoria: Conceptos fundamentales | Dificultad: Básica
+Pregunta: ¿Cuál es la diferencia técnica entre Linux y una distribución GNU/Linux explicada en el Prefacio?
+Referencia: Prefacio (OEBPS/pr02.html)
+Respuesta esperada: Linux es estrictamente solo un núcleo (la pieza central de software que gestiona el hardware y ofrece una interfaz uniforme a las aplicaciones), mientras que una distribución GNU/Linux combina el núcleo Linux con un conjunto completo de herramientas GNU, utilidades y aplicaciones listas para su instalación y uso.
+--- Recuperados (top 3) ---
+  [1] chunk=17 score=0.8664
+      Por lo general, contiene el kernel de Linux, un instalador y la mayoría de las aplicaciones esenciales y otro software necesario para convertir una computadora en una herramienta verdaderamente útil.
+
+Debian GNU/Linux es una distribución de Linux «genérica» que se ajusta a la mayoría de los usuarios. El propósito de este libro es mostrar sus numerosos aspectos para que pueda tomar una decisión fundada en el momento de elegir una distribución.
+
+# 1. ¿Por qué este libro?
+
+*CULTURA* Distribuciones comerciales
+
+La mayoría de distribuciones Linux están respaldadas por una empresa con fines de lucro que las desarrolla y las vende bajo algún tipo de plan comercial. Algunos ejemplos son *Ubuntu*, principalmente desarrollado por *Canonical Ltd.*; *Red Hat Enterprise Linux*, por *Red Hat, Inc.*, empresa hija de *IBM*; y *SUSE Linux*, que es mantenida y comercializada por *SUSE Software Solutions Germany GmbH*, empresa hija de *EQT Partners*.
+  [2] chunk=16 score=0.8573
+      por supuesto el libro está desarrollado usando un proceso comunitario similar al mismo Debian con el mismo énfasis en la libertad.
+
+Agosto de 2.019
+
+Sam Hartman (Líder del Proyecto Debian)
+
+# Prefacio
+
+Linux ha seguido creciendo en importancia en los últimos años y su creciente popularidad está impulsando a más y más usuarios a cambiar. El primer paso es elegir la distribución. Esta es una decisión importante, porque cada distribución es única, y tomar la decisión correcta desde el principio puede evitar costos al migrar más tarde.
+
+*VOLVER A LOS CIMIENTOS* distribución Linux, núcleo Linux
+
+Estrictamente hablando, Linux es solo un núcleo, la pieza central de software que se encuentra entre el hardware y las aplicaciones.
+
+Una "distribución de Linux" es un sistema operativo completo. Por lo general, contiene el kernel de Linux, un instalador y la mayoría de las aplicaciones esenciales y otro software necesario para convertir una computadora en una herramienta verdaderamente útil.
+  [3] chunk=166 score=0.8572
+      equipos de oficina y se entrenará (internamente) a cada departamento durante el despliegue del nuevo sistema.
+
+# 2.3. ¿Por qué una distribución GNU/Linux?
+
+*VOLVER A LOS CIMIENTOS* ¿Linux o GNU/Linux?
+
+Linux, como ya sabe, es sólo el núcleo. Las expresiones «distribución Linux» y «sistema Linux» son, por lo tanto, incorrectas; son, en realidad, sistemas o distribuciones *basados en* Linux. Estas expresiones no mencionan el software que siempre completa al núcleo, entre el que están los programas desarrollados por el proyecto GNU. El Dr. Richard Stallman, fundador de este proyecto, insiste que se utilice sistemáticamente la expresión «GNU/Linux» para reconocer mejor las importantes contribuciones realizadas por el proyecto GNU y los principios de libertad sobre los que están fundados.
+
+Debian ha optado por seguir esta recomendación y, por tanto, nombrar sus distribuciones en consecuencia. Así, la última versión estable es Debian GNU/Linux 11.
+--- Respuesta LLM ---
+El documento proporcionado no tiene una pregunta específica que pueda responder con una respuesta precisa y concisa. Sin embargo, podemos responder con una respuesta generalizada basada en el contexto del documento.
+
+La diferencia técnica entre Linux y una distribución GNU/Linux es que Linux es sólo el núcleo, mientras que una distribución GNU/Linux es un sistema operativo completo que contiene el kernel de Linux, un instalador y la mayoría de las aplicaciones esenciales y otro software necesario para convertir una computadora en una herramienta verdaderamente útil. La distribución GNU/Linux, como la Debian, incluye el software de la librería GNU, lo que permite que los usuarios puedan usar la tecnología de libertad y la libertad de expresión.
+--- Datos ---
+  latencia_total_s=3.04
+  tokens_generados=238
+  tokens_por_s=78.3
+  score_max=0.8664
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:39] Escenario: debian | Pregunta: DEB_004
+Categoria: Proyecto Debian | Dificultad: Básica
+Pregunta: ¿Cuáles son los tres documentos de fundación del proyecto Debian descritos en el Capítulo 1?
+Referencia: Capítulo 1 - El proyecto Debian (OEBPS/ch01s02.html)
+Respuesta esperada: El Contrato Social de Debian (que recoge los compromisos del proyecto con la comunidad de software libre), las Directrices de Software Libre de Debian (DFSG, que definen los criterios para considerar libre una licencia) y la Constitución de Debian (que regula la estructura organizativa y la toma de decisiones).
+--- Recuperados (top 3) ---
+  [1] chunk=58 score=0.8773
+      ions](https://wiki.debian.org/Teams/Treasurer/Organizations)
+
+→ [https://france.debian.net/](https://france.debian.net/)
+
+→ [https://debian.ch/](https://debian.ch/)
+
+# 1.2. Los documentos de fundación
+
+Unos años después de su lanzamiento inicial, Debian formalizó los principios que debía seguir como proyecto de software libre. Esta decisión activista permite un crecimiento ordenado y pacífico asegurando que todos sus miembros avancen en la misma dirección. Para ser un desarrollador Debian, cualquier candidato debe confirmar y demostrar su apoyo y adhesión a los principios establecidos en los documentos de fundación del proyecto.
+
+Se debate constantemente sobre el proceso de desarrollo, pero los Documentos Fundacinales son apoyados de forma amplia y consensuada, por lo que rara vez cambian. La constitución de Debian también ofrece otras garantías para su estabilidad: se necesita una mayoría calificada de tres cuartas partes para aprobar cualquier cambio.
+
+## 1.2.1. El compromiso hacia los Usuarios
+  [2] chunk=24 score=0.8689
+      o técnica del proyecto Debian y describe sus objetivos y organización. Estos aspectos son importantes porque definen un marco general que se completará en otros capítulos con información más concreta.
+
+Los **capítulos 2 y 3** presentan el caso de estudio en líneas generales. Llegados a este punto los lectores principiantes pueden echar un vistazo al **apéndice B**, donde pueden encontrar un breve curso que explica nociones básicas de informática, así como también los conceptos inherentes a cualquier sistema Unix.
+
+Para comenzar nuestro tema principal, lógicamente vamos a empezar con el proceso de instalación (**capítulo 4**); **los capítulos 5 y 6** darán a conocer las herramientas básicas que todo administrador de Debian utilizará, como las pertenecientes a la familia **APT** que es, en gran parte, la responsable de la excelente reputación de la distribución. Estos capítulos no son exclusivamente para profesionales, puesto que cada uno en su casa es su propio administrador.
+
+El **capítulo 7** será un paréntesis importante, describe los flujos de trabajo para usar eficientemente la documentación y para comprender rápidamente los problemas con el fin de resolverlos.
+  [3] chunk=1 score=0.8682
+      - [**Prólogo**](pr01.html)
+- [**Prefacio**](pr02.html)
+- [**1. El proyecto Debian**](ch01.html)
+    - [**1.1. ¿Qué es Debian?**](#sect.what-is-debian)
+    - [**1.2. Los documentos de fundación**](ch01s02.html)
+    - [**1.3. El funcionamiento interno del proyecto Debian**](ch01s03.html)
+    - [**1.4. Seguir las noticias de Debian**](ch01s04.html)
+    - [**1.5. El papel de las distribuciones**](ch01s05.html)
+    - [**1.6. Ciclo de vida de una versión**](ch01s06.html)
+- [**2. Presentación del caso de estudio**](ch02.html)
+    - [**2.1. Necesidades de TI de rápido crecimiento**](#sect.fast-growing-it-needs)
+    - [**2.2. Plan maestro**](ch02s02.html)
+    - [**2.3. ¿Por qué una distribución GNU/Linux?**](ch02s03.html)
+    - [**2.4. ¿Por qué la distribución Debian?**](ch02s04.html)
+    - [**2.5. ¿Por qué Debian Bullseye?**](ch02s05.html)
+- [**3. Análisis de la instalación existente y migración**](ch03.html)
+    - [**3.1. Coexistencia en entornos heterogéneos**](#sect.heterogeneous-environments)
+    - [**3.2. Cómo migrar**](ch03s02.html)
+- [**4. Instalación**](ch04.html)
+    - [**4.1. Métodos de instalación**](#sect.installation-methods)
+    - [**4.2. Instalación, paso a paso**](ch04s02.h
+--- Respuesta LLM ---
+Los documentos de fundación del proyecto Debian son:
+
+1. El Principio de la Unidad (Unity Principle)
+2. El Principio de la Comunicación (Communication Principle)
+3. El Principio de la Integración (Integration Principle)
+--- Datos ---
+  latencia_total_s=0.86
+  tokens_generados=64
+  tokens_por_s=74.0
+  score_max=0.8773
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:41] Escenario: debian | Pregunta: DEB_005
+Categoria: Proyecto Debian | Dificultad: Básica
+Pregunta: ¿Cuáles son las tres ramas o distribuciones principales que coexisten permanentemente en Debian y qué papel cumple cada una?
+Referencia: Capítulo 1 - Ciclo de vida de una versión (OEBPS/ch01s06.html)
+Respuesta esperada: La rama estable («stable»), recomendada para entornos de producción por su fiabilidad y soporte de seguridad; la rama en pruebas («testing»), donde se integran y prueban los paquetes que formarán la próxima versión estable; y la rama inestable («unstable»), denominada siempre «Sid», donde los desarrolladores suben las versiones más recientes de los paquetes.
+--- Recuperados (top 3) ---
+  [1] chunk=1568 score=0.8575
+      s tanto ¡puede contratarnos!
+
+→ [https://www.freexian.com](https://www.freexian.com/)
+
+→ [https://www.gnurandal.com](https://www.gnurandal.com/)
+
+¡Hasta pronto!
+
+# Apéndice A. Distribuciones derivadas
+
+Muchas distribuciones Linux son derivadas de Debian y reutilizan las herramientas de gestión de paquetes de Debian. Todas tienen sus propias características interesantes y es posible que una de ellas se adapte mejor a sus necesidades que la misma Debian.
+
+# A.1. Censo y cooperación
+
+El Proyecto Debian reconoce plenamente la importancia de distribuciones derivadas y respalda activamente la colaboración entre todas las partes involucradas. Usualmente esto involucra integrar mejoras desarrolladas inicialmente por una distribución derivada de tal manera que cualquiera pueda beneficiarse y se reduzca el trabajo de mantenimiento a largo plazo.
+  [2] chunk=176 score=0.8562
+      - Es una distribución comunitaria, con desarrollo asegurado independientemente de cualquier limitación comercial; sus objetivos son, por lo tanto, de una naturaleza esencialmente técnica que parece favorecer la calidad general del producto.
+- De todas las distribuciones comunitarias, es la más significativa desde varias perspectivas: cantidad de contribuyentes, número de paquetes de software disponibles y años de existencia continua. El tamaño de su comunidad es un testigo innegable de su continuidad.
+- Estadísticamente, se publican nuevas versiones de cada 18 a 24 meses y reciben soporte durante los siguientes 5 años, un cronograma que es aceptable para los administradores.
+- Una encuesta de varias compañías francesas de servicios especializadas en software libre mostró que todas ellas proveen asistencia técnica para Debian; es también, para muchas de ellas, la distribución elegida internamente. Esta diversidad de potenciales proveedores es un componente importante en la independencia de Falcot Corp.
+- Finalmente, Debian está disponible para una multitud de arquitecturas, incluyendo ppc64el para procesadores OpenPOWER; será posible, entonces, instalarla en los varios servidores IB
+  [3] chunk=128 score=0.8562
+      mas concretos para alcanzar sus objetivos. Desarrollado por supuesto bajo una licencia de software libre, estas herramientas hacen uso de métodos probados en otras partes del mundo del software libre.
+
+Debian desarrolló poco software propio, pero algunos programas asumieron roles centrales y su fama se propagó más allá de los alcances del proyecto. Son buenos ejemplos **dpkg**, el programa de administración de paquetes de Debian (su nombre es, de hecho, una abreviación de paquete Debian - «Debian PacKaGe» y generalmente se lo nombra «dee-package» en inglés) y **apt**, una herramienta para instalar automáticamente cualquier paquete Debian y sus dependencias garantizando la consistencia del sistema luego de la actualización (su nombre es acrónimo de herramienta avanzada para paquetes - «Advance Package Tool»). Sus equipos son, sin embargo, mucho más pequeños ya que se necesitan habilidades de programación algo avanzadas para entender el funcionamiento de este tipo de programas.
+--- Respuesta LLM ---
+La tres ramas o distribuciones principales que coexisten permanentemente en Debian son:
+1. Debian stable (stab)
+2. Debian testing (testing)
+3. Debian unstable (unstable)
+
+Debian stable es la distribución más antigua y se utiliza como una base de datos de referencia para la instalación de nuevas versiones. La distribución testing es la que se utiliza para verificar y probar nuevas versiones antes de incluirlas en stab. La distribución unstable es la que incluye las nuevas versiones de Debian y es la que se utiliza para instalar en servidores de alta tecnología.
+--- Datos ---
+  latencia_total_s=2.26
+  tokens_generados=173
+  tokens_por_s=76.5
+  score_max=0.8575
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:42] Escenario: debian | Pregunta: DEB_006
+Categoria: Proyecto Debian | Dificultad: Básica
+Pregunta: ¿De dónde proceden los nombres en clave de las versiones de Debian y qué nombre recibe siempre la rama inestable?
+Referencia: Capítulo 1 - Ciclo de vida de una versión (OEBPS/ch01s06.html)
+Respuesta esperada: Proceden de los personajes de la película de animación «Toy Story», y el nombre «Sid» (el niño vecino que rompía los juguetes) se reserva siempre para la rama inestable («unstable»).
+--- Recuperados (top 3) ---
+  [1] chunk=75 score=0.8696
+      ntinúa promoviendo la distribución en esferas políticas y económicas. Esporádicamente aparece aún en las listas de correo para ofrecer su consejo y presentar sus últimas inciativas en favor de Debian.
+
+Como última anécdota, fue Bruce el responsable de inspirar los diferentes «nombres de código» para las versiones de Debian (1.1 - Rex, 1.2 - Buzz, 1.3 - Bo, 2.0 - Hamm, 2.1 - Slink, 2.2 - Potato, 3.0 - Woody, 3.1 - Sarge, 4.0 - Etch, 5.0 - Lenny, 6.0 - Squeeze, 7 - Wheezy, 8 - Jessie, 9 - Stretch, 10 - Buster, 11 -Bullseye, 12 (no liberada todavía) - Bookworm, Unstable - Sid). Nombres tomados de personajes de la película «Toy Story». Este largometraje animado compuesto completamente de gráficos generados por ordenador fue producido por Pixar Studios, para quien Bruce trabajaba cuando lideraba el proyecto Debian. El nombre «Sid» tiene una característica particular ya que esta siempre asociada a la rama inestable Unstable. En la película, este personaje era el niño vecino que siempre rompía juguetes - por lo que tenga cuidado al acercarse demasiado a Unstable. Además, Sid es también el acrónimo de «aún en desarrollo» («Still In Development»).
+  [2] chunk=573 score=0.8593
+      arla para personalizar los nombres de algunas interfaces específicas. Puede encontrar los nombres de las interfaces de red en la salida de **ip addr** (o como nombres de archivo en `/sys/class/net/`).
+
+En algunos casos específicos puede que sea necesario deshabilitar la denominación constante de dispositivos de red como se describe anteriormente. Además de cambiar la regla udev predeterminada también es posible arrancar el sistema usando los parámetros del núcleo `net.ifnames=0` (restaura el comportamiento predeterminado del kernel) y `biosdevname=0` parámetros del núcleo para lograrlo.
+
+El antecesor del esquema de nombre predecible se llamaba "esquema de nombre persistente". Se hizo usando un udev regla para asignar el nombre del dispositivo basado en la dirección MAC. Se ha abandonado este esquema y con la lanzamiento de Debian 10 Buster se ha alentado a los usuarios a emigrar a nombres de dispositivos de red predecibles.
+
+→ [https://www.debian.org/releases/buster/amd64/release-notes/ch-information.en.html#migrate-interface-names](https://www.debian.org/releases/buster/amd64/release-notes/ch-information.en.html#migrate-interface-names)
+  [3] chunk=700 score=0.8534
+      de desreferenciar un puntero de forma inválida) sólo contienen direcciones de memoria numéricas, que es información inútil sin la tabla que enlaza estas direcciones con símbolos y nombres de función.
+
+Los scripts de configuración del paquete generan automáticamente una imagen `initramfs` (el sucesor de la antigua imagen inicial ramdisk `initrd`), que es un minisistema diseñado para que se cargue en memoria (de allí el nombre, que significa «disco ram de inicio»: «init ramdisk») por el gestor de arranque y utilizado por el núcleo Linux sólo para cargar los módulos necesarios para acceder a los dispositivos que contienen el sistema Debian completo (por ejemplo, los controladores de discos SATA). Finalmente, los scripts postinstalación actualizan los enlaces simbólicos `/vmlinuz`, `/vmlinux.old`, `/initrd.img` y `/initrd.img.old` para que apunten a los dos últimos núcleos instalados, respectivamente, así como también a las imágenes initrd correspondientes.
+--- Respuesta LLM ---
+El número de la versión de Debian y el nombre en clave de las versiones se obtienen de la rama inestable. La rama inestable se llama "Sid" y su número es el último número en la lista de versiones.
+--- Datos ---
+  latencia_total_s=1.01
+  tokens_generados=76
+  tokens_por_s=75.3
+  score_max=0.8696
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:43] Escenario: debian | Pregunta: DEB_007
+Categoria: Gestión de paquetes | Dificultad: Intermedia
+Pregunta: ¿Qué tres secciones o áreas componen los repositorios oficiales de Debian y qué criterio determina la inclusión de un paquete en cada una?
+Referencia: Capítulos 1 y 6 (OEBPS/ch01.html, OEBPS/ch06.html)
+Respuesta esperada: «main», que contiene exclusivamente paquetes libres conforme a las DFSG que no dependen de software fuera de main; «contrib», que incluye paquetes libres que dependen de software no libre para funcionar o compilarse; y «non-free», destinada a paquetes que no cumplen completamente las Directrices de Software Libre de Debian.
+--- Recuperados (top 3) ---
+  [1] chunk=373 score=0.8703
+      table`) y luego los componentes que desea activar. Un repositorio Debian típico proporciona los componentes `main`, `contrib` y `non-free`.
+
+*VOCABULARIO* Los compendios `main`, `contrib` y `non-free`
+
+Debian utiliza tres componentes para diferenciar los paquetes según las licencias seleccionadas por los autores de cada trabajo. `Main` reúne todos los paquetes que cumplen completamente con las [Debian Free Software Guidelines](#sect.dfsg).
+
+El componente `non-free` es diferente porque contiene software que no sigue (completamente) estos principios pero que aún pueden ser distribuidos sin restricciones. Este compendio, que no es parte de Debian oficialmente, es un servicio para los usuarios que pueden llegar a necesitar algunos de aquellos programas y, a día de hoy, también requieren el firmware para su hardware. Sin embargo Debian siempre recomienda dar prioridad al software libre. La existencia de este componente representa un problema considerable para Richard M. Stallman y es la razón por la que la Free Software Foundation no recomienda Debian a los usuarios.
+  [2] chunk=66 score=0.8673
+      ## 1.2.2. Las directrices de software libre de Debian
+
+Este documento de referencia define qué software es «suficientemente libre» para ser incluido en Debian. Si la licencia del programa es acorde a dichos principios, éste se puede incluir en la sección principal; caso contrario, siempre que se pueda distribuir libremente, se podrá encontrar en la sección no libre. La sección no libre no es oficialmente parte de Debian, es un servicio adicional provisto para los usuarios. Se puede encontrar una explicación más detallada de las diferentes partes de Debian archive en la barra lateral [*VOCABULARIO*](#sidebar.sections) [Los compendios](#sidebar.sections) [`main`](#sidebar.sections)[,](#sidebar.sections) [`contrib`](#sidebar.sections) [y](#sidebar.sections) [`non-free`](#sidebar.sections).
+
+Más que un criterio de selección para Debian, este texto se convirtió en autoridad en materia de software libre y sirvió como la base para la Definición de código abierto («Open Source Definition»). Históricamente es una de las primeras definiciones formales del concepto de «software libre».
+  [3] chunk=1557 score=0.8628
+      uete, se deberá validar técnicamente una primera versión del futuro paquete y deberá ser subido a los servidores Debian por un desarrollador Debian existente como patrocinador.
+
+*COMUNIDAD* Patrocinio
+
+Los desarrolladores Debian pueden «patrocinar» («sponsor») paquetes preparados por alguien más, lo que significa que los publican en los repositorios Debian oficiales luego de haber realizado una revisión cuidadosa. Este mecanismo le permite a terceros, quienes todavía no atravesaron el proceso de nuevos miembros, contribuir al proyecto ocasionalmente. Al mismo tiempo, asegura que todos los paquetes incluidos en Debian siempre son revisados por un miembro oficial.
+
+Finally, the examiner checks the candidate's technical (packaging) skills with a detailed questionnaire. Bad answers are not permitted, but the answer time is not limited. All the documentation is available and several attempts are allowed if the first answers are not satisfactory. This step does not intend to discriminate, but to ensure at least a modicum of knowledge common to new contributors.
+--- Respuesta LLM ---
+El texto proporcionado no tiene una sección llamada "Comunidad" o "Patrocinio". Sin embargo, se puede encontrar información sobre estos temas en otros artículos o en la sección "VOCABULARIO" del documento.
+--- Datos ---
+  latencia_total_s=0.98
+  tokens_generados=73
+  tokens_por_s=74.2
+  score_max=0.8703
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:48] Escenario: debian | Pregunta: DEB_008
+Categoria: Gestión de paquetes | Dificultad: Avanzada
+Pregunta: ¿Cuál es la estructura interna de un archivo de paquete Debian (.deb) y qué elementos contiene su archivo de control?
+Referencia: Capítulo 5 - El sistema de empaquetado (OEBPS/ch05.html)
+Respuesta esperada: Un archivo .deb es un archivo «ar» compuesto por tres elementos: «debian-binary» (versión del formato del paquete), «control.tar.*» (que contiene el fichero «control» con metadatos y dependencias, así como los scripts de mantenimiento «preinst», «postinst», «prerm» y «postrm», además de «conffiles») y «data.tar.*» (con los ficheros del software a instalar).
+--- Recuperados (top 3) ---
+  [1] chunk=272 score=0.8860
+      ./usr/bin/ $` **`tar tJf control.tar.xz`**`./ ./conffiles ./control ./md5sums ./postrm $` **`cat debian-binary`**`2.0`
+
+Como puede ver, el compendio **ar** de un paquete Debian contiene tres archivos:
+
+- **debian-binary**
+    - Es un archivo de texto que indica simplemente la versión del archivo de formato de versión de paquete `.deb` utilizado. En Debian Bullseye sigue siendo la versión 2.0.
+- **control.tar.xz**
+    - Este compendio contiene toda la metainformación disponible, como el nombre y la versión del paquete, así como algunos «scripts» para ejecutar antes, durante o después de la desinstalación o instalación de este. Alguna de esta metainformación le permite a las herramientas de gestión de paquetes determinar si es posible instalar o desinstalarlo, por ejemplo, según la lista de paquetes que ya se encuentran en el equipo, y si archivos incluidos han sido modificados localmente.
+- **`data.tar.xz`****,** **`data.tar.bz2`****,** **`data.tar.gz`**
+    - Este compendio contiene todos los archivos a extraerse del paquete; aquí es donde están almacenados los archivos ejecutables, las bibliotecas, la documentación etc. Los paquetes pueden utilizar formatos de compresión diferentes; en ese caso, el archivo tendrá otro nombre para **xz**, **bzip2** o **gzip**.
+  [2] chunk=26 score=0.8860
+      *capítulo 15** es para administradores que quieran profundizar y crear sus propios paquetes Debian. Para terminar el **capítulo 16** describe el posible futuro de Debian.
+
+*VOCABULARIO* Paquete Debian
+
+Un paquete Debian es un archivo que contiene todos los archivos necesario para instalar una pieza de software. Normalmente es un archivo con extensión `.deb` y puede ser manipulado con el programa **dpkg**. También conocido como un *paquete binario*, contiene los archivos que pueden ser utilizados directamente (tales como programas y documentación). Por otro lado, un *paquete fuente* contiene el código fuente para el software y las instrucciones necesarias para construir el paquete binario.
+  [3] chunk=273 score=0.8807
+      chivos ejecutables, las bibliotecas, la documentación etc. Los paquetes pueden utilizar formatos de compresión diferentes; en ese caso, el archivo tendrá otro nombre para **xz**, **bzip2** o **gzip**.
+
+# 5.2. Metainformación de un paquete
+
+Un paquete Debian no es sólo un compendio de archivos a instalar. Forma parte de un todo más grande y describe su relación con otros paquetes Debian (requisitos, dependencias, conflictos, sugerencias). También provee scripts que permiten la ejecución de órdenes en diferentes etapas del ciclo de vida del paquete (instalación, actualización, eliminación). Estos datos utilizados por las herramientas de gestión de paquetes no son parte del software empaquetado, son lo que se denomina «metainformación» (información sobre otra información) dentro del paquete.
+
+## 5.2.1. Descripción: el archivo control
+
+Este archivo usa una estructura similar a las cabeceras de correo electrónico (según define [RFC 2822](#sidebar.rfc)) y se describe con detalle en la Normativa de Debian y en las páginas de manual deb-control(5) y deb822(5).
+
+→ [https://www.debian.org/doc/debian-policy/ch-controlfields.html](https://www.debian.org/doc/debian-policy/ch-controlfields.html)
+--- Respuesta LLM ---
+El archivo control.tar.xz contiene la metainformación de un paquete Debian. Esta información incluye:
+
+- Nombre y versión del paquete
+- Nombre y versión del archivo de formato de versión de paquete
+- Nombre y versión del archivo de metainformación
+- Nombre y versión del archivo de scripts para instalación
+- Nombre y versión del archivo de scripts para actualización
+- Nombre y versión del archivo de scripts para eliminación
+- Nombre y versión del archivo de scripts para desinstalación
+- Nombre y versión del archivo de scripts para instalación de dependencias
+- Nombre y versión del archivo de scripts para actualización de dependencias
+- Nombre y versión del archivo de scripts para eliminación de dependencias
+- Nombre y versión del archivo de scripts para desinstalación de dependencias
+- Nombre y versión del archivo de scripts para instalación de scripts
+- Nombre y versión del archivo de scripts para actualización de scripts
+- Nombre y versión del archivo de scripts para eliminación de scripts
+- Nombre y versión del archivo de scripts para desinstalación de scripts
+- Nombre y versión del archivo de scripts para instalación de dependencias de scripts
+- Nombre y versi
+--- Datos ---
+  latencia_total_s=4.46
+  tokens_generados=350
+  tokens_por_s=78.5
+  score_max=0.8860
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:48] Escenario: debian | Pregunta: DEB_009
+Categoria: Gestión de paquetes | Dificultad: Básica
+Pregunta: ¿Qué diferencia existe entre desinstalar un paquete con «apt remove» (o «dpkg -r») y purgarlo con «apt purge» (o «dpkg -P»)?
+Referencia: Capítulos 5 y 6 (OEBPS/ch05.html, OEBPS/ch06.html)
+Respuesta esperada: «remove» (-r) elimina los archivos ejecutables y datos del paquete pero conserva sus ficheros de configuración en el sistema (estado «rc» en dpkg), mientras que «purge» (-P) elimina completamente tanto el paquete como todos sus archivos de configuración asociados.
+--- Recuperados (top 3) ---
+  [1] chunk=305 score=0.9032
+      ### 5.2.2.2. Eliminación de un paquete
+
+Los pasos para eliminar un paquete son análogos a los pasos de instalación. La principal diferencia es que los scripts de eliminación del paquete se llaman:
+
+1. **dpkg** llama al script **prerm** y pasa el argumento **remove**.
+2. **dpkg** elimina todos los archivos del paquete, con la excepción de los archivos de configuración y scripts de mantenimiento.
+3. **dpkg** ejecuta el script **postrm** y pasa **remove** como argumento. Después, se eliminan todos los scripts de mantenimiento, excepto el script `postrm`. Si el usuario no ha utilizado la opción "purgar", el proceso se detiene aquí.
+4. Para eliminar completamente un paquete (con la orden **dpkg --purge** o **dpkg -P**), los archivos de configuración también son eliminados junto con una cantidad de copias (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`) y archivos temporales; **dpkg** luego ejecuta el script **postrm** y pasa **purge** como argumento.
+
+*VOCABULARIO* Purgar, una eliminación completa
+  [2] chunk=306 score=0.9025
+      de copias (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`) y archivos temporales; **dpkg** luego ejecuta el script **postrm** y pasa **purge** como argumento.
+
+*VOCABULARIO* Purgar, una eliminación completa
+
+Cuando un paquete de Debian es eliminado, se mantienen los archivos de configuración para facilitar una posible reinstalación. De la misma forma, se mantienen normalmente los datos generados por un demonio (como el contenido de un servidor de directorio LDAP o el contenido de una base de datos de un servidor SQL).
+
+Para eliminar todos los datos asociados con un paquete es necesario «purgar» el paquete con la orden **dpkg -P** ***`paquete`***, **apt-get remove --purge** ***`paquete`*** o **aptitude purge** ***`paquete`***.
+
+Dada la naturaleza definitiva de tal eliminación de datos, un purgado no se debe tomar a la ligera.
+  [3] chunk=307 score=0.8970
+      * ***`paquete`***, **apt-get remove --purge** ***`paquete`*** o **aptitude purge** ***`paquete`***.
+
+Dada la naturaleza definitiva de tal eliminación de datos, un purgado no se debe tomar a la ligera.
+
+Los cuatro scripts que aparecen detallados anteriormente se complementan con un script `config` provisto por los paquetes que utilizan **debconf** para adquirir información de configuración del usuario. Durante la instalación este script define en detalle las preguntas realizadas por **debconf**. Se graban las respuestas en la base de datos de **debconf** para futuras referencias. Generalmente **apt** ejecuta el script antes de instalar los paquetes uno por uno para agrupar las preguntas y realizarlas todas al usuario al comienzo del proceso. Los scripts de pre y postinstalación pueden utilizar esta información para operar según los deseos del usuario.
+
+*HERRAMIENTA* **debconf**
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.18
+  tokens_generados=10
+  tokens_por_s=56.6
+  score_max=0.9032
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:49] Escenario: debian | Pregunta: DEB_010
+Categoria: Gestión de paquetes | Dificultad: Básica
+Pregunta: ¿En qué archivo y directorio configura APT las fuentes o repositorios de paquetes en Debian?
+Referencia: Capítulo 6 - Mantenimiento y actualizaciones (OEBPS/ch06.html)
+Respuesta esperada: En el archivo principal «/etc/apt/sources.list» y en los archivos adicionales ubicados dentro del directorio «/etc/apt/sources.list.d/».
+--- Recuperados (top 3) ---
+  [1] chunk=368 score=0.8991
+      ) que contiene el código fuente de un programa con un «origen de paquetes» («package source»), es decir: un repositorio (sitio web, servidor FTP, CD-ROM, directorio local, etc.) que contiene paquetes.
+
+Se necesita proveerle a APT una «lista de paquetes fuente» (repositorios): el archivo `/etc/apt/sources.list` contendrá una lista de diferentes repositorios que publican paquetes Debian. APT importará la lista de paquetes publicada por cada una de estos repositorios. Realiza esta operación descargando los archivos `Packages.xz` o una variante como `Packages.gz` o `.bz2` (que usa un distinto método de compresión) en caso de una fuente de archivos binarios y analizando sus contenidos. En caso de una fuente de paquetes fuente, APT descarga archivos `Sources.xz` o una variante usando un método de compresión diferente. Cuando ya posee una copia antigua de estos archivos, APT puede actualizarla solo descargando las diferencias (revise el recuadro [*SUGERENCIA*](#sidebar.apt-pdiff) [Actualizaciones incrementales](#sidebar.apt-pdiff)).
+
+*VOLVER A LOS CIMIENTOS* Compresión **gzip**, **bzip2**, **LZMA** y **XZ**
+  [2] chunk=442 score=0.8899
+      s costoso (en cuanto a rendimiento). Este concepto puede aplicarse en numerosas situaciones y en diferentes escalas, desde el núcleo de microprocesadores hasta sistemas de almacenamiento de alta gama.
+
+En el caso de APT, los archivos de referencia `Packages` son los ubicados en las réplicas de Debian. Teniendo eso en cuenta, sería muy poco efectivo que cada búsqueda que queramos hacer en la base de datos por paquetes disponible sea a través de la red. Es por esto que APT almacena una copia de estos archivos (en `/var/lib/apt/lists/`) y las búsquedas se realizan dentro de éstos archivos locales. De forma similar, `/var/cache/apt/archives/` contiene el caché de paquetes ya descargados (ver la barra lateral [*YENDO MÁS ALLÁ*](#sidebar.apt-clean) [El caché de archivos](#sidebar.apt-clean) [`.deb`](#sidebar.apt-clean)) para evitar descargarlos nuevamente si necesita reinstalarlos luego de eliminarlos.
+
+Por otro lado, es obligatorio ejecutar **apt update** de forma regular para actualizar la caché. De lo contrario, tus resultados de búsqueda de paquetes siempre carecerán de las últimas actualizaciones distribuidas por las réplicas de Debian.
+  [3] chunk=391 score=0.8875
+      `sources.list` de APT no conlleva el uso sistemático de sus paquetes. La línea a agregar es:
+
+deb https://deb.debian.org/debian experimental main contrib non-free
+
+## 6.1.4. Usar Réplicas Alternativas
+
+Los ejemplos de `sources.list` en este capítulo se refieren a repositorios de paquetes alojados en `deb.debian.org`. Esas URLs le redirigirán a servidores cercanos a usted y que están gestionados por redes de distribución de contenido (CDN, Content Delivery Networks) cuyo papel principal es almacenar varias copias de los archivos por todo el mundo y entregarlas lo más rápido posible a los usuarios. Las empresas de redes de distribución de contenidos con las que Debian trabaja son patrocinadoras de Debian que ofrecen sus servicios a Debian de forma gratuita. Aunque ninguno de estos servidores está bajo el control directo de Debian, el hecho de que el archivo entero esté sellado por claves GPG hace que no sea un problema.
+
+→ [https://deb.debian.org/](https://deb.debian.org/)
+
+Los usuarios exigentes que no estén satisfechos con el rendimiento de `deb.debian.org` pueden intentar encontrar una mejor réplica en la lista oficial de réplicas:
+--- Respuesta LLM ---
+El archivo y directorio configurado para APT para las fuentes o repositorios de paquetes en Debian es `/etc/apt/sources.list`.
+--- Datos ---
+  latencia_total_s=0.56
+  tokens_generados=40
+  tokens_por_s=70.9
+  score_max=0.8991
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:50] Escenario: debian | Pregunta: DEB_011
+Categoria: Gestión de paquetes | Dificultad: Intermedia
+Pregunta: ¿Cuál es la diferencia de comportamiento entre los comandos «apt upgrade» y «apt full-upgrade» (equivalente a «apt-get dist-upgrade»)?
+Referencia: Capítulo 6 - Mantenimiento y actualizaciones (OEBPS/ch06.html)
+Respuesta esperada: «apt upgrade» actualiza los paquetes instalados a sus versiones más recientes sin eliminar ningún paquete ya instalado ni instalar paquetes nuevos que impliquen retirar otros; en cambio, «apt full-upgrade» resuelve cambios complejos de dependencias pudiendo instalar nuevos paquetes y eliminar los que entren en conflicto u queden obsoletos.
+--- Recuperados (top 3) ---
+  [1] chunk=418 score=0.8904
+      abajan diariamente con la versión Unstable de Debian y siguen su evolución día a día. Es tan simple que casi no necesita explicación: la reputación de APT está basada en esta excelente característica.
+
+A diferencia de **apt** y **aptitude**, **apt-get** no sabe cómo hacer **full-upgrade** command. En su lugar debería usar **apt-get dist-upgrade** ("distribution upgrade"), la histórica y bien conocida orden que **apt** y **aptitude** también aceptan para satisfacer a los usuarios que están acostumbrados a usarla.
+
+Los resultados de estas operaciones son registrados en `/var/log/apt/history.log` y `/var/log/apt/term.log`, mientras que **dpkg** mantiene su registro en un archivo llamado `/var/log/dpkg.log`.
+
+## 6.2.4. Opciones de configuración
+
+Además de los elementos de configuración ya mencionados, es posible configurar ciertos aspectos de APT agregando directivas en un archivo del directorio `/etc/apt/apt.conf.d/` o en el propio `/etc/apt/apt.conf`. Recuerde, por ejemplo, que APT puede indicarle a **dpkg** que ignore errores de conflictos de archivos especificando `DPkg::options { "--force-overwrite"; }`.
+  [2] chunk=417 score=0.8709
+      úmero de versión). Si especificó Testing o Unstable en su archivo `sources.list`, **apt upgrade** cambiará la mayor parte de su sistema en Stable a Testing o Unstable, lo que podría no ser lo deseado.
+
+Para indicarle a **apt** que utilice una distribución específica al buscar paquetes a actualizar debe utilizar la opción `-t` o `--target-release`, seguido del nombre de la distribución que desea (por ejemplo, **apt -t stable upgrade**). Para evitar especificar esta opción cada vez que utilice **apt** puede agregar `APT::Default-Release "stable";` al archivo `/etc/apt/apt.conf.d/local`.
+
+Para actualizaciones más importantes, tales como el cambio de una versión mayor de Debian a la siguiente, necesita utilizar **apt full-upgrade**. Con esta instrucción, **apt** completará la actualización aún si tiene que eliminar algunos paquetes obsoletos o instalar nuevas dependencias. Esta también es la orden utilizada por los usuarios que trabajan diariamente con la versión Unstable de Debian y siguen su evolución día a día. Es tan simple que casi no necesita explicación: la reputación de APT está basada en esta excelente característica.
+  [3] chunk=416 score=0.8687
+      ) y son obviamente inútiles (el parámetro de configuración `APT::Clean-Installed` puede evitar la eliminación de archivos `.deb` que estén instalados actualmente).
+
+## 6.2.3. Actualización del sistema
+
+Se recomienda realizar actualizaciones regularmente, ya que incluyen las últimas actualizaciones de seguridad. Para actualizar, utilice **apt upgrade**, **apt-get upgrade** o **aptitude safe-upgrade** (por supuesto, después de **apt-get update**). Esta orden busca paquetes instalados que pueden ser actualizados sin eliminar ningún paquete. En otras palabras, el objetivo es asegurar la actualización menos intrusiva posible. **apt-get** es ligeramente más exigente que **aptitude** o **apt** ya que se negará a instalar paquetes que no estaban instalados previamente.
+
+**apt** generalmente seleccionará el número de versión más reciente (excepto para paquetes en Experimental y stable-backports, que son ignorados de forma predeterminada sin importar su número de versión). Si especificó Testing o Unstable en su archivo `sources.list`, **apt upgrade** cambiará la mayor parte de su sistema en Stable a Testing o Unstable, lo que podría no ser lo deseado.
+--- Respuesta LLM ---
+La diferencia principal entre los comandos «apt upgrade» y «apt full-upgrade» (equivalente a «apt-get dist-upgrade») es que el primero solo actualiza los paquetes instalados, mientras que el segundo actualiza también los paquetes que no están instalados, incluidos los paquetes que están en la versión Unstable. Esto puede ser útil si deseas actualizar tus paquetes sin eliminar ningún paquete instalado.
+--- Datos ---
+  latencia_total_s=1.78
+  tokens_generados=133
+  tokens_por_s=74.7
+  score_max=0.8904
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:55] Escenario: debian | Pregunta: DEB_012
+Categoria: Gestión de paquetes | Dificultad: Avanzada
+Pregunta: ¿Para qué sirve el mecanismo de «apt-pinning» y en qué archivo o directorio se configura?
+Referencia: Capítulo 6 - Mantenimiento y actualizaciones (OEBPS/ch06.html)
+Respuesta esperada: Sirve para asignar prioridades numéricas a paquetes, versiones o ramas específicas de los repositorios (por ejemplo, para mezclar paquetes de «stable» y «testing» sin actualizar todo el sistema), y se configura en «/etc/apt/preferences» o en archivos dentro de «/etc/apt/preferences.d/».
+--- Recuperados (top 3) ---
+  [1] chunk=429 score=0.8559
+      ntal como aquellos de otra distribución otorgándoles una prioridad de 500. Esto se logra con una entrada específica en `/etc/apt/preferences`:
+
+Package: * Pin: release a=experimental Pin-Priority: 500
+
+Supongamos que sólo desea utilizar paquetes de la versión estable de Debian. Aquellos provistos en otras versiones no serían instalados a menos que sean pedidos explícitamente. Puede escribir las siguientes entradas en el archivo `/etc/apt/preferences`:
+
+Package: * Pin: release a=stable Pin-Priority: 900 Package: * Pin: release o=Debian Pin-Priority: -10
+
+`a=stable` define el nombre de la distribución elegida. `o=Debian` limita el alcance a los paquetes cuyo origen es «Debian».
+
+Asumamos ahora que tiene un servidor con varios programas locales que dependen de la versión 5.28 de Perl y que desea asegurarse que las actualizaciones no instalarán otra versión del mismo. Puede utilizar la siguiente entrada:
+
+Package: perl Pin: version 5.28* Pin-Priority: 1001
+  [2] chunk=430 score=0.8534
+      e la versión 5.28 de Perl y que desea asegurarse que las actualizaciones no instalarán otra versión del mismo. Puede utilizar la siguiente entrada:
+
+Package: perl Pin: version 5.28* Pin-Priority: 1001
+
+Para obtener un mejor entendimiento de los mecanismos de prioridades y las propiedades de distribución o repositorio que fijar, no dude en ejecutar **apt-cache policy** para mostrar la prioridad predeterminada asociada a cada origen de paquetes o **apt-cache policy** ***`paquete`*** para mostrar la prioridad predeterminada para todas las versiones disponibles de un paquete según se explica en [Sección 6.3.1, "La orden](#sect.apt-cache-policy) [**apt-cache policy**](#sect.apt-cache-policy)["](#sect.apt-cache-policy).
+
+La documentación de referencia para los archivos `etc/apt/preferences` y `/etc/apt/preferences.d/` está disponible en la página de manual apt\_preferences(5) que puede ver con **man apt\_preferences**.
+
+*SUGERENCIA* Comentarios en `/etc/apt/preferences`
+  [3] chunk=420 score=0.8531
+      `/etc/apt/apt.conf.d/` son instrucciones para la configuración de APT. APT los incluye en orden alfabético para que los últimos puedan modificar un elemento de configuración definido en los primeros.
+
+Esta estructura le da cierta flexibilidad al administrador del equipo y a los desarrolladores de paquetes. De hecho, el administrador puede modificar fácilmente la configuración del software agregando un archivo prehecho en el directorio en cuestión sin tener que modificar un archivo existente. Los desarrolladores de paquetes utilizan el mismo enfoque cuando necesitan adaptar la configuración de otro software pare asegurar que pueda coexistir perfectamente con el suyo. La Normativa Debian prohíbe explícitamente modificar los archivos de configuración de otros paquetes - sólo los usuarios pueden hacerlo. Recuerde que durante la actualización de un paquete el usuario puede elegir la versión del archivo de configuración a mantener cuando se detectó una modificación. Cualquier modificación externa de un archivo dispararía dicho pedido, lo que molestaría al administrador que está seguro de no haber modificado nada.
+--- Respuesta LLM ---
+El mecanismo de «apt-pinning» se utiliza para asegurar que las actualizaciones no instalen otra versión de un mismo paquete. Esto se logra con una entrada específica en el archivo `/etc/apt/preferences`:
+
+Package: * Pin: release a=experimental Pin-Priority: 500
+
+Para obtener un mejor entendimiento de los mecanismos de prioridades y las propiedades de distribución o repositorio que fijar, no dude en ejecutar `apt-cache policy` para mostrar la prioridad predeterminada asociada a cada origen de paquetes o `apt-cache policy` ***`paquete`*** para mostrar la prioridad predeterminada para todas las versiones disponibles de un paquete según se explica en [Sección 6.3.1, "La orden](#sect.apt-cache-policy) [**apt-cache policy**](#sect.apt-cache-policy)["](#sect.apt-cache-policy).
+
+La documentación de referencia para los archivos `etc/apt/preferences` y `/etc/apt/preferences.d/` está disponible en la página de manual `apt\_preferences(5)`.
+--- Datos ---
+  latencia_total_s=4.25
+  tokens_generados=325
+  tokens_por_s=76.5
+  score_max=0.8559
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:55] Escenario: debian | Pregunta: DEB_013
+Categoria: Gestión de paquetes | Dificultad: Intermedia
+Pregunta: ¿Qué función cumple «debconf» en Debian y qué comando permite volver a responder las preguntas de configuración de un paquete ya instalado?
+Referencia: Capítulos 5 y 6 (OEBPS/ch05.html, OEBPS/ch06.html)
+Respuesta esperada: «debconf» es el sistema de gestión de configuración de paquetes de Debian que separa las preguntas de configuración de los scripts de instalación y permite automatizar respuestas; el comando «dpkg-reconfigure <nombre_paquete>» permite volver a ejecutar el asistente de configuración de un paquete instalado.
+--- Recuperados (top 3) ---
+  [1] chunk=308 score=0.8921
+      untas y realizarlas todas al usuario al comienzo del proceso. Los scripts de pre y postinstalación pueden utilizar esta información para operar según los deseos del usuario.
+
+*HERRAMIENTA* **debconf**
+
+Se creó **debconf** para resolver un problema recurrente en Debian. Todos los paquetes Debian que no pueden funcionar sin un mínimo de configuración solían hacer preguntas ejecutando **echo** y **read** en scripts `postinst` (y otros scripts similares). Pero esto también resultaba que durante una instalación o actualización grande el usuario debía mantenerse frente al equipo para responder a las varias preguntas que podían surgir en cualquier momento. Se han evitado la mayoría de todas estas interacciones manuales gracias a la herramienta **debconf**.
+  [2] chunk=786 score=0.8915
+      guntas durante la instalación a través de Debconf, muchos paquetes se configuran automáticamente. Se pueden reconfigurar estos paquetes ejecutando **dpkg-reconfigure -p*****`level`*** ***`paquete`***.
+
+En la mayoría de los casos, estas configuraciones son muy simples; sólo modifican unas pocas variables importantes en el archivo de configuración. Generalmente se agrupan estas variables entre dos líneas de «demarcación» para que la reconfiguración del paquete sólo afecte el área entre ellas. En otros casos, la reconfiguración no realizará cambios si el script detecta una modificación manual del archivo de configuración para preservar estas intervenciones humanas (debido a que el script no puede asegurar que sus propias modificaciones no afectarán la configuración existente).
+
+*NORMATIVA DEBIAN* Preservación de cambios
+  [3] chunk=1253 score=0.8879
+      contiene la respuesta a una pregunta Debconf. Cada línea está dividida en cuatro campos separados por espacios en blancos (espacios o tabulaciones) como, por ejemplo, `d-i mirror/suite string stable`:
+
+- el primer campo es el «dueño» de la pregunta; utilizamos «d-i» para las preguntas relevantes al instalador, pero también puede ser el nombre de un paquete para las preguntas que provengan de un paquete Debian;
+- el segundo campo es un identificador para la pregunta (el nombre de la plantilla);
+- tercero, el tipo de pregunta;
+- el cuarto y último campo contiene el valor de la respuesta. Tenga en cuenta que debe estar separado del tercer campo sólo por un espacio; si hay más de uno, el siguiente carácter de espacio es considerado parte del valor.
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.17
+  tokens_generados=10
+  tokens_por_s=59.2
+  score_max=0.8921
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:55] Escenario: debian | Pregunta: DEB_014
+Categoria: Instalación y despliegue | Dificultad: Intermedia
+Pregunta: ¿En qué consiste la técnica de preconfiguración («preseeding») abordada en el capítulo de instalación de Debian?
+Referencia: Capítulo 4 - Instalación (OEBPS/ch04.html)
+Respuesta esperada: Consiste en proporcionar al instalador de Debian un archivo de respuestas predefinidas («preseed») que responde automáticamente a las preguntas de «debconf» durante el proceso de instalación, permitiendo realizar instalaciones completamente desatendidas y reproducibles en múltiples equipos.
+--- Recuperados (top 3) ---
+  [1] chunk=208 score=0.8772
+      cción «Preparando los archivos para arranque por red TFTP»).
+
+→ [https://www.debian.org/releases/stable/amd64/ch05s01#boot-tftp-x86](https://www.debian.org/releases/stable/amd64/ch05s01#boot-tftp-x86)
+
+→ [https://www.debian.org/releases/stable/amd64/ch04s05](https://www.debian.org/releases/stable/amd64/ch04s05)
+
+## 4.1.4. Otros métodos de instalación
+
+Cuando necesitamos desplegar instalaciones personalizadas para una gran cantidad de equipos generalmente elegimos un método de instalación automático en lugar de uno manual. Dependiendo de la situación y la complejidad de las instalaciones podemos utilizar FAI (siglas de «instalador completamente automático», descripto en la [Sección 12.3.1, "Instalador completamente automático (FAI: «Fully Automatic Installer»)"](#sect.fai)) o un DVD de instalación preconfigurado («preseeding», revise la [Sección 12.3.2, "Presembrado de Debian-Installer"](#sect.d-i-preseeding)).
+  [2] chunk=1249 score=0.8751
+      ## 12.3.2. Presembrado de Debian-Installer
+
+Después de todo, la mejor herramienta para instalar sistemas Debian lógicamente debería ser el instalador oficial de Debian. Es por esto que, desde su concepción, se diseñó debian-installer para usarlo de forma automatizada aprovechando la infraestructura que provee debconf. Este último permite, por un lado, reducir la cantidad de preguntas realizadas (las preguntas escondidas utilizarán la respuesta predeterminada provista) y por el otro proveer respuestas predeterminadas por separado para que la instalación pueda no ser interactiva. Se conoce a esta última funcionalidad como *preseeding*.
+
+*YENDO MÁS ALLÁ* Debconf con una base de datos centralizada
+  [3] chunk=209 score=0.8630
+      automático (FAI: «Fully Automatic Installer»)"](#sect.fai)) o un DVD de instalación preconfigurado («preseeding», revise la [Sección 12.3.2, "Presembrado de Debian-Installer"](#sect.d-i-preseeding)).
+
+También debes tener en cuenta que el instalador puede cargar y ejecutar un servidor SSH y, por tanto, ofrece la posibilidad de instalar Debian remotamente a través de una sesión SSH. Las notas de la publicación también describen cómo ejecutar el instalador desde un sistema ya existente usando *grub* para reemplazarlo completamente.
+
+# 4.2. Instalación, paso a paso
+
+## 4.2.1. Arranque e inicio del instalador
+
+Una vez que el BIOS comenzó el arranque desde el CD o DVD-ROM aparecerá el menú del gestor de arranque Isolinux. En esta etapa, el núcleo Linux no está cargado aún; este menú le permite elegir el núcleo a arrancar y posiblemente ingresar los parámetros a pasarle en el proceso.
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.18
+  tokens_generados=10
+  tokens_por_s=56.4
+  score_max=0.8772
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:56] Escenario: debian | Pregunta: DEB_015
+Categoria: Sistema base y FHS | Dificultad: Básica
+Pregunta: ¿Qué función desempeñan los directorios «/etc», «/var» y «/usr» dentro de la jerarquía estándar del sistema de archivos (FHS) en Debian?
+Referencia: Capítulos 8 y 9 (OEBPS/ch08.html, OEBPS/ch09.html)
+Respuesta esperada: «/etc» almacena los archivos de configuración específicos del sistema local; «/var» contiene los datos variables generados durante el funcionamiento del sistema (como registros en /var/log, colas de correo y bases de datos); y «/usr» alberga la jerarquía secundaria de programas, bibliotecas y documentación compartibles de solo lectura.
+--- Recuperados (top 3) ---
+  [1] chunk=1595 score=0.8721
+       arquitectura. El objetivo de `/usr/local/` es para que el administrador instale aplicaciones manualmente sin sobreescribir archivos administrados por el sistema de paquetes (**dpkg**).
+- `/var/`: datos variables administrados por demonios. Esto incluye archivos de registro, colas, cachés, etc.
+- `/proc/` y `/sys/` son específicos del núcleo Linux (y no son parte del FHS). El núcleo los utiliza para exportar datos a espacio de usuario. (vea [Sección B.3.4, "El espacio de usuario"](#sect.userspace-presentation) y [Sección B.5, "El espacio de usuario"](apbs05.html) para explicaciones acerca de este concepto).
+  [2] chunk=1593 score=0.8697
+      la lista de grupos a los que pertenece. Debido a que el acceso a algunos archivos o dispositivos puede estar limitados a miembros de ciertos grupos, puede ser útil verificar a qué grupos se pertenece.
+
+`$` **`id`**`uid=1000(rhertzog) gid=1000(rhertzog) groups=1000(rhertzog),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),108(netdev),109(bluetooth),115(scanner)`
+
+# B.2. Organización de la jerarquía del sistema de archivos
+
+## B.2.1. El directorio raíz
+
+Un sistema Debian está organizado según el *estándar de jerarquía de archivos* (FHS: «File System Hierarchy Standard»). Este estándar define el propósito de cada directorio. Por ejemplo, se describen los directorios de primer nivel como sigue:
+  [3] chunk=1594 score=0.8582
+      - `/bin/`: programas básicos;
+- `/boot/`: núcleo Linux y otros archivos necesarios para las primeras etapas del proceso de arranque;
+- `/dev/`: archivos de dispositivo;
+- `/etc/`: archivos de configuración;
+- `/home/`: archivos personales de los usuarios;
+- `/lib/`: bibliotecas básicas;
+- `/media/*`: puntos de montaje para dispositivos removibles (CD-ROM, llaves USB, etc.);
+- `/mnt/`: punto de montaje temporal;
+- `/opt/`: aplicaciones adicionales provistas por terceros;
+- `/root/`: archivos personales del administrador (root);
+- `/run/`: datos volátiles en tiempo de ejecución que no persisten entre reinicios;
+- `/sbin/`: programas de sistema;
+- `/srv/`: datos utilizados por los servidores en este sistema;
+- `/tmp/`; archivos temporales; generalmente se vacía este directorio durante el arranque;
+- `/usr/`: aplicaciones; este directorio está subdividido en `bin`, `sbin`, `lib` (según la misma lógica que el directorio raíz). Lo que es más, `/usr/share/` contiene datos independientes de la arquitectura. El objetivo de `/usr/local/` es para que el administrador instale aplicaciones manualmente sin sobreescribir archivos administrados por el sistema de paquetes (**dpkg**).
+- `/var/`: dat
+--- Respuesta LLM ---
+El directorio «/etc», «/var» y «/usr» dentro de la jerarquía estándar del sistema de archivos (FHS) en Debian tienen la función de almacenar archivos de configuración, archivos de dispositivos y archivos de aplicaciones básicas, respectivamente.
+--- Datos ---
+  latencia_total_s=1.21
+  tokens_generados=92
+  tokens_por_s=76.3
+  score_max=0.8721
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:57] Escenario: debian | Pregunta: DEB_016
+Categoria: Administración del sistema | Dificultad: Básica
+Pregunta: ¿Cuál es el sistema de inicio («init») predeterminado en las versiones modernas de Debian y cuál es su herramienta principal de administración de servicios?
+Referencia: Capítulo 9 - Servicios Unix (OEBPS/ch09.html)
+Respuesta esperada: El sistema de inicio predeterminado es «systemd», cuya herramienta principal de administración en línea de comandos para iniciar, detener, habilitar o inspeccionar unidades y servicios es «systemctl».
+--- Recuperados (top 3) ---
+  [1] chunk=707 score=0.8754
+      ilizado de forma predeterminada en Debian Buster (implementado en el paquete systemd), así como el estándar anterior, sysvinit, el cual se deriva y hereda de los sistemas Unix «*System V*»; hay otros.
+
+El sistema **upstart** todavía no ha sido probado perfectamente en Debian. Está basado en eventos: los scripts de inicio no se ejecutan en un orden secuencial sino en respuesta a eventos como la finalización de otro script del que depende. Este sistema, creado por Ubuntu, estaba presente en Debian Jessie pero no era el predeterminado; sólo venía como reemplazo para sysvinit y una de las tareas ejecutadas por **upstart** era ejecutar los scripts escritos para sistemas tradicionales, especialmente aquellos del paquete sysv-rc.
+
+**openrc** is a dependency based service manager. It was originally written for the Gentoo project, but it aims at being platform agnostic. It maintains compatibility with the System V init system and provides support for booting, changing runlevels, starting and stopping services (in parallel), and shutting down.
+  [2] chunk=706 score=0.8639
+      r matrices RAID, abrir particiones cifradas, activar volúmenes LVM, etc. Una vez montada la partición raíz, initramfs cede el control al init real, y la máquina vuelve al proceso de arranque estándar.
+
+## 9.1.1. El sistema de inicio systemd
+
+Actualmente systemd proporciona el «init real» y esta sección documenta este sistema de inicio.
+
+*CULTURA* Antes de **systemd**
+
+**systemd** es un "sistema de inicio" relativamente reciente. Aunque ya estaba disponible parcialmente en Wheezy, se ha convertido en el sistema de arranque estándar en Debian a partir de Jessie. Las versiones anteriores utilizaban de forma predeterminada el sistema de inico "System V" (del paquete sysv-rc), un sistema mucho más tradicional. Se describirá el sistema de inicio System V más adelante.
+
+*ALTERNATIVA* Otros sistemas de inicio
+
+Este libro describe el sistema de inicio utilizado de forma predeterminada en Debian Buster (implementado en el paquete systemd), así como el estándar anterior, sysvinit, el cual se deriva y hereda de los sistemas Unix «*System V*»; hay otros.
+  [3] chunk=732 score=0.8602
+      Este sistema de inicio basado en dependencias hace posible renumerar automáticamente los scripts, lo que sería tediososo de hacer manualmente y limita el riesgo de error humano ya que se realiza la programación según los parámetros indicados. Otro beneficio es que se pueden iniciar los servicios en paralelo cuando son independientes entre ellos, lo cual puede acelerar el proceso de inicio.
+
+**init** distingue varios niveles de ejecución («runlevel») y puede cambiar de uno a otro ejecutando **telinit** ***`nuevo-nivel`***. Inmediatamente, **init** ejecuta nuevamente **/etc/init.d/rc** con el nuevo nivel de ejecución. Luego, este script ejecutará los servicios faltantes y detendrá aquellos que ya no se desean. Para hacerlo, se refiere al contenido del archivo `/etc/rc`*`X`*`.d` (donde *`X`* representa el nuevo nivel de ejecución). Los scripts cuyos nombres comienzan con «S» (por «start», iniciar) son los servicios a iniciar; aquellos cuyos nombres comienzan con «K» (por «kill», matar) son los servicios a detener. El script no inicia ningún servicio que ya haya estado activo en el nivel de ejecución anterior.
+--- Respuesta LLM ---
+El sistema de inicio predeterminado en las versiones modernas de Debian es systemd y su herramienta principal de administración de servicios es systemctl.
+--- Datos ---
+  latencia_total_s=0.61
+  tokens_generados=44
+  tokens_por_s=72.3
+  score_max=0.8754
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:57] Escenario: debian | Pregunta: DEB_017
+Categoria: Usuarios y permisos | Dificultad: Básica
+Pregunta: ¿En qué dos archivos del directorio «/etc» se almacenan respectivamente la información de las cuentas locales de usuario y sus contraseñas cifradas?
+Referencia: Capítulos 8 y 9 (OEBPS/ch08.html, OEBPS/ch09.html)
+Respuesta esperada: La información general de las cuentas (nombre de usuario, UID, GID, directorio personal y shell) se almacena en «/etc/passwd», mientras que las contraseñas cifradas y parámetros de expiración se guardan con permisos restringidos en «/etc/shadow».
+--- Recuperados (top 3) ---
+  [1] chunk=596 score=0.8643
+      con dicho equipo. Por ejemplo, puede desviar los nombres de aquellos servidores dedicados a proveer publicidades, evitándolas, lo que resultará en una navegación más fluida y con menos distracciones.
+
+# 8.4. Bases de datos de usuarios y grupos
+
+Generalmente se almacena la lista de usuarios en el archivo `/etc/passwd` y el archivo `/etc/shadow` almacena las contraseñas con *hash*. Ambos son archivos de texto en un formato relativamente simple que pueden leerse y modificarse con un editor de texto. Se muestra cada usuario en una línea con varios campos separados por dos puntos («`:`»).
+
+*NOTA* Editando archivos de sistema
+
+Los archivos de sistema mencionados en este capítulo generalmente son archivos en texto plano y pueden editarse con un editor de texto. Dada su importancia para el funcionamiento intrínseco del sistema siempre es buena idea tomar precauciones extras al editar archivos de sistema. Primero, siempre haga una copia o respaldo de un archivo de sistema antes de abrirlo o modificarlo. Segundo, en servidores o equipos en los que más de una persona puedan acceder al mismo archivo al mismo tiempo, tome las medidas adecuadas para evitar corrupción de archivos.
+  [2] chunk=598 score=0.8555
+      entrada (la cadena `A`) y genera una cadena de 13 caracteres imprimibles ASCII (la cadena `B`).
+
+## 8.4.1. Lista de usuarios: /etc/passwd
+
+Esta es una lista de los campos en el archivo `/etc/passwd`:
+
+- nombre de usuario, por ejemplo `rhertzog`;
+- `contraseña`: esta es una contraseña cifrada por una función unidireccional (**crypt**), que utiliza `DES`, `MD5`, `SHA-256` o `SHA-512`. El valor especial «`x`» indica que la contraseña cifrada está almacenada en `/etc/shadow`;
+- `uid`: número único que identifica a cada usuario;
+- `gid`: número único del grupo principal del usuario (de forma predeterminada, Debian crea un grupo específico para cada usuario);
+- `GECOS`: campo de datos que generalmente contiene el nombre completo del usuario;
+- directorio de inicio de sesión, asignado al usuario para almacenar sus archivos personales (al que generalmente apunta la variable de entorno `$HOME`);
+- programa a ejecutar al iniciar sesión. Generalmente es un intérprete de órdenes (consola) que le da libertad al usuario. Si especifica **/bin/false** (que no hace nada y vuelve el control inmediatamente), el usuario no podrá iniciar sesión.
+  [3] chunk=600 score=0.8551
+      hacer caducar las contraseñas usando este archivo o establecer el tiempo hasta que la cuenta se deshabilite después de que la contraseña haya caducado.
+
+*SEGURIDAD* Seguridad del archivo `/etc/shadow`
+
+A diferencia de su contraparte `/etc/passwd`, `/etc/shadow` no puede ser leído por usuarios normales. Cualquiera puede leer cualquier contraseña con *hash* en `/etc/password`; un «cracker» podría intentar «romper» (o revelar) una contraseña a través de alguno de los métodos de «fuerza bruta» que, de forma simplificada, adivinan las combinaciones de caracteres utilizadas frecuentemente. Este ataque - llamado «ataque de diccionario» - ya no es posible en sistemas que utilizan `/etc/shadow`.
+
+*DOCUMENTACIÓN* El formato de los archivos `/etc/passwd`, `/etc/shadow` y `/etc/group`
+
+These formats are documented in the following man pages: passwd(5), shadow(5), and group(5).
+
+## 8.4.3. Modificación de una cuenta o contraseña existente
+--- Respuesta LLM ---
+El archivo `/etc/shadow` almacena la información de las cuentas locales de usuario y sus contraseñas cifradas.
+--- Datos ---
+  latencia_total_s=0.54
+  tokens_generados=38
+  tokens_por_s=70.3
+  score_max=0.8643
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:03:58] Escenario: debian | Pregunta: DEB_018
+Categoria: Redes | Dificultad: Básica
+Pregunta: ¿En qué archivo se configuran de forma persistente las interfaces de red mediante «ifupdown» en Debian?
+Referencia: Capítulos 8 y 10 (OEBPS/ch08.html, OEBPS/ch10.html)
+Respuesta esperada: En el archivo «/etc/network/interfaces» (así como en los fragmentos incluidos desde el directorio «/etc/network/interfaces.d/»).
+--- Recuperados (top 3) ---
+  [1] chunk=570 score=0.8884
+      https://wiki.gnome.org/Projects/NetworkManager/SystemSettings)
+
+→ [https://developer.gnome.org/NetworkManager/1.30/ref-settings.html](https://developer.gnome.org/NetworkManager/1.30/ref-settings.html)
+
+Si Network Manager no está instalado, el instalador configurará ifupdown creando el archivo `/etc/network/interfaces`. Una línea que comienza con `auto` proporciona una lista de interfaces que el servicio `networking` debe configurar en el arranque. Cuando hay muchas interfaces, es una buena práctica mantener la configuración en archivos diferentes dentro de `/etc/network/interfaces.d/` como se describe en la barra lateral [*VOLVER A LOS CIMIENTOS*](#sidebar.directory.d) [Directorios terminados con](#sidebar.directory.d) [`.d`](#sidebar.directory.d).
+
+En el contexto de un servidor, ifupdown es la herramienta de configuración de red que normalmente tiene. Por lo que la tratamos en las siguientes secciones. Para obtener más información sobre la sintaxis del archivo de configuración, ver interfaces(5).
+
+## 8.2.1. Interfaz Ethernet
+  [2] chunk=578 score=0.8764
+      el controlador del núcleo normalmente busca los archivos de firmware cuando se carga por primera vez y ya no lo hace después.
+
+### 8.2.2.2. Entradas inalámbricas específicas en /etc/network/interfaces
+
+*ifupdown* es capaz de gestionar interfaces de red, pero necesita la ayuda del paquete wpasupplicant, que proporciona la integración integrada entre *ifupdown* y la orden **wpa\_supplicant** usada para configurar las interfaces inalámbricas (cuando se usa el cifrado WPA/WPA2). La entrada usual en `/etc/network/interfaces` necesita extenderse con dos parámetros suplementarios para especificar el nombre de la interfaz de red (en otras palabras su SSID) y la clave precompartida (en inglés, *Pre-Shared Key* [PSK]).
+
+Ejemplo 8.3. Configuración DHCP para una interfaz inalambrica
+
+auto wlp4s0 iface wlp4s0 inet dhcp wpa-ssid Falcot wpa-psk ccb290fd4fe6b22935cbae31449e050edd02ad44627b16ce0151668f5f53c01b
+  [3] chunk=1365 score=0.8682
+      t &gt; /etc/nftables.conf** como superusuario.
+
+**nft** permite muchas más operaciones, consulte su página de manual nft(8) para más información.
+
+## 14.2.4. Instalación de las reglas en cada arranque
+
+To enable a default firewall in Debian, you need to store the rules in `/etc/nftables.conf` and execute **systemctl enable nftables** as root. You can stop the firewall by executing **nft flush ruleset** as root.
+
+En otros casos, la forma recomendada es registrar el script de configuración en la directiva `up` del archivo `/etc/network/interfaces`. En el siguiente ejemplo, el script está guardado como `/usr/local/etc/arrakis.fw`.
+
+Ejemplo 14.1. archivo `interfaces` llamando al script del firewall
+
+auto eth0 iface eth0 inet static address 192.168.0.1 network 192.168.0.0 netmask 255.255.255.0 broadcast 192.168.0.255 up /usr/local/etc/arrakis.fw
+
+Esto obviamente asume que se está utilizando ifupdown para configurar las interfaces de red. Si se está utilizando alguna otra cosa (como *NetworkManager* o *systemd-networkd*), entonces se debe consultar la documentación respectiva para averiguar cómo ejecutar un script después de que se levante la interfaz de red.
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.19
+  tokens_generados=10
+  tokens_por_s=54.0
+  score_max=0.8884
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:02] Escenario: debian | Pregunta: DEB_019
+Categoria: Redes y seguridad | Dificultad: Intermedia
+Pregunta: ¿Qué funciones proporciona el subsistema de cortafuegos del núcleo Linux (netfilter / iptables / nftables) descrito en el manual?
+Referencia: Capítulos 10 y 14 (OEBPS/ch10.html, OEBPS/ch14.html)
+Respuesta esperada: Permite realizar filtrado de paquetes sin estado y con seguimiento de conexiones (stateful), traducción de direcciones de red (NAT/masquerading) y modificación o marcado de paquetes en tránsito o dirigidos al propio equipo.
+--- Recuperados (top 3) ---
+  [1] chunk=1354 score=0.8824
+      l, incluyendo el intercambio de recursos, acceso a archivos remotos.
+
+More information can be found on Wikipedia:
+
+→ [https://en.wikipedia.org/wiki/OSI\_model](https://en.wikipedia.org/wiki/OSI_model)
+
+Este cortafuegos está configurado con tablas (*tables*), que contienen reglas (*rules*) que forman parte de cadenas (*chains*). A diferencia de iptables, *nftables* no tiene ninguna tabla predeterminada. El usuario decide cuáles y cuántas tablas crear. Cada tabla debe tener solo una de las siguientes cinco familias asignadas: `ip`, `ip6`, `inet`, `arp` y `bridge`. Se usa `ip` si no se especifica la familia.
+
+There are two types of chains: *base chains* and *regular chains*. A base chain is an entry point for packets from the networking stack. Base chains are registered into the Netfilter hooks, e.g. they see packets flowing through the TCP/IP stack. On the other hand, a regular chain is not attached to any hook so it does not see any traffic. But it may be used as a jump target for better organization of the rules.
+  [2] chunk=1349 score=0.8819
+      nd data.
+
+El núcleo Linux incorpora el cortafuegos *netfilter*, que se puede controlar desde el espacio de usuario con los programas **iptables**, **ip6tables**, **arptables** y **ebtables** commands.
+
+However, Netfilter iptables commands are being replaced by nftables, which avoids many of its problems. Its design involves less code duplication, and it can be managed with just the **nft** command. Since Debian Buster, the nftables framework is used by default. The commands mentioned before are provided by versions, which use the nftables kernel API, by default. If one requires the "classic" commands, the relevant binaries can be adjusted using **update-alternatives**.
+
+*TOOLS* fwbuilder and ufw
+
+Although (destined to) being replaced by nftables, **iptables** is still widely used and suited for many use-cases. Creating a rule requires an invocation of **iptables**/**ip6tables**. Typing these commands manually can be tedious, so the calls are usually stored in a script, so that the same configuration is set up automatically every time the machine boots, or they can be made "persistent" using iptables-persistent.
+  [3] chunk=1348 score=0.8744
+      s eficaz en aquellos paquetes que deben pasar a través de ella. Por lo tanto, sólo puede ser eficaz cuando la única ruta para estos paquetes es a través del firewall.
+
+*CASO ESPECÍFICO* Firewall local
+
+A firewall can be restricted to one particular machine (as opposed to a complete network), in which case its role is to filter or limit access to some services. It is, however, always better to configure services to not listen on those network interfaces, where these services are not supposed to be offered, or to disable and remove services, which are not to be offered at all, than to use a packet filter to prevent any unwanted access to these services.
+
+Its role can also be to filter or limit connections by rogue or poorly programmed software that a user could, willingly or not, have installed. The reliability of this, however, highly depends on the goal of these actions and the integrity of the system itself. This action is not a measurement to prevent potential threats to send data.
+
+El núcleo Linux incorpora el cortafuegos *netfilter*, que se puede controlar desde el espacio de usuario con los programas **iptables**, **ip6tables**, **arptables** y **ebtables** commands.
+--- Respuesta LLM ---
+El subsistema de cortafuegos del núcleo Linux (netfilter / iptables / nftables) proporciona las siguientes funciones:
+
+- Reglas para aplicar a los paquetes que se envían a través del firewall.
+- Reglas para aplicar a los paquetes que se reciben del firewall.
+- Reglas para aplicar a los enlaces (ethernet o Wi-Fi) que se utilizan para enviar y recibir paquetes.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a una red.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a una red remota.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto remotamente.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto remotamente remotamente.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto remotamente remotamente remotamente.
+- Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto remotamente remotamente remotamente remotamente
+--- Datos ---
+  latencia_total_s=4.43
+  tokens_generados=350
+  tokens_por_s=79.0
+  score_max=0.8824
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:03] Escenario: debian | Pregunta: DEB_020
+Categoria: Redes | Dificultad: Básica
+Pregunta: ¿Qué archivo configura los servidores DNS utilizados por la biblioteca de resolución de nombres del sistema en Debian y cuál es el servidor DNS autoritativo/caché habitual en la distribución?
+Referencia: Capítulo 10 - Infraestructura de red (OEBPS/ch10.html)
+Respuesta esperada: El archivo de configuración del cliente resolver es «/etc/resolv.conf», y el servidor de nombres de dominio estándar más utilizado en Debian es «BIND9» (paquete bind9).
+--- Recuperados (top 3) ---
+  [1] chunk=919 score=0.8650
+      ## 10.7.1. Software DNS
+
+The reference name server, Bind, was developed and is maintained by ISC (the *Internet Software Consortium*). It is provided in Debian by the bind9 package. Version 9 brings two major changes compared to previous versions. First, the DNS server can now run under an unprivileged user, so that a security vulnerability in the server does not grant root privileges to the attacker (as was seen repeatedly with versions 8.x).
+
+Lo que es más, Bind es compatible con el estándar DNSSEC para firmar (y, por lo tanto, autenticar) registros DNS, lo que permite bloquear datos apócrifos durante ataques con intermediarios («man-in-the-middle»).
+
+*CULTURA* DNSSEC
+
+La normativa DNSSEC es bastante compleja; esto explica parcialmente por qué no es utilizada ampliamente aún (aún si puede coexistir perfectamente con servidores DNS que no conozcan de DNSSEC). Para entender los recovecos debería revisar el siguiente artículo.
+
+→ [https://en.wikipedia.org/wiki/Domain\_Name\_System\_Security\_Extensions](https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions)
+
+## 10.7.2. Configurando bind
+  [2] chunk=399 score=0.8621
+      endrá).
+
+apt-cacher y apt-cacher-ng funcionan como servidores proxy caché usuales. No se modifica el archivo `sources.list`, pero se configura a APT para utilizarlos como proxy para pedidos salientes.
+
+approx, por el otro lado, funciona como un servidor HTTP que «replica» cualquier cantidad de repositorios remotos en su URL más genérica. Se almacena el mapeo entre estos directorios y las URLs remotas de los repositorios en `/etc/approx/approx.conf`:
+
+# &lt;nombre&gt; &lt;URL base del repositorio&gt; debian http://deb.debian.org/debian security http://security.debian.org/debian-security
+
+De forma predeterminada, approx se ejecuta en el puerto 9999 a través de un zócalo de systemd y necesita que el usuario modifique su archivo `sources.list` para que apunte al servidor approx:
+
+# Archivo sources.list de ejemplo que apunta a un servidor approx local deb http://localhost:9999/security bullseye-security main contrib non-free deb http://localhost:9999/debian bullseye main contrib non-free
+
+# 6.2. Los programas aptitude, apt-get y apt
+  [3] chunk=592 score=0.8621
+      ada contiene `files dns` que significa que el sistema consultará primero el archivo `/etc/hosts`, luego los servidores DNS. Otras fuentes posibles son los servidores NIS/NIS+ o LDAP.
+
+*NOTA* NSS y DNS
+
+Sepa que los programas específicos para realizar consultas de DNS (especialmente **host**) no utilizan el mecanismo de resolución de nombres estándar (NSS). Como consecuencia no tienen en cuenta `/etc/nsswitch.conf` y, por lo tanto, tampoco `/etc/hosts`.
+
+### 8.3.1.1. Configuración de servidores DNS
+
+DNS (servicio de nombres de dominio: «Domain Name Service») es un servicio distribuido y jerárquico que asocia nombres a direcciones IP y viceversa. Específicamente puede transformar un nombre amigable para las personas como `www.eyrolles.com` en una dirección IP real, `213.244.11.247`.
+
+Para acceder a la información de DNS, debe tener disponible un servidor DNS para retransmitir sus pedidos. Falcot Corp tiene uno propio, pero es más probable que un usuario particular utilice los servidores de DNS provistos por su ISP.
+--- Respuesta LLM ---
+El archivo que configura los servidores DNS utilizados por la biblioteca de resolución de nombres del sistema en Debian es `/etc/resolv.conf`. El servidor DNS autoritativo/caché habitual en la distribución es el servidor DNS de su ISP.
+--- Datos ---
+  latencia_total_s=1.00
+  tokens_generados=75
+  tokens_por_s=75.0
+  score_max=0.8650
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:06] Escenario: debian | Pregunta: DEB_021
+Categoria: Almacenamiento | Dificultad: Intermedia
+Pregunta: ¿Qué tecnologías se emplean en Debian para implementar RAID por software y gestión de volúmenes lógicos respectivamente?
+Referencia: Capítulos 8 y 12 (OEBPS/ch08.html, OEBPS/ch12.html)
+Respuesta esperada: RAID por software se gestiona mediante el subsistema MD del núcleo y la utilidad «mdadm», mientras que la gestión flexible de volúmenes lógicos (volúmenes físicos, grupos de volúmenes y volúmenes lógicos) se realiza con «LVM» (Logical Volume Manager).
+--- Recuperados (top 3) ---
+  [1] chunk=1144 score=0.8518
+      ntes para reconstruir los volúmenes, pero no para determinar el número del mismo (y el nombre del dispositivo `/dev/md*` correspondiente).
+
+Afortunadamente, puede generar estas líneas automáticamente:
+
+`#` **`mdadm --misc --detail --brief /dev/md?`** `ARRAY /dev/md/0 metadata=1.2 UUID=a75ac628:b384c441:157137ac:c04cd98c name=debian:0 ARRAY /dev/md/1 metadata=1.2 UUID=2dfb7fd5:e09e0527:0b5a905a:8334adb8 name=debian:1`
+
+El contenido de estas dos últimas líneas no depende de la lista de discos incluidos en el volumen. Por lo tanto, no es necesario regenerar estas líneas cuando reemplace un disco fallido con uno nuevo. Por el otro lado, debe asegurarse de actualizar el archivo cuando cree o elimine un array RAID.
+
+## 12.1.2. LVM
+
+LVM, el *gestor de volúmenes lógicos* («Logical Volume Manager»), es otra forma de abstraer volúmenes lógicos de su soporte físico, que se enfoca en ofrecer mayor flexibilidad en lugar de aumentar confiabilidad. LVM permite modificar un volumen lógico de forma transparente a las aplicaciones; por ejemplo, es posible agregar nuevos discos, migrar sus datos y eliminar discos antiguos sin desmontar el volumen.
+
+### 12.1.2.1. Conceptos de LVM
+  [2] chunk=234 score=0.8510
+      o duro (sólo pueden llenar `/tmp/` y `/home/`). Los datos de demonios (especialmente registros) tampoco podrán trabar el resto del sistema.
+
+*VOLVER A LOS CIMIENTOS* Elección de un sistema de archivos
+
+Un sistema de archivos define la forma en la que se organizan los datos en el disco duro. Cada sistema de archivos existente tiene sus méritos y limitaciones. Algunos son más robustos, otros más efectivos: si conoce bien sus necesidades es posible elegir el sistema de archivos más apropiado. Ya se han realizado muchas comparaciones; parecería que *ReiserFS* es particularmente eficiente para leer muchos archivos pequeños; *XFS*, en cambio, trabaja más rápido con archivos grandes. *Ext4*, el sistema de archivos predeterminado para Debian, es un buen punto medio basado en las tres versiones anteriores de sistemas de archivos utilizados en Linux históricamente (*ext* y *ext2* y *ext3*). *ext4* supera algunas limitaciones de *ext3* y es particularmente apropiado para discos duros de gran capacidad. Otra opción es experimentar con el prometedor *btrfs* que incluye muchas funcionalidades que requerirían, al día de hoy, utilizar LVM y/o RAID.
+  [3] chunk=1109 score=0.8491
+      ser capaz de gestionar las cambiantes necesidades de espacio sin tener que recurrir a una reinstalación. Por lo tanto necesita dominar las herramientas necesarias para manipular volúmenes RAID y LVM.
+
+Tanto RAID como LVM son técnicas para abstraer los volúmenes montados de sus correspondientes dispositivos físicos (discos duros reales o particiones de los mismos). El primero garantiza la seguridad y disponibilidad de los datos en caso de fallos de hardware agregando redundancia mientras que el segundo hace más flexible la gestión de los volúmenes y los independiza del tamaño real de los discos subyacentes. En ambos casos se crean nuevos dispositivos de bloques en el sistema que pueden ser utilizados tanto para crear sistemas de archivos como espacios de intercambio sin necesidad de que se asocien a un disco físico concreto. RAID y LVM tienen orígenes bastante diferentes pero su funcionalidad a veces se solapa, por lo que a menudo se mencionan juntos.
+
+*PERSPECTIVA* Btrfs combina LVM y RAID
+--- Respuesta LLM ---
+RAID y LVM son técnicas para abstraer los volúmenes montados de sus correspondientes dispositivos físicos (discos duros reales o particiones de los mismos). El primero garantiza la seguridad y disponibilidad de los datos en caso de fallos de hardware agregando redundancia mientras que el segundo hace más flexible la gestión de los volúmenes y los independiza del tamaño real de los discos subyacentes. En ambos casos se crean nuevos dispositivos de bloques en el sistema que pueden ser utilizados tanto para crear sistemas de archivos como espacios de intercambio sin necesidad de que se asocien a un disco físico concreto.
+--- Datos ---
+  latencia_total_s=2.57
+  tokens_generados=201
+  tokens_por_s=78.1
+  score_max=0.8518
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:07] Escenario: debian | Pregunta: DEB_022
+Categoria: Administración del sistema | Dificultad: Básica
+Pregunta: ¿Qué servicio planifica tareas periódicas en Debian y qué directorios del sistema permiten programar scripts con frecuencia horaria, diaria, semanal o mensual?
+Referencia: Capítulo 9 - Servicios Unix (OEBPS/ch09.html)
+Respuesta esperada: El demonio «cron» planifica tareas periódicas mediante archivos crontab de usuario y el fichero «/etc/crontab», utilizando además «/etc/cron.d/» y los directorios estándar «/etc/cron.hourly/», «/etc/cron.daily/», «/etc/cron.weekly/» y «/etc/cron.monthly/».
+--- Recuperados (top 3) ---
+  [1] chunk=804 score=0.9005
+      últimas soluciones tienen la ventaja de poder especificar el usuario bajo el que se ejecutará el programa.
+
+De forma predeterminada, el paquete *cron* incluye algunas tareas programadas que ejecutan:
+
+- programas en el directorio `/etc/cron.hourly/` una vez por hora;
+- programas en el directorio `/etc/cron.daily/` una vez por día;
+- programas en el directorio `/etc/cron.weekly/` una vez por semana;
+- programas en el directorio `/etc/cron.monthly/` una vez por mes.
+
+Muchos paquetes Debian dependen de este servicio: agregan sus scripts de mantenimiento en estos directorios, los cuales garantizan un funcionamiento óptimo de sus servicios.
+
+## 9.7.1. Formato de un archivo crontab
+
+*SUGERENCIA* Atajos de texto para **cron**
+
+**cron** reconoce algunas abreviaciones que reemplazan los primeros cinco campos de un elemento de `crontab`. Corresponden a las opciones de programación más comunes:
+
+- `@yearly`: una vez por año (1 de Enero a las 00:00);
+- `@monthly`: una vez por mes (el 1ro de mes a las 00:00);
+- `@weekly`: una vez por semana (Domingo a las 00:00);
+- `@daily`: una vez por día (a las 00:00);
+- `@hourly`: una vez por hora (al principio de cada hora).
+  [2] chunk=815 score=0.8740
+      a corregirlo; el programa **renice** modifica la prioridad de cualquier proceso que está en ejecución en la dirección que desee (pero reducir la «bondad» de un proceso está reservado al usuario root).
+
+Instalar el paquete anacron desactiva la ejecución via **cron** de los scripts en los directorios `/etc/cron.hourly/`, `/etc/cron.daily/`, `/etc/cron.weekly/` y `/etc/cron.monthly/`. Esto evita que sean ejecutados tanto por **anacron** como por **cron**. El programa **cron** continuará activo y seguirá administrando otras tareas programadas (especialmente aquellas programadas por los usuarios).
+
+# 9.9. Cuotas
+
+El sistema de cuotas permite limitar el espacio en disco reservado para un usuario o grupo de usuarios. Para configurarlo, debe tener un núcleo compatible (compilado con la opción `CONFIG_QUOTA`) - como es el caso de los núcleos Debian. Puede encontrar el software de administración de cuotas en el paquete Debian quota.
+  [3] chunk=492 score=0.8724
+      ialmente cuando debe realizarla en varias máquinas. Afortunadamente, como varias tareas repetitivas, puede ser automatizada parcialmente y ya se desarrollaron un conjunto de herramientas a tal efecto.
+
+La primera de estas herramientas es **apticron** en el paquete del mismo nombre. Su efecto principal es ejecutar diariamente un script (a través de **cron**). El script actualiza la lista de paquetes y, si algunos paquetes instalados no están en la última versión disponible, envía un email con una lista de estos paquetes junto con los cambios realizados en las nuevas versiones. Obviamente, este paquete está apuntado principalmente a usuarios de Debian Stable ya que los emails diarios serían muy extensos para las versiones de Debian con más actualizaciones. Cuando haya actualizaciones disponibles, **apticron** las descargará automáticamente. No las instalará - el administrador lo hará - pero tener los paquetes ya descargados y disponibles localmente (en el caché de APT) hace más rápido el trabajo.
+--- Respuesta LLM ---
+El servicio planifica tareas periódicas en Debian y los directorios del sistema permiten programar scripts con frecuencia horaria, diaria, semanal o mensual son:
+
+- /etc/cron.hourly
+- /etc/cron.daily
+- /etc/cron.weekly
+- /etc/cron.monthly
+--- Datos ---
+  latencia_total_s=1.14
+  tokens_generados=86
+  tokens_por_s=75.8
+  score_max=0.9005
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:07] Escenario: debian | Pregunta: DEB_023
+Categoria: Administración del sistema | Dificultad: Intermedia
+Pregunta: ¿Qué demonios y archivos en «/var/log/» gestionan los registros de eventos del sistema y de autenticación en Debian?
+Referencia: Capítulo 9 - Servicios Unix (OEBPS/ch09.html)
+Respuesta esperada: El servicio «rsyslog» (junto con «systemd-journald») centraliza los mensajes del sistema y los guarda por defecto en archivos dentro de «/var/log/», destacando «/var/log/syslog» para mensajes generales del sistema y «/var/log/auth.log» para eventos de autenticación y permisos.
+--- Recuperados (top 3) ---
+  [1] chunk=788 score=0.8936
+      nte o intentar integrar los nuevos cambios en el archivo actual). Este principio de precaución es, desde hace tiempo, exclusivo de Debian pero otras distribuciones gradualmente comenzaron a aceptarlo.
+
+Puede utilizar el programa **ucf** (en el paquete Debian del mismo nombre) para implementar este comportamiento.
+
+# 9.5. syslog Eventos de sistema
+
+## 9.5.1. Principio y mecanismo
+
+El demonio **rsyslogd** es responsable de recolectar los mensajes de servicio que provienen de aplicaciones y el núcleo para luego distribuirlos en archivos de registros (usualmente almacenados en el directorio `/var/log/`). Obedece a su archivo de configuración: `/etc/rsyslog.conf`.
+
+Cada mensaje de registro es asociado con un subsistema de aplicaciones (llamados «facility» en la documentación):
+  [2] chunk=539 score=0.8824
+      emonio **rsyslogd**. Sin embargo, algunos demonios gestionan sus propios archivos de registro (este es el caso de, por ejemplo, **samba**, que implementa en Linux los recursos compartidos de Windows).
+
+Tenga en cuenta que cuando se utiliza **systemd**, los registros se recogen por **systemd** antes de ser reenviados a **rsyslogd**. Por lo tanto, también están disponibles a través del historial ("journal") de **systemd** y puden ser consultados mediante **journalctl** (vea [Sección 9.1.1, "El sistema de inicio systemd"](#sect.systemd) para más detalles).
+  [3] chunk=789 score=0.8785
+      directorio `/var/log/`). Obedece a su archivo de configuración: `/etc/rsyslog.conf`.
+
+Cada mensaje de registro es asociado con un subsistema de aplicaciones (llamados «facility» en la documentación):
+
+- `auth` y `authpriv`: para autenticación;
+- `cron`: proviene servicios de programación de tareas, **cron** y **atd**;
+- `daemon`: afecta un demonio sin clasificación especial (DNS, NTP, etc.);
+- `ftp`: el servidor FTP;
+- `kern`: mensaje que proviene del núcleo;
+- `lpr`: proviene del subsistema de impresión;
+- `mail`: proviene del subsistema de correo electrónico;
+- `news`: mensaje del subsistema Usenet (especialmente de un servidor NNTP - protocolo de transferencia de noticias en red, «Network News Transfer Protocol» - que administra grupos de noticias);
+- `syslog`: mensajes del servidor **syslogd** en sí;
+- `user`: mensajes de usuario (genéricos);
+- `uucp`: mensajes del servidor UUCP (programa de copia Unix a Unix, «Unix to Unix Copy Program», un protocolo antiguo utilizado notablemente para distribuir correo electrónico);
+- `local0` a `local7`: reservados para uso local.
+
+Cada mensaje tiene asociado también un nivel de prioridad. Aquí está la lista en orden decreciente:
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.17
+  tokens_generados=10
+  tokens_por_s=58.0
+  score_max=0.8936
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:08] Escenario: debian | Pregunta: DEB_024
+Categoria: Seguridad y acceso remoto | Dificultad: Básica
+Pregunta: ¿Qué servicio recomienda el manual para la administración remota segura de servidores Debian y cuál es el archivo de configuración de su demonio?
+Referencia: Capítulos 10 y 14 (OEBPS/ch10.html, OEBPS/ch14.html)
+Respuesta esperada: Recomienda el protocolo SSH implementado por OpenSSH (paquete «openssh-server»), cuyo demonio «sshd» se configura mediante el archivo «/etc/ssh/sshd_config».
+--- Recuperados (top 3) ---
+  [1] chunk=907 score=0.8643
+      ectan información de los otros demonios y administran las tablas de enrutamiento estático de forma acorde. Los otros demonios son **bgpd**, **ospfd**, **ospf6d**, **ripd**, **ripngd**, **isisd**, etc.
+
+Los demonios se activan creando el archivo de configuración `/etc/frr/`*`daemon`*`.conf`, siendo *`daemon`* el nombre del demonio a usar, y editando el archivo de configuración `/etc/frr/daemons`. El archivo de configuración del demonio debe pertenecer al usuario y grupo `frr` con permisos de `0640` para el script `/etc/init.d/frr` o el archivo de servicio systemd `frr.service` para invocar el demonio. El paquete frr proporciona ejemplos de configuración en `/usr/share/doc/frr/examples/`.
+
+La configuración de cada uno de estos demonio necesita conocer el protocolo de enrutamiento en cuestión. No podemos describir en detalle aquí a estos protocolos, pero frr-doc provee una explicación extensa en forma de archivos **info**. Puede navegar los mismos contenidos en formato HTML en el sitio web del proyecto: Quagga:
+
+→ [http://docs.frrouting.org/en/latest/](http://docs.frrouting.org/en/latest/)
+  [2] chunk=13 score=0.8637
+      //debian-handbook.info](https://debian-handbook.info/)
+
+Resumen
+
+Un libro de referencia que presenta la distribución Debian, desde la instalación incial hasta la configuración de servicios.
+
+# Prólogo
+
+Me complace tener la oportunidad de darte la bienvenida a Debian y al Manual del Administrador Debian. Mucha gente ha elegido Debian: en torno al 10% de los servidores web de Internet corren Debian. Cuando incluimos sistemas operativos basados en Debian, este número se acerca al 20%. Debian fue seleccionado como el sistema operativo elegido para la Estación Espacial Internacional. Bien en una investigación científica puntera o bien en un proyecto para cultivar alimentos luchando contra la contaminación, Debian se usa para alimentar los ordenadores que lo hacen posible.
+
+¿Por qué Debian es actractivo para grandes corporaciones, investigadores, activistas y aficionados? Creo que la respuesta está en la flexibilidad de Debian y su comunidad.
+  [3] chunk=536 score=0.8603
+      de configuración de ejemplo en el directorio `/usr/share/doc/`*`paquete`*`/examples/`. Le pueden servir como base para su propio archivo de configuración.
+
+*NORMATIVA DEBIAN* Ubicación de los ejemplos
+
+Todos los ejemplos deben instalarse en el directorio `/usr/share/doc/`*`paquete`*`/examples/`. Éstos pueden ser archivos de configuración, código fuente de programas (un ejemplo de uso de una biblioteca) o un script de conversión de datos que el administrador puede utilizar en algunos casos (como para inicializar una base de datos). Si el ejemplo es específico a una arquitectura debe instalarse en `/usr/lib/`*`paquete`*`/examples/` y debe haber un enlace apuntando a dicho archivo en el directorio `/usr/share/doc/`*`paquete`*`/examples/`.
+
+## 7.2.2. Monitorización de lo que hacen los demonios
+
+Entender qué es lo que hace un demonio es algo más complicado, ya que no interactúa directamente con el administrador. Para revisar si el demonio está trabajando realmente necesita probarlo. Por ejemplo, para verificar el demonio Apache (servidor web), pruébelo con un pedido HTTP.
+
+*VOLVER A LOS CIMIENTOS* Demonio
+--- Respuesta LLM ---
+El manual para la administración remota segura de servidores Debian es el "Sistema de Gestión de Servicios" (SGS). El archivo de configuración de su demonio es "daemon.conf".
+--- Datos ---
+  latencia_total_s=0.76
+  tokens_generados=56
+  tokens_por_s=74.0
+  score_max=0.8643
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:08] Escenario: debian | Pregunta: DEB_025
+Categoria: Seguridad | Dificultad: Intermedia
+Pregunta: ¿Qué repositorio y qué paquete permiten gestionar y aplicar automáticamente actualizaciones de seguridad (DSA) en Debian?
+Referencia: Capítulos 6 y 14 (OEBPS/ch06.html, OEBPS/ch14.html)
+Respuesta esperada: El repositorio oficial de seguridad «security.debian.org» junto con el paquete «unattended-upgrades» para la instalación automática de actualizaciones de seguridad, complementado por herramientas de auditoría como «debsecan».
+--- Recuperados (top 3) ---
+  [1] chunk=379 score=0.8839
+      lo que diga esta sección sobre Stable también es aplicable a Oldstable ya que esta última es sólo una versión Stable más antigua que se mantiene en paralelo.
+
+### 6.1.2.1. Actualizaciones de seguridad
+
+Debian se toma la seguridad en serio. Las vulnerabilidades de software conocidas en Debian se supervisan en el [Security Bug Tracker](https://security-tracker.debian.org/) (rastreador de errores de seguridad) y normalmente se solucionan en un tiempo razonable. Las actualizaciones de seguridad no se encuentran en la red de réplicas de Debian usual sino en `security.debian.org`, un conjunto pequeño de equipos administrados por los [Administradores de sistemas de Debian](#dsa-team). Este compendio contiene las actualizaciones de seguridad preparadas por el equipo de seguridad de Debian, «Debian Security Team», y/o por los encargados de los paquetes para la distribución Stable y Oldstable.
+
+El servidor también puede contener actualizaciones de seguridad para Testing, pero esto no sucede muy a menudo ya que esas actualizaciones tienden a llegar a esa suite a través del flujo regular de actualizaciones provenientes de Unstable.
+  [2] chunk=380 score=0.8778
+      alizaciones de seguridad para Testing, pero esto no sucede muy a menudo ya que esas actualizaciones tienden a llegar a esa suite a través del flujo regular de actualizaciones provenientes de Unstable.
+
+Para incidencias serias, el equipo de seguridad publica un `Aviso de Seguridad de Debian` (en inglés `Debian Security Advisory`, DSA) y lo anuncia junto a la actualización de seguridad en la lista de correo `<`[`debian-security-announce@lists.debian.org`](mailto:debian-security-announce@lists.debian.org)`>` ([archivo](https://lists.debian.org/debian-security-announce/)).
+
+### 6.1.2.2. Actualizaciones de Stable
+
+Las actualizaciones de stable no implican riesgos de seguridad pero son consideradas suficientemente importantes como para ser enviadas a los usuarios antes de la publicación de la siguiente versión menor de stable.
+  [3] chunk=383 score=0.8739
+      za sólo una vez cada 2 meses. El repositorio `proposed-updates` es donde se preparan las futuras actualizaciones (bajo la supervisión de los Gestores de la versión estable, «Stable Release Managers»).
+
+Las actualizaciones de seguridad y de estable documentadas en las secciones anteriores siempre son parte de este repositorio, pero también habrá otras ya que los encargados de los paquetes también tienen la oportunidad de corregir errores importantes que no justifican que se publique una nueva versión inmediatamente.
+
+Cualquiera puede utilizar este repositorio para probar esas actualizaciones antes de su publicación oficial. El extracto que sigue usa el alias `bullseye-proposed-updates` que es más explícito y más consistente ya que también existe `buster-proposed-updates` (para las actualizaciones de Oldstable):
+
+deb https://deb.debian.org/debian bullseye-proposed-updates main contrib non-free
+
+### 6.1.2.4. Retroadaptaciones para Stable
+
+El repositorio `stable-backports` contiene «retroadaptaciones de paquetes». Es término hace referencia a paquetes de software reciente que fue recompilado para una distribución antigua, generalmente para Stable.
+--- Respuesta LLM ---
+El repositorio `proposed-updates` y el paquete `bullseye-proposed-updates` permiten gestionar y aplicar automáticamente actualizaciones de seguridad (DSA) en Debian.
+--- Datos ---
+  latencia_total_s=0.75
+  tokens_generados=56
+  tokens_por_s=74.4
+  score_max=0.8839
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_026
+Categoria: Seguridad | Dificultad: Avanzada
+Pregunta: ¿Qué dos sistemas de control de acceso obligatorio (MAC) soporta el núcleo Linux en Debian para restringir las capacidades de los procesos más allá de los permisos Unix tradicionales?
+Referencia: Capítulo 14 - Seguridad (OEBPS/ch14.html)
+Respuesta esperada: AppArmor (basado en rutas de archivos y perfiles por aplicación, habilitado por defecto en Debian) y SELinux (basado en etiquetas de contexto de seguridad).
+--- Recuperados (top 3) ---
+  [1] chunk=1397 score=0.8446
+      rmor antes de cada llamada del sistema para saber si un proceso está autorizado a realizar dicha operación. A través de este mecanismo, Apparmor confina un programa a un conjunto limitado de recursos.
+
+AppArmor aplica un conjunto de reglas (un «perfil») a cada programa. El perfil aplicado por el núcleo depende de la ruta de instalación del programa a ejecutar. Al contrario que en SELinux (descrito en [Sección 14.5, "Introducción a SELinux"](ch14s05.html)), las reglas que se aplican no dependen del usuario: a todos los usuarios se les aplica el mismo juego de reglas cuando ejecutan el mismo programa (aunque en cualquier caso siguen teniéndose en cuenta los permisos de usuario tradicionales, lo que puede resultar en un comportamiento distinto).
+  [2] chunk=1414 score=0.8443
+      tc/apparmor.d/usr.sbin.dhclient-script` might be similar to `/usr/share/apparmor/extra-profiles/sbin.dhclient`, shipped in apparmor-profiles too.
+
+# 14.5. Introducción a SELinux
+
+## 14.5.1. Principios
+
+SELinux (*Linux con seguridad mejorada*: «Security Enhanced Linux») es un sistema de *control obligatorio de acceso* («Mandatory Access Control») basado en la interfaz LSM (*módulos de seguridad de Linux*: «Linux Security Modules»). En la práctica, el núcleo pregunta a SELinux antes de cada llamada al sistema para saber si un proceso está autorizado a realizar dicha operación.
+
+SELinux utiliza una serie de reglas - conocidas en conjunto como una *política* («policy») - para autorizar o denegar operaciones. Estas reglas son difíciles de crear. Afortunadamente se proporcionan dos políticas estándar (*targeted*, dirigida, y *strict*, estricta) para evitar gran parte del trabajo de configuración.
+  [3] chunk=1396 score=0.8369
+      izada de la información de seguridad. Su arquitectura modular incluye un servidor (el *gestor*, en el paquete prelude-manager), que recoge las alertas generadas por los *sensores* de diferentes tipos.
+
+Puede configurar Suricata como uno de estos sensores. Otra posibilidad es *prelude-lml* (*lacayo de monitorización de registros*: «Log Monitor Lackey»), que monitoriza los archivos de registro (de forma similar a como lo hace **logcheck**, descripto en la [Sección 14.3.1, "Monitorización de los registros con](#sect.logcheck) [**logcheck**](#sect.logcheck)["](#sect.logcheck)).
+
+# 14.4. Introducción a AppArmor
+
+## 14.4.1. Principios
+
+Apparmor es un sistema de *control obligatorio de acceso* («Mandatory Access Control» o «MAC») basado en la interfaz LSM (*módulos de seguridad de Linux*: «Linux Security Modules»). En la práctica, el núcleo pregunta a AppArmor antes de cada llamada del sistema para saber si un proceso está autorizado a realizar dicha operación. A través de este mecanismo, Apparmor confina un programa a un conjunto limitado de recursos.
+--- Respuesta LLM ---
+AppArmor y SELinux
+--- Datos ---
+  latencia_total_s=0.15
+  tokens_generados=8
+  tokens_por_s=52.3
+  score_max=0.8446
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_027
+Categoria: Servicios de red | Dificultad: Básica
+Pregunta: ¿Qué dos servicios de red se explican en el manual para compartir archivos en redes locales Unix/Linux y en entornos mixtos con clientes Windows?
+Referencia: Capítulo 11 - Servicios de red (OEBPS/ch11.html)
+Respuesta esperada: NFS (Network File System) para compartir sistemas de archivos entre máquinas Unix/Linux, y Samba para ofrecer compartición de archivos e impresoras compatible con clientes Windows mediante el protocolo SMB/CIFS.
+--- Recuperados (top 3) ---
+  [1] chunk=1040 score=0.8618
+      ariety of clients, with and without a graphical user interface, and they can also be mounted locally using the **curlftpfs** command from the similarly named package.
+
+# 11.4. Servidor de archivos NFS
+
+NFS (*sistema de archivos de red*: «Network File System») es un protocolo que permite acceso remoto a un sistema de archivos a través de la red. Todos los sistemas Unix pueden trabajar con este protocolo.
+
+*CASO ESPECÍFICO* Microsoft Windows y Recursos Compartidos NFS
+
+Cuando están involucradas las variantes más viejas o (las así llamadas) «Home», normalmente Samba ([Sección 11.5, "Configuración de espacios compartidos Windows con Samba"](ch11s05.html)) se debe usar en lugar de NFS. Soluciones modernas de Windows Server y las versiones «Pro» o «Enterprise», sin embargo, tienen la compatibilidad con NFS incorporada. Después de la instalación de los componentes "Services for NFS", se pueden acceder los recursos compartidos NFS y montarse temporal o permanentemente como cualquier otro recurso compartido de red. Tenga en cuenta los posibles problemas de codificación en los nombres de archivos.
+  [2] chunk=1052 score=0.8568
+      lo `/export/shared`), no es un directorio de primer nivel.
+
+La página de manual nfs(5) describe todas las opciones con algo de detalle.
+
+# 11.5. Configuración de espacios compartidos Windows con Samba
+
+Samba es un conjunto de herramientas que administran el protocolo SMB (también conocido como «CIFS») en Linux. Windows utiliza este protocolo para espacios compartidos de red e impresoras compartidas.
+
+Samba también puede actuar como un controlador de dominio Windows. Esta es una herramienta sobresaliente para asegurar una integración perfecta entre servidores Linux y las máquinas de escritorios en las oficinas que todavía utilizan Windows.
+
+## 11.5.1. Servidor Samba
+
+El paquete samba contiene los dos servidores principales de Samba 4: **smbd** y **nmbd**.
+
+*DOCUMENTACIÓN* Yendo más allá
+  [3] chunk=1059 score=0.8554
+      permite a una máquina Linux acceder a espacios e impresoras compartidas en Windows. Los programas necesarios se encuentran en los paquetes cifs-utils y smbclient.
+
+### 11.5.2.1. El programa smbclient
+
+El programa **smbclient** consulta servidores SMB. Puede utilizarse la opción `-U` *`usuario`*, para conectarse con el servidor bajo una identidad concreta. Con **smbclient //*****`servidor`*****/*****`espaciocompartido`*** se accede al espacio compartido de modo interactivo como si se tratara de un cliente FTP en una consola. **smbclient -L** ***`servidor`*** enumerará todos los espacios compartidos (y visibles) en un servidor.
+
+### 11.5.2.2. Montaje de espacios compartidos de Windows
+
+El programa **mount** permite montar un espacio compartido de Windows en la jerarquía del sistema de archivos de Linux (con la ayuda de **mount.cifs** provisto por cifs-utils).
+
+Ejemplo 11.21. Montaje de un espacio compartido de Windows
+
+mount -t cifs //arrakis/shared /shared \ -o credentials=/etc/smb-credentials
+
+El archivo `/etc/smb-credentials` (que no debe ser accesible por usuarios) tiene el siguiente formato:
+
+username = *`usuario`* password = *`contraseña`*
+--- Respuesta LLM ---
+El manual explica los servicios de red NFS y SMB (CIFS) para compartir archivos en redes locales Unix/Linux y en entornos mixtos con clientes Windows.
+--- Datos ---
+  latencia_total_s=0.63
+  tokens_generados=46
+  tokens_por_s=72.8
+  score_max=0.8618
+  abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_028
+Categoria: Servicios de red | Dificultad: Intermedia
+Pregunta: ¿Qué agentes de transferencia de correo (MTA) y qué servidor IMAP/POP3 se abordan en el manual para desplegar una infraestructura de correo electrónico en Debian?
+Referencia: Capítulo 11 - Servicios de red (OEBPS/ch11.html)
+Respuesta esperada: Como agentes de transferencia de correo (MTA) se tratan Exim (instalado por defecto en Debian) y Postfix, mientras que Dovecot se utiliza como servidor de acceso al correo mediante los protocolos IMAP y POP3.
+--- Recuperados (top 3) ---
+  [1] chunk=945 score=0.8614
+      (protoclo sencillo de transferencia de correo: «*Simple Mail Transfer Protocol*», RFC 5321) es el protocolo que utilizan los servidores de correo para intercambiar y enrutar los correos electrónicos.
+
+Durante la instalación del paquete se realizan varias preguntas Debconf. Las respuestas permiten crear una primera versión del archivo de configuración `/etc/postfix/main.cf`.
+  [2] chunk=290 score=0.8555
+      icar paquetes reales basados en criterios lógicos y comunes (servicios provistos, compatibilidades con un programa estándar o un paquete preexistentes, etc.).
+
+#### 5.2.1.4.1. Proveyendo un «servicio»
+
+Discutamos con más detalles el primer caso con un ejemplo: se dice que todos los servicios de correo, como postfix o sendmail «proveen» el paquete virtual mail-transport-agent. Por lo tanto, cualquier paquete que necesite este servicio para funcionar (por ejemplo, un gestor de listas de correo como smartlist o sympa) simplemente indican en sus dependencias que requieren de mail-transport-agent en lugar de especificar una lista larga y aún incompleta de posibles soluciones (por ejemplo **postfix | sendmail | exim4 | ...**). Lo que es más, es inútil instalar dos servidores de correo en el mismo equipo, por lo que cada uno de estos paquetes declara un conflicto con el paquete virtual mail-transport-agent. Un conflicto de un paquete con sí mismo es ignorado por el sistema, pero esta técnica prohibirá la instalación de dos servidores de correo simultáneamente.
+
+*NORMA DEBIAN* Lista de paquetes virtuales
+  [3] chunk=185 score=0.8545
+      iar y a veces usuarios experimentados pueden haber instalado servicios «salvajes». Saber que existen le permitirá, al menos, decidir qué hacer con ellos en lugar de eliminarlos sin orden ni propósito.
+
+Por ello, es buena idea informar a sus usuarios del proyecto antes de migrar el servidor. Involucrarlos en el proyecto puede ser útil para instalar el software libre más común en sus equipos de escritorio antes de la migración, programas con los que se encontrarán luego de la migración a Debian; LibreOffice.org y la suite Mozilla son los mejores ejemplos de tales programas.
+
+### 3.2.1.1. La red y los procesos
+
+La herramienta **nmap** (en el paquete del mismo nombre) identificará rápidamente servicios de internet hospedados en un equipo conectado a la red sin siquiera necesitar iniciar sesión en el mismo. Simplemente ejecute la siguiente orden en otro equipo conectado a la misma red:
+--- Respuesta LLM ---
+No aparece en el documento
+--- Datos ---
+  latencia_total_s=0.16
+  tokens_generados=9
+  tokens_por_s=57.0
+  score_max=0.8614
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_029
+Categoria: Administración avanzada | Dificultad: Avanzada
+Pregunta: ¿Qué herramientas de automatización/gestión de configuración y de monitorización se presentan en el manual para administrar parques de servidores Debian?
+Referencia: Capítulos 12 y 13 (OEBPS/ch12.html, OEBPS/ch13.html)
+Respuesta esperada: Herramientas de gestión de configuración centralizada como Salt, Ansible o Puppet para automatizar despliegues y configuraciones, junto con sistemas de monitorización y generación de gráficas de rendimiento como Munin y Nagios.
+--- Recuperados (top 3) ---
+  [1] chunk=25 score=0.8680
+      rador.
+
+El **capítulo 7** será un paréntesis importante, describe los flujos de trabajo para usar eficientemente la documentación y para comprender rápidamente los problemas con el fin de resolverlos.
+
+Los capítulos siguientes proporcionarán una visión más detallada del sistema, empezando por la infraestructura básica y los servicios (**desde el capítulo 8 hasta el 10**) y se irá avanzado progresivamente hasta las aplicaciones de usuario en el **capítulo 13**. El **capítulo 12** trata de temas más avanzados relacionados directamente con los administradores de grandes conjuntos de equipos (incluyendo servidores), mientras que el **capítulo 14** es una breve introducción al tema más amplio que es la seguridad y proporciona algunas claves para evitar la mayoría de los problemas.
+
+El **capítulo 15** es para administradores que quieran profundizar y crear sus propios paquetes Debian. Para terminar el **capítulo 16** describe el posible futuro de Debian.
+
+*VOCABULARIO* Paquete Debian
+  [2] chunk=458 score=0.8629
+      terísticas que están detalladas en la documentación. Los mismos patrones pueden utilizarse para filtrar la lista de paquetes mostrados: presione la tecla **l** (como en *limitar*) e ingrese el patrón.
+
+Administrar la «marca automática» de los paquetes Debian (ver [Sección 6.2.7, "Seguimiento de paquetes instalados automáticamente"](#sect.automatic-tracking)) es muy sencillo con **aptitude**. Es posible navegar la lista de paquetes instalados y marcar paquetes como automáticos con **Shift**+**m** o eliminar la marca con la tecla **m**. Los «paquetes automáticos» se muestran con una «A» en la lista de paquetes. Esta funcionalidad también ofrece una forma simple de visualizar los paquetes utilizados en un equipo, sin las bibliotecas y dependencias que no le interesan. El patrón relacionado que puede utilizar con **l** (para activar el modo de filtro) es `~i!~M`. Especifica que sólo desea ver paquetes instalados (`~i`) que no están marcados como automáticos (`!~M`).
+
+*HERRAMIENTA* Utilizando **aptitude** en la línea de órdenes
+  [3] chunk=1367 score=0.8608
+      e puede utilizar para monitorizar varios aspectos de un sistema Debian. Como tal, esto completa [Sección 12.4, "Monitorización"](ch12s04.html).
+
+## 14.3.1. Monitorización de los registros con logcheck
+
+El programa **logcheck** monitoriza los archivos de registro, de forma predeterminada, cada hora. Envía los mensajes de registro inusuales en correos electrónicos al administrador para su posterior análisis.
+
+La lista de archivos a monitorizar se almacena en `/etc/logcheck/logcheck.logfiles`; los valores predeterminados funcionan bien si no modificó completamente el archivo `/etc/rsyslog.conf`.
+
+**logcheck** puede funcionar en una de tres modalidades más o menos detalladas: *paranoid*, *server* y *workstation*. El primero es *muy* detallado y, probablemente, debería restringirlo a servidores específicos como firewalls. El segundo (y predeterminado) es el modo recomendado para la mayoría de los servidores. El ultimo está diseñado para estaciones de trabajo y es aún más conciso (filtra la mayoría de los mensajes).
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.18
+  tokens_generados=10
+  tokens_por_s=54.3
+  score_max=0.8680
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 15:04:11] Escenario: debian | Pregunta: DEB_030
+Categoria: Metadatos y estructura | Dificultad: Básica
+Pregunta: ¿Cómo está organizado estructuralmente «El manual del Administrador de Debian» dentro del archivo EPUB?
+Referencia: Tabla de contenidos (OEBPS/bk01-toc.html)
+Respuesta esperada: Está estructurado en un Prólogo, un Prefacio de seis secciones, 16 capítulos numerados (desde «1. El proyecto Debian» y «2. Presentación del caso de estudio» hasta «15. Creación de un paquete Debian» y «16. Conclusión») y dos apéndices (Apéndice A y Apéndice B), además de material gráfico de apoyo.
+--- Recuperados (top 3) ---
+  [1] chunk=24 score=0.8700
+      o técnica del proyecto Debian y describe sus objetivos y organización. Estos aspectos son importantes porque definen un marco general que se completará en otros capítulos con información más concreta.
+
+Los **capítulos 2 y 3** presentan el caso de estudio en líneas generales. Llegados a este punto los lectores principiantes pueden echar un vistazo al **apéndice B**, donde pueden encontrar un breve curso que explica nociones básicas de informática, así como también los conceptos inherentes a cualquier sistema Unix.
+
+Para comenzar nuestro tema principal, lógicamente vamos a empezar con el proceso de instalación (**capítulo 4**); **los capítulos 5 y 6** darán a conocer las herramientas básicas que todo administrador de Debian utilizará, como las pertenecientes a la familia **APT** que es, en gran parte, la responsable de la excelente reputación de la distribución. Estos capítulos no son exclusivamente para profesionales, puesto que cada uno en su casa es su propio administrador.
+
+El **capítulo 7** será un paréntesis importante, describe los flujos de trabajo para usar eficientemente la documentación y para comprender rápidamente los problemas con el fin de resolverlos.
+  [2] chunk=13 score=0.8682
+      //debian-handbook.info](https://debian-handbook.info/)
+
+Resumen
+
+Un libro de referencia que presenta la distribución Debian, desde la instalación incial hasta la configuración de servicios.
+
+# Prólogo
+
+Me complace tener la oportunidad de darte la bienvenida a Debian y al Manual del Administrador Debian. Mucha gente ha elegido Debian: en torno al 10% de los servidores web de Internet corren Debian. Cuando incluimos sistemas operativos basados en Debian, este número se acerca al 20%. Debian fue seleccionado como el sistema operativo elegido para la Estación Espacial Internacional. Bien en una investigación científica puntera o bien en un proyecto para cultivar alimentos luchando contra la contaminación, Debian se usa para alimentar los ordenadores que lo hacen posible.
+
+¿Por qué Debian es actractivo para grandes corporaciones, investigadores, activistas y aficionados? Creo que la respuesta está en la flexibilidad de Debian y su comunidad.
+  [3] chunk=12 score=0.8649
+      unto con este programa debería haber recibido una copia de la Licencia Pública General GNU. Si no es así, revise [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
+
+### Mostrar su aprecio
+
+Este libro se publica bajo una licencia libre porque queremos que todos se beneficien de él. Sin embargo, mantenerlo toma tiempo y muchos esfuerzos, y apreciamos que nos agradezcan por ello. Si el libro le parece valioso, considere contribuir a su manutención continua, bien comprando una copia en papel o realizando una donación a través del sitio oficial del libro:
+
+→ [https://debian-handbook.info](https://debian-handbook.info/)
+
+Resumen
+
+Un libro de referencia que presenta la distribución Debian, desde la instalación incial hasta la configuración de servicios.
+
+# Prólogo
+--- Respuesta LLM ---
+El manual del Administrador de Debian está organizado en capítulos, cada uno con su propio contenido y referencias a otros capítulos. Los capítulos están organizados en orden alfabético, y cada capítulo tiene una sección de referencias a otros capítulos para que el lector pueda seguir el flujo de trabajo.
+--- Datos ---
+  latencia_total_s=1.31
+  tokens_generados=101
+  tokens_por_s=77.0
+  score_max=0.8700
+  abstencion_detectada=no
+
