@@ -16,3 +16,4 @@
 | 22/11/2026 | [20261122_teleco_readme_pasos.md](20261122_teleco_readme_pasos.md) | `README_teleco.md` reescrito como guía paso a paso simple para principiantes (qué es, escenarios, preparar, corpora, ejecutar, detener, resultados). |
 | 23/11/2026 | [20261123_gitignore_py_outputs.md](20261123_gitignore_py_outputs.md) | Añadidos a `.gitignore` los archivos generados por los scripts Python (.py). |
 | 23/11/2026 | [20261123_untrack_gitignore_files.md](20261123_untrack_gitignore_files.md) | Desseguimiento de los archivos que aparecen en `.gitignore` (`git rm --cached`). |
+| 23/11/2026 | [20261123_readme_teleco_process.md](20261123_readme_teleco_process.md) | `README_teleco.md`: proceso completo de uso del repositorio y qué hace cada script (.py). |
