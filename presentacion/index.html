@@ -108,39 +108,7 @@
       border-radius: 8px;
     }
 
-    /* Floating Top Timer */
-    .top-timer-bar {
-      position: fixed;
-      top: 12px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(51, 65, 85, 0.7);
-      backdrop-filter: blur(8px);
-      padding: 4px 10px;
-      border-radius: 9999px;
-      z-index: 50;
-      font-family: monospace;
-      font-size: 0.95rem;
-    }
-    .top-timer-display { font-weight: bold; color: var(--accent); }
-    .time-warn { color: var(--warning); }
-    .time-danger { color: var(--danger); animation: pulse 1s infinite; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .mini-btn {
-      background: rgba(51, 65, 85, 0.5);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 2px 7px;
-      border-radius: 9999px;
-      font-size: 0.72rem;
-      cursor: pointer;
-    }
-    .mini-btn:hover { background: var(--accent); color: #000; }
-
-    /* Floating Bottom Bar (Slide Counter & Speaker) */
+    /* Floating Bottom Bar (Slide Counter) */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -148,30 +116,14 @@
       right: 0;
       height: 36px;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
       padding: 0 24px;
-      background: rgba(11, 17, 32, 0.85);
+      background: rgba(11, 17, 32, 0.75);
       backdrop-filter: blur(6px);
-      border-top: 1px solid rgba(51, 65, 85, 0.5);
       z-index: 50;
       font-size: 0.85rem;
       color: var(--text-muted);
-    }
-    .speaker-tag {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-weight: 500;
-      color: #94a3b8;
-    }
-    .speaker-name {
-      background: #1e3a5f;
-      color: #7dd3fc;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-weight: 600;
-      font-size: 0.78rem;
     }
     .page-counter-box {
       display: flex;
@@ -216,14 +168,6 @@
   </style>
 </head>
 <body>
-
-  <!-- Top Timer (Minimalist & Floating) -->
-  <div class="top-timer-bar">
-    <span>⏱️</span>
-    <span class="top-timer-display" id="timeDisplay">10:00</span>
-    <button class="mini-btn" id="startBtn">Iniciar</button>
-    <button class="mini-btn" id="resetBtn">Reset</button>
-  </div>
 
   <main id="mainContainer">
     <!-- SLIDE 1 -->
@@ -450,10 +394,6 @@
 
   <!-- Bottom Floating Bar with Slide Number 1 / 9 -->
   <div class="bottom-bar">
-    <div class="speaker-tag">
-      <span>Turno:</span>
-      <span class="speaker-name" id="speakerName">Nicolás (Contexto)</span>
-    </div>
     <div class="page-counter-box">
       <button class="nav-arrow" id="prevBtn" title="Anterior (←)">◀</button>
       <span id="slideIndicator">1 / 9</span>
@@ -472,20 +412,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const slideIndicator = document.getElementById('slideIndicator');
     const progressBar = document.getElementById('progressBar');
-    const speakerName = document.getElementById('speakerName');
     let currentSlide = 0;
-
-    const speakers = [
-      "Todo el Grupo (Portada)",
-      "Nicolás (Contexto y Stack)",
-      "Aimar (Embeddings)",
-      "Aimar (LLMs Calidad)",
-      "Nicolás / Aimar (Coste)",
-      "Todo el Grupo (Recomendaciones)",
-      "Íñigo (Plan B - 8GB VRAM)",
-      "Íñigo (Anomalías Técnicas)",
-      "Íñigo (Trazabilidad y Cierre)"
-    ];
 
     function showSlide(index) {
       if (index < 0) index = 0;
@@ -499,9 +426,6 @@
       // Update Progress Bar
       const pct = ((index + 1) / slides.length) * 100;
       progressBar.style.width = `${pct}%`;
-      
-      // Update Speaker
-      speakerName.textContent = speakers[index] || "Grupo 1";
     }
 
     prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showSlide(currentSlide - 1); });
@@ -518,8 +442,6 @@
         } else {
           document.exitFullscreen().catch(() => {});
         }
-      } else if (e.key === 't' || e.key === 'T') {
-        toggleTimer();
       }
     });
 
@@ -528,48 +450,6 @@
       if (!window.getSelection().toString() && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
         showSlide(currentSlide + 1);
       }
-    });
-
-    // 10-Minute Timer
-    let timeLeft = 600;
-    let timerId = null;
-    const timeDisplay = document.getElementById('timeDisplay');
-    const startBtn = document.getElementById('startBtn');
-    const resetBtn = document.getElementById('resetBtn');
-
-    function updateTimer() {
-      const min = Math.floor(timeLeft / 60);
-      const sec = timeLeft % 60;
-      timeDisplay.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-      if (timeLeft <= 120 && timeLeft > 30) {
-        timeDisplay.className = "top-timer-display time-warn";
-      } else if (timeLeft <= 30) {
-        timeDisplay.className = "top-timer-display time-danger";
-      } else {
-        timeDisplay.className = "top-timer-display";
-      }
-      if (timeLeft > 0) timeLeft--;
-    }
-
-    function toggleTimer() {
-      if (!timerId) {
-        timerId = setInterval(updateTimer, 1000);
-        startBtn.textContent = "Pausar";
-      } else {
-        clearInterval(timerId);
-        timerId = null;
-        startBtn.textContent = "Reanudar";
-      }
-    }
-
-    startBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleTimer(); });
-    resetBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      clearInterval(timerId);
-      timerId = null;
-      timeLeft = 600;
-      updateTimer();
-      startBtn.textContent = "Iniciar";
     });
   </script>
 </body>
