@@ -76,11 +76,13 @@ def cargar_json(ruta):
 
 
 def titulos_de(chunk):
-    """Lista de titulos de seccion de un chunk (campo plano o metadatos Docling)."""
-    if chunk.get("titulos"):
-        return [str(t) for t in chunk["titulos"]]
+    """Lista de titulos de seccion de un chunk (plano, Docling o BOE)."""
     meta = chunk.get("metadatos") or {}
-    return [str(t) for t in (meta.get("headings") or [])]
+    for fuente in (chunk.get("titulos"), chunk.get("headings"), meta.get("headings")):
+        if fuente:
+            return [str(t) for t in fuente]
+    articulo = chunk.get("articulo")
+    return [str(articulo)] if articulo else []
 
 
 def texto_a_indexar(chunk, incluir_titulos):
@@ -115,6 +117,8 @@ class EmbedderST:
         self.max_seq_length = int(self.model.max_seq_length)
         self.batch_size = int(cfg.get("batch_size", 32))
         self.normalizar = bool(cfg.get("normalizar", True))
+        self.default_prompt_name = getattr(self.model, "default_prompt_name", None)
+        self.prompts = getattr(self.model, "prompts", None)
         self.parametros = sum(p.numel() for p in self.model.parameters())
         _dim = getattr(self.model, "get_embedding_dimension", None) or \
             self.model.get_sentence_embedding_dimension
@@ -142,6 +146,10 @@ class EmbedderST:
             self.torch.cuda.max_memory_reserved() / gb,
         )
 
+    def prompt_por_defecto(self):
+        return {"default_prompt_name": self.default_prompt_name,
+                "prompts": self.prompts}
+
     def contar_truncados(self, textos):
         tok = self.model.tokenizer
         ids = tok(textos, add_special_tokens=True, truncation=False)["input_ids"]
@@ -165,6 +173,8 @@ class EmbedderDummy:
         self.dimension = 512
         self.parametros = 0
         self.max_seq_length = None
+        self.default_prompt_name = None
+        self.prompts = None
         self.versiones = {}
 
     def sincronizar(self):
@@ -175,6 +185,9 @@ class EmbedderDummy:
 
     def pico_vram_gb(self):
         return None, None
+
+    def prompt_por_defecto(self):
+        return {"default_prompt_name": None, "prompts": None}
 
     def contar_truncados(self, textos):
         return 0, max(len(t.split()) for t in textos)
@@ -420,6 +433,14 @@ def main():
         carga_s = time.perf_counter() - t0
         emb.reiniciar_pico_vram()
 
+        avisos_config = []
+        if pref_q and emb.default_prompt_name:
+            avisos_config.append(
+                "El modelo trae prompt por defecto "
+                f"'{emb.default_prompt_name}' y ademas se aplica prefijo_consulta; "
+                "podria duplicarse la instruccion."
+            )
+
         # calentamiento (no se cuenta): evita medir la inicializacion de CUDA
         emb.codificar([pref_doc + d for d in docs[:8]])
         emb.sincronizar()
@@ -468,6 +489,7 @@ def main():
             "parametros": emb.parametros,
             "dimension": emb.dimension,
             "max_seq_length": emb.max_seq_length,
+            "prompt_por_defecto_del_modelo": emb.prompt_por_defecto(),
             "versiones": {"python": platform.python_version(), "numpy": np.__version__,
                           **emb.versiones},
             "chunks_fichero": str(args.chunks),
@@ -508,7 +530,7 @@ def main():
             "chunks_truncados_por_limite": truncados,
             "max_tokens_de_un_chunk": max_tokens,
         },
-        "avisos": avisos,
+        "avisos": avisos_config + avisos,
         "detalle": detalle,
     }
     ruta_json = salida / f"{base}.json"
@@ -522,9 +544,10 @@ def main():
           f"(n={m['n_preguntas_con_respuesta']})")
     print(f"Indexado: {indexado_s:.2f} s | indice: {indice_mb:.2f} MB | "
           f"chunks truncados: {truncados}")
-    if avisos:
+    avisos_todos = avisos_config + avisos
+    if avisos_todos:
         print("AVISOS:")
-        for a in avisos:
+        for a in avisos_todos:
             print("  -", a)
     if truncados:
         print("ATENCION: hay chunks mas largos que el limite del modelo; "

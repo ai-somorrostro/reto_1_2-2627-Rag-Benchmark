@@ -1,0 +1,7 @@
+{
+  "prefijo_consulta": "",
+  "prefijo_documento": "",
+  "max_seq_length": 8192,
+  "batch_size": 32,
+  "normalizar": true
+}

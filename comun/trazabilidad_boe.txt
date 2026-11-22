@@ -1,0 +1,6 @@
+Versión de Docling: 2.150.1
+Documento fuente: BOE-A-2015-11430-consolidado.pdf (páginas 8-97, sin índice, cabeceras ni pies)
+Estrategia: HybridChunker (merge_peers=True)
+Tokenizador: BAAI/bge-m3
+Tamaño máximo de chunk: 450 tokens
+Total de chunks generados: 268

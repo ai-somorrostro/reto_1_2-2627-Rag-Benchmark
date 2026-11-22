@@ -1,0 +1,16 @@
+﻿pregunta_id,tipo,modelo,correccion_0_2,fiel_si_no,se_abstiene_si_no_na,formato_idioma_si_no,puntuado_por,nota_para_revisar
+q_deb_01,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,correcto pero solo 'apt update'; sin sección
+q_deb_02,directa,HuggingFaceTB/SmolLM3-3B,0,no,no,no,BORRADOR de Claude - validar a mano,dice que remove elimina también la configuración (es al revés)
+q_deb_03,directa,HuggingFaceTB/SmolLM3-3B,0,si,si,si,BORRADOR de Claude - validar a mano,FALSA ABSTENCIÓN: el buscador NO trajo el fragmento
+q_deb_04,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,REVISAR: ¿cita sección? respuesta cortada
+q_deb_05,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,apt-get build-dep; sin sección visible
+q_deb_06,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,sin sección visible
+q_deb_07,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,sin sección visible
+q_deb_08,directa,HuggingFaceTB/SmolLM3-3B,0,no,no,no,BORRADOR de Claude - validar a mano,inventa /opt/ (es /usr/local/); el buscador NO trajo el fragmento
+q_deb_09,combinada,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,REVISAR: respuesta larga
+q_deb_10,combinada,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,df -h correcto; sin sección visible
+q_deb_11,combinada,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,REVISAR: se corta antes de kill -TERM
+q_deb_12,combinada,HuggingFaceTB/SmolLM3-3B,0,si,si,si,BORRADOR de Claude - validar a mano,FALSA ABSTENCIÓN: el buscador NO trajo el fragmento
+q_deb_13,sin_respuesta,HuggingFaceTB/SmolLM3-3B,2,si,si,si,BORRADOR de Claude - validar a mano,
+q_deb_14,sin_respuesta,HuggingFaceTB/SmolLM3-3B,2,si,si,si,BORRADOR de Claude - validar a mano,
+q_deb_15,sin_respuesta,HuggingFaceTB/SmolLM3-3B,2,si,si,si,BORRADOR de Claude - validar a mano,

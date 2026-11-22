@@ -1,0 +1,549 @@
+{
+  "meta": {
+    "fecha_hora": "2026-11-22T14:52:41",
+    "modelo": "sendoa/modelos/embeddinggemma-300m",
+    "backend": "st",
+    "escenario": "boe",
+    "parametros": 307581696,
+    "dimension": 768,
+    "max_seq_length": 2048,
+    "prompt_por_defecto_del_modelo": {
+      "default_prompt_name": null,
+      "prompts": {
+        "query": "task: search result | query: ",
+        "document": "title: none | text: ",
+        "BitextMining": "task: search result | query: ",
+        "Clustering": "task: clustering | query: ",
+        "Classification": "task: classification | query: ",
+        "InstructionRetrieval": "task: code retrieval | query: ",
+        "MultilabelClassification": "task: classification | query: ",
+        "PairClassification": "task: sentence similarity | query: ",
+        "Reranking": "task: search result | query: ",
+        "Retrieval": "task: search result | query: ",
+        "Retrieval-query": "task: search result | query: ",
+        "Retrieval-document": "title: none | text: ",
+        "STS": "task: sentence similarity | query: ",
+        "Summarization": "task: summarization | query: "
+      }
+    },
+    "versiones": {
+      "python": "3.12.3",
+      "numpy": "2.5.5",
+      "torch": "2.15.0+cu132",
+      "sentence_transformers": "6.3.0",
+      "transformers": "5.23.0"
+    },
+    "chunks_fichero": "comun/chunks_boe.json",
+    "chunks_sha256": "97b4ae1fb58218ddbfc812119f7b417b1f951a478b1d966eb216149faf0c2faf",
+    "golden_fichero": "comun/golden_set_boe.json",
+    "golden_sha256": "b48526d873b95572ecfd7d586e5dff2c97fe786d321182fcf9213120d2d39a53",
+    "n_chunks": 268,
+    "n_preguntas": 15,
+    "comando": "sendoa/eval_retrieval.py --modelo sendoa/modelos/embeddinggemma-300m --escenario boe --chunks comun/chunks_boe.json --golden comun/golden_set_boe.json --config sendoa/config_gemma.json --salida sendoa/resultados_oficiales --turno-exclusivo"
+  },
+  "config": {
+    "prefijo_consulta": "task: search result | query: ",
+    "prefijo_documento": "title: none | text: ",
+    "criterio_combinadas": "todos",
+    "incluir_titulos": false,
+    "extra": {
+      "max_seq_length": 2048,
+      "batch_size": 32,
+      "normalizar": true
+    }
+  },
+  "metricas": {
+    "recall@1": 0.4166666666666667,
+    "recall@3": 0.9166666666666666,
+    "recall@5": 0.9166666666666666,
+    "mrr": 0.8472222222222222,
+    "n_preguntas_con_respuesta": 12,
+    "por_tipo": {
+      "directa": {
+        "recall@1": 0.625,
+        "recall@3": 1.0,
+        "recall@5": 1.0,
+        "mrr": 0.7708333333333333,
+        "n": 8
+      },
+      "combinada": {
+        "recall@1": 0.0,
+        "recall@3": 0.75,
+        "recall@5": 0.75,
+        "mrr": 1.0,
+        "n": 4
+      }
+    }
+  },
+  "coste": {
+    "carga_modelo_s": 56.685,
+    "indexado_s": 4.23,
+    "consultas_s": 0.053,
+    "indice_mb": 0.785,
+    "vram_pico_torch_gb": 1.593,
+    "vram_reservada_pico_torch_gb": 2.17,
+    "vram_pico_nvidia_smi_gb": 2.489,
+    "vram_pico_mem_get_info_gb": 2.488,
+    "vram_base_mem_get_info_gb": 0.279,
+    "vram_muestreo_error": null,
+    "turno_exclusivo": true,
+    "chunks_truncados_por_limite": 0,
+    "max_tokens_de_un_chunk": 491
+  },
+  "avisos": [],
+  "detalle": [
+    {
+      "id": "q_boe_01",
+      "tipo": "directa",
+      "pregunta": "¿A partir de qué edad mínima se permite trabajar por cuenta ajena y en qué único supuesto excepcional puede autorizarse hacerlo antes?",
+      "top5": [
+        {
+          "chunk": "boe_0012",
+          "puntuacion": 0.56791
+        },
+        {
+          "chunk": "boe_0013",
+          "puntuacion": 0.55378
+        },
+        {
+          "chunk": "boe_0251",
+          "puntuacion": 0.47537
+        },
+        {
+          "chunk": "boe_0089",
+          "puntuacion": 0.4597
+        },
+        {
+          "chunk": "boe_0227",
+          "puntuacion": 0.44498
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_02",
+      "tipo": "directa",
+      "pregunta": "¿Cuál es la duración máxima permitida para un pacto de no competencia una vez extinguido el contrato de trabajo, tanto para los técnicos como para el resto de trabajadores?",
+      "top5": [
+        {
+          "chunk": "boe_0056",
+          "puntuacion": 0.7044
+        },
+        {
+          "chunk": "boe_0037",
+          "puntuacion": 0.57666
+        },
+        {
+          "chunk": "boe_0039",
+          "puntuacion": 0.54537
+        },
+        {
+          "chunk": "boe_0168",
+          "puntuacion": 0.52351
+        },
+        {
+          "chunk": "boe_0040",
+          "puntuacion": 0.52277
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_03",
+      "tipo": "directa",
+      "pregunta": "¿Cuántas horas retribuidas al año corresponden para formación profesional vinculada a la actividad de la empresa y durante cuántos años como máximo se pueden acumular?",
+      "top5": [
+        {
+          "chunk": "boe_0020",
+          "puntuacion": 0.64081
+        },
+        {
+          "chunk": "boe_0249",
+          "puntuacion": 0.61577
+        },
+        {
+          "chunk": "boe_0058",
+          "puntuacion": 0.59358
+        },
+        {
+          "chunk": "boe_0022",
+          "puntuacion": 0.59266
+        },
+        {
+          "chunk": "boe_0019",
+          "puntuacion": 0.592
+        }
+      ],
+      "posicion_primer_relevante": 3,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_04",
+      "tipo": "directa",
+      "pregunta": "¿Qué porcentaje máximo de las percepciones salariales de una persona trabajadora puede abonarse en especie?",
+      "top5": [
+        {
+          "chunk": "boe_0061",
+          "puntuacion": 0.56489
+        },
+        {
+          "chunk": "boe_0064",
+          "puntuacion": 0.49724
+        },
+        {
+          "chunk": "boe_0070",
+          "puntuacion": 0.45728
+        },
+        {
+          "chunk": "boe_0142",
+          "puntuacion": 0.45232
+        },
+        {
+          "chunk": "boe_0143",
+          "puntuacion": 0.44538
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_05",
+      "tipo": "directa",
+      "pregunta": "¿Qué porcentaje de recargo por demora se aplica cuando la empresa se retrasa en el abono del salario?",
+      "top5": [
+        {
+          "chunk": "boe_0065",
+          "puntuacion": 0.53374
+        },
+        {
+          "chunk": "boe_0064",
+          "puntuacion": 0.50975
+        },
+        {
+          "chunk": "boe_0085",
+          "puntuacion": 0.45408
+        },
+        {
+          "chunk": "boe_0165",
+          "puntuacion": 0.43752
+        },
+        {
+          "chunk": "boe_0070",
+          "puntuacion": 0.4259
+        }
+      ],
+      "posicion_primer_relevante": 2,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_06",
+      "tipo": "directa",
+      "pregunta": "¿Qué tipos de sanciones tiene expresamente prohibido imponer la empresa a una persona trabajadora por incumplimientos laborales?",
+      "top5": [
+        {
+          "chunk": "boe_0167",
+          "puntuacion": 0.69374
+        },
+        {
+          "chunk": "boe_0169",
+          "puntuacion": 0.5886
+        },
+        {
+          "chunk": "boe_0160",
+          "puntuacion": 0.57598
+        },
+        {
+          "chunk": "boe_0085",
+          "puntuacion": 0.54469
+        },
+        {
+          "chunk": "boe_0054",
+          "puntuacion": 0.53948
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_07",
+      "tipo": "directa",
+      "pregunta": "¿De cuántos días hábiles dispone una persona trabajadora para impugnar un despido y cuándo caduca ese plazo?",
+      "top5": [
+        {
+          "chunk": "boe_0152",
+          "puntuacion": 0.59784
+        },
+        {
+          "chunk": "boe_0124",
+          "puntuacion": 0.57481
+        },
+        {
+          "chunk": "boe_0168",
+          "puntuacion": 0.56615
+        },
+        {
+          "chunk": "boe_0161",
+          "puntuacion": 0.54914
+        },
+        {
+          "chunk": "boe_0164",
+          "puntuacion": 0.54373
+        }
+      ],
+      "posicion_primer_relevante": 3,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_08",
+      "tipo": "directa",
+      "pregunta": "¿En qué plazos prescriben las faltas leves, graves y muy graves de los trabajadores desde que la empresa tiene conocimiento de ellas?",
+      "top5": [
+        {
+          "chunk": "boe_0169",
+          "puntuacion": 0.72289
+        },
+        {
+          "chunk": "boe_0167",
+          "puntuacion": 0.64228
+        },
+        {
+          "chunk": "boe_0153",
+          "puntuacion": 0.53056
+        },
+        {
+          "chunk": "boe_0103",
+          "puntuacion": 0.505
+        },
+        {
+          "chunk": "boe_0148",
+          "puntuacion": 0.50274
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_09",
+      "tipo": "combinada",
+      "pregunta": "En una empresa con exactamente cincuenta trabajadores en su centro de trabajo, ¿a partir de qué porcentaje de brecha salarial entre sexos debe justificarse la diferencia en el registro retributivo y cuántos miembros componen su comité de empresa?",
+      "top5": [
+        {
+          "chunk": "boe_0063",
+          "puntuacion": 0.61884
+        },
+        {
+          "chunk": "boe_0180",
+          "puntuacion": 0.57284
+        },
+        {
+          "chunk": "boe_0172",
+          "puntuacion": 0.54937
+        },
+        {
+          "chunk": "boe_0189",
+          "puntuacion": 0.51259
+        },
+        {
+          "chunk": "boe_0174",
+          "puntuacion": 0.5078
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_10",
+      "tipo": "combinada",
+      "pregunta": "¿Cuántas mensualidades completas adeudadas en un año permiten al trabajador pedir la extinción indemnizada de su contrato, y puede la empresa extinguir el contrato por causas objetivas alegando una ineptitud previa al cumplimiento del periodo de prueba?",
+      "top5": [
+        {
+          "chunk": "boe_0155",
+          "puntuacion": 0.65789
+        },
+        {
+          "chunk": "boe_0156",
+          "puntuacion": 0.6396
+        },
+        {
+          "chunk": "boe_0145",
+          "puntuacion": 0.63356
+        },
+        {
+          "chunk": "boe_0158",
+          "puntuacion": 0.61567
+        },
+        {
+          "chunk": "boe_0142",
+          "puntuacion": 0.61524
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_11",
+      "tipo": "combinada",
+      "pregunta": "¿Con qué antelación mínima debe comunicar la persona trabajadora a la empresa el disfrute del permiso parental de hasta ocho semanas, y con cuántas horas mínimas de antelación debe comunicarse la convocatoria de una asamblea de trabajadores?",
+      "top5": [
+        {
+          "chunk": "boe_0140",
+          "puntuacion": 0.57985
+        },
+        {
+          "chunk": "boe_0087",
+          "puntuacion": 0.53233
+        },
+        {
+          "chunk": "boe_0086",
+          "puntuacion": 0.52724
+        },
+        {
+          "chunk": "boe_0076",
+          "puntuacion": 0.52114
+        },
+        {
+          "chunk": "boe_0202",
+          "puntuacion": 0.52109
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": false
+    },
+    {
+      "id": "q_boe_12",
+      "tipo": "combinada",
+      "pregunta": "¿A partir de cuántos trabajadores en un centro de trabajo se constituye un comité de empresa en lugar de delegados de personal, y cuántos delegados corresponden si hay cuarenta empleados?",
+      "top5": [
+        {
+          "chunk": "boe_0171",
+          "puntuacion": 0.66806
+        },
+        {
+          "chunk": "boe_0180",
+          "puntuacion": 0.61812
+        },
+        {
+          "chunk": "boe_0172",
+          "puntuacion": 0.61564
+        },
+        {
+          "chunk": "boe_0206",
+          "puntuacion": 0.56089
+        },
+        {
+          "chunk": "boe_0187",
+          "puntuacion": 0.55636
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_boe_13",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cuál es la cuantía exacta en euros del Salario Mínimo Interprofesional mensual fijada para el año en curso?",
+      "top5": [
+        {
+          "chunk": "boe_0062",
+          "puntuacion": 0.58593
+        },
+        {
+          "chunk": "boe_0061",
+          "puntuacion": 0.4479
+        },
+        {
+          "chunk": "boe_0068",
+          "puntuacion": 0.41104
+        },
+        {
+          "chunk": "boe_0064",
+          "puntuacion": 0.38452
+        },
+        {
+          "chunk": "boe_0070",
+          "puntuacion": 0.38314
+        }
+      ]
+    },
+    {
+      "id": "q_boe_14",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Qué porcentaje de retención de IRPF se aplica en la nómina sobre las gratificaciones extraordinarias?",
+      "top5": [
+        {
+          "chunk": "boe_0066",
+          "puntuacion": 0.50136
+        },
+        {
+          "chunk": "boe_0245",
+          "puntuacion": 0.37732
+        },
+        {
+          "chunk": "boe_0062",
+          "puntuacion": 0.37143
+        },
+        {
+          "chunk": "boe_0079",
+          "puntuacion": 0.37083
+        },
+        {
+          "chunk": "boe_0080",
+          "puntuacion": 0.36459
+        }
+      ]
+    },
+    {
+      "id": "q_boe_15",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cuál es el importe mínimo por kilómetro que debe abonar la empresa en concepto de dietas y kilometraje por desplazamiento?",
+      "top5": [
+        {
+          "chunk": "boe_0095",
+          "puntuacion": 0.49008
+        },
+        {
+          "chunk": "boe_0099",
+          "puntuacion": 0.44228
+        },
+        {
+          "chunk": "boe_0100",
+          "puntuacion": 0.42856
+        },
+        {
+          "chunk": "boe_0040",
+          "puntuacion": 0.4138
+        },
+        {
+          "chunk": "boe_0085",
+          "puntuacion": 0.41251
+        }
+      ]
+    }
+  ]
+}

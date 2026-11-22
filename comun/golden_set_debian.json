@@ -1,0 +1,135 @@
+[
+  {
+    "id": "q_deb_01",
+    "tipo": "directa",
+    "pregunta": "Antes de instalar paquetes con APT, ¿qué orden refresca la lista de paquetes disponibles?",
+    "respuesta_esperada": "Hay que ejecutar apt update: descarga los ficheros Packages, Sources y de traducción, normalmente comprimidos. Si se instala desde un juego de CD-ROM/DVD no hay descarga y la operación es muy rápida.",
+    "chunks_correctos": [
+      "chunk_debian_283"
+    ]
+  },
+  {
+    "id": "q_deb_02",
+    "tipo": "directa",
+    "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con aptitude remove y con aptitude purge?",
+    "respuesta_esperada": "apt remove (o aptitude remove) elimina el paquete pero conserva los archivos de configuración; apt purge (o aptitude purge, dpkg -P) realiza una desinstalación completa y elimina también esos archivos de configuración.",
+    "chunks_correctos": [
+      "chunk_debian_285"
+    ]
+  },
+  {
+    "id": "q_deb_03",
+    "tipo": "directa",
+    "pregunta": "¿Qué comando actualiza el sistema sin eliminar paquetes ni instalar otros nuevos?",
+    "respuesta_esperada": "Se usa aptitude safe-upgrade (o apt upgrade / apt-get upgrade), precedido de apt update: actualiza los paquetes instalados sin eliminar ninguno. apt-get es algo más estricto y se niega a instalar paquetes que no estaban instalados previamente.",
+    "chunks_correctos": [
+      "chunk_debian_291"
+    ]
+  },
+  {
+    "id": "q_deb_04",
+    "tipo": "directa",
+    "pregunta": "¿Cómo busco paquetes por palabra clave y veo luego la ficha de uno concreto desde la terminal?",
+    "respuesta_esperada": "Con apt-cache search palabra_clave para buscar y apt-cache show paquete para ver su descripción, dependencias y responsable. apt search, apt show, aptitude search y aptitude show funcionan igual.",
+    "chunks_correctos": [
+      "chunk_debian_308"
+    ]
+  },
+  {
+    "id": "q_deb_05",
+    "tipo": "directa",
+    "pregunta": "¿Qué orden instala de golpe las dependencias de compilación de un paquete fuente?",
+    "respuesta_esperada": "apt-get build-dep paquete-fuente instala todos los paquetes mencionados en los campos Build-Depends, siempre que la distribución aparezca en una línea deb-src de /etc/apt/sources.list.",
+    "chunks_correctos": [
+      "chunk_debian_1047"
+    ]
+  },
+  {
+    "id": "q_deb_06",
+    "tipo": "directa",
+    "pregunta": "¿Para qué sirve fakeroot cuando se construye un paquete Debian?",
+    "respuesta_esperada": "Permite ejecutar un programa dándole la impresión de que corre como root y crea archivos con dueños y permisos arbitrarios, sin conceder privilegios reales. Por eso dpkg-buildpackage lo emplea por defecto para preparar paquetes.",
+    "chunks_correctos": [
+      "chunk_debian_1049"
+    ]
+  },
+  {
+    "id": "q_deb_07",
+    "tipo": "directa",
+    "pregunta": "¿Qué me dice la orden id cuando la ejecuto en una sesión?",
+    "respuesta_esperada": "Muestra la identidad del usuario que ejecuta la sesión junto con la lista de grupos a los que pertenece; sirve para comprobar permisos sobre archivos o dispositivos.",
+    "chunks_correctos": [
+      "chunk_debian_1121"
+    ]
+  },
+  {
+    "id": "q_deb_08",
+    "tipo": "directa",
+    "pregunta": "¿Dónde debe instalar el administrador sus propias aplicaciones para no pisar archivos gestionados por dpkg?",
+    "respuesta_esperada": "En /usr/local/, el directorio cuyo propósito es albergar programas compilados e instalados manualmente; así se evita sobrescribir archivos instalados por los paquetes Debian.",
+    "chunks_correctos": [
+      "chunk_debian_126"
+    ]
+  },
+  {
+    "id": "q_deb_09",
+    "tipo": "combinada",
+    "pregunta": "Al instalar un paquete .deb, ¿en qué se diferencian dpkg y apt?",
+    "respuesta_esperada": "dpkg es el programa que maneja los archivos .deb: los extrae, analiza y descomprime. APT es un grupo de programas de más alto nivel que instala o elimina paquetes manteniendo satisfechas las dependencias, actualiza la lista y el sistema, y evalúa los paquetes como un todo para producir la mejor combinación.",
+    "chunks_correctos": [
+      "chunk_debian_183",
+      "chunk_debian_258"
+    ]
+  },
+  {
+    "id": "q_deb_10",
+    "tipo": "combinada",
+    "pregunta": "En una salida de df aparece /dev/sda5 montado en /home con un 83 % de uso: ¿qué utilidad produjo ese dato y cómo pedir cifras más legibles?",
+    "respuesta_esperada": "La salida procede de df (disk free), que reporta el espacio disponible en cada disco montado en el sistema de archivos; con la opción -h (human readable) los tamaños se muestran en unidades legibles, normalmente mebibytes o gibibytes.",
+    "chunks_correctos": [
+      "chunk_debian_1120",
+      "chunk_debian_796"
+    ]
+  },
+  {
+    "id": "q_deb_11",
+    "tipo": "combinada",
+    "pregunta": "Detecté un proceso sospechoso al comparar los procesos de los usuarios con las sesiones activas. ¿Cómo obtengo su identificador y cómo le pido que termine de forma normal?",
+    "respuesta_esperada": "ps auxw muestra todos los procesos con la identidad de su usuario y, cotejado con who o w, permite detectar servicios no declarados. Con ps aux se obtiene el pid; kill -TERM pid pide una terminación ordenada, mientras que kill -KILL pid la fuerza.",
+    "chunks_correctos": [
+      "chunk_debian_123",
+      "chunk_debian_1119"
+    ]
+  },
+  {
+    "id": "q_deb_12",
+    "tipo": "combinada",
+    "pregunta": "Mi /etc/apt/sources.list tiene fuentes desconocidas pero debsums no detecta cambios en los archivos. ¿Puedo dar el sistema por sano y qué debería hacer?",
+    "respuesta_esperada": "No. sources.list muestra de dónde es probable que provengan los paquetes y, con muchas fuentes desconocidas, el administrador puede reinstalar el sistema. Además, dpkg --verify y debsums detectan cambios en archivos procedentes de un paquete Debian, pero son inútiles si el propio paquete está comprometido: conviene usar la verificación de firma digital de APT (digital signature verification system) e instalar únicamente desde orígenes certificados.",
+    "chunks_correctos": [
+      "chunk_debian_125",
+      "chunk_debian_970"
+    ]
+  },
+  {
+    "id": "q_deb_13",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué comando de pacman debo usar en Debian para instalar un paquete?",
+    "respuesta_esperada": "No aparece en el documento",
+    "chunks_correctos": []
+  },
+  {
+    "id": "q_deb_14",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Cómo se lanza un contenedor con docker run según este manual?",
+    "respuesta_esperada": "No aparece en el documento",
+    "chunks_correctos": []
+  },
+  {
+    "id": "q_deb_15",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué pasos sigue kubeadm para crear un clúster de Kubernetes en Debian?",
+    "respuesta_esperada": "No aparece en el documento",
+    "chunks_correctos": []
+  }
+]

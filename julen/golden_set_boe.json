@@ -1,0 +1,23 @@
+[
+  {
+    "id": "q_boe_01",
+    "tipo": "directa",
+    "pregunta": "¿Cuál es la duración máxima del periodo de prueba para un técnico titulado si el convenio colectivo no dice nada?",
+    "respuesta_esperada": "No podrá exceder de seis meses.",
+    "chunks_correctos": ["boe_0025"]
+  },
+  {
+    "id": "q_boe_09",
+    "tipo": "combinada",
+    "pregunta": "¿Con cuántos días de antelación debe preavisar la empresa un despido por causas objetivas y de cuántas horas semanales retribuidas dispone el trabajador para buscar otro empleo?",
+    "respuesta_esperada": "El preaviso es de quince días y el trabajador tiene derecho a una licencia retribuida de seis horas semanales para buscar nuevo empleo.",
+    "chunks_correctos": ["boe_0110", "boe_0111"]
+  },
+  {
+    "id": "q_boe_13",
+    "tipo": "sin_respuesta",
+    "pregunta": "¿Qué porcentaje de retención de IRPF se aplica a las indemnizaciones por despido improcedente?",
+    "respuesta_esperada": "No aparece en el documento",
+    "chunks_correctos": []
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "boe": "Qwen/Qwen3-Embedding-0.6B",
+  "debian": "sendoa/modelos/embeddinggemma-300m",
+  "criterio": "mejor Recall@5; desempate por MRR (Debian: empate 0.583, MRR 0.603 vs 0.513). Fuente: sendoa/tablas/tabla_a_*.md"
+}

@@ -1,0 +1,102 @@
+== run_fase2 ==
+2026-11-22T13:26:12+00:00
+Log: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales/run_fase2_20261122-132612.log
+
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+Se van a lanzar 6 ejecuciones oficiales (3 embeddings x 2 escenarios).
+Salida: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+>>> BAAI/bge-m3 | boe | 2026-11-22T13:26:12+00:00
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 32858.60it/s]
+Modelo: BAAI/bge-m3 | escenario: boe
+Recall@1=0.417  Recall@3=0.833  Recall@5=0.833  MRR=0.813  (n=12)
+Indexado: 7.69 s | indice: 1.05 MB | chunks truncados: 0
+Resultados: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales/BAAI_bge-m3__boe__20261122-132612.json
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+>>> BAAI/bge-m3 | debian | 2026-11-22T13:27:22+00:00
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 40826.83it/s]
+Modelo: BAAI/bge-m3 | escenario: debian
+Recall@1=0.167  Recall@3=0.417  Recall@5=0.500  MRR=0.508  (n=12)
+Indexado: 40.03 s | indice: 4.51 MB | chunks truncados: 0
+Resultados: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales/BAAI_bge-m3__debian__20261122-132722.json
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+>>> Qwen/Qwen3-Embedding-0.6B | boe | 2026-11-22T13:28:13+00:00
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   3%|▎         | 10/310 [00:00<00:07, 39.87it/s]Loading weights:   5%|▍         | 14/310 [00:00<00:08, 36.87it/s]Loading weights:   6%|▌         | 18/310 [00:00<00:15, 18.39it/s]Loading weights:  12%|█▏        | 37/310 [00:00<00:06, 42.32it/s]Loading weights:  14%|█▍        | 43/310 [00:01<00:07, 38.04it/s]Loading weights:  18%|█▊        | 57/310 [00:01<00:04, 53.20it/s]Loading weights:  21%|██▏       | 66/310 [00:01<00:04, 57.07it/s]Loading weights:  24%|██▎       | 73/310 [00:01<00:04, 53.81it/s]Loading weights:  26%|██▋       | 82/310 [00:01<00:04, 52.99it/s]Loading weights:  28%|██▊       | 88/310 [00:01<00:04, 46.31it/s]Loading weights:  30%|███       | 93/310 [00:02<00:05, 38.39it/s]Loading weights:  38%|███▊      | 117/310 [00:02<00:02, 71.93it/s]Loading weights:  41%|████      | 126/310 [00:02<00:02, 70.51it/s]Loading weights:  43%|████▎     | 134/310 [00:02<00:02, 66.42it/s]Loading weights:  46%|████▌     | 142/310 [00:02<00:03, 51.16it/s]Loading weights:  50%|█████     | 155/310 [00:03<00:02, 58.47it/s]Loading weights:  52%|█████▏    | 162/310 [00:03<00:03, 46.35it/s]Loading weights:  58%|█████▊    | 181/310 [00:03<00:02, 59.90it/s]Loading weights:  62%|██████▏   | 192/310 [00:03<00:01, 63.60it/s]Loading weights:  65%|██████▍   | 200/310 [00:03<00:01, 61.72it/s]Loading weights:  67%|██████▋   | 207/310 [00:03<00:01, 62.23it/s]Loading weights:  69%|██████▉   | 214/310 [00:04<00:01, 52.95it/s]Loading weights:  74%|███████▍  | 230/310 [00:04<00:01, 66.86it/s]Loading weights:  78%|███████▊  | 241/310 [00:04<00:01, 51.29it/s]Loading weights:  80%|███████▉  | 247/310 [00:04<00:01, 50.84it/s]Loading weights:  83%|████████▎ | 257/310 [00:04<00:00, 57.89it/s]Loading weights:  87%|████████▋ | 271/310 [00:04<00:00, 70.91it/s]Loading weights:  90%|█████████ | 279/310 [00:05<00:00, 64.36it/s]Loading weights:  94%|█████████▎| 290/310 [00:05<00:00, 63.36it/s]Loading weights: 100%|██████████| 310/310 [00:05<00:00, 57.94it/s]
+Modelo: Qwen/Qwen3-Embedding-0.6B | escenario: boe
+Recall@1=0.417  Recall@3=0.667  Recall@5=1.000  MRR=0.833  (n=12)
+Indexado: 3.27 s | indice: 1.05 MB | chunks truncados: 0
+Resultados: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales/Qwen_Qwen3-Embedding-0.6B__boe__20261122-132813.json
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+>>> Qwen/Qwen3-Embedding-0.6B | debian | 2026-11-22T13:28:34+00:00
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 11764.91it/s]
+Modelo: Qwen/Qwen3-Embedding-0.6B | escenario: debian
+Recall@1=0.250  Recall@3=0.417  Recall@5=0.583  MRR=0.513  (n=12)
+Indexado: 15.28 s | indice: 4.51 MB | chunks truncados: 0
+Resultados: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales/Qwen_Qwen3-Embedding-0.6B__debian__20261122-132834.json
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+>>> google/embeddinggemma-300m | boe | 2026-11-22T13:28:59+00:00
+Loading weights:   0%|          | 0/314 [00:00<?, ?it/s]Loading weights: 100%|██████████| 314/314 [00:00<00:00, 16804.40it/s]
+httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/google/embeddinggemma-300m/resolve/57c266a740f537b4dc058e1b0cda161fd15afa75/4_Normalize/config.json'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/eval_retrieval.py", line 559, in <module>
+    main()
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/eval_retrieval.py", line 432, in main
+    emb = Emb(args.modelo, cfg)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/eval_retrieval.py", line 109, in __init__
+    self.model = SentenceTransformer(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/util/decorators.py", line 46, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/sentence_transformer/model.py", line 207, in __init__
+    super().__init__(
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/model.py", line 290, in __init__
+    modules, self.module_kwargs = self._load_modules(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/model.py", line 1253, in _load_modules
+    return self._load_config_modules(model_name_or_path, **load_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/model.py", line 1473, in _load_config_modules
+    module = module_class.load(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/modules/normalize.py", line 62, in load
+    config = cls.load_config(
+             ^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/modules/module.py", line 209, in load_config
+    config_path = load_file_path(
+                  ^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/util/file_io.py", line 208, in load_file_path
+    return hf_hub_download(
+           ^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 266, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1047, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1194, in _hf_hub_download_to_cache_dir
+    _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1953, in _raise_on_head_call_error
+    raise head_call_error
+huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6b02ee22-5fe57064756591780938f1e0;4079b0b4-6579-48ce-9abe-9c74cda6ef8c)
+
+Cannot access gated repo for url https://huggingface.co/google/embeddinggemma-300m/resolve/57c266a740f537b4dc058e1b0cda161fd15afa75/4_Normalize/config.json.
+Access to model google/embeddinggemma-300m is restricted. You must have access to it and be authenticated to access it. Please log in.

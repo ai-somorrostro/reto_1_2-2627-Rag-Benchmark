@@ -1,0 +1,14 @@
+Documento fuente: comun/debian-handbook.epub (application/epub+zip), Manual del Administrador Debian en español
+SHA-256: 6e3ce564f26247bec4817c00a1a203086a617f7faefb36ace5d256c71993bf46
+Versión de Docling: 2.150.1 (docling-core 2.107.1)
+Estrategia: HybridChunker (merge_peers=True), no HierarchicalChunker
+Tokenizador: BAAI/bge-m3
+Tamaño máximo por chunk: 450 tokens
+Limpieza: se descartan índice/TOC, portada, fragmentos sin contenido léxico y ruido de enlaces o dígitos sueltos; los fragmentos cortos se fusionan con el siguiente siempre que quepan en 450 tokens
+Chunks finales: 1154
+Fragmentos de menos de 10 palabras: 0
+Máximo de palabras por chunk: 341
+Máximo de tokens por chunk: 443
+Chunks por encima de 450 tokens: 0
+Chunks sin títulos: 0
+Golden set: 15 preguntas (8 directas, 4 combinadas, 3 sin respuesta) remapeadas a estos chunks

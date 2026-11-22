@@ -1,0 +1,21 @@
+[2026-11-22T14:55:29+00:00] INICIO mistralai/Ministral-3-8B-Instruct-2512 debian (../sendoa/modelos/embeddinggemma-300m)
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/mistralai_Ministral-3-8B-Instruct-2512__debian__20261122-145604_puntuacion.csv
+VRAM pico (nvidia-smi): 18.23 GB
+[2026-11-22T15:02:14+00:00] FIN mistralai/Ministral-3-8B-Instruct-2512 debian
+[2026-11-22T15:02:14+00:00] INICIO Qwen/Qwen3-1.7B debian (../sendoa/modelos/embeddinggemma-300m)
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/Qwen_Qwen3-1.7B__debian__20261122-150707_puntuacion.csv
+VRAM pico (nvidia-smi): 4.05 GB
+[2026-11-22T15:08:41+00:00] FIN Qwen/Qwen3-1.7B debian
+[2026-11-22T15:08:41+00:00] INICIO HuggingFaceTB/SmolLM3-3B debian (../sendoa/modelos/embeddinggemma-300m)
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/HuggingFaceTB_SmolLM3-3B__debian__20261122-150909_puntuacion.csv
+VRAM pico (nvidia-smi): 6.7 GB
+[2026-11-22T15:12:06+00:00] FIN HuggingFaceTB/SmolLM3-3B debian
+[2026-11-22T15:12:06+00:00] INICIO Qwen/Qwen3-8B boe (Qwen/Qwen3-Embedding-0.6B)
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/Qwen_Qwen3-8B__boe__20261122-151247_puntuacion.csv
+VRAM pico (nvidia-smi): 16.57 GB
+[2026-11-22T15:16:52+00:00] FIN Qwen/Qwen3-8B boe
+[2026-11-22T15:16:52+00:00] INICIO Qwen/Qwen3-8B debian (../sendoa/modelos/embeddinggemma-300m)
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/Qwen_Qwen3-8B__debian__20261122-151742_puntuacion.csv
+VRAM pico (nvidia-smi): 16.49 GB
+[2026-11-22T15:20:45+00:00] FIN Qwen/Qwen3-8B debian
+[2026-11-22T15:20:45+00:00] COLA FINAL TERMINADA

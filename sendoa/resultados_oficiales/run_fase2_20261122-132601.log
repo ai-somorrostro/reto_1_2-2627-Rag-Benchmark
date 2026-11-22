@@ -1,0 +1,53 @@
+== run_fase2 ==
+2026-11-22T13:26:01+00:00
+Log: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales/run_fase2_20261122-132601.log
+
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+Se van a lanzar 6 ejecuciones oficiales (3 embeddings x 2 escenarios).
+Salida: /home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/resultados_oficiales
+Memoria MIG en uso: 102 MiB (umbral 1500 MiB)
+
+>>> BAAI/bge-m3 | boe | 2026-11-22T13:26:02+00:00
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/BAAI/bge-m3: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'BAAI/bge-m3'.
+Traceback (most recent call last):
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/eval_retrieval.py", line 559, in <module>
+    main()
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/eval_retrieval.py", line 432, in main
+    emb = Emb(args.modelo, cfg)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/sendoa/eval_retrieval.py", line 109, in __init__
+    self.model = SentenceTransformer(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/util/decorators.py", line 46, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/sentence_transformer/model.py", line 207, in __init__
+    super().__init__(
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/model.py", line 290, in __init__
+    modules, self.module_kwargs = self._load_modules(
+                                  ^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/model.py", line 1242, in _load_modules
+    return self._load_default_modules(model_name_or_path, **load_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/sentence_transformer/model.py", line 1286, in _load_default_modules
+    transformer_model = Transformer(
+                        ^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/util/decorators.py", line 92, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/modules/transformer.py", line 899, in __init__
+    self.model = self._load_model(
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/sentence_transformers/base/modules/transformer.py", line 2389, in _load_model
+    return model_cls.from_pretrained(model_name_or_path, config=config, **model_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 406, in from_pretrained
+    return model_class.from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 4322, in from_pretrained
+    checkpoint_files, sharded_metadata = _get_resolved_checkpoint_files(
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/g6/reto_1_2-2627-Rag-Benchmark/.venv/lib/python3.12/site-packages/transformers/modeling_utils.py", line 742, in _get_resolved_checkpoint_files
+    raise OSError(
+OSError: BAAI/bge-m3 does not appear to have a file named pytorch_model.bin or model.safetensors.

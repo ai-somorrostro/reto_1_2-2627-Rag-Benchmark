@@ -1,0 +1,16 @@
+﻿pregunta_id,tipo,modelo,correccion_0_2,fiel_si_no,se_abstiene_si_no_na,formato_idioma_si_no,puntuado_por,nota_para_revisar
+q_deb_01,directa,Qwen/Qwen3-1.7B,2,si,no,no,BORRADOR de Claude - validar a mano,no cita sección
+q_deb_02,directa,Qwen/Qwen3-1.7B,2,si,no,no,BORRADOR de Claude - validar a mano,no cita sección
+q_deb_03,directa,Qwen/Qwen3-1.7B,0,si,si,si,BORRADOR de Claude - validar a mano,FALSA ABSTENCIÓN (el buscador NO trajo el fragmento correcto)
+q_deb_04,directa,Qwen/Qwen3-1.7B,2,si,no,si,BORRADOR de Claude - validar a mano,cita sección 6.10
+q_deb_05,directa,Qwen/Qwen3-1.7B,0,si,si,si,BORRADOR de Claude - validar a mano,FALSA ABSTENCIÓN con el fragmento en el top-5
+q_deb_06,directa,Qwen/Qwen3-1.7B,2,si,no,no,BORRADOR de Claude - validar a mano,no cita sección
+q_deb_07,directa,Qwen/Qwen3-1.7B,2,si,no,no,BORRADOR de Claude - validar a mano,no cita sección
+q_deb_08,directa,Qwen/Qwen3-1.7B,0,si,si,si,BORRADOR de Claude - validar a mano,FALSA ABSTENCIÓN (el buscador NO trajo el fragmento correcto)
+q_deb_09,combinada,Qwen/Qwen3-1.7B,1,si,no,no,BORRADOR de Claude - validar a mano,"REVISAR: respuesta larga, comprobar fidelidad completa"
+q_deb_10,combinada,Qwen/Qwen3-1.7B,2,si,no,no,BORRADOR de Claude - validar a mano,no cita sección
+q_deb_11,combinada,Qwen/Qwen3-1.7B,1,si,no,no,BORRADOR de Claude - validar a mano,falta who/w y kill -KILL
+q_deb_12,combinada,Qwen/Qwen3-1.7B,0,si,si,si,BORRADOR de Claude - validar a mano,FALSA ABSTENCIÓN (el buscador NO trajo el fragmento correcto)
+q_deb_13,sin_respuesta,Qwen/Qwen3-1.7B,2,si,si,si,BORRADOR de Claude - validar a mano,
+q_deb_14,sin_respuesta,Qwen/Qwen3-1.7B,2,si,si,si,BORRADOR de Claude - validar a mano,
+q_deb_15,sin_respuesta,Qwen/Qwen3-1.7B,2,si,si,si,BORRADOR de Claude - validar a mano,

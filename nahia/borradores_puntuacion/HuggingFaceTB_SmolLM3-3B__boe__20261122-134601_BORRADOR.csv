@@ -1,0 +1,16 @@
+﻿pregunta_id,tipo,modelo,correccion_0_2,fiel_si_no,se_abstiene_si_no_na,formato_idioma_si_no,puntuado_por,nota_para_revisar
+q_boe_01,directa,HuggingFaceTB/SmolLM3-3B,1,no,no,si,BORRADOR de Claude - validar a mano,16 años bien; excepción inventada (menores independientes...) y cita Real Decreto equivocado
+q_boe_02,directa,HuggingFaceTB/SmolLM3-3B,1,no,no,si,BORRADOR de Claude - validar a mano,"dice 2 años para todos (los demás, 6 meses); cita 'art. 2.2 pacto...' inventada"
+q_boe_03,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,si,BORRADOR de Claude - validar a mano,"datos bien, art. 23"
+q_boe_04,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,si,BORRADOR de Claude - validar a mano,30% y no minorar bien; cita confusa 'artículo 3 del Artículo 26'
+q_boe_05,directa,HuggingFaceTB/SmolLM3-3B,1,no,no,si,BORRADOR de Claude - validar a mano,10% bien pero cita 'art. 3.3' (esperado art. 29)
+q_boe_06,directa,HuggingFaceTB/SmolLM3-3B,0,si,no,no,BORRADOR de Claude - validar a mano,se queda en bucle repitiendo 'Artículo 3.3'; no responde
+q_boe_07,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,si,BORRADOR de Claude - validar a mano,REVISAR: cita art. 59.3; comprobar el plazo de 20 días en el texto completo
+q_boe_08,directa,HuggingFaceTB/SmolLM3-3B,2,si,no,si,BORRADOR de Claude - validar a mano,REVISAR: cita art. 60.1; comprobar los 3 plazos
+q_boe_09,combinada,HuggingFaceTB/SmolLM3-3B,2,si,no,no,BORRADOR de Claude - validar a mano,25% y 5 miembros bien; no cita artículo
+q_boe_10,combinada,HuggingFaceTB/SmolLM3-3B,1,no,no,si,BORRADOR de Claude - validar a mano,dice que no se especifica el nº de mensualidades (art. 50: 3); 2ª parte (art. 52) bien
+q_boe_11,combinada,HuggingFaceTB/SmolLM3-3B,1,si,no,si,BORRADOR de Claude - validar a mano,REVISAR: 10 días bien; no se ve la parte de la asamblea
+q_boe_12,combinada,HuggingFaceTB/SmolLM3-3B,0,no,no,si,BORRADOR de Claude - validar a mano,dice que con 40 hay comité (es con >=50) y 'tres miembros'
+q_boe_13,sin_respuesta,HuggingFaceTB/SmolLM3-3B,1,no,no,no,BORRADOR de Claude - validar a mano,no se abstiene; cita un Real Decreto-ley inventado; no da cifra
+q_boe_14,sin_respuesta,HuggingFaceTB/SmolLM3-3B,2,si,si,si,BORRADOR de Claude - validar a mano,
+q_boe_15,sin_respuesta,HuggingFaceTB/SmolLM3-3B,2,si,si,si,BORRADOR de Claude - validar a mano,

@@ -1,0 +1,7 @@
+{
+  "prefijo_consulta": "task: search result | query: ",
+  "prefijo_documento": "title: none | text: ",
+  "max_seq_length": 2048,
+  "batch_size": 32,
+  "normalizar": true
+}

@@ -1,0 +1,7 @@
+{
+  "prefijo_consulta": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
+  "prefijo_documento": "",
+  "max_seq_length": 8192,
+  "batch_size": 32,
+  "normalizar": true
+}

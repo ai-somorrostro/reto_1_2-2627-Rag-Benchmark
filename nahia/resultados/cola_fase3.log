@@ -1,0 +1,17 @@
+[2026-11-22T13:41:46+00:00] INICIO Qwen/Qwen3-1.7B boe
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/Qwen_Qwen3-1.7B__boe__20261122-134312_puntuacion.csv
+VRAM pico (nvidia-smi): 4.01 GB
+[2026-11-22T13:44:34+00:00] FIN Qwen/Qwen3-1.7B boe
+[2026-11-22T13:44:34+00:00] INICIO Qwen/Qwen3-1.7B debian
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/Qwen_Qwen3-1.7B__debian__20261122-134457_puntuacion.csv
+VRAM pico (nvidia-smi): 4.07 GB
+[2026-11-22T13:45:49+00:00] FIN Qwen/Qwen3-1.7B debian
+[2026-11-22T13:45:49+00:00] INICIO HuggingFaceTB/SmolLM3-3B boe
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/HuggingFaceTB_SmolLM3-3B__boe__20261122-134601_puntuacion.csv
+VRAM pico (nvidia-smi): 6.8 GB
+[2026-11-22T13:48:09+00:00] FIN HuggingFaceTB/SmolLM3-3B boe
+[2026-11-22T13:48:09+00:00] INICIO HuggingFaceTB/SmolLM3-3B debian
+Listo: 15 respuestas para puntuar en /home/g6/reto_1_2-2627-Rag-Benchmark/nahia/resultados/HuggingFaceTB_SmolLM3-3B__debian__20261122-134833_puntuacion.csv
+VRAM pico (nvidia-smi): 6.67 GB
+[2026-11-22T13:49:45+00:00] FIN HuggingFaceTB/SmolLM3-3B debian
+[2026-11-22T13:49:45+00:00] COLA TERMINADA
