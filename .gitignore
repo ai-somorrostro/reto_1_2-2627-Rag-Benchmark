@@ -3,3 +3,9 @@
 BOE.md
 debian.md
 __pycache__/
+chuncks_boe.csv
+chuncks_debian.csv
+resultados_mistral-7b.txt
+resultrados_qwen2.5-3b.txt
+resultados_quen2.5b-7b.txt
+resultados_smollm2-1.7b.txt
