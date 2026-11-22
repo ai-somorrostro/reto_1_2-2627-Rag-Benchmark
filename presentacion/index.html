@@ -27,6 +27,7 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
+      user-select: none;
     }
     .badge { background: #1e3a5f; color: #7dd3fc; padding: 3px 8px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
 
@@ -40,11 +41,11 @@
     }
     .slide {
       position: absolute;
-      top: 36px; bottom: 36px; left: 48px; right: 48px;
+      top: 28px; bottom: 44px; left: 44px; right: 44px;
       opacity: 0;
       pointer-events: none;
       transform: translateY(16px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+      transition: opacity 0.25s ease, transform 0.25s ease;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -56,19 +57,19 @@
       transform: translateY(0);
     }
     h1 { font-size: 2.5rem; margin-bottom: 12px; color: #fff; line-height: 1.2; }
-    h2 { font-size: 1.8rem; margin-bottom: 20px; color: var(--accent); display: flex; align-items: center; gap: 10px; }
-    h3 { font-size: 1.2rem; margin: 12px 0 8px; color: #cbd5e1; }
-    p, li { font-size: 1.05rem; line-height: 1.6; color: #cbd5e1; }
+    h2 { font-size: 1.8rem; margin-bottom: 16px; color: var(--accent); display: flex; align-items: center; gap: 10px; }
+    h3 { font-size: 1.15rem; margin: 10px 0 6px; color: #cbd5e1; }
+    p, li { font-size: 1.02rem; line-height: 1.55; color: #cbd5e1; }
     ul { list-style: none; }
     ul li::before { content: "▹"; color: var(--accent); font-weight: bold; display: inline-block; width: 1.2em; }
     
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 12px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 12px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 10px; }
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
+      padding: 18px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.3);
     }
     .card-highlight {
@@ -78,14 +79,14 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 12px 0;
-      font-size: 0.95rem;
+      margin: 10px 0;
+      font-size: 0.9rem;
       background: var(--card-bg);
       border-radius: 8px;
       overflow: hidden;
     }
-    th, td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-    th { background: #0f172a; color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; }
+    th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background: #0f172a; color: var(--accent); font-weight: 600; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.5px; }
     tr:last-child td { border-bottom: none; }
     tr:hover td { background: rgba(56, 189, 248, 0.05); }
     .win { color: var(--success); font-weight: bold; }
@@ -97,27 +98,140 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 12px;
-      margin-top: 12px;
+      padding: 10px;
+      margin-top: 8px;
     }
     .chart-container img {
       max-width: 100%;
-      max-height: 480px;
+      max-height: 440px;
       object-fit: contain;
       border-radius: 8px;
     }
 
+    /* Floating Top Timer */
+    .top-timer-bar {
+      position: fixed;
+      top: 12px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(51, 65, 85, 0.7);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      z-index: 50;
+      font-family: monospace;
+      font-size: 0.95rem;
+    }
+    .top-timer-display { font-weight: bold; color: var(--accent); }
+    .time-warn { color: var(--warning); }
+    .time-danger { color: var(--danger); animation: pulse 1s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .mini-btn {
+      background: rgba(51, 65, 85, 0.5);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 2px 7px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      cursor: pointer;
+    }
+    .mini-btn:hover { background: var(--accent); color: #000; }
+
+    /* Floating Bottom Bar (Slide Counter & Speaker) */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 24px;
+      background: rgba(11, 17, 32, 0.85);
+      backdrop-filter: blur(6px);
+      border-top: 1px solid rgba(51, 65, 85, 0.5);
+      z-index: 50;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .speaker-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      color: #94a3b8;
+    }
+    .speaker-name {
+      background: #1e3a5f;
+      color: #7dd3fc;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+    .page-counter-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: #cbd5e1;
+      font-family: monospace;
+      font-size: 0.92rem;
+    }
+    .nav-arrow {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+    .nav-arrow:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+    
+    /* Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(51, 65, 85, 0.4);
+      z-index: 60;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      width: 11.11%;
+      transition: width 0.25s ease;
+    }
   </style>
 </head>
 <body>
 
-  <main>
+  <!-- Top Timer (Minimalist & Floating) -->
+  <div class="top-timer-bar">
+    <span>⏱️</span>
+    <span class="top-timer-display" id="timeDisplay">10:00</span>
+    <button class="mini-btn" id="startBtn">Iniciar</button>
+    <button class="mini-btn" id="resetBtn">Reset</button>
+  </div>
+
+  <main id="mainContainer">
     <!-- SLIDE 1 -->
     <div class="slide active">
       <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
         <span class="badge" style="font-size: 0.9rem; padding: 6px 14px; margin-bottom: 16px;">Práctica: Benchmark de LLMs y Embeddings Locales</span>
         <h1>Evaluación Experimental para RAG</h1>
-        <h3 style="color: var(--accent); font-weight: 400; max-width: 800px; margin-bottom: 32px;">
+        <h3 style="color: var(--accent); font-weight: 400; max-width: 800px; margin-bottom: 28px;">
           Análisis empírico de Retrieval y Generación sobre Normativa Española (BOE) y Documentación Técnica (Debian)
         </h3>
         <div class="card" style="display: inline-block; padding: 14px 28px; text-align: left;">
@@ -161,18 +275,18 @@
         <div>
           <table>
             <thead>
-              <tr><th>Escenario</th><th>Modelo</th><th>Recall@5 (Hit)</th><th>MRR</th><th>VRAM</th></tr>
+              <tr><th>Escenario</th><th>Modelo</th><th>Recall@5 (Hit)</th><th>Recall@5 (Estricto)</th><th>MRR</th><th>Indexado</th><th>VRAM</th></tr>
             </thead>
             <tbody>
-              <tr><td rowspan="3"><strong>BOE</strong></td><td>bge-m3</td><td>0.8333</td><td>0.6983</td><td>1.89 GB</td></tr>
-              <tr><td>Qwen3-Emb</td><td>0.8333</td><td>0.6991</td><td>3.51 GB</td></tr>
-              <tr style="background: rgba(16, 185, 129, 0.15);"><td class="win">harrier-oss-v1 (Ganador)</td><td class="win">1.0000</td><td class="win">0.7361</td><td>3.51 GB</td></tr>
-              <tr><td rowspan="3"><strong>Debian</strong></td><td class="win">bge-m3 (Ganador)</td><td class="win">0.8333</td><td class="win">0.6219</td><td>1.90 GB</td></tr>
-              <tr><td>Qwen3-Emb</td><td>0.7500</td><td>0.5769</td><td>3.49 GB</td></tr>
-              <tr><td>harrier-oss-v1</td><td>0.7500</td><td>0.5573</td><td>3.51 GB</td></tr>
+              <tr><td rowspan="3"><strong>BOE</strong></td><td>bge-m3</td><td>0.8333</td><td>0.5833</td><td>0.6983</td><td>1.06 s</td><td>1.89 GB</td></tr>
+              <tr><td>Qwen3-Embedding-0.6B</td><td>0.8333</td><td>0.7500</td><td>0.6991</td><td>1.59 s</td><td>3.51 GB</td></tr>
+              <tr style="background: rgba(16, 185, 129, 0.15);"><td class="win">harrier-oss-v1 (Ganador)</td><td class="win">1.0000</td><td class="win">1.0000</td><td class="win">0.7361</td><td>1.60 s</td><td>3.51 GB</td></tr>
+              <tr><td rowspan="3"><strong>Debian</strong></td><td class="win">bge-m3 (Ganador)</td><td class="win">0.8333</td><td class="win">0.6667</td><td class="win">0.6219</td><td>3.52 s</td><td>1.90 GB</td></tr>
+              <tr><td>Qwen3-Embedding-0.6B</td><td>0.7500</td><td>0.5833</td><td>0.5769</td><td>5.29 s</td><td>3.49 GB</td></tr>
+              <tr><td>harrier-oss-v1</td><td>0.7500</td><td>0.7500</td><td>0.5573</td><td>5.34 s</td><td>3.51 GB</td></tr>
             </tbody>
           </table>
-          <div class="card" style="margin-top: 14px;">
+          <div class="card" style="margin-top: 12px;">
             <p><strong>Hallazgo crítico:</strong> El ranking de MTEB no es absoluto. <em>harrier</em> es perfecto en el dominio legal (100% de recuperación), pero cae al 75% en el técnico. <em>bge-m3</em> es el único que supera el umbral en Debian gracias a su entrenamiento multilingüe técnico.</p>
           </div>
         </div>
@@ -195,14 +309,14 @@
               <tr><td>BOE</td><td>lfm3-1.7b</td><td>0.93</td><td>93 %</td><td>11 de 12</td></tr>
               <tr><td>BOE</td><td>llama3.2-3b</td><td>0.93</td><td>100 %</td><td>6 de 12</td></tr>
               <tr><td>BOE</td><td>nemotron-bolt</td><td>1.60</td><td>100 %</td><td>1 de 12</td></tr>
-              <tr style="background: rgba(16, 185, 129, 0.15);"><td>BOE</td><td class="win">qwen3.5-9b</td><td class="win">1.87</td><td class="win">100 %</td><td class="win">1 de 12</td></tr>
+              <tr style="background: rgba(16, 185, 129, 0.15);"><td>BOE</td><td class="win">qwen3.5-9b (Ganador)</td><td class="win">1.87</td><td class="win">100 %</td><td class="win">1 de 12</td></tr>
               <tr><td>Debian</td><td>lfm3-1.7b</td><td>0.93</td><td>93 %</td><td>12 de 12</td></tr>
               <tr><td>Debian</td><td>llama3.2-3b</td><td>1.07</td><td>87 %</td><td>5 de 12</td></tr>
-              <tr style="background: rgba(16, 185, 129, 0.15);"><td>Debian</td><td class="win">nemotron-bolt</td><td class="win">1.53</td><td class="win">100 %</td><td class="win">3 de 12</td></tr>
+              <tr style="background: rgba(16, 185, 129, 0.15);"><td>Debian</td><td class="win">nemotron-bolt (Ganador)</td><td class="win">1.53</td><td class="win">100 %</td><td class="win">3 de 12</td></tr>
               <tr><td>Debian</td><td>qwen3.5-9b</td><td>1.53</td><td>100 %</td><td>3 de 12</td></tr>
             </tbody>
           </table>
-          <div class="card" style="margin-top: 14px;">
+          <div class="card" style="margin-top: 12px;">
             <p><strong>Histeria de abstención:</strong> Los modelos de 1.7B y 3B se abstienen masivamente incluso cuando el chunk correcto está en el top-5. En Debian, Nemotron y Qwen empatan en corrección (1.53), pero Nemotron clava el formato de citación técnica al <strong>100%</strong> frente al 67% de Qwen.</p>
           </div>
         </div>
@@ -228,10 +342,10 @@
               <tr style="color: var(--accent);"><td>qwen3.5-9b</td><td>0.41 s</td><td>45.0 tok/s</td><td>1.35 s</td><td>14.27 GB</td></tr>
             </tbody>
           </table>
-          <div class="card" style="margin-top: 14px;">
+          <div class="card" style="margin-top: 12px;">
             <p><strong>Rendimiento en inferencia:</strong></p>
-            <ul style="margin-top: 8px; display: flex; flex-direction: column; gap: 8px;">
-              <li><code>Llama-3.2-3B</code> es el más rápido con 66 tok/s y latencia submétrica, pero inservible por su tasa de falsas abstenciones.</li>
+            <ul style="margin-top: 6px; display: flex; flex-direction: column; gap: 6px;">
+              <li><code>Llama-3.2-3B</code> es el más rápido con 66 tok/s y latencia métrica baja, pero inservible por su tasa de falsas abstenciones.</li>
               <li><code>Qwen3.5-9B</code> mantiene una velocidad sobresaliente de 45 tok/s ofreciendo la mayor calidad global del benchmark.</li>
             </ul>
           </div>
@@ -276,7 +390,7 @@
             <h3 style="color: var(--danger);">Conclusión del Grupo 1</h3>
             <p><strong>Ninguno de los modelos que supera los umbrales de calidad cabe en 8 GB de VRAM.</strong></p>
           </div>
-          <ul style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+          <ul style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
             <li><code>Qwen3.5-9B</code> (14.27 GB) y <code>Nemotron-Bolt</code> (14.80 GB) se desbordan de largo.</li>
             <li><code>LFM3-1.7B</code> (5.36 GB) y <code>Llama-3.2-3B</code> (7.07 GB) sí caben en 8 GB, pero <strong>fallan estrepitosamente en calidad</strong> (falsas abstenciones del 50% al 92%).</li>
           </ul>
@@ -297,22 +411,22 @@
       <div class="grid-3">
         <div class="card">
           <h3 style="color: var(--warning);">1. La Paradoja de Nemotron</h3>
-          <p style="font-size: 0.9rem; margin-top: 8px;">NVIDIA lo anuncia con "4B de parámetros efectivos", pero resultó ser el <strong>más lento de todos (26.7 tok/s)</strong> y consumió 14.8 GB de VRAM.</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;"><em>Causa:</em> vLLM carga los 8B completos y recurre a kernels menos optimizados (TRITON_ATTN + FP8 Marlin en Ampere).</p>
+          <p style="font-size: 0.88rem; margin-top: 6px;">NVIDIA lo anuncia con "4B de parámetros efectivos", pero resultó ser el <strong>más lento de todos (26.7 tok/s)</strong> y consumió 14.8 GB de VRAM.</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;"><em>Causa:</em> vLLM carga los 8B completos y recurre a kernels menos optimizados (TRITON_ATTN + FP8 Marlin en Ampere).</p>
         </div>
         <div class="card">
           <h3 style="color: var(--warning);">2. Inconsistencia de Embeddings</h3>
-          <p style="font-size: 0.9rem; margin-top: 8px;"><em>Harrier</em> arrasa en BOE (100% Recall) pero es el peor en Debian (75%).</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;"><em>Lección:</em> MTEB no predice el comportamiento ante jerga mixta en inglés/español. Hay que medir siempre sobre el corpus destino.</p>
+          <p style="font-size: 0.88rem; margin-top: 6px;"><em>Harrier</em> arrasa en BOE (100% Recall) pero es el peor en Debian (75%).</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;"><em>Lección:</em> MTEB no predice el comportamiento ante jerga mixta en inglés/español. Hay que medir siempre sobre el corpus destino.</p>
         </div>
         <div class="card">
           <h3 style="color: var(--warning);">3. La Bipolaridad de LFM3</h3>
-          <p style="font-size: 0.9rem; margin-top: 8px;">Se abstiene en 11 de 12 preguntas por reflejo ("No aparece en el documento")... e inmediatamente después <strong>acierta la respuesta</strong>.</p>
-          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 6px;"><em>Diagnóstico:</em> Sensibilidad extrema al ruido. Con el chunk exacto (oráculo) su nota sube de 0.67 a 1.25.</p>
+          <p style="font-size: 0.88rem; margin-top: 6px;">Se abstiene en 11 de 12 preguntas por reflejo ("No aparece en el documento")... e inmediatamente después <strong>acierta la respuesta</strong>.</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;"><em>Diagnóstico:</em> Sensibilidad extrema al ruido. Con el chunk exacto (oráculo) su nota sube de 0.67 a 1.25.</p>
         </div>
       </div>
-      <div class="chart-container" style="margin-top: 16px;">
-        <img src="../results/graficos/retrieval_vs_oraculo.png" style="max-height: 280px;" alt="Retrieval vs Oráculo">
+      <div class="chart-container" style="margin-top: 14px;">
+        <img src="../results/graficos/retrieval_vs_oraculo.png" style="max-height: 260px;" alt="Retrieval vs Oráculo">
       </div>
     </div>
 
@@ -325,6 +439,7 @@
             <li><strong>Código 100% reproducible:</strong> Scripts automatizados desde la raíz con <code>uv</code>.</li>
             <li><strong>Registros brutos:</strong> Logs de VRAM segundo a segundo y respuestas en JSON/CSV.</li>
             <li><strong>Transparencia:</strong> Criterios de puntuación documentados en <code>decision_fase4.md</code>.</li>
+            <li><strong>Auditoría Automatizada:</strong> Script <code>auditar_trazabilidad.py</code> validando integridad.</li>
           </ul>
         </div>
         <h1 style="color: var(--accent); font-size: 2rem;">¿Preguntas?</h1>
@@ -333,29 +448,128 @@
     </div>
   </main>
 
+  <!-- Bottom Floating Bar with Slide Number 1 / 9 -->
+  <div class="bottom-bar">
+    <div class="speaker-tag">
+      <span>Turno:</span>
+      <span class="speaker-name" id="speakerName">Nicolás (Contexto)</span>
+    </div>
+    <div class="page-counter-box">
+      <button class="nav-arrow" id="prevBtn" title="Anterior (←)">◀</button>
+      <span id="slideIndicator">1 / 9</span>
+      <button class="nav-arrow" id="nextBtn" title="Siguiente (→)">▶</button>
+    </div>
+  </div>
+
+  <!-- Progress Bar Line -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
   <script>
     const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideIndicator = document.getElementById('slideIndicator');
+    const progressBar = document.getElementById('progressBar');
+    const speakerName = document.getElementById('speakerName');
     let currentSlide = 0;
+
+    const speakers = [
+      "Todo el Grupo (Portada)",
+      "Nicolás (Contexto y Stack)",
+      "Aimar (Embeddings)",
+      "Aimar (LLMs Calidad)",
+      "Nicolás / Aimar (Coste)",
+      "Todo el Grupo (Recomendaciones)",
+      "Íñigo (Plan B - 8GB VRAM)",
+      "Íñigo (Anomalías Técnicas)",
+      "Íñigo (Trazabilidad y Cierre)"
+    ];
 
     function showSlide(index) {
       if (index < 0) index = 0;
       if (index >= slides.length) index = slides.length - 1;
       slides.forEach((s, i) => s.classList.toggle('active', i === index));
       currentSlide = index;
+      
+      // Update Number 1 / 9
+      slideIndicator.textContent = `${index + 1} / ${slides.length}`;
+      
+      // Update Progress Bar
+      const pct = ((index + 1) / slides.length) * 100;
+      progressBar.style.width = `${pct}%`;
+      
+      // Update Speaker
+      speakerName.textContent = speakers[index] || "Grupo 1";
     }
+
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showSlide(currentSlide - 1); });
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showSlide(currentSlide + 1); });
 
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowDown') {
         showSlide(currentSlide + 1);
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowUp' || e.key === 'Backspace') {
         showSlide(currentSlide - 1);
+      } else if (e.key === 'f' || e.key === 'F') {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+          document.exitFullscreen().catch(() => {});
+        }
+      } else if (e.key === 't' || e.key === 'T') {
+        toggleTimer();
       }
     });
 
-    window.addEventListener('click', (e) => {
-      if (!window.getSelection().toString()) {
+    // Safe Click on background advances slide
+    document.getElementById('mainContainer').addEventListener('click', (e) => {
+      if (!window.getSelection().toString() && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
         showSlide(currentSlide + 1);
       }
+    });
+
+    // 10-Minute Timer
+    let timeLeft = 600;
+    let timerId = null;
+    const timeDisplay = document.getElementById('timeDisplay');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+
+    function updateTimer() {
+      const min = Math.floor(timeLeft / 60);
+      const sec = timeLeft % 60;
+      timeDisplay.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+      if (timeLeft <= 120 && timeLeft > 30) {
+        timeDisplay.className = "top-timer-display time-warn";
+      } else if (timeLeft <= 30) {
+        timeDisplay.className = "top-timer-display time-danger";
+      } else {
+        timeDisplay.className = "top-timer-display";
+      }
+      if (timeLeft > 0) timeLeft--;
+    }
+
+    function toggleTimer() {
+      if (!timerId) {
+        timerId = setInterval(updateTimer, 1000);
+        startBtn.textContent = "Pausar";
+      } else {
+        clearInterval(timerId);
+        timerId = null;
+        startBtn.textContent = "Reanudar";
+      }
+    }
+
+    startBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleTimer(); });
+    resetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      clearInterval(timerId);
+      timerId = null;
+      timeLeft = 600;
+      updateTimer();
+      startBtn.textContent = "Iniciar";
     });
   </script>
 </body>
