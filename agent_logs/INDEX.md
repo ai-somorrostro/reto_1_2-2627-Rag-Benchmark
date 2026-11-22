@@ -9,3 +9,5 @@
 | 22/11/2026 | [20261122_benchmark_bge.md](20261122_benchmark_bge.md) | Creación de `BGE/benchmark_bge.py`: benchmark de BGE-M3 con 4 LLMs y guardado incremental por modelo. |
 | 22/11/2026 | [20261122_benchmark_multilingual.md](20261122_benchmark_multilingual.md) | Creación de `Multilingual/benchmark_multilingual.py`: mismo benchmark con E5-large y prefijos query/passage. |
 | 22/11/2026 | [20261122_benchmark_separado.md](20261122_benchmark_separado.md) | Separación por corpus: scripts BOE/Debian independientes y carpetas `resultados_boe/` y `resultados_debian/` en BGE, Multilingual y Artic. |
+| 22/11/2026 | [20261122_golden_set_and_boe_corpus.md](20261122_golden_set_and_boe_corpus.md) | Corrección del golden set (33 preguntas/escenario, columnas `tipo`/`oficial`/`chunks_relevantes`), BOE.md limpiado, `chunks_boe.csv` (486) y `chunks_debian.csv` (1642) regenerados, re-run de BOE reruns en Artic/BGE/Multilingual. |
+| 22/11/2026 | [20261122_readme_teleco_y_agents_rule.md](20261122_readme_teleco_y_agents_rule.md) | Reescritura básica de `README_teleco.md`; regla 8 en `AGENTS.md` (prohibido tocar `README.md`); `README.md` restaurado a su estado original. |
