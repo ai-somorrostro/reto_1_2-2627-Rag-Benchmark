@@ -28,24 +28,7 @@
       display: flex;
       flex-direction: column;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-      background: rgba(15, 23, 42, 0.8);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(8px);
-      z-index: 10;
-    }
-    .brand { font-weight: 700; font-size: 1.1rem; color: var(--accent); display: flex; align-items: center; gap: 8px; }
     .badge { background: #1e3a5f; color: #7dd3fc; padding: 3px 8px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
-    .timer-container { display: flex; align-items: center; gap: 12px; font-family: monospace; font-size: 1.1rem; }
-    .timer-btn { background: var(--card-bg); border: 1px solid var(--border); color: var(--text); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
-    .timer-btn:hover { background: var(--border); }
-    .time-display { font-weight: bold; color: var(--accent); }
-    .time-warn { color: var(--warning); }
-    .time-danger { color: var(--danger); }
 
     main {
       flex: 1;
@@ -53,11 +36,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 24px 36px;
+      padding: 0;
     }
     .slide {
       position: absolute;
-      top: 24px; bottom: 24px; left: 36px; right: 36px;
+      top: 36px; bottom: 36px; left: 48px; right: 48px;
       opacity: 0;
       pointer-events: none;
       transform: translateY(16px);
@@ -124,49 +107,9 @@
       border-radius: 8px;
     }
 
-    footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 24px;
-      background: rgba(15, 23, 42, 0.8);
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    .nav-btn {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 6px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .nav-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
-    .speaker-pill {
-      background: #312e81;
-      color: #c7d2fe;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
   </style>
 </head>
 <body>
-
-  <header>
-    <div class="brand">
-      <span>⚡ Benchmark RAG</span>
-      <span class="badge">Grupo 1</span>
-    </div>
-    <div class="timer-container">
-      <span class="time-display" id="timeDisplay">10:00</span>
-      <button class="timer-btn" id="startBtn">Iniciar</button>
-      <button class="timer-btn" id="resetBtn">Reset</button>
-    </div>
-  </header>
 
   <main>
     <!-- SLIDE 1 -->
@@ -390,93 +333,29 @@
     </div>
   </main>
 
-  <footer>
-    <div class="speaker-pill" id="speakerPill">Ponente: Nicolás</div>
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <span id="slideIndicator">1 / 9</span>
-      <button class="nav-btn" id="prevBtn">◀ Anterior</button>
-      <button class="nav-btn" id="nextBtn">Siguiente ▶</button>
-    </div>
-  </footer>
-
   <script>
     const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const slideIndicator = document.getElementById('slideIndicator');
-    const speakerPill = document.getElementById('speakerPill');
     let currentSlide = 0;
-
-    const speakers = [
-      "Ponente: Todos",
-      "Ponente: Nicolás (00:00 - 01:30)",
-      "Ponente: Aimar (01:30 - 03:30)",
-      "Ponente: Íñigo (03:30 - 05:00)",
-      "Ponente: Íñigo (05:00 - 06:15)",
-      "Ponente: Íñigo (06:15 - 07:15)",
-      "Ponente: Íñigo (07:15 - 08:00)",
-      "Ponente: Íñigo / Nicolás (08:00 - 09:30)",
-      "Ponente: Todo el equipo (09:30 - 10:00)"
-    ];
 
     function showSlide(index) {
       if (index < 0) index = 0;
       if (index >= slides.length) index = slides.length - 1;
       slides.forEach((s, i) => s.classList.toggle('active', i === index));
       currentSlide = index;
-      slideIndicator.textContent = `${index + 1} / ${slides.length}`;
-      speakerPill.textContent = speakers[index] || "Ponente: Grupo 1";
     }
 
-    prevBtn.addEventListener('click', () => showSlide(currentSlide - 1));
-    nextBtn.addEventListener('click', () => showSlide(currentSlide + 1));
-
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowDown') {
         showSlide(currentSlide + 1);
-      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'ArrowUp' || e.key === 'Backspace') {
         showSlide(currentSlide - 1);
       }
     });
 
-    // Temporizador
-    let timeLeft = 600; // 10 minutos
-    let timerId = null;
-    const timeDisplay = document.getElementById('timeDisplay');
-    const startBtn = document.getElementById('startBtn');
-    const resetBtn = document.getElementById('resetBtn');
-
-    function updateTimer() {
-      const min = Math.floor(timeLeft / 60);
-      const sec = timeLeft % 60;
-      timeDisplay.textContent = `${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
-      if (timeLeft <= 120 && timeLeft > 30) {
-        timeDisplay.className = "time-display time-warn";
-      } else if (timeLeft <= 30) {
-        timeDisplay.className = "time-display time-danger";
-      } else {
-        timeDisplay.className = "time-display";
+    window.addEventListener('click', (e) => {
+      if (!window.getSelection().toString()) {
+        showSlide(currentSlide + 1);
       }
-      if (timeLeft > 0) timeLeft--;
-    }
-
-    startBtn.addEventListener('click', () => {
-      if (!timerId) {
-        timerId = setInterval(updateTimer, 1000);
-        startBtn.textContent = "Pausar";
-      } else {
-        clearInterval(timerId);
-        timerId = null;
-        startBtn.textContent = "Reanudar";
-      }
-    });
-
-    resetBtn.addEventListener('click', () => {
-      clearInterval(timerId);
-      timerId = null;
-      timeLeft = 600;
-      updateTimer();
-      startBtn.textContent = "Iniciar";
     });
   </script>
 </body>

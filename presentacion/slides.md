@@ -29,10 +29,14 @@
 
 ## 3. Fase 2: Benchmark de Embeddings (Tabla A)
 
-| Escenario | Ganador | Recall@5 (Hit) | Recall@5 (Estricto) | MRR | Indexado |
-|---|---|---|---|---|---|
-| **BOE** | `microsoft/harrier-oss-v1-0.6b` | **1.0000** | **1.0000** | **0.7361** | 1.60 s |
-| **Debian** | `BAAI/bge-m3` | **0.8333** | 0.6667 | **0.6219** | 3.52 s |
+| Escenario | Modelo | Recall@5 (Hit) | Recall@5 (Estricto) | MRR | Indexado | VRAM |
+|---|---|---|---|---|---|---|
+| **BOE** | `bge-m3` | 0.8333 | 0.5833 | 0.6983 | 1.06 s | 1.89 GB |
+| **BOE** | `Qwen3-Embedding-0.6B` | 0.8333 | 0.7500 | 0.6991 | 1.59 s | 3.51 GB |
+| **BOE** | **`harrier-oss-v1-0.6b` (Ganador)** | **1.0000** | **1.0000** | **0.7361** | 1.60 s | 3.51 GB |
+| **Debian** | **`bge-m3` (Ganador)** | **0.8333** | 0.6667 | **0.6219** | 3.52 s | 1.90 GB |
+| **Debian** | `Qwen3-Embedding-0.6B` | 0.7500 | 0.5833 | 0.5769 | 5.29 s | 3.49 GB |
+| **Debian** | `harrier-oss-v1-0.6b` | 0.7500 | 0.7500 | 0.5573 | 5.34 s | 3.51 GB |
 
 ![Comparativa Embeddings](../results/graficos/embeddings_comparativa.png)
 
@@ -44,12 +48,14 @@
 
 | Escenario | Modelo | Tamaño | Corrección (0-2) | Fidelidad | Abstención (de 3) | Falsas Abst. | Formato |
 |---|---|---|---|---|---|---|---|
-| **BOE** | `lfm3-1.7b` | 1.7B | 0.93 | 93% | 3 de 3 | 11 de 12 | 40% |
-| **BOE** | `llama3.2-3b` | 3B | 0.93 | 100% | 3 de 3 | 6 de 12 | 93% |
-| **BOE** | `nemotron-bolt` | 8B/4B ef. | 1.60 | 100% | 3 de 3 | 1 de 12 | 100% |
-| **BOE** | **`qwen3.5-9b`** | 9B | **1.87** | **100%** | **3 de 3** | **1 de 12** | **93%** |
-| **Debian** | `nemotron-bolt` | 8B/4B ef. | **1.53** | **100%** | **3 de 3** | **3 de 12** | **100%** |
-| **Debian** | `qwen3.5-9b` | 9B | 1.53 | 100% | 3 de 3 | 3 de 12 | 67% |
+| **BOE** | `lfm3-1.7b` | 1.7B | 0.93 | 93 % | 3 de 3 | 11 de 12 | 40 % |
+| **BOE** | `llama3.2-3b` | 3B | 0.93 | 100 % | 3 de 3 | 6 de 12 | 93 % |
+| **BOE** | `nemotron-bolt` | 8B/4B ef. | 1.60 | 100 % | 3 de 3 | 1 de 12 | 100 % |
+| **BOE** | **`qwen3.5-9b` (Ganador)** | 9B | **1.87** | **100 %** | **3 de 3** | **1 de 12** | **93 %** |
+| **Debian** | `lfm3-1.7b` | 1.7B | 0.93 | 93 % | 3 de 3 | 12 de 12 | 40 % |
+| **Debian** | `llama3.2-3b` | 3B | 1.07 | 87 % | 3 de 3 | 5 de 12 | 73 % |
+| **Debian** | **`nemotron-bolt` (Ganador)** | 8B/4B ef. | **1.53** | **100 %** | **3 de 3** | **3 de 12** | **100 %** |
+| **Debian** | `qwen3.5-9b` | 9B | 1.53 | 100 % | 3 de 3 | 3 de 12 | 67 % |
 
 ![Calidad LLMs](../results/graficos/llms_calidad.png)
 

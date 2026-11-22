@@ -87,8 +87,10 @@ def auditar_puntuaciones_csv():
             lineas = [l for l in f if l.strip()]
         total_filas = len(lineas) - 1
         revisadas = sum(1 for l in lineas if "[revisado]" in l)
-        print(f"  [OK] Escenario {esc.upper():<6} | Ruta: {os.path.basename(csv_path):<22} | "
-              f"Total evaluaciones: {total_filas:>3} | Filas auditadas a mano: {revisadas:>2}")
+        cumple_minimo = revisadas >= 10
+        tag = "[OK]" if cumple_minimo else "[AVISO]"
+        print(f"  {tag} Escenario {esc.upper():<6} | Ruta: {os.path.basename(csv_path):<22} | "
+              f"Total evaluaciones: {total_filas:>3} | Filas auditadas a mano: {revisadas:>2} (mínimo README ≥10: {'CUMPLE' if cumple_minimo else 'FALTA'})")
 
 if __name__ == "__main__":
     ok_emb = auditar_embeddings()

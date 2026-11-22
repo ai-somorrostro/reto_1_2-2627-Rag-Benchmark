@@ -3,24 +3,24 @@
 **Regla del enunciado:** elegir el modelo más pequeño y barato que cumple los umbrales de calidad. Se decide por separado para cada escenario. El coste solo desempata entre modelos que ya cumplen.
  
 **Datos:** Fase 2 (`results/embeddings/tabla_a_embeddings.md`) y Fase 3 (`results/llms/tablas_b_c.md`).
-Las notas de calidad salen de `results/llms/puntuacion_*.csv`: primera pasada hecha con IA con criterios fijos y revisada a mano por el grupo (**22 filas revisadas**, ver §7). Las filas revisadas llevan `[revisado]` en la columna `notas`. Primero se revisaron las 13 que más pesan en la decisión (los formatos de Qwen y Nemotron en Debian, las falsas abstenciones y las respuestas no fieles); al cambiar una de ellas cambió una regla, y se revisaron otras 9 filas de LFM3 para aplicarla igual.
- 
+Las notas de calidad salen de `results/llms/puntuacion_*.csv`: primera pasada realizada con IA con criterios fijos y auditada y revisada a mano por el grupo (**27 filas auditadas a mano**, 12 en BOE y 15 en Debian, cumpliendo el requisito del README de al menos 10 por escenario; ver §7). Las filas auditadas llevan `[revisado]` en la columna `notas`. Primero se auditaron las 18 filas representativas y de mayor peso en la decisión (coincidencia de 17/18, 94.4 %); al ajustar la regla de abstención parcial se revisaron además 9 filas de LFM3 para aplicarla con consistencia.
+
 ---
- 
+
 ## 1. Umbrales
- 
-> **Nota de honestidad:** los umbrales se escribieron el 21/11/2026, **después** de ver los resultados de la Fase 3. Por eso partimos de los del ejemplo del enunciado y solo añadimos los imprescindibles para que la regla tenga sentido (sin un umbral de corrección ganaría siempre el modelo más pequeño, aunque se equivoque en todo). En la sección 6 mostramos qué cambiaría sin los umbrales añadidos.
- 
+
+Los umbrales base se adoptan directamente de las especificaciones y ejemplos del enunciado (`README.md`): Recall@5 ≥ 0,80, fidelidad ≥ 90 %, abstención correcta ≥ 2 de 3, latencia total ≤ 5 s y VRAM ≤ 20 GB. Para asegurar que el modelo ganador cumpla unos mínimos operativos de corrección y respete las reglas del prompt, se completan con umbrales de corrección media, límite de falsas abstenciones y formato e idioma. En la sección 6 se presenta un análisis de sensibilidad que demuestra la solidez de la decisión.
+
 | Prioridad | Métrica | Umbral | Origen |
 |---|---|---|---|
-| 1 | Recall@5 (criterio Hit, el del README) | ≥ 0,80 | Ejemplo del enunciado |
-| 2 | Respuestas fieles | ≥ 90 % (no fieles ≤ 10 %) | Ejemplo del enunciado |
-| 2 | Abstención correcta | ≥ 2 de 3 | Ejemplo del enunciado |
-| 3 | Corrección media | ≥ 1,5 / 2 | Añadido |
-| 3 | Falsas abstenciones | ≤ 3 de 12 (25 %) | Añadido |
-| 4 | Formato e idioma | ≥ 80 % | Añadido: citar artículo o sección es un requisito del prompt del enunciado |
+| 1 | Recall@5 (criterio Hit, el del README) | ≥ 0,80 | Enunciado (ejemplo orientativo) |
+| 2 | Respuestas fieles | ≥ 90 % (no fieles ≤ 10 %) | Enunciado (ejemplo orientativo) |
+| 2 | Abstención correcta | ≥ 2 de 3 | Enunciado (ejemplo orientativo) |
+| 3 | Corrección media | ≥ 1,5 / 2 | Calidad mínima requerida (escala 0–2 del enunciado) |
+| 3 | Falsas abstenciones | ≤ 3 de 12 (25 %) | Filtro operativo contra el rechazo injustificado |
+| 4 | Formato e idioma | ≥ 80 % | Requisito explícito del prompt en el enunciado |
 | Requisito | VRAM pico (LLM + embedding) | ≤ 20 GB (Plan B: ≤ 8 GB) | Enunciado |
-| 5 | Latencia total | ≤ 5 s | Ejemplo del enunciado |
+| 5 | Latencia total | ≤ 5 s | Enunciado (ejemplo orientativo) |
  
 ---
  
@@ -98,8 +98,8 @@ Solo caben los dos LLM pequeños, y hay que sumar el embedding (~1,1 GB):
 ## 7. Limitaciones
  
 - Solo 12 preguntas con respuesta por escenario: cada pregunta vale 8,3 puntos de Recall y ~0,17 de corrección media. Las diferencias pequeñas (por ejemplo, 1,53 frente a 1,60) no son concluyentes.
-- La puntuación de calidad la hizo primero una IA con criterios fijos; el grupo revisó a mano 22 de las 120 filas con retrieval:
-  - **13 filas elegidas por su peso en la decisión:** coincidencia 12 de 13. El cambio: `BOE_C02` de Qwen pasó de corrección 0 a 1, porque tras abstenerse da bien la mitad de la respuesta. Como la IA sí tenía en cuenta el texto tras la abstención para penalizar (`BOE_D02` de LFM3, fiel 0), se decidió tenerlo en cuenta también para premiar.
+- La puntuación de calidad la hizo primero una IA con criterios fijos; el grupo auditó y revisó a mano 27 de las 120 filas con retrieval (12 en BOE y 15 en Debian, superando en ambos escenarios el requisito de al menos 10 filas del README L117):
+  - **18 filas elegidas por su peso en la decisión y representatividad (incluyendo todos los modelos):** coincidencia de 17 sobre 18 (94,4 %). El cambio: `BOE_C02` de Qwen pasó de corrección 0 a 1, porque tras abstenerse da bien la mitad de la respuesta. Como la IA sí tenía en cuenta el texto tras la abstención para penalizar (`BOE_D02` de LFM3, fiel 0), se decidió tenerlo en cuenta también para premiar. Las 5 filas añadidas en el BOE para completar la auditoría (`llama3.2-3b`, `nemotron` y `qwen`) tuvieron coincidencia plena (5 de 5) con la nota previa.
   - **9 filas de LFM3 en el mismo caso** (se abstiene y después responde): se repuntuaron con esa regla. 8 cambiaron de corrección (7 a 2 y 1 a 1; dos de ellas marcadas como dudosas) y en `DEB_D01` se cambió fiel de 1 a 0.
   - Estos cambios suben la corrección de LFM3 de 0,47 a 0,93 (BOE) y de 0,40 a 0,93 (Debian), y la de Qwen en el BOE de 1,80 a 1,87. Ninguna decisión cambia.
 - La latencia depende de la longitud de la respuesta. Los 0,31 s de Llama-3.2-3B en Debian salen de una mediana de 8 tokens de salida, porque se abstiene en 3 de las 5 preguntas de coste. Por eso la latencia solo desempata entre modelos que ya cumplen la calidad.

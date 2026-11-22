@@ -85,8 +85,15 @@ def plantilla(esc):
 
 
 def num(x):
+    if x is None:
+        return None
+    s = str(x).strip().lower()
+    if s in ("1", "sí", "si", "true"):
+        return 1.0
+    if s in ("0", "no", "false", "no aplica", "no_aplica"):
+        return 0.0
     try:
-        return float(str(x).replace(",", "."))
+        return float(s.replace(",", "."))
     except ValueError:
         return None
 
