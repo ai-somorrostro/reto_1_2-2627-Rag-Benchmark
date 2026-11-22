@@ -1,0 +1,537 @@
+{
+  "meta": {
+    "fecha_hora": "2026-11-22T21:05:35",
+    "modelo": "Qwen/Qwen3-Embedding-0.6B",
+    "backend": "st",
+    "escenario": "debian",
+    "parametros": 595776512,
+    "dimension": 1024,
+    "max_seq_length": 8192,
+    "prompt_por_defecto_del_modelo": {
+      "default_prompt_name": null,
+      "prompts": {
+        "query": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
+        "document": ""
+      }
+    },
+    "versiones": {
+      "python": "3.12.3",
+      "numpy": "2.5.5",
+      "torch": "2.15.0+cu132",
+      "sentence_transformers": "6.3.0",
+      "transformers": "5.23.0"
+    },
+    "chunks_fichero": "comun/chunks_debian.json",
+    "chunks_sha256": "b30e886ccf694f8126ae4aa971347587298a9fd3f8be84350f2b5b0b1824a5e3",
+    "golden_fichero": "comun/golden_set_debian.json",
+    "golden_sha256": "193a4d62d02ddb46c713574a9ab900e561bbb6415cb65a93951ca8ff9a82d40b",
+    "n_chunks": 1154,
+    "n_preguntas": 15,
+    "comando": "sendoa/eval_retrieval.py --modelo Qwen/Qwen3-Embedding-0.6B --escenario debian --chunks comun/chunks_debian.json --golden comun/golden_set_debian.json --config sendoa/config_qwen3.json --salida sendoa/resultados_oficiales --turno-exclusivo"
+  },
+  "config": {
+    "prefijo_consulta": "Instruct: Given a web search query, retrieve relevant passages that answer the query\nQuery:",
+    "prefijo_documento": "",
+    "criterio_combinadas": "todos",
+    "incluir_titulos": false,
+    "extra": {
+      "max_seq_length": 8192,
+      "batch_size": 32,
+      "normalizar": true
+    }
+  },
+  "metricas": {
+    "recall@1": 0.25,
+    "recall@3": 0.4166666666666667,
+    "recall@5": 0.5833333333333334,
+    "mrr": 0.5131944444444444,
+    "n_preguntas_con_respuesta": 12,
+    "por_tipo": {
+      "directa": {
+        "recall@1": 0.375,
+        "recall@3": 0.625,
+        "recall@5": 0.75,
+        "mrr": 0.5562499999999999,
+        "n": 8
+      },
+      "combinada": {
+        "recall@1": 0.0,
+        "recall@3": 0.0,
+        "recall@5": 0.25,
+        "mrr": 0.4270833333333333,
+        "n": 4
+      }
+    }
+  },
+  "coste": {
+    "carga_modelo_s": 6.482,
+    "indexado_s": 15.612,
+    "consultas_s": 0.038,
+    "indice_mb": 4.508,
+    "vram_pico_torch_gb": 1.711,
+    "vram_reservada_pico_torch_gb": 2.564,
+    "vram_pico_nvidia_smi_gb": 2.894,
+    "vram_pico_mem_get_info_gb": 2.893,
+    "vram_base_mem_get_info_gb": 0.279,
+    "vram_muestreo_error": null,
+    "turno_exclusivo": true,
+    "chunks_truncados_por_limite": 0,
+    "max_tokens_de_un_chunk": 665
+  },
+  "avisos": [],
+  "detalle": [
+    {
+      "id": "q_deb_01",
+      "tipo": "directa",
+      "pregunta": "Antes de instalar paquetes con APT, ¿qué orden refresca la lista de paquetes disponibles?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_285",
+          "puntuacion": 0.75011
+        },
+        {
+          "chunk": "chunk_debian_283",
+          "puntuacion": 0.71987
+        },
+        {
+          "chunk": "chunk_debian_332",
+          "puntuacion": 0.70632
+        },
+        {
+          "chunk": "chunk_debian_259",
+          "puntuacion": 0.70445
+        },
+        {
+          "chunk": "chunk_debian_316",
+          "puntuacion": 0.70438
+        }
+      ],
+      "posicion_primer_relevante": 2,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_02",
+      "tipo": "directa",
+      "pregunta": "¿Qué diferencia hay entre desinstalar un paquete con aptitude remove y con aptitude purge?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_316",
+          "puntuacion": 0.6847
+        },
+        {
+          "chunk": "chunk_debian_285",
+          "puntuacion": 0.68053
+        },
+        {
+          "chunk": "chunk_debian_304",
+          "puntuacion": 0.66963
+        },
+        {
+          "chunk": "chunk_debian_286",
+          "puntuacion": 0.65728
+        },
+        {
+          "chunk": "chunk_debian_332",
+          "puntuacion": 0.64391
+        }
+      ],
+      "posicion_primer_relevante": 2,
+      "acierto@1": false,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_03",
+      "tipo": "directa",
+      "pregunta": "¿Qué comando actualiza el sistema sin eliminar paquetes ni instalar otros nuevos?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_332",
+          "puntuacion": 0.64255
+        },
+        {
+          "chunk": "chunk_debian_285",
+          "puntuacion": 0.63592
+        },
+        {
+          "chunk": "chunk_debian_1078",
+          "puntuacion": 0.62666
+        },
+        {
+          "chunk": "chunk_debian_346",
+          "puntuacion": 0.61066
+        },
+        {
+          "chunk": "chunk_debian_334",
+          "puntuacion": 0.60363
+        }
+      ],
+      "posicion_primer_relevante": 6,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": false
+    },
+    {
+      "id": "q_deb_04",
+      "tipo": "directa",
+      "pregunta": "¿Cómo busco paquetes por palabra clave y veo luego la ficha de uno concreto desde la terminal?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_354",
+          "puntuacion": 0.63097
+        },
+        {
+          "chunk": "chunk_debian_357",
+          "puntuacion": 0.60794
+        },
+        {
+          "chunk": "chunk_debian_317",
+          "puntuacion": 0.58039
+        },
+        {
+          "chunk": "chunk_debian_308",
+          "puntuacion": 0.57847
+        },
+        {
+          "chunk": "chunk_debian_358",
+          "puntuacion": 0.56577
+        }
+      ],
+      "posicion_primer_relevante": 4,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_05",
+      "tipo": "directa",
+      "pregunta": "¿Qué orden instala de golpe las dependencias de compilación de un paquete fuente?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_1047",
+          "puntuacion": 0.60724
+        },
+        {
+          "chunk": "chunk_debian_84",
+          "puntuacion": 0.59648
+        },
+        {
+          "chunk": "chunk_debian_221",
+          "puntuacion": 0.59601
+        },
+        {
+          "chunk": "chunk_debian_1048",
+          "puntuacion": 0.57199
+        },
+        {
+          "chunk": "chunk_debian_1060",
+          "puntuacion": 0.55241
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_06",
+      "tipo": "directa",
+      "pregunta": "¿Para qué sirve fakeroot cuando se construye un paquete Debian?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_1049",
+          "puntuacion": 0.85214
+        },
+        {
+          "chunk": "chunk_debian_278",
+          "puntuacion": 0.63884
+        },
+        {
+          "chunk": "chunk_debian_470",
+          "puntuacion": 0.63338
+        },
+        {
+          "chunk": "chunk_debian_1051",
+          "puntuacion": 0.60628
+        },
+        {
+          "chunk": "chunk_debian_1056",
+          "puntuacion": 0.60456
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_07",
+      "tipo": "directa",
+      "pregunta": "¿Qué me dice la orden id cuando la ejecuto en una sesión?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_1121",
+          "puntuacion": 0.54906
+        },
+        {
+          "chunk": "chunk_debian_1148",
+          "puntuacion": 0.52523
+        },
+        {
+          "chunk": "chunk_debian_1119",
+          "puntuacion": 0.50236
+        },
+        {
+          "chunk": "chunk_debian_557",
+          "puntuacion": 0.4922
+        },
+        {
+          "chunk": "chunk_debian_1151",
+          "puntuacion": 0.45348
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": true,
+      "acierto@3": true,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_08",
+      "tipo": "directa",
+      "pregunta": "¿Dónde debe instalar el administrador sus propias aplicaciones para no pisar archivos gestionados por dpkg?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_229",
+          "puntuacion": 0.66595
+        },
+        {
+          "chunk": "chunk_debian_228",
+          "puntuacion": 0.65782
+        },
+        {
+          "chunk": "chunk_debian_1093",
+          "puntuacion": 0.65639
+        },
+        {
+          "chunk": "chunk_debian_183",
+          "puntuacion": 0.65174
+        },
+        {
+          "chunk": "chunk_debian_257",
+          "puntuacion": 0.64313
+        }
+      ],
+      "posicion_primer_relevante": 30,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": false
+    },
+    {
+      "id": "q_deb_09",
+      "tipo": "combinada",
+      "pregunta": "Al instalar un paquete .deb, ¿en qué se diferencian dpkg y apt?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_228",
+          "puntuacion": 0.82656
+        },
+        {
+          "chunk": "chunk_debian_81",
+          "puntuacion": 0.78378
+        },
+        {
+          "chunk": "chunk_debian_229",
+          "puntuacion": 0.77206
+        },
+        {
+          "chunk": "chunk_debian_183",
+          "puntuacion": 0.74431
+        },
+        {
+          "chunk": "chunk_debian_290",
+          "puntuacion": 0.73688
+        }
+      ],
+      "posicion_primer_relevante": 4,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": false
+    },
+    {
+      "id": "q_deb_10",
+      "tipo": "combinada",
+      "pregunta": "En una salida de df aparece /srv/files con un 90 % de uso: ¿qué utilidad produjo ese dato y cómo pedir cifras más legibles?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_1120",
+          "puntuacion": 0.55605
+        },
+        {
+          "chunk": "chunk_debian_465",
+          "puntuacion": 0.5184
+        },
+        {
+          "chunk": "chunk_debian_977",
+          "puntuacion": 0.49163
+        },
+        {
+          "chunk": "chunk_debian_1124",
+          "puntuacion": 0.47372
+        },
+        {
+          "chunk": "chunk_debian_157",
+          "puntuacion": 0.46919
+        }
+      ],
+      "posicion_primer_relevante": 1,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": false
+    },
+    {
+      "id": "q_deb_11",
+      "tipo": "combinada",
+      "pregunta": "Detecté un proceso sospechoso al comparar los procesos de los usuarios con las sesiones activas. ¿Cómo obtengo su identificador y cómo le pido que termine de forma normal?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_1121",
+          "puntuacion": 0.58732
+        },
+        {
+          "chunk": "chunk_debian_1028",
+          "puntuacion": 0.57108
+        },
+        {
+          "chunk": "chunk_debian_123",
+          "puntuacion": 0.56904
+        },
+        {
+          "chunk": "chunk_debian_1119",
+          "puntuacion": 0.5689
+        },
+        {
+          "chunk": "chunk_debian_1146",
+          "puntuacion": 0.50996
+        }
+      ],
+      "posicion_primer_relevante": 3,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": true
+    },
+    {
+      "id": "q_deb_12",
+      "tipo": "combinada",
+      "pregunta": "Mi /etc/apt/sources.list tiene fuentes desconocidas pero debsums no detecta cambios en los archivos. ¿Puedo dar el sistema por sano y qué debería hacer?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_126",
+          "puntuacion": 0.69272
+        },
+        {
+          "chunk": "chunk_debian_266",
+          "puntuacion": 0.68815
+        },
+        {
+          "chunk": "chunk_debian_333",
+          "puntuacion": 0.67307
+        },
+        {
+          "chunk": "chunk_debian_272",
+          "puntuacion": 0.66856
+        },
+        {
+          "chunk": "chunk_debian_225",
+          "puntuacion": 0.6597
+        }
+      ],
+      "posicion_primer_relevante": 8,
+      "acierto@1": false,
+      "acierto@3": false,
+      "acierto@5": false
+    },
+    {
+      "id": "q_deb_13",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Qué comando de pacman debo usar en Debian para instalar un paquete?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_229",
+          "puntuacion": 0.69632
+        },
+        {
+          "chunk": "chunk_debian_167",
+          "puntuacion": 0.64788
+        },
+        {
+          "chunk": "chunk_debian_488",
+          "puntuacion": 0.63512
+        },
+        {
+          "chunk": "chunk_debian_182",
+          "puntuacion": 0.63447
+        },
+        {
+          "chunk": "chunk_debian_1074",
+          "puntuacion": 0.6332
+        }
+      ]
+    },
+    {
+      "id": "q_deb_14",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cómo se lanza un contenedor con docker run según este manual?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_856",
+          "puntuacion": 0.49355
+        },
+        {
+          "chunk": "chunk_debian_858",
+          "puntuacion": 0.48422
+        },
+        {
+          "chunk": "chunk_debian_860",
+          "puntuacion": 0.4809
+        },
+        {
+          "chunk": "chunk_debian_859",
+          "puntuacion": 0.45864
+        },
+        {
+          "chunk": "chunk_debian_854",
+          "puntuacion": 0.45107
+        }
+      ]
+    },
+    {
+      "id": "q_deb_15",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Qué pasos sigue kubeadm para crear un clúster de Kubernetes en Debian?",
+      "top5": [
+        {
+          "chunk": "chunk_debian_470",
+          "puntuacion": 0.51113
+        },
+        {
+          "chunk": "chunk_debian_479",
+          "puntuacion": 0.48608
+        },
+        {
+          "chunk": "chunk_debian_34",
+          "puntuacion": 0.47743
+        },
+        {
+          "chunk": "chunk_debian_82",
+          "puntuacion": 0.47147
+        },
+        {
+          "chunk": "chunk_debian_73",
+          "puntuacion": 0.46597
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Tabla A - Escenario BOE
 
-Generado: 2026-11-22T16:33:04
+Generado: 2026-11-22T20:39:24
 Filas: 3
 
 | Modelo | Estado | Parametros | Dimension | Recall@1 | Recall@3 | Recall@5 | MRR | Indexado (s) | Indice (MB) | VRAM (GB) | Fichero origen |

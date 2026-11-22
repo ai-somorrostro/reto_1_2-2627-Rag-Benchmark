@@ -84,11 +84,11 @@
   {
     "id": "q_deb_10",
     "tipo": "combinada",
-    "pregunta": "En una salida de df aparece /dev/sda5 montado en /home con un 83 % de uso: ¿qué utilidad produjo ese dato y cómo pedir cifras más legibles?",
+    "pregunta": "En una salida de df aparece /srv/files con un 90 % de uso: ¿qué utilidad produjo ese dato y cómo pedir cifras más legibles?",
     "respuesta_esperada": "La salida procede de df (disk free), que reporta el espacio disponible en cada disco montado en el sistema de archivos; con la opción -h (human readable) los tamaños se muestran en unidades legibles, normalmente mebibytes o gibibytes.",
     "chunks_correctos": [
       "chunk_debian_1120",
-      "chunk_debian_796"
+      "chunk_debian_824"
     ]
   },
   {
