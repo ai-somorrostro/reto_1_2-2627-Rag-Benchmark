@@ -13,3 +13,4 @@
 | 22/11/2026 | [20261122_readme_teleco_y_agents_rule.md](20261122_readme_teleco_y_agents_rule.md) | Reescritura básica de `README_teleco.md`; regla 8 en `AGENTS.md` (prohibido tocar `README.md`); `README.md` restaurado a su estado original. |
 | 22/11/2026 | [20261122_detener_benchmark_readme.md](20261122_detener_benchmark_readme.md) | Añadida a `README.md` la sección "Detener un benchmark en curso" (Ctrl+C, botón Cancelar, dónde guarda las respuestas y que se puede reanudar). |
 | 22/11/2026 | [20261122_detener_rerun_boe.md](20261122_detener_rerun_boe.md) | Detención del rerun de BOE (Artic iniciado, BGE por empezar); todo detenido, 0 procesos; resultados no guardados en Artic. |
+| 22/11/2026 | [20261122_teleco_readme_pasos.md](20261122_teleco_readme_pasos.md) | `README_teleco.md` reescrito como guía paso a paso simple para principiantes (qué es, escenarios, preparar, corpora, ejecutar, detener, resultados). |
