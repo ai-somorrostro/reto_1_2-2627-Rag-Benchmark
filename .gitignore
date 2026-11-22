@@ -9,3 +9,12 @@ resultados_mistral-7b.txt
 resultrados_qwen2.5-3b.txt
 resultados_quen2.5b-7b.txt
 resultados_smollm2-1.7b.txt
+# Archivos generados por los scripts Python (.py)
+chunks_boe.csv
+chunks_debian.csv
+metricas_retrieval.csv
+puntuaciones.csv
+coste.csv
+umbrales.csv
+resultados_boe/
+resultados_debian/
