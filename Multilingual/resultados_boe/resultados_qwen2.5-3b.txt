@@ -2,13 +2,13 @@
 Benchmark RAG - Embedding: intfloat/multilingual-e5-large
 Escenario: boe
 Corpus: /home/g2/reto_1_2-2627-Rag-Benchmark/BOE.md
-LLM: HuggingFaceTB/SmolLM2-1.7B-Instruct (1.7B, pequeno) - cuantizacion: fp16
+LLM: Qwen/Qwen2.5-3B-Instruct (3B, pequeno) - cuantizacion: fp16
 Dispositivo: cuda
 Config: top_k=3, max_new_tokens=350, chunk=1200/200
 ======================================================================
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:31] Escenario: boe | Pregunta: BOE_001
+[2026-11-22 22:48:01] Escenario: boe | Pregunta: BOE_001
 Categoria: Metadatos y estructura | Dificultad: Básica
 Pregunta: ¿Qué norma aprueba el texto refundido de la Ley del Estatuto de los Trabajadores y cuál es su referencia oficial de publicación en el BOE?
 Referencia: Portada e Índice (pág. 1)
@@ -22,7 +22,15 @@ Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el text
 Ministerio de Empleo y Seguridad Social «BOE» núm. 255, de 24 de octubre de 2015 Referencia: BOE-A-2015-11430
 
 # ÍNDICE
-  [2] chunk=39 score=0.8779
+  [2] chunk=32 score=0.8881
+      # TEXTO CONSOLIDADO
+
+# Última modificación: 21 de octubre de 2026
+
+El artículo Uno.d) de la Ley 20/2014, de 29 de octubre, por la que se delega en el Gobierno la potestad de dictar diversos textos refundidos, en virtud de lo establecido en el artículo 82 y siguientes de la Constitución Española, autorizó al Gobierno para aprobar un texto refundido en el que se integrasen, debidamente regularizadas, aclaradas y armonizadas, el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado mediante Real Decreto Legislativo 1/1995, de 24 de marzo, y todas las disposiciones legales relacionadas que se enumeran en ese apartado, así como las normas con rango de ley que las hubieren modificado. El plazo para la realización de dicho texto era de doce meses a partir de la entrada en vigor de la citada Ley 20/2014, que tuvo lugar el 31 de octubre de 2014.
+
+Este real decreto legislativo ha sido sometido a consulta de las organizaciones sindicales y empresariales más representativas. Además, ha sido informado por el Consejo Económico y Social.
+  [3] chunk=33 score=0.8779
       e de 2014.
 
 Este real decreto legislativo ha sido sometido a consulta de las organizaciones sindicales y empresariales más representativas. Además, ha sido informado por el Consejo Económico y Social.
@@ -40,35 +48,31 @@ Se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores que se 
 Quedan derogadas cuantas disposiciones de igual o inferior rango se opongan a lo dispuesto en este real decreto legislativo y en el texto refundido que aprueba y, en particular, las siguientes:
 
 1. El Real Decreto Legislativo 1/1995, de 24 de marzo, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores.
-  [3] chunk=38 score=0.8734
-      Página 7
+--- Respuesta LLM ---
+El texto refundido de la Ley del Estatuto de los Trabajadores es aprobado por el Real Decreto Legislativo 2/2015, de 23 de octubre. Su referencia oficial de publicación en el Boletín Oficial del Estado (BOE) es número 255, de 24 de octubre de 2015.
+--- Datos ---
+  latencia_total_s=2.52
+  tokens_generados=86
+  tokens_por_s=34.1
+  score_max=0.8974
+  abstencion_detectada=no
 
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
-# TEXTO CONSOLIDADO
+----------------------------------------------------------------------
+[2026-11-22 22:48:04] Escenario: boe | Pregunta: BOE_002
+Categoria: Definición y ámbito | Dificultad: Básica
+Pregunta: ¿Cuáles son las cuatro notas que definen una relación laboral incluida en el ámbito de aplicación del Estatuto de los Trabajadores según el artículo 1.1?
+Referencia: Artículo 1.1 (pág. 9)
+Respuesta esperada: La voluntariedad, la retribución, la prestación de servicios por cuenta ajena y el desarrollo de la actividad dentro del ámbito de organización y dirección de otra persona física o jurídica, denominada empleador o empresario.
+--- Recuperados (top 3) ---
+  [1] chunk=32 score=0.8430
+      # TEXTO CONSOLIDADO
 
 # Última modificación: 21 de octubre de 2026
 
 El artículo Uno.d) de la Ley 20/2014, de 29 de octubre, por la que se delega en el Gobierno la potestad de dictar diversos textos refundidos, en virtud de lo establecido en el artículo 82 y siguientes de la Constitución Española, autorizó al Gobierno para aprobar un texto refundido en el que se integrasen, debidamente regularizadas, aclaradas y armonizadas, el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado mediante Real Decreto Legislativo 1/1995, de 24 de marzo, y todas las disposiciones legales relacionadas que se enumeran en ese apartado, así como las normas con rango de ley que las hubieren modificado. El plazo para la realización de dicho texto era de doce meses a partir de la entrada en vigor de la citada Ley 20/2014, que tuvo lugar el 31 de octubre de 2014.
 
 Este real decreto legislativo ha sido sometido a consulta de las organizaciones sindicales y empresariales más representativas. Además, ha sido informado por el Consejo Económico y Social.
---- Respuesta LLM ---
-El texto refundido de la Ley del Estatuto de los Trabajadores que aprueba y, en particular, la norma que aprueba el texto refundido de la Ley del Estatuto de los Trabajadores y su referencia oficial de publicación en el BOE es la norma 1.a) de la sección 1.a) de la Artículo 1.a) de la Ley 20/2014, de 29 de octubre, por la que se delegó en el Gobierno la potestad de dictar diversos textos refundidos, en virtud de lo establecido en el artículo 82 y siguientes de la Constitución Española, autorizó al Gobierno para aprobar un texto refundido en el que se integrasen, debidamente regularizadas, aclaradas y armonizadas, el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado mediante Real Decreto Legislativo 1/1995, de 24 de marzo, y todas las disposiciones legales relacionadas que se enumeran en ese apartado, así como las normas con rango de ley que las hubieren modificado. El plazo para la realización de dicho texto era de doce meses a partir de la entrada en vigor de la citada Ley 2
---- Datos ---
-  latencia_total_s=4.67
-  tokens_generados=350
-  tokens_por_s=74.9
-  score_max=0.8974
-  abstencion_detectada=no
-
-----------------------------------------------------------------------
-[2026-11-22 14:46:33] Escenario: boe | Pregunta: BOE_002
-Categoria: Definición y ámbito | Dificultad: Básica
-Pregunta: ¿Cuáles son las cuatro notas que definen una relación laboral incluida en el ámbito de aplicación del Estatuto de los Trabajadores según el artículo 1.1?
-Referencia: Artículo 1.1 (pág. 9)
-Respuesta esperada: La voluntariedad, la retribución, la prestación de servicios por cuenta ajena y el desarrollo de la actividad dentro del ámbito de organización y dirección de otra persona física o jurídica, denominada empleador o empresario.
---- Recuperados (top 3) ---
-  [1] chunk=133 score=0.8414
+  [2] chunk=125 score=0.8414
       staurado en la empresa, y el puesto o funciones son compatibles con esta forma de realización del trabajo, cuando curse con regularidad estudios para la obtención de un título académico o profesional.
 
 b) A la adaptación de la jornada ordinaria de trabajo para la asistencia a cursos de formación profesional.
@@ -78,7 +82,7 @@ c) A la concesión de los permisos oportunos de formación o perfeccionamiento p
 d) A la formación necesaria para su adaptación a las modificaciones operadas en el puesto de trabajo. La misma correrá a cargo de la empresa, sin perjuicio de la posibilidad de obtener a tal efecto los créditos destinados a la formación. El tiempo destinado a la formación se considerará en todo caso tiempo de trabajo efectivo.
 
 2. En la negociación colectiva se pactarán los términos del ejercicio de estos derechos, que se acomodarán a criterios y sistemas que garanticen la ausencia de discriminación, tanto directa como indirecta, entre trabajadores de uno y otro sexo.
-  [2] chunk=46 score=0.8396
+  [3] chunk=40 score=0.8396
       in perjuicio de las normas de orden público aplicables en el lugar de trabajo. Dichos trabajadores tendrán, al menos, los derechos económicos que les corresponderían de trabajar en territorio español.
 
 5. A efectos de esta ley se considera centro de trabajo la unidad productiva con organización específica, que sea dada de alta, como tal, ante la autoridad laboral.
@@ -100,43 +104,28 @@ d) La de los deportistas profesionales.
 e) La de las personas artistas que desarrollan su actividad en las artes escénicas, audiovisuales y musicales, así como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
 f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
-  [3] chunk=416 score=0.8384
-      profesional, la jornada máxima anual de trabajo, el régimen disciplinario, las normas mínimas en materia de prevención de riesgos laborales y la movilidad geográfica.
-
-## **Artículo 85.** _Contenido._
-
-1. Dentro del respeto a las leyes, los convenios colectivos podrán regular materias de índole económica, laboral, sindical y, en general, cuantas otras afecten a las condiciones de empleo y al ámbito de relaciones de los trabajadores y sus organizaciones representativas
-
-Página 81
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
-con el empresario y las asociaciones empresariales, incluidos procedimientos para resolver las discrepancias surgidas en los periodos de consulta previstos en los artículos 40, 41, 47 y 51; los laudos arbitrales que a estos efectos puedan dictarse tendrán la misma eficacia y tramitación que los acuerdos en el periodo de consultas, siendo susceptibles de impugnación en los mismos términos que los laudos dictados para la solución de las controversias derivadas de la aplicación de los convenios.
 --- Respuesta LLM ---
-La respuesta es:
+Según el artículo 1.1 del texto consolidado mencionado, las cuatro notas que definen una relación laboral incluida en el ámbito de aplicación del Estatuto de los Trabajadores son:
 
-a) La del personal de alta dirección no incluido en el artículo 1.3.c).
-
-b) La del servicio del hogar familiar.
-
-c) La de los penados en las instituciones penitenciarias.
-
-d) La de las personas artistas que desarrollan su actividad en las artes escénicas, audiovisuales y musicales, así como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
+1. Que el trabajador esté sujetado a la voluntad del empresario en el lugar y en el modo de realizar su trabajo.
+2. Que el puesto o funciones sean incompatibles con la realización de estudios para la obtención de un título académico o profesional.
+3. Que el trabajador esté sujeto a la jornada ordinaria de trabajo.
+4. Que el puesto o funciones sean compatibles con esta forma de realización del trabajo, cuando curse con regularidad estudios para la obtención de un título académico o profesional.
 --- Datos ---
-  latencia_total_s=1.94
-  tokens_generados=150
-  tokens_por_s=77.4
-  score_max=0.8414
+  latencia_total_s=3.48
+  tokens_generados=164
+  tokens_por_s=47.2
+  score_max=0.8430
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:33] Escenario: boe | Pregunta: BOE_003
+[2026-11-22 22:48:07] Escenario: boe | Pregunta: BOE_003
 Categoria: Definición y ámbito | Dificultad: Intermedia
 Pregunta: Enumera al menos cuatro actividades o relaciones excluidas expresamente del ámbito regulado por el Estatuto de los Trabajadores según el artículo 1.3.
 Referencia: Artículo 1.3 (pág. 9)
 Respuesta esperada: La relación de servicio de los funcionarios públicos, las prestaciones personales obligatorias, la actividad limitada al mero desempeño del cargo de consejero o miembro de órganos de administración societaria, los trabajos realizados a título de amistad, benevolencia o buena vecindad, los trabajos familiares (salvo que se demuestre la condición de asalariados) y la actividad de los agentes comerciales que asuman el riesgo y ventura de la operación.
 --- Recuperados (top 3) ---
-  [1] chunk=47 score=0.8479
+  [1] chunk=41 score=0.8479
       como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
 f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
@@ -162,7 +151,7 @@ l) Cualquier otro trabajo que sea expresamente declarado como relación laboral 
 1. Los derechos y obligaciones concernientes a la relación laboral se regulan:
 
 a) Por las disposiciones legales y reglamentarias del Estado.
-  [2] chunk=46 score=0.8458
+  [2] chunk=40 score=0.8458
       in perjuicio de las normas de orden público aplicables en el lugar de trabajo. Dichos trabajadores tendrán, al menos, los derechos económicos que les corresponderían de trabajar en territorio español.
 
 5. A efectos de esta ley se considera centro de trabajo la unidad productiva con organización específica, que sea dada de alta, como tal, ante la autoridad laboral.
@@ -184,35 +173,39 @@ d) La de los deportistas profesionales.
 e) La de las personas artistas que desarrollan su actividad en las artes escénicas, audiovisuales y musicales, así como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
 f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
-  [3] chunk=442 score=0.8426
-      os en las letras a) y b) del artículo 11.2 no será de aplicación cuando se suscriban en el marco de los programas públicos de empleo y formación contemplados en el texto refundido de la Ley de Empleo.
+  [3] chunk=39 score=0.8439
+      tervengan en operaciones mercantiles por cuenta de uno o más empresarios, siempre que queden personalmente obligados a responder del buen fin de la operación asumiendo el riesgo y ventura de la misma.
 
-Asimismo, en estos contratos las situaciones de incapacidad temporal, riesgo durante el embarazo, maternidad, adopción, guarda con fines de adopción, acogimiento, riesgo durante la lactancia y paternidad no interrumpirán el cómputo de la duración del contrato.
+g) En general, todo trabajo que se efectúe en desarrollo de relación distinta de la que define el apartado 1.
 
-2. **(Derogado).**
+A tales efectos se entenderá excluida del ámbito laboral la actividad de las personas prestadoras del servicio de transporte al amparo de autorizaciones administrativas de las que sean titulares, realizada, mediante el correspondiente precio, con vehículos comerciales de servicio público cuya propiedad o poder directo de disposición ostenten, aun cuando dichos servicios se realicen de forma continuada para un mismo cargador o comercializador.
 
-## **Disposición adicional tercera.** _Negociación colectiva y contrato fijo de obra._
-
-Lo dispuesto en el artículo 15.1.a) y 5 y en el artículo 49.1.c) se entiende sin perjuicio de lo que se establece o pueda establecerse sobre la regulación del contrato fijo de obra, incluida su indemnización por cese, en la negociación colectiva de conformidad con la disposición adicional tercera de la Ley 32/2006, de 18 de octubre, reguladora de la subcontratación en el sector de la construcción.
-
-## **Disposición adicional cuarta.** _Conceptos retributivos._
+4. La legislación laboral española será de aplicación al trabajo que presten los trabajadores españoles contratados en España al servicio de empresas españolas en el extranjero, sin perjuicio de las normas de orden público aplicables en el lugar de trabajo. Dichos trabajadores tendrán, al menos, los derechos económicos que les corresponderían de trabajar en territorio español.
 --- Respuesta LLM ---
-No aparece en el documento.
+Según el artículo 1.3, las siguientes actividades o relaciones están excluidas del ámbito regulado por el Estatuto de los Trabajadores:
+
+a) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o más empresarios sin asumir el riesgo y ventura de aquellas.
+
+b) La de los trabajadores con discapacidad que presten sus servicios en los centros especiales de empleo.
+
+c) La de los menores sometidos a la ejecución de medidas de internamiento para el cumplimiento de su responsabilidad penal.
+
+d) La de los abogados que prestan servicios en despachos de abogados, individuales o colectivos.
 --- Datos ---
-  latencia_total_s=0.19
-  tokens_generados=10
-  tokens_por_s=52.4
+  latencia_total_s=3.19
+  tokens_generados=154
+  tokens_por_s=48.3
   score_max=0.8479
-  abstencion_detectada=si
+  abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:37] Escenario: boe | Pregunta: BOE_004
+[2026-11-22 22:48:11] Escenario: boe | Pregunta: BOE_004
 Categoria: Definición y ámbito | Dificultad: Intermedia
 Pregunta: ¿Qué relaciones laborales tienen carácter especial según el artículo 2.1 del Estatuto de los Trabajadores?
 Referencia: Artículo 2.1 (pág. 10)
 Respuesta esperada: Entre otras, la del personal de alta dirección no incluido en el artículo 1.3.c), la del servicio del hogar familiar, la de los penados en instituciones penitenciarias, la de los deportistas profesionales, la de los artistas en espectáculos públicos, la de las personas que intervengan en operaciones mercantiles por cuenta de uno o más empresarios sin asumir el riesgo y ventura, la de los trabajadores con discapacidad en centros especiales de empleo, la de los menores sometidos a medidas de internamiento, la de residencia para la formación de especialistas en Ciencias de la Salud y la de los abogados en despachos individuales o colectivos.
 --- Recuperados (top 3) ---
-  [1] chunk=46 score=0.8532
+  [1] chunk=40 score=0.8532
       in perjuicio de las normas de orden público aplicables en el lugar de trabajo. Dichos trabajadores tendrán, al menos, los derechos económicos que les corresponderían de trabajar en territorio español.
 
 5. A efectos de esta ley se considera centro de trabajo la unidad productiva con organización específica, que sea dada de alta, como tal, ante la autoridad laboral.
@@ -234,7 +227,7 @@ d) La de los deportistas profesionales.
 e) La de las personas artistas que desarrollan su actividad en las artes escénicas, audiovisuales y musicales, así como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
 f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
-  [2] chunk=47 score=0.8475
+  [2] chunk=41 score=0.8475
       como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
 f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
@@ -260,20 +253,20 @@ l) Cualquier otro trabajo que sea expresamente declarado como relación laboral 
 1. Los derechos y obligaciones concernientes a la relación laboral se regulan:
 
 a) Por las disposiciones legales y reglamentarias del Estado.
-  [3] chunk=469 score=0.8424
-      de jornada de trabajo o suspensión de los contratos de trabajo y el porcentaje máximo de reducción de jornada o periodo máximo de suspensión de contrato previsto respecto de cada persona trabajadora.
+  [3] chunk=93 score=0.8440
+      trabajo se presume concertado por tiempo indefinido.
 
-## **Disposición adicional vigesimoséptima.** _Régimen jurídico aplicable en los casos de contratas y subcontratas suscritas con centros especiales de empleo._
+El contrato de trabajo de duración determinada solo podrá celebrarse por circunstancias de la producción o por sustitución de persona trabajadora.
 
-En los casos de contratas y subcontratas suscritas con los centros especiales de empleo regulados en el texto refundido de la Ley General de derechos de las personas con discapacidad y de su inclusión social, aprobado por el Real Decreto Legislativo 1/2013, de 29 de noviembre, no será de aplicación el artículo 42.6 del texto refundido de la Ley del Estatuto de los Trabajadores.
+Para que se entienda que concurre causa justificada de temporalidad será necesario que se especifiquen con precisión en el contrato la causa habilitante de la contratación temporal, las circunstancias concretas que la justifican y su conexión con la duración prevista.
 
-Página 92
+2. A efectos de lo previsto en este artículo, se entenderá por circunstancias de la producción el incremento ocasional e imprevisible de la actividad y las oscilaciones, que, aun tratándose de la actividad normal de la empresa, generan un desajuste temporal entre el empleo estable disponible y el que se requiere, siempre que no respondan a los supuestos incluidos en el artículo 16.1.
 
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+Entre las oscilaciones a que se refiere el párrafo anterior se entenderán incluidas
 
-**Disposición adicional vigesimoctava.** _Elecciones a órganos de representación en el ámbito de las personas artistas que desarrollan su actividad en las artes escénicas, audiovisuales y musicales, así como de las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad._
+aquellas que derivan de las vacaciones anuales.
 --- Respuesta LLM ---
-El artículo 2.1 del Estatuto de los Trabajadores se refiere a las relaciones laborales de carácter especial, que incluyen:
+Según el artículo 2.1 del Estatuto de los Trabajadores, las relaciones laborales de carácter especial son:
 
 a) La del personal de alta dirección no incluido en el artículo 1.3.c).
 
@@ -285,33 +278,24 @@ d) La de los deportistas profesionales.
 
 e) La de las personas artistas que desarrollan su actividad en las artes escénicas, audiovisuales y musicales, así como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
-f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
-
----
-
-[Fragmento 47 | Similitud: 0.85]
-más empresarios sin asumir el riesgo y ventura de aquellas.
+f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o más empresarios sin asumir el riesgo y ventura de aquellas.
 
 g) La de los trabajadores con discapacidad que presten sus servicios en los centros especiales de empleo.
-
-h) **(Derogada)**
-
-i) La de los menores sometidos a la ejecución de medidas de internamiento para el cumpl
 --- Datos ---
-  latencia_total_s=4.47
-  tokens_generados=350
-  tokens_por_s=78.3
+  latencia_total_s=4.16
+  tokens_generados=199
+  tokens_por_s=47.8
   score_max=0.8532
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:40] Escenario: boe | Pregunta: BOE_005
+[2026-11-22 22:48:14] Escenario: boe | Pregunta: BOE_005
 Categoria: Fuentes y principios | Dificultad: Básica
 Pregunta: ¿Cuál es el orden jerárquico de las fuentes de la relación laboral establecido en el artículo 3.1?
 Referencia: Artículo 3.1 (pág. 10)
 Respuesta esperada: 1.º Las disposiciones legales y reglamentarias del Estado; 2.º Los convenios colectivos; 3.º La voluntad de las partes manifestada en el contrato de trabajo (siendo su objeto lícito y sin que puedan establecerse en perjuicio del trabajador condiciones menos favorables o contrarias a las disposiciones legales y convenios colectivos); 4.º Los usos y costumbres locales y profesionales.
 --- Recuperados (top 3) ---
-  [1] chunk=48 score=0.8547
+  [1] chunk=42 score=0.8591
       ón.
 
 ## **Artículo 3.** _Fuentes de la relación laboral._
@@ -327,11 +311,21 @@ c) Por la voluntad de las partes, manifestada en el contrato de trabajo, siendo 
 d) Por los usos y costumbres locales y profesionales.
 
 2. Las disposiciones legales y reglamentarias se aplicarán con sujeción estricta al principio de jerarquía normativa. Las disposiciones reglamentarias desarrollarán los preceptos que establecen las normas de rango superior, pero no podrán establecer condiciones de trabajo distintas a las establecidas por las leyes a desarrollar.
+  [2] chunk=230 score=0.8345
+      e conforme a lo dispuesto en el título III.
 
-Página 10
+No obstante, cuando la empresa contratista o subcontratista cuente con un convenio
 
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-  [2] chunk=47 score=0.8327
+propio, se aplicará este, en los términos que resulten del artículo 84.
+
+7. Las personas trabajadoras de las empresas contratistas y subcontratistas, cuando no tengan representación legal, tendrán derecho a formular a la representación legal de personas trabajadoras de la empresa principal cuestiones relativas a las condiciones de ejecución de la actividad laboral, mientras compartan centro de trabajo y carezcan de representación.
+
+Lo dispuesto en el párrafo anterior no será de aplicación a las reclamaciones de la
+
+persona trabajadora respecto de la empresa de la que depende.
+
+8. La representación legal de las personas trabajadoras de la empresa principal y de las empresas contratistas y subcontratistas, cuando compartan de forma continuada centro de trabajo, podrán reunirse a efectos de coordinación entre ellos y en relación con las condiciones de ejecución de la actividad laboral en los términos previstos en el artículo 81.
+  [3] chunk=41 score=0.8327
       como las personas que realizan actividades técnicas o auxiliares necesarias para el desarrollo de dicha actividad.
 
 f) La de las personas que intervengan en operaciones mercantiles por cuenta de uno o
@@ -357,45 +351,32 @@ l) Cualquier otro trabajo que sea expresamente declarado como relación laboral 
 1. Los derechos y obligaciones concernientes a la relación laboral se regulan:
 
 a) Por las disposiciones legales y reglamentarias del Estado.
-  [3] chunk=7 score=0.8315
-      . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|25|
-|Artículo 20. Dirección y control de la actividad laboral. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|25|
-|Artículo 20 bis. Derechos de los trabajadores a la intimidad en relación con el entorno digital y a la<br>desconexión. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|26|
-|Artículo 21. Pacto de no concurrencia y de permanencia en la empresa. . . . . . . . . . . . . . . . . . . . . .|26|
-|Sección 3.ª Clasificación profesional y promoción en el trabajo. . . . . . . . . . . . . . . . . . . . . . . . . . . . .|26|
-|Artículo 22. Sistema de clasificación profesional. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|26|
-|Artículo 23. Promoción y formación profesional en el trabajo. . . . . . . . . . . . . . . . . . . . . . . . . . . . .|27|
-|Artículo 24. Ascensos.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|27|
-|Artículo 25. Promoción económica.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|27|
-|Sec
 --- Respuesta LLM ---
-El orden jerárquico de las fuentes de la relación laboral establecido en el artículo 3.1 es:
+El orden jerárquico de las fuentes de la relación laboral establecido en el artículo 3.1 es el siguiente:
 
-1. Las disposiciones legales y reglamentarias del Estado
-2. Los convenios colectivos
-3. La voluntad de las partes, manifestada en el contrato de trabajo, siendo su objeto lícito y sin que en ningún caso puedan establecerse en perjuicio del trabajador condiciones menos favorables o contrarias a las disposiciones legales y convenios colectivos antes expresados
-4. Los usos y costumbres locales y profesionales
-5. Las disposiciones reglamentarias desarrollarán los preceptos que establecen las normas de rango superior, pero no podrán establecer condiciones de trabajo distintas a las establecidas por las leyes a desarrollar
+1. Las disposiciones legales y reglamentarias del Estado.
+2. Los convenios colectivos.
+3. La voluntad de las partes, manifestada en el contrato de trabajo.
+
+Estas fuentes se aplican con sujeción estricta al principio de jerarquía normativa, donde las disposiciones legales y reglamentarias tienen mayor jerarquía que los convenios colectivos y el contrato de trabajo.
 --- Datos ---
-  latencia_total_s=3.01
-  tokens_generados=236
-  tokens_por_s=78.4
-  score_max=0.8547
+  latencia_total_s=2.60
+  tokens_generados=124
+  tokens_por_s=47.7
+  score_max=0.8591
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:41] Escenario: boe | Pregunta: BOE_006
+[2026-11-22 22:48:17] Escenario: boe | Pregunta: BOE_006
 Categoria: Protección y capacidad | Dificultad: Básica
 Pregunta: ¿Qué prohibiciones establece el artículo 6 respecto al trabajo de los menores de edad?
 Referencia: Artículo 6 (pág. 12)
 Respuesta esperada: Se prohíbe la admisión al trabajo a los menores de dieciséis años, y los trabajadores menores de dieciocho años no podrán realizar trabajos nocturnos ni aquellas actividades o puestos de trabajo respecto a los que se establezcan limitaciones a su contratación, ni tampoco podrán realizar horas extraordinarias.
 --- Recuperados (top 3) ---
-  [1] chunk=53 score=0.8642
-      antos se deriven, en su caso, de los respectivos contratos de trabajo.
+  [1] chunk=47 score=0.8649
+      uctividad.
 
-Página 11
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+f) Cuantos se deriven, en su caso, de los respectivos contratos de trabajo.
 
 ## **_Sección 3.ª Elementos y eficacia del contrato de trabajo_**
 
@@ -412,8 +393,22 @@ BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
 ## **Artículo 7.** _Capacidad para contratar._
 
 Podrán contratar la prestación de su trabajo:
-  [2] chunk=54 score=0.8542
-      para su formación profesional y humana. El permiso deberá constar por escrito y para actos determinados.
+
+a) Quienes tengan plena capacidad de obrar conforme a lo dispuesto en el Código Civil.
+  [2] chunk=157 score=0.8519
+      o o, en su defecto, acuerdo entre la empresa y los representantes de los trabajadores, se establezca otra distribución del tiempo de trabajo diario, respetando en todo caso el descanso entre jornadas.
+
+Los trabajadores menores de dieciocho años no podrán realizar más de ocho horas diarias de trabajo efectivo, incluyendo, en su caso, el tiempo dedicado a la formación y, si trabajasen para varios empleadores, las horas realizadas con cada uno de ellos.
+
+4. Siempre que la duración de la jornada diaria continuada exceda de seis horas, deberá establecerse un periodo de descanso durante la misma de duración no inferior a quince minutos. Este periodo de descanso se considerará tiempo de trabajo efectivo cuando así esté establecido o se establezca por convenio colectivo o contrato de trabajo.
+
+En el caso de los trabajadores menores de dieciocho años, el periodo de descanso tendrá una duración mínima de treinta minutos, y deberá establecerse siempre que la duración de la jornada diaria continuada exceda de cuatro horas y media.
+
+5. El tiempo de trabajo se computará de modo que tanto al comienzo como al final de la
+
+jornada diaria el trabajador se encuentre en su puesto de trabajo.
+  [3] chunk=48 score=0.8480
+      tos determinados.
 
 ## **Artículo 7.** _Capacidad para contratar._
 
@@ -430,35 +425,28 @@ c) Los extranjeros, de acuerdo con lo dispuesto en la legislación específica s
 ## **Artículo 8.** _Forma del contrato._
 
 1. El contrato de trabajo se podrá celebrar por escrito o de palabra. Se presumirá existente entre todo el que presta un servicio por cuenta y dentro del ámbito de organización y dirección de otro y el que lo recibe a cambio de una retribución a aquel.
-  [3] chunk=165 score=0.8519
-      o o, en su defecto, acuerdo entre la empresa y los representantes de los trabajadores, se establezca otra distribución del tiempo de trabajo diario, respetando en todo caso el descanso entre jornadas.
-
-Los trabajadores menores de dieciocho años no podrán realizar más de ocho horas diarias de trabajo efectivo, incluyendo, en su caso, el tiempo dedicado a la formación y, si trabajasen para varios empleadores, las horas realizadas con cada uno de ellos.
-
-4. Siempre que la duración de la jornada diaria continuada exceda de seis horas, deberá establecerse un periodo de descanso durante la misma de duración no inferior a quince minutos. Este periodo de descanso se considerará tiempo de trabajo efectivo cuando así esté establecido o se establezca por convenio colectivo o contrato de trabajo.
-
-En el caso de los trabajadores menores de dieciocho años, el periodo de descanso tendrá una duración mínima de treinta minutos, y deberá establecerse siempre que la duración de la jornada diaria continuada exceda de cuatro horas y media.
-
-5. El tiempo de trabajo se computará de modo que tanto al comienzo como al final de la
-
-jornada diaria el trabajador se encuentre en su puesto de trabajo.
 --- Respuesta LLM ---
-El artículo 6 prohibe la admisión al trabajo a los menores de dieciséis años.
+El artículo 6 establece las siguientes prohibiciones respecto al trabajo de los menores de edad:
+
+1. No se puede admitir al trabajo a los menores de 16 años.
+2. Los trabajadores menores de 18 años no pueden realizar trabajos nocturnos.
+3. No se pueden realizar horas extraordinarias a los menores de 18 años.
+4. La intervención de los menores de 16 años en espectáculos públicos solo se autorizará en casos excepcionales y siempre que no suponga peligro para su salud ni para su formación profesional y humana.
 --- Datos ---
-  latencia_total_s=0.47
-  tokens_generados=32
-  tokens_por_s=68.8
-  score_max=0.8642
+  latencia_total_s=2.74
+  tokens_generados=132
+  tokens_por_s=48.2
+  score_max=0.8649
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:41] Escenario: boe | Pregunta: BOE_007
+[2026-11-22 22:48:18] Escenario: boe | Pregunta: BOE_007
 Categoria: Contratación | Dificultad: Básica
 Pregunta: ¿Qué presunción legal se aplica si un contrato de trabajo que debía formalizarse por escrito no observa dicha exigencia según el artículo 8.2?
 Referencia: Artículo 8.2 (pág. 12)
 Respuesta esperada: De no observarse la exigencia de forma escrita, el contrato de trabajo se presumirá celebrado por tiempo indefinido y a jornada completa, salvo prueba en contrario que acredite su naturaleza temporal o el carácter a tiempo parcial de los servicios.
 --- Recuperados (top 3) ---
-  [1] chunk=56 score=0.8568
+  [1] chunk=50 score=0.8568
       salvo prueba en contrario que acredite su naturaleza temporal o el carácter a tiempo parcial de los servicios.
 
 Cualquiera de las partes podrá exigir que el contrato se formalice por escrito, incluso
@@ -468,7 +456,7 @@ durante el transcurso de la relación laboral.
 3. El empresario está obligado a comunicar a la oficina pública de empleo, en el plazo de los diez días siguientes a su concertación y en los términos que reglamentariamente se determinen, el contenido de los contratos de trabajo que celebre o las prórrogas de los mismos, deban o no formalizarse por escrito.
 
 4. El empresario entregará a la representación legal de los trabajadores una copia básica de todos los contratos que deban celebrarse por escrito, a excepción de los contratos de relación laboral especial de alta dirección sobre los que se establece el deber de notificación a la representación legal de los trabajadores.
-  [2] chunk=55 score=0.8484
+  [2] chunk=49 score=0.8484
       ito o de palabra. Se presumirá existente entre todo el que presta un servicio por cuenta y dentro del ámbito de organización y dirección de otro y el que lo recibe a cambio de una retribución a aquel.
 
 2. Deberán constar por escrito los contratos de trabajo cuando así lo exija una disposición legal y, en todo caso, los de prácticas y para la formación y el aprendizaje, los contratos a tiempo parcial, fijos-discontinuos y de relevo y los contratos para la realización de una obra o servicio determinado; también constarán por escrito los contratos por tiempo determinado cuya duración sea superior a cuatro semanas.
@@ -478,7 +466,7 @@ Deberán constar igualmente por escrito los contratos de trabajo de los pescador
 De no observarse la exigencia de forma escrita, el contrato de trabajo se presumirá celebrado por tiempo indefinido y a jornada completa, salvo prueba en contrario que acredite su naturaleza temporal o el carácter a tiempo parcial de los servicios.
 
 Cualquiera de las partes podrá exigir que el contrato se formalice por escrito, incluso
-  [3] chunk=59 score=0.8457
+  [3] chunk=53 score=0.8457
       ipación institucional que reglamentariamente tengan tales facultades, observarán sigilo profesional, no pudiendo utilizar dicha documentación para fines distintos de los que motivaron su conocimiento.
 
 5. Cuando la relación laboral sea de duración superior a cuatro semanas, el empresario deberá informar por escrito al trabajador, en los términos y plazos que se establezcan reglamentariamente, sobre los elementos esenciales del contrato y las principales condiciones de ejecución de la prestación laboral, siempre que tales elementos y condiciones no figuren en el contrato de trabajo formalizado por escrito.
@@ -487,56 +475,56 @@ Cualquiera de las partes podrá exigir que el contrato se formalice por escrito,
 
 1. Si resultase nula solo una parte del contrato de trabajo, este permanecerá válido en lo restante, y se entenderá completado con los preceptos jurídicos adecuados conforme a lo dispuesto en el artículo 3.1.
 --- Respuesta LLM ---
-No aparece en el documento.
+Si un contrato de trabajo que debía formalizarse por escrito no lo hace, según el artículo 8.2, se presumirá celebrado por tiempo indefinido y a jornada completa, salvo prueba en contrario que acredite su naturaleza temporal o el carácter a tiempo parcial de los servicios.
 --- Datos ---
-  latencia_total_s=0.18
-  tokens_generados=10
-  tokens_por_s=56.7
+  latencia_total_s=1.41
+  tokens_generados=67
+  tokens_por_s=47.7
   score_max=0.8568
-  abstencion_detectada=si
+  abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:45] Escenario: boe | Pregunta: BOE_008
+[2026-11-22 22:48:18] Escenario: boe | Pregunta: BOE_008
 Categoria: Modalidades contractuales | Dificultad: Básica
 Pregunta: ¿Cuáles son las dos modalidades del contrato formativo reguladas en el artículo 11 del Estatuto de los Trabajadores?
 Referencia: Artículo 11.1 (pág. 13)
 Respuesta esperada: El contrato de formación en alternancia, que tiene por objeto compatibilizar la actividad laboral retribuida con los correspondientes procesos formativos, y el contrato formativo para la obtención de la práctica profesional adecuada al nivel de estudios.
 --- Recuperados (top 3) ---
-  [1] chunk=65 score=0.8664
+  [1] chunk=59 score=0.8664
       de la empresa, los planes formativos individuales donde se especifique el contenido de la formación, el calendario y las actividades y los requisitos de tutoría para el cumplimiento de sus objetivos.
 
 f) Son parte sustancial de este contrato tanto la formación teórica dispensada por el centro o entidad de formación o la propia empresa, cuando así se establezca, como la correspondiente formación práctica dispensada por la empresa y el centro. Reglamentariamente se desarrollarán el sistema de impartición y las características de la formación, así como los aspectos relacionados con la financiación de la actividad formativa.
-  [2] chunk=67 score=0.8642
+  [2] chunk=56 score=0.8643
+      el apartado 2, o el desempeño de una actividad laboral destinada a adquirir una práctica profesional adecuada a los correspondientes niveles de estudios, en los términos establecidos en el apartado 3.
+
+2. El contrato de formación en alternancia, que tendrá por objeto compatibilizar la actividad laboral retribuida con los correspondientes procesos formativos en el ámbito de la formación profesional, los estudios universitarios o del Catálogo de especialidades formativas del Sistema Nacional de Empleo, se realizará de acuerdo con las siguientes reglas:
+
+a) Se podrá celebrar con personas que carezcan de la cualificación profesional reconocida por las titulaciones o certificados requeridos para concertar un contrato formativo para la obtención de práctica profesional regulada en el apartado 3.
+
+Sin perjuicio de lo anterior, se podrán realizar contratos vinculados a estudios de formación profesional o universitaria con personas que posean otra titulación siempre que no haya tenido otro contrato formativo previo en una formación del mismo nivel formativo y del mismo sector productivo.
+  [3] chunk=61 score=0.8642
       ciado al contrato formativo, podrá prorrogarse mediante acuerdo de las partes, hasta la obtención de dicho título, certificado, acreditación o diploma sin superar nunca la duración máxima de dos años.
 
 h) Solo podrá celebrarse un contrato de formación en alternancia por cada ciclo formativo de formación profesional y titulación universitaria, certificado de profesionalidad o itinerario de especialidades formativas del Catálogo de Especialidades Formativas del Sistema Nacional de Empleo.
 
 No obstante, podrán formalizarse contratos de formación en alternancia con varias empresas en base al mismo ciclo, certificado de profesionalidad o itinerario de especialidades del Catálogo citado, siempre que dichos contratos respondan a distintas actividades vinculadas al ciclo, al plan o al programa formativo y sin que la duración máxima de todos los contratos pueda exceder el límite previsto en el apartado anterior.
-  [3] chunk=80 score=0.8606
-      rada de hombres y mujeres vinculados a la empresa mediante contratos formativos. Asimismo, podrán establecerse compromisos de conversión de los contratos formativos en contratos por tiempo indefinido.
-
-7. Las empresas que pretendan suscribir contratos formativos, podrán solicitar por escrito al servicio público de empleo competente, información relativa a si las personas a las que pretenden contratar han estado previamente contratadas bajo dicha modalidad y la duración de estas contrataciones. Dicha información deberá ser trasladada a la representación legal de las personas trabajadoras y tendrá valor liberatorio a efectos de no exceder la duración máxima de este contrato.
-
-## **Artículo 12.** _Contrato a tiempo parcial y contrato de relevo._
-
-1. El contrato de trabajo se entenderá celebrado a tiempo parcial cuando se haya acordado la prestación de servicios durante un número de horas al día, a la semana, al mes o al año, inferior a la jornada de trabajo de un trabajador a tiempo completo comparable.
 --- Respuesta LLM ---
-El contrato formativo se entiende como un contrato que se establece entre una empresa y un empleado, que se establece en función de una formación teórica, una formación práctica, una actividad de formación, una actividad de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una actividad de capacitación en la que se establecen requisitos de capacitación, una act
+No aparece en el documento
 --- Datos ---
-  latencia_total_s=4.40
-  tokens_generados=350
-  tokens_por_s=79.6
+  latencia_total_s=0.19
+  tokens_generados=7
+  tokens_por_s=36.3
   score_max=0.8664
-  abstencion_detectada=no
+  abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:46] Escenario: boe | Pregunta: BOE_009
+[2026-11-22 22:48:20] Escenario: boe | Pregunta: BOE_009
 Categoria: Plazos y duración | Dificultad: Intermedia
 Pregunta: ¿Cuáles son los límites máximos de duración del periodo de prueba establecidos en el artículo 14.1 en defecto de pacto en convenio colectivo?
 Referencia: Artículo 14.1 (pág. 20)
 Respuesta esperada: No podrá exceder de seis meses para los técnicos titulados, ni de dos meses para los demás trabajadores. En las empresas de menos de veinticinco trabajadores el periodo de prueba no podrá exceder de tres meses para los trabajadores que no sean técnicos titulados.
 --- Recuperados (top 3) ---
-  [1] chunk=97 score=0.8848
+  [1] chunk=91 score=0.8848
       porales de duración determinada del artículo 15 concertados por tiempo no superior a seis meses, el periodo de prueba no podrá exceder de un mes, salvo que se disponga otra cosa en convenio colectivo.
 
 El empresario y el trabajador están, respectivamente, obligados a realizar las
@@ -548,7 +536,7 @@ Será nulo el pacto que establezca un periodo de prueba cuando el trabajador hay
 2. Durante el periodo de prueba, la persona trabajadora tendrá los derechos y obligaciones correspondientes al puesto de trabajo que desempeñe como si fuera de plantilla, excepto los derivados de la resolución de la relación laboral, que podrá producirse a instancia de cualquiera de las partes durante su transcurso.
 
 La resolución a instancia empresarial será nula en el caso de las trabajadoras por razón de embarazo, desde la fecha de inicio del embarazo hasta el comienzo del período de suspensión a que se refiere el artículo 48.4, o maternidad, salvo que concurran motivos no relacionados con el embarazo o maternidad.
-  [2] chunk=100 score=0.8710
+  [2] chunk=94 score=0.8710
       re que no respondan a los supuestos incluidos en el artículo 16.1.
 
 Entre las oscilaciones a que se refiere el párrafo anterior se entenderán incluidas
@@ -558,7 +546,7 @@ aquellas que derivan de las vacaciones anuales.
 Cuando el contrato de duración determinada obedezca a estas circunstancias de la producción, su duración no podrá ser superior a seis meses. Por convenio colectivo de ámbito sectorial se podrá ampliar la duración máxima del contrato hasta un año.
 
 En caso de que el contrato se hubiera concertado por una duración inferior a la máxima legal o convencionalmente establecida, podrá prorrogarse, mediante acuerdo de las partes, por una única vez, sin que la duración total del contrato pueda exceder de dicha duración máxima.
-  [3] chunk=96 score=0.8681
+  [3] chunk=90 score=0.8681
       rabajador sustituido
 
 o simultanearse con él.
@@ -581,27 +569,25 @@ Las personas trabajadoras podrán prestar trabajo a distancia en los términos p
 
 En el supuesto de los contratos temporales de duración determinada del artículo 15 concertados por tiempo no superior a seis meses, el periodo de prueba no podrá exceder de un mes, salvo que se disponga otra cosa en convenio colectivo.
 --- Respuesta LLM ---
-El límite máximo de duración del periodo de prueba establecido en el artículo 14.1 en defecto de pacto en convenio colectivo es de seis meses para los técnicos titulados, ni de dos meses para los demás trabajadores.
+En defecto de pacto en convenio colectivo, el límite máximo de duración del periodo de prueba establecido en el artículo 14.1 es de 6 meses para los técnicos titulados y de 2 meses para los demás trabajadores.
 --- Datos ---
-  latencia_total_s=1.03
-  tokens_generados=78
-  tokens_por_s=75.4
+  latencia_total_s=1.24
+  tokens_generados=58
+  tokens_por_s=46.8
   score_max=0.8848
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:49] Escenario: boe | Pregunta: BOE_010
+[2026-11-22 22:48:22] Escenario: boe | Pregunta: BOE_010
 Categoria: Modalidades contractuales | Dificultad: Básica
 Pregunta: ¿Cuál es la regla general sobre la duración del contrato de trabajo en el artículo 15.1 y qué dos causas justifican un contrato de duración determinada?
 Referencia: Artículo 15.1 (pág. 20)
 Respuesta esperada: El contrato de trabajo se presume concertado por tiempo indefinido, y el contrato de duración determinada solo podrá celebrarse por circunstancias de la producción o por sustitución de persona trabajadora.
 --- Recuperados (top 3) ---
-  [1] chunk=99 score=0.8703
-      to de trabajo de duración determinada solo podrá celebrarse por circunstancias de la producción o por sustitución de persona trabajadora.
+  [1] chunk=93 score=0.8871
+      trabajo se presume concertado por tiempo indefinido.
 
-Página 20
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+El contrato de trabajo de duración determinada solo podrá celebrarse por circunstancias de la producción o por sustitución de persona trabajadora.
 
 Para que se entienda que concurre causa justificada de temporalidad será necesario que se especifiquen con precisión en el contrato la causa habilitante de la contratación temporal, las circunstancias concretas que la justifican y su conexión con la duración prevista.
 
@@ -610,7 +596,7 @@ Para que se entienda que concurre causa justificada de temporalidad será necesa
 Entre las oscilaciones a que se refiere el párrafo anterior se entenderán incluidas
 
 aquellas que derivan de las vacaciones anuales.
-  [2] chunk=100 score=0.8651
+  [2] chunk=94 score=0.8651
       re que no respondan a los supuestos incluidos en el artículo 16.1.
 
 Entre las oscilaciones a que se refiere el párrafo anterior se entenderán incluidas
@@ -620,7 +606,7 @@ aquellas que derivan de las vacaciones anuales.
 Cuando el contrato de duración determinada obedezca a estas circunstancias de la producción, su duración no podrá ser superior a seis meses. Por convenio colectivo de ámbito sectorial se podrá ampliar la duración máxima del contrato hasta un año.
 
 En caso de que el contrato se hubiera concertado por una duración inferior a la máxima legal o convencionalmente establecida, podrá prorrogarse, mediante acuerdo de las partes, por una única vez, sin que la duración total del contrato pueda exceder de dicha duración máxima.
-  [3] chunk=296 score=0.8630
+  [3] chunk=288 score=0.8630
       e disfrute igual de flexible.
 
 ## **_Sección 4.ª Extinción del contrato_**
@@ -637,67 +623,71 @@ c) Por expiración del tiempo convenido. A la finalización del contrato, except
 
 Los contratos de duración determinada que tengan establecido plazo máximo de duración, incluidos los contratos formativos, concertados por una duración inferior a la máxima legalmente establecida, se entenderán prorrogados automáticamente hasta dicho plazo cuando no medie denuncia o prórroga expresa y el trabajador continúe prestando servicios.
 --- Respuesta LLM ---
-La regla general sobre la duración del contrato de trabajo en el artículo 15.1 es que el contrato se extinguirá por circunstancias de la producción, excepto en los contratos formativos y el contrato de duración determinada por causa de sustitución. Las dos causas justifican un contrato de duración determinada son:
+La regla general sobre la duración del contrato de trabajo en el artículo 15.1 es que solo se puede presumir que es concertado por tiempo indefinido. 
 
-1. Las oscilaciones a que se refiere el párrafo anterior, es decir, las vacaciones anuales.
-2. El supuesto de que la causa habilitante de la contratación temporal sea una causa justificada de temporalidad.
+Las dos causas justificantes para un contrato de duración determinada son:
+
+1. Circunstancias de la producción: Incremento ocasional e imprevisible de la actividad y las oscilaciones que generen un desajuste temporal entre el empleo estable disponible y el que se requiere.
+2. Sustitución de persona trabajadora.
 --- Datos ---
-  latencia_total_s=2.32
-  tokens_generados=164
-  tokens_por_s=70.6
-  score_max=0.8703
+  latencia_total_s=2.37
+  tokens_generados=114
+  tokens_por_s=48.0
+  score_max=0.8871
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:50] Escenario: boe | Pregunta: BOE_011
+[2026-11-22 22:48:24] Escenario: boe | Pregunta: BOE_011
 Categoria: Modalidades contractuales | Dificultad: Intermedia
 Pregunta: ¿Para qué tipo de trabajos se concierta el contrato por tiempo indefinido fijo-discontinuo según el artículo 16.1?
 Referencia: Artículo 16.1 (pág. 23)
 Respuesta esperada: Para la realización de trabajos de naturaleza estacional o vinculados a actividades productivas de temporada, para aquellos que no tengan dicha naturaleza pero que, siendo de prestación intermitente, tengan periodos de ejecución ciertos, determinados o indeterminados, y para el desarrollo de trabajos consistentes en la prestación de servicios en el marco de la ejecución de contratas mercantiles o administrativas que, siendo previsibles, formen parte de la actividad ordinaria de la empresa.
 --- Recuperados (top 3) ---
-  [1] chunk=111 score=0.8933
-      este sus servicios y de la Inspección de Trabajo y Seguridad Social, si advirtiera que se han sobrepasado los límites máximos temporales establecidos.
-
-## **Artículo 16.** _Contrato fijo-discontinuo._
-
-1. El contrato por tiempo indefinido fijo-discontinuo se concertará para la realización de trabajos de naturaleza estacional o vinculados a actividades productivas de temporada, o para el desarrollo de aquellos que no tengan dicha naturaleza pero que, siendo de prestación intermitente, tengan periodos de ejecución ciertos, determinados o indeterminados. El contrato fijo-discontinuo podrá concertarse para el desarrollo de trabajos consistentes en la prestación de servicios en el marco de la ejecución de contratas mercantiles o administrativas que, siendo previsibles, formen parte de la actividad ordinaria de la empresa.
-
-Asimismo, podrá celebrarse un contrato fijo-discontinuo entre una empresa de trabajo temporal y una persona contratada para ser cedida, en los términos previstos en el artículo 10.3 de la Ley 14/1994, de 1 de junio, por la que se regulan las empresas de trabajo temporal.
-  [2] chunk=112 score=0.8593
-      sa de trabajo temporal y una persona contratada para ser cedida, en los términos previstos en el artículo 10.3 de la Ley 14/1994, de 1 de junio, por la que se regulan las empresas de trabajo temporal.
-
-2. El contrato de trabajo fijo-discontinuo, conforme a lo dispuesto en el artículo 8.2, se deberá formalizar necesariamente por escrito y deberá reflejar los elementos esenciales de la actividad laboral, entre otros, la duración del periodo de actividad, la jornada y su distribución horaria, si bien estos últimos podrán figurar con carácter estimado, sin perjuicio de su concreción en el momento del llamamiento.
-
-3. Mediante convenio colectivo o, en su defecto, acuerdo de empresa, se establecerán los criterios objetivos y formales por los que debe regirse el llamamiento de las personas fijas-discontinuas. En todo caso, el llamamiento deberá realizarse por escrito o por otro medio que permita dejar constancia de la debida notificación a la persona interesada con las indicaciones precisas de las condiciones de su incorporación y con una antelación adecuada.
-  [3] chunk=110 score=0.8537
-      dora podrá solicitar, por escrito al servicio público de empleo correspondiente un certificado de los contratos de duración determinada o
-
-Página 22
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+  [1] chunk=104 score=0.8832
+      ico de empleo correspondiente un certificado de los contratos de duración determinada o
 
 temporales celebrados, a los efectos de poder acreditar su condición de persona trabajadora fija en la empresa.
 
 El Servicio Público de Empleo emitirá dicho documento y lo pondrá en conocimiento de la empresa en la que la persona trabajadora preste sus servicios y de la Inspección de Trabajo y Seguridad Social, si advirtiera que se han sobrepasado los límites máximos temporales establecidos.
 
 ## **Artículo 16.** _Contrato fijo-discontinuo._
+
+1. El contrato por tiempo indefinido fijo-discontinuo se concertará para la realización de trabajos de naturaleza estacional o vinculados a actividades productivas de temporada, o para el desarrollo de aquellos que no tengan dicha naturaleza pero que, siendo de prestación intermitente, tengan periodos de ejecución ciertos, determinados o indeterminados. El contrato fijo-discontinuo podrá concertarse para el desarrollo de trabajos consistentes en la prestación de servicios en el marco de la ejecución de contratas mercantiles o administrativas que, siendo previsibles, formen parte de la actividad ordinaria de la empresa.
+  [2] chunk=105 score=0.8717
+      rabajos consistentes en la prestación de servicios en el marco de la ejecución de contratas mercantiles o administrativas que, siendo previsibles, formen parte de la actividad ordinaria de la empresa.
+
+Asimismo, podrá celebrarse un contrato fijo-discontinuo entre una empresa de trabajo temporal y una persona contratada para ser cedida, en los términos previstos en el artículo 10.3 de la Ley 14/1994, de 1 de junio, por la que se regulan las empresas de trabajo temporal.
+
+2. El contrato de trabajo fijo-discontinuo, conforme a lo dispuesto en el artículo 8.2, se deberá formalizar necesariamente por escrito y deberá reflejar los elementos esenciales de la actividad laboral, entre otros, la duración del periodo de actividad, la jornada y su distribución horaria, si bien estos últimos podrán figurar con carácter estimado, sin perjuicio de su concreción en el momento del llamamiento.
+  [3] chunk=93 score=0.8673
+      trabajo se presume concertado por tiempo indefinido.
+
+El contrato de trabajo de duración determinada solo podrá celebrarse por circunstancias de la producción o por sustitución de persona trabajadora.
+
+Para que se entienda que concurre causa justificada de temporalidad será necesario que se especifiquen con precisión en el contrato la causa habilitante de la contratación temporal, las circunstancias concretas que la justifican y su conexión con la duración prevista.
+
+2. A efectos de lo previsto en este artículo, se entenderá por circunstancias de la producción el incremento ocasional e imprevisible de la actividad y las oscilaciones, que, aun tratándose de la actividad normal de la empresa, generan un desajuste temporal entre el empleo estable disponible y el que se requiere, siempre que no respondan a los supuestos incluidos en el artículo 16.1.
+
+Entre las oscilaciones a que se refiere el párrafo anterior se entenderán incluidas
+
+aquellas que derivan de las vacaciones anuales.
 --- Respuesta LLM ---
-El contrato por tiempo indefinido fijo-discontinuo se concierta para la realización de trabajos de naturaleza estacional o vinculados a actividades productivas de temporada, o para el desarrollo de aquellos que no tengan dicha naturaleza pero que, siendo de prestación intermitente, tengan periodos de ejecución ciertos, determinados o indeterminados.
+Según el artículo 16.1, el contrato por tiempo indefinido fijo-discontinuo se concierta para trabajos de naturaleza estacional o vinculados a actividades productivas de temporada. También puede ser utilizado para trabajos de prestación intermitente con periodos de ejecución determinados o indeterminados, siempre que dichos trabajos formen parte de la actividad ordinaria de la empresa.
 --- Datos ---
-  latencia_total_s=1.53
-  tokens_generados=109
-  tokens_por_s=71.2
-  score_max=0.8933
+  latencia_total_s=1.90
+  tokens_generados=90
+  tokens_por_s=47.4
+  score_max=0.8832
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:51] Escenario: boe | Pregunta: BOE_012
+[2026-11-22 22:48:25] Escenario: boe | Pregunta: BOE_012
 Categoria: Derechos laborales | Dificultad: Básica
 Pregunta: ¿Qué derechos reconoce el artículo 20 bis a los trabajadores en relación con el entorno digital?
 Referencia: Artículo 20 bis (pág. 26)
 Respuesta esperada: El derecho a la intimidad en el uso de los dispositivos digitales puestos a su disposición por el empleador, a la desconexión digital y a la intimidad frente al uso de dispositivos de videovigilancia y geolocalización en los términos establecidos en la legislación vigente en materia de protección de datos personales y garantía de los derechos digitales.
 --- Recuperados (top 3) ---
-  [1] chunk=128 score=0.8658
+  [1] chunk=120 score=0.8658
       obligaciones y deberes laborales, guardando en su adopción y aplicación la consideración debida a su dignidad y teniendo en cuenta, en su caso, la capacidad real de los trabajadores con discapacidad.
 
 4. El empresario podrá verificar el estado de salud del trabajador que sea alegado por este para justificar sus faltas de asistencia al trabajo, mediante reconocimiento a cargo de personal médico. La negativa del trabajador a dichos reconocimientos podrá determinar la suspensión de los derechos económicos que pudieran existir a cargo del empresario por dichas situaciones.
@@ -707,7 +697,7 @@ Respuesta esperada: El derecho a la intimidad en el uso de los dispositivos digi
 Los trabajadores tienen derecho a la intimidad en el uso de los dispositivos digitales puestos a su disposición por el empleador, a la desconexión digital y a la intimidad frente al uso de dispositivos de videovigilancia y geolocalización en los términos establecidos en la legislación vigente en materia de protección de datos personales y garantía de los derechos digitales.
 
 **Artículo 21.** _Pacto de no concurrencia y de permanencia en la empresa._
-  [2] chunk=7 score=0.8477
+  [2] chunk=6 score=0.8477
       . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|25|
 |Artículo 20. Dirección y control de la actividad laboral. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|25|
 |Artículo 20 bis. Derechos de los trabajadores a la intimidad en relación con el entorno digital y a la<br>desconexión. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|26|
@@ -718,7 +708,7 @@ Los trabajadores tienen derecho a la intimidad en el uso de los dispositivos dig
 |Artículo 24. Ascensos.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|27|
 |Artículo 25. Promoción económica.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .|27|
 |Sec
-  [3] chunk=50 score=0.8448
+  [3] chunk=44 score=0.8448
       podrán disponer válidamente de los derechos reconocidos como indisponibles por convenio colectivo.
 
 ## **_Sección 2.ª Derechos y deberes laborales básicos_**
@@ -747,22 +737,25 @@ a) A la ocupación efectiva.
 
 b) A la promoción y formación profesional en el trabajo, incluida la dirigida a su adaptación a las modificaciones operadas en el puesto de trabajo, así como al desarrollo de planes y acciones formativas tendentes a favorecer su mayor empleabilidad.
 --- Respuesta LLM ---
-El artículo 20 bis reconoce los derechos de los trabajadores a la intimidad en relación con el entorno digital y a la desconexión.
+El artículo 20 bis reconoce a los trabajadores los siguientes derechos en relación con el entorno digital:
+
+1. Derecho a la intimidad en el uso de los dispositivos digitales puestos a su disposición por el empleador.
+2. Derecho a la desconexión digital.
 --- Datos ---
-  latencia_total_s=0.65
-  tokens_generados=45
-  tokens_por_s=69.0
+  latencia_total_s=1.35
+  tokens_generados=63
+  tokens_por_s=46.7
   score_max=0.8658
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:53] Escenario: boe | Pregunta: BOE_013
+[2026-11-22 22:48:27] Escenario: boe | Pregunta: BOE_013
 Categoria: Pactos contractuales | Dificultad: Intermedia
 Pregunta: ¿Cuál es la duración máxima y qué requisitos exige el artículo 21.2 para que sea válido un pacto de no competencia postcontractual?
 Referencia: Artículo 21.2 (pág. 26)
 Respuesta esperada: No podrá tener una duración superior a dos años para los técnicos y de seis meses para los demás trabajadores, y solo será válido si concurren dos requisitos: que el empresario tenga un efectivo interés industrial o comercial en ello y que se satisfaga al trabajador una compensación económica adecuada.
 --- Recuperados (top 3) ---
-  [1] chunk=129 score=0.8714
+  [1] chunk=121 score=0.8714
       s establecidos en la legislación vigente en materia de protección de datos personales y garantía de los derechos digitales.
 
 **Artículo 21.** _Pacto de no concurrencia y de permanencia en la empresa._
@@ -774,7 +767,7 @@ Respuesta esperada: No podrá tener una duración superior a dos años para los 
 a) Que el empresario tenga un efectivo interés industrial o comercial en ello. b) Que se satisfaga al trabajador una compensación económica adecuada.
 
 3. En el supuesto de compensación económica por la plena dedicación, el trabajador podrá rescindir el acuerdo y recuperar su libertad de trabajo en otro empleo, comunicándolo por escrito al empresario con un preaviso de treinta días, perdiéndose en este caso la compensación económica u otros derechos vinculados a la plena dedicación.
-  [2] chunk=100 score=0.8454
+  [2] chunk=94 score=0.8454
       re que no respondan a los supuestos incluidos en el artículo 16.1.
 
 Entre las oscilaciones a que se refiere el párrafo anterior se entenderán incluidas
@@ -784,35 +777,43 @@ aquellas que derivan de las vacaciones anuales.
 Cuando el contrato de duración determinada obedezca a estas circunstancias de la producción, su duración no podrá ser superior a seis meses. Por convenio colectivo de ámbito sectorial se podrá ampliar la duración máxima del contrato hasta un año.
 
 En caso de que el contrato se hubiera concertado por una duración inferior a la máxima legal o convencionalmente establecida, podrá prorrogarse, mediante acuerdo de las partes, por una única vez, sin que la duración total del contrato pueda exceder de dicha duración máxima.
-  [3] chunk=326 score=0.8400
-      1. La adopción del acuerdo de extinción al amparo de lo prevenido en el artículo anterior exige la observancia de los requisitos siguientes:
+  [3] chunk=433 score=0.8424
+      dimiento que reglamentariamente se determine, cuya duración no podrá
 
-a) Comunicación escrita al trabajador expresando la causa.
+exceder de tres meses, teniendo la ausencia de resolución expresa en el plazo establecido efectos desestimatorios de la solicitud.
 
-b) Poner a disposición del trabajador, simultáneamente a la entrega de la comunicación escrita, la indemnización de veinte días por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades.
+Tendrán capacidad para iniciar el procedimiento de extensión quienes se hallen legitimados para promover la negociación colectiva en el ámbito correspondiente conforme a lo dispuesto en el artículo 87.2 y 3.
 
-Cuando la decisión extintiva se fundase en el artículo 52.c), con alegación de causa económica, y como consecuencia de tal situación económica no se pudiera poner a disposición del trabajador la indemnización a que se refiere el párrafo anterior, el empresario, haciéndolo constar en la comunicación escrita, podrá dejar de hacerlo, sin perjuicio del derecho del trabajador de exigir de aquel su abono cuando tenga efectividad la decisión extintiva.
+## **Disposición adicional primera.** _Trabajo por cuenta propia._
+
+El trabajo realizado por cuenta propia no estará sometido a la legislación laboral, excepto
+
+en aquellos aspectos que por precepto legal se disponga expresamente.
+
+## **Disposición adicional segunda.** _Contratos para la formación y el aprendizaje._
+
+1. El límite de edad y de duración para los contratos para la formación y el aprendizaje establecidos en las letras a) y b) del artículo 11.2 no será de aplicación cuando se suscriban en el marco de los programas públicos de empleo y formación contemplados en el texto refundido de la Ley de Empleo.
 --- Respuesta LLM ---
-El artículo 21.2 requiere que el trabajador pueda rescindir el acuerdo y recuperar su libertad de trabajo en otro empleo, comunicándolo por escrito al empresario con un preaviso de treinta días, perdiéndose en este caso la compensación económica u otros derechos vinculados a la plena dedicación. La duración máxima del contrato es de seis meses para los técnicos y de seis meses para los demás trabajadores.
+La duración máxima para un pacto de no competencia postcontractual es de dos años para los técnicos y de seis meses para los demás trabajadores. Para que sea válido, requiere que el empresario tenga un efectivo interés industrial o comercial en ello y que se satisfaga al trabajador una compensación económica adecuada.
 --- Datos ---
-  latencia_total_s=1.94
-  tokens_generados=150
-  tokens_por_s=77.2
+  latencia_total_s=1.46
+  tokens_generados=70
+  tokens_por_s=48.0
   score_max=0.8714
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:54] Escenario: boe | Pregunta: BOE_014
+[2026-11-22 22:48:27] Escenario: boe | Pregunta: BOE_014
 Categoria: Salario y garantías | Dificultad: Básica
 Pregunta: ¿Qué límite porcentual máximo establece el artículo 26.1 para el salario en especie?
 Referencia: Artículo 26.1 (pág. 28)
 Respuesta esperada: En ningún caso, incluidas las relaciones laborales de carácter especial a que se refiere el artículo 2, el salario en especie podrá superar el treinta por ciento de las percepciones salariales del trabajador, ni dar lugar a la minoración de la cuantía íntegra en dinero del salario mínimo interprofesional.
 --- Recuperados (top 3) ---
-  [1] chunk=137 score=0.8607
+  [1] chunk=129 score=0.8607
       salario en especie podrá superar el treinta por ciento de las percepciones salariales del trabajador, ni dar lugar a la minoración de la cuantía íntegra en dinero del salario mínimo interprofesional.
 
 2. No tendrán la consideración de salario las cantidades percibidas por el trabajador en concepto de indemnizaciones o suplidos por los gastos realizados como consecuencia de su actividad laboral, las prestaciones e indemnizaciones de la Seguridad Social y las indemnizaciones correspondientes a traslados, suspensiones o despidos.
-  [2] chunk=136 score=0.8578
+  [2] chunk=128 score=0.8599
       25.** _Promoción económica._
 
 1. El trabajador, en función del trabajo desarrollado, podrá tener derecho a una promoción económica en los términos fijados en convenio colectivo o contrato individual.
@@ -821,10 +822,6 @@ Respuesta esperada: En ningún caso, incluidas las relaciones laborales de cará
 
 adquiridos o en curso de adquisición en el tramo temporal correspondiente.
 
-Página 27
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
 ## **_Sección 4.ª Salarios y garantías salariales_**
 
 ## **Artículo 26.** _Del salario._
@@ -832,27 +829,27 @@ BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
 1. Se considerará salario la totalidad de las percepciones económicas de los trabajadores, en dinero o en especie, por la prestación profesional de los servicios laborales por cuenta ajena, ya retribuyan el trabajo efectivo, cualquiera que sea la forma de remuneración, o los periodos de descanso computables como de trabajo.
 
 En ningún caso, incluidas las relaciones laborales de carácter especial a que se refiere el artículo 2, el salario en especie podrá superar el treinta por ciento de las percepciones salariales del trabajador, ni dar lugar a la minoración de la cuantía íntegra en dinero del salario mínimo interprofesional.
-  [3] chunk=149 score=0.8322
+  [3] chunk=141 score=0.8322
       personalidad jurídica y capacidad de obrar para el cumplimiento de sus fines, abonará a los trabajadores el importe de los salarios pendientes de pago a causa de insolvencia o concurso del empresario.
 
 A los anteriores efectos, se considerará salario la cantidad reconocida como tal en acto de conciliación o en resolución judicial por todos los conceptos a que se refiere el artículo 26.1, así como los salarios de tramitación en los supuestos en que legalmente procedan, sin que pueda el Fondo abonar, por uno u otro concepto, conjunta o separadamente, un importe superior a la cantidad resultante de multiplicar el doble del salario mínimo interprofesional diario, incluyendo la parte proporcional de las pagas extraordinarias, por el número de días de salario pendiente de pago, con un máximo de ciento veinte días.
 --- Respuesta LLM ---
-El artículo 26.1 de la ley establece que el salario en especie podrá superar el treinta por ciento de las percepciones salariales del trabajador, ni dar lugar a la minoración de la cuantía íntegra en dinero del salario mínimo interprofesional.
+El artículo 26.1 establece que el salario en especie no podrá superar el treinta por ciento de las percepciones salariales del trabajador.
 --- Datos ---
-  latencia_total_s=1.17
-  tokens_generados=86
-  tokens_por_s=73.6
+  latencia_total_s=0.80
+  tokens_generados=37
+  tokens_por_s=46.5
   score_max=0.8607
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:55] Escenario: boe | Pregunta: BOE_015
+[2026-11-22 22:48:28] Escenario: boe | Pregunta: BOE_015
 Categoria: Salario y garantías | Dificultad: Básica
 Pregunta: ¿Cuál es el tipo de interés por mora en el pago del salario fijado en el artículo 29.3?
 Referencia: Artículo 29.3 (pág. 29)
 Respuesta esperada: El interés por mora en el pago del salario será el diez por ciento de lo adeudado.
 --- Recuperados (top 3) ---
-  [1] chunk=145 score=0.8624
+  [1] chunk=137 score=0.8527
       legales pueden pedir en cualquier momento
 
 comunicaciones de la parte de los libros referentes a tales devengos.
@@ -865,12 +862,8 @@ comunicaciones de la parte de los libros referentes a tales devengos.
 
 Si el trabajador no pudiera prestar sus servicios una vez vigente el contrato porque el empresario se retrasare en darle trabajo por impedimentos imputables al mismo y no al trabajador, este conservará el derecho a su salario, sin que pueda hacérsele compensar el que perdió con otro trabajo realizado en otro tiempo.
 
-Página 29
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
 ## **Artículo 31.** _Gratificaciones extraordinarias._
-  [2] chunk=143 score=0.8347
+  [2] chunk=135 score=0.8347
       deberá incluir en el Registro salarial una justificación de que dicha diferencia responde a motivos no relacionados con el sexo de las personas trabajadoras.
 
 ## **Artículo 29.** _Liquidación y pago._
@@ -880,7 +873,7 @@ BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
 El trabajador y, con su autorización, sus representantes legales, tendrán derecho a percibir, sin que llegue el día señalado para el pago, anticipos a cuenta del trabajo ya realizado.
 
 La documentación del salario se realizará mediante la entrega al trabajador de un recibo individual y justificativo del pago del mismo. El recibo de salarios se ajustará al modelo que apruebe el Ministerio de Empleo y Seguridad Social, salvo que por convenio colectivo o, en su defecto, por acuerdo entre la empresa y los representantes de los trabajadores, se establezca otro modelo que contenga con la debida claridad y separación las diferentes percepciones del trabajador, así como las deducciones que legalmente procedan.
-  [3] chunk=144 score=0.8335
+  [3] chunk=136 score=0.8335
       esentantes de los trabajadores, se establezca otro modelo que contenga con la debida claridad y separación las diferentes percepciones del trabajador, así como las deducciones que legalmente procedan.
 
 La liquidación de los salarios que correspondan a quienes presten servicios en trabajos que tengan el carácter de fijos-discontinuos, en los supuestos de conclusión de cada periodo de actividad, se llevará a cabo con sujeción a los trámites y garantías establecidos en el artículo 49.2.
@@ -895,25 +888,21 @@ comunicaciones de la parte de los libros referentes a tales devengos.
 --- Respuesta LLM ---
 El tipo de interés por mora en el pago del salario fijado en el artículo 29.3 es el diez por ciento de lo adeudado.
 --- Datos ---
-  latencia_total_s=0.64
-  tokens_generados=46
-  tokens_por_s=71.8
-  score_max=0.8624
+  latencia_total_s=0.80
+  tokens_generados=37
+  tokens_por_s=46.2
+  score_max=0.8527
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:56] Escenario: boe | Pregunta: BOE_016
+[2026-11-22 22:48:29] Escenario: boe | Pregunta: BOE_016
 Categoria: Salario y garantías | Dificultad: Básica
 Pregunta: ¿A cuántas gratificaciones extraordinarias al año tiene derecho como mínimo el trabajador según el artículo 31?
 Referencia: Artículo 31 (pág. 30)
 Respuesta esperada: El trabajador tiene derecho a dos gratificaciones extraordinarias al año, una de ellas con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores, pudiendo acordarse en convenio colectivo que se prorrateen en las doce mensualidades.
 --- Recuperados (top 3) ---
-  [1] chunk=146 score=0.8822
-      ueda hacérsele compensar el que perdió con otro trabajo realizado en otro tiempo.
-
-Página 29
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+  [1] chunk=138 score=0.8801
+      trabajador, este conservará el derecho a su salario, sin que pueda hacérsele compensar el que perdió con otro trabajo realizado en otro tiempo.
 
 ## **Artículo 31.** _Gratificaciones extraordinarias._
 
@@ -926,7 +915,7 @@ No obstante, podrá acordarse en convenio colectivo que las gratificaciones extr
 1. Los créditos salariales por los últimos treinta días de trabajo y en cuantía que no supere el doble del salario mínimo interprofesional gozarán de preferencia sobre cualquier otro crédito, aunque este se encuentre garantizado por prenda o hipoteca.
 
 2. Los créditos salariales gozarán de preferencia sobre cualquier otro crédito respecto de los objetos elaborados por los trabajadores mientras sean propiedad o estén en posesión del empresario.
-  [2] chunk=172 score=0.8446
+  [2] chunk=164 score=0.8491
       so retribuido. En ausencia de pacto al respecto, se entenderá que las horas extraordinarias realizadas deberán ser compensadas mediante descanso dentro de los cuatro meses siguientes a su realización.
 
 2. El número de horas extraordinarias no podrá ser superior a ochenta al año, salvo lo previsto en el apartado 3. Para los trabajadores que por la modalidad o duración de su contrato realizasen una jornada en cómputo anual inferior a la jornada general en la empresa, el número máximo anual de horas extraordinarias se reducirá en la misma proporción que exista entre tales jornadas.
@@ -935,38 +924,32 @@ A los efectos de lo dispuesto en el párrafo anterior, no se computarán las hor
 
 El Gobierno podrá suprimir o reducir el número máximo de horas extraordinarias por tiempo determinado, con carácter general o para ciertas ramas de actividad o ámbitos
 
-Página 34
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
 territoriales, para incrementar las oportunidades de colocación de los trabajadores en situación de desempleo.
-  [3] chunk=151 score=0.8394
-      del artículo 41.3 de esta norma, en que el límite máximo será de 9 mensualidades y en el del artículo 11.2 del Real Decreto 1620/2011, de 14 de noviembre, en que el límite será de 6 mensualidades, sin
+  [3] chunk=163 score=0.8386
+      a o acuerdo de empresa o, en su defecto, decisión del empresario previa consulta con los representantes legales de los trabajadores en la empresa, se organizará y documentará este registro de jornada.
 
-Página 30
+La empresa conservará los registros a que se refiere este precepto durante cuatro años y permanecerán a disposición de las personas trabajadoras, de sus representantes legales y de la Inspección de Trabajo y Seguridad Social.
 
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+## **Artículo 35.** _Horas extraordinarias._
 
-que el salario diario, base del cálculo, pueda exceder del doble del salario mínimo interprofesional, incluyendo la parte proporcional de las pagas extraordinarias.
-
-El importe de la indemnización, a los solos efectos de abono por el Fondo de Garantía Salarial para los casos de despido o extinción de los contratos conforme a los artículos 50 y 56, se calculará sobre la base de treinta días por año de servicio, con el límite fijado en el párrafo anterior.
+1. Tendrán la consideración de horas extraordinarias aquellas horas de trabajo que se realicen sobre la duración máxima de la jornada ordinaria de trabajo, fijada de acuerdo con el artículo anterior. Mediante convenio colectivo o, en su defecto, contrato individual, se optará entre abonar las horas extraordinarias en la cuantía que se fije, que en ningún caso podrá ser inferior al valor de la hora ordinaria, o compensarlas por tiempos equivalentes de descanso retribuido. En ausencia de pacto al respecto, se entenderá que las horas extraordinarias realizadas deberán ser compensadas mediante descanso dentro de los cuatro meses siguientes a su realización.
 --- Respuesta LLM ---
-El trabajador tiene derecho a dos gratificaciones extraordinarias al año, una de ellas con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores.
+Según el artículo 31, el trabajador tiene derecho a **dos gratificaciones extraordinarias al año**.
 --- Datos ---
-  latencia_total_s=1.11
-  tokens_generados=84
-  tokens_por_s=76.0
-  score_max=0.8822
+  latencia_total_s=0.56
+  tokens_generados=25
+  tokens_por_s=44.3
+  score_max=0.8801
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:57] Escenario: boe | Pregunta: BOE_017
+[2026-11-22 22:48:30] Escenario: boe | Pregunta: BOE_017
 Categoria: Tiempo de trabajo | Dificultad: Básica
 Pregunta: ¿Cuál es la duración máxima de la jornada ordinaria de trabajo y el descanso mínimo obligatorio entre jornadas según el artículo 34?
 Referencia: Artículo 34.1 y 34.3 (pág. 33)
 Respuesta esperada: La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales de trabajo efectivo de promedio en cómputo anual, y entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas.
 --- Recuperados (top 3) ---
-  [1] chunk=163 score=0.8749
+  [1] chunk=155 score=0.8749
       a pactada en los convenios colectivos o contratos de trabajo.
 
 La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales
@@ -976,7 +959,7 @@ de trabajo efectivo de promedio en cómputo anual.
 2. Mediante convenio colectivo o, en su defecto, por acuerdo entre la empresa y los representantes de los trabajadores, se podrá establecer la distribución irregular de la jornada a lo largo del año. En defecto de pacto, la empresa podrá distribuir de manera irregular a lo largo del año el diez por ciento de la jornada de trabajo.
 
 Dicha distribución deberá respetar en todo caso los periodos mínimos de descanso diario y semanal previstos en la ley y el trabajador deberá conocer con un preaviso mínimo de cinco días el día y la hora de la prestación de trabajo resultante de aquella.
-  [2] chunk=164 score=0.8681
+  [2] chunk=156 score=0.8681
       eriodos mínimos de descanso diario y semanal previstos en la ley y el trabajador deberá conocer con un preaviso mínimo de cinco días el día y la hora de la prestación de trabajo resultante de aquella.
 
 La compensación de las diferencias, por exceso o por defecto, entre la jornada realizada y la duración máxima de la jornada ordinaria de trabajo legal o pactada será exigible según lo acordado en convenio colectivo o, a falta de previsión al respecto, por acuerdo entre la empresa y los representantes de los trabajadores. En defecto de pacto, las diferencias derivadas de la distribución irregular de la jornada deberán quedar compensadas en el plazo de doce meses desde que se produzcan.
@@ -984,38 +967,37 @@ La compensación de las diferencias, por exceso o por defecto, entre la jornada 
 3. Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas.
 
 El número de horas ordinarias de trabajo efectivo no podrá ser superior a nueve diarias, salvo que por convenio colectivo o, en su defecto, acuerdo entre la empresa y los representantes de los trabajadores, se establezca otra distribución del tiempo de trabajo diario, respetando en todo caso el descanso entre jornadas.
-  [3] chunk=165 score=0.8593
-      o o, en su defecto, acuerdo entre la empresa y los representantes de los trabajadores, se establezca otra distribución del tiempo de trabajo diario, respetando en todo caso el descanso entre jornadas.
+  [3] chunk=154 score=0.8608
+      tificado acreditativo del silencio producido, en el que se incluirán las obligaciones con cargo al Fondo que, dentro de los límites previstos en los apartados anteriores, deben entenderse reconocidas.
 
-Los trabajadores menores de dieciocho años no podrán realizar más de ocho horas diarias de trabajo efectivo, incluyendo, en su caso, el tiempo dedicado a la formación y, si trabajasen para varios empleadores, las horas realizadas con cada uno de ellos.
+Contra dicha resolución podrá interponerse demanda ante el órgano jurisdiccional del orden social competente en el plazo de dos meses contados desde el día siguiente al de la notificación si el acto fuera expreso; si no lo fuera, dicho plazo se contará a partir del día siguiente a aquel en que deba entenderse estimada la solicitud conforme a lo establecido en el apartado anterior por silencio.
 
-4. Siempre que la duración de la jornada diaria continuada exceda de seis horas, deberá establecerse un periodo de descanso durante la misma de duración no inferior a quince minutos. Este periodo de descanso se considerará tiempo de trabajo efectivo cuando así esté establecido o se establezca por convenio colectivo o contrato de trabajo.
+## **_Sección 5.ª Tiempo de trabajo_**
 
-En el caso de los trabajadores menores de dieciocho años, el periodo de descanso tendrá una duración mínima de treinta minutos, y deberá establecerse siempre que la duración de la jornada diaria continuada exceda de cuatro horas y media.
+## **Artículo 34.** _Jornada._
 
-5. El tiempo de trabajo se computará de modo que tanto al comienzo como al final de la
+1. La duración de la jornada de trabajo será la pactada en los convenios colectivos o contratos de trabajo.
 
-jornada diaria el trabajador se encuentre en su puesto de trabajo.
+La duración máxima de la jornada ordinaria de trabajo será de cuarenta horas semanales
+
+de trabajo efectivo de promedio en cómputo anual.
 --- Respuesta LLM ---
-La duración máxima de la jornada ordinaria de trabajo y el descanso mínimo obligatorio entre jornadas según el artículo 34 son:
-
-- Duración máxima de la jornada ordinaria de trabajo: 40 horas semanales
-- Descanso mínimo obligatorio entre jornadas: 15 minutos
+La duración máxima de la jornada ordinaria de trabajo es de 40 horas semanales. El descanso mínimo obligatorio entre jornadas es de 12 horas.
 --- Datos ---
-  latencia_total_s=1.30
-  tokens_generados=100
-  tokens_por_s=76.8
+  latencia_total_s=0.84
+  tokens_generados=39
+  tokens_por_s=46.5
   score_max=0.8749
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:46:58] Escenario: boe | Pregunta: BOE_018
+[2026-11-22 22:48:31] Escenario: boe | Pregunta: BOE_018
 Categoria: Tiempo de trabajo | Dificultad: Avanzada
 Pregunta: ¿Cuál es el número máximo anual de horas extraordinarias permitido por el artículo 35.2 y qué horas extraordinarias no computan dentro de ese límite?
 Referencia: Artículo 35.2 y 35.3 (pág. 34)
 Respuesta esperada: El límite máximo es de ochenta horas extraordinarias al año. No se computan dentro de dicho máximo las horas extraordinarias que hayan sido compensadas mediante descanso dentro de los cuatro meses siguientes a su realización, ni el exceso de las trabajadas para prevenir o reparar siniestros y otros daños extraordinarios y urgentes.
 --- Recuperados (top 3) ---
-  [1] chunk=172 score=0.8606
+  [1] chunk=164 score=0.8635
       so retribuido. En ausencia de pacto al respecto, se entenderá que las horas extraordinarias realizadas deberán ser compensadas mediante descanso dentro de los cuatro meses siguientes a su realización.
 
 2. El número de horas extraordinarias no podrá ser superior a ochenta al año, salvo lo previsto en el apartado 3. Para los trabajadores que por la modalidad o duración de su contrato realizasen una jornada en cómputo anual inferior a la jornada general en la empresa, el número máximo anual de horas extraordinarias se reducirá en la misma proporción que exista entre tales jornadas.
@@ -1024,25 +1006,9 @@ A los efectos de lo dispuesto en el párrafo anterior, no se computarán las hor
 
 El Gobierno podrá suprimir o reducir el número máximo de horas extraordinarias por tiempo determinado, con carácter general o para ciertas ramas de actividad o ámbitos
 
-Página 34
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
 territoriales, para incrementar las oportunidades de colocación de los trabajadores en situación de desempleo.
-  [2] chunk=171 score=0.8595
-      a o acuerdo de empresa o, en su defecto, decisión del empresario previa consulta con los representantes legales de los trabajadores en la empresa, se organizará y documentará este registro de jornada.
-
-La empresa conservará los registros a que se refiere este precepto durante cuatro años y permanecerán a disposición de las personas trabajadoras, de sus representantes legales y de la Inspección de Trabajo y Seguridad Social.
-
-## **Artículo 35.** _Horas extraordinarias._
-
-1. Tendrán la consideración de horas extraordinarias aquellas horas de trabajo que se realicen sobre la duración máxima de la jornada ordinaria de trabajo, fijada de acuerdo con el artículo anterior. Mediante convenio colectivo o, en su defecto, contrato individual, se optará entre abonar las horas extraordinarias en la cuantía que se fije, que en ningún caso podrá ser inferior al valor de la hora ordinaria, o compensarlas por tiempos equivalentes de descanso retribuido. En ausencia de pacto al respecto, se entenderá que las horas extraordinarias realizadas deberán ser compensadas mediante descanso dentro de los cuatro meses siguientes a su realización.
-  [3] chunk=173 score=0.8554
-      as de actividad o ámbitos
-
-Página 34
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+  [2] chunk=165 score=0.8628
+      por tiempo determinado, con carácter general o para ciertas ramas de actividad o ámbitos
 
 territoriales, para incrementar las oportunidades de colocación de los trabajadores en situación de desempleo.
 
@@ -1053,29 +1019,37 @@ territoriales, para incrementar las oportunidades de colocación de los trabajad
 5. A efectos del cómputo de horas extraordinarias, la jornada de cada trabajador se registrará día a día y se totalizará en el periodo fijado para el abono de las retribuciones, entregando copia del resumen al trabajador en el recibo correspondiente.
 
 ## **Artículo 36.** _Trabajo nocturno, trabajo a turnos y ritmo de trabajo._
+  [3] chunk=163 score=0.8595
+      a o acuerdo de empresa o, en su defecto, decisión del empresario previa consulta con los representantes legales de los trabajadores en la empresa, se organizará y documentará este registro de jornada.
+
+La empresa conservará los registros a que se refiere este precepto durante cuatro años y permanecerán a disposición de las personas trabajadoras, de sus representantes legales y de la Inspección de Trabajo y Seguridad Social.
+
+## **Artículo 35.** _Horas extraordinarias._
+
+1. Tendrán la consideración de horas extraordinarias aquellas horas de trabajo que se realicen sobre la duración máxima de la jornada ordinaria de trabajo, fijada de acuerdo con el artículo anterior. Mediante convenio colectivo o, en su defecto, contrato individual, se optará entre abonar las horas extraordinarias en la cuantía que se fije, que en ningún caso podrá ser inferior al valor de la hora ordinaria, o compensarlas por tiempos equivalentes de descanso retribuido. En ausencia de pacto al respecto, se entenderá que las horas extraordinarias realizadas deberán ser compensadas mediante descanso dentro de los cuatro meses siguientes a su realización.
 --- Respuesta LLM ---
-El número máximo anual de horas extraordinarias permitido por el artículo 35.2 es de 80 horas. Las horas extraordinarias que hayan sido compensadas mediante descanso dentro de los cuatro meses siguientes a su realización no se computan en el límite anual de 80 horas.
+El número máximo anual de horas extraordinarias permitidas es de ochenta. Las horas extraordinarias que no computan dentro de ese límite son las que han sido compensadas mediante descanso dentro de los cuatro meses siguientes a su realización.
 --- Datos ---
-  latencia_total_s=1.25
-  tokens_generados=95
-  tokens_por_s=76.3
-  score_max=0.8606
+  latencia_total_s=1.11
+  tokens_generados=52
+  tokens_por_s=47.0
+  score_max=0.8635
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:00] Escenario: boe | Pregunta: BOE_019
+[2026-11-22 22:48:33] Escenario: boe | Pregunta: BOE_019
 Categoria: Tiempo de trabajo | Dificultad: Intermedia
 Pregunta: ¿Qué franja horaria se considera trabajo nocturno y cuándo adquiere una persona la condición de trabajador nocturno según el artículo 36.1?
 Referencia: Artículo 36.1 (pág. 35)
 Respuesta esperada: Se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana. Se considera trabajador nocturno a aquel que realice normalmente en periodo nocturno una parte no inferior a tres horas de su jornada diaria de trabajo, así como a aquel que se prevea que puede realizar en tal periodo una parte no inferior a un tercio de su jornada de trabajo anual.
 --- Recuperados (top 3) ---
-  [1] chunk=175 score=0.8769
+  [1] chunk=167 score=0.8769
       o una parte no inferior a tres horas de su jornada diaria de trabajo, así como a aquel que se prevea que puede realizar en tal periodo una parte no inferior a un tercio de su jornada de trabajo anual.
 
 Resultará de aplicación a lo establecido en el párrafo segundo lo dispuesto en el artículo 34.7 Igualmente, el Gobierno podrá establecer limitaciones y garantías adicionales a las previstas en el presente artículo para la realización de trabajo nocturno en ciertas actividades o por determinada categoría de trabajadores, en función de los riesgos que comporten para su salud y seguridad.
 
 2. El trabajo nocturno tendrá una retribución específica que se determinará en la negociación colectiva, salvo que el salario se haya establecido atendiendo a que el trabajo sea nocturno por su propia naturaleza o se haya acordado la compensación de este trabajo por descansos.
-  [2] chunk=174 score=0.8754
+  [2] chunk=166 score=0.8754
       eriodo fijado para el abono de las retribuciones, entregando copia del resumen al trabajador en el recibo correspondiente.
 
 ## **Artículo 36.** _Trabajo nocturno, trabajo a turnos y ritmo de trabajo._
@@ -1085,43 +1059,37 @@ Resultará de aplicación a lo establecido en el párrafo segundo lo dispuesto e
 La jornada de trabajo de los trabajadores nocturnos no podrá exceder de ocho horas diarias de promedio, en un periodo de referencia de quince días. Dichos trabajadores no podrán realizar horas extraordinarias.
 
 Para la aplicación de lo dispuesto en el párrafo anterior, se considerará trabajador nocturno a aquel que realice normalmente en periodo nocturno una parte no inferior a tres horas de su jornada diaria de trabajo, así como a aquel que se prevea que puede realizar en tal periodo una parte no inferior a un tercio de su jornada de trabajo anual.
-  [3] chunk=177 score=0.8577
+  [3] chunk=169 score=0.8559
       podrán efectuarlo bien por equipos de trabajadores que desarrollen su actividad por semanas completas, o contratando personal para completar los equipos necesarios durante uno o más días a la semana.
 
 4. Los trabajadores nocturnos y quienes trabajen a turnos deberán gozar en todo momento de un nivel de protección en materia de salud y seguridad adaptado a la naturaleza de su trabajo, y equivalente al de los restantes trabajadores de la empresa.
 
 El empresario deberá garantizar que los trabajadores nocturnos que ocupe dispongan de una evaluación gratuita de su estado de salud, antes de su afectación a un trabajo nocturno y, posteriormente, a intervalos regulares, en los términos establecidos en la Ley 31/1995, de 8 de noviembre, de Prevención de Riesgos Laborales, y en sus normas de desarrollo. Los trabajadores nocturnos a los que se reconozcan problemas de salud ligados al hecho de su trabajo nocturno tendrán derecho a ser destinados a un puesto de trabajo diurno que exista en la empresa y para el que sean profesionalmente aptos. El cambio de puesto de trabajo se llevará a cabo de conformidad con lo dispuesto en los artículos 39 y 41, en su caso, de la presente ley.
-
-Página 35
 --- Respuesta LLM ---
-La franja horaria que se considera trabajo nocturno es entre las diez de la noche y las seis de la mañana. La condición de trabajador nocturno se adquiere cuando una persona realiza normalmente en periodo nocturno una parte no inferior a tres horas de su jornada diaria de trabajo, o se prevee que puede realizar en tal periodo una parte no inferior a un tercio de su jornada de trabajo anual.
+Según el artículo 36.1, se considera trabajo nocturno el realizado entre las diez de la noche y las seis de la mañana. Para adquirir la condición de trabajador nocturno, una persona debe realizar normalmente en periodo nocturno una parte no inferior a tres horas de su jornada diaria de trabajo, o se prevea que puede realizar en tal periodo una parte no inferior a un tercio de su jornada de trabajo anual.
 --- Datos ---
-  latencia_total_s=1.65
-  tokens_generados=127
-  tokens_por_s=77.1
+  latencia_total_s=2.13
+  tokens_generados=103
+  tokens_por_s=48.4
   score_max=0.8769
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:04] Escenario: boe | Pregunta: BOE_020
+[2026-11-22 22:48:34] Escenario: boe | Pregunta: BOE_020
 Categoria: Tiempo de trabajo | Dificultad: Básica
 Pregunta: ¿Cuál es la duración mínima del descanso semanal y de las vacaciones anuales retribuidas conforme a los artículos 37.1 y 38.1?
 Referencia: Artículos 37.1 y 38.1 (págs. 36 y 39)
 Respuesta esperada: Los trabajadores tienen derecho a un descanso mínimo semanal, acumulable por periodos de hasta catorce días, de día y medio ininterrumpido (o dos días ininterrumpidos en los menores de dieciocho años), y a un periodo de vacaciones anuales retribuidas, no sustituible por compensación económica, cuya duración será la pactada en convenio colectivo o contrato individual sin que en ningún caso sea inferior a treinta días naturales.
 --- Recuperados (top 3) ---
-  [1] chunk=178 score=0.8532
-      empresa y para el que sean profesionalmente aptos. El cambio de puesto de trabajo se llevará a cabo de conformidad con lo dispuesto en los artículos 39 y 41, en su caso, de la presente ley.
-
-Página 35
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+  [1] chunk=170 score=0.8545
+      ista en la empresa y para el que sean profesionalmente aptos. El cambio de puesto de trabajo se llevará a cabo de conformidad con lo dispuesto en los artículos 39 y 41, en su caso, de la presente ley.
 
 5. El empresario que organice el trabajo en la empresa según un cierto ritmo deberá tener en cuenta el principio general de adaptación del trabajo a la persona, especialmente de cara a atenuar el trabajo monótono y repetitivo en función del tipo de actividad y de las exigencias en materia de seguridad y salud de los trabajadores. Dichas exigencias deberán ser tenidas particularmente en cuenta a la hora de determinar los periodos de descanso durante la jornada de trabajo.
 
 ## **Artículo 37.** _Descanso semanal, fiestas y permisos._
 
 1. Los trabajadores tendrán derecho a un descanso mínimo semanal, acumulable por periodos de hasta catorce días, de día y medio ininterrumpido que, como regla general, comprenderá la tarde del sábado o, en su caso, la mañana del lunes y el día completo del domingo. La duración del descanso semanal de los menores de dieciocho años será, como mínimo, de dos días ininterrumpidos.
-  [2] chunk=199 score=0.8508
+  [2] chunk=191 score=0.8508
       fuerza mayor cuando sea necesario por motivos familiares urgentes relacionados con familiares o personas convivientes, en caso de enfermedad o accidente que hagan indispensable su presencia inmediata.
 
 Las personas trabajadoras tendrán derecho a que sean retribuidas las horas de ausencia por las causas previstas en el presente apartado equivalentes a cuatro días al año, conforme a lo establecido en convenio colectivo o, en su defecto, en acuerdo entre la empresa y la representación legal de las personas trabajadoras aportando las personas trabajadoras, en su caso, acreditación del motivo de ausencia.
@@ -1131,7 +1099,7 @@ Las personas trabajadoras tendrán derecho a que sean retribuidas las horas de a
 1. El periodo de vacaciones anuales retribuidas, no sustituible por compensación económica, será el pactado en convenio colectivo o contrato individual. En ningún caso la duración será inferior a treinta días naturales.
 
 2. El periodo o periodos de su disfrute se fijará de común acuerdo entre el empresario y el trabajador, de conformidad con lo establecido en su caso en los convenios colectivos sobre planificación anual de las vacaciones.
-  [3] chunk=179 score=0.8501
+  [3] chunk=171 score=0.8501
       la tarde del sábado o, en su caso, la mañana del lunes y el día completo del domingo. La duración del descanso semanal de los menores de dieciocho años será, como mínimo, de dos días ininterrumpidos.
 
 Resultará de aplicación al descanso semanal lo dispuesto en el artículo 34.7 en cuanto a ampliaciones y reducciones, así como para la fijación de regímenes de descanso alternativos para actividades concretas.
@@ -1140,24 +1108,22 @@ Resultará de aplicación al descanso semanal lo dispuesto en el artículo 34.7 
 
 Respetando las expresadas en el párrafo anterior, el Gobierno podrá trasladar a los lunes todas las fiestas de ámbito nacional que tengan lugar entre semana, siendo, en todo caso, objeto de traslado al lunes inmediatamente posterior el descanso laboral correspondiente a las fiestas que coincidan con domingo.
 --- Respuesta LLM ---
-La duración mínima del descanso semanal y de las vacaciones anuales retribuidas se corresponden a lo establecido en los artículos 37.1 y 38.1, respectivamente. En el artículo 37.1, se dice que los trabajadores tendrán derecho a un descanso mínimo semanal, acumulable por periodos de hasta catorce días, de día y medio ininterrumpido que, como regla general, comprenderá la tarde del sábado o, en su caso, la mañana del lunes y el día completo del domingo. La duración del descanso semanal de los menores de dieciocho años será, como mínimo, de dos días ininterrumpidos.
-
-En el artículo 38.1, se dice que las personas trabajadoras tendrán derecho a que sean retribuidas las horas de ausencia por las causas previstas en el presente apartado equivalentes a cuatro días al año, conforme a lo establecido en convenio colectivo o, en su defecto, en acuerdo entre la empresa y la representación legal de las personas trabajadoras aportando las personas trabajadoras, en su caso, acreditación del motivo de
+La duración mínima del descanso semanal es de dos días ininterrumpidos (artículo 37.1). Mientras que la duración mínima de las vacaciones anuales retribuidas es de treinta días naturales (artículo 38.1).
 --- Datos ---
-  latencia_total_s=4.53
-  tokens_generados=350
-  tokens_por_s=77.3
-  score_max=0.8532
+  latencia_total_s=1.34
+  tokens_generados=64
+  tokens_por_s=47.6
+  score_max=0.8545
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:06] Escenario: boe | Pregunta: BOE_021
+[2026-11-22 22:48:36] Escenario: boe | Pregunta: BOE_021
 Categoria: Modificación contractual | Dificultad: Básica
 Pregunta: ¿Con qué antelación mínima debe notificar el empresario al trabajador y a sus representantes legales una decisión de traslado individual por movilidad geográfica según el artículo 40.1?
 Referencia: Artículo 40.1 (pág. 40)
 Respuesta esperada: La decisión de traslado deberá ser notificada por el empresario al trabajador, así como a sus representantes legales, con una antelación mínima de treinta días a la fecha de su efectividad.
 --- Recuperados (top 3) ---
-  [1] chunk=205 score=0.8821
+  [1] chunk=197 score=0.8821
       a las reglas previstas para las modificaciones sustanciales de condiciones de trabajo o a las que a tal fin se hubieran establecido en convenio colectivo.
 
 ## **Artículo 40.** _Movilidad geográfica._
@@ -1165,48 +1131,40 @@ Respuesta esperada: La decisión de traslado deberá ser notificada por el empre
 1. El traslado de trabajadores que no hayan sido contratados específicamente para prestar sus servicios en empresas con centros de trabajo móviles o itinerantes a un centro de trabajo distinto de la misma empresa que exija cambios de residencia requerirá la existencia de razones económicas, técnicas, organizativas o de producción que lo justifiquen. Se consideraran tales las que estén relacionadas con la competitividad, productividad u organización técnica o del trabajo en la empresa, así como las contrataciones referidas a la actividad empresarial.
 
 La decisión de traslado deberá ser notificada por el empresario al trabajador, así como a sus representantes legales, con una antelación mínima de treinta días a la fecha de su efectividad.
-  [2] chunk=206 score=0.8719
+  [2] chunk=198 score=0.8719
       resarial.
 
 La decisión de traslado deberá ser notificada por el empresario al trabajador, así como a sus representantes legales, con una antelación mínima de treinta días a la fecha de su efectividad.
 
 Notificada la decisión de traslado, el trabajador tendrá derecho a optar entre el traslado, percibiendo una compensación por gastos, o la extinción de su contrato, percibiendo una indemnización de veinte días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año y con un máximo de doce mensualidades. La compensación a que se refiere el primer supuesto comprenderá tanto los gastos propios como los de los familiares a su cargo, en los términos que se convengan entre las partes, y nunca será inferior a los límites mínimos establecidos en los convenios colectivos.
-  [3] chunk=207 score=0.8617
-      tanto los gastos propios como los de los familiares a su cargo, en los términos que se convengan entre las partes, y nunca será inferior a los límites mínimos establecidos en los convenios colectivos.
+  [3] chunk=80 score=0.8569
+      echazar esta conversión, sin perjuicio de las medidas que, de conformidad con lo dispuesto en los artículos 51 y 52.c), puedan adoptarse por causas económicas, técnicas, organizativas o de producción.
 
-Sin perjuicio de la ejecutividad del traslado en el plazo de incorporación citado, el trabajador que, no habiendo optado por la extinción de su contrato, se muestre disconforme con la decisión empresarial podrá impugnarla ante la jurisdicción social. La sentencia declarará el traslado justificado o injustificado y, en este último caso, reconocerá el derecho del trabajador a ser reincorporado al centro de trabajo de origen.
+A fin de posibilitar la movilidad voluntaria en el trabajo a tiempo parcial, el empresario deberá informar a los trabajadores de la empresa sobre la existencia de puestos de trabajo vacantes, de manera que aquellos puedan formular solicitudes de conversión voluntaria de un trabajo a tiempo completo en un trabajo a tiempo parcial y viceversa, o para el incremento del tiempo de trabajo de los trabajadores a tiempo parcial, todo ello de conformidad con los procedimientos que se establezcan en convenio colectivo.
 
-Página 40
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
-Cuando, con objeto de eludir las previsiones contenidas en el apartado siguiente, la empresa realice traslados en periodos sucesivos de noventa días en número inferior a los umbrales allí señalados, sin que concurran causas nuevas que justifiquen tal actuación, dichos nuevos traslados se considerarán efectuados en fraude de ley y serán declarados nulos y sin efecto.
+Con carácter general, las solicitudes a que se refiere el párrafo anterior deberán ser tomadas en consideración, en la medida de lo posible, por el empresario. La denegación de la solicitud deberá ser notificada por el empresario al trabajador por escrito y de manera motivada.
 --- Respuesta LLM ---
-La antelación mínima debe notificar el empresario al trabajador y a sus representantes legales una decisión de traslado individual por movilidad geográfica según el artículo 40.1 con una antelación mínima de treinta días a la fecha de su efectividad.
+El empresario debe notificar al trabajador y a sus representantes legales una decisión de traslado individual por movilidad geográfica con una antelación mínima de treinta días a la fecha de su efectividad, según el artículo 40.1.
 --- Datos ---
-  latencia_total_s=1.15
-  tokens_generados=88
-  tokens_por_s=76.4
+  latencia_total_s=1.26
+  tokens_generados=59
+  tokens_por_s=46.9
   score_max=0.8821
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:08] Escenario: boe | Pregunta: BOE_022
+[2026-11-22 22:48:38] Escenario: boe | Pregunta: BOE_022
 Categoria: Modificación contractual | Dificultad: Intermedia
 Pregunta: ¿Qué seis materias tienen la consideración de modificaciones sustanciales de las condiciones de trabajo según el artículo 41.1?
 Referencia: Artículo 41.1 (pág. 42)
 Respuesta esperada: La jornada de trabajo; el horario y distribución del tiempo de trabajo; el régimen de trabajo a turnos; el sistema de remuneración y cuantía salarial; el sistema de trabajo y rendimiento; y las funciones, cuando excedan de los límites que para la movilidad funcional prevé el artículo 39.
 --- Recuperados (top 3) ---
-  [1] chunk=219 score=0.8587
+  [1] chunk=211 score=0.8619
       s razones económicas, técnicas, organizativas o de producción. Se considerarán tales las que estén relacionadas con la competitividad, productividad u organización técnica o del trabajo en la empresa.
 
 Tendrán la consideración de modificaciones sustanciales de las condiciones de trabajo,
 
 entre otras, las que afecten a las siguientes materias:
-
-Página 42
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
 
 a) Jornada de trabajo.
 
@@ -1227,7 +1185,7 @@ Se considera de carácter colectivo la modificación que, en un periodo de noven
 afecte al menos a:
 
 a) Diez trabajadores, en las empresas que ocupen menos de cien trabajadores.
-  [2] chunk=218 score=0.8448
+  [2] chunk=210 score=0.8448
       orrerán a cargo del empresario.
 
 Contra la orden de desplazamiento, sin perjuicio de su ejecutividad, podrá recurrir el trabajador en los mismos términos previstos en el apartado 1 para los traslados.
@@ -1241,7 +1199,7 @@ tendrán, a todos los efectos, el tratamiento previsto en esta ley para los tras
 ## **Artículo 41.** _Modificaciones sustanciales de condiciones de trabajo._
 
 1. La dirección de la empresa podrá acordar modificaciones sustanciales de las condiciones de trabajo cuando existan probadas razones económicas, técnicas, organizativas o de producción. Se considerarán tales las que estén relacionadas con la competitividad, productividad u organización técnica o del trabajo en la empresa.
-  [3] chunk=220 score=0.8351
+  [3] chunk=212 score=0.8351
       os colectivos.
 
 Se considera de carácter colectivo la modificación que, en un periodo de noventa días,
@@ -1260,29 +1218,35 @@ Se considera de carácter individual la modificación que, en el periodo de refe
 
 En los supuestos previstos en las letras a), b), c), d) y f) del apartado 1, si el trabajador resultase perjudicado por la modificación sustancial tendrá derecho a rescindir su contrato y percibir una indemnización de veinte días de salario por año de servicio prorrateándose por meses los periodos inferiores a un año y con un máximo de nueve meses.
 --- Respuesta LLM ---
-El artículo 41.1 de la ley de trabajo en el Estado Legislativo de la República Mexicana se refiere a las modificaciones sustanciales de las condiciones de trabajo. Las seis materias que tienen la consideración de modificaciones sustanciales de las condiciones de trabajo según el artículo 41.1 son:
+Según el artículo 41.1, las seis materias que tienen la consideración de modificaciones sustanciales de las condiciones de trabajo son:
 
-1. Jornada de trabajo.
-2. Horario y distribución del tiempo de trabajo.
-3. Régimen de trabajo a turnos.
-4. Sistema de remuneración y cuantía salarial.
-5. Sistema de trabajo y rendimiento.
-6. Funciones, cuando excedan de los límites que para la movilidad funcional prevé el artículo 39.
+a) Jornada de trabajo.
+b) Horario y distribución del tiempo de trabajo.
+c) Régimen de trabajo a turnos.
+d) Sistema de remuneración y cuantía salarial.
+e) Sistema de trabajo y rendimiento.
+f) Funciones, cuando excedan de los límites que para la movilidad funcional prevé el artículo 39.
 --- Datos ---
-  latencia_total_s=2.83
-  tokens_generados=218
-  tokens_por_s=77.1
-  score_max=0.8587
+  latencia_total_s=2.38
+  tokens_generados=116
+  tokens_por_s=48.7
+  score_max=0.8619
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:09] Escenario: boe | Pregunta: BOE_023
+[2026-11-22 22:48:39] Escenario: boe | Pregunta: BOE_023
 Categoria: Suspensión y excedencias | Dificultad: Intermedia
 Pregunta: ¿Cuál es la duración máxima de la excedencia para el cuidado de cada hijo y para el cuidado de un familiar según el artículo 46.3?
 Referencia: Artículo 46.3 (pág. 48)
 Respuesta esperada: Para el cuidado de cada hijo, la excedencia tendrá una duración no superior a tres años a contar desde la fecha de nacimiento o, en su caso, de la resolución judicial o administrativa. Para el cuidado de un familiar hasta el segundo grado de consanguinidad o afinidad que por razones de edad, accidente, enfermedad o discapacidad no pueda valerse por sí mismo y no desempeñe actividad retribuida, la duración no será superior a dos años, salvo que se establezca una duración mayor por negociación colectiva.
 --- Recuperados (top 3) ---
-  [1] chunk=477 score=0.8727
+  [1] chunk=243 score=0.8741
+      aleza, como
+
+por adopción, o en los supuestos de guarda con fines de adopción o acogimiento permanente, a contar desde la fecha de nacimiento o, en su caso, de la resolución judicial o administrativa.
+
+También tendrán derecho a un periodo de excedencia, de duración no superior a dos años, salvo que se establezca una duración mayor por negociación colectiva, los trabajadores para atender al cuidado del cónyuge o pareja de hecho, o de un familiar hasta el segundo grado de consanguinidad y por afinidad, incluido el familiar consanguíneo de la pareja de hecho, que por razones de edad, accidente, enfermedad o discapacidad no pueda valerse por sí mismo, y no desempeñe actividad retribuida.
+  [2] chunk=469 score=0.8727
       rtículo 48.7 será de trece días ininterrumpidos ampliables en los supuestos de parto, adopción, guarda con fines de adopción o acogimiento múltiples en dos días más por cada hijo a partir del segundo.
 
 De conformidad con la disposición adicional sexta de la Ley 2/2008, de 23 de diciembre, de Presupuestos Generales del Estado para 2009, dicho permiso tendrá una duración de veinte días cuando el nuevo nacimiento, adopción, guarda con fines de adopción o acogimiento se produzca en una familia numerosa, cuando la familia adquiera dicha condición con el nuevo nacimiento, adopción, guarda con fines de adopción o acogimiento o cuando en la familia haya una persona con discapacidad. La duración indicada se ampliará en los supuestos de parto, adopción, guarda con fines de adopción o acogimiento múltiples en dos días más por cada hijo o menor a partir del segundo, o si uno de ellos es una persona con discapacidad.
@@ -1290,41 +1254,35 @@ De conformidad con la disposición adicional sexta de la Ley 2/2008, de 23 de di
 (*) Téngase en cuenta que la Ley 9/2009, de 6 de octubre, entró en vigor el 1 de enero de 2017. <u>Ref. BOEA-2009-15958</u>
 
 ## **Disposición transitoria octava.** _Indemnización por finalización de contrato temporal._
-  [2] chunk=251 score=0.8713
-      CONSOLIDADA
+  [3] chunk=279 score=0.8548
+      es de forma acumulada o interrumpida hasta que el hijo o la hija cumpla los ocho años.
 
-por adopción, o en los supuestos de guarda con fines de adopción o acogimiento permanente, a contar desde la fecha de nacimiento o, en su caso, de la resolución judicial o administrativa.
+Este derecho es individual de la persona trabajadora sin que pueda transferirse su ejercicio al otro progenitor.
 
-También tendrán derecho a un periodo de excedencia, de duración no superior a dos años, salvo que se establezca una duración mayor por negociación colectiva, los trabajadores para atender al cuidado del cónyuge o pareja de hecho, o de un familiar hasta el segundo grado de consanguinidad y por afinidad, incluido el familiar consanguíneo de la pareja de hecho, que por razones de edad, accidente, enfermedad o discapacidad no pueda valerse por sí mismo, y no desempeñe actividad retribuida.
-  [3] chunk=250 score=0.8601
-      ia, se concederá por la designación o elección para un cargo público que imposibilite la asistencia al trabajo. El reingreso deberá ser solicitado dentro del mes siguiente al cese en el cargo público.
+Las suspensiones previstas en las letras b) y c) podrán disfrutarse en régimen de jornada completa o de jornada parcial, previo acuerdo entre la empresa y la persona trabajadora, y conforme se determine reglamentariamente. La persona trabajadora deberá comunicar a la empresa, con una antelación mínima de quince días, el ejercicio de este derecho en los términos establecidos, en su caso, en los convenios colectivos. Cuando los dos progenitores que ejerzan este derecho trabajen para la misma empresa, la dirección empresarial podrá limitar su ejercicio simultáneo por razones fundadas y objetivas, debidamente motivadas por escrito.
 
-2. El trabajador con al menos una antigüedad en la empresa de un año tiene derecho a que se le reconozca la posibilidad de situarse en excedencia voluntaria por un plazo no menor a cuatro meses y no mayor a cinco años. Este derecho solo podrá ser ejercitado otra vez por el mismo trabajador si han transcurrido cuatro años desde el final de la anterior excedencia voluntaria.
+A efectos de lo dispuesto en este apartado, el término de madre biológica incluye
 
-3. Los trabajadores tendrán derecho a un periodo de excedencia de duración no superior a tres años para atender al cuidado de cada hijo, tanto cuando lo sea por naturaleza, como
+también a las personas trans gestantes.
 
-Página 48
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
-por adopción, o en los supuestos de guarda con fines de adopción o acogimiento permanente, a contar desde la fecha de nacimiento o, en su caso, de la resolución judicial o administrativa.
+5. En los supuestos de adopción, de guarda con fines de adopción y de acogimiento, de acuerdo con el artículo 45.1.d), la suspensión tendrá una duración de diecinueve semanas para cada adoptante, guardador o acogedor.
 --- Respuesta LLM ---
-La duración máxima de la excedencia para el cuidado de cada hijo y para el cuidado de un familiar según el artículo 46.3 es de 3 años.
+La duración máxima de la excedencia para el cuidado de cada hijo es de dos años. Para el cuidado de un familiar, la duración máxima no está especificada directamente en el texto consultado, solo se menciona que puede ser mayor por negociación colectiva.
 --- Datos ---
-  latencia_total_s=0.71
-  tokens_generados=52
-  tokens_por_s=73.1
-  score_max=0.8727
+  latencia_total_s=1.28
+  tokens_generados=61
+  tokens_por_s=47.6
+  score_max=0.8741
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:10] Escenario: boe | Pregunta: BOE_024
+[2026-11-22 22:48:40] Escenario: boe | Pregunta: BOE_024
 Categoria: Suspensión y ERTE | Dificultad: Avanzada
 Pregunta: ¿Cuáles son las dos modalidades del Mecanismo RED de Flexibilidad y Estabilización del Empleo reguladas en el artículo 47 bis y su duración máxima?
 Referencia: Artículo 47 bis.1 (pág. 53)
 Respuesta esperada: La modalidad cíclica, aplicable cuando se aprecie una coyuntura macroeconómica general que aconseje instrumentos adicionales de estabilización, con una duración máxima de un año; y la modalidad sectorial, aplicable cuando en un determinado sector o sectores se aprecien cambios permanentes que generen necesidades de recualificación y procesos de transición profesional, con una duración máxima inicial de un año y posibilidad de dos prórrogas de seis meses cada una.
 --- Recuperados (top 3) ---
-  [1] chunk=274 score=0.8964
+  [1] chunk=266 score=0.8964
       istos en el apartado 10 de la disposición adicional cuadragésima cuarta del texto refundido de la Ley General de la Seguridad Social, aprobado por el Real Decreto Legislativo 8/2015, de 30 de octubre.
 
 f) La prestación a percibir por las personas trabajadoras se regirá por lo establecido en el artículo 267 del texto refundido de la Ley General de la Seguridad Social y sus normas de desarrollo.
@@ -1336,7 +1294,7 @@ f) La prestación a percibir por las personas trabajadoras se regirá por lo est
 Este Mecanismo RED tendrá dos modalidades:
 
 a) Cíclica, cuando se aprecie una coyuntura macroeconómica general que aconseje la adopción de instrumentos adicionales de estabilización, con una duración máxima de un año.
-  [2] chunk=279 score=0.8709
+  [2] chunk=271 score=0.8709
       as concluya con acuerdo, la autoridad laboral autorizará la aplicación del mecanismo, pudiendo la empresa proceder a las reducciones de jornada o suspensiones de contrato en las condiciones acordadas.
 
 Cuando el período de consultas concluya sin acuerdo, la autoridad laboral dictará resolución estimando o desestimando la solicitud empresarial. La autoridad laboral estimará la solicitud en caso de entender que de la documentación aportada se deduce que la situación cíclica o sectorial temporal concurre en la empresa en los términos previstos en este artículo.
@@ -1346,65 +1304,63 @@ Cuando el período de consultas concluya sin acuerdo, la autoridad laboral dicta
 a) Las previsiones recogidas en el artículo 47.4 y 7.
 
 b) Las personas trabajadoras cubiertas por un Mecanismo RED se beneficiarán de las medidas en materia de protección social previstas en la disposición adicional cuadragésima primera del texto refundido de la Ley General de la Seguridad Social, y tendrán la consideración de colectivo prioritario para el acceso a las iniciativas de formación del sistema de formación profesional para el empleo en el ámbito laboral.
-  [3] chunk=281 score=0.8653
+  [3] chunk=273 score=0.8653
       anismos, las condiciones especiales en materia de cotización a la Seguridad Social para las empresas y prestaciones correspondientes, con el objetivo de desarrollar las debidas actuaciones de control.
 
 6. Se constituirá como fondo sin personalidad jurídica, adscrito al Ministerio de Trabajo y Economía Social, un Fondo RED de Flexibilidad y Estabilización del Empleo, que tendrá como finalidad atender a las necesidades futuras de financiación derivadas de la modalidad cíclica y sectorial del Mecanismo RED en materia de prestaciones y exenciones a las empresas del pago de las cotizaciones a la Seguridad Social, incluidos los costes asociados a la formación, en la forma y condiciones previstas en su normativa de desarrollo.
 
 Serán recursos de este Fondo los excedentes de ingresos que financian las prestaciones por desempleo en su nivel contributivo y asistencial, las aportaciones que se consignen en los Presupuestos Generales del Estado, las aportaciones procedentes de los instrumentos de financiación de la Unión Europea orientados al cumplimiento del objeto y fines del Fondo, así como los rendimientos de cualquier naturaleza que genere el Fondo.
 --- Respuesta LLM ---
-La duración máxima de las dos modalidades del Mecanismo RED de Flexibilidad y Estabilización del Empleo es una año.
+El Mecanismo RED de Flexibilidad y Estabilización del Empleo tiene dos modalidades:
+
+a) Cíclica, con una duración máxima de un año.
 --- Datos ---
-  latencia_total_s=0.55
-  tokens_generados=39
-  tokens_por_s=71.4
+  latencia_total_s=0.83
+  tokens_generados=38
+  tokens_por_s=46.1
   score_max=0.8964
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:10] Escenario: boe | Pregunta: BOE_025
+[2026-11-22 22:48:41] Escenario: boe | Pregunta: BOE_025
 Categoria: Extinción y despido | Dificultad: Intermedia
 Pregunta: ¿Qué umbrales numéricos de trabajadores afectados en un periodo de noventa días determinan la existencia de un despido colectivo según el artículo 51.1?
 Referencia: Artículo 51.1 (pág. 59)
 Respuesta esperada: Que la extinción afecte al menos a diez trabajadores en empresas que ocupen menos de cien trabajadores; al diez por ciento del número de trabajadores de la empresa en aquellas que ocupen entre cien y trescientos trabajadores; o a treinta trabajadores en empresas que ocupen más de trescientos trabajadores, así como cuando afecte a la totalidad de la plantilla siempre que el número de trabajadores afectados sea superior a cinco por cesación total de la actividad empresarial.
 --- Recuperados (top 3) ---
-  [1] chunk=307 score=0.8681
+  [1] chunk=299 score=0.8709
       número de trabajadores afectados sea superior a cinco, cuando aquel se produzca como consecuencia de la cesación total de su actividad empresarial fundada en las mismas causas anteriormente señaladas.
 
 Para el cómputo del número de extinciones de contratos a que se refiere el párrafo primero de este apartado, se tendrán en cuenta asimismo cualesquiera otras producidas en el periodo de referencia por iniciativa del empresario en virtud de otros motivos no inherentes a la persona del trabajador distintos de los previstos en el artículo 49.1.c), siempre que su número sea, al menos, de cinco.
 
-Página 59
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
 Cuando en periodos sucesivos de noventa días y con el objeto de eludir las previsiones contenidas en este artículo, la empresa realice extinciones de contratos al amparo de lo dispuesto en el artículo 52.c) en un número inferior a los umbrales señalados, y sin que concurran causas nuevas que justifiquen tal actuación, dichas nuevas extinciones se considerarán efectuadas en fraude de ley, y serán declaradas nulas y sin efecto.
-  [2] chunk=308 score=0.8586
+  [2] chunk=300 score=0.8586
       a los umbrales señalados, y sin que concurran causas nuevas que justifiquen tal actuación, dichas nuevas extinciones se considerarán efectuadas en fraude de ley, y serán declaradas nulas y sin efecto.
 
 2. El despido colectivo deberá ir precedido de un periodo de consultas con los representantes legales de los trabajadores de una duración no superior a treinta días naturales, o de quince en el caso de empresas de menos de cincuenta trabajadores. La consulta con los representantes legales de los trabajadores deberá versar, como mínimo, sobre las posibilidades de evitar o reducir los despidos colectivos y de atenuar sus consecuencias mediante el recurso a medidas sociales de acompañamiento, tales como medidas de recolocación o acciones de formación o reciclaje profesional para la mejora de la empleabilidad. La consulta se llevará a cabo en una única comisión negociadora, si bien, de existir varios centros de trabajo, quedará circunscrita a los centros afectados por el procedimiento. La comisión negociadora estará integrada por un máximo de trece miembros en representación de cada una de las partes.
-  [3] chunk=316 score=0.8517
+  [3] chunk=308 score=0.8517
       os trabajadores y a la autoridad laboral su decisión sobre el despido colectivo, se producirá la caducidad del procedimiento de despido colectivo en los términos que reglamentariamente se establezcan.
 
 3. Cuando la extinción afectase a más del cincuenta por ciento de los trabajadores, se dará cuenta por el empresario de la venta de los bienes de la empresa, excepto de aquellos que constituyen el tráfico normal de la misma, a los representantes legales de los trabajadores y, asimismo, a la autoridad competente.
 
 4. Alcanzado el acuerdo o comunicada la decisión a los representantes de los trabajadores, el empresario podrá notificar los despidos individualmente a los trabajadores afectados, lo que deberá realizar conforme a lo establecido en el artículo 53.1. En todo caso, deberán haber transcurrido como mínimo treinta días entre la fecha de la comunicación de la apertura del periodo de consultas a la autoridad laboral y la fecha de efectos del despido.
 --- Respuesta LLM ---
-El umbral de trabajadores afectados que determina la existencia de un despido colectivo según el artículo 51.1 es de cinco.
+El artículo 51.1 no menciona específicamente umbrales numéricos de trabajadores afectados en un periodo de noventa días para determinar la existencia de un despido colectivo. Por lo tanto, la respuesta es: No aparece en el documento.
 --- Datos ---
-  latencia_total_s=0.62
-  tokens_generados=45
-  tokens_por_s=72.2
-  score_max=0.8681
-  abstencion_detectada=no
+  latencia_total_s=1.26
+  tokens_generados=60
+  tokens_por_s=47.4
+  score_max=0.8709
+  abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:11] Escenario: boe | Pregunta: BOE_026
+[2026-11-22 22:48:43] Escenario: boe | Pregunta: BOE_026
 Categoria: Extinción y despido | Dificultad: Básica
 Pregunta: ¿Qué cuantía indemnizatoria corresponde al trabajador cuando el despido es declarado improcedente según el artículo 56.1?
 Referencia: Artículo 56.1 (pág. 65)
 Respuesta esperada: Una indemnización equivalente a treinta y tres días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año, hasta un máximo de veinticuatro mensualidades.
 --- Recuperados (top 3) ---
-  [1] chunk=481 score=0.8972
+  [1] chunk=473 score=0.8972
       undécima.** _Indemnizaciones por despido improcedente._
 
 1. La indemnización por despido prevista en el artículo 56.1 será de aplicación a los
@@ -1412,7 +1368,7 @@ Respuesta esperada: Una indemnización equivalente a treinta y tres días de sal
 contratos suscritos a partir del 12 de febrero de 2012.
 
 2. La indemnización por despido improcedente de los contratos formalizados con anterioridad al 12 de febrero de 2012 se calculará a razón de cuarenta y cinco días de salario por año de servicio por el tiempo de prestación de servicios anterior a dicha fecha, prorrateándose por meses los periodos de tiempo inferiores a un año, y a razón de treinta y tres días de salario por año de servicio por el tiempo de prestación de servicios posterior, prorrateándose igualmente por meses los periodos de tiempo inferiores a un año. El importe indemnizatorio resultante no podrá ser superior a setecientos veinte días de salario, salvo que del cálculo de la indemnización por el periodo anterior al 12 de febrero de 2012 resultase un número de días superior, en cuyo caso se aplicará este como importe indemnizatorio máximo, sin que dicho importe pueda ser superior a cuarenta y dos mensualidades, en ningún caso.
-  [2] chunk=339 score=0.8913
+  [2] chunk=331 score=0.8877
       El despido procedente convalidará la extinción del contrato de trabajo que con aquel se produjo, sin derecho a indemnización ni a salarios de tramitación.
 
 ## **Artículo 56.** _Despido improcedente._
@@ -1420,11 +1376,7 @@ contratos suscritos a partir del 12 de febrero de 2012.
 1. Cuando el despido sea declarado improcedente, el empresario, en el plazo de cinco días desde la notificación de la sentencia, podrá optar entre la readmisión del trabajador o el abono de una indemnización equivalente a treinta y tres días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año, hasta un máximo de veinticuatro mensualidades. La opción por la indemnización determinará la extinción del contrato de trabajo, que se entenderá producida en la fecha del cese efectivo en el trabajo.
 
 2. En caso de que se opte por la readmisión, el trabajador tendrá derecho a los salarios de tramitación. Estos equivaldrán a una cantidad igual a la suma de los salarios dejados de percibir desde la fecha de despido hasta la notificación de la sentencia que declarase la improcedencia o hasta que hubiera encontrado otro empleo, si tal colocación fuera anterior a
-
-Página 65
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-  [3] chunk=331 score=0.8710
+  [3] chunk=323 score=0.8710
       dencia señalados. Para considerarse procedente deberá acreditarse suficientemente que la causa objetiva que sustenta el despido requiere concretamente la extinción del contrato de la persona referida.
 
 En el resto de los supuestos, la decisión extintiva se considerará procedente cuando se acredite la concurrencia de la causa en que se fundamentó la decisión extintiva y se hubiesen cumplido los requisitos establecidos en el apartado 1. En otro caso se considerará improcedente.
@@ -1433,22 +1385,22 @@ No obstante, la no concesión del preaviso o el error excusable en el cálculo d
 
 5. La calificación por la autoridad judicial de la nulidad, procedencia o improcedencia de la decisión extintiva producirá iguales efectos que los indicados para el despido disciplinario, con las siguientes modificaciones:
 --- Respuesta LLM ---
-No aparece en el documento.
+La cuantía indemnizatoria correspondiente al trabajador cuando el despido es declarado improcedente según el artículo 56.1 es de treinta y tres días de salario por año de servicio, prorrateándose por meses los periodos de tiempo inferiores a un año. El importe indemnizatorio no podrá ser superior a veinticuatro mensualidades.
 --- Datos ---
-  latencia_total_s=0.19
-  tokens_generados=10
-  tokens_por_s=53.8
+  latencia_total_s=1.70
+  tokens_generados=82
+  tokens_por_s=48.2
   score_max=0.8972
-  abstencion_detectada=si
+  abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:12] Escenario: boe | Pregunta: BOE_027
+[2026-11-22 22:48:45] Escenario: boe | Pregunta: BOE_027
 Categoria: Régimen sancionador y plazos | Dificultad: Intermedia
 Pregunta: ¿Cuáles son los plazos de prescripción de las faltas leves, graves y muy graves de los trabajadores según el artículo 60.2?
 Referencia: Artículo 60.2 (pág. 67)
 Respuesta esperada: Las faltas leves prescribirán a los diez días; las graves, a los veinte días; y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión y, en todo caso, a los seis meses de haberse cometido.
 --- Recuperados (top 3) ---
-  [1] chunk=345 score=0.8780
+  [1] chunk=337 score=0.8780
       el empresario prescribirán conforme a lo establecido en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, aprobado por el Real Decreto Legislativo 5/2000, de 4 de agosto.
 
 2. Respecto a los trabajadores, las faltas leves prescribirán a los diez días; las graves, a los veinte días, y las muy graves, a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión y, en todo caso, a los seis meses de haberse cometido.
@@ -1468,7 +1420,7 @@ De conformidad con lo dispuesto en el artículo 4 y sin perjuicio de otras forma
 ## **_Sección 1.ª Órganos de representación_**
 
 ## **Artículo 62.** _Delegados de personal._
-  [2] chunk=342 score=0.8575
+  [2] chunk=334 score=0.8575
       los contratos de trabajo y de sucesión de empresa, se aplicarán las especialidades previstas en la Ley 22/2003, de 9 de julio, Concursal.
 
 ## CAPÍTULO IV
@@ -1490,7 +1442,7 @@ De conformidad con lo dispuesto en el artículo 4 y sin perjuicio de otras forma
 ## **_Sección 1.ª Prescripción de acciones derivadas del contrato_**
 
 ## **Artículo 59.** _Prescripción y caducidad._
-  [3] chunk=344 score=0.8498
+  [3] chunk=336 score=0.8498
       n contra el despido o resolución de contratos temporales caducará a los veinte días siguientes de aquel en que se hubiera producido. Los días serán hábiles y el plazo de caducidad a todos los efectos.
 
 El plazo de caducidad quedará interrumpido por la presentación de la solicitud de
@@ -1505,22 +1457,40 @@ conciliación ante el órgano público de mediación, arbitraje y conciliación 
 
 1. Las infracciones cometidas por el empresario prescribirán conforme a lo establecido en el texto refundido de la Ley sobre Infracciones y Sanciones en el Orden Social, aprobado por el Real Decreto Legislativo 5/2000, de 4 de agosto.
 --- Respuesta LLM ---
-Los plazos de prescripción de las faltas leves, graves y muy graves de los trabajadores según el artículo 60.2 se computan desde el día siguiente a la fecha de notificación de la decisión empresarial, tras la finalización, en su caso, del periodo de consultas.
+Los plazos de prescripción para las faltas de los trabajadores son los siguientes según el artículo 60.2:
+
+- Las faltas leves prescribirán a los diez días.
+- Las faltas graves prescribirán a los veinte días.
+- Las faltas muy graves prescribirán a los sesenta días a partir de la fecha en que la empresa tuvo conocimiento de su comisión. Además, prescribirán a los seis meses de haberse cometido.
 --- Datos ---
-  latencia_total_s=1.23
-  tokens_generados=91
-  tokens_por_s=73.7
+  latencia_total_s=2.32
+  tokens_generados=113
+  tokens_por_s=48.6
   score_max=0.8780
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:13] Escenario: boe | Pregunta: BOE_028
+[2026-11-22 22:48:47] Escenario: boe | Pregunta: BOE_028
 Categoria: Representación colectiva | Dificultad: Básica
 Pregunta: ¿A partir de qué censo de trabajadores se constituye un comité de empresa en un centro de trabajo y cuál es la duración del mandato de sus miembros según los artículos 63.1 y 67.3?
 Referencia: Artículos 63.1 y 67.3 (págs. 68 y 71)
 Respuesta esperada: El comité de empresa se constituirá en cada centro de trabajo cuyo censo sea de cincuenta o más trabajadores, y la duración del mandato de los delegados de personal y de los miembros del comité de empresa será de cuatro años.
 --- Recuperados (top 3) ---
-  [1] chunk=362 score=0.8596
+  [1] chunk=339 score=0.8639
+      .
+
+Los delegados de personal observarán las normas que sobre sigilo profesional están establecidas para los miembros de comités de empresa en el artículo 65.
+
+## **Artículo 63.** _Comités de empresa._
+
+1. El comité de empresa es el órgano representativo y colegiado del conjunto de los trabajadores en la empresa o centro de trabajo para la defensa de sus intereses, constituyéndose en cada centro de trabajo cuyo censo sea de cincuenta o más trabajadores.
+
+2. En la empresa que tenga en la misma provincia, o en municipios limítrofes, dos o más centros de trabajo cuyos censos no alcancen los cincuenta trabajadores, pero que en su conjunto lo sumen, se constituirá un comité de empresa conjunto. Cuando unos centros tengan cincuenta trabajadores y otros de la misma provincia no, en los primeros se constituirán comités de empresa propios y con todos los segundos se constituirá otro.
+
+3. Solo por convenio colectivo podrá pactarse la constitución y funcionamiento de un comité intercentros con un máximo de trece miembros, que serán designados de entre los componentes de los distintos comités de centro.
+
+En la constitución del comité intercentros se guardará la proporcionalidad de los
+  [2] chunk=354 score=0.8596
       Decreto Legislativo 5/2000, de 4 de agosto, para los casos de negativa injustificada de la información a que tienen derecho los representantes de los trabajadores.
 
 ## **Artículo 66.** _Composición._
@@ -1544,41 +1514,27 @@ f) De mil en adelante, dos por cada mil o fracción, con el máximo de setenta y
 2. Los comités de empresa o centro de trabajo elegirán de entre sus miembros un presidente y un secretario del comité, y elaborarán su propio reglamento de procedimiento, que no podrá contravenir lo dispuesto en la ley, remitiendo copia del mismo a la autoridad laboral, a efectos de registro, y a la empresa.
 
 Los comités deberán reunirse cada dos meses o siempre que lo solicite un tercio de sus miembros o un tercio de los trabajadores representados.
-  [2] chunk=347 score=0.8593
-      personal observarán las normas que sobre sigilo profesional están establecidas para los miembros de comités de empresa en el artículo 65.
-
-Página 67
-
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
-
-## **Artículo 63.** _Comités de empresa._
-
-1. El comité de empresa es el órgano representativo y colegiado del conjunto de los trabajadores en la empresa o centro de trabajo para la defensa de sus intereses, constituyéndose en cada centro de trabajo cuyo censo sea de cincuenta o más trabajadores.
-
-2. En la empresa que tenga en la misma provincia, o en municipios limítrofes, dos o más centros de trabajo cuyos censos no alcancen los cincuenta trabajadores, pero que en su conjunto lo sumen, se constituirá un comité de empresa conjunto. Cuando unos centros tengan cincuenta trabajadores y otros de la misma provincia no, en los primeros se constituirán comités de empresa propios y con todos los segundos se constituirá otro.
-
-3. Solo por convenio colectivo podrá pactarse la constitución y funcionamiento de un comité intercentros con un máximo de trece miembros, que serán designados de entre los componentes de los distintos comités de centro.
-  [3] chunk=210 score=0.8560
+  [3] chunk=202 score=0.8560
       vención como interlocutores ante la dirección de la empresa en el procedimiento de consultas corresponderá a los sujetos indicados en el artículo 41.4, en el orden y condiciones señalados en el mismo.
 
 La comisión representativa de los trabajadores deberá quedar constituida con carácter previo a la comunicación empresarial de inicio del procedimiento de consultas. A estos efectos, la dirección de la empresa deberá comunicar de manera fehaciente a los trabajadores o a sus representantes su intención de iniciar el procedimiento. El plazo máximo para la constitución de la comisión representativa será de siete días desde la fecha de la referida comunicación, salvo que alguno de los centros de trabajo que vaya a estar afectado por el procedimiento no cuente con representantes legales de los trabajadores, en cuyo caso el plazo será de quince días.
 --- Respuesta LLM ---
-El artículo 63.1 debe ser consultado para determinar el censo de trabajadores necesario para constituir un comité de empresa en un centro de trabajo. El artículo 67.3 determina el duración del mandato de sus miembros.
+Según los artículos 63.1 y 67.3, a partir de un censo de 50 trabajadores se constituye un comité de empresa en un centro de trabajo. Sin embargo, no se especifica la duración del mandato de sus miembros en el texto proporcionado.
 --- Datos ---
-  latencia_total_s=0.99
-  tokens_generados=74
-  tokens_por_s=74.8
-  score_max=0.8596
+  latencia_total_s=1.40
+  tokens_generados=67
+  tokens_por_s=47.7
+  score_max=0.8639
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:13] Escenario: boe | Pregunta: BOE_029
+[2026-11-22 22:48:49] Escenario: boe | Pregunta: BOE_029
 Categoria: Disposiciones adicionales | Dificultad: Avanzada
 Pregunta: ¿Qué establece la Disposición adicional vigesimotercera respecto a las personas que prestan servicios de reparto mediante plataformas digitales?
 Referencia: Disposición adicional vigesimotercera (pág. 91)
 Respuesta esperada: Presume incluida en el ámbito del Estatuto de los Trabajadores la actividad de las personas que presten servicios retribuidos consistentes en el reparto o distribución de cualquier producto de consumo o mercancía, por parte de empleadoras que ejercen las facultades empresariales de organización, dirección y control de forma directa, indirecta o implícita, mediante la gestión algorítmica del servicio o de las condiciones de trabajo, a través de una plataforma digital.
 --- Recuperados (top 3) ---
-  [1] chunk=464 score=0.8929
+  [1] chunk=456 score=0.8936
       que, en su caso, corresponderían por los mismos supuestos de hecho.
 
 **Disposición adicional vigesimotercera.** _Presunción de laboralidad en el ámbito de las_
@@ -1589,36 +1545,36 @@ Por aplicación de lo establecido en el artículo 8.1, se presume incluida en el
 
 Esta presunción no afecta a lo previsto en el artículo 1.3 de la presente norma.
 
-Página 91
+**Disposición adicional vigesimocuarta.** _Compromiso de reducción de la tasa de temporalidad._
+  [2] chunk=457 score=0.8371
+      a plataforma digital.
 
-BOLETÍN OFICIAL DEL ESTADO LEGISLACIÓN CONSOLIDADA
+Esta presunción no afecta a lo previsto en el artículo 1.3 de la presente norma.
 
 **Disposición adicional vigesimocuarta.** _Compromiso de reducción de la tasa de temporalidad._
-  [2] chunk=185 score=0.8365
+
+1. El Gobierno efectuará una evaluación de los resultados obtenidos por las medidas previstas en el Real Decreto-ley 32/2021, de 28 de diciembre, de medidas urgentes para la reforma laboral, la garantía de la estabilidad en el empleo y la transformación del mercado de trabajo, mediante el análisis de los datos de contratación temporal e indefinida en enero del año 2025, procediendo a la publicación oficial, a estos efectos, de la tasa de temporalidad general y por sectores.
+
+Dicha evaluación deberá repetirse cada dos años.
+
+2. En el caso de que los resultados de la evaluación anterior demuestren que no se avanza en la reducción de la tasa de temporalidad, ya sea en la general o en la de los diferentes sectores, el Gobierno elevará a la mesa de diálogo social una propuesta de medidas adicionales que permitan la consecución de dicho objetivo, general o sectorial, para su discusión y eventual acuerdo con los interlocutores sociales.
+  [3] chunk=177 score=0.8365
       aron, sin perjuicio de la posibilidad de la empresa de aplicar una suspensión del contrato de trabajo o una reducción de jornada derivada de fuerza mayor en los términos previstos en el artículo 47.6.
 
 Cuando la naturaleza de la prestación laboral sea compatible con el trabajo a distancia y el estado de las redes de comunicación permita su desarrollo, la empresa podrá establecerlo, observando el resto de las obligaciones formales y materiales recogidas en la Ley 10/2021, de 9 de julio, de trabajo a distancia, y, en particular, el suministro de medios, equipos y herramientas adecuados.
 
 g) [sic] Por el tiempo indispensable para la realización de los actos preparatorios de la donación de órganos o tejidos siempre que deban tener lugar dentro de la jornada de trabajo.
-  [3] chunk=466 score=0.8266
-      la mesa de diálogo social una propuesta de medidas adicionales que permitan la consecución de dicho objetivo, general o sectorial, para su discusión y eventual acuerdo con los interlocutores sociales.
-
-**Disposición adicional vigesimoquinta.** _Acciones formativas en los expedientes de regulación temporal de empleo regulados en los artículos 47 y 47 bis._
-
-Durante las reducciones de jornada de trabajo o suspensiones de contratos de trabajo a las que se refieren los artículos 47 y 47 bis, las empresas podrán desarrollar acciones formativas para cada una de las personas afectadas, que tendrán como objetivo la mejora de las competencias profesionales y la empleabilidad de las personas trabajadoras.
-
-A través de estas acciones se priorizará el desarrollo de acciones formativas dirigidas a atender las necesidades formativas reales de las empresas y los trabajadores incluyendo las vinculadas a la adquisición de competencias digitales, así como aquellas que permitan recualificar a las personas trabajadoras, aunque no tengan relación directa con la actividad desarrollada en la empresa.
 --- Respuesta LLM ---
-La Disposición adicional vigesimotercera establece que, en su caso, corresponderían por los mismos supuestos de hecho.
+La Disposición adicional vigesimotercera establece que, según lo establecido en el artículo 8.1, se presume incluida en el ámbito de esta ley la actividad de las personas que prestan servicios retribuidos consistente en el reparto o distribución de productos de consumo o mercancía, por parte de empleadoras que ejercen las facultades empresariales de organización, dirección y control de forma directa, indirecta o implícita, mediante la gestión algorítmica del servicio o de las condiciones de trabajo, a través de una plataforma digital.
 --- Datos ---
-  latencia_total_s=0.56
-  tokens_generados=41
-  tokens_por_s=72.8
-  score_max=0.8929
+  latencia_total_s=2.57
+  tokens_generados=126
+  tokens_por_s=48.9
+  score_max=0.8936
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 14:47:15] Escenario: boe | Pregunta: BOE_030
+[2026-11-22 22:48:53] Escenario: boe | Pregunta: BOE_030
 Categoria: Metadatos y estructura | Dificultad: Intermedia
 Pregunta: ¿Cómo se estructura sistemáticamente el Real Decreto Legislativo 2/2015 según el índice general del documento?
 Referencia: Índice general (págs. 1-7)
@@ -1632,7 +1588,7 @@ Real Decreto Legislativo 2/2015, de 23 de octubre, por el que se aprueba el text
 Ministerio de Empleo y Seguridad Social «BOE» núm. 255, de 24 de octubre de 2015 Referencia: BOE-A-2015-11430
 
 # ÍNDICE
-  [2] chunk=446 score=0.8203
+  [2] chunk=438 score=0.8203
       iones empresariales y organizaciones sindicales, sin perjuicio de lo dispuesto en el artículo 92, que será siempre procedimiento prioritario.
 
 ## **Disposición adicional octava.** _Código de Trabajo._
@@ -1642,7 +1598,7 @@ El Gobierno, a propuesta del Ministerio de Empleo y Seguridad Social, recogerá 
 Asimismo se incorporarán sucesiva y periódicamente a dicho Código de Trabajo todas las disposiciones generales laborales mediante el procedimiento que se fije por el Gobierno en cuanto a la técnica de incorporación, según el rango de las normas incorporadas.
 
 ## **Disposición adicional novena.** _Comisión Consultiva Nacional de Convenios Colectivos._
-  [3] chunk=39 score=0.8189
+  [3] chunk=33 score=0.8189
       e de 2014.
 
 Este real decreto legislativo ha sido sometido a consulta de las organizaciones sindicales y empresariales más representativas. Además, ha sido informado por el Consejo Económico y Social.
@@ -1661,15 +1617,165 @@ Quedan derogadas cuantas disposiciones de igual o inferior rango se opongan a lo
 
 1. El Real Decreto Legislativo 1/1995, de 24 de marzo, por el que se aprueba el texto refundido de la Ley del Estatuto de los Trabajadores.
 --- Respuesta LLM ---
-El Real Decreto Legislativo 2/2015 estructurado sistemáticamente según el índice general del documento se compone de tres secciones:
+Según el índice general proporcionado, el Real Decreto Legislativo 2/2015 se estructura de la siguiente manera:
 
-1. **Disposición adicional octava.** Código de Trabajo.
-2. **Disposición adicional novena.** Comisión Consultiva Nacional de Convenios Colectivos.
-3. **Disposición adicional cuarta.** Aprobación del texto refundido de la Ley del Estatuto de los Trabajadores.
+1. Disposición adicional octava: Se recoge en un texto único denominado Código de Trabajo, las distintas leyes orgánicas y ordinarias que regulan las materias laborales, ordenándolas en títulos separados, uno por ley, con numeración correlativa, respetando íntegramente su texto literal.
+   
+2. Disposición adicional novena: Se incorporarán sucesiva y periódicamente a dicho Código de Trabajo todas las disposiciones generales laborales mediante el procedimiento que se fije por el Gobierno en cuanto a la técnica de incorporación, según el rango de las normas incorporadas.
+
+Esta estructura se presenta como un índice general, indicando cómo se organiza el contenido del documento principal.
 --- Datos ---
-  latencia_total_s=1.81
-  tokens_generados=139
-  tokens_por_s=76.9
+  latencia_total_s=4.01
+  tokens_generados=195
+  tokens_por_s=48.6
   score_max=0.8271
   abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 22:48:54] Escenario: boe | Pregunta: BOE_031
+Categoria: Salario y garantías | Dificultad: Básica
+Pregunta: ¿Cuál es la cuantía exacta del salario mínimo interprofesional fijada para el año 2026?
+Referencia: Artículo 27
+Respuesta esperada: No aparece: el artículo 27 establece que el Gobierno fija el salario mínimo anualmente, pero el texto no incluye la cifra concreta.
+--- Recuperados (top 3) ---
+  [1] chunk=131 score=0.8591
+      de trabajo o a la situación y resultados de la empresa.
+
+4. Todas las cargas fiscales y de Seguridad Social a cargo del trabajador serán
+
+satisfechas por el mismo, siendo nulo todo pacto en contrario.
+
+5. Operará la compensación y absorción cuando los salarios realmente abonados, en su conjunto y cómputo anual, sean más favorables para los trabajadores que los fijados en el orden normativo o convencional de referencia.
+
+## **Artículo 27.** _Salario mínimo interprofesional._
+
+1. El Gobierno fijará, previa consulta con las organizaciones sindicales y asociaciones empresariales más representativas, anualmente, el salario mínimo interprofesional, teniendo en cuenta:
+
+a) El índice de precios de consumo.
+
+b) La productividad media nacional alcanzada.
+
+c) El incremento de la participación del trabajo en la renta nacional.
+
+- d) La coyuntura económica general.
+
+Igualmente se fijará una revisión semestral para el caso de que no se cumplan las
+
+previsiones sobre el índice de precios citado.
+
+La revisión del salario mínimo interprofesional no afectará a la estructura ni a la cuantía de los salarios profesionales cuando estos, en su conjunto y cómputo anual, fueran superiores a aquel.
+  [2] chunk=132 score=0.8475
+      ado.
+
+La revisión del salario mínimo interprofesional no afectará a la estructura ni a la cuantía de los salarios profesionales cuando estos, en su conjunto y cómputo anual, fueran superiores a aquel.
+
+2. El salario mínimo interprofesional, en su cuantía, tanto anual como mensual, es inembargable. A efectos de determinar lo anterior se tendrán en cuenta tanto el periodo de devengo como la forma de cómputo, se incluya o no el prorrateo de las pagas extraordinarias, garantizándose la inembargabilidad de la cuantía que resulte en cada caso. En particular, si junto con el salario mensual se percibiese una gratificación o paga extraordinaria, el límite de inembargabilidad estará constituido por el doble del importe del salario mínimo interprofesional mensual y en el caso de que en el salario mensual percibido estuviera incluida la parte proporcional de las pagas o gratificaciones extraordinarias, el límite de inembargabilidad estará constituido por el importe del salario mínimo interprofesional en cómputo anual prorrateado entre doce meses.
+
+## **Artículo 28.** _Igualdad de remuneración por razón de sexo._
+  [3] chunk=133 score=0.8311
+      inembargabilidad estará constituido por el importe del salario mínimo interprofesional en cómputo anual prorrateado entre doce meses.
+
+## **Artículo 28.** _Igualdad de remuneración por razón de sexo._
+
+1. El empresario está obligado a pagar por la prestación de un trabajo de igual valor la misma retribución, satisfecha directa o indirectamente, y cualquiera que sea la naturaleza de la misma, salarial o extrasalarial, sin que pueda producirse discriminación alguna por razón de sexo en ninguno de los elementos o condiciones de aquella.
+
+Un trabajo tendrá igual valor que otro cuando la naturaleza de las funciones o tareas efectivamente encomendadas, las condiciones educativas, profesionales o de formación exigidas para su ejercicio, los factores estrictamente relacionados con su desempeño y las condiciones laborales en las que dichas actividades se llevan a cabo en realidad sean equivalentes.
+--- Respuesta LLM ---
+No aparece en el documento
+--- Datos ---
+  latencia_total_s=0.20
+  tokens_generados=7
+  tokens_por_s=34.2
+  score_max=0.8591
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 22:48:54] Escenario: boe | Pregunta: BOE_032
+Categoria: Negociación colectiva | Dificultad: Intermedia
+Pregunta: ¿Cuántos convenios colectivos sectoriales estaban registrados en España cuando entró en vigor el texto refundido?
+Referencia: Título III
+Respuesta esperada: No aparece: el texto regula la negociación colectiva y los convenios, pero no aporta estadísticas sobre el número de convenios registrados.
+--- Recuperados (top 3) ---
+  [1] chunk=32 score=0.8255
+      # TEXTO CONSOLIDADO
+
+# Última modificación: 21 de octubre de 2026
+
+El artículo Uno.d) de la Ley 20/2014, de 29 de octubre, por la que se delega en el Gobierno la potestad de dictar diversos textos refundidos, en virtud de lo establecido en el artículo 82 y siguientes de la Constitución Española, autorizó al Gobierno para aprobar un texto refundido en el que se integrasen, debidamente regularizadas, aclaradas y armonizadas, el texto refundido de la Ley del Estatuto de los Trabajadores, aprobado mediante Real Decreto Legislativo 1/1995, de 24 de marzo, y todas las disposiciones legales relacionadas que se enumeran en ese apartado, así como las normas con rango de ley que las hubieren modificado. El plazo para la realización de dicho texto era de doce meses a partir de la entrada en vigor de la citada Ley 20/2014, que tuvo lugar el 31 de octubre de 2014.
+
+Este real decreto legislativo ha sido sometido a consulta de las organizaciones sindicales y empresariales más representativas. Además, ha sido informado por el Consejo Económico y Social.
+  [2] chunk=426 score=0.8240
+      dar la intervención de un mediador designado por ellas.
+
+## **Artículo 90.** _Validez._
+
+1. Los convenios colectivos a que se refiere esta ley han de formalizarse por escrito, bajo sanción de nulidad.
+
+2. Los convenios deberán ser presentados ante la autoridad laboral competente, a los solos efectos de registro, dentro del plazo de quince días a partir del momento en que las partes negociadoras lo firmen. Una vez registrado, el convenio será remitido al órgano público competente para su depósito.
+
+3. En el plazo máximo de veinte días desde la presentación del convenio en el registro se dispondrá por la autoridad laboral su publicación obligatoria y gratuita en el «Boletín Oficial del Estado» o en el correspondiente boletín oficial de la comunidad autónoma o de la provincia, en función del ámbito territorial del convenio.
+
+4. El convenio entrará en vigor en la fecha en que acuerden las partes.
+  [3] chunk=413 score=0.8216
+      repancias producidas en su seno a los sistemas no judiciales de solución de conflictos establecidos mediante los acuerdos interprofesionales de ámbito estatal o autonómico previstos en el artículo 83.
+
+## **Artículo 86.** _Vigencia._
+
+1. Corresponde a las partes negociadoras establecer la duración de los convenios, pudiendo eventualmente pactarse distintos periodos de vigencia para cada materia o grupo homogéneo de materias dentro del mismo convenio.
+
+Durante la vigencia del convenio colectivo, los sujetos que reúnan los requisitos de
+
+legitimación previstos en los artículos 87 y 88 podrán negociar su revisión.
+
+2. Salvo pacto en contrario, los convenios colectivos se prorrogarán de año en año si no
+
+mediara denuncia expresa de las partes.
+
+3. La vigencia de un convenio colectivo, una vez denunciado y concluida la duración
+
+pactada, se producirá en los términos que se hubiesen establecido en el propio convenio.
+--- Respuesta LLM ---
+No aparece en el documento
+--- Datos ---
+  latencia_total_s=0.20
+  tokens_generados=7
+  tokens_por_s=34.3
+  score_max=0.8255
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 22:48:54] Escenario: boe | Pregunta: BOE_033
+Categoria: Suspensión y excedencias | Dificultad: Intermedia
+Pregunta: ¿Cuál es la duración máxima concreta de la incapacidad temporal por enfermedad común según el Estatuto?
+Referencia: Artículo 45
+Respuesta esperada: No aparece: el texto remite a la normativa de Seguridad Social y no fija duraciones concretas para la incapacidad temporal por enfermedad común.
+--- Recuperados (top 3) ---
+  [1] chunk=293 score=0.8516
+      que se califique la incapacidad permanente en alguno de los grados citados en el párrafo primero de esta letra n) para manifestar por escrito a la empresa su voluntad de mantener la relación laboral.
+
+La empresa dispondrá de un plazo máximo de tres meses, contados desde la fecha en que se le notifique la resolución en la que se califique la incapacidad permanente, para realizar los ajustes razonables o el cambio de puesto de trabajo. Cuando el ajuste suponga una carga excesiva o no exista puesto de trabajo vacante, la empresa dispondrá del mismo plazo para proceder a la extinción del contrato. La decisión será motivada y deberá comunicarse por escrito a la persona trabajadora.
+
+Los servicios de prevención determinarán, de conformidad con lo establecido en la normativa aplicable y previa consulta con la representación de las personas trabajadoras en materia de prevención de riesgos laborales, el alcance y las características de las medidas de ajuste, incluidas las relativas a la formación, información y vigilancia de la salud de la persona trabajadora, e identificarán los puestos de trabajo compatibles con la nueva situación de la persona trabajadora.
+  [2] chunk=183 score=0.8435
+      sta los veintitrés años cuando persistiera el padecimiento del cáncer o enfermedad grave, diagnosticada anteriormente, y subsistiera la necesidad de hospitalización o tratamiento médico y del cuidado.
+
+No obstante, cumplidos los 18 años, se podrá reconocer el derecho a la reducción de jornada hasta que el causante cumpla 23 años en los supuestos de padecimiento de cáncer o enfermedad grave diagnosticada antes de alcanzar la mayoría de edad, siempre que en el momento de la solicitud se acrediten los requisitos establecidos en el párrafo anterior, salvo la edad.
+
+Asimismo, se mantendrá el derecho a la reducción de jornada hasta que el causante cumpla 26 años si antes de alcanzar los 23 años acreditara, además, un grado de discapacidad igual o superior al 65 por ciento.
+  [3] chunk=469 score=0.8419
+      rtículo 48.7 será de trece días ininterrumpidos ampliables en los supuestos de parto, adopción, guarda con fines de adopción o acogimiento múltiples en dos días más por cada hijo a partir del segundo.
+
+De conformidad con la disposición adicional sexta de la Ley 2/2008, de 23 de diciembre, de Presupuestos Generales del Estado para 2009, dicho permiso tendrá una duración de veinte días cuando el nuevo nacimiento, adopción, guarda con fines de adopción o acogimiento se produzca en una familia numerosa, cuando la familia adquiera dicha condición con el nuevo nacimiento, adopción, guarda con fines de adopción o acogimiento o cuando en la familia haya una persona con discapacidad. La duración indicada se ampliará en los supuestos de parto, adopción, guarda con fines de adopción o acogimiento múltiples en dos días más por cada hijo o menor a partir del segundo, o si uno de ellos es una persona con discapacidad.
+
+(*) Téngase en cuenta que la Ley 9/2009, de 6 de octubre, entró en vigor el 1 de enero de 2017. <u>Ref. BOEA-2009-15958</u>
+
+## **Disposición transitoria octava.** _Indemnización por finalización de contrato temporal._
+--- Respuesta LLM ---
+No aparece en el documento
+--- Datos ---
+  latencia_total_s=0.20
+  tokens_generados=7
+  tokens_por_s=34.2
+  score_max=0.8516
+  abstencion_detectada=si
 

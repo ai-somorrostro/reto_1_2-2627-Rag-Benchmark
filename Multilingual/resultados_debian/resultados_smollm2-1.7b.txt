@@ -8,7 +8,7 @@ Config: top_k=3, max_new_tokens=350, chunk=1200/200
 ======================================================================
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:35] Escenario: debian | Pregunta: DEB_001
+[2026-11-22 23:02:49] Escenario: debian | Pregunta: DEB_001
 Categoria: Metadatos y contexto | Dificultad: Básica
 Pregunta: ¿Quiénes son los autores de «El manual del Administrador de Debian» y en qué colección y fecha se publicó originalmente su primera edición?
 Referencia: Prefacio - Reconocimientos (OEBPS/pr02s06.html)
@@ -65,14 +65,14 @@ Si bien este fue un avance importante, sabíamos que nuestra historia no acabar�
 --- Respuesta LLM ---
 El libro "El manual del Administrador de Debian" se publicó originalmente en la colección "Cahier de l'Admin" («libro del administrador») de Eyrolles en 2004.
 --- Datos ---
-  latencia_total_s=1.00
+  latencia_total_s=1.03
   tokens_generados=55
-  tokens_por_s=54.7
+  tokens_por_s=53.5
   score_max=0.8687
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:35] Escenario: debian | Pregunta: DEB_002
+[2026-11-22 23:02:50] Escenario: debian | Pregunta: DEB_002
 Categoria: Metadatos y contexto | Dificultad: Básica
 Pregunta: ¿Qué datos de adopción de Debian se destacan en el Prólogo del manual respecto a servidores web y exploración espacial?
 Referencia: Prólogo (OEBPS/pr01.html)
@@ -125,17 +125,17 @@ El **capítulo 15** es para administradores que quieran profundizar y crear sus 
 --- Respuesta LLM ---
 El Prólogo del manual de Debian destaca que mucha gente ha elegido Debian para ser usado en servidores web y en la estación espacial.
 --- Datos ---
-  latencia_total_s=0.57
+  latencia_total_s=0.58
   tokens_generados=41
-  tokens_por_s=71.4
+  tokens_por_s=70.9
   score_max=0.8784
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:38] Escenario: debian | Pregunta: DEB_003
+[2026-11-22 23:02:53] Escenario: debian | Pregunta: DEB_003
 Categoria: Conceptos fundamentales | Dificultad: Básica
 Pregunta: ¿Cuál es la diferencia técnica entre Linux y una distribución GNU/Linux explicada en el Prefacio?
-Referencia: Prefacio (OEBPS/pr02.html)
+Referencia: Capítulo 2.3 (OEBPS/ch02s03.html)
 Respuesta esperada: Linux es estrictamente solo un núcleo (la pieza central de software que gestiona el hardware y ofrece una interfaz uniforme a las aplicaciones), mientras que una distribución GNU/Linux combina el núcleo Linux con un conjunto completo de herramientas GNU, utilidades y aplicaciones listas para su instalación y uso.
 --- Recuperados (top 3) ---
   [1] chunk=17 score=0.8664
@@ -179,14 +179,14 @@ El documento proporcionado no tiene una pregunta específica que pueda responder
 
 La diferencia técnica entre Linux y una distribución GNU/Linux es que Linux es sólo el núcleo, mientras que una distribución GNU/Linux es un sistema operativo completo que contiene el kernel de Linux, un instalador y la mayoría de las aplicaciones esenciales y otro software necesario para convertir una computadora en una herramienta verdaderamente útil. La distribución GNU/Linux, como la Debian, incluye el software de la librería GNU, lo que permite que los usuarios puedan usar la tecnología de libertad y la libertad de expresión.
 --- Datos ---
-  latencia_total_s=3.04
+  latencia_total_s=3.08
   tokens_generados=238
-  tokens_por_s=78.3
+  tokens_por_s=77.4
   score_max=0.8664
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:39] Escenario: debian | Pregunta: DEB_004
+[2026-11-22 23:02:54] Escenario: debian | Pregunta: DEB_004
 Categoria: Proyecto Debian | Dificultad: Básica
 Pregunta: ¿Cuáles son los tres documentos de fundación del proyecto Debian descritos en el Capítulo 1?
 Referencia: Capítulo 1 - El proyecto Debian (OEBPS/ch01s02.html)
@@ -243,14 +243,14 @@ Los documentos de fundación del proyecto Debian son:
 2. El Principio de la Comunicación (Communication Principle)
 3. El Principio de la Integración (Integration Principle)
 --- Datos ---
-  latencia_total_s=0.86
+  latencia_total_s=0.89
   tokens_generados=64
-  tokens_por_s=74.0
+  tokens_por_s=72.2
   score_max=0.8773
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:41] Escenario: debian | Pregunta: DEB_005
+[2026-11-22 23:02:56] Escenario: debian | Pregunta: DEB_005
 Categoria: Proyecto Debian | Dificultad: Básica
 Pregunta: ¿Cuáles son las tres ramas o distribuciones principales que coexisten permanentemente en Debian y qué papel cumple cada una?
 Referencia: Capítulo 1 - Ciclo de vida de una versión (OEBPS/ch01s06.html)
@@ -290,14 +290,14 @@ La tres ramas o distribuciones principales que coexisten permanentemente en Debi
 
 Debian stable es la distribución más antigua y se utiliza como una base de datos de referencia para la instalación de nuevas versiones. La distribución testing es la que se utiliza para verificar y probar nuevas versiones antes de incluirlas en stab. La distribución unstable es la que incluye las nuevas versiones de Debian y es la que se utiliza para instalar en servidores de alta tecnología.
 --- Datos ---
-  latencia_total_s=2.26
+  latencia_total_s=2.21
   tokens_generados=173
-  tokens_por_s=76.5
+  tokens_por_s=78.4
   score_max=0.8575
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:42] Escenario: debian | Pregunta: DEB_006
+[2026-11-22 23:02:57] Escenario: debian | Pregunta: DEB_006
 Categoria: Proyecto Debian | Dificultad: Básica
 Pregunta: ¿De dónde proceden los nombres en clave de las versiones de Debian y qué nombre recibe siempre la rama inestable?
 Referencia: Capítulo 1 - Ciclo de vida de una versión (OEBPS/ch01s06.html)
@@ -324,12 +324,12 @@ El número de la versión de Debian y el nombre en clave de las versiones se obt
 --- Datos ---
   latencia_total_s=1.01
   tokens_generados=76
-  tokens_por_s=75.3
+  tokens_por_s=75.4
   score_max=0.8696
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:43] Escenario: debian | Pregunta: DEB_007
+[2026-11-22 23:02:58] Escenario: debian | Pregunta: DEB_007
 Categoria: Gestión de paquetes | Dificultad: Intermedia
 Pregunta: ¿Qué tres secciones o áreas componen los repositorios oficiales de Debian y qué criterio determina la inclusión de un paquete en cada una?
 Referencia: Capítulos 1 y 6 (OEBPS/ch01.html, OEBPS/ch06.html)
@@ -360,14 +360,14 @@ Finally, the examiner checks the candidate's technical (packaging) skills with a
 --- Respuesta LLM ---
 El texto proporcionado no tiene una sección llamada "Comunidad" o "Patrocinio". Sin embargo, se puede encontrar información sobre estos temas en otros artículos o en la sección "VOCABULARIO" del documento.
 --- Datos ---
-  latencia_total_s=0.98
+  latencia_total_s=0.96
   tokens_generados=73
-  tokens_por_s=74.2
+  tokens_por_s=75.7
   score_max=0.8703
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:48] Escenario: debian | Pregunta: DEB_008
+[2026-11-22 23:03:03] Escenario: debian | Pregunta: DEB_008
 Categoria: Gestión de paquetes | Dificultad: Avanzada
 Pregunta: ¿Cuál es la estructura interna de un archivo de paquete Debian (.deb) y qué elementos contiene su archivo de control?
 Referencia: Capítulo 5 - El sistema de empaquetado (OEBPS/ch05.html)
@@ -423,20 +423,20 @@ El archivo control.tar.xz contiene la metainformación de un paquete Debian. Est
 - Nombre y versión del archivo de scripts para instalación de dependencias de scripts
 - Nombre y versi
 --- Datos ---
-  latencia_total_s=4.46
+  latencia_total_s=4.42
   tokens_generados=350
-  tokens_por_s=78.5
+  tokens_por_s=79.1
   score_max=0.8860
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:48] Escenario: debian | Pregunta: DEB_009
+[2026-11-22 23:03:03] Escenario: debian | Pregunta: DEB_009
 Categoria: Gestión de paquetes | Dificultad: Básica
-Pregunta: ¿Qué diferencia existe entre desinstalar un paquete con «apt remove» (o «dpkg -r») y purgarlo con «apt purge» (o «dpkg -P»)?
-Referencia: Capítulos 5 y 6 (OEBPS/ch05.html, OEBPS/ch06.html)
-Respuesta esperada: «remove» (-r) elimina los archivos ejecutables y datos del paquete pero conserva sus ficheros de configuración en el sistema (estado «rc» en dpkg), mientras que «purge» (-P) elimina completamente tanto el paquete como todos sus archivos de configuración asociados.
+Pregunta: ¿Qué diferencia existe entre desinstalar un paquete con «dpkg -r» y purgarlo con «dpkg -P»?
+Referencia: Capítulo 5 - Sección 5.2.2.2 (OEBPS/ch05s02.html)
+Respuesta esperada: «remove» (dpkg -r o apt remove) elimina los archivos del paquete pero conserva sus ficheros de configuración; «purge» (dpkg -P, apt-get remove --purge o aptitude purge) elimina también todos los archivos de configuración asociados.
 --- Recuperados (top 3) ---
-  [1] chunk=305 score=0.9032
+  [1] chunk=305 score=0.8943
       ### 5.2.2.2. Eliminación de un paquete
 
 Los pasos para eliminar un paquete son análogos a los pasos de instalación. La principal diferencia es que los scripts de eliminación del paquete se llaman:
@@ -447,7 +447,7 @@ Los pasos para eliminar un paquete son análogos a los pasos de instalación. La
 4. Para eliminar completamente un paquete (con la orden **dpkg --purge** o **dpkg -P**), los archivos de configuración también son eliminados junto con una cantidad de copias (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`) y archivos temporales; **dpkg** luego ejecuta el script **postrm** y pasa **purge** como argumento.
 
 *VOCABULARIO* Purgar, una eliminación completa
-  [2] chunk=306 score=0.9025
+  [2] chunk=306 score=0.8904
       de copias (`*.dpkg-tmp`, `*.dpkg-old`, `*.dpkg-new`) y archivos temporales; **dpkg** luego ejecuta el script **postrm** y pasa **purge** como argumento.
 
 *VOCABULARIO* Purgar, una eliminación completa
@@ -457,7 +457,7 @@ Cuando un paquete de Debian es eliminado, se mantienen los archivos de configura
 Para eliminar todos los datos asociados con un paquete es necesario «purgar» el paquete con la orden **dpkg -P** ***`paquete`***, **apt-get remove --purge** ***`paquete`*** o **aptitude purge** ***`paquete`***.
 
 Dada la naturaleza definitiva de tal eliminación de datos, un purgado no se debe tomar a la ligera.
-  [3] chunk=307 score=0.8970
+  [3] chunk=307 score=0.8736
       * ***`paquete`***, **apt-get remove --purge** ***`paquete`*** o **aptitude purge** ***`paquete`***.
 
 Dada la naturaleza definitiva de tal eliminación de datos, un purgado no se debe tomar a la ligera.
@@ -466,16 +466,16 @@ Los cuatro scripts que aparecen detallados anteriormente se complementan con un 
 
 *HERRAMIENTA* **debconf**
 --- Respuesta LLM ---
-No aparece en el documento.
+No aparece en el documento
 --- Datos ---
-  latencia_total_s=0.18
-  tokens_generados=10
-  tokens_por_s=56.6
-  score_max=0.9032
+  latencia_total_s=0.17
+  tokens_generados=9
+  tokens_por_s=54.5
+  score_max=0.8943
   abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:49] Escenario: debian | Pregunta: DEB_010
+[2026-11-22 23:03:03] Escenario: debian | Pregunta: DEB_010
 Categoria: Gestión de paquetes | Dificultad: Básica
 Pregunta: ¿En qué archivo y directorio configura APT las fuentes o repositorios de paquetes en Debian?
 Referencia: Capítulo 6 - Mantenimiento y actualizaciones (OEBPS/ch06.html)
@@ -510,12 +510,12 @@ El archivo y directorio configurado para APT para las fuentes o repositorios de 
 --- Datos ---
   latencia_total_s=0.56
   tokens_generados=40
-  tokens_por_s=70.9
+  tokens_por_s=71.0
   score_max=0.8991
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:50] Escenario: debian | Pregunta: DEB_011
+[2026-11-22 23:03:05] Escenario: debian | Pregunta: DEB_011
 Categoria: Gestión de paquetes | Dificultad: Intermedia
 Pregunta: ¿Cuál es la diferencia de comportamiento entre los comandos «apt upgrade» y «apt full-upgrade» (equivalente a «apt-get dist-upgrade»)?
 Referencia: Capítulo 6 - Mantenimiento y actualizaciones (OEBPS/ch06.html)
@@ -548,14 +548,14 @@ Se recomienda realizar actualizaciones regularmente, ya que incluyen las última
 --- Respuesta LLM ---
 La diferencia principal entre los comandos «apt upgrade» y «apt full-upgrade» (equivalente a «apt-get dist-upgrade») es que el primero solo actualiza los paquetes instalados, mientras que el segundo actualiza también los paquetes que no están instalados, incluidos los paquetes que están en la versión Unstable. Esto puede ser útil si deseas actualizar tus paquetes sin eliminar ningún paquete instalado.
 --- Datos ---
-  latencia_total_s=1.78
+  latencia_total_s=1.73
   tokens_generados=133
-  tokens_por_s=74.7
+  tokens_por_s=76.9
   score_max=0.8904
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:55] Escenario: debian | Pregunta: DEB_012
+[2026-11-22 23:03:09] Escenario: debian | Pregunta: DEB_012
 Categoria: Gestión de paquetes | Dificultad: Avanzada
 Pregunta: ¿Para qué sirve el mecanismo de «apt-pinning» y en qué archivo o directorio se configura?
 Referencia: Capítulo 6 - Mantenimiento y actualizaciones (OEBPS/ch06.html)
@@ -598,14 +598,14 @@ Para obtener un mejor entendimiento de los mecanismos de prioridades y las propi
 
 La documentación de referencia para los archivos `etc/apt/preferences` y `/etc/apt/preferences.d/` está disponible en la página de manual `apt\_preferences(5)`.
 --- Datos ---
-  latencia_total_s=4.25
+  latencia_total_s=4.10
   tokens_generados=325
-  tokens_por_s=76.5
+  tokens_por_s=79.2
   score_max=0.8559
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:55] Escenario: debian | Pregunta: DEB_013
+[2026-11-22 23:03:09] Escenario: debian | Pregunta: DEB_013
 Categoria: Gestión de paquetes | Dificultad: Intermedia
 Pregunta: ¿Qué función cumple «debconf» en Debian y qué comando permite volver a responder las preguntas de configuración de un paquete ya instalado?
 Referencia: Capítulos 5 y 6 (OEBPS/ch05.html, OEBPS/ch06.html)
@@ -640,7 +640,7 @@ No aparece en el documento.
   abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:55] Escenario: debian | Pregunta: DEB_014
+[2026-11-22 23:03:10] Escenario: debian | Pregunta: DEB_014
 Categoria: Instalación y despliegue | Dificultad: Intermedia
 Pregunta: ¿En qué consiste la técnica de preconfiguración («preseeding») abordada en el capítulo de instalación de Debian?
 Referencia: Capítulo 4 - Instalación (OEBPS/ch04.html)
@@ -677,12 +677,12 @@ No aparece en el documento.
 --- Datos ---
   latencia_total_s=0.18
   tokens_generados=10
-  tokens_por_s=56.4
+  tokens_por_s=56.5
   score_max=0.8772
   abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:56] Escenario: debian | Pregunta: DEB_015
+[2026-11-22 23:03:11] Escenario: debian | Pregunta: DEB_015
 Categoria: Sistema base y FHS | Dificultad: Básica
 Pregunta: ¿Qué función desempeñan los directorios «/etc», «/var» y «/usr» dentro de la jerarquía estándar del sistema de archivos (FHS) en Debian?
 Referencia: Capítulos 8 y 9 (OEBPS/ch08.html, OEBPS/ch09.html)
@@ -724,12 +724,12 @@ El directorio «/etc», «/var» y «/usr» dentro de la jerarquía estándar de
 --- Datos ---
   latencia_total_s=1.21
   tokens_generados=92
-  tokens_por_s=76.3
+  tokens_por_s=75.8
   score_max=0.8721
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:57] Escenario: debian | Pregunta: DEB_016
+[2026-11-22 23:03:11] Escenario: debian | Pregunta: DEB_016
 Categoria: Administración del sistema | Dificultad: Básica
 Pregunta: ¿Cuál es el sistema de inicio («init») predeterminado en las versiones modernas de Debian y cuál es su herramienta principal de administración de servicios?
 Referencia: Capítulo 9 - Servicios Unix (OEBPS/ch09.html)
@@ -764,12 +764,12 @@ El sistema de inicio predeterminado en las versiones modernas de Debian es syste
 --- Datos ---
   latencia_total_s=0.61
   tokens_generados=44
-  tokens_por_s=72.3
+  tokens_por_s=72.0
   score_max=0.8754
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:57] Escenario: debian | Pregunta: DEB_017
+[2026-11-22 23:03:12] Escenario: debian | Pregunta: DEB_017
 Categoria: Usuarios y permisos | Dificultad: Básica
 Pregunta: ¿En qué dos archivos del directorio «/etc» se almacenan respectivamente la información de las cuentas locales de usuario y sus contraseñas cifradas?
 Referencia: Capítulos 8 y 9 (OEBPS/ch08.html, OEBPS/ch09.html)
@@ -821,7 +821,7 @@ El archivo `/etc/shadow` almacena la información de las cuentas locales de usua
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:03:58] Escenario: debian | Pregunta: DEB_018
+[2026-11-22 23:03:12] Escenario: debian | Pregunta: DEB_018
 Categoria: Redes | Dificultad: Básica
 Pregunta: ¿En qué archivo se configuran de forma persistente las interfaces de red mediante «ifupdown» en Debian?
 Referencia: Capítulos 8 y 10 (OEBPS/ch08.html, OEBPS/ch10.html)
@@ -868,12 +868,12 @@ No aparece en el documento.
 --- Datos ---
   latencia_total_s=0.19
   tokens_generados=10
-  tokens_por_s=54.0
+  tokens_por_s=53.9
   score_max=0.8884
   abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:02] Escenario: debian | Pregunta: DEB_019
+[2026-11-22 23:03:17] Escenario: debian | Pregunta: DEB_019
 Categoria: Redes y seguridad | Dificultad: Intermedia
 Pregunta: ¿Qué funciones proporciona el subsistema de cortafuegos del núcleo Linux (netfilter / iptables / nftables) descrito en el manual?
 Referencia: Capítulos 10 y 14 (OEBPS/ch10.html, OEBPS/ch14.html)
@@ -923,14 +923,14 @@ El subsistema de cortafuegos del núcleo Linux (netfilter / iptables / nftables)
 - Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto remotamente remotamente remotamente.
 - Reglas para aplicar a los enlaces que se utilizan para conectarse a un servidor remoto remotamente remotamente remotamente remotamente
 --- Datos ---
-  latencia_total_s=4.43
+  latencia_total_s=4.42
   tokens_generados=350
-  tokens_por_s=79.0
+  tokens_por_s=79.2
   score_max=0.8824
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:03] Escenario: debian | Pregunta: DEB_020
+[2026-11-22 23:03:18] Escenario: debian | Pregunta: DEB_020
 Categoria: Redes | Dificultad: Básica
 Pregunta: ¿Qué archivo configura los servidores DNS utilizados por la biblioteca de resolución de nombres del sistema en Debian y cuál es el servidor DNS autoritativo/caché habitual en la distribución?
 Referencia: Capítulo 10 - Infraestructura de red (OEBPS/ch10.html)
@@ -981,12 +981,12 @@ El archivo que configura los servidores DNS utilizados por la biblioteca de reso
 --- Datos ---
   latencia_total_s=1.00
   tokens_generados=75
-  tokens_por_s=75.0
+  tokens_por_s=74.8
   score_max=0.8650
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:06] Escenario: debian | Pregunta: DEB_021
+[2026-11-22 23:03:20] Escenario: debian | Pregunta: DEB_021
 Categoria: Almacenamiento | Dificultad: Intermedia
 Pregunta: ¿Qué tecnologías se emplean en Debian para implementar RAID por software y gestión de volúmenes lógicos respectivamente?
 Referencia: Capítulos 8 y 12 (OEBPS/ch08.html, OEBPS/ch12.html)
@@ -1021,14 +1021,14 @@ Tanto RAID como LVM son técnicas para abstraer los volúmenes montados de sus c
 --- Respuesta LLM ---
 RAID y LVM son técnicas para abstraer los volúmenes montados de sus correspondientes dispositivos físicos (discos duros reales o particiones de los mismos). El primero garantiza la seguridad y disponibilidad de los datos en caso de fallos de hardware agregando redundancia mientras que el segundo hace más flexible la gestión de los volúmenes y los independiza del tamaño real de los discos subyacentes. En ambos casos se crean nuevos dispositivos de bloques en el sistema que pueden ser utilizados tanto para crear sistemas de archivos como espacios de intercambio sin necesidad de que se asocien a un disco físico concreto.
 --- Datos ---
-  latencia_total_s=2.57
+  latencia_total_s=2.58
   tokens_generados=201
-  tokens_por_s=78.1
+  tokens_por_s=78.0
   score_max=0.8518
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:07] Escenario: debian | Pregunta: DEB_022
+[2026-11-22 23:03:21] Escenario: debian | Pregunta: DEB_022
 Categoria: Administración del sistema | Dificultad: Básica
 Pregunta: ¿Qué servicio planifica tareas periódicas en Debian y qué directorios del sistema permiten programar scripts con frecuencia horaria, diaria, semanal o mensual?
 Referencia: Capítulo 9 - Servicios Unix (OEBPS/ch09.html)
@@ -1077,20 +1077,24 @@ El servicio planifica tareas periódicas en Debian y los directorios del sistema
 - /etc/cron.weekly
 - /etc/cron.monthly
 --- Datos ---
-  latencia_total_s=1.14
+  latencia_total_s=1.15
   tokens_generados=86
-  tokens_por_s=75.8
+  tokens_por_s=74.6
   score_max=0.9005
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:07] Escenario: debian | Pregunta: DEB_023
+[2026-11-22 23:03:22] Escenario: debian | Pregunta: DEB_023
 Categoria: Administración del sistema | Dificultad: Intermedia
-Pregunta: ¿Qué demonios y archivos en «/var/log/» gestionan los registros de eventos del sistema y de autenticación en Debian?
-Referencia: Capítulo 9 - Servicios Unix (OEBPS/ch09.html)
-Respuesta esperada: El servicio «rsyslog» (junto con «systemd-journald») centraliza los mensajes del sistema y los guarda por defecto en archivos dentro de «/var/log/», destacando «/var/log/syslog» para mensajes generales del sistema y «/var/log/auth.log» para eventos de autenticación y permisos.
+Pregunta: ¿Qué demonio recolecta los registros del sistema en Debian y en qué directorio y archivo de configuración se gestionan?
+Referencia: Capítulo 9 - Sección 9.5 (OEBPS/ch09s05.html)
+Respuesta esperada: El demonio «rsyslogd» recolecta los mensajes de las aplicaciones y del núcleo y los distribuye en archivos dentro de «/var/log/», siguiendo las reglas definidas en «/etc/rsyslog.conf». Con systemd, los registros también se recogen en el journal y se consultan con «journalctl».
 --- Recuperados (top 3) ---
-  [1] chunk=788 score=0.8936
+  [1] chunk=539 score=0.8902
+      emonio **rsyslogd**. Sin embargo, algunos demonios gestionan sus propios archivos de registro (este es el caso de, por ejemplo, **samba**, que implementa en Linux los recursos compartidos de Windows).
+
+Tenga en cuenta que cuando se utiliza **systemd**, los registros se recogen por **systemd** antes de ser reenviados a **rsyslogd**. Por lo tanto, también están disponibles a través del historial ("journal") de **systemd** y puden ser consultados mediante **journalctl** (vea [Sección 9.1.1, "El sistema de inicio systemd"](#sect.systemd) para más detalles).
+  [2] chunk=788 score=0.8854
       nte o intentar integrar los nuevos cambios en el archivo actual). Este principio de precaución es, desde hace tiempo, exclusivo de Debian pero otras distribuciones gradualmente comenzaron a aceptarlo.
 
 Puede utilizar el programa **ucf** (en el paquete Debian del mismo nombre) para implementar este comportamiento.
@@ -1102,40 +1106,27 @@ Puede utilizar el programa **ucf** (en el paquete Debian del mismo nombre) para 
 El demonio **rsyslogd** es responsable de recolectar los mensajes de servicio que provienen de aplicaciones y el núcleo para luego distribuirlos en archivos de registros (usualmente almacenados en el directorio `/var/log/`). Obedece a su archivo de configuración: `/etc/rsyslog.conf`.
 
 Cada mensaje de registro es asociado con un subsistema de aplicaciones (llamados «facility» en la documentación):
-  [2] chunk=539 score=0.8824
-      emonio **rsyslogd**. Sin embargo, algunos demonios gestionan sus propios archivos de registro (este es el caso de, por ejemplo, **samba**, que implementa en Linux los recursos compartidos de Windows).
+  [3] chunk=1367 score=0.8720
+      e puede utilizar para monitorizar varios aspectos de un sistema Debian. Como tal, esto completa [Sección 12.4, "Monitorización"](ch12s04.html).
 
-Tenga en cuenta que cuando se utiliza **systemd**, los registros se recogen por **systemd** antes de ser reenviados a **rsyslogd**. Por lo tanto, también están disponibles a través del historial ("journal") de **systemd** y puden ser consultados mediante **journalctl** (vea [Sección 9.1.1, "El sistema de inicio systemd"](#sect.systemd) para más detalles).
-  [3] chunk=789 score=0.8785
-      directorio `/var/log/`). Obedece a su archivo de configuración: `/etc/rsyslog.conf`.
+## 14.3.1. Monitorización de los registros con logcheck
 
-Cada mensaje de registro es asociado con un subsistema de aplicaciones (llamados «facility» en la documentación):
+El programa **logcheck** monitoriza los archivos de registro, de forma predeterminada, cada hora. Envía los mensajes de registro inusuales en correos electrónicos al administrador para su posterior análisis.
 
-- `auth` y `authpriv`: para autenticación;
-- `cron`: proviene servicios de programación de tareas, **cron** y **atd**;
-- `daemon`: afecta un demonio sin clasificación especial (DNS, NTP, etc.);
-- `ftp`: el servidor FTP;
-- `kern`: mensaje que proviene del núcleo;
-- `lpr`: proviene del subsistema de impresión;
-- `mail`: proviene del subsistema de correo electrónico;
-- `news`: mensaje del subsistema Usenet (especialmente de un servidor NNTP - protocolo de transferencia de noticias en red, «Network News Transfer Protocol» - que administra grupos de noticias);
-- `syslog`: mensajes del servidor **syslogd** en sí;
-- `user`: mensajes de usuario (genéricos);
-- `uucp`: mensajes del servidor UUCP (programa de copia Unix a Unix, «Unix to Unix Copy Program», un protocolo antiguo utilizado notablemente para distribuir correo electrónico);
-- `local0` a `local7`: reservados para uso local.
+La lista de archivos a monitorizar se almacena en `/etc/logcheck/logcheck.logfiles`; los valores predeterminados funcionan bien si no modificó completamente el archivo `/etc/rsyslog.conf`.
 
-Cada mensaje tiene asociado también un nivel de prioridad. Aquí está la lista en orden decreciente:
+**logcheck** puede funcionar en una de tres modalidades más o menos detalladas: *paranoid*, *server* y *workstation*. El primero es *muy* detallado y, probablemente, debería restringirlo a servidores específicos como firewalls. El segundo (y predeterminado) es el modo recomendado para la mayoría de los servidores. El ultimo está diseñado para estaciones de trabajo y es aún más conciso (filtra la mayoría de los mensajes).
 --- Respuesta LLM ---
-No aparece en el documento.
+El demonio que recolecta los mensajes de registro del sistema en Debian es **rsyslogd**, y se gestiona en el directorio `/var/log/` y en su archivo de configuración `/etc/rsyslog.conf`.
 --- Datos ---
-  latencia_total_s=0.17
-  tokens_generados=10
-  tokens_por_s=58.0
-  score_max=0.8936
-  abstencion_detectada=si
+  latencia_total_s=0.90
+  tokens_generados=66
+  tokens_por_s=73.1
+  score_max=0.8902
+  abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:08] Escenario: debian | Pregunta: DEB_024
+[2026-11-22 23:03:23] Escenario: debian | Pregunta: DEB_024
 Categoria: Seguridad y acceso remoto | Dificultad: Básica
 Pregunta: ¿Qué servicio recomienda el manual para la administración remota segura de servidores Debian y cuál es el archivo de configuración de su demonio?
 Referencia: Capítulos 10 y 14 (OEBPS/ch10.html, OEBPS/ch14.html)
@@ -1176,18 +1167,18 @@ Entender qué es lo que hace un demonio es algo más complicado, ya que no inter
 --- Respuesta LLM ---
 El manual para la administración remota segura de servidores Debian es el "Sistema de Gestión de Servicios" (SGS). El archivo de configuración de su demonio es "daemon.conf".
 --- Datos ---
-  latencia_total_s=0.76
+  latencia_total_s=0.78
   tokens_generados=56
-  tokens_por_s=74.0
+  tokens_por_s=72.2
   score_max=0.8643
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:08] Escenario: debian | Pregunta: DEB_025
+[2026-11-22 23:03:24] Escenario: debian | Pregunta: DEB_025
 Categoria: Seguridad | Dificultad: Intermedia
 Pregunta: ¿Qué repositorio y qué paquete permiten gestionar y aplicar automáticamente actualizaciones de seguridad (DSA) en Debian?
 Referencia: Capítulos 6 y 14 (OEBPS/ch06.html, OEBPS/ch14.html)
-Respuesta esperada: El repositorio oficial de seguridad «security.debian.org» junto con el paquete «unattended-upgrades» para la instalación automática de actualizaciones de seguridad, complementado por herramientas de auditoría como «debsecan».
+Respuesta esperada: El repositorio oficial de seguridad «security.debian.org» junto con el paquete «unattended-upgrades», que automatiza la instalación de actualizaciones de seguridad y se configura en «/etc/apt/apt.conf.d/50unattended-upgrades».
 --- Recuperados (top 3) ---
   [1] chunk=379 score=0.8839
       lo que diga esta sección sobre Stable también es aplicable a Oldstable ya que esta última es sólo una versión Stable más antigua que se mantiene en paralelo.
@@ -1220,14 +1211,14 @@ El repositorio `stable-backports` contiene «retroadaptaciones de paquetes». Es
 --- Respuesta LLM ---
 El repositorio `proposed-updates` y el paquete `bullseye-proposed-updates` permiten gestionar y aplicar automáticamente actualizaciones de seguridad (DSA) en Debian.
 --- Datos ---
-  latencia_total_s=0.75
+  latencia_total_s=0.77
   tokens_generados=56
-  tokens_por_s=74.4
+  tokens_por_s=73.1
   score_max=0.8839
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_026
+[2026-11-22 23:03:24] Escenario: debian | Pregunta: DEB_026
 Categoria: Seguridad | Dificultad: Avanzada
 Pregunta: ¿Qué dos sistemas de control de acceso obligatorio (MAC) soporta el núcleo Linux en Debian para restringir las capacidades de los procesos más allá de los permisos Unix tradicionales?
 Referencia: Capítulo 14 - Seguridad (OEBPS/ch14.html)
@@ -1260,14 +1251,14 @@ Apparmor es un sistema de *control obligatorio de acceso* («Mandatory Access Co
 --- Respuesta LLM ---
 AppArmor y SELinux
 --- Datos ---
-  latencia_total_s=0.15
+  latencia_total_s=0.16
   tokens_generados=8
-  tokens_por_s=52.3
+  tokens_por_s=51.2
   score_max=0.8446
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_027
+[2026-11-22 23:03:25] Escenario: debian | Pregunta: DEB_027
 Categoria: Servicios de red | Dificultad: Básica
 Pregunta: ¿Qué dos servicios de red se explican en el manual para compartir archivos en redes locales Unix/Linux y en entornos mixtos con clientes Windows?
 Referencia: Capítulo 11 - Servicios de red (OEBPS/ch11.html)
@@ -1320,24 +1311,28 @@ username = *`usuario`* password = *`contraseña`*
 --- Respuesta LLM ---
 El manual explica los servicios de red NFS y SMB (CIFS) para compartir archivos en redes locales Unix/Linux y en entornos mixtos con clientes Windows.
 --- Datos ---
-  latencia_total_s=0.63
+  latencia_total_s=0.65
   tokens_generados=46
-  tokens_por_s=72.8
+  tokens_por_s=70.9
   score_max=0.8618
   abstencion_detectada=no
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_028
+[2026-11-22 23:03:25] Escenario: debian | Pregunta: DEB_028
 Categoria: Servicios de red | Dificultad: Intermedia
-Pregunta: ¿Qué agentes de transferencia de correo (MTA) y qué servidor IMAP/POP3 se abordan en el manual para desplegar una infraestructura de correo electrónico en Debian?
-Referencia: Capítulo 11 - Servicios de red (OEBPS/ch11.html)
-Respuesta esperada: Como agentes de transferencia de correo (MTA) se tratan Exim (instalado por defecto en Debian) y Postfix, mientras que Dovecot se utiliza como servidor de acceso al correo mediante los protocolos IMAP y POP3.
+Pregunta: ¿Qué agentes de transferencia de correo (MTA) se abordan en el manual para desplegar un servidor de correo en Debian?
+Referencia: Capítulo 11 - Servidor de correo (OEBPS/ch11.html)
+Respuesta esperada: Debian utiliza Exim4 como servidor de correo predeterminado (paquete «exim4»), y el manual también describe Postfix como alternativa; ambos pueden complementarse con herramientas como «procmail» para el filtrado.
 --- Recuperados (top 3) ---
-  [1] chunk=945 score=0.8614
+  [1] chunk=945 score=0.8619
       (protoclo sencillo de transferencia de correo: «*Simple Mail Transfer Protocol*», RFC 5321) es el protocolo que utilizan los servidores de correo para intercambiar y enrutar los correos electrónicos.
 
 Durante la instalación del paquete se realizan varias preguntas Debconf. Las respuestas permiten crear una primera versión del archivo de configuración `/etc/postfix/main.cf`.
-  [2] chunk=290 score=0.8555
+  [2] chunk=261 score=0.8549
+      ntemente (que son instaladas si se eligió el perfil «Entorno Debian de escritorio») son **apt** (disponible desde la línea de órdenes) y **synaptic** («Administrador de paquetes Synaptic» en el menú).
+
+Para facilitar la instalación de grupos de programas coherentes, Debian crea «tareas» dedicadas a usos específicos (servidor de correo, servidor de archivos, etc.). Tuvo oportunidad de seleccionarlos durante la instalación y puede accederlos nuevamente gracias a herramientas de gestión de paquetes como **aptitude** (las tareas se encuentran en una sección particular) y **synaptic** (a través del menú Editar → Marcar paquetes por tarea...).
+  [3] chunk=290 score=0.8539
       icar paquetes reales basados en criterios lógicos y comunes (servicios provistos, compatibilidades con un programa estándar o un paquete preexistentes, etc.).
 
 #### 5.2.1.4.1. Proveyendo un «servicio»
@@ -1345,31 +1340,29 @@ Durante la instalación del paquete se realizan varias preguntas Debconf. Las re
 Discutamos con más detalles el primer caso con un ejemplo: se dice que todos los servicios de correo, como postfix o sendmail «proveen» el paquete virtual mail-transport-agent. Por lo tanto, cualquier paquete que necesite este servicio para funcionar (por ejemplo, un gestor de listas de correo como smartlist o sympa) simplemente indican en sus dependencias que requieren de mail-transport-agent en lugar de especificar una lista larga y aún incompleta de posibles soluciones (por ejemplo **postfix | sendmail | exim4 | ...**). Lo que es más, es inútil instalar dos servidores de correo en el mismo equipo, por lo que cada uno de estos paquetes declara un conflicto con el paquete virtual mail-transport-agent. Un conflicto de un paquete con sí mismo es ignorado por el sistema, pero esta técnica prohibirá la instalación de dos servidores de correo simultáneamente.
 
 *NORMA DEBIAN* Lista de paquetes virtuales
-  [3] chunk=185 score=0.8545
-      iar y a veces usuarios experimentados pueden haber instalado servicios «salvajes». Saber que existen le permitirá, al menos, decidir qué hacer con ellos en lugar de eliminarlos sin orden ni propósito.
-
-Por ello, es buena idea informar a sus usuarios del proyecto antes de migrar el servidor. Involucrarlos en el proyecto puede ser útil para instalar el software libre más común en sus equipos de escritorio antes de la migración, programas con los que se encontrarán luego de la migración a Debian; LibreOffice.org y la suite Mozilla son los mejores ejemplos de tales programas.
-
-### 3.2.1.1. La red y los procesos
-
-La herramienta **nmap** (en el paquete del mismo nombre) identificará rápidamente servicios de internet hospedados en un equipo conectado a la red sin siquiera necesitar iniciar sesión en el mismo. Simplemente ejecute la siguiente orden en otro equipo conectado a la misma red:
 --- Respuesta LLM ---
-No aparece en el documento
+No aparece en el documento.
 --- Datos ---
-  latencia_total_s=0.16
-  tokens_generados=9
-  tokens_por_s=57.0
-  score_max=0.8614
+  latencia_total_s=0.17
+  tokens_generados=10
+  tokens_por_s=59.7
+  score_max=0.8619
   abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:09] Escenario: debian | Pregunta: DEB_029
+[2026-11-22 23:03:25] Escenario: debian | Pregunta: DEB_029
 Categoria: Administración avanzada | Dificultad: Avanzada
-Pregunta: ¿Qué herramientas de automatización/gestión de configuración y de monitorización se presentan en el manual para administrar parques de servidores Debian?
+Pregunta: ¿Qué herramientas de despliegue automatizado y de monitorización se presentan en el manual para administrar parques de servidores Debian?
 Referencia: Capítulos 12 y 13 (OEBPS/ch12.html, OEBPS/ch13.html)
-Respuesta esperada: Herramientas de gestión de configuración centralizada como Salt, Ansible o Puppet para automatizar despliegues y configuraciones, junto con sistemas de monitorización y generación de gráficas de rendimiento como Munin y Nagios.
+Respuesta esperada: FAI («Fully Automatic Installer») para el despliegue automatizado de equipos, y Munin y Nagios para la monitorización: Munin genera gráficas de valores históricos y Nagios comprueba periódicamente servicios y envía alertas.
 --- Recuperados (top 3) ---
-  [1] chunk=25 score=0.8680
+  [1] chunk=458 score=0.8585
+      terísticas que están detalladas en la documentación. Los mismos patrones pueden utilizarse para filtrar la lista de paquetes mostrados: presione la tecla **l** (como en *limitar*) e ingrese el patrón.
+
+Administrar la «marca automática» de los paquetes Debian (ver [Sección 6.2.7, "Seguimiento de paquetes instalados automáticamente"](#sect.automatic-tracking)) es muy sencillo con **aptitude**. Es posible navegar la lista de paquetes instalados y marcar paquetes como automáticos con **Shift**+**m** o eliminar la marca con la tecla **m**. Los «paquetes automáticos» se muestran con una «A» en la lista de paquetes. Esta funcionalidad también ofrece una forma simple de visualizar los paquetes utilizados en un equipo, sin las bibliotecas y dependencias que no le interesan. El patrón relacionado que puede utilizar con **l** (para activar el modo de filtro) es `~i!~M`. Especifica que sólo desea ver paquetes instalados (`~i`) que no están marcados como automáticos (`!~M`).
+
+*HERRAMIENTA* Utilizando **aptitude** en la línea de órdenes
+  [2] chunk=25 score=0.8581
       rador.
 
 El **capítulo 7** será un paréntesis importante, describe los flujos de trabajo para usar eficientemente la documentación y para comprender rápidamente los problemas con el fin de resolverlos.
@@ -1379,33 +1372,25 @@ Los capítulos siguientes proporcionarán una visión más detallada del sistema
 El **capítulo 15** es para administradores que quieran profundizar y crear sus propios paquetes Debian. Para terminar el **capítulo 16** describe el posible futuro de Debian.
 
 *VOCABULARIO* Paquete Debian
-  [2] chunk=458 score=0.8629
-      terísticas que están detalladas en la documentación. Los mismos patrones pueden utilizarse para filtrar la lista de paquetes mostrados: presione la tecla **l** (como en *limitar*) e ingrese el patrón.
+  [3] chunk=1241 score=0.8557
+      `[...] #` **`sed -i -e "s,gpgkey=file://${rootdir}/etc/,gpgkey=file:///etc/,g" $rootdir/etc/yum.repos.d/*.repo`** `#` **`chroot /srv/centos/`** `[root@testsystem /]#`
 
-Administrar la «marca automática» de los paquetes Debian (ver [Sección 6.2.7, "Seguimiento de paquetes instalados automáticamente"](#sect.automatic-tracking)) es muy sencillo con **aptitude**. Es posible navegar la lista de paquetes instalados y marcar paquetes como automáticos con **Shift**+**m** o eliminar la marca con la tecla **m**. Los «paquetes automáticos» se muestran con una «A» en la lista de paquetes. Esta funcionalidad también ofrece una forma simple de visualizar los paquetes utilizados en un equipo, sin las bibliotecas y dependencias que no le interesan. El patrón relacionado que puede utilizar con **l** (para activar el modo de filtro) es `~i!~M`. Especifica que sólo desea ver paquetes instalados (`~i`) que no están marcados como automáticos (`!~M`).
+# 12.3. Instalación automatizada
 
-*HERRAMIENTA* Utilizando **aptitude** en la línea de órdenes
-  [3] chunk=1367 score=0.8608
-      e puede utilizar para monitorizar varios aspectos de un sistema Debian. Como tal, esto completa [Sección 12.4, "Monitorización"](ch12s04.html).
+Los administradores de Falcot Corp, como muchos administradores de grandes servicios IT, necesitan herramientas para instalar (o reinstalar) rápidamente, y automáticamente si es posible, nuevas máquinas.
 
-## 14.3.1. Monitorización de los registros con logcheck
-
-El programa **logcheck** monitoriza los archivos de registro, de forma predeterminada, cada hora. Envía los mensajes de registro inusuales en correos electrónicos al administrador para su posterior análisis.
-
-La lista de archivos a monitorizar se almacena en `/etc/logcheck/logcheck.logfiles`; los valores predeterminados funcionan bien si no modificó completamente el archivo `/etc/rsyslog.conf`.
-
-**logcheck** puede funcionar en una de tres modalidades más o menos detalladas: *paranoid*, *server* y *workstation*. El primero es *muy* detallado y, probablemente, debería restringirlo a servidores específicos como firewalls. El segundo (y predeterminado) es el modo recomendado para la mayoría de los servidores. El ultimo está diseñado para estaciones de trabajo y es aún más conciso (filtra la mayoría de los mensajes).
+Un amplio rango de soluciones pueden satisfacer estos requisitos. Por el otro lado, herramientas genéricas como SystemImager lo hacen creando una imagen basada en una máquina patrón y luego desplegando dicha imagen en los sistemas objetivo; en el otro extremo del espectro, el instalador Debian estándar puede ser presembrado con un archivo de configuración que provee las respuestas a las preguntas realizadas durante el proceso de instalación. Como un tipo de punto medio, una herramienta híbrida como FAI (*instalador completamente automático*: «Fully Automatic Installer») instala los equipos con el sistema de paquetes, pero también utiliza su propia infraestructura para tareas más específicas de despliegues masivos (como inicialización, particionado, configuración, etc).
 --- Respuesta LLM ---
 No aparece en el documento.
 --- Datos ---
-  latencia_total_s=0.18
+  latencia_total_s=0.19
   tokens_generados=10
-  tokens_por_s=54.3
-  score_max=0.8680
+  tokens_por_s=52.2
+  score_max=0.8585
   abstencion_detectada=si
 
 ----------------------------------------------------------------------
-[2026-11-22 15:04:11] Escenario: debian | Pregunta: DEB_030
+[2026-11-22 23:03:26] Escenario: debian | Pregunta: DEB_030
 Categoria: Metadatos y estructura | Dificultad: Básica
 Pregunta: ¿Cómo está organizado estructuralmente «El manual del Administrador de Debian» dentro del archivo EPUB?
 Referencia: Tabla de contenidos (OEBPS/bk01-toc.html)
@@ -1448,9 +1433,135 @@ Un libro de referencia que presenta la distribución Debian, desde la instalaci�
 --- Respuesta LLM ---
 El manual del Administrador de Debian está organizado en capítulos, cada uno con su propio contenido y referencias a otros capítulos. Los capítulos están organizados en orden alfabético, y cada capítulo tiene una sección de referencias a otros capítulos para que el lector pueda seguir el flujo de trabajo.
 --- Datos ---
-  latencia_total_s=1.31
+  latencia_total_s=1.40
   tokens_generados=101
-  tokens_por_s=77.0
+  tokens_por_s=72.2
   score_max=0.8700
   abstencion_detectada=no
+
+----------------------------------------------------------------------
+[2026-11-22 23:03:27] Escenario: debian | Pregunta: DEB_031
+Categoria: Proyecto Debian | Dificultad: Básica
+Pregunta: ¿Cuál es el precio actual de la asistencia comercial de Debian para empresas?
+Referencia: Capítulo 1
+Respuesta esperada: No aparece: el manual describe el proyecto y su modelo comunitario, pero no ofrece precios de soporte comercial.
+--- Recuperados (top 3) ---
+  [1] chunk=161 score=0.8473
+      /services/debian-lts.html)
+
+En el equipo LTS de Debian, los voluntarios trabajan en paquetes que les importan mientras que los colaboradores pagados priorizan los paquetes que usan sus patrocinadores.
+
+El proyecto siempre está buscando nuevos patrocinadores: ¿qué tal tu empresa? ¿Puedes prestar un empleado para que trabaje de forma parcial en el equipo de soporte a largo plazo? ¿Puedes reservar una pequeña parte del presupuesto para el soporte a la seguridad?
+
+→ [https://wiki.debian.org/LTS/Funding](https://wiki.debian.org/LTS/Funding)
+
+# Capítulo 2. Presentación del caso de estudio
+
+En el contexto de este libro, es el administrador de sistemas de una pequeña empresa en crecimiento. En colaboración con sus directores, llegó el momento de redefinir el plan maestro de los sistemas de información para el próximo año. Eligió migrar a Debian progresivamente por razones tanto prácticas como económicas. Veamos en detalle lo que le espera...
+  [2] chunk=176 score=0.8422
+      - Es una distribución comunitaria, con desarrollo asegurado independientemente de cualquier limitación comercial; sus objetivos son, por lo tanto, de una naturaleza esencialmente técnica que parece favorecer la calidad general del producto.
+- De todas las distribuciones comunitarias, es la más significativa desde varias perspectivas: cantidad de contribuyentes, número de paquetes de software disponibles y años de existencia continua. El tamaño de su comunidad es un testigo innegable de su continuidad.
+- Estadísticamente, se publican nuevas versiones de cada 18 a 24 meses y reciben soporte durante los siguientes 5 años, un cronograma que es aceptable para los administradores.
+- Una encuesta de varias compañías francesas de servicios especializadas en software libre mostró que todas ellas proveen asistencia técnica para Debian; es también, para muchas de ellas, la distribución elegida internamente. Esta diversidad de potenciales proveedores es un componente importante en la independencia de Falcot Corp.
+- Finalmente, Debian está disponible para una multitud de arquitecturas, incluyendo ppc64el para procesadores OpenPOWER; será posible, entonces, instalarla en los varios servidores IB
+  [3] chunk=178 score=0.8402
+      *EN LA PRÁCTICA* Debian Long Term Support (soporte para Debian a largo plazo)
+
+El proyecto del equipo de Largo plazo de Debian («Long Time Suport, LTS) empezó en 2014 y su meta es ofrecer 5 años de soporte en cuanto a seguridad para todas las versiones de Debian. Ya que compañias con grandes despliegues priman la importancia de LTS, este proyecto intenta juntar recursos para las empresas que usan Debian.
+
+→ [https://wiki.debian.org/LTS](https://wiki.debian.org/LTS)
+
+Falcot Corp no es suficientemente grande como para permitir que un empleado de su departamento de TI colabore con el proyecto LTS, así que la empresa ha optado para firmar el Contrato Debian LTS de Freexian y ofrecer soporte económico. Gracias a esto, los administradores de Falcot saben que los paquetes que usan serán tratados con prioridad y que tendrán contacto directo con el equipo LTS en caso de problemas.
+
+→ [https://wiki.debian.org/LTS/Funding](https://wiki.debian.org/LTS/Funding)
+
+→ [https://www.freexian.com/services/debian-lts.html](https://www.freexian.com/services/debian-lts.html)
+
+Una vez elegido Debian, hay que decidir qué versión usar. Veamos por qué los administradores han elegido Debian Bullseye.
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.19
+  tokens_generados=10
+  tokens_por_s=53.6
+  score_max=0.8473
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 23:03:27] Escenario: debian | Pregunta: DEB_032
+Categoria: Metadatos y contexto | Dificultad: Básica
+Pregunta: ¿Qué versión de Debian se publicó en 2026 y qué novedades incorpora?
+Referencia: Prefacio
+Respuesta esperada: No aparece: el manual cubre hasta Debian 11 (Bullseye) y no describe versiones posteriores ni sus novedades.
+--- Recuperados (top 3) ---
+  [1] chunk=27 score=0.8506
+      dos directamente (tales como programas y documentación). Por otro lado, un *paquete fuente* contiene el código fuente para el software y las instrucciones necesarias para construir el paquete binario.
+
+La versión actual es ya la décima edición del libro (incluimos las cuatro primeras que sólo estaban disponibles en francés). Esta edición cubre la versión 11 de Debian, cuyo nombre en código es Bullseyes. Entre los cambios, Debian ahora es compatible con el modo Secure Boot de UEFI, brindando seguridad adicional contra ataques a la infraestructura de arranque y facilita la instalación de Debian en nuevos ordenadores donde Secure Boot generalmente está habilitado de manera predeterminada. De nuevo en el nivel de seguridad, AppArmor, un sistema de Control de Acceso Obligatorio que regula lo que varias aplicaciones tienen permitido realizar, ahora está habilitado por defecto. Obviamente, todos los paquetes incluidos han sido actualizados, incluyendo el escritorio GNOME, que ahora está en su versión 3.38.
+  [2] chunk=1563 score=0.8483
+      stintos escritorios traerá una mejor usabilidad y nuevas funciones.
+
+El permiso predeterminado de los directorios de inicio será más restrictivo, permitiendo que solo el usuario acceda a sus archivos.
+
+Continuarán los desarrollos ya comenzados: Mejorar la reproducibilidad y la seguridad del desarrollo, por ejemplo. Con el uso generalizado de la integración continua y el crecimiento del archivo (¡y de los paquetes más grandes!), las restricciones en las arquitecturas de lanzamiento serán más difíciles de cumplir y las arquitecturas se eliminarán.
+
+# 16.2. El futuro de Debian
+
+Además de estos desarrollos internos uno puede, siendo razonable, esperar que vean la luz nuevas distribuciones basadas en Debian ya que muchas herramientas continúan simplificando esta tarea. También comenzarán nuevos subproyectos especializados para aumentar el alcance de Debian en nuevos horizontes.
+
+La comunidad de usuarios de Debian aumentará y nuevos colaboradores se unirán al proyecto... incluso, tal vez, ¡usted!
+  [3] chunk=81 score=0.8415
+      blican una nueva versión estable, numerada 1.4.0. En este punto, el mantenedor del paquete Debian debería actualizar el paquete, para que los usuarios puedan beneficiarse de su última versión estable.
+
+La Normativa («Policy») es un elemento esencial del proyecto Debian, establece las normas que garantizan tanto la calidad de los paquetes como también la interoperabilidad perfecta de la distribución. Gracias a este documento, Debian se mantiene consistente a pesar de su gigantesco tamaño. La Normativa no está escrita en piedra sino que evoluciona continuamente gracias a propuestas formuladas en la lista de correo `<`[`debian-policy@lists.debian.org`](mailto:debian-policy@lists.debian.org)`>`. Las modificaciones acordadas por todas las partes interesadas son aceptadas y aplicadas al texto por un grupo reducido de desarrolladores que no tienen responsabilidad editorial (sólo incluyen las modificaciones aceptadas por los desarrolladores Debian que son miembros de la lista antes mencionada). Puede leer las correcciones propuestas siendo discutidas en el sistema de seguimiento de errores:
+
+→ [https://bugs.debian.org/debian-policy](https://bugs.debian.org/debian-policy)
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.19
+  tokens_generados=10
+  tokens_por_s=54.0
+  score_max=0.8506
+  abstencion_detectada=si
+
+----------------------------------------------------------------------
+[2026-11-22 23:03:27] Escenario: debian | Pregunta: DEB_033
+Categoria: Proyecto Debian | Dificultad: Intermedia
+Pregunta: ¿Cuál es el importe total de las donaciones recibidas por el proyecto Debian en 2025?
+Referencia: Capítulo 1
+Respuesta esperada: No aparece: el manual explica la estructura y la financiación del proyecto, pero no ofrece cifras de donaciones de un año concreto.
+--- Recuperados (top 3) ---
+  [1] chunk=34 score=0.8455
+      gustaría dar las gracias a todos los que contribuyeron con estas campañas de recaudación de fondos, ya sea mediante la promesa de algo de dinero o corriendo la voz. No podríamos haberlo hecho sin ti.
+
+Para ahorrar algo de papel, 5 años después de las campañas de recaudación de fondos y dos ediciones posteriores, quitamos la lista de personas que elegíeron ser premiadas con una mención de su nombre en el libro. Pero sus nombres están grabadas en los reconocimientos de la edición de Wheezy del libro:
+
+→ [https://debian-handbook.info/browse/wheezy/sect.acknowledgments.html](https://debian-handbook.info/browse/wheezy/sect.acknowledgments.html)
+
+## 6.2. Agradecimientos especiales para colaboradores
+  [2] chunk=1564 score=0.8380
+      royectos especializados para aumentar el alcance de Debian en nuevos horizontes.
+
+La comunidad de usuarios de Debian aumentará y nuevos colaboradores se unirán al proyecto... incluso, tal vez, ¡usted!
+
+Existen debates recurrentes sobre cómo evoluciona el ecosistema del software, hacia las aplicaciones distribuidas dentro de contenedores, donde los paquetes Debian no tienen ningún valor añadido, o con gestores de paquetes específicos del lenguaje (por ejemplo **pip** para Python, **npm** para JavaScript, etc.), que están volviendo obsoletos **dpkg** y **apt**. Ante estas amenazas, estoy convencido de que los desarrolladores de Debian encontrarán la forma de abarcar estos cambios y de seguir dando valor a los usuarios.
+
+A pesar de su edad y tamaño, Debian continúa creciendo en todas direcciones (a veces inesperadas). Los colaboradores hierven con ideas y el impuslo aumenta con las discusiones en las listas de correo de desarrollo, aún cuando parezcan peleas de gallos. A veces se compara a Debian con un agujero negro, de tal densidad que atrae a cualquier nuevo proyecto de software.
+  [3] chunk=160 score=0.8320
+      royecto, el proyecto contó con el hecho de que el soporte a largo plazo era particularmente relevante para las empresas y que serviría para repartir de forma mutua el coste del soporte a la seguridad.
+
+El proyecto empezó en junio de 2014: algunas empresas permitieron a sus empleados colaborar a tiempo particial al proyecto Debian LTS mientras otras prefirieron patrocinar al proyecto con dinero para pagar a los colaboradores para que hicieran el trabajo que ellas no querían hacer de forma gratuita. La mayoría de colaboradores de Debian cobrarán para trabajar en LTS conjuntamente para crear una oferta clara de patrocinio gestionada por Freexian (la empresa de Raphaël Hertzog):
+
+→ [https://www.freexian.com/services/debian-lts.html](https://www.freexian.com/services/debian-lts.html)
+
+En el equipo LTS de Debian, los voluntarios trabajan en paquetes que les importan mientras que los colaboradores pagados priorizan los paquetes que usan sus patrocinadores.
+--- Respuesta LLM ---
+No aparece en el documento.
+--- Datos ---
+  latencia_total_s=0.18
+  tokens_generados=10
+  tokens_por_s=56.4
+  score_max=0.8455
+  abstencion_detectada=si
 
