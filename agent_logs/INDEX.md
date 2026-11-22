@@ -15,3 +15,4 @@
 | 22/11/2026 | [20261122_detener_rerun_boe.md](20261122_detener_rerun_boe.md) | Detención del rerun de BOE (Artic iniciado, BGE por empezar); todo detenido, 0 procesos; resultados no guardados en Artic. |
 | 22/11/2026 | [20261122_teleco_readme_pasos.md](20261122_teleco_readme_pasos.md) | `README_teleco.md` reescrito como guía paso a paso simple para principiantes (qué es, escenarios, preparar, corpora, ejecutar, detener, resultados). |
 | 23/11/2026 | [20261123_gitignore_py_outputs.md](20261123_gitignore_py_outputs.md) | Añadidos a `.gitignore` los archivos generados por los scripts Python (.py). |
+| 23/11/2026 | [20261123_untrack_gitignore_files.md](20261123_untrack_gitignore_files.md) | Desseguimiento de los archivos que aparecen en `.gitignore` (`git rm --cached`). |
