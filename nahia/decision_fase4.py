@@ -37,7 +37,7 @@ def metricas(ruta_meta):
             por_q.setdefault(r["pregunta_id"], []).append(r)
     med = lambda c: statistics.median(statistics.median([r[c] for r in v if r[c] is not None]) for v in por_q.values())
     return {
-        "modelo": meta["modelo"], "embedding": meta["embedding"], "fecha": meta["fecha_hora"], "escenario": meta["escenario"], "oficial": meta["turno_exclusivo"],
+        "modelo": meta["modelo"] + ("" if meta["cuantizacion"] == "bf16" else f" ({meta['cuantizacion']})"), "embedding": meta["embedding"], "fecha": meta["fecha_hora"], "escenario": meta["escenario"], "oficial": meta["turno_exclusivo"],
         "correccion": sum(float(p["correccion_0_2"]) for p in punt) / n,
         "fieles": 100 * sum(es(p["fiel_si_no"]) for p in punt) / n,
         "abst": sum(es(p["se_abstiene_si_no_na"]) for p in sin),
@@ -59,9 +59,11 @@ def main():
     for f in sorted(glob.glob(str(AQUI / "resultados" / "*_meta.json"))):
         meta = json.load(open(f, encoding="utf-8"))
         if norm(meta["embedding"]) != ganadores[meta["escenario"]]:
-            continue  # ejecución con un embedding que no es el ganador: no cuenta
+            continue
+        if meta["cuantizacion"] != "bf16" and a.vram_max > 8:
+            continue  # las ejecuciones en 4 bits solo cuentan en el plan B (--vram-max 8)  # ejecución con un embedding que no es el ganador: no cuenta
         m, av = metricas(Path(f))
-        grupos.setdefault((meta["modelo"], meta["escenario"]), []).append((meta["fecha_hora"], m, av))
+        grupos.setdefault((meta["modelo"], meta["cuantizacion"], meta["escenario"]), []).append((meta["fecha_hora"], m, av))
     for clave, ejecs in grupos.items():
         ejecs.sort(key=lambda x: x[0])
         puntuadas = [e for e in ejecs if e[1]]
@@ -71,8 +73,22 @@ def main():
             if not e[1] and (not puntuadas or e[0] > puntuadas[-1][0]):
                 avisos.append(e[2])
     out = [f"# Decisión Fase 4 (VRAM máx. {a.vram_max} GB)\n"]
+    # Primer filtro (README: retrieval antes que LLM): Recall@5 del mejor embedding oficial, umbral >= 0,80
+    r5 = {}
+    for f in sorted(glob.glob(str(AQUI.parent / "sendoa" / "resultados_oficiales" / "*.json"))):
+        try:
+            d = json.load(open(f, encoding="utf-8"))
+            if d["coste"].get("turno_exclusivo") and d["meta"]["escenario"] in ("boe", "debian"):
+                r5.setdefault(d["meta"]["escenario"], {})[d["meta"]["modelo"]] = d["metricas"]["recall@5"]
+        except (KeyError, ValueError, TypeError):
+            pass
     for esc in ("boe", "debian"):
         out.append(f"\n## {esc.upper()}\n")
+        mejor = max(r5.get(esc, {"-": 0}).values())
+        if mejor < 0.80:
+            out.append(f"**Retrieval: el mejor Recall@5 es {mejor:.3f} (< 0,80). Para {esc.upper()} no se recomienda este RAG tal cual: primero hay que mejorar el retrieval; los LLM de abajo se evalúan igualmente.**\n")
+        else:
+            out.append(f"Retrieval: mejor Recall@5 = {mejor:.3f} (>= 0,80, cumple).\n")
         cumplen = []
         for m in [x for x in ms if x["escenario"] == esc]:
             fallos = []

@@ -1,0 +1,191 @@
+# Revisión: Qwen/Qwen3-1.7B · debian
+Retrieval: el fragmento correcto estaba en el top-k en 9 de 12 preguntas con respuesta.
+Pistas automáticas (no son la nota): abstención = la respuesta contiene «No aparece en el documento».
+
+## q_deb_01 · directa
+**Pregunta:** Antes de instalar paquetes con APT, ¿qué orden refresca la lista de paquetes disponibles?
+
+**Esperada:** Hay que ejecutar apt update: descarga los ficheros Packages, Sources y de traducción, normalmente comprimidos. Si se instala desde un juego de CD-ROM/DVD no hay descarga y la operación es muy rápida.
+
+**Respuesta del modelo:** La orden que refresca la lista de paquetes disponibles antes de instalar paquetes con APT es **apt update**.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_02 · directa
+**Pregunta:** ¿Qué diferencia hay entre desinstalar un paquete con aptitude remove y con aptitude purge?
+
+**Esperada:** apt remove (o aptitude remove) elimina el paquete pero conserva los archivos de configuración; apt purge (o aptitude purge, dpkg -P) realiza una desinstalación completa y elimina también esos archivos de configuración.
+
+**Respuesta del modelo:** La diferencia entre desinstalar un paquete con `aptitude remove` y con `aptitude purge` radica en qué acción se realiza:
+
+- **`aptitude remove`**: Elimina el paquete y sus dependencias necesarias, pero **no elimina los archivos de configuración del sistema**. 
+- **`aptitude purge`**: Elimina el paquete, sus dependencias y **también los archivos de configuración** del sistema.
+
+La respuesta está en el documento.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_03 · directa
+**Pregunta:** ¿Qué comando actualiza el sistema sin eliminar paquetes ni instalar otros nuevos?
+
+**Esperada:** Se usa aptitude safe-upgrade (o apt upgrade / apt-get upgrade), precedido de apt update: actualiza los paquetes instalados sin eliminar ninguno. apt-get es algo más estricto y se niega a instalar paquetes que no estaban instalados previamente.
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: NO (el LLM no pudo acertar por culpa del buscador)
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí
+
+## q_deb_04 · directa
+**Pregunta:** ¿Cómo busco paquetes por palabra clave y veo luego la ficha de uno concreto desde la terminal?
+
+**Esperada:** Con apt-cache search palabra_clave para buscar y apt-cache show paquete para ver su descripción, dependencias y responsable. apt search, apt show, aptitude search y aptitude show funcionan igual.
+
+**Respuesta del modelo:** La búsqueda de paquetes por palabra clave se realiza con la orden **apt-cache search** seguida de la palabra clave. Para ver la ficha de uno concreto, se utiliza la orden **apt-cache show** seguida del nombre del paquete. 
+
+Esta información se encuentra en el artículo [6.10. Búsqueda de paquetes](#6.10. Búsqueda de paquetes).
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): sí
+
+## q_deb_05 · directa
+**Pregunta:** ¿Qué orden instala de golpe las dependencias de compilación de un paquete fuente?
+
+**Esperada:** apt-get build-dep paquete-fuente instala todos los paquetes mencionados en los campos Build-Depends, siempre que la distribución aparezca en una línea deb-src de /etc/apt/sources.list.
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí
+
+## q_deb_06 · directa
+**Pregunta:** ¿Para qué sirve fakeroot cuando se construye un paquete Debian?
+
+**Esperada:** Permite ejecutar un programa dándole la impresión de que corre como root y crea archivos con dueños y permisos arbitrarios, sin conceder privilegios reales. Por eso dpkg-buildpackage lo emplea por defecto para preparar paquetes.
+
+**Respuesta del modelo:** fakeroot sirve para ejecutar un programa y darle la impresión de que está ejecutando como root, creando archivos con permisos y dueños arbitrarios. Cuando el programa crea el compendio que será el paquete Debian, se lo engaña para que cree un compendio con archivos con dueños arbitrarios, incluyendo root. Esta configuración es tan conveniente que dpkg-buildpackage utiliza fakeroot de forma predeterminada cuando genera paquetes. En ningún momento realmente obtiene privilegios de root que pueda abusar.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_07 · directa
+**Pregunta:** ¿Qué me dice la orden id cuando la ejecuto en una sesión?
+
+**Esperada:** Muestra la identidad del usuario que ejecuta la sesión junto con la lista de grupos a los que pertenece; sirve para comprobar permisos sobre archivos o dispositivos.
+
+**Respuesta del modelo:** La orden **id** muestra la identidad del usuario ejecutando la sesión junto con la lista de grupos a los que pertenece.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_08 · directa
+**Pregunta:** ¿Dónde debe instalar el administrador sus propias aplicaciones para no pisar archivos gestionados por dpkg?
+
+**Esperada:** En /usr/local/, el directorio cuyo propósito es albergar programas compilados e instalados manualmente; así se evita sobrescribir archivos instalados por los paquetes Debian.
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: NO (el LLM no pudo acertar por culpa del buscador)
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí
+
+## q_deb_09 · combinada
+**Pregunta:** Al instalar un paquete .deb, ¿en qué se diferencian dpkg y apt?
+
+**Esperada:** dpkg es el programa que maneja los archivos .deb: los extrae, analiza y descomprime. APT es un grupo de programas de más alto nivel que instala o elimina paquetes manteniendo satisfechas las dependencias, actualiza la lista y el sistema, y evalúa los paquetes como un todo para producir la mejor combinación.
+
+**Respuesta del modelo:** La diferencia entre **dpkg** y **apt** al instalar un paquete .deb se debe a su función y cómo manejan las dependencias:
+
+1. **dpkg**:
+   - Es la herramienta base para instalar paquetes Debian.
+   - Solo maneja paquetes que ya están disponibles en el sistema (no descargan nada).
+   - Usa la opción `-i` o `--install` para instalar paquetes.
+   - No maneja automáticamente las dependencias; si una dependencia no está satisfecha, **dpkg** fallará.
+   - No limita las invocaciones de **dpkg** (es más costoso, especialmente con la base de datos en memoria).
+
+2. **apt**:
+   - Es una herramienta más avanzada que permite instalar, actualizar y gestionar paquetes.
+   - Automatiza la instalación de paquetes con dependencias.
+   - Usa la opción `apt install ./**ruta-al-paquete.deb**` para instalar paquetes con sus dependencias.
+   - Limita las invocaciones de **dpkg** para optimizar el rendimiento (es más eficiente con la base de datos en memoria).
+
+**Respuesta:**  
+La diferencia entre **dpkg** y **apt** al instalar un paquete .deb es que **dpkg** es la herramienta base que maneja la instalación de pa
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_10 · combinada
+**Pregunta:** En una salida de df aparece /dev/sda5 montado en /home con un 83 % de uso: ¿qué utilidad produjo ese dato y cómo pedir cifras más legibles?
+
+**Esperada:** La salida procede de df (disk free), que reporta el espacio disponible en cada disco montado en el sistema de archivos; con la opción -h (human readable) los tamaños se muestran en unidades legibles, normalmente mebibytes o gibibytes.
+
+**Respuesta del modelo:** La utilidad que produjo ese dato es **df**. Para pedir cifras más legibles, se puede usar la opción **-h** (legible por humanos) en el comando **df**.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_11 · combinada
+**Pregunta:** Detecté un proceso sospechoso al comparar los procesos de los usuarios con las sesiones activas. ¿Cómo obtengo su identificador y cómo le pido que termine de forma normal?
+
+**Esperada:** ps auxw muestra todos los procesos con la identidad de su usuario y, cotejado con who o w, permite detectar servicios no declarados. Con ps aux se obtiene el pid; kill -TERM pid pide una terminación ordenada, mientras que kill -KILL pid la fuerza.
+
+**Respuesta del modelo:** La identidad del proceso sospechoso se puede obtener mediante el comando `ps aux` o `ps auxw`, que muestra la lista de todos los procesos actualmente en ejecución y su identificador de proceso (pid). Para terminar el proceso de forma normal, se puede utilizar el comando `kill -TERM pid`, donde `pid` es el identificador del proceso.
+
+- Fragmento correcto en el top-k: sí
+- Se abstiene (pista): no
+- Cita artículo/sección (pista): no
+
+## q_deb_12 · combinada
+**Pregunta:** Mi /etc/apt/sources.list tiene fuentes desconocidas pero debsums no detecta cambios en los archivos. ¿Puedo dar el sistema por sano y qué debería hacer?
+
+**Esperada:** No. sources.list muestra de dónde es probable que provengan los paquetes y, con muchas fuentes desconocidas, el administrador puede reinstalar el sistema. Además, dpkg --verify y debsums detectan cambios en archivos procedentes de un paquete Debian, pero son inútiles si el propio paquete está comprometido: conviene usar la verificación de firma digital de APT (digital signature verification system) e instalar únicamente desde orígenes certificados.
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: NO (el LLM no pudo acertar por culpa del buscador)
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí
+
+## q_deb_13 · sin_respuesta
+**Pregunta:** ¿Qué comando de pacman debo usar en Debian para instalar un paquete?
+
+**Esperada:** No aparece en el documento
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: n/a (sin respuesta)
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí
+
+## q_deb_14 · sin_respuesta
+**Pregunta:** ¿Cómo se lanza un contenedor con docker run según este manual?
+
+**Esperada:** No aparece en el documento
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: n/a (sin respuesta)
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí
+
+## q_deb_15 · sin_respuesta
+**Pregunta:** ¿Qué pasos sigue kubeadm para crear un clúster de Kubernetes en Debian?
+
+**Esperada:** No aparece en el documento
+
+**Respuesta del modelo:** No aparece en el documento.
+
+- Fragmento correcto en el top-k: n/a (sin respuesta)
+- Se abstiene (pista): sí
+- Cita artículo/sección (pista): sí

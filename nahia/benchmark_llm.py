@@ -49,6 +49,17 @@ def slug(texto):
     return re.sub(r"[^A-Za-z0-9.-]+", "_", texto).strip("_")
 
 
+def version_hf(repo):
+    """Hash del commit de Hugging Face del modelo cargado (refs/main de la caché; si no, snapshot más reciente)."""
+    import os
+    base = os.path.expanduser(f"~/.cache/huggingface/hub/models--{repo.replace('/', '--')}")
+    ref = os.path.join(base, "refs", "main")
+    if os.path.isfile(ref):
+        return open(ref).read().strip()
+    d = os.path.join(base, "snapshots")
+    return sorted(os.listdir(d))[-1] if os.path.isdir(d) else None
+
+
 def sha256_fichero(ruta):
     return hashlib.sha256(Path(ruta).read_bytes()).hexdigest()[:16]
 
@@ -199,6 +210,8 @@ def main():
     ap.add_argument("--n-coste", type=int, default=5)
     ap.add_argument("--turno-exclusivo", action="store_true",
                     help="marca la medida como oficial (GPU sin nadie más)")
+    ap.add_argument("--cuantizacion", choices=["bf16", "nf4"], default="bf16",
+                    help="bf16 (por defecto) o nf4 = 4 bits con bitsandbytes (plan B de 8 GB)")
     ap.add_argument("--dispositivo", choices=["cuda", "cpu"], default="cuda")
     args = ap.parse_args()
 
@@ -219,7 +232,7 @@ def main():
         recuperados = {g["id"]: [(i, None) for i in g["chunks_correctos"]] for g in golden}
 
     marca = datetime.now().strftime("%Y%m%d-%H%M%S")
-    base = f"{slug(args.modelo)}__{args.escenario}__{marca}"
+    base = f"{slug(args.modelo)}{'-nf4' if args.cuantizacion == 'nf4' else ''}__{args.escenario}__{marca}"
     CARPETA_RESULTADOS.mkdir(exist_ok=True)
     nombre_jsonl = f"{base}.jsonl"
 
@@ -233,12 +246,20 @@ def main():
         t0 = time.perf_counter()
         kw_tok = {"fix_mistral_regex": True} if "istral" in args.modelo else {}
         tokenizador = AutoTokenizer.from_pretrained(args.modelo, **kw_tok)
+        kw_carga = {"dtype": torch.bfloat16}
+        if args.cuantizacion == "nf4":
+            from transformers import BitsAndBytesConfig
+            kw_carga["quantization_config"] = BitsAndBytesConfig(
+                load_in_4bit=True, bnb_4bit_quant_type="nf4", bnb_4bit_compute_dtype=torch.bfloat16)
+            kw_carga["device_map"] = {"": 0}
         try:
-            modelo = AutoModelForCausalLM.from_pretrained(args.modelo, dtype=torch.bfloat16)
+            modelo = AutoModelForCausalLM.from_pretrained(args.modelo, **kw_carga)
         except ValueError:  # p. ej. Ministral 3: su clase es multimodal (texto + imagen)
             from transformers import AutoModelForImageTextToText
-            modelo = AutoModelForImageTextToText.from_pretrained(args.modelo, dtype=torch.bfloat16)
-        modelo.to(args.dispositivo).eval()
+            modelo = AutoModelForImageTextToText.from_pretrained(args.modelo, **kw_carga)
+        if args.cuantizacion != "nf4":
+            modelo.to(args.dispositivo)
+        modelo.eval()
         carga_s = time.perf_counter() - t0
         ventana = ventana_contexto(modelo)
 
@@ -262,8 +283,8 @@ def main():
                 guardar_registro(
                     nombre_jsonl,
                     modelo=args.modelo,
-                    version_modelo=getattr(modelo.config, "_commit_hash", None),
-                    cuantizacion="bf16",
+                    version_modelo=getattr(modelo.config, "_commit_hash", None) or version_hf(args.modelo),
+                    cuantizacion=args.cuantizacion,
                     stack="transformers " + transformers.__version__,
                     escenario=args.escenario,
                     pregunta_id=g["id"],
@@ -291,9 +312,9 @@ def main():
     # 5. Meta + hoja de puntuación
     meta = {
         "modelo": args.modelo,
-        "version_modelo": getattr(modelo.config, "_commit_hash", None),
+        "version_modelo": getattr(modelo.config, "_commit_hash", None) or version_hf(args.modelo),
         "parametros_miles_de_millones": round(sum(p.numel() for p in modelo.parameters()) / 1e9, 2),
-        "cuantizacion": "bf16",
+        "cuantizacion": args.cuantizacion,
         "stack": "transformers " + transformers.__version__,
         "torch": torch.__version__,
         "dispositivo": args.dispositivo,
