@@ -102,6 +102,7 @@ Solo caben los dos LLM pequeños, y hay que sumar el embedding (~1,1 GB):
   - **13 filas elegidas por su peso en la decisión:** coincidencia 12 de 13. El cambio: `BOE_C02` de Qwen pasó de corrección 0 a 1, porque tras abstenerse da bien la mitad de la respuesta. Como la IA sí tenía en cuenta el texto tras la abstención para penalizar (`BOE_D02` de LFM3, fiel 0), se decidió tenerlo en cuenta también para premiar.
   - **9 filas de LFM3 en el mismo caso** (se abstiene y después responde): se repuntuaron con esa regla. 8 cambiaron de corrección (7 a 2 y 1 a 1; dos de ellas marcadas como dudosas) y en `DEB_D01` se cambió fiel de 1 a 0.
   - Estos cambios suben la corrección de LFM3 de 0,47 a 0,93 (BOE) y de 0,40 a 0,93 (Debian), y la de Qwen en el BOE de 1,80 a 1,87. Ninguna decisión cambia.
+- La latencia depende de la longitud de la respuesta. Los 0,31 s de Llama-3.2-3B en Debian salen de una mediana de 8 tokens de salida, porque se abstiene en 3 de las 5 preguntas de coste. Por eso la latencia solo desempata entre modelos que ya cumplen la calidad.
 - La VRAM se midió con la caché KV fija en 2 GB y para toda la instancia MIG (incluye el contexto de CUDA).
 - FP8 en una A800 (Ampere) solo ahorra memoria; en una GPU con FP8 nativo los tiempos serían distintos.
  

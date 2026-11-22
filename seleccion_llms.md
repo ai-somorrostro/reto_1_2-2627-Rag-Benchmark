@@ -80,6 +80,7 @@ VRAM pico medida (toda la instancia MIG, con caché KV de 2 GB):
 | Límite de tokens de salida (`max_tokens`) | 512 |
 | Ventana de contexto (`max_model_len`) | 8192 (prompt más largo medido: ~2.500 tokens) |
 | Latencia total | Solo la generación del LLM (petición completa a vLLM). No incluye el retrieval, porque se reutiliza el top-5 de la Fase 2; la búsqueda cuesta ~0,03 s por pregunta (`query_retrieval_time_sec` en `results/embeddings/data/*.json`) y no cambia ninguna comparación |
+| TTFT y tokens/s | TTFT: tiempo de una petición con `max_tokens=1` (prefill + primer token). Tokens/s: (tokens generados − 1) / (latencia total − TTFT) |
 | Modo de razonamiento | Desactivado (`chat_template_kwargs={"enable_thinking": False}`) |
 | Caché de prefijos | Desactivada (para que repetir una pregunta no abarate el TTFT) |
 | Prompt | El mismo para todos (ver abajo) |

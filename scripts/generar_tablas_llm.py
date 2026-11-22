@@ -161,6 +161,9 @@ def tabla_c(resultados):
         out.append(f"| `{m}` | {stack} | "
                    f"{fmt(c['ttft_s'])} | {fmt(c['tokens_por_s'], 1)} | {fmt(c['latencia_total_s'])} | "
                    f"{fmt(meta['vram_pico_gb'])} |")
+    out.append("\n> TTFT: petición con max_tokens=1. Tokens/s: (tokens generados − 1) / (latencia total − TTFT). "
+               "La latencia depende de lo larga que sea la respuesta: un modelo que se abstiene contesta antes, "
+               "así que compárala solo entre modelos que cumplen los umbrales de calidad.")
     return out
 
 

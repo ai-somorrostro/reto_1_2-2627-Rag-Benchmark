@@ -33,6 +33,8 @@ Stack: vLLM · cuantización FP8 · embedding: `harrier-oss-v1` · top-k = 5 · 
 | `nemotron-bolt-e4b` | vLLM 0.34.0 | 0,27 | 26,7 | 1,50 | 14,80 |
 | `qwen3.5-9b` | vLLM 0.34.0 | 0,41 | 45,0 | 1,35 | 14,27 |
 
+> TTFT: petición con max_tokens=1. Tokens/s: (tokens generados − 1) / (latencia total − TTFT). La latencia depende de lo larga que sea la respuesta: un modelo que se abstiene contesta antes, así que compárala solo entre modelos que cumplen los umbrales de calidad.
+
 ---
 
 ## Escenario: Manual del Administrador de Debian
@@ -67,6 +69,8 @@ Stack: vLLM · cuantización FP8 · embedding: `bge-m3` · top-k = 5 · temperat
 | `llama3.2-3b` | vLLM 0.34.0 | 0,21 | 66,4 | 0,31 | 7,07 |
 | `nemotron-bolt-e4b` | vLLM 0.34.0 | 0,31 | 26,7 | 1,10 | 14,80 |
 | `qwen3.5-9b` | vLLM 0.34.0 | 0,45 | 44,8 | 3,23 | 14,27 |
+
+> TTFT: petición con max_tokens=1. Tokens/s: (tokens generados − 1) / (latencia total − TTFT). La latencia depende de lo larga que sea la respuesta: un modelo que se abstiene contesta antes, así que compárala solo entre modelos que cumplen los umbrales de calidad.
 
 **Avisos**
 
