@@ -74,6 +74,17 @@ Objetivo: con el embedding ganador fijo, comparar los LLMs en calidad y en coste
 - **Coste:** medidlo en al menos 5 preguntas por modelo; descartad la primera ejecución, repetid 3 veces y usad la mediana.
 - **Extra opcional:** pasad al LLM directamente el fragmento correcto. Si así acierta y con el retrieval no, el fallo es del retrieval.
 
+## Detener un benchmark en curso
+
+Los benchmarks se ejecutan desde la carpeta de cada equipo (`cd Artic`, luego `python benchmark_boe.py` y/o `python benchmark_debian.py`; igual en BGE y Multilingual).
+
+Para detenerlo en cualquier momento:
+
+- En terminal: pulsa `Ctrl+C` (o cierra la ventana del proceso).
+- En entorno gráfico: clic en el botón "Cancelar" del diálogo de carga del modelo.
+
+Es seguro detenerlo en cualquier momento: cada respuesta terminada se guarda inmediatamente en `resultados_boe/resultados_<llm>.txt` o `resultados_debian/resultados_<llm>.txt` de la carpeta del equipo. Al ejecutar de nuevo el script, salta las preguntas ya guardadas, así que la ejecución continúa donde se quedó.
+
 ## Fase 4: decisión por escenario
 
 La regla es elegir el modelo más pequeño y barato que cumple vuestros umbrales de calidad.
