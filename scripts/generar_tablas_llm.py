@@ -164,18 +164,25 @@ def tabla_c(resultados):
     return out
 
 
+# Los JSON de la ejecución del 20/11/2026 se generaron con nombres heredados del plan con Ollama
+# (num_predict, num_ctx, cortado_por_num_predict). No se reescriben porque son registros brutos;
+# estas funciones leen tanto esos nombres como los actuales.
+def opcion(o, nuevo, antiguo):
+    return o.get(nuevo, o.get(antiguo))
+
+
+def cortada(r):
+    return r.get("cortado_por_max_tokens", r.get("cortado_por_num_predict", False))
+
+
 def notas(resultados):
     out = []
     for m, d in resultados.items():
         meta = d["meta"]
         problemas = []
-        if "gpu_memory_utilization" in (meta.get("memoria") or ""):
-            problemas.append("VRAM medida con gpu_memory_utilization: refleja la reserva de vLLM, no el modelo")
         if any(r["razonamiento_detectado"] for r in d["respuestas"]):
             problemas.append("se detectó razonamiento (think) en alguna respuesta")
-        if any(r["posible_truncado"] for r in d["respuestas"]):
-            problemas.append("algún prompt roza max_model_len")
-        cortadas = sum(1 for r in d["respuestas"] if r["cortado_por_num_predict"])
+        cortadas = sum(1 for r in d["respuestas"] if cortada(r))
         if cortadas:
             problemas.append(f"{cortadas} respuesta{'s' if cortadas != 1 else ''} cortada{'s' if cortadas != 1 else ''} por max_tokens")
         if problemas:
@@ -202,7 +209,7 @@ def main():
         o = meta0["opciones"]
         md.append(f"## Escenario: {nombre}\n")
         md.append(f"Stack: {meta0['stack']} · cuantización {meta0['cuantizacion']} · embedding: `{meta0['embedding']}` · top-k = {meta0['top_k']} · temperatura {o['temperature']} · "
-                  f"max_tokens {o['num_predict']} · max_model_len {o['num_ctx']} · mismo prompt para todos\n")
+                  f"max_tokens {opcion(o, 'max_tokens', 'num_predict')} · max_model_len {opcion(o, 'max_model_len', 'num_ctx')} · mismo prompt para todos\n")
         filas = leer_csv(esc)
         md += tabla_b(esc, resultados, filas)
         md += tabla_oraculo(filas, resultados)

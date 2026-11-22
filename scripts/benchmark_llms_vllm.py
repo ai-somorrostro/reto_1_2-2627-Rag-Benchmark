@@ -297,8 +297,7 @@ def run(model_key, scen_key, oraculo=True, n_coste=5, rondas=3):
                     "gold_en_contexto": all(g in ids for g in gold) if gold else None,
                     "abstiene_auto": se_abstiene(r["respuesta"]),
                     "cita_auto": cita_detectada(scen_key, r["respuesta"]),
-                    "posible_truncado": False,   # vLLM no trunca: daría error si no cabe
-                    "cortado_por_num_predict": r["finish_reason"] == "length",
+                    "cortado_por_max_tokens": r["finish_reason"] == "length",
                     **r,
                 })
                 print(f"  [{modo}] {q['id']}: {r['respuesta'][:90]!r}")
@@ -329,7 +328,7 @@ def run(model_key, scen_key, oraculo=True, n_coste=5, rondas=3):
         "cuantizacion": CUANTIZACION.upper(), "dtype": DTYPE, "stack": "vLLM", "stack_version": vllm.__version__,
         "torch_version": torch.__version__, "cuda_device": torch.cuda.get_device_name(0),
         "escenario": scen_key, "embedding": emb, "top_k": TOP_K,
-        "opciones": {"temperature": TEMPERATURA, "num_predict": MAX_TOKENS_SALIDA, "num_ctx": MAX_MODEL_LEN,
+        "opciones": {"temperature": TEMPERATURA, "max_tokens": MAX_TOKENS_SALIDA, "max_model_len": MAX_MODEL_LEN,
                      "seed": SEED, "chat_template_kwargs": CHAT_TEMPLATE_KWARGS, "prefix_caching": False},
         "memoria": modo_memoria, "vllm_extra": cfg.get("extra", {}), "prompt_sistema": PROMPT_SISTEMA.replace("{cita}", scen["cita"]),
         "prompt_usuario": PROMPT_USUARIO, "timestamp": ahora(), "tiempo_carga_s": round(t_carga, 2),
