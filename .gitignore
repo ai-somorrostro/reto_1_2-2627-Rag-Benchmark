@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 .venv/
 tools/
+
+# Guion personal de Aimar (solo local)
+presentacion/guion_fase3_aimar.*
