@@ -224,25 +224,6 @@ Los datos brutos están en
 [`cost_runs.jsonl`](artifacts/llms/20261120T122007.077886Z/cost_runs.jsonl)
 y [`cost_summary.csv`](artifacts/llms/20261120T122007.077886Z/cost_summary.csv).
 
-Para la puntuación a mano, registrad de cada respuesta: la pregunta, el modelo, la respuesta tal como salió, la corrección (0–2), si es fiel (sí/no), si se abstiene (sí/no/no aplica) y si cumple formato e idioma (sí/no).
-
-## Entrega del viernes
-
-Cada grupo presenta 10 minutos y entrega su material de trabajo.
-
-1. **Candidatos y stack:** qué modelos y stack elegisteis, y por qué.
-2. **Resultados:** las tablas A, B y C de cada escenario.
-3. **Recomendación:** «Para X usaría Y porque Z», una por escenario, con vuestros umbrales.
-4. **Plan B:** qué cambiaríais con solo 8 GB de VRAM.
-5. **Lo que no esperabais:** un resultado que os sorprendió y cómo lo explicáis.
-
-Evidencias obligatorias (sin ellas, los resultados no se dan por válidos):
-
-- **Código** que genera todas las cifras y se ejecuta de principio a fin.
-- **Registros brutos de cada ejecución:** modelo, versión, cuantización, stack, parámetros, fecha y hora.
-- **Respuestas de los LLMs tal como salieron**, junto a su puntuación a mano.
-- **Registro del uso de memoria de la GPU** durante las medidas de VRAM.
-- **Trazabilidad:** cada cifra de las tablas sale de un fichero de resultados concreto.
 
 ## Recursos
 
