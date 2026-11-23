@@ -1,0 +1,306 @@
+
+======================================================================
+Plan B · qwen3.5-9b-q4 (unsloth/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--unsloth--Qwen3.5-9B-GGUF/snapshots/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-Q4_K_M.gguf --host 127.0.0.1 --port 58137 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 2.3 s
+  [retrieval] BOE_D01: 'Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, y las f'
+  [retrieval] BOE_D02: 'Según el Artículo 14, si no hay pacto en convenio, la duración del periodo de prueba para '
+  [retrieval] BOE_D03: 'Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Ar'
+  [retrieval] BOE_D04: 'Según el Artículo 34.3, entre el final de una jornada y el comienzo de la siguiente mediar'
+  [retrieval] BOE_D05: 'Tienes derecho a **dos gratificaciones extraordinarias al año**:\n1. Una con ocasión de las'
+  [retrieval] BOE_D06: 'Te corresponden quince días naturales libres pagados por tu matrimonio.\n\nFuente: Artículo '
+  [retrieval] BOE_D07: 'Para dejar la empresa un tiempo para hacer un máster y luego volver, necesitas tener **al '
+  [retrieval] BOE_D08: 'Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despi'
+  [retrieval] BOE_C01: 'Si el despido por causas objetivas se declara improcedente por un juez, la indemnización c'
+  [retrieval] BOE_C02: 'No aparece en el documento.\n\nLos fragmentos proporcionados definen las horas extraordinari'
+  [retrieval] BOE_C03: 'Sí, pueden despedirlo por esa causa. Según el Artículo 54, se considera incumplimiento con'
+  [retrieval] BOE_C04: 'Si te trasladan a otra ciudad, te corresponde una indemnización de veinte días de salario '
+  [retrieval] BOE_N01: 'No aparece en el documento'
+  [retrieval] BOE_N02: 'No aparece en el documento.'
+  [retrieval] BOE_N03: 'No aparece en el documento.'
+  [oraculo] BOE_D01: 'Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas. Las fec'
+  [oraculo] BOE_D02: 'Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses.\n\nF'
+  [oraculo] BOE_D03: 'Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Ar'
+  [oraculo] BOE_D04: 'Lo más pronto que te pueden hacer entrar al día siguiente es a las 11:00 horas.\n\n**Fuente:'
+  [oraculo] BOE_D05: 'Tienes derecho a dos gratificaciones extraordinarias al año: una con ocasión de las fiesta'
+  [oraculo] BOE_D06: 'Te corresponden quince días naturales de ausencia con derecho a remuneración por motivo de'
+  [oraculo] BOE_D07: 'Para dejar la empresa un tiempo y luego volver, necesitas tener al menos un año de antigüe'
+  [oraculo] BOE_D08: 'Tienes veinte días hábiles para reclamar. El plazo de caducidad para el ejercicio de la ac'
+  [oraculo] BOE_C01: 'Si el despido es declarado improcedente por un juez, el empresario puede optar entre la re'
+  [oraculo] BOE_C02: 'Se consideran horas extraordinarias aquellas horas de trabajo que se realicen sobre la dur'
+  [oraculo] BOE_C03: 'Sí, pueden despedirlo por esa causa y deben comunicarlo de la siguiente manera:\n\n1.  **Por'
+  [oraculo] BOE_C04: 'Si te trasladan a otra ciudad, te corresponde una indemnización de veinte días de salario '
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- qwen3.5-9b-q4/boe: TTFT 1.237 s | 86.075 tok/s | latencia 1.6409 s | VRAM LLM 5.377 GB (+ embedding ≈ 6.48 GB → CABE en 8 GB) → results/llms/plan_b/data/qwen3.5-9b-q4_boe.json
+
+======================================================================
+Plan B · nemotron-bolt-e4b-q4 (nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/Nemotron-3.5-Bolt-E4B-Q4_K_M.gguf) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--nvidia--NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/snapshots/1db54d5b12533ff1bcaa8e42cf4c667988a1f1be/Nemotron-3.5-Bolt-E4B-Q4_K_M.gguf --host 127.0.0.1 --port 36133 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 7.0 s
+  [retrieval] BOE_D01: 'El periodo de vacaciones anuales retribuidas no será inferior a treinta días naturales (Fu'
+  [retrieval] BOE_D02: 'No aparece en el documento'
+  [retrieval] BOE_D03: 'El número de horas extraordinarias no podrá ser superior a ochenta al año, salvo lo previs'
+  [retrieval] BOE_D04: 'Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce ho'
+  [retrieval] BOE_D05: 'Tienes derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiesta'
+  [retrieval] BOE_D06: 'Quince días naturales por matrimonio o registro de pareja de hecho (Fuente: Artículo 37. D'
+  [retrieval] BOE_D07: 'El trabajador con al menos una antigüedad en la empresa de un año tiene derecho a que se l'
+  [retrieval] BOE_D08: 'El ejercicio de la acción contra el despido o resolución de contratos temporales caducará '
+  [retrieval] BOE_C01: 'Si la extinción por causas objetivas es declarada improcedente por la autoridad judicial, '
+  [retrieval] BOE_C02: 'Las horas extraordinarias son aquellas horas de trabajo que se realizan sobre la duración '
+  [retrieval] BOE_C03: 'Sí, se pueden considerar faltas repetidas e injustificadas de asistencia o puntualidad al '
+  [retrieval] BOE_C04: 'Si el traslado exige cambios de residencia, el trabajador puede optar por la extinción del'
+  [retrieval] BOE_N01: 'No aparece en el documento'
+  [retrieval] BOE_N02: 'No aparece en el documento'
+  [retrieval] BOE_N03: 'No aparece en el documento'
+  [oraculo] BOE_D01: 'La duración mínima de las vacaciones anuales retribuidas es treinta días naturales (Fuente'
+  [oraculo] BOE_D02: 'No podrá exceder de seis meses para los técnicos titulados (Fuente: Artículo 14)'
+  [oraculo] BOE_D03: 'El número de horas extraordinarias no podrá ser superior a ochenta al año, salvo lo previs'
+  [oraculo] BOE_D04: 'No aparece en el documento'
+  [oraculo] BOE_D05: 'El trabajador tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión '
+  [oraculo] BOE_D06: 'Quince días naturales en caso de matrimonio o registro de pareja de hecho (Fuente: Artícul'
+  [oraculo] BOE_D07: 'El trabajador con al menos una antigüedad en la empresa de un año tiene derecho a que se l'
+  [oraculo] BOE_D08: 'Los veinte días siguientes a aquel en que se hubiera producido el despido o resolución de '
+  [oraculo] BOE_C01: 'El empresario podrá optar entre la readmisión del trabajador o el abono de una indemnizaci'
+  [oraculo] BOE_C02: 'Las horas extraordinarias son aquellas que se realicen sobre la duración máxima de la jorn'
+  [oraculo] BOE_C03: 'Sí, las faltas repetidas e injustificadas de asistencia o puntualidad al trabajo se consid'
+  [oraculo] BOE_C04: 'Si el traslado exige cambios de residencia, el trabajador puede optar por la extinción de '
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- nemotron-bolt-e4b-q4/boe: TTFT 0.4102 s | 93.01 tok/s | latencia 0.7644 s | VRAM LLM 3.469 GB (+ embedding ≈ 4.57 GB → CABE en 8 GB) → results/llms/plan_b/data/nemotron-bolt-e4b-q4_boe.json
+
+======================================================================
+Plan B · qwen3.5-9b-q8 (unsloth/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q8_0.gguf) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--unsloth--Qwen3.5-9B-GGUF/snapshots/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-Q8_0.gguf --host 127.0.0.1 --port 37327 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 57.6 s
+  [retrieval] BOE_D01: 'Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, y las f'
+  [retrieval] BOE_D02: 'Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, sa'
+  [retrieval] BOE_D03: 'Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Ar'
+  [retrieval] BOE_D04: 'Lo más pronto que pueden hacerte entrar al día siguiente es a las 11:00.\n\n**Fuente:** Artí'
+  [retrieval] BOE_D05: 'Tienes derecho a **dos gratificaciones extraordinarias al año**:\n1. Una con ocasión de las'
+  [retrieval] BOE_D06: 'Te corresponden quince días naturales libres pagados por tu matrimonio.\n\nFuente: Artículo '
+  [retrieval] BOE_D07: 'Para dejar la empresa un tiempo para hacer un máster y luego volver, necesitas tener **al '
+  [retrieval] BOE_D08: 'Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despi'
+  [retrieval] BOE_C01: 'Si el despido por causas objetivas se declara improcedente por un juez, la indemnización c'
+  [retrieval] BOE_C02: 'No aparece en el documento.\n\n*Nota: Aunque el documento menciona que la duración máxima de'
+  [retrieval] BOE_C03: 'Sí, pueden despedirlo por esa causa. Según el **Artículo 54**, se considera incumplimiento'
+  [retrieval] BOE_C04: 'Si te trasladan a otra ciudad y decides dejar la empresa, te corresponde una indemnización'
+  [retrieval] BOE_N01: 'No aparece en el documento'
+  [retrieval] BOE_N02: 'No aparece en el documento.'
+  [retrieval] BOE_N03: 'No aparece en el documento.'
+  [oraculo] BOE_D01: 'Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas y las fe'
+  [oraculo] BOE_D02: 'Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, ya'
+  [oraculo] BOE_D03: 'Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Ar'
+  [oraculo] BOE_D04: 'Lo más pronto que pueden hacerte entrar al día siguiente es a las 11:00.\n\n**Fuente:** Artí'
+  [oraculo] BOE_D05: 'Tienes derecho a dos gratificaciones extraordinarias al año: una con ocasión de las fiesta'
+  [oraculo] BOE_D06: 'Te corresponden quince días naturales de ausencia con derecho a remuneración por motivo de'
+  [oraculo] BOE_D07: 'Para dejar la empresa un tiempo y luego volver, necesitas tener al menos **un año de antig'
+  [oraculo] BOE_D08: 'Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despi'
+  [oraculo] BOE_C01: 'Si el despido es declarado improcedente por un juez, la indemnización cambia de la siguien'
+  [oraculo] BOE_C02: 'Se consideran horas extraordinarias aquellas que se realicen sobre la duración máxima de l'
+  [oraculo] BOE_C03: 'Sí, pueden despedirlo porque las faltas repetidas e injustificadas de asistencia se consid'
+  [oraculo] BOE_C04: 'Si te trasladan a otra ciudad y decides dejar la empresa, te corresponde una indemnización'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- qwen3.5-9b-q8/boe: TTFT 1.1094 s | 66.6 tok/s | latencia 1.9193 s | VRAM LLM 8.486 GB (+ embedding ≈ 9.59 GB → NO CABE en 8 GB) → results/llms/plan_b/data/qwen3.5-9b-q8_boe.json
+
+======================================================================
+Plan B · nemotron-bolt-e4b-q8 (bartowski/NVIDIA-Nemotron-3.5-Bolt-E4B-GGUF/NVIDIA-Nemotron-3.5-Bolt-E4B-Q8_0.gguf) | Estatuto de los Trabajadores (BOE) | Embedding: harrier-oss-v1
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--bartowski--NVIDIA-Nemotron-3.5-Bolt-E4B-GGUF/snapshots/7a243bc11b80212594a71d2ecddde5798a43e265/NVIDIA-Nemotron-3.5-Bolt-E4B-Q8_0.gguf --host 127.0.0.1 --port 60663 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 2.6 s
+  [retrieval] BOE_D01: 'Las vacaciones anuales retribuidas no serán inferiores a treinta días naturales (Fuente: A'
+  [retrieval] BOE_D02: 'No aparece en el documento'
+  [retrieval] BOE_D03: 'El número de horas extraordinarias no podrá ser superior a ochenta al año, salvo lo previs'
+  [retrieval] BOE_D04: 'Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce ho'
+  [retrieval] BOE_D05: 'Tienes derecho a dos gratificaciones extraordinarias al año, una con ocasión de las fiesta'
+  [retrieval] BOE_D06: 'Quince días naturales en caso de matrimonio o registro de pareja de hecho (Fuente: Artícul'
+  [retrieval] BOE_D07: 'El trabajador con al menos una antigüedad en la empresa de un año tiene derecho a excedenc'
+  [retrieval] BOE_D08: 'El ejercicio de la acción contra el despido o resolución de contratos temporales caducará '
+  [retrieval] BOE_C01: 'Si la calificación por la autoridad judicial de la nulidad, procedencia o improcedencia de'
+  [retrieval] BOE_C02: 'Tendrán la consideración de horas extraordinarias aquellas horas de trabajo que se realice'
+  [retrieval] BOE_C03: 'Sí, se consideran incumplimientos contractuales las faltas repetidas e injustificadas de a'
+  [retrieval] BOE_C04: 'Si te trasladan y optas por la extinción de contrato, percibirás una indemnización de vein'
+  [retrieval] BOE_N01: 'No aparece en el documento'
+  [retrieval] BOE_N02: 'No aparece en el documento'
+  [retrieval] BOE_N03: 'No aparece en el documento'
+  [oraculo] BOE_D01: 'La duración mínima de vacaciones anuales retribuidas es treinta días naturales (Fuente: Ar'
+  [oraculo] BOE_D02: 'No podrá exceder de seis meses para los técnicos titulados. (Fuente: Artículo 14)'
+  [oraculo] BOE_D03: 'El número de horas extraordinarias no podrá ser superior a ochenta al año, salvo lo previs'
+  [oraculo] BOE_D04: 'No aparece en el documento'
+  [oraculo] BOE_D05: 'El trabajador tiene derecho a dos gratificaciones extraordinarias al año, una con ocasión '
+  [oraculo] BOE_D06: 'Quince días naturales en caso de matrimonio o registro de pareja de hecho. (Fuente: Artícu'
+  [oraculo] BOE_D07: 'El trabajador con al menos una antigüedad en la empresa de un año tiene derecho a excedenc'
+  [oraculo] BOE_D08: 'Los veinte días siguientes de aquel en que se hubiera producido el despido caducará, y los'
+  [oraculo] BOE_C01: 'El empresario podrá optar entre la readmisión del trabajador o el abono de una indemnizaci'
+  [oraculo] BOE_C02: 'Las horas extraordinarias son aquellas que se realicen sobre la duración máxima de la jorn'
+  [oraculo] BOE_C03: 'Sí, se considerarán incumplimientos contractuales las faltas repetidas e injustificadas de'
+  [oraculo] BOE_C04: 'Si te trasladan, puedes optar por la extinción del contrato percibiendo una indemnización '
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- nemotron-bolt-e4b-q8/boe: TTFT 0.4125 s | 75.245 tok/s | latencia 0.8434 s | VRAM LLM 5.193 GB (+ embedding ≈ 6.29 GB → CABE en 8 GB) → results/llms/plan_b/data/nemotron-bolt-e4b-q8_boe.json
+
+======================================================================
+Plan B · qwen3.5-9b-q4 (unsloth/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q4_K_M.gguf) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--unsloth--Qwen3.5-9B-GGUF/snapshots/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-Q4_K_M.gguf --host 127.0.0.1 --port 38585 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 8.5 s
+  [retrieval] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la or'
+  [retrieval] DEB_D02: 'La diferencia principal es que la eliminación con `remove` (o `-r`) **no es completa** y s'
+  [retrieval] DEB_D03: 'Según los fragmentos proporcionados, no aparece información específica sobre en qué ficher'
+  [retrieval] DEB_D04: 'La herramienta **locate** puede encontrar la ubicación de un archivo cuando solo se sabe p'
+  [retrieval] DEB_D05: 'Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes seguir est'
+  [retrieval] DEB_D06: 'Para conectarte por SSH sin escribir la contraseña cada vez, puedes seguir estos pasos seg'
+  [retrieval] DEB_D07: 'Para instalar la nueva versión de un paquete cuando ya tienes `bullseye-backports` en las '
+  [retrieval] DEB_D08: 'Para ejecutar un comando una sola vez en un momento específico, debe utilizar la orden **a'
+  [retrieval] DEB_C01: 'Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se ut'
+  [retrieval] DEB_C02: 'El hash de la contraseña de un usuario se guarda en el archivo **`/etc/shadow`**.\n\nEs más '
+  [retrieval] DEB_C03: 'No aparece en el documento'
+  [retrieval] DEB_C04: 'No aparece en el documento.'
+  [retrieval] DEB_N01: 'No aparece en el documento'
+  [retrieval] DEB_N02: 'No aparece en el documento'
+  [retrieval] DEB_N03: 'No aparece en el documento'
+  [oraculo] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la or'
+  [oraculo] DEB_D02: 'La diferencia es que **apt remove** elimina el paquete, mientras que **apt purge** realiza'
+  [oraculo] DEB_D03: 'Los resultados de las operaciones de **apt** y **aptitude** se registran en los ficheros `'
+  [oraculo] DEB_D04: 'La herramienta que encuentra el archivo casi al instante es **locate**. Esta herramienta s'
+  [oraculo] DEB_D05: 'Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar e'
+  [oraculo] DEB_D06: 'Para conectarte por SSH sin escribir la contraseña cada vez, debes seguir estos pasos segú'
+  [oraculo] DEB_D07: 'Para instalar la nueva versión desde el repositorio `stable-backports`, debes indicar expl'
+  [oraculo] DEB_D08: 'Para ejecutar un comando una sola vez mañana a las 9:00, debes usar la orden **at** con el'
+  [oraculo] DEB_C01: 'Para programar una copia de seguridad que se lance cada día a las 3:00 en un equipo que a '
+  [oraculo] DEB_C02: 'El hash de la contraseña se guarda en el archivo **`/etc/shadow`**.\n\nEs más seguro que gua'
+  [oraculo] DEB_C03: 'Para averiguar qué paquete trae un ejecutable y luego instalarlo, primero debes usar la or'
+  [oraculo] DEB_C04: 'Se recomienda actualizar en dos pasos para facilitar el trabajo de las herramientas de ges'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- qwen3.5-9b-q4/debian: TTFT 1.2367 s | 86.935 tok/s | latencia 1.7603 s | VRAM LLM 5.379 GB (+ embedding ≈ 6.48 GB → CABE en 8 GB) → results/llms/plan_b/data/qwen3.5-9b-q4_debian.json
+
+======================================================================
+Plan B · nemotron-bolt-e4b-q4 (nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/Nemotron-3.5-Bolt-E4B-Q4_K_M.gguf) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--nvidia--NVIDIA-Nemotron-3.5-Bolt-E4B-4GB/snapshots/1db54d5b12533ff1bcaa8e42cf4c667988a1f1be/Nemotron-3.5-Bolt-E4B-Q4_K_M.gguf --host 127.0.0.1 --port 49731 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 78.1 s
+  [retrieval] DEB_D01: 'Para actualizar la lista de paquetes se puede usar **apt update** (Fuente: 6.2.1. Iniciali'
+  [retrieval] DEB_D02: 'Con **remove** se mantienen los archivos de configuración, scripts del encargado, archivos'
+  [retrieval] DEB_D03: 'No aparece en el documento'
+  [retrieval] DEB_D04: 'El programa **locate** encuentra la ubicación de un archivo cuando solo se sabe parte del '
+  [retrieval] DEB_D05: 'Para dar de alta un usuario nuevo, primero se deben crear las cuentas Unix utilizando **ad'
+  [retrieval] DEB_D06: 'El usuario puede generar un par de claves en la máquina cliente con **ssh-keygen -t rsa**;'
+  [retrieval] DEB_D07: 'Se puede usar `$ sudo apt-get install paquete/bullseye-backports` o `$ sudo apt-get instal'
+  [retrieval] DEB_D08: 'La orden **at** ejecuta un programa en un momento específico en el futuro, y se puede indi'
+  [retrieval] DEB_C01: '**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el'
+  [retrieval] DEB_C02: 'El archivo `/etc/shadow` almacena las contraseñas con *hash* y no puede ser leído por usua'
+  [retrieval] DEB_C03: 'No aparece en el documento'
+  [retrieval] DEB_C04: 'No aparece en el documento'
+  [retrieval] DEB_N01: 'No aparece en el documento'
+  [retrieval] DEB_N02: 'No aparece en el documento'
+  [retrieval] DEB_N03: 'No aparece en el documento'
+  [oraculo] DEB_D01: 'Puede hacer esto simplemente con **apt update** (Fuente: 6.2.1. Inicialización)'
+  [oraculo] DEB_D02: 'La orden **ap purge** ***`paquete`*** realiza una desinstalación completa -eliminando tamb'
+  [oraculo] DEB_D03: '`/var/log/apt/history.log` y `/var/log/apt/term.log` (Fuente: 6.2.3. Actualización del sis'
+  [oraculo] DEB_D04: 'El programa **locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte '
+  [oraculo] DEB_D05: 'Puede crear un usuario ejecutando **adduser** ***`usuario`*** ***`grupo`***, por ejemplo, '
+  [oraculo] DEB_D06: 'El usuario genera un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la cla'
+  [oraculo] DEB_D07: '$ sudo apt-get install paquete/bullseye-backports\no\n$ sudo apt-get install -t /bullseye-ba'
+  [oraculo] DEB_D08: 'La orden es **at** y puede usar «tomorrow» para representar el día siguiente (Fuente: 9.7.'
+  [oraculo] DEB_C01: '**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el'
+  [oraculo] DEB_C02: 'El archivo `/etc/shadow` contiene la contraseña cifrada (Fuente: 8.4.2. El archivo de cont'
+  [oraculo] DEB_C03: 'La orden **apt-file search** ***`pattern`*** listará todos los paquetes, los que contienen'
+  [oraculo] DEB_C04: 'Se recomienda hacer la actualización en dos pasos porque facilitará el trabajo de las herr'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- nemotron-bolt-e4b-q4/debian: TTFT 0.4645 s | 89.6 tok/s | latencia 0.7512 s | VRAM LLM 3.469 GB (+ embedding ≈ 4.57 GB → CABE en 8 GB) → results/llms/plan_b/data/nemotron-bolt-e4b-q4_debian.json
+
+======================================================================
+Plan B · qwen3.5-9b-q8 (unsloth/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q8_0.gguf) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--unsloth--Qwen3.5-9B-GGUF/snapshots/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-Q8_0.gguf --host 127.0.0.1 --port 53895 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 7.5 s
+  [retrieval] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la or'
+  [retrieval] DEB_D02: 'La diferencia principal es que la orden **remove** (o `-r`) elimina el paquete pero **se m'
+  [retrieval] DEB_D03: 'Según los fragmentos proporcionados, no aparece información específica sobre qué ficheros '
+  [retrieval] DEB_D04: 'La herramienta que encuentra la ubicación de un archivo casi al instante es **locate**.\n\n*'
+  [retrieval] DEB_D05: 'Para dar de alta un usuario nuevo, se utiliza el programa **adduser** con el nombre de usu'
+  [retrieval] DEB_D06: 'Para conectarte por SSH sin escribir la contraseña cada vez, puedes seguir estos pasos seg'
+  [retrieval] DEB_D07: 'Para instalar la nueva versión de un paquete cuando ya tienes `bullseye-backports` en las '
+  [retrieval] DEB_D08: 'Para ejecutar un comando una sola vez en un momento específico, debe utilizar la orden **a'
+  [retrieval] DEB_C01: 'Para programar tareas recurrentes en equipos que no están encendidos todo el tiempo, se ut'
+  [retrieval] DEB_C02: 'El hash de la contraseña de un usuario se guarda en el archivo **`/etc/shadow`**.\n\nEs más '
+  [retrieval] DEB_C03: 'No aparece en el documento'
+  [retrieval] DEB_C04: 'No aparece en el documento.\n\nAunque los fragmentos mencionan el cambio de fuentes de Buste'
+  [retrieval] DEB_N01: 'No aparece en el documento'
+  [retrieval] DEB_N02: 'No aparece en el documento'
+  [retrieval] DEB_N03: 'No aparece en el documento'
+  [oraculo] DEB_D01: 'Para que APT descargue la lista más reciente de paquetes disponibles, debes ejecutar la or'
+  [oraculo] DEB_D02: 'La diferencia es que la orden `apt remove` elimina el paquete, mientras que la orden `apt '
+  [oraculo] DEB_D03: 'Los resultados de las operaciones de **apt** y **aptitude** se registran en los ficheros `'
+  [oraculo] DEB_D04: 'La herramienta que encuentra el archivo casi al instante es **locate**. Obtiene la informa'
+  [oraculo] DEB_D05: 'Para dar de alta un usuario nuevo y permitirle usar el sonido del equipo, debes ejecutar e'
+  [oraculo] DEB_D06: 'Para conectarte por SSH sin escribir la contraseña cada vez, debes seguir estos pasos segú'
+  [oraculo] DEB_D07: 'Para instalar la nueva versión, debes indicar explícitamente a `APT` que lo haga. Puedes u'
+  [oraculo] DEB_D08: 'Para ejecutar un comando una sola vez mañana a las 9:00, debes usar la orden **at** con el'
+  [oraculo] DEB_C01: 'Para programar la copia de seguridad, se debe escribir la tarea en el archivo `/etc/anacro'
+  [oraculo] DEB_C02: 'El hash de la contraseña se guarda en el archivo **`/etc/shadow`**.\n\nEs más seguro que gua'
+  [oraculo] DEB_C03: 'Para averiguar qué paquete contiene un nombre de archivo o ruta específico, se debe utiliz'
+  [oraculo] DEB_C04: 'Se recomienda actualizar en dos pasos para facilitar el trabajo de las herramientas de ges'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- qwen3.5-9b-q8/debian: TTFT 1.2179 s | 63.83 tok/s | latencia 2.947 s | VRAM LLM 8.486 GB (+ embedding ≈ 9.59 GB → NO CABE en 8 GB) → results/llms/plan_b/data/qwen3.5-9b-q8_debian.json
+
+======================================================================
+Plan B · nemotron-bolt-e4b-q8 (bartowski/NVIDIA-Nemotron-3.5-Bolt-E4B-GGUF/NVIDIA-Nemotron-3.5-Bolt-E4B-Q8_0.gguf) | Manual del Administrador de Debian | Embedding: bge-m3
+======================================================================
+[+] tools/llama.cpp/llama-b12633/llama-server -m /home/g1-2/.cache/huggingface/hub/models--bartowski--NVIDIA-Nemotron-3.5-Bolt-E4B-GGUF/snapshots/7a243bc11b80212594a71d2ecddde5798a43e265/NVIDIA-Nemotron-3.5-Bolt-E4B-Q8_0.gguf --host 127.0.0.1 --port 33553 -c 8192 -ngl 999 -np 1 --seed 42 --jinja --chat-template-kwargs {"enable_thinking": false} --reasoning-budget 0 --no-webui
+[+] Cargado en 128.2 s
+  [retrieval] DEB_D01: 'Se puede hacer con **apt update** (Fuente: 6.2.1. Inicialización)'
+  [retrieval] DEB_D02: 'Con `remove` se mantienen los archivos de configuración, scripts del encargado, archivos d'
+  [retrieval] DEB_D03: 'No aparece en el documento'
+  [retrieval] DEB_D04: 'El programa **locate** encuentra la ubicación de un archivo cuando solo se sabe parte del '
+  [retrieval] DEB_D05: 'Primero se deben crear las cuentas Unix utilizando **adduser** (Fuente: 11.5.1.2.2. Añadir'
+  [retrieval] DEB_D06: 'El usuario puede generar un par de claves en la máquina cliente con **ssh-keygen -t rsa**;'
+  [retrieval] DEB_D07: 'Se puede usar `sudo apt-get install paquete/bullseye-backports` o `sudo apt-get install -t'
+  [retrieval] DEB_D08: 'La orden **at** ejecuta un programa en un momento específico en el futuro, y se puede indi'
+  [retrieval] DEB_C01: '**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el'
+  [retrieval] DEB_C02: 'El archivo `/etc/shadow` almacena las contraseñas con *hash* y no puede ser leído por usua'
+  [retrieval] DEB_C03: 'No aparece en el documento'
+  [retrieval] DEB_C04: 'No aparece en el documento'
+  [retrieval] DEB_N01: 'No aparece en el documento'
+  [retrieval] DEB_N02: 'No aparece en el documento'
+  [retrieval] DEB_N03: 'No aparece en el documento'
+  [oraculo] DEB_D01: '**apt update** (Fuente: 6.2.1. Inicialización)'
+  [oraculo] DEB_D02: '**apt remove** elimina un paquete y **apt purge** realiza una desinstalación completa elim'
+  [oraculo] DEB_D03: 'Los resultados de estas operaciones son registrados en `/var/log/apt/history.log` y `/var/'
+  [oraculo] DEB_D04: 'El programa **locate** puede encontrar la ubicación de un archivo cuando sólo sepas parte '
+  [oraculo] DEB_D05: 'Se puede crear un usuario ejecutando **adduser** ***`usuario`*** ***`grupo`***, por ejempl'
+  [oraculo] DEB_D06: 'El usuario genera un par de claves en la máquina cliente con **ssh-keygen -t rsa**; la cla'
+  [oraculo] DEB_D07: '$ sudo apt-get install paquete/bullseye-backports\no\n$ sudo apt-get install -t /bullseye-ba'
+  [oraculo] DEB_D08: 'La orden es **at** y puede usar «tomorrow» para representar el día siguiente, junto con la'
+  [oraculo] DEB_C01: '**anacron** es el demonio que completa **cron** en equipos que no están encendidos todo el'
+  [oraculo] DEB_C02: 'El archivo `/etc/shadow` contiene la contraseña cifrada y no puede ser leído por usuarios '
+  [oraculo] DEB_C03: 'La orden **apt-file search** ***`pattern`*** listará todos los paquetes, los que contienen'
+  [oraculo] DEB_C04: 'Primero debe realizar una actualización mínima con **apt upgrade** (Fuente: 6.7.1. Procedi'
+  [coste] ronda 0 (descartada) hecha
+  [coste] ronda 1 hecha
+  [coste] ronda 2 hecha
+  [coste] ronda 3 hecha
+--- nemotron-bolt-e4b-q8/debian: TTFT 0.4438 s | 84.42 tok/s | latencia 0.6949 s | VRAM LLM 5.193 GB (+ embedding ≈ 6.29 GB → CABE en 8 GB) → results/llms/plan_b/data/nemotron-bolt-e4b-q8_debian.json
+
+Hecho. Siguiente paso: python scripts/generar_tablas_llm.py --dir results/llms/plan_b --plantilla

@@ -8,7 +8,7 @@ El enunciado está en [`README.md`](README.md). Este documento explica cómo rep
 | --- | --- | --- | --- |
 | BOE (Estatuto de los Trabajadores) | `microsoft/harrier-oss-v1-0.6b` | `Qwen/Qwen3.5-9B` (FP8, vLLM) | [`decision_fase4.md`](decision_fase4.md) §5 |
 | Debian (manual del administrador) | `BAAI/bge-m3` | `nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-BF16` (FP8, vLLM) | [`decision_fase4.md`](decision_fase4.md) §5 |
-| Plan B (8 GB de VRAM) | — | Ninguno de los medidos cumple los umbrales | [`decision_fase4.md`](decision_fase4.md) §5 |
+| Plan B (8 GB de VRAM) | El de cada escenario | `nvidia/NVIDIA-Nemotron-3.5-Bolt-E4B-4GB` (GGUF Q4_K_M, llama.cpp) | [`decision_fase4.md`](decision_fase4.md) §5, [`results/llms/plan_b/tablas_b_c.md`](results/llms/plan_b/tablas_b_c.md) |
 
 ## Documentos por punto de la entrega
 
@@ -22,7 +22,7 @@ El enunciado está en [`README.md`](README.md). Este documento explica cómo rep
 | Golden set | [`golden-set/`](golden-set/) (15 preguntas por escenario: 8 directas, 4 combinadas, 3 sin respuesta) y [`golden_set_revision.md`](golden-set/golden_set_revision.md) |
 | Gráficos y comparativas visuales | [`results/graficos/`](results/graficos/) (generados con `scripts/generar_graficos.py`) |
 | Diapositivas y guion de defensa | [`presentacion/`](presentacion/) (`slides.md`, visor interactivo `index.html` y [`guion_defensa_10min.md`](presentacion/guion_defensa_10min.md)) |
-| Auditoría de trazabilidad y Plan B | `scripts/auditar_trazabilidad.py` y `scripts/estimador_memoria_plan_b.py` |
+| Auditoría de trazabilidad y Plan B | `scripts/auditar_trazabilidad.py`, `scripts/estimador_memoria_plan_b.py` y `scripts/benchmark_plan_b_llamacpp.py` (Plan B medido con llama.cpp) |
 
 ## Entorno
 

@@ -272,7 +272,7 @@
 
     <!-- SLIDE 5 -->
     <div class="slide">
-      <h2>4. Fase 3: Benchmark de LLMs · Coste y Rendimiento</h2>
+      <h2>4. Fase 3: Benchmark de LLMs · Coste y Rendimiento <span class="badge">Escenario BOE</span></h2>
       <div class="grid-2">
         <div>
           <table>
@@ -289,8 +289,10 @@
           <div class="card" style="margin-top: 12px;">
             <p><strong>Rendimiento en inferencia:</strong></p>
             <ul style="margin-top: 6px; display: flex; flex-direction: column; gap: 6px;">
-              <li><code>Llama-3.2-3B</code> es el más rápido con 66 tok/s y latencia métrica baja, pero inservible por su tasa de falsas abstenciones.</li>
-              <li><code>Qwen3.5-9B</code> mantiene una velocidad sobresaliente de 45 tok/s ofreciendo la mayor calidad global del benchmark.</li>
+              <li><code>Llama-3.2-3B</code> es el más rápido (66 tok/s, 0.78 s), pero se abstiene en 6 de 12: parte de su baja latencia es responder "No aparece".</li>
+              <li><code>Qwen3.5-9B</code> es el de mejor calidad y aun así genera a 45 tok/s.</li>
+              <li><code>Nemotron-Bolt</code> es el más lento (26.7 tok/s) y el que más VRAM usa (14.8 GB).</li>
+              <li style="color: var(--text-muted); font-size: 0.95rem;">La latencia solo desempata entre modelos que ya cumplen calidad. En Debian: Nemotron 1.10 s, Qwen 3.23 s.</li>
             </ul>
           </div>
         </div>
@@ -310,7 +312,7 @@
           <ul style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
             <li><strong>Recuperación perfecta:</strong> Recall@5 = 1.0000 (12 de 12 preguntas).</li>
             <li><strong>Máxima precisión:</strong> 1.87 / 2.0 en corrección y 100% fidelidad sin alucinaciones.</li>
-            <li><strong>Excelente equilibrio:</strong> 45 tok/s de velocidad en GPU A800 con 14.3 GB de VRAM pico.</li>
+            <li><strong>El más barato de los que cumplen:</strong> frente a Nemotron, menos VRAM (14.3 GB), más tok/s (45) y menos latencia (1.35 s).</li>
           </ul>
         </div>
         <div class="card card-highlight">
@@ -318,8 +320,8 @@
           <h3 style="margin-top: 12px; color: #fff;">bge-m3 (568M) + Nemotron-Bolt-E4B (FP8)</h3>
           <ul style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
             <li><strong>Retrieval robusto:</strong> bge-m3 es el único embedding que supera el umbral del 80% (0.83).</li>
-            <li><strong>Fidelidad y Cita:</strong> Nemotron empata en corrección (1.53) y supera a Qwen en citación de sección técnica (100% vs 67%).</li>
-            <li><strong>Compromiso:</strong> Aceptamos una menor velocidad (26.7 tok/s) a cambio de cero fallos de formato en entorno técnico.</li>
+            <li><strong>Único LLM que cumple todos los umbrales:</strong> empata con Qwen en corrección (1.53) y fidelidad (100%), pero cita la sección el 100% de las veces frente al 67% de Qwen (umbral: 80%).</li>
+            <li><strong>Coste:</strong> genera más lento (26.7 tok/s), pero en Debian responde antes que Qwen (1.10 s frente a 3.23 s).</li>
           </ul>
         </div>
       </div>
@@ -330,18 +332,18 @@
       <h2>6. Plan B: Restricción a 8 GB de VRAM</h2>
       <div class="grid-2">
         <div>
-          <div class="card" style="border-left: 4px solid var(--danger);">
-            <h3 style="color: var(--danger);">Conclusión del Grupo 1</h3>
-            <p><strong>Ninguno de los modelos que supera los umbrales de calidad cabe en 8 GB de VRAM.</strong></p>
+          <div class="card card-highlight">
+            <span class="badge" style="background: #047857; color: #a7f3d0;">Plan B · BOE y Debian</span>
+            <h3 style="margin-top: 10px; color: #fff;">Mismo embedding + Nemotron-Bolt-E4B en GGUF Q4_K_M (llama.cpp)</h3>
+            <p style="font-size: 0.95rem; margin-top: 6px;"><strong>4.6 GB</strong> con el embedding · 0.75 s de latencia · ~90 tok/s · cumple todos los umbrales (BOE 1.60, Debian 1.53, 100 % fiel y 100 % de citas).</p>
           </div>
           <ul style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
-            <li><code>Qwen3.5-9B</code> (14.27 GB) y <code>Nemotron-Bolt</code> (14.80 GB) se desbordan de largo.</li>
-            <li><code>LFM3-1.7B</code> (5.36 GB) y <code>Llama-3.2-3B</code> (7.07 GB) sí caben en 8 GB, pero <strong>fallan estrepitosamente en calidad</strong> (falsas abstenciones del 50% al 92%).</li>
+            <li><strong>vLLM FP8:</strong> Qwen y Nemotron (&gt;14 GB) no caben; LFM3 y Llama caben pero <strong>no cumplen calidad</strong>.</li>
+            <li><strong>4 bits en vLLM (AWQ) tampoco basta:</strong> no comprime los embeddings (vocabulario de ~250k tokens). Qwen-AWQ son ~8 GB solo de pesos.</li>
+            <li><strong>GGUF en llama.cpp sí:</strong> comprime también los embeddings y deja los de entrada en la RAM de la CPU. Medido: Nemotron Q4 3.5 GB, Qwen Q4 5.4 GB.</li>
+            <li>Los dos Q4 cumplen; Nemotron es <strong>más barato en VRAM, tok/s y latencia</strong>. Pasar de Q8 a Q4 no cambia la calidad.</li>
           </ul>
-          <div class="card" style="margin-top: 14px; background: #0f172a;">
-            <p><strong>Propuesta de Ingeniería para el Plan B:</strong></p>
-            <p style="font-size: 0.95rem; margin-top: 6px; color: var(--accent);">Cuantizar Qwen3.5-9B a <strong>AWQ 4-bits</strong> o <strong>GGUF Q4_K_M</strong> en llama.cpp (ocupa ~6.5 GB de VRAM total), preservando la capacidad de razonamiento en lugar de desplegar un modelo pequeño deficiente.</p>
-          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Coste comparado solo dentro de llama.cpp. Puntuación de calidad del Plan B pendiente de revisión manual. Datos: <code>results/llms/plan_b/</code>.</p>
         </div>
         <div class="chart-container">
           <img src="../results/graficos/llms_vram_plan_b.png" alt="Plan B VRAM">

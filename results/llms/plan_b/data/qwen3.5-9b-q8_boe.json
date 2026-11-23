@@ -1,0 +1,1533 @@
+{
+  "meta": {
+    "modelo": "qwen3.5-9b-q8",
+    "repo": "unsloth/Qwen3.5-9B-GGUF/Qwen3.5-9B-Q8_0.gguf",
+    "tamano": "9B",
+    "categoria": "mediano",
+    "modelo_base_fase3": "qwen3.5-9b",
+    "cuantizacion": "GGUF Q8_0",
+    "stack": "llama.cpp",
+    "stack_version": "b12633",
+    "build_info": "b12633-9c10c94e1",
+    "comando": [
+      "tools/llama.cpp/llama-b12633/llama-server",
+      "-m",
+      "/home/g1-2/.cache/huggingface/hub/models--unsloth--Qwen3.5-9B-GGUF/snapshots/3885219b6810b007914f3a7950a8d1b469d598a5/Qwen3.5-9B-Q8_0.gguf",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "37327",
+      "-c",
+      "8192",
+      "-ngl",
+      "999",
+      "-np",
+      "1",
+      "--seed",
+      "42",
+      "--jinja",
+      "--chat-template-kwargs",
+      "{\"enable_thinking\": false}",
+      "--reasoning-budget",
+      "0",
+      "--no-webui"
+    ],
+    "torch_version": "2.14.0+cu130",
+    "cuda_device": "NVIDIA A800 40GB Active MIG 3g.20gb",
+    "escenario": "boe",
+    "embedding": "harrier-oss-v1",
+    "top_k": 5,
+    "opciones": {
+      "temperature": 0.0,
+      "max_tokens": 512,
+      "max_model_len": 8192,
+      "seed": 42,
+      "chat_template_kwargs": {
+        "enable_thinking": false
+      },
+      "prefix_caching": false
+    },
+    "memoria": "caché KV de llama.cpp para 8192 tokens (F16)",
+    "prompt_sistema": "Eres un asistente que responde preguntas usando ÚNICAMENTE los fragmentos proporcionados.\n\nReglas:\n1. Responde solo con información que aparezca en los fragmentos. No uses conocimientos propios.\n2. Si la respuesta no está en los fragmentos, responde exactamente: \"No aparece en el documento\" y nada más.\n3. Cita siempre el artículo de donde sale la respuesta (aparece en la línea «Fuente» de cada fragmento).\n4. Responde en español y de forma breve.",
+    "prompt_usuario": "Fragmentos:\n\n{fragmentos}\n\nPregunta: {pregunta}",
+    "timestamp": "2026-11-22T21:49:44",
+    "tiempo_carga_s": 57.58,
+    "tokens_prompt_max": 2159,
+    "vram_base_gb": 0.279,
+    "vram_pico_gb": 8.765,
+    "vram_llm_gb": 8.486,
+    "vram_plan_b_con_embedding_gb": 9.59,
+    "cabe_en_8gb": false
+  },
+  "coste": {
+    "preguntas": [
+      "BOE_D01",
+      "BOE_D02",
+      "BOE_D03",
+      "BOE_C01",
+      "BOE_N01"
+    ],
+    "rondas_medidas": 3,
+    "mediana": {
+      "ttft_s": 1.1094,
+      "tokens_por_s": 66.6,
+      "latencia_total_s": 1.9193,
+      "tokens_salida": 67,
+      "tokens_por_s_llama_cpp": 61.4,
+      "prefill_ms_llama_cpp": 1077.86
+    },
+    "mediana_por_pregunta": {
+      "BOE_D01": {
+        "ttft_s": 0.9288,
+        "tokens_por_s": 66.72,
+        "latencia_total_s": 1.9193,
+        "tokens_salida": 67
+      },
+      "BOE_D02": {
+        "ttft_s": 0.9774,
+        "tokens_por_s": 60.21,
+        "latencia_total_s": 2.1945,
+        "tokens_salida": 70
+      },
+      "BOE_D03": {
+        "ttft_s": 1.1094,
+        "tokens_por_s": 70.7,
+        "latencia_total_s": 1.5395,
+        "tokens_salida": 32
+      },
+      "BOE_C01": {
+        "ttft_s": 1.2782,
+        "tokens_por_s": 62.52,
+        "latencia_total_s": 5.4043,
+        "tokens_salida": 262
+      },
+      "BOE_N01": {
+        "ttft_s": 1.4202,
+        "tokens_por_s": 708.805,
+        "latencia_total_s": 1.4219,
+        "tokens_salida": 6
+      }
+    },
+    "ejecuciones": {
+      "BOE_D01": [
+        {
+          "respuesta": "Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, y las fechas deben conocerse con una antelación de **dos meses**, al menos, desde el comienzo del disfrute.\n\n*   **Fuente:** Artículo 38. Vacaciones anuales. (Fragmento 2)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.9199,
+          "latencia_total_s": 1.9091,
+          "tokens_salida": 67,
+          "tokens_por_s": 66.72,
+          "tokens_prompt": 1511,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1511,
+            "prompt_ms": 832.937,
+            "prompt_per_token_ms": 0.5512488418266049,
+            "prompt_per_second": 1814.0627682525808,
+            "predicted_n": 67,
+            "predicted_ms": 1070.252,
+            "predicted_per_token_ms": 16.215939393939394,
+            "predicted_per_second": 61.667719378239894
+          }
+        },
+        {
+          "respuesta": "Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, y las fechas deben conocerse con una antelación de **dos meses**, al menos, desde el comienzo del disfrute.\n\n*   **Fuente:** Artículo 38. Vacaciones anuales. (Fragmento 2)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.9288,
+          "latencia_total_s": 1.9193,
+          "tokens_salida": 67,
+          "tokens_por_s": 66.63,
+          "tokens_prompt": 1511,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1511,
+            "prompt_ms": 838.855,
+            "prompt_per_token_ms": 0.5551654533421575,
+            "prompt_per_second": 1801.2648193072698,
+            "predicted_n": 67,
+            "predicted_ms": 1075.355,
+            "predicted_per_token_ms": 16.293257575757575,
+            "predicted_per_second": 61.3750807872749
+          }
+        },
+        {
+          "respuesta": "Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, y las fechas deben conocerse con una antelación de **dos meses**, al menos, desde el comienzo del disfrute.\n\n*   **Fuente:** Artículo 38. Vacaciones anuales. (Fragmento 2)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.9991,
+          "latencia_total_s": 1.9242,
+          "tokens_salida": 67,
+          "tokens_por_s": 71.35,
+          "tokens_prompt": 1511,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1511,
+            "prompt_ms": 838.286,
+            "prompt_per_token_ms": 0.554788881535407,
+            "prompt_per_second": 1802.4874565482426,
+            "predicted_n": 67,
+            "predicted_ms": 1079.276,
+            "predicted_per_token_ms": 16.352666666666668,
+            "predicted_per_second": 61.152105670838594
+          }
+        }
+      ],
+      "BOE_D02": [
+        {
+          "respuesta": "Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, salvo que la empresa tenga menos de veinticinco trabajadores, en cuyo caso no podrá exceder de tres meses.\n\n**Fuente:** Artículo 14. Periodo de prueba. (Fragmento 1)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.9774,
+          "latencia_total_s": 2.0138,
+          "tokens_salida": 70,
+          "tokens_por_s": 66.57,
+          "tokens_prompt": 1653,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1653,
+            "prompt_ms": 892.5,
+            "prompt_per_token_ms": 0.5399274047186933,
+            "prompt_per_second": 1852.1008403361345,
+            "predicted_n": 70,
+            "predicted_ms": 1115.912,
+            "predicted_per_token_ms": 16.172637681159422,
+            "predicted_per_second": 61.83283269648503
+          }
+        },
+        {
+          "respuesta": "Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, salvo que la empresa tenga menos de veinticinco trabajadores, en cuyo caso no podrá exceder de tres meses.\n\n**Fuente:** Artículo 14. Periodo de prueba. (Fragmento 1)",
+          "razonamiento_detectado": false,
+          "ttft_s": 0.9656,
+          "latencia_total_s": 2.1945,
+          "tokens_salida": 70,
+          "tokens_por_s": 56.15,
+          "tokens_prompt": 1653,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1653,
+            "prompt_ms": 1067.782,
+            "prompt_per_token_ms": 0.6459661222020568,
+            "prompt_per_second": 1548.0688005604143,
+            "predicted_n": 70,
+            "predicted_ms": 1120.956,
+            "predicted_per_token_ms": 16.24573913043478,
+            "predicted_per_second": 61.55460160791325
+          }
+        },
+        {
+          "respuesta": "Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, salvo que la empresa tenga menos de veinticinco trabajadores, en cuyo caso no podrá exceder de tres meses.\n\n**Fuente:** Artículo 14. Periodo de prueba. (Fragmento 1)",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.0588,
+          "latencia_total_s": 2.2049,
+          "tokens_salida": 70,
+          "tokens_por_s": 60.21,
+          "tokens_prompt": 1653,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1653,
+            "prompt_ms": 1077.859,
+            "prompt_per_token_ms": 0.6520623109497882,
+            "prompt_per_second": 1533.595767164351,
+            "predicted_n": 70,
+            "predicted_ms": 1120.317,
+            "predicted_per_token_ms": 16.236478260869564,
+            "predicted_per_second": 61.5897107693626
+          }
+        }
+      ],
+      "BOE_D03": [
+        {
+          "respuesta": "Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Artículo 35. Horas extraordinarias.",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.1094,
+          "latencia_total_s": 1.5367,
+          "tokens_salida": 32,
+          "tokens_por_s": 72.54,
+          "tokens_prompt": 1889,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1889,
+            "prompt_ms": 1026.92,
+            "prompt_per_token_ms": 0.5436315510852303,
+            "prompt_per_second": 1839.48116698477,
+            "predicted_n": 32,
+            "predicted_ms": 504.182,
+            "predicted_per_token_ms": 16.26393548387097,
+            "predicted_per_second": 61.485733326457506
+          }
+        },
+        {
+          "respuesta": "Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Artículo 35. Horas extraordinarias.",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.101,
+          "latencia_total_s": 1.5395,
+          "tokens_salida": 32,
+          "tokens_por_s": 70.7,
+          "tokens_prompt": 1889,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1889,
+            "prompt_ms": 1028.859,
+            "prompt_per_token_ms": 0.5446580201164637,
+            "prompt_per_second": 1836.0144587353564,
+            "predicted_n": 32,
+            "predicted_ms": 505.04,
+            "predicted_per_token_ms": 16.291612903225808,
+            "predicted_per_second": 61.381276730555996
+          }
+        },
+        {
+          "respuesta": "Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Artículo 35. Horas extraordinarias.",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.253,
+          "latencia_total_s": 1.745,
+          "tokens_salida": 32,
+          "tokens_por_s": 63.01,
+          "tokens_prompt": 1889,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 1889,
+            "prompt_ms": 1234.592,
+            "prompt_per_token_ms": 0.6535690841715194,
+            "prompt_per_second": 1530.0601332261995,
+            "predicted_n": 32,
+            "predicted_ms": 504.687,
+            "predicted_per_token_ms": 16.280225806451615,
+            "predicted_per_second": 61.42420946051711
+          }
+        }
+      ],
+      "BOE_C01": [
+        {
+          "respuesta": "Si el despido por causas objetivas se declara improcedente por un juez, la indemnización cambia de la prevista para la extinción por causas objetivas (20 días por año de servicio, máximo 12 mensualidades) a la del despido improcedente, que es de **treinta y tres días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año, hasta un máximo de **veinticuatro mensualidades**.\n\nAdemás, si el despido se formalizó con anterioridad al **12 de febrero de 2012**, la indemnización se calcula de forma mixta:\n*   Por el tiempo de servicio anterior a esa fecha: **cuarenta y cinco días de salario por año de servicio**.\n*   Por el tiempo de servicio posterior: **treinta y tres días de salario por año de servicio**.\n\nEl importe total no podrá ser superior a **setecientos veinte días de salario** (o **cuarenta y dos mensualidades** si el cálculo del periodo anterior supera ese límite).\n\n**Fuentes:**\n*   Artículo 56 (Fragmento 2).\n*   Disposición transitoria undécima (Fragmento 3).",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.2138,
+          "latencia_total_s": 5.3885,
+          "tokens_salida": 262,
+          "tokens_por_s": 62.52,
+          "tokens_prompt": 2111,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 2111,
+            "prompt_ms": 1144.332,
+            "prompt_per_token_ms": 0.5420805305542398,
+            "prompt_per_second": 1844.7443574067663,
+            "predicted_n": 262,
+            "predicted_ms": 4237.641,
+            "predicted_per_token_ms": 16.236172413793103,
+            "predicted_per_second": 61.590870958630056
+          }
+        },
+        {
+          "respuesta": "Si el despido por causas objetivas se declara improcedente por un juez, la indemnización cambia de la prevista para la extinción por causas objetivas (20 días por año de servicio, máximo 12 mensualidades) a la del despido improcedente, que es de **treinta y tres días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año, hasta un máximo de **veinticuatro mensualidades**.\n\nAdemás, si el despido se formalizó con anterioridad al **12 de febrero de 2012**, la indemnización se calcula de forma mixta:\n*   Por el tiempo de servicio anterior a esa fecha: **cuarenta y cinco días de salario por año de servicio**.\n*   Por el tiempo de servicio posterior: **treinta y tres días de salario por año de servicio**.\n\nEl importe total no podrá ser superior a **setecientos veinte días de salario** (o **cuarenta y dos mensualidades** si el cálculo del periodo anterior supera ese límite).\n\n**Fuentes:**\n*   Artículo 56 (Fragmento 2).\n*   Disposición transitoria undécima (Fragmento 3).",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.3802,
+          "latencia_total_s": 5.608,
+          "tokens_salida": 262,
+          "tokens_por_s": 61.73,
+          "tokens_prompt": 2111,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 2111,
+            "prompt_ms": 1337.6,
+            "prompt_per_token_ms": 0.633633349123638,
+            "prompt_per_second": 1578.1997607655503,
+            "predicted_n": 262,
+            "predicted_ms": 4263.165,
+            "predicted_per_token_ms": 16.333965517241378,
+            "predicted_per_second": 61.222120185355244
+          }
+        },
+        {
+          "respuesta": "Si el despido por causas objetivas se declara improcedente por un juez, la indemnización cambia de la prevista para la extinción por causas objetivas (20 días por año de servicio, máximo 12 mensualidades) a la del despido improcedente, que es de **treinta y tres días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año, hasta un máximo de **veinticuatro mensualidades**.\n\nAdemás, si el despido se formalizó con anterioridad al **12 de febrero de 2012**, la indemnización se calcula de forma mixta:\n*   Por el tiempo de servicio anterior a esa fecha: **cuarenta y cinco días de salario por año de servicio**.\n*   Por el tiempo de servicio posterior: **treinta y tres días de salario por año de servicio**.\n\nEl importe total no podrá ser superior a **setecientos veinte días de salario** (o **cuarenta y dos mensualidades** si el cálculo del periodo anterior supera ese límite).\n\n**Fuentes:**\n*   Artículo 56 (Fragmento 2).\n*   Disposición transitoria undécima (Fragmento 3).",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.2782,
+          "latencia_total_s": 5.4043,
+          "tokens_salida": 262,
+          "tokens_por_s": 63.26,
+          "tokens_prompt": 2111,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 2111,
+            "prompt_ms": 1140.261,
+            "prompt_per_token_ms": 0.5401520606347703,
+            "prompt_per_second": 1851.3305287122862,
+            "predicted_n": 262,
+            "predicted_ms": 4251.119,
+            "predicted_per_token_ms": 16.2878122605364,
+            "predicted_per_second": 61.39559960565677
+          }
+        }
+      ],
+      "BOE_N01": [
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.2291,
+          "latencia_total_s": 1.2351,
+          "tokens_salida": 6,
+          "tokens_por_s": 832.72,
+          "tokens_prompt": 2159,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 2159,
+            "prompt_ms": 1145.048,
+            "prompt_per_token_ms": 0.5303603520148217,
+            "prompt_per_second": 1885.5104764167093,
+            "predicted_n": 6,
+            "predicted_ms": 83.898,
+            "predicted_per_token_ms": 16.7796,
+            "predicted_per_second": 59.596176309328
+          }
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.4202,
+          "latencia_total_s": 1.4288,
+          "tokens_salida": 6,
+          "tokens_por_s": 584.89,
+          "tokens_prompt": 2159,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 2159,
+            "prompt_ms": 1330.657,
+            "prompt_per_token_ms": 0.6163302454840204,
+            "prompt_per_second": 1622.5067767275864,
+            "predicted_n": 6,
+            "predicted_ms": 84.362,
+            "predicted_per_token_ms": 16.8724,
+            "predicted_per_second": 59.26839098172163
+          }
+        },
+        {
+          "respuesta": "No aparece en el documento",
+          "razonamiento_detectado": false,
+          "ttft_s": 1.4911,
+          "latencia_total_s": 1.4219,
+          "tokens_salida": 6,
+          "tokens_por_s": null,
+          "tokens_prompt": 2159,
+          "finish_reason": "stop",
+          "timings_llama_cpp": {
+            "cache_n": 0,
+            "prompt_n": 2159,
+            "prompt_ms": 1330.621,
+            "prompt_per_token_ms": 0.6163135710977304,
+            "prompt_per_second": 1622.5506737079904,
+            "predicted_n": 6,
+            "predicted_ms": 85.014,
+            "predicted_per_token_ms": 17.0028,
+            "predicted_per_second": 58.813842425953375
+          }
+        }
+      ]
+    }
+  },
+  "respuestas": [
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D01",
+      "tipo": "directa",
+      "pregunta": "¿Cuántos días de descanso pagado al año me tocan como mínimo y con cuánta antelación me tienen que decir las fechas?",
+      "respuesta_esperada": "Al menos 30 días naturales de vacaciones retribuidas, que no se pueden cambiar por dinero. El trabajador debe conocer sus fechas como mínimo dos meses antes de empezar a disfrutarlas (art. 38).",
+      "chunks_contexto": [
+        "boe_39_p2",
+        "boe_40_p1",
+        "boe_39_p4",
+        "boe_39_p14",
+        "boe_36_p1"
+      ],
+      "gold_chunks": [
+        "boe_40_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas, y las fechas deben conocerse con una antelación de **dos meses**, al menos, desde el comienzo del disfrute.\n\n*   **Fuente:** Artículo 38. Vacaciones anuales. (Fragmento 2)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.3389,
+      "tokens_salida": 67,
+      "tokens_por_s": null,
+      "tokens_prompt": 1511,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1511,
+        "prompt_ms": 926.221,
+        "prompt_per_token_ms": 0.6129854401058902,
+        "prompt_per_second": 1631.3601181575455,
+        "predicted_n": 67,
+        "predicted_ms": 1074.383,
+        "predicted_per_token_ms": 16.278530303030305,
+        "predicted_per_second": 61.430607148474984
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D02",
+      "tipo": "directa",
+      "pregunta": "Me contratan como ingeniera y el convenio no dice nada del periodo de prueba. ¿Cuánto puede durar como máximo?",
+      "respuesta_esperada": "Seis meses, porque es técnica titulada (para el resto de trabajadores serían dos meses, o tres en empresas de menos de 25 trabajadores) (art. 14).",
+      "chunks_contexto": [
+        "boe_15_p2",
+        "boe_15_p3",
+        "boe_16_p4",
+        "boe_12_p7",
+        "boe_16_p3"
+      ],
+      "gold_chunks": [
+        "boe_15_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, salvo que la empresa tenga menos de veinticinco trabajadores, en cuyo caso no podrá exceder de tres meses.\n\n**Fuente:** Artículo 14. Periodo de prueba. (Fragmento 1)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.2231,
+      "tokens_salida": 70,
+      "tokens_por_s": null,
+      "tokens_prompt": 1653,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1653,
+        "prompt_ms": 1050.023,
+        "prompt_per_token_ms": 0.6352226255293405,
+        "prompt_per_second": 1574.251230687328,
+        "predicted_n": 70,
+        "predicted_ms": 1120.907,
+        "predicted_per_token_ms": 16.245028985507247,
+        "predicted_per_second": 61.55729244263797
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D03",
+      "tipo": "directa",
+      "pregunta": "¿Hay un tope de horas extra que se puedan hacer en un año?",
+      "respuesta_esperada": "Sí: no más de 80 horas extraordinarias al año (sin contar las compensadas con descanso en los cuatro meses siguientes ni las hechas para reparar siniestros) (art. 35).",
+      "chunks_contexto": [
+        "boe_37_p1",
+        "boe_13_p5",
+        "boe_38_p2",
+        "boe_36_p1",
+        "boe_13_p7"
+      ],
+      "gold_chunks": [
+        "boe_37_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Artículo 35. Horas extraordinarias.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.9212,
+      "tokens_salida": 32,
+      "tokens_por_s": null,
+      "tokens_prompt": 1889,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1889,
+        "prompt_ms": 1361.709,
+        "prompt_per_token_ms": 0.720862361037586,
+        "prompt_per_second": 1387.2273738368476,
+        "predicted_n": 32,
+        "predicted_ms": 505.882,
+        "predicted_per_token_ms": 16.318774193548386,
+        "predicted_per_second": 61.27911252031106
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D04",
+      "tipo": "directa",
+      "pregunta": "Si salgo de trabajar a las 23:00, ¿a qué hora es lo más pronto que me pueden hacer entrar al día siguiente?",
+      "respuesta_esperada": "A las 11:00: entre el final de una jornada y el comienzo de la siguiente deben pasar como mínimo doce horas (art. 34.3).",
+      "chunks_contexto": [
+        "boe_38_p2",
+        "boe_36_p1",
+        "boe_38_p1",
+        "boe_38_p3",
+        "boe_36_p2"
+      ],
+      "gold_chunks": [
+        "boe_36_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Lo más pronto que pueden hacerte entrar al día siguiente es a las 11:00.\n\n**Fuente:** Artículo 34. Jornada. (Fragmento 2, párrafo 3): \"Entre el final de una jornada y el comienzo de la siguiente mediarán, como mínimo, doce horas.\"",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.1247,
+      "tokens_salida": 70,
+      "tokens_por_s": null,
+      "tokens_prompt": 1635,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1635,
+        "prompt_ms": 889.758,
+        "prompt_per_token_ms": 0.544194495412844,
+        "prompt_per_second": 1837.578307809539,
+        "predicted_n": 70,
+        "predicted_ms": 1121.493,
+        "predicted_per_token_ms": 16.253521739130434,
+        "predicted_per_second": 61.5251276646399
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cuántas pagas extra tengo derecho a cobrar al año y cuándo?",
+      "respuesta_esperada": "Dos gratificaciones extraordinarias al año: una por Navidad y otra en el mes que fije el convenio o el acuerdo con los representantes. El convenio puede prorratearlas en las doce mensualidades (art. 31).",
+      "chunks_contexto": [
+        "boe_33_p1",
+        "boe_35_p3",
+        "boe_31_p1",
+        "boe_37_p1",
+        "boe_35_p4"
+      ],
+      "gold_chunks": [
+        "boe_33_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Tienes derecho a **dos gratificaciones extraordinarias al año**:\n1. Una con ocasión de las fiestas de **Navidad**.\n2. La otra en el **mes que se fije por convenio colectivo o por acuerdo** entre el empresario y los representantes legales de los trabajadores.\n\n**Fuente:** Artículo 31. Gratificaciones extraordinarias.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.6791,
+      "tokens_salida": 74,
+      "tokens_por_s": null,
+      "tokens_prompt": 1743,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1743,
+        "prompt_ms": 1438.042,
+        "prompt_per_token_ms": 0.8250384394721744,
+        "prompt_per_second": 1212.0647380257321,
+        "predicted_n": 74,
+        "predicted_ms": 1190.073,
+        "predicted_per_token_ms": 16.3023698630137,
+        "predicted_per_second": 61.340774893640976
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D06",
+      "tipo": "directa",
+      "pregunta": "Me caso el mes que viene. ¿Cuántos días libres pagados me corresponden?",
+      "respuesta_esperada": "Quince días naturales de permiso retribuido por matrimonio o registro de pareja de hecho, con aviso previo y justificación (art. 37.3.a).",
+      "chunks_contexto": [
+        "boe_39_p2",
+        "boe_40_p1",
+        "boe_39_p4",
+        "boe_39_p14",
+        "boe_39_p8"
+      ],
+      "gold_chunks": [
+        "boe_39_p4"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Te corresponden quince días naturales libres pagados por tu matrimonio.\n\nFuente: Artículo 37. Descanso semanal, fiestas y permisos. (Fragmento 3)",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.5575,
+      "tokens_salida": 40,
+      "tokens_por_s": null,
+      "tokens_prompt": 1536,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1536,
+        "prompt_ms": 855.359,
+        "prompt_per_token_ms": 0.5568743489583333,
+        "prompt_per_second": 1795.7372284619673,
+        "predicted_n": 40,
+        "predicted_ms": 630.387,
+        "predicted_per_token_ms": 16.16376923076923,
+        "predicted_per_second": 61.866758039109314
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D07",
+      "tipo": "directa",
+      "pregunta": "Quiero dejar la empresa un tiempo para hacer un máster y luego volver. ¿Qué antigüedad necesito y cuánto puede durar?",
+      "respuesta_esperada": "Es la excedencia voluntaria: hace falta al menos un año de antigüedad y dura entre cuatro meses y cinco años. No se puede volver a pedir hasta pasados cuatro años desde el final de la anterior (art. 46.2).",
+      "chunks_contexto": [
+        "boe_12_p6",
+        "boe_48_p2",
+        "boe_12_p7",
+        "boe_15_p2",
+        "boe_23_p1"
+      ],
+      "gold_chunks": [
+        "boe_48_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Para dejar la empresa un tiempo para hacer un máster y luego volver, necesitas tener **al menos una antigüedad en la empresa de un año**.\n\nLa duración de esta excedencia voluntaria puede ser **no menor a cuatro meses y no mayor a cinco años**.\n\n*Fuente: Artículo 46. Excedencias.*",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.5784,
+      "tokens_salida": 71,
+      "tokens_por_s": null,
+      "tokens_prompt": 1932,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1932,
+        "prompt_ms": 1394.95,
+        "prompt_per_token_ms": 0.7220238095238095,
+        "prompt_per_second": 1384.9958779884585,
+        "predicted_n": 71,
+        "predicted_ms": 1134.069,
+        "predicted_per_token_ms": 16.200985714285714,
+        "predicted_per_second": 61.72463932970569
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_D08",
+      "tipo": "directa",
+      "pregunta": "Me acaban de despedir y no estoy de acuerdo. ¿Cuánto tiempo tengo para reclamar?",
+      "respuesta_esperada": "Veinte días hábiles desde el despido; es un plazo de caducidad (art. 59.3).",
+      "chunks_contexto": [
+        "boe_60_p2",
+        "boe_63_p1",
+        "boe_57_p1",
+        "boe_136_p1",
+        "boe_43_p2"
+      ],
+      "gold_chunks": [
+        "boe_63_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despido caduca a los veinte días siguientes de aquel en que se hubiera producido.\n\nFuente: Artículo 59. Prescripción y caducidad.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.3276,
+      "tokens_salida": 53,
+      "tokens_por_s": null,
+      "tokens_prompt": 2063,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 2063,
+        "prompt_ms": 1092.095,
+        "prompt_per_token_ms": 0.5293722733882695,
+        "prompt_per_second": 1889.0298005210168,
+        "predicted_n": 53,
+        "predicted_ms": 841.847,
+        "predicted_per_token_ms": 16.189365384615385,
+        "predicted_per_second": 61.768943762940296
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_C01",
+      "tipo": "combinada",
+      "pregunta": "Me despiden por causas objetivas, pero luego un juez dice que el despido es improcedente. ¿Cómo cambia la indemnización?",
+      "respuesta_esperada": "Por causas objetivas son 20 días de salario por año trabajado con un máximo de 12 mensualidades (art. 53.1.b). Si se declara improcedente, la empresa elige entre readmitir o pagar 33 días por año con un máximo de 24 mensualidades (art. 56.1).",
+      "chunks_contexto": [
+        "boe_57_p4",
+        "boe_60_p2",
+        "boe_136_p1",
+        "boe_57_p1",
+        "boe_54_p1"
+      ],
+      "gold_chunks": [
+        "boe_57_p1",
+        "boe_60_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Si el despido por causas objetivas se declara improcedente por un juez, la indemnización cambia de la prevista para la extinción por causas objetivas (20 días por año de servicio, máximo 12 mensualidades) a la del despido improcedente, que es de **treinta y tres días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año, hasta un máximo de **veinticuatro mensualidades**.\n\nAdemás, si el despido se formalizó con anterioridad al **12 de febrero de 2012**, la indemnización se calcula de forma mixta:\n*   Por el tiempo de servicio anterior a esa fecha: **cuarenta y cinco días de salario por año de servicio**.\n*   Por el tiempo de servicio posterior: **treinta y tres días de salario por año de servicio**.\n\nEl importe total no podrá ser superior a **setecientos veinte días de salario** (o **cuarenta y dos mensualidades** si el cálculo del periodo anterior supera ese límite).\n\n**Fuentes:**\n*   Artículo 56 (Fragmento 2).\n*   Disposición transitoria undécima (Fragmento 3).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 5.544,
+      "tokens_salida": 262,
+      "tokens_por_s": null,
+      "tokens_prompt": 2111,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 2111,
+        "prompt_ms": 1266.835,
+        "prompt_per_token_ms": 0.6001113216485078,
+        "prompt_per_second": 1666.357497227342,
+        "predicted_n": 262,
+        "predicted_ms": 4223.449,
+        "predicted_per_token_ms": 16.1817969348659,
+        "predicted_per_second": 61.79783395040405
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_C02",
+      "tipo": "combinada",
+      "pregunta": "¿A partir de cuántas horas a la semana se considera que estoy haciendo horas extra, y cómo me las compensan si no hay nada pactado?",
+      "respuesta_esperada": "Son extra las horas por encima de la jornada máxima ordinaria, que es de 40 horas semanales de trabajo efectivo de promedio en cómputo anual (art. 34.1). Si no hay pacto, se compensan con descanso dentro de los cuatro meses siguientes; si se pagan, nunca por debajo del valor de la hora ordinaria (art. 35.1).",
+      "chunks_contexto": [
+        "boe_37_p1",
+        "boe_13_p7",
+        "boe_13_p5",
+        "boe_37_p2",
+        "boe_36_p1"
+      ],
+      "gold_chunks": [
+        "boe_36_p1",
+        "boe_37_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": true,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "No aparece en el documento.\n\n*Nota: Aunque el documento menciona que la duración máxima de la jornada ordinaria es de cuarenta horas semanales (Fragmento 5, Artículo 34.1) y que las horas extraordinarias son aquellas que se realizan sobre esa duración máxima (Fragmento 1, Artículo 35.1), no especifica un número fijo de horas a partir del cual se consideran \"horas extra\" en una semana concreta, sino que dependen de la jornada pactada. Además, indica que si no hay pacto, las horas extraordinarias se compensan mediante descanso dentro de los cuatro meses siguientes (Fragmento 1, Artículo 35.1), pero no detalla el mecanismo de compensación semanal.*",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.6025,
+      "tokens_salida": 155,
+      "tokens_por_s": null,
+      "tokens_prompt": 1743,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1743,
+        "prompt_ms": 947.995,
+        "prompt_per_token_ms": 0.543886976477338,
+        "prompt_per_second": 1838.6172922852968,
+        "predicted_n": 155,
+        "predicted_ms": 2497.199,
+        "predicted_per_token_ms": 16.215577922077923,
+        "predicted_per_second": 61.66909405297695
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_C03",
+      "tipo": "combinada",
+      "pregunta": "Un compañero ha faltado varias veces sin justificar. ¿Lo pueden despedir por eso y cómo se lo tienen que comunicar?",
+      "respuesta_esperada": "Sí: las faltas repetidas e injustificadas de asistencia o puntualidad son causa de despido disciplinario (art. 54.2.a). El despido debe notificarse por escrito, indicando los hechos que lo motivan y la fecha de efectos (art. 55.1).",
+      "chunks_contexto": [
+        "boe_59_p1",
+        "boe_57_p1",
+        "boe_55_p6",
+        "boe_58_p1",
+        "boe_54_p1"
+      ],
+      "gold_chunks": [
+        "boe_58_p1",
+        "boe_59_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Sí, pueden despedirlo por esa causa. Según el **Artículo 54**, se considera incumplimiento contractual las \"faltas repetidas e injustificadas de asistencia o puntualidad al trabajo\".\n\nPara la comunicación, el **Artículo 55** establece que el despido deberá ser \"notificado por escrito al trabajador, haciendo figurar los hechos que lo motivan y la fecha en que tendrá efectos\".",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.4957,
+      "tokens_salida": 89,
+      "tokens_por_s": null,
+      "tokens_prompt": 1888,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1888,
+        "prompt_ms": 1014.501,
+        "prompt_per_token_ms": 0.5373416313559322,
+        "prompt_per_second": 1861.0134440478619,
+        "predicted_n": 89,
+        "predicted_ms": 1428.115,
+        "predicted_per_token_ms": 16.228579545454547,
+        "predicted_per_second": 61.619687490153105
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_C04",
+      "tipo": "combinada",
+      "pregunta": "¿Qué indemnización me corresponde si dejo la empresa porque me trasladan a otra ciudad, y cuál si la dejo porque me cambian el horario y me perjudica?",
+      "respuesta_esperada": "Por traslado que obliga a cambiar de residencia: 20 días de salario por año con un máximo de 12 mensualidades (art. 40.1). Por modificación sustancial de horario que perjudica: 20 días por año con un máximo de nueve meses (art. 41.3).",
+      "chunks_contexto": [
+        "boe_42_p2",
+        "boe_42_p7",
+        "boe_60_p2",
+        "boe_43_p2",
+        "boe_42_p8"
+      ],
+      "gold_chunks": [
+        "boe_42_p2",
+        "boe_43_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Si te trasladan a otra ciudad y decides dejar la empresa, te corresponde una indemnización de **veinte días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año y con un máximo de doce mensualidades (Fuente: Artículo 40).\n\nSi te cambian el horario y te perjudica, te corresponde una indemnización de **veinte días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año y con un máximo de nueve meses (Fuente: Artículo 41).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.0294,
+      "tokens_salida": 117,
+      "tokens_por_s": null,
+      "tokens_prompt": 2012,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 2012,
+        "prompt_ms": 1074.951,
+        "prompt_per_token_ms": 0.5342698807157058,
+        "prompt_per_second": 1871.7132222771083,
+        "predicted_n": 117,
+        "predicted_ms": 1891.75,
+        "predicted_per_token_ms": 16.308189655172413,
+        "predicted_per_second": 61.31888463063301
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_N01",
+      "tipo": "sin_respuesta",
+      "pregunta": "Si me quedo en el paro, ¿cuánto dinero voy a cobrar al mes?",
+      "respuesta_esperada": "No aparece en el documento. El Estatuto no regula la cuantía de la prestación por desempleo.",
+      "chunks_contexto": [
+        "boe_35_p3",
+        "boe_49_p6",
+        "boe_29_p1",
+        "boe_35_p2",
+        "boe_60_p2"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "cortado_por_max_tokens": false,
+      "respuesta": "No aparece en el documento",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.2738,
+      "tokens_salida": 6,
+      "tokens_por_s": null,
+      "tokens_prompt": 2159,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 2159,
+        "prompt_ms": 1129.327,
+        "prompt_per_token_ms": 0.5230787401574803,
+        "prompt_per_second": 1911.7580647589227,
+        "predicted_n": 6,
+        "predicted_ms": 83.374,
+        "predicted_per_token_ms": 16.674799999999998,
+        "predicted_per_second": 59.97073428167055
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_N02",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿Cuántos días a la semana tengo derecho a teletrabajar?",
+      "respuesta_esperada": "No aparece en el documento. El art. 13 solo remite a la Ley 10/2021 de trabajo a distancia y el art. 34.8 permite solicitar adaptaciones, pero no fija un número de días.",
+      "chunks_contexto": [
+        "boe_39_p2",
+        "boe_39_p6",
+        "boe_39_p13",
+        "boe_39_p4",
+        "boe_36_p3"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "cortado_por_max_tokens": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.2629,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 1878,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1878,
+        "prompt_ms": 1009.937,
+        "prompt_per_token_ms": 0.537772630457934,
+        "prompt_per_second": 1859.5219305758676,
+        "predicted_n": 7,
+        "predicted_ms": 99.34,
+        "predicted_per_token_ms": 16.55666666666667,
+        "predicted_per_second": 60.398630964364806
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "retrieval",
+      "id": "BOE_N03",
+      "tipo": "sin_respuesta",
+      "pregunta": "¿De cuánto es la multa para una empresa que no lleva el registro de la jornada?",
+      "respuesta_esperada": "No aparece en el documento. Las infracciones del empresario se rigen por la Ley sobre Infracciones y Sanciones en el Orden Social (art. 60.1); el Estatuto no da importes.",
+      "chunks_contexto": [
+        "boe_36_p6",
+        "boe_62_p1",
+        "boe_64_p1",
+        "boe_36_p1",
+        "boe_19_p1"
+      ],
+      "gold_chunks": [],
+      "gold_en_contexto": null,
+      "abstiene_auto": true,
+      "cita_auto": false,
+      "cortado_por_max_tokens": false,
+      "respuesta": "No aparece en el documento.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.8058,
+      "tokens_salida": 7,
+      "tokens_por_s": null,
+      "tokens_prompt": 1148,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 1148,
+        "prompt_ms": 658.161,
+        "prompt_per_token_ms": 0.5733109756097561,
+        "prompt_per_second": 1744.254065494613,
+        "predicted_n": 7,
+        "predicted_ms": 99.132,
+        "predicted_per_token_ms": 16.522000000000002,
+        "predicted_per_second": 60.525360125892746
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D01",
+      "tipo": "directa",
+      "pregunta": "¿Cuántos días de descanso pagado al año me tocan como mínimo y con cuánta antelación me tienen que decir las fechas?",
+      "respuesta_esperada": "Al menos 30 días naturales de vacaciones retribuidas, que no se pueden cambiar por dinero. El trabajador debe conocer sus fechas como mínimo dos meses antes de empezar a disfrutarlas (art. 38).",
+      "chunks_contexto": [
+        "boe_40_p1"
+      ],
+      "gold_chunks": [
+        "boe_40_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Como mínimo te tocan **treinta días naturales** de vacaciones anuales retribuidas y las fechas deben comunicarte con una antelación de **dos meses, al menos**, antes del comienzo del disfrute.\n\n*   **Fuente:** Artículo 38. Vacaciones anuales.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.2539,
+      "tokens_salida": 60,
+      "tokens_por_s": null,
+      "tokens_prompt": 367,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 367,
+        "prompt_ms": 261.999,
+        "prompt_per_token_ms": 0.7138937329700273,
+        "prompt_per_second": 1400.7687052240656,
+        "predicted_n": 60,
+        "predicted_ms": 951.877,
+        "predicted_per_token_ms": 16.13350847457627,
+        "predicted_per_second": 61.9827981976663
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D02",
+      "tipo": "directa",
+      "pregunta": "Me contratan como ingeniera y el convenio no dice nada del periodo de prueba. ¿Cuánto puede durar como máximo?",
+      "respuesta_esperada": "Seis meses, porque es técnica titulada (para el resto de trabajadores serían dos meses, o tres en empresas de menos de 25 trabajadores) (art. 14).",
+      "chunks_contexto": [
+        "boe_15_p2"
+      ],
+      "gold_chunks": [
+        "boe_15_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Como ingeniera (técnica titulada), el periodo de prueba no podrá exceder de seis meses, ya que el convenio no establece límites diferentes.\n\nFuente: Artículo 14. Periodo de prueba.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.4016,
+      "tokens_salida": 47,
+      "tokens_por_s": null,
+      "tokens_prompt": 554,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 554,
+        "prompt_ms": 628.489,
+        "prompt_per_token_ms": 1.1344566787003612,
+        "prompt_per_second": 881.4792303445247,
+        "predicted_n": 47,
+        "predicted_ms": 743.244,
+        "predicted_per_token_ms": 16.157478260869567,
+        "predicted_per_second": 61.8908460747749
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D03",
+      "tipo": "directa",
+      "pregunta": "¿Hay un tope de horas extra que se puedan hacer en un año?",
+      "respuesta_esperada": "Sí: no más de 80 horas extraordinarias al año (sin contar las compensadas con descanso en los cuatro meses siguientes ni las hechas para reparar siniestros) (art. 35).",
+      "chunks_contexto": [
+        "boe_37_p1"
+      ],
+      "gold_chunks": [
+        "boe_37_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Sí, el número de horas extraordinarias no podrá ser superior a ochenta al año.\n\nFuente: Artículo 35. Horas extraordinarias.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.8685,
+      "tokens_salida": 32,
+      "tokens_por_s": null,
+      "tokens_prompt": 488,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 488,
+        "prompt_ms": 321.755,
+        "prompt_per_token_ms": 0.6593340163934426,
+        "prompt_per_second": 1516.6819474444842,
+        "predicted_n": 32,
+        "predicted_ms": 504.028,
+        "predicted_per_token_ms": 16.258967741935486,
+        "predicted_per_second": 61.504519590181495
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D04",
+      "tipo": "directa",
+      "pregunta": "Si salgo de trabajar a las 23:00, ¿a qué hora es lo más pronto que me pueden hacer entrar al día siguiente?",
+      "respuesta_esperada": "A las 11:00: entre el final de una jornada y el comienzo de la siguiente deben pasar como mínimo doce horas (art. 34.3).",
+      "chunks_contexto": [
+        "boe_36_p1"
+      ],
+      "gold_chunks": [
+        "boe_36_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Lo más pronto que pueden hacerte entrar al día siguiente es a las 11:00.\n\n**Fuente:** Artículo 34. Jornada (punto 3).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.9625,
+      "tokens_salida": 39,
+      "tokens_por_s": null,
+      "tokens_prompt": 492,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 492,
+        "prompt_ms": 316.409,
+        "prompt_per_token_ms": 0.6431077235772358,
+        "prompt_per_second": 1554.9494483405972,
+        "predicted_n": 39,
+        "predicted_ms": 616.544,
+        "predicted_per_token_ms": 16.224842105263157,
+        "predicted_per_second": 61.63388176675144
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D05",
+      "tipo": "directa",
+      "pregunta": "¿Cuántas pagas extra tengo derecho a cobrar al año y cuándo?",
+      "respuesta_esperada": "Dos gratificaciones extraordinarias al año: una por Navidad y otra en el mes que fije el convenio o el acuerdo con los representantes. El convenio puede prorratearlas en las doce mensualidades (art. 31).",
+      "chunks_contexto": [
+        "boe_33_p1"
+      ],
+      "gold_chunks": [
+        "boe_33_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Tienes derecho a dos gratificaciones extraordinarias al año: una con ocasión de las fiestas de Navidad y la otra en el mes que se fije por convenio colectivo o por acuerdo entre el empresario y los representantes legales de los trabajadores.\n\nFuente: Artículo 31. Gratificaciones extraordinarias.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.2421,
+      "tokens_salida": 62,
+      "tokens_por_s": null,
+      "tokens_prompt": 278,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 278,
+        "prompt_ms": 224.033,
+        "prompt_per_token_ms": 0.8058741007194244,
+        "prompt_per_second": 1240.8886190873666,
+        "predicted_n": 62,
+        "predicted_ms": 988.109,
+        "predicted_per_token_ms": 16.198508196721313,
+        "predicted_per_second": 61.734079944621485
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D06",
+      "tipo": "directa",
+      "pregunta": "Me caso el mes que viene. ¿Cuántos días libres pagados me corresponden?",
+      "respuesta_esperada": "Quince días naturales de permiso retribuido por matrimonio o registro de pareja de hecho, con aviso previo y justificación (art. 37.3.a).",
+      "chunks_contexto": [
+        "boe_39_p4"
+      ],
+      "gold_chunks": [
+        "boe_39_p4"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Te corresponden quince días naturales de ausencia con derecho a remuneración por motivo de matrimonio, según el Artículo 37.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 0.7552,
+      "tokens_salida": 27,
+      "tokens_por_s": null,
+      "tokens_prompt": 430,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 430,
+        "prompt_ms": 301.993,
+        "prompt_per_token_ms": 0.7023093023255814,
+        "prompt_per_second": 1423.8740633061032,
+        "predicted_n": 27,
+        "predicted_ms": 421.502,
+        "predicted_per_token_ms": 16.211615384615385,
+        "predicted_per_second": 61.684167572158614
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D07",
+      "tipo": "directa",
+      "pregunta": "Quiero dejar la empresa un tiempo para hacer un máster y luego volver. ¿Qué antigüedad necesito y cuánto puede durar?",
+      "respuesta_esperada": "Es la excedencia voluntaria: hace falta al menos un año de antigüedad y dura entre cuatro meses y cinco años. No se puede volver a pedir hasta pasados cuatro años desde el final de la anterior (art. 46.2).",
+      "chunks_contexto": [
+        "boe_48_p2"
+      ],
+      "gold_chunks": [
+        "boe_48_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Para dejar la empresa un tiempo y luego volver, necesitas tener al menos **un año de antigüedad** en la empresa. El plazo de la excedencia voluntaria puede durar **no menor a cuatro meses y no mayor a cinco años**.\n\n**Fuente:** Artículo 46. Excedencias.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.4706,
+      "tokens_salida": 66,
+      "tokens_por_s": null,
+      "tokens_prompt": 558,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 558,
+        "prompt_ms": 388.81,
+        "prompt_per_token_ms": 0.6967921146953405,
+        "prompt_per_second": 1435.148272935367,
+        "predicted_n": 66,
+        "predicted_ms": 1050.953,
+        "predicted_per_token_ms": 16.168507692307692,
+        "predicted_per_second": 61.84862691290667
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_D08",
+      "tipo": "directa",
+      "pregunta": "Me acaban de despedir y no estoy de acuerdo. ¿Cuánto tiempo tengo para reclamar?",
+      "respuesta_esperada": "Veinte días hábiles desde el despido; es un plazo de caducidad (art. 59.3).",
+      "chunks_contexto": [
+        "boe_63_p1"
+      ],
+      "gold_chunks": [
+        "boe_63_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Tienes veinte días hábiles para reclamar, ya que el ejercicio de la acción contra el despido caducará a los veinte días siguientes de aquel en que se hubiera producido.\n\nFuente: Artículo 59. Prescripción y caducidad.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.2207,
+      "tokens_salida": 54,
+      "tokens_por_s": null,
+      "tokens_prompt": 504,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 504,
+        "prompt_ms": 321.16,
+        "prompt_per_token_ms": 0.6372222222222222,
+        "prompt_per_second": 1569.3112467306014,
+        "predicted_n": 54,
+        "predicted_ms": 864.244,
+        "predicted_per_token_ms": 16.306490566037738,
+        "predicted_per_second": 61.32527388098731
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_C01",
+      "tipo": "combinada",
+      "pregunta": "Me despiden por causas objetivas, pero luego un juez dice que el despido es improcedente. ¿Cómo cambia la indemnización?",
+      "respuesta_esperada": "Por causas objetivas son 20 días de salario por año trabajado con un máximo de 12 mensualidades (art. 53.1.b). Si se declara improcedente, la empresa elige entre readmitir o pagar 33 días por año con un máximo de 24 mensualidades (art. 56.1).",
+      "chunks_contexto": [
+        "boe_57_p1",
+        "boe_60_p2"
+      ],
+      "gold_chunks": [
+        "boe_57_p1",
+        "boe_60_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Si el despido es declarado improcedente por un juez, la indemnización cambia de la siguiente manera:\n\n*   **Indemnización original (causas objetivas):** Veinte días por año de servicio, con un máximo de doce mensualidades (Fuente: Artículo 53).\n*   **Indemnización por despido improcedente:** Treinta y tres días de salario por año de servicio, con un máximo de veinticuatro mensualidades (Fuente: Artículo 56).\n\nAdemás, si se opta por la indemnización en lugar de la readmisión, la extinción del contrato se entiende producida en la fecha del cese efectivo en el trabajo (Fuente: Artículo 56).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 3.2267,
+      "tokens_salida": 155,
+      "tokens_por_s": null,
+      "tokens_prompt": 970,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 970,
+        "prompt_ms": 703.017,
+        "prompt_per_token_ms": 0.724759793814433,
+        "prompt_per_second": 1379.767487841688,
+        "predicted_n": 155,
+        "predicted_ms": 2489.847,
+        "predicted_per_token_ms": 16.167837662337664,
+        "predicted_per_second": 61.85119005304342
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_C02",
+      "tipo": "combinada",
+      "pregunta": "¿A partir de cuántas horas a la semana se considera que estoy haciendo horas extra, y cómo me las compensan si no hay nada pactado?",
+      "respuesta_esperada": "Son extra las horas por encima de la jornada máxima ordinaria, que es de 40 horas semanales de trabajo efectivo de promedio en cómputo anual (art. 34.1). Si no hay pacto, se compensan con descanso dentro de los cuatro meses siguientes; si se pagan, nunca por debajo del valor de la hora ordinaria (art. 35.1).",
+      "chunks_contexto": [
+        "boe_36_p1",
+        "boe_37_p1"
+      ],
+      "gold_chunks": [
+        "boe_36_p1",
+        "boe_37_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Se consideran horas extraordinarias aquellas que se realicen sobre la duración máxima de la jornada ordinaria de trabajo, que es de cuarenta horas semanales (Artículo 34). Si no hay nada pactado, las horas extraordinarias realizadas deberán ser compensadas mediante descanso dentro de los cuatro meses siguientes a su realización (Artículo 35).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.7284,
+      "tokens_salida": 72,
+      "tokens_por_s": null,
+      "tokens_prompt": 828,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 828,
+        "prompt_ms": 518.279,
+        "prompt_per_token_ms": 0.6259408212560387,
+        "prompt_per_second": 1597.5951176875776,
+        "predicted_n": 72,
+        "predicted_ms": 1147.281,
+        "predicted_per_token_ms": 16.158887323943663,
+        "predicted_per_second": 61.88544916197514
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_C03",
+      "tipo": "combinada",
+      "pregunta": "Un compañero ha faltado varias veces sin justificar. ¿Lo pueden despedir por eso y cómo se lo tienen que comunicar?",
+      "respuesta_esperada": "Sí: las faltas repetidas e injustificadas de asistencia o puntualidad son causa de despido disciplinario (art. 54.2.a). El despido debe notificarse por escrito, indicando los hechos que lo motivan y la fecha de efectos (art. 55.1).",
+      "chunks_contexto": [
+        "boe_58_p1",
+        "boe_59_p1"
+      ],
+      "gold_chunks": [
+        "boe_58_p1",
+        "boe_59_p1"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Sí, pueden despedirlo porque las faltas repetidas e injustificadas de asistencia se consideran incumplimientos contractuales que permiten el despido disciplinario. Se lo tienen que comunicar por escrito, haciendo figurar los hechos que lo motivan y la fecha en que tendrá efectos.\n\nFuente: Artículo 54 y Artículo 55.",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 1.6882,
+      "tokens_salida": 72,
+      "tokens_por_s": null,
+      "tokens_prompt": 795,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 795,
+        "prompt_ms": 502.136,
+        "prompt_per_token_ms": 0.6316176100628931,
+        "prompt_per_second": 1583.2364140392244,
+        "predicted_n": 72,
+        "predicted_ms": 1145.793,
+        "predicted_per_token_ms": 16.13792957746479,
+        "predicted_per_second": 61.96581756041449
+      }
+    },
+    {
+      "modelo": "qwen3.5-9b-q8",
+      "escenario": "boe",
+      "modo": "oraculo",
+      "id": "BOE_C04",
+      "tipo": "combinada",
+      "pregunta": "¿Qué indemnización me corresponde si dejo la empresa porque me trasladan a otra ciudad, y cuál si la dejo porque me cambian el horario y me perjudica?",
+      "respuesta_esperada": "Por traslado que obliga a cambiar de residencia: 20 días de salario por año con un máximo de 12 mensualidades (art. 40.1). Por modificación sustancial de horario que perjudica: 20 días por año con un máximo de nueve meses (art. 41.3).",
+      "chunks_contexto": [
+        "boe_42_p2",
+        "boe_43_p2"
+      ],
+      "gold_chunks": [
+        "boe_42_p2",
+        "boe_43_p2"
+      ],
+      "gold_en_contexto": true,
+      "abstiene_auto": false,
+      "cita_auto": true,
+      "cortado_por_max_tokens": false,
+      "respuesta": "Si te trasladan a otra ciudad y decides dejar la empresa, te corresponde una indemnización de **veinte días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año y con un máximo de doce mensualidades (Fuente: Artículo 40).\n\nSi te cambian el horario y te perjudica, te corresponde una indemnización de **veinte días de salario por año de servicio**, prorrateándose por meses los periodos inferiores a un año y con un máximo de nueve meses (Fuente: Artículo 41).",
+      "razonamiento_detectado": false,
+      "ttft_s": null,
+      "latencia_total_s": 2.4507,
+      "tokens_salida": 117,
+      "tokens_por_s": null,
+      "tokens_prompt": 902,
+      "finish_reason": "stop",
+      "timings_llama_cpp": {
+        "cache_n": 0,
+        "prompt_n": 902,
+        "prompt_ms": 543.826,
+        "prompt_per_token_ms": 0.6029113082039912,
+        "prompt_per_second": 1658.618749379397,
+        "predicted_n": 117,
+        "predicted_ms": 1870.259,
+        "predicted_per_token_ms": 16.122922413793102,
+        "predicted_per_second": 62.02349514158199
+      }
+    }
+  ]
+}

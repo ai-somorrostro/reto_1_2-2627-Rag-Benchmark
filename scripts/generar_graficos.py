@@ -4,7 +4,7 @@ Genera figuras PNG/SVG en results/graficos/:
   1. embeddings_comparativa.png: Recall@5 y MRR (BOE vs Debian)
   2. llms_calidad.png: Corrección media y Fidelidad (BOE vs Debian)
   3. llms_coste_velocidad.png: Velocidad de generación (tokens/s) y TTFT
-  4. llms_vram_plan_b.png: VRAM pico frente al límite del Plan B (8 GB)
+  4. llms_vram_plan_b.png: VRAM (LLM + embedding) frente al límite del Plan B (8 GB): vLLM FP8 y llama.cpp GGUF
   5. retrieval_vs_oraculo.png: Corrección con retrieval vs oráculo
 """
 
@@ -176,29 +176,45 @@ def grafico_llm_coste():
 # 4. LLMs: VRAM Pico vs Plan B (8 GB)
 # ---------------------------------------------------------------------------
 def grafico_vram_plan_b():
-    modelos = ["lfm3-1.7b\n(1.7B)", "llama3.2-3b\n(3B)", "nemotron-bolt\n(8B)", "qwen3.5-9b\n(9B)"]
-    vram_pico = [5.36, 7.07, 14.80, 14.27]
-    
-    x = np.arange(len(modelos))
-    fig, ax = plt.subplots(figsize=(8, 5))
-    
-    colores = ["#2a9d8f" if v <= 8.0 else "#e76f51" for v in vram_pico]
-    bars = ax.bar(x, vram_pico, color=colores, width=0.5)
-    ax.axhline(8.0, color="crimson", linestyle="--", lw=2, label="Límite Plan B (8 GB VRAM)")
-    ax.set_title("VRAM Pico por Modelo (vLLM FP8 + 2GB KV Cache)")
+    """VRAM del LLM + embedding (~1,1 GB) frente al límite de 8 GB.
+    vLLM FP8: Tabla C de results/llms/tablas_b_c.md. llama.cpp GGUF: results/llms/plan_b/tablas_b_c.md."""
+    EMB = 1.1
+    # (etiqueta, VRAM del LLM, cumple los umbrales de calidad en los dos escenarios)
+    datos = [
+        ("lfm3-1.7b\nvLLM FP8", 5.36, False),
+        ("llama3.2-3b\nvLLM FP8", 7.07, False),
+        ("nemotron\nvLLM FP8", 14.80, True),
+        ("qwen3.5-9b\nvLLM FP8", 14.27, True),
+        ("nemotron\nGGUF Q4", 3.47, True),
+        ("qwen3.5-9b\nGGUF Q4", 5.38, True),
+        ("nemotron\nGGUF Q8", 5.19, True),
+        ("qwen3.5-9b\nGGUF Q8", 8.49, True),
+    ]
+    total = [v + EMB for _, v, _ in datos]
+    colores = ["#e76f51" if t > 8.0 else ("#2a9d8f" if ok else "#adb5bd") for t, (_, _, ok) in zip(total, datos)]
+
+    x = np.arange(len(datos))
+    fig, ax = plt.subplots(figsize=(11, 5.2))
+    bars = ax.bar(x, total, color=colores, width=0.6)
+    ax.axhline(8.0, color="crimson", linestyle="--", lw=2)
+    ax.text(7.45, 8.25, "límite Plan B: 8 GB", color="crimson", ha="right", fontweight="bold")
+    ax.axvline(3.5, color="#6c757d", lw=1)
+    ax.text(1.5, 17.3, "Fase 3: vLLM 0.34 (FP8)", ha="center", color="#495057", fontweight="bold")
+    ax.text(5.5, 17.3, "Plan B: llama.cpp b12633 (GGUF)", ha="center", color="#495057", fontweight="bold")
+    ax.set_title("VRAM del LLM + embedding del retrieval (~1,1 GB)", pad=26)
     ax.set_xticks(x)
-    ax.set_xticklabels(modelos)
+    ax.set_xticklabels([d[0] for d in datos])
     ax.set_ylabel("VRAM (GB)")
-    ax.set_ylim(0, 17)
-    
-    for b in bars:
-        ax.text(b.get_x() + b.get_width()/2, b.get_height() + 0.3, f"{b.get_height():.2f} GB",
-                 ha="center", va="bottom", fontweight="bold")
-                 
-    ax.text(2.5, 8.5, "Los modelos que superan la calidad (≥1.5)\nno caben en 8 GB de VRAM",
-            color="crimson", fontweight="bold", bbox=dict(boxstyle="round,pad=0.5", facecolor="#ffebee", edgecolor="crimson"))
-    ax.legend(loc="upper left")
-    
+    ax.set_ylim(0, 18.5)
+    for b, t in zip(bars, total):
+        ax.text(b.get_x() + b.get_width() / 2, t + 0.25, f"{t:.1f}", ha="center", va="bottom", fontweight="bold")
+
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color="#2a9d8f", label="Cumple calidad y cabe en 8 GB"),
+                       Patch(color="#adb5bd", label="Cabe, pero no cumple calidad"),
+                       Patch(color="#e76f51", label="No cabe en 8 GB")],
+              loc="upper left", bbox_to_anchor=(0.0, 0.93), fontsize=9)
+
     plt.tight_layout()
     p = os.path.join(DIR_OUT, "llms_vram_plan_b.png")
     plt.savefig(p, dpi=200)

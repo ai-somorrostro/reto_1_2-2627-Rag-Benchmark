@@ -77,18 +77,38 @@ Solo cumple **Nemotron**. Qwen empata en todo lo de prioridad 1–3, pero solo c
 > **Debian:** «Para el manual de Debian usaría **bge-m3 + Nemotron 3.5 Bolt E4B (FP8, vLLM)** porque bge-m3 es el único embedding con Recall@5 ≥ 0,80 (0,83), y Nemotron es el único LLM que cumple todos los umbrales: corrección 1,53/2, 100 % fiel, abstención 3 de 3 y 100 % de citas correctas, con 1,10 s de latencia y 14,8 GB de VRAM.»
  
 ### Plan B: solo 8 GB de VRAM
- 
-Solo caben los dos LLM pequeños, y hay que sumar el embedding (~1,1 GB):
- 
-| LLM | VRAM LLM + embedding | BOE: corrección / fieles | Debian: corrección / fieles |
+
+**1. Con el stack de la Fase 3 (vLLM, FP8) no cabe ningún modelo que cumpla.** Solo caben los dos pequeños, y ninguno pasa los umbrales:
+
+| LLM (vLLM, FP8) | VRAM LLM + embedding | BOE: corrección / falsas abst. | Debian: corrección / falsas abst. |
 |---|---|---|---|
-| LFM3-1.7B | 5,4 + 1,1 ≈ 6,5 GB ✅ | 0,93 / 93 % | 0,93 / 93 % |
-| Llama-3.2-3B | 7,1 + 1,1 ≈ 8,2 GB ⚠️ (cabe bajando la caché KV a 1 GB) | 0,93 / 100 % | 1,07 / 87 % |
- 
-> **Plan B (BOE y Debian):** «Con 8 GB **no desplegaríamos ninguno de los modelos medidos**, porque ninguno cumple los umbrales: LFM3 se abstiene en 11–12 de 12 preguntas con respuesta y Llama-3.2-3B en 5–6, y en Debian Llama además inventa datos (87 % fiel). Lo siguiente que probaríamos es Qwen3.5-9B o Nemotron en cuantización de 4 bits (~5–6 GB de pesos), que no hemos medido.»
- 
+| LFM3-1.7B | 5,4 + 1,1 ≈ 6,5 GB ✅ | 0,93 ❌ / 11 de 12 ❌ | 0,93 ❌ / 12 de 12 ❌ |
+| Llama-3.2-3B | 7,1 + 1,1 ≈ 8,2 GB ⚠️ (cabe bajando la caché KV a 1 GB) | 0,93 ❌ / 6 de 12 ❌ | 1,07 ❌ / 5 de 12 ❌ (y 87 % fiel) |
+
+**2. Cuantizar a 4 bits en vLLM tampoco basta.** Las versiones AWQ / W4A16 publicadas solo cuantizan las capas del transformer y dejan los embeddings en BF16, que en estos modelos son enormes (vocabulario de ~250k tokens). Leyendo las cabeceras de los safetensors: `cyankiwi/Qwen3.5-9B-AWQ-4bit` pesa ~8,0 GB solo de pesos de texto (2 GB de `embed_tokens` + 2 GB de `lm_head`) y `turintech/Nemotron-3.5-Bolt-E4B-Artemis-W4A16` ~10,3 GB (5,8 GB son los embeddings por capa). Sin caché KV ni embedding del retrieval ya superan los 8 GB, así que no se midieron.
+
+**3. Con GGUF en llama.cpp sí caben.** En GGUF también se cuantizan los embeddings, y llama.cpp deja las tablas de embeddings de entrada en la RAM de la CPU. Medido con `scripts/benchmark_plan_b_llamacpp.py` (llama.cpp b12633, mismo top-5, mismo prompt y mismos parámetros que la Fase 3; resultados en `results/llms/plan_b/tablas_b_c.md`):
+
+| LLM (llama.cpp) | VRAM LLM + embedding | BOE: corr. / fieles / falsas abst. / formato | Debian: corr. / fieles / falsas abst. / formato | Latencia BOE / Debian | ¿Cumple? |
+|---|---|---|---|---|---|
+| **Nemotron E4B Q4_K_M** (GGUF oficial de NVIDIA) | **3,5 + 1,1 ≈ 4,6 GB** ✅ | 1,60 / 100 % / 1 de 12 / 100 % | 1,53 / 100 % / 3 de 12 / 100 % | **0,76 / 0,75 s** | **Sí** |
+| Qwen3.5-9B Q4_K_M (Unsloth) | 5,4 + 1,1 ≈ 6,5 GB ✅ | **1,87** / 100 % / 1 de 12 / 93 % | 1,53 / 100 % / 3 de 12 / 87 % | 1,64 / 1,76 s | Sí |
+| Nemotron E4B Q8_0 (extra) | 5,2 + 1,1 ≈ 6,3 GB ✅ | 1,60 / 100 % / 1 de 12 / 100 % | 1,53 / 100 % / 3 de 12 / 100 % | 0,84 / 0,69 s | Sí |
+| Qwen3.5-9B Q8_0 (extra) | 8,5 + 1,1 ≈ 9,6 GB ❌ | 1,80 / 100 % / 1 de 12 / 93 % | 1,53 / 100 % / 3 de 12 / 80 % | 1,92 / 2,95 s | No (VRAM) |
+
+Abstención correcta: 3 de 3 en todos. En los dos escenarios cumplen Nemotron y Qwen en Q4, y **Nemotron Q4 es más barato en las tres métricas de coste**: menos VRAM (3,5 frente a 5,4 GB), más tokens/s (93 frente a 86 en el BOE) y menos latencia (0,76 frente a 1,64 s). Pasar de Q8 a Q4 no cambia la calidad de ninguno de los dos (las diferencias son de una pregunta).
+
+> **Plan B (BOE y Debian):** «Con 8 GB de VRAM usaría el mismo embedding de cada escenario (harrier en el BOE, bge-m3 en Debian) + **Nemotron 3.5 Bolt E4B en GGUF Q4_K_M con llama.cpp**, porque cumple todos los umbrales en los dos escenarios (BOE: 1,60/2, 100 % fiel, 1 falsa abstención, 100 % de citas; Debian: 1,53/2, 100 % fiel, 3 falsas abstenciones, 100 % de citas) y es el más barato de los que cumplen: ~4,6 GB con el embedding, 0,75 s de latencia y ~90 tok/s.»
+
+Matices:
+- En el BOE el Plan B pierde calidad frente a la decisión principal (1,60 de Nemotron frente a 1,87 de Qwen). Si se prefiere la mejor nota, Qwen3.5-9B Q4 también cumple y cabe (6,5 GB).
+- Es otro stack: las cifras de coste no se comparan con las de vLLM FP8, solo entre modelos del Plan B (todos con llama.cpp).
+- llama.cpp guarda las tablas de embeddings de entrada en la RAM del sistema, así que el equipo necesita RAM suficiente (el GGUF de Nemotron ocupa 6,2 GB en disco).
+- La VRAM del LLM es el pico de la instancia menos lo que había antes de arrancar llama-server, con la caché KV para 8192 tokens. El embedding (~1,1 GB) se suma sin medir juntos.
+- Las 216 respuestas del Plan B las puntuó una IA con los criterios de `seleccion_llms.md` §7 (marcadas `[puntuado IA]` en `results/llms/plan_b/puntuacion_*.csv`); falta la revisión a mano del grupo. El 87 % de formato de Qwen Q4 en Debian depende de una cita dudosa (`DEB_C02`); con 0 quedaría en el 80 % y seguiría cumpliendo. Ninguna de las dos cambia la decisión, porque gana Nemotron por coste.
+
 ---
- 
+
 ## 6. Sensibilidad: qué cambia según los umbrales añadidos
  
 - **Sin el umbral de formato (≥ 80 %):** en Debian cumplirían Nemotron y Qwen, y el coste no da un ganador claro: Qwen gana en VRAM (14,3 frente a 14,8 GB) y en tokens/s (45 frente a 27), y Nemotron en latencia (1,10 frente a 3,23 s). Por 2 de 3 métricas sería Qwen. Mantenemos el umbral porque citar el artículo o la sección es un requisito explícito del enunciado.
@@ -110,7 +130,7 @@ Solo caben los dos LLM pequeños, y hay que sumar el embedding (~1,1 GB):
 
 ## 8. Lo que no esperábamos
 
-1. **Nemotron, con 4B parámetros efectivos, es el LLM más lento y no el más rápido.** Esperábamos que calculara como un modelo de ~4B, pero da **27 tok/s**, frente a 45 de Qwen3.5-9B y 66 de Llama-3.2-3B, y su VRAM pico (14,8 GB) supera la de Qwen (14,3 GB). *Explicación:* vLLM carga los 8B parámetros completos (incluidas las tablas de embeddings por capa) y en esta GPU usa kernels más lentos para su arquitectura (`TRITON_ATTN` y FP8 Marlin, que en Ampere solo comprime los pesos). Tener «4B efectivos» ahorra cómputo en teoría, pero no memoria, y en nuestro stack tampoco tiempo. (Datos: `results/llms/tablas_b_c.md`, Tabla C; detalle en `seleccion_llms.md` §3 y §6.)
+1. **Nemotron, con 4B parámetros efectivos, es el LLM más lento y no el más rápido.** Esperábamos que calculara como un modelo de ~4B, pero da **27 tok/s**, frente a 45 de Qwen3.5-9B y 66 de Llama-3.2-3B, y su VRAM pico (14,8 GB) supera la de Qwen (14,3 GB). *Explicación:* vLLM carga los 8B parámetros completos (incluidas las tablas de embeddings por capa) y en esta GPU usa kernels más lentos para su arquitectura (`TRITON_ATTN` y FP8 Marlin, que en Ampere solo comprime los pesos). Tener «4B efectivos» ahorra cómputo en teoría, pero no memoria, y en nuestro stack tampoco tiempo. El Plan B lo confirma: con llama.cpp, que deja esas tablas en la RAM de la CPU, Nemotron en Q4 ocupa solo 3,5 GB de VRAM y genera a ~90 tok/s, más rápido que Qwen3.5-9B en Q4 (5,4 GB). (Datos: `results/llms/tablas_b_c.md`, Tabla C; detalle en `seleccion_llms.md` §3 y §6.)
 
 2. **El mejor embedding cambia de un corpus a otro.** harrier-oss-v1 recupera **12 de 12** en el BOE (Recall@5 = 1,00) y es el peor en Debian (0,75), mientras que bge-m3, el más antiguo y el único encoder, es el único que llega a 0,80 en Debian (0,83). Un mismo ranking de MTEB no predice el resultado en los dos corpus. *Hipótesis (no comprobada):* el BOE es prosa jurídica en español «limpio», y Debian mezcla español con comandos, rutas y términos en inglés, donde los modelos se comportan de forma distinta. (Datos: `results/embeddings/tabla_a_embeddings.md`.)
 

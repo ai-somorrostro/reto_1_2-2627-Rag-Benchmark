@@ -15,6 +15,8 @@ Paso 1:  python scripts/generar_tablas_llm.py --plantilla
                            (cita_auto es solo una pista)
 Paso 2:  python scripts/generar_tablas_llm.py
          Escribe results/llms/tablas_b_c.md
+
+Plan B (8 GB, salida de benchmark_plan_b_llamacpp.py): lo mismo con --dir results/llms/plan_b
 """
 
 import argparse
@@ -26,7 +28,8 @@ import statistics
 
 DIR = "results/llms"
 ESCENARIOS = {"boe": "Estatuto de los Trabajadores (BOE)", "debian": "Manual del Administrador de Debian"}
-ORDEN_MODELOS = ["lfm3-1.7b", "llama3.2-3b", "nemotron-bolt-e4b", "qwen3.5-9b"]
+ORDEN_MODELOS = ["lfm3-1.7b", "llama3.2-3b", "nemotron-bolt-e4b", "qwen3.5-9b",
+                 "nemotron-bolt-e4b-q4", "qwen3.5-9b-q4", "nemotron-bolt-e4b-q8", "qwen3.5-9b-q8"]
 
 COLUMNAS = ["modelo", "modo", "id", "tipo", "pregunta", "respuesta_esperada", "respuesta_modelo",
             "gold_en_contexto", "cita_auto", "abstiene", "correccion", "fiel", "formato_idioma", "notas"]
@@ -159,15 +162,27 @@ def tabla_oraculo(filas, resultados):
 
 
 def tabla_c(resultados):
-    out = ["\n### Tabla C. LLMs: coste (mediana de 3 rondas tras descartar la primera, 5 preguntas)\n",
-           "| Modelo | Stack | TTFT (s) | Tokens/s | Latencia total (s) | VRAM pico (GB) |",
-           "| --- | --- | --- | --- | --- | --- |"]
+    plan_b = any("vram_llm_gb" in d["meta"] for d in resultados.values())
+    cab = "| Modelo | Stack | TTFT (s) | Tokens/s | Latencia total (s) | VRAM pico (GB) |"
+    sep = "| --- | --- | --- | --- | --- | --- |"
+    if plan_b:
+        cab += " VRAM del LLM (GB) | LLM + embedding (GB) | ¿Cabe en 8 GB? |"
+        sep += " --- | --- | --- |"
+    out = ["\n### Tabla C. LLMs: coste (mediana de 3 rondas tras descartar la primera, 5 preguntas)\n", cab, sep]
     for m, d in resultados.items():
         c, meta = d["coste"]["mediana"], d["meta"]
         stack = f"{meta['stack']} {meta['stack_version']}"
-        out.append(f"| `{m}` | {stack} | "
-                   f"{fmt(c['ttft_s'])} | {fmt(c['tokens_por_s'], 1)} | {fmt(c['latencia_total_s'])} | "
-                   f"{fmt(meta['vram_pico_gb'])} |")
+        fila = (f"| `{m}` | {stack} | "
+                f"{fmt(c['ttft_s'])} | {fmt(c['tokens_por_s'], 1)} | {fmt(c['latencia_total_s'])} | "
+                f"{fmt(meta['vram_pico_gb'])} |")
+        if plan_b:
+            cabe = meta.get("cabe_en_8gb")
+            fila += (f" {fmt(meta.get('vram_llm_gb'))} | {fmt(meta.get('vram_plan_b_con_embedding_gb'))} | "
+                     f"{'—' if cabe is None else ('sí' if cabe else 'no')} |")
+        out.append(fila)
+    if plan_b:
+        out.append("\n> VRAM del LLM: pico de la instancia menos lo que había antes de arrancar llama-server. "
+                   "LLM + embedding: se suma ~1,1 GB del embedding del retrieval (FP16).")
     out.append("\n> TTFT: petición con max_tokens=1. Tokens/s: (tokens generados − 1) / (latencia total − TTFT). "
                "La latencia depende de lo larga que sea la respuesta: un modelo que se abstiene contesta antes, "
                "así que compárala solo entre modelos que cumplen los umbrales de calidad.")
@@ -201,16 +216,20 @@ def notas(resultados):
 
 
 def main():
+    global DIR
     ap = argparse.ArgumentParser()
     ap.add_argument("--plantilla", action="store_true", help="crear/completar los CSV de puntuación")
+    ap.add_argument("--dir", default=DIR, help="carpeta de resultados (results/llms/plan_b para el Plan B)")
     a = ap.parse_args()
+    DIR = a.dir.rstrip("/")
+    titulo = "Plan B (8 GB). Resultados de los LLM cuantizados" if DIR != "results/llms" else "Fase 3. Resultados del benchmark de LLMs"
 
     if a.plantilla:
         for esc in ESCENARIOS:
             plantilla(esc)
         return
 
-    md = ["# Fase 3. Resultados del benchmark de LLMs\n"]
+    md = [f"# {titulo}\n"]
     for esc, nombre in ESCENARIOS.items():
         resultados = cargar_resultados(esc)
         if not resultados:
