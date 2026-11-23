@@ -21,7 +21,7 @@
 ### Minuto a Minuto: Qué decir en cada Diapositiva
 
 #### [00:00 - 01:30] Diapositiva 1 & 2: Contexto, Escenarios y Hardware
-**Ponente:** Nicolás
+**Ponente:** X
 - **Idea clave:** No venimos a opinar sobre modelos abstractos de MTEB; traemos datos empíricos medidos por nosotros en hardware real.
 - **Puntos a tocar:**
   - Evaluamos dos escenarios radicalmente opuestos:
@@ -32,7 +32,7 @@
 ---
 
 #### [01:30 - 03:30] Diapositiva 3: Fase 1 (Golden Set) y Fase 2 (Embeddings)
-**Ponente:** Aimar
+**Ponente:** X
 - **Idea clave:** El retrieval condiciona todo el sistema. Si el chunk no llega al top-5, el LLM no tiene nada que hacer.
 - **Puntos a tocar:**
   - Creamos un *Golden Set* riguroso de 15 preguntas por escenario: 8 directas, 4 combinadas (requieren dos artículos/secciones) y 3 sin respuesta para medir la abstención.
@@ -44,7 +44,7 @@
 ---
 
 #### [03:30 - 06:15] Diapositivas 4 & 5: Fase 3 (LLMs: Calidad, Ruido y Rendimiento)
-**Ponente:** Íñigo
+**Ponente:** X
 - **Idea clave:** Los LLMs pequeños colapsan por falsas abstenciones y ruido; los medianos ofrecen la fidelidad que exige un entorno de producción.
 - **Puntos a tocar:**
   - **Métricas de Calidad (Tabla B):**
@@ -61,7 +61,7 @@
 ---
 
 #### [06:15 - 08:00] Diapositivas 6 & 7: Recomendación Final y Plan B (8 GB VRAM)
-**Ponente:** Íñigo
+**Ponente:** X
 - **Idea clave:** Decisiones basadas en umbrales estrictos de negocio/calidad, no en intuición.
 - **Puntos a tocar:**
   - **Para el BOE:** Elegimos **Harrier + Qwen3.5-9B**. Corrección casi perfecta (1.87), fidelidad absoluta (100%) y excelente velocidad.
@@ -74,7 +74,7 @@
 ---
 
 #### [08:00 - 10:00] Diapositivas 8 & 9: Lo que no esperábamos y Cierre
-**Ponente:** Íñigo (con apoyo de Nicolás)
+**Ponente:** X
 - **Idea clave:** Los 3 hallazgos experimentales sorprendentes que demuestran rigor y análisis crítico.
 - **Puntos a tocar:**
   1. **La paradoja de Nemotron:** NVIDIA lo promociona como "4B efectivos", pero vLLM carga los 8B de parámetros en VRAM (14.8 GB) y utiliza kernels más lentos (`TRITON_ATTN` y FP8 Marlin en Ampere), resultando en el modelo más lento de la prueba (26.7 tok/s).
