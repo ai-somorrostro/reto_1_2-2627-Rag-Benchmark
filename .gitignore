@@ -6,10 +6,6 @@ Modelos/
 # Cache python
 src/__pycache__
 #CSV
-/Benchmarks/tabla_b_calidad_chatbots.csv
-/Benchmarks/resultados_chatbots.csv
-/Benchmarks/resultados_benchmark_embedding.csv
-/Benchmarks/benchmark_embedding.csv
 
 # BD chroma
 /Benchmarks/data

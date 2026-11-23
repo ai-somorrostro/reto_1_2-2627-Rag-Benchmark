@@ -1,0 +1,5 @@
+Modelo,Tamaño,Cuantización,Corrección media (0–2),Respuestas fieles (%),Abstención correcta (%),Falsas abstenciones,Formato e idioma (%)
+Nemotron-3.5-4B,4B,Q4_K_XL,1.94,99.2,43.8,17,96.4
+K2-Horizon-3.7B,3.7B,Q6_K,1.94,98.7,37.5,33,97.4
+Ornith-1.5-9B,9B,Q4_K_M,1.94,98.6,37.5,28,97.7
+Ling-3.0-tiny,1.5B,Q5_K_M,1.87,96.4,37.5,28,95.3
