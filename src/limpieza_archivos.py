@@ -79,8 +79,18 @@ def limpiar_debian(text: str) -> str:
 
     # 7. Normalizar saltos de línea excesivos
     text = re.sub(r"\n{3,}", "\n\n", text)
-    return text.strip()
 
+    # Eliminar flechas + URL que quedaron en mitad de párrafo (ej. "→ https://...") para que el llm no alucine con esos url y lo use para todo
+    text = re.sub(r"\s*→\s*https?://\S+", "", text)
+
+    # Limpiar correos con formato roto tipo `<``user@debian.org``>` puede corromper los tokens
+    text = re.sub(r"`<``([^`]+)``>`", r"`\1`", text)
+
+    # Normalizar encabezados mal formados (ej. "# ## 1.2. Título" -> "## 1.2. Título")
+    text = re.sub(r"^(#+)\s+#+\s*", r"\1 ", text, flags=re.M)
+    text = re.sub(r"^(#+)\s+", r"\1 ", text, flags=re.M)
+
+    return text.strip()
 
 if __name__ == "__main__":
     base = Path("/home/g5/reto_1_2-2627-Rag-Benchmark/docs")
